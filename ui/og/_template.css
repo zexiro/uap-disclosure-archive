@@ -1,0 +1,68 @@
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html, body {
+  width: 1200px; height: 630px; overflow: hidden;
+  font-family: "Helvetica Neue", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  background: #0b0e14; color: #e6edf3;
+  -webkit-font-smoothing: antialiased;
+}
+.mono { font-family: ui-monospace, "SF Mono", "Menlo", monospace; }
+.frame {
+  position: relative; width: 1200px; height: 630px;
+  display: flex; flex-direction: column; justify-content: space-between;
+  padding: 48px 60px 56px;
+  overflow: hidden;
+}
+.scrim {
+  position: absolute; inset: 0;
+  background: linear-gradient(135deg, rgba(11,14,20,0.92) 0%, rgba(11,14,20,0.55) 60%, rgba(11,14,20,0.92) 100%);
+}
+.bg {
+  position: absolute; inset: 0; z-index: 0;
+  background-size: cover; background-position: center;
+}
+.top, .foot { position: relative; z-index: 2; }
+.kicker {
+  font-family: ui-monospace, "SF Mono", "Menlo", monospace;
+  font-size: 18px; letter-spacing: 4px; text-transform: uppercase;
+  color: #ffd34d; opacity: 0.95;
+}
+.kicker .pip {
+  display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+  background: #ff5757; margin-right: 12px; vertical-align: middle;
+  box-shadow: 0 0 10px #ff5757;
+}
+h1 {
+  font-family: "Helvetica Neue", -apple-system, sans-serif;
+  font-size: 64px; line-height: 1.06; font-weight: 800;
+  letter-spacing: -1.0px; margin-top: 14px;
+  text-shadow: 0 4px 24px rgba(0,0,0,0.85);
+  max-width: 1080px;
+}
+h1 em { font-style: normal; color: #57c7ff; }
+.sub {
+  font-size: 22px; line-height: 1.35; color: #d8e0ec; margin-top: 16px; max-width: 880px;
+  text-shadow: 0 2px 12px rgba(0,0,0,0.85);
+}
+.foot {
+  display: flex; justify-content: space-between; align-items: center;
+  font-size: 16px; color: #9aa5b8;
+  padding: 10px 14px; border-radius: 10px;
+  background: rgba(11,14,20,0.65); backdrop-filter: blur(4px);
+  border: 1px solid rgba(87,199,255,0.2);
+}
+.foot .url { font-family: ui-monospace, "SF Mono", "Menlo", monospace; font-size: 18px; color: #57c7ff; letter-spacing: 1px; font-weight: 600; }
+.foot .stats {
+  display: flex; gap: 28px; align-items: center;
+  font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: 12px;
+}
+.foot .stats span { display: flex; flex-direction: column; align-items: flex-end; line-height: 1.05; }
+.foot .stats span b { font-size: 24px; color: #fff; font-family: ui-monospace, "SF Mono", "Menlo", monospace; font-weight: 700; letter-spacing: -0.5px; }
+.classified-stamp {
+  position: absolute; top: 36px; right: 40px; z-index: 4;
+  font-family: ui-monospace, "SF Mono", "Menlo", monospace; font-size: 16px; font-weight: 800;
+  letter-spacing: 3px; color: #ff5757; border: 3px solid #ff5757;
+  padding: 8px 14px; transform: rotate(6deg);
+  box-shadow: 0 0 24px rgba(255,87,87,0.4);
+  text-shadow: 0 0 8px rgba(255,87,87,0.5);
+  background: rgba(11,14,20,0.4);
+}
