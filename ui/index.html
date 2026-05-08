@@ -52,6 +52,8 @@
   }
   header h1 { margin: 0; font-size: 18px; letter-spacing: 0.5px; }
   header h1 small { color: var(--fg-dim); font-weight: normal; margin-left: 6px; font-size: 12px; }
+  header h1 a.home { color: inherit; text-decoration: none; }
+  header h1 a.home:hover { color: var(--accent); }
   #q {
     flex: 1 1 360px; min-width: 220px; padding: 10px 14px;
     background: var(--bg3); border: 1px solid var(--border); color: var(--fg);
@@ -223,7 +225,7 @@
 </head>
 <body>
 <header>
-  <h1>UFO/UAP Disclosure Archive <small>war.gov · Release 1</small></h1>
+  <h1><a class="home" href="/ui/">UFO/UAP Disclosure Archive</a> <small>war.gov · Release 1</small></h1>
   <input id="q" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" autofocus />
   <div class="filters">
     <select id="f-agency"><option value="">All agencies</option></select>
