@@ -1,0 +1,40 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { width: 800px; height: 800px; overflow: hidden; background: #0b0e14; }
+  .wrap {
+    position: relative; width: 800px; height: 800px;
+    background-image: url(../../raw/images/2024-04-30-composite-sketch.jpg);
+    background-size: cover;
+    background-position: 60% 38%;
+    filter: saturate(0.7) contrast(1.1);
+  }
+  .ring {
+    position: absolute; inset: 16px; border-radius: 50%;
+    box-shadow:
+      inset 0 0 0 6px #0b0e14,
+      inset 0 0 0 8px #ffd34d,
+      inset 0 0 60px rgba(11,14,20,0.55);
+  }
+  .badge {
+    position: absolute; left: 50%; bottom: 60px; transform: translateX(-50%);
+    background: rgba(11,14,20,0.85);
+    border: 2px solid #57c7ff;
+    color: #fff;
+    font-family: ui-monospace, "SF Mono", Menlo, monospace;
+    font-size: 22px; letter-spacing: 3px;
+    padding: 12px 22px; border-radius: 10px;
+    text-transform: uppercase;
+    box-shadow: 0 0 30px rgba(11,14,20,0.9);
+  }
+  .badge .dot {
+    display: inline-block; width: 9px; height: 9px; border-radius: 50%;
+    background: #57c7ff; margin-right: 10px; vertical-align: middle;
+    box-shadow: 0 0 10px #57c7ff;
+  }
+</style>
+</head><body><div class="wrap">
+  <div class="ring"></div>
+  <div class="badge"><span class="dot"></span>UAP MIRROR</div>
+</div></body></html>
