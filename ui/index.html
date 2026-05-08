@@ -132,6 +132,20 @@
   }
   .preview img, .preview video { max-width: 100%; max-height: 480px; border-radius: 4px; }
   .preview iframe { width: 100%; height: 80vh; border: 0; background: #fff; border-radius: 4px; }
+  .pdf-placeholder { padding: 0; }
+  .pdf-stub {
+    display: flex; flex-direction: column; align-items: flex-start; gap: 8px;
+    padding: 20px; background: var(--bg3); border: 1px dashed var(--border); border-radius: 8px;
+  }
+  .pdf-stub-title { font-size: 14px; font-weight: 700; color: var(--fg); }
+  .pdf-stub-meta { font-size: 12px; color: var(--fg-dim); font-family: var(--mono); }
+  .pdf-stub-hint { font-size: 11px; color: var(--fg-dim); margin-top: 4px; }
+  .pdf-load-btn {
+    background: var(--bg); color: var(--accent); border: 1px solid var(--accent);
+    padding: 8px 16px; border-radius: 6px; cursor: pointer; font-size: 13px; font-weight: 600;
+    transition: all 0.15s;
+  }
+  .pdf-load-btn:hover { background: var(--accent); color: var(--bg); }
   .links { display: flex; gap: 10px; flex-wrap: wrap; margin: 14px 0; }
   .links a {
     color: var(--accent); text-decoration: none; padding: 6px 10px; border: 1px solid var(--border);
@@ -358,16 +372,26 @@ function previewHTML(d) {
   if (d.video_local) {
     parts.push(`<div class="preview"><video controls preload="metadata" src="${ROOT_REL}/${d.video_local}"></video></div>`);
   }
-  // Inline images
+  // Inline images (small standalone image records)
   for (const lp of d.primary_local) {
     if (/\.(jpg|jpeg|png|gif|webp)$/i.test(lp)) {
       parts.push(`<div class="preview"><img src="${ROOT_REL}/${lp}" loading="lazy"/></div>`);
     }
   }
-  // Inline PDF (only first one to keep things light)
+  // PDF: render placeholder with a "Load PDF" button — the heavy iframe
+  // only attaches on click. Default view is text + extracted images below.
   const pdf = d.primary_local.find(p => p.toLowerCase().endsWith(".pdf"));
   if (pdf) {
-    parts.push(`<div class="preview"><iframe src="${ROOT_REL}/${pdf}#view=FitH"></iframe></div>`);
+    const pdfName = pdf.split("/").pop();
+    parts.push(`
+      <div class="preview pdf-placeholder" id="pdf-placeholder">
+        <div class="pdf-stub">
+          <div class="pdf-stub-title">📄 Original PDF</div>
+          <div class="pdf-stub-meta">${escapeHtml(pdfName)} · scans can be 50–100 MB</div>
+          <button class="pdf-load-btn" onclick="loadPdf('${ROOT_REL}/${pdf}')">Load original PDF →</button>
+          <div class="pdf-stub-hint">Default view below uses the OCR'd text + extracted images so the page loads instantly.</div>
+        </div>
+      </div>`);
   }
   // Thumbnails fallback if nothing else
   if (!parts.length && d.thumbnail_local.length) {
@@ -377,6 +401,14 @@ function previewHTML(d) {
   }
   return parts.join("");
 }
+
+// Lazy PDF loader — replaces the placeholder with an iframe on click
+function loadPdf(src) {
+  const ph = document.getElementById("pdf-placeholder");
+  if (!ph) return;
+  ph.innerHTML = `<iframe src="${src}#view=FitH"></iframe>`;
+}
+window.loadPdf = loadPdf;
 
 function linksHTML(d) {
   const a = [];
@@ -464,8 +496,8 @@ function showDetail(id, terms = []) {
     ${extractedHTML(d)}
     ${relatedHTML(d)}
     ${d.text ? `
-      <details ${terms.length ? "open" : ""}>
-        <summary>Full extracted text (${d.text.length.toLocaleString()} chars)</summary>
+      <details open>
+        <summary>Extracted text (${d.text.length.toLocaleString()} chars)</summary>
         <div class="text">${highlight(d.text, terms)}</div>
       </details>` : ""}
   `;
