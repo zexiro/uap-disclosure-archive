@@ -46,11 +46,13 @@ def text_for(rec):
 
 
 docs = []
+records_by_id: dict[str, dict] = {}
 for r in RECORDS:
     extracted: list[str] = []
     for lp in r.get("primary_local", []):
         if lp.endswith(".pdf"):
             extracted.extend(EXTRACTED_BY_PDF.get(lp, []))
+    records_by_id[r["id"]] = r
     docs.append({
         "id": r["id"],
         "title": r["title"],
@@ -72,7 +74,53 @@ for r in RECORDS:
         "extracted_images": extracted,
     })
 
+# Synthesize one IMG record per extracted image so the Images filter
+# surfaces them at the top level (not just hidden in their parent's gallery).
+# Each synthetic record inherits its parent's text/blurb/agency so search
+# still hits them via parent metadata; click opens a detail view focused
+# on the single image.
+extracted_records = 0
+# Map raw/docs/<stem>.pdf -> records that have it as primary_local
+pdf_to_record_id: dict[str, str] = {}
+for r in RECORDS:
+    for lp in r.get("primary_local", []):
+        if lp.endswith(".pdf"):
+            pdf_to_record_id[lp] = r["id"]
+
+if EXTRACTED_PATH.exists():
+    for entry in json.loads(EXTRACTED_PATH.read_text()):
+        parent_id = pdf_to_record_id.get(entry["src_pdf"])
+        if not parent_id:
+            continue
+        parent = records_by_id[parent_id]
+        page = entry.get("page", "?")
+        seq = Path(entry["file"]).stem.rsplit("_", 1)[-1]
+        synthetic_id = f"{parent_id}__img_p{page}_{seq}"
+        docs.append({
+            "id": synthetic_id,
+            "title": f"{parent['title']} — image (page {page})",
+            "agency": parent["agency"],
+            "type": "IMG",
+            "release_date": parent["release_date"],
+            "incident_date": parent["incident_date"],
+            "incident_location": parent["incident_location"],
+            "redaction": parent["redaction"],
+            "blurb": f"Embedded image extracted from page {page} of {parent['title']}. " + (parent.get("blurb", "") or ""),
+            "source_url": parent.get("pdf_image_link", ""),
+            "primary_local": [entry["file"]],
+            "thumbnail_local": [entry["file"]],
+            "video_local": "",
+            "dvids_video_id": "",
+            "text": "",
+            "similar_text":  [],
+            "similar_image": [],
+            "extracted_images": [],
+            "extracted_from_id": parent_id,
+            "extracted_page": page,
+        })
+        extracted_records += 1
+
 out = ROOT / "ui" / "search-index.json"
 out.parent.mkdir(exist_ok=True)
 out.write_text(json.dumps(docs, ensure_ascii=False))
-print(f"Wrote {out} — {len(docs)} records, {sum(len(d['text']) for d in docs):,} text chars total")
+print(f"Wrote {out} — {len(docs)} records ({extracted_records} synthetic IMG from extracted PDF images), {sum(len(d['text']) for d in docs):,} text chars total")
