@@ -8,7 +8,7 @@
 """
 import os
 import sys
-from http.server import HTTPServer, SimpleHTTPRequestHandler
+from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 
 class Handler(SimpleHTTPRequestHandler):
@@ -40,7 +40,8 @@ class Handler(SimpleHTTPRequestHandler):
 def main():
     port = int(os.environ.get("PORT", "8000"))
     addr = os.environ.get("BIND", "0.0.0.0")
-    httpd = HTTPServer((addr, port), Handler)
+    httpd = ThreadingHTTPServer((addr, port), Handler)
+    httpd.daemon_threads = True
     print(f"[http] serving on http://{addr}:{port}/", flush=True)
     httpd.serve_forever()
 
