@@ -77,6 +77,27 @@
   .chip.active { border-color: var(--accent); color: var(--accent); background: #1a2533; }
   .chip .count { color: var(--fg-dim); font-size: 11px; }
   .chip.active .count { color: var(--accent); }
+  /* Globe view (lazy — only built when toggled). */
+  /* Both main and #globe-view occupy the body grid's second row so toggling
+     between them never collapses the row. */
+  main, #globe-view { grid-row: 2 / 3; }
+  #globe-view { position: relative; background: #000; min-height: 0; overflow: hidden; }
+  #globe-canvas { width: 100%; height: 100%; cursor: grab; }
+  #globe-canvas:active { cursor: grabbing; }
+  .globe-stat {
+    position: absolute; top: 12px; left: 12px; padding: 6px 10px;
+    background: rgba(0,0,0,0.65); border: 1px solid var(--border);
+    color: var(--fg-dim); font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.05em; pointer-events: none; z-index: 10;
+  }
+  .globe-stat strong { color: var(--accent); font-weight: normal; }
+  .globe-toggle {
+    background: var(--bg3); border: 1px solid var(--border); color: var(--fg);
+    border-radius: 6px; padding: 6px 12px; font-size: 12px; cursor: pointer;
+  }
+  .globe-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  .globe-toggle.active { border-color: var(--accent); color: var(--accent); background: #1a2533; }
+  body.globe-mode main { display: none; }
   main { display: grid; grid-template-columns: 380px 1fr; min-height: 0; }
   #results {
     overflow-y: auto; border-right: 1px solid var(--border); background: var(--bg2);
@@ -245,6 +266,7 @@
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">esc</kbd> blur ·
       URL state is shareable
     </div>
+    <button id="view-toggle" class="globe-toggle" type="button" aria-pressed="false">🌐 Globe view</button>
     <a class="bmc" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener" title="Help keep this archive online">
       ☕ Buy me a coffee
     </a>
@@ -278,6 +300,10 @@
     </div>
   </section>
 </main>
+<section id="globe-view" hidden>
+  <div id="globe-canvas"></div>
+  <div class="globe-stat">PLOTTING <strong id="globe-count">…</strong> RECORDS · CLICK A MARKER TO FILTER</div>
+</section>
 
 <script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js"></script>
 <script>
@@ -543,6 +569,154 @@ function search() {
   render(results, terms);
 }
 
+// Hand-curated lookup from the `incident_location` strings present in
+// search-index.json to (lat, lng). Strings absent from this table are not
+// plotted (e.g. "N/A", "Moon", "Low Earth Orbit", "North America"). When a
+// new release introduces unfamiliar location strings, build_search_index
+// will produce them and they'll silently drop off the globe until added here.
+const LOC_COORDS = {
+  "Aegean Sea": [38.0, 25.0],
+  "Arabian Gulf": [26.5, 51.0],
+  "Arabian Sea": [14.0, 65.0],
+  "Azerbaijan": [40.0, 47.5],
+  "Detroit, MI": [42.33, -83.05],
+  "Djibouti": [11.5, 43.0],
+  "East China Sea": [28.0, 125.0],
+  "Georgia": [42.0, 43.5],
+  "Germany": [51.0, 10.0],
+  "Greece": [39.0, 22.0],
+  "Gulf of Aden": [12.5, 48.0],
+  "Gulf of Oman": [25.0, 58.0],
+  "Iran": [32.0, 53.0],
+  "Iraq": [33.0, 44.0],
+  "Japan": [36.0, 138.0],
+  "Kazakhstan": [48.0, 67.0],
+  "Mediterranean Sea": [35.0, 18.0],
+  "Mexico": [23.0, -102.0],
+  "Middle East": [31.0, 45.0],
+  "Netherlands": [52.0, 5.5],
+  "Pacific Ocean": [0.0, -160.0],
+  "Papua New Guinea": [-6.5, 145.0],
+  "Persian Gulf": [26.5, 51.0],
+  "Southern United States": [32.0, -90.0],
+  "Strait of Hormuz": [26.6, 56.5],
+  "Syria": [35.0, 38.0],
+  "Turkmenistan": [38.5, 58.0],
+  "United Arab Emirates": [24.0, 54.0],
+  "United States": [39.0, -98.0],
+  "Western United States": [40.0, -113.0],
+};
+
+let globe = null;
+let globeLoadPromise = null;
+
+function loadGlobeLib() {
+  if (globeLoadPromise) return globeLoadPromise;
+  globeLoadPromise = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/globe.gl@2/dist/globe.gl.min.js";
+    s.onload = () => resolve(window.Globe);
+    s.onerror = () => { globeLoadPromise = null; reject(new Error("globe.gl failed to load")); };
+    document.head.appendChild(s);
+  });
+  return globeLoadPromise;
+}
+
+async function ensureGlobe() {
+  if (globe) return globe;
+  await loadGlobeLib();
+  const container = $("#globe-canvas");
+  globe = window.Globe()(container)
+    .width(container.clientWidth)
+    .height(container.clientHeight)
+    .backgroundColor("#000")
+    .showAtmosphere(true)
+    .atmosphereColor(getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#57c7ff")
+    .atmosphereAltitude(0.18)
+    .pointAltitude("alt")
+    .pointRadius("radius")
+    .pointColor(p => p.color)
+    .pointLabel(p => `<div style="font-family:ui-monospace,monospace;background:rgba(0,0,0,.85);padding:6px 10px;border:1px solid #57c7ff66;color:#cbd5e1;font-size:11px"><b style="color:#57c7ff">${p.location}</b><br>${p.docs.length} record${p.docs.length>1?"s":""}</div>`)
+    .onPointClick(p => {
+      const sel = $("#f-loc");
+      if ([...sel.options].some(o => o.value === p.location)) {
+        sel.value = p.location;
+        setView("search");
+        search();
+        syncUrl();
+      }
+    });
+
+  // Country wireframe (cyan outlines, near-zero fill) — same look as the
+  // Cesium prototype in disclosure-globe.
+  fetch("geo/ne_110m_admin_0_countries.geojson")
+    .then(r => r.json())
+    .then(geo => {
+      globe
+        .polygonsData(geo.features)
+        .polygonAltitude(0.005)
+        .polygonCapColor(() => "rgba(87,199,255,0.04)")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "#57c7ff");
+    })
+    .catch(() => { /* non-fatal — markers still render */ });
+
+  // Group records by location string so each marker scales with record count.
+  const groups = {};
+  for (const d of docs) {
+    const loc = (d.incident_location || "").trim();
+    const c = LOC_COORDS[loc];
+    if (!c) continue;
+    if (!groups[loc]) groups[loc] = { location: loc, lat: c[0], lng: c[1], docs: [] };
+    groups[loc].docs.push(d);
+  }
+  const points = Object.values(groups).map(g => ({
+    ...g,
+    alt: 0.012,
+    radius: 0.4 + Math.min(2.6, Math.log2(1 + g.docs.length) * 0.5),
+    color: "#57c7ff",
+  }));
+  globe.pointsData(points);
+  $("#globe-count").textContent = points.reduce((s, p) => s + p.docs.length, 0);
+
+  // Auto-rotate gently until the user interacts.
+  globe.controls().autoRotate = true;
+  globe.controls().autoRotateSpeed = 0.4;
+  container.addEventListener("pointerdown", () => { if (globe) globe.controls().autoRotate = false; }, { once: true });
+
+  // Resize when the window resizes.
+  const onResize = () => globe && globe.width(container.clientWidth).height(container.clientHeight);
+  window.addEventListener("resize", onResize);
+
+  return globe;
+}
+
+async function setView(v) {
+  const isGlobe = v === "globe";
+  document.body.classList.toggle("globe-mode", isGlobe);
+  $("#globe-view").toggleAttribute("hidden", !isGlobe);
+  const btn = $("#view-toggle");
+  btn.classList.toggle("active", isGlobe);
+  btn.setAttribute("aria-pressed", isGlobe ? "true" : "false");
+  btn.textContent = isGlobe ? "← Search view" : "🌐 Globe view";
+  if (isGlobe) {
+    try {
+      await ensureGlobe();
+      const c = $("#globe-canvas");
+      if (globe) globe.width(c.clientWidth).height(c.clientHeight);
+    } catch (e) {
+      // Fall back to search view on load failure.
+      console.error("[globe]", e);
+      document.body.classList.remove("globe-mode");
+      $("#globe-view").setAttribute("hidden", "");
+      btn.classList.remove("active");
+      btn.textContent = "🌐 Globe view";
+      btn.setAttribute("aria-pressed", "false");
+    }
+  }
+  syncUrl();
+}
+
 function syncUrl() {
   const p = new URLSearchParams();
   const q = $("#q").value.trim(); if (q) p.set("q", q);
@@ -551,6 +725,7 @@ function syncUrl() {
   }
   if (activeTypeFilter) p.set("type", activeTypeFilter);
   if (activeId) p.set("doc", activeId);
+  if (document.body.classList.contains("globe-mode")) p.set("view", "globe");
   const hash = p.toString();
   history.replaceState(null, "", hash ? "#" + hash : location.pathname);
 }
@@ -638,11 +813,20 @@ async function init() {
     else if (e.key === "k" || e.key === "ArrowUp")   { e.preventDefault(); navigate(-1); }
   });
 
+  $("#view-toggle").addEventListener("click", () => {
+    const next = document.body.classList.contains("globe-mode") ? "search" : "globe";
+    setView(next);
+  });
+
   search();
   if (activeId) {
     const terms = $("#q").value.trim().split(/\s+/).filter(Boolean);
     showDetail(activeId, terms);
   }
+
+  // Honour ?view=globe in the URL after data + indices are ready.
+  const viewParam = new URLSearchParams(location.hash.slice(1)).get("view");
+  if (viewParam === "globe") setView("globe");
 }
 init();
 </script>
