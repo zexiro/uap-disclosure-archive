@@ -153,19 +153,26 @@
   .help code { background: var(--bg3); padding: 1px 5px; border-radius: 3px; font-family: var(--mono); }
   .bmc {
     display: inline-flex; align-items: center; gap: 6px;
-    padding: 5px 10px; border-radius: 6px; text-decoration: none;
-    background: var(--bg3); border: 1px solid var(--border); color: var(--fg-dim);
-    font-size: 12px; line-height: 1; white-space: nowrap; transition: all 0.15s;
-  }
-  .bmc:hover { color: var(--accent2); border-color: var(--accent2); background: rgba(255,211,77,0.06); }
-  .bmc-cta {
-    display: inline-flex; align-items: center; gap: 8px;
-    margin-top: 28px; padding: 10px 18px; border-radius: 8px;
-    background: rgba(255,211,77,0.08); border: 1px solid rgba(255,211,77,0.4);
-    color: var(--accent2); text-decoration: none; font-size: 13px;
+    padding: 7px 14px; border-radius: 6px; text-decoration: none;
+    background: var(--accent2); border: 1px solid var(--accent2); color: #1a1410;
+    font-size: 13px; font-weight: 700; line-height: 1; white-space: nowrap;
     transition: all 0.15s;
+    box-shadow: 0 0 16px rgba(255,211,77,0.25);
   }
-  .bmc-cta:hover { background: rgba(255,211,77,0.16); border-color: var(--accent2); }
+  .bmc:hover { background: #ffe48a; border-color: #ffe48a; box-shadow: 0 0 24px rgba(255,211,77,0.5); transform: translateY(-1px); }
+  .links a.bmc-inline {
+    background: var(--accent2); color: #1a1410; border-color: var(--accent2); font-weight: 700;
+  }
+  .links a.bmc-inline:hover { background: #ffe48a; border-color: #ffe48a; }
+  .bmc-cta {
+    display: inline-flex; align-items: center; gap: 10px;
+    margin-top: 28px; padding: 14px 24px; border-radius: 10px;
+    background: var(--accent2); border: 1px solid var(--accent2);
+    color: #1a1410; text-decoration: none; font-size: 15px; font-weight: 700;
+    transition: all 0.15s;
+    box-shadow: 0 0 32px rgba(255,211,77,0.3);
+  }
+  .bmc-cta:hover { background: #ffe48a; border-color: #ffe48a; transform: translateY(-1px); box-shadow: 0 0 40px rgba(255,211,77,0.5); }
   .bmc-cta-note { font-size: 11px; color: var(--fg-dim); margin-top: 10px; max-width: 420px; }
   @media (max-width: 800px) {
     main { grid-template-columns: 1fr; grid-template-rows: 40vh 1fr; }
@@ -343,6 +350,7 @@ function linksHTML(d) {
   if (d.video_local) a.push(`<a href="${ROOT_REL}/${d.video_local}" target="_blank">🎞 ${d.video_local.split("/").pop()}</a>`);
   if (d.source_url) a.push(`<a href="${d.source_url}" target="_blank">↗ war.gov source</a>`);
   if (d.dvids_video_id) a.push(`<a href="https://www.dvidshub.net/video/${d.dvids_video_id}" target="_blank">↗ DVIDS</a>`);
+  a.push(`<a class="bmc-inline" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener">☕ Tip the archivist</a>`);
   return a.length ? `<div class="links">${a.join("")}</div>` : "";
 }
 
