@@ -25,6 +25,7 @@ echo "[refresh] CSV changed (or first run) — running full pipeline"
 python3 scripts/parse_csv.py
 python3 scripts/download.py
 python3 scripts/ocr.py || true       # OCR errors aren't fatal
+python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketches
 python3 scripts/build_links.py
 python3 scripts/build_search_index.py
 

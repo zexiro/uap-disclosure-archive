@@ -17,6 +17,16 @@ RECORDS = json.loads((RAW / "records.json").read_text())
 LINKS_PATH = RAW / "links.json"
 LINKS = json.loads(LINKS_PATH.read_text()) if LINKS_PATH.exists() else {}
 
+# Group extracted-image entries by their src_pdf so we can surface them per record
+EXTRACTED_PATH = RAW / "extracted_images.json"
+EXTRACTED_BY_PDF: dict[str, list[str]] = {}
+if EXTRACTED_PATH.exists():
+    for e in json.loads(EXTRACTED_PATH.read_text()):
+        EXTRACTED_BY_PDF.setdefault(e["src_pdf"], []).append(e["file"])
+    # Sort by filename so order is stable (page-then-seq)
+    for k in EXTRACTED_BY_PDF:
+        EXTRACTED_BY_PDF[k].sort()
+
 PER_REC_TEXT_CAP = 100_000
 
 
@@ -37,6 +47,10 @@ def text_for(rec):
 
 docs = []
 for r in RECORDS:
+    extracted: list[str] = []
+    for lp in r.get("primary_local", []):
+        if lp.endswith(".pdf"):
+            extracted.extend(EXTRACTED_BY_PDF.get(lp, []))
     docs.append({
         "id": r["id"],
         "title": r["title"],
@@ -55,6 +69,7 @@ for r in RECORDS:
         "text": text_for(r),
         "similar_text":  LINKS.get(r["id"], {}).get("similar_text",  []),
         "similar_image": LINKS.get(r["id"], {}).get("similar_image", []),
+        "extracted_images": extracted,
     })
 
 out = ROOT / "ui" / "search-index.json"

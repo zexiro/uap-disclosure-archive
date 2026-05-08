@@ -90,8 +90,17 @@ def compute_text_links():
 
 
 def compute_image_links():
-    """For each record, compute pHash of its primary image (if any) and
-    its modal_image thumbnail; find records whose hashes are close."""
+    """For each record, compute pHash over (a) its primary + thumbnail images
+    and (b) any images extracted from its source PDF (raw/extracted_images.json),
+    so a record's hash pool includes the photos hidden inside its FBI scan etc.
+    Records whose hashes are close are linked."""
+    # Map src_pdf path -> record_index, so extracted images attach to their parent record
+    pdf_to_rec: dict[str, int] = {}
+    for i, rec in enumerate(RECORDS):
+        for lp in rec.get("primary_local", []):
+            if lp.endswith(".pdf"):
+                pdf_to_rec[lp] = i
+
     hashes = []  # list[(record_index, hash, src_path)]
     for i, rec in enumerate(RECORDS):
         candidates = list(rec.get("primary_local", [])) + list(rec.get("thumbnail_local", []))
@@ -108,6 +117,22 @@ def compute_image_links():
                 hashes.append((i, h, lp))
             except (UnidentifiedImageError, OSError, ValueError):
                 continue
+
+    # Add embedded images extracted from PDFs — index file already has pHash strings
+    extracted_path = RAW / "extracted_images.json"
+    extracted_count = 0
+    if extracted_path.exists():
+        for entry in json.loads(extracted_path.read_text()):
+            rec_idx = pdf_to_rec.get(entry["src_pdf"])
+            if rec_idx is None:
+                continue
+            try:
+                h = imagehash.hex_to_hash(entry["phash"])
+            except (ValueError, KeyError):
+                continue
+            hashes.append((rec_idx, h, entry["file"]))
+            extracted_count += 1
+        print(f"  + {extracted_count} hashes from extracted PDF images")
 
     links = {r["id"]: [] for r in RECORDS}
     if not hashes:

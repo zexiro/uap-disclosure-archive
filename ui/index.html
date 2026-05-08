@@ -132,6 +132,22 @@
   .related .item.image-link { display: inline-flex; align-items: center; gap: 8px; padding: 4px; }
   .related .item.image-link img { width: 56px; height: 40px; object-fit: cover; border-radius: 3px; }
   .related-grid { display: flex; flex-wrap: wrap; gap: 6px; }
+  .extracted {
+    margin: 18px 0;
+  }
+  .extracted h3 { font-size: 13px; color: var(--fg-dim); text-transform: uppercase; letter-spacing: 0.5px; margin: 0 0 8px; }
+  .extracted .grid {
+    display: grid; grid-template-columns: repeat(auto-fill, minmax(120px, 1fr)); gap: 6px;
+  }
+  .extracted .grid a {
+    display: block; aspect-ratio: 1 / 1; background: var(--bg2); border: 1px solid var(--border); border-radius: 4px;
+    overflow: hidden; transition: border-color 0.1s;
+  }
+  .extracted .grid a:hover { border-color: var(--accent); }
+  .extracted .grid img {
+    width: 100%; height: 100%; object-fit: cover; display: block;
+  }
+  .extracted .meta { font-size: 11px; color: var(--fg-dim); margin-bottom: 8px; }
   .empty { padding: 60px 30px; text-align: center; color: var(--fg-dim); }
   .help { font-size: 12px; color: var(--fg-dim); margin-top: 30px; line-height: 1.6; }
   .help code { background: var(--bg3); padding: 1px 5px; border-radius: 3px; font-family: var(--mono); }
@@ -330,6 +346,18 @@ function linksHTML(d) {
   return a.length ? `<div class="links">${a.join("")}</div>` : "";
 }
 
+function extractedHTML(d) {
+  const imgs = d.extracted_images || [];
+  if (!imgs.length) return "";
+  return `<div class="extracted">
+    <h3>Images extracted from this PDF (${imgs.length})</h3>
+    <div class="meta">Embedded photographs, sketches, clippings, and figures pulled from the source PDF (excluding full-page scans).</div>
+    <div class="grid">
+      ${imgs.map(p => `<a href="${ROOT_REL}/${p}" target="_blank" rel="noopener"><img src="${ROOT_REL}/${p}" loading="lazy" alt=""/></a>`).join("")}
+    </div>
+  </div>`;
+}
+
 function relatedHTML(d) {
   const t = (d.similar_text  || []).filter(s => docs.find(x => x.id === s.id));
   const im = (d.similar_image || []).filter(s => docs.find(x => x.id === s.id));
@@ -384,6 +412,7 @@ function showDetail(id, terms = []) {
     ${linksHTML(d)}
     ${d.blurb ? `<div class="blurb">${highlight(d.blurb, terms)}</div>` : ""}
     ${previewHTML(d)}
+    ${extractedHTML(d)}
     ${relatedHTML(d)}
     ${d.text ? `
       <details ${terms.length ? "open" : ""}>
