@@ -13,6 +13,17 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 class Handler(SimpleHTTPRequestHandler):
     def do_GET(self):
+        # Liveness probe for Railway. Must stay cheap (no disk reads) so it
+        # still answers when /raw/* image traffic is saturating worker threads.
+        if self.path in ("/healthz", "/healthz/"):
+            body = b"ok"
+            self.send_response(200)
+            self.send_header("Content-Type", "text/plain")
+            self.send_header("Content-Length", str(len(body)))
+            self.send_header("Cache-Control", "no-store")
+            self.end_headers()
+            self.wfile.write(body)
+            return
         if self.path in ("", "/", "/index.html"):
             self.send_response(302)
             self.send_header("Location", "/ui/")
@@ -22,7 +33,9 @@ class Handler(SimpleHTTPRequestHandler):
 
     def end_headers(self):
         # Range support is automatic in SimpleHTTPRequestHandler since 3.7
-        if self.path.startswith("/raw/") and any(
+        if self.path in ("/healthz", "/healthz/"):
+            pass  # /healthz already wrote its own headers
+        elif self.path.startswith("/raw/") and any(
             self.path.endswith(ext) for ext in (".pdf", ".mp4", ".jpg", ".jpeg", ".png", ".webm")
         ):
             self.send_header("Cache-Control", "public, max-age=31536000, immutable")
