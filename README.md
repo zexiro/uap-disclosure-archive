@@ -92,12 +92,37 @@ re-deploys are fast and don't lose data.
 - [x] Visual similarity links (perceptual hash on thumbnails + photos)
 - [x] Obsidian vault with cross-linked notes (open in graph view)
 - [x] Single-page search UI with media-type chips, filters, URL state, keyboard nav
-- [ ] Map + timeline view of incident locations
+- [ ] **Map + timeline view of incident locations** *(in progress — see [Disclosure Globe](#disclosure-globe-vision) below)*
 - [ ] Semantic embeddings (CLIP for images, SBERT for text)
 - [ ] Named-entity extraction (people, codenames, redacted-name fingerprints)
 - [ ] Cross-reference graph from in-PDF case-number citations
 - [ ] RAG / "Ask the archive" with citations
 - [ ] User-submitted corrections + annotations
+
+## Disclosure Globe vision
+
+The next iteration of the project pivots from a single-source mirror to a
+**multi-source aggregator** — a tactical-command-centre interactive globe
+that pulls together declassified UAP/UFO documentation across:
+
+- **PURSUE / war.gov** (this mirror — Release 1+)
+- **AARO** (All-domain Anomaly Resolution Office)
+- **NUFORC** (National UFO Reporting Center, civilian)
+- **MUFON** (Mutual UFO Network)
+- **Project Blue Book** (USAF, 1947–1969)
+- **FBI Vault** UFO collection
+- **NARA** (National Archives)
+- **UK MoD** released files
+- **French GEIPAN** (CNES civilian sightings)
+
+Single searchable interactive archive with a Cesium-based 3D globe at
+`/`, hover/click on incident markers, slide-in dossiers, decade-scale
+timeline scrubber, and a tactical HUD.
+
+Working title: **Disclosure Globe**. Sibling repo: `../disclosure-globe`
+(Next.js 15 + Cesium + Tailwind v4). When the prototype is solid, the
+search UI here will move under `/archive` and the globe becomes the
+front door at `/`.
 
 When subsequent disclosure tranches drop, the cron auto-detects the CSV
 change and runs the pipeline. Cross-tranche relationship links update
