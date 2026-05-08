@@ -1,0 +1,23 @@
+name: Deploy to Railway
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - name: Install Railway CLI
+        run: bash <(curl -fsSL cli.new)
+      - name: Deploy
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+        run: |
+          railway up \
+            --service uap-mirror \
+            --project 77a51944-0f75-4cad-bfd7-56bad406a8eb \
+            --environment production \
+            --detach \
+            -m "auto-deploy from ${GITHUB_SHA::7}"

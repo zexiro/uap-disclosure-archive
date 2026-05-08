@@ -5,14 +5,15 @@
 set -euo pipefail
 cd /app
 
-# On first boot, populate the volume if it's empty.
-if [ ! -f raw/records.json ]; then
-  echo "[boot] empty volume — running initial pipeline (this can take ~30 minutes)"
-  bash scripts/refresh.sh || echo "[boot] initial refresh hit errors (will retry on schedule)"
-fi
-
-# Background: refresh every 6 hours
+# Background: initial pipeline (if volume empty) + 6-hourly refresh.
+# The HTTP server starts immediately so health checks pass; the UI works
+# from the bundled search-index right away. Inline previews start working
+# once the volume is populated (~5–10 min on Railway's bandwidth).
 (
+  if [ ! -f raw/records.json ]; then
+    echo "[boot] empty volume — running initial pipeline"
+    bash scripts/refresh.sh || echo "[boot] initial refresh hit errors (will retry on schedule)"
+  fi
   while true; do
     sleep 21600
     echo "[cron] kicking off scheduled refresh at $(date -u +%FT%TZ)"
