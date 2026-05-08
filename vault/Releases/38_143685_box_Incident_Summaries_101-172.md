@@ -1,0 +1,7590 @@
+---
+id: 38_143685_box_Incident_Summaries_101-172
+title: 38_143685_box_Incident_Summaries_101-172
+agency: Department of War
+type: PDF
+release_date: 2026-05-08
+incident_date: N/A
+incident_location: N/A
+redaction: 
+tags: [uap, agency/department_of_war, type/pdf]
+source_urls: ["https://www.war.gov/medialink/ufo/release_1/38_143685_box7_incident_summaries_101-172.pdf"]
+---
+
+# 38_143685_box_Incident_Summaries_101-172
+
+## Description
+
+Each of these incident summaries includes a "Check-List - Unidentified Flying Objects" that contains details about the incident. Many summaries also include witness lists or statements and other narrative reports or descriptions.
+
+## Facts
+
+- **Agency:** Department of War
+- **Type:** PDF
+- **Released:** 2026-05-08
+- **Incident Date:** N/A
+- **Location:** N/A
+
+![[38_143685_box7_incident_summaries_101-172.jpg]]
+
+## Files
+
+- [Local: 38_143685_box7_incident_summaries_101-172.pdf](../../raw/docs/38_143685_box7_incident_summaries_101-172.pdf)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/release_1/38_143685_box7_incident_summaries_101-172.pdf)
+
+## Extracted Text
+
+```text
+le
+
+de
+
+ke
+
+le
+16.
+
+19.
+
+21.
+
+CHECK*LISI - UNIDENTIFIED FLYING OBJECTS
+
+Date 18 February 1948 Incidont # 101
+
+Time 5:01 P.M
+
+Location Norcatur, “ansas
+
+amo of observer M, BR, Srehbiel account (taken from newspaper)
+Occupation of obsorvor Editor
+
+Address of observor Norton, Kansas
+
+Placo of observation Norcatur, Kansas
+
+Nunbor of objocts “ne
+
+Distance of object from obsorver N/S
+
+Timo in sight N/S
+
+Altitude 30 = 35 miles above earth
+
+Speed N/S
+
+Diroction of flight N/S_
+
+Tactics N/S
+
+Sound One big explosion - "afterwards a lot of little explosions"
+Sizo N/S
+
+Color Bluish-white smoke smudge
+
+Shepo Mushroom
+
+Odor dotectod N/S
+
+Apparent construction Meteor
+
+Exhaust trails yews) Blui sh~ te smoke smudge
+
+Woathor conditions '/s
+Effoct on clouds N/S
+Skotches or photographs Photo of vapor trail left in sky by explosion
+
+Manner of disappearance Disintegration
+
+Romarks: Oscar Monnig, of the Tex.s Obsevvers, Amateur Astronomy, 1010
+Morningside Drive, Ft. Worth, “ffers "tangible proof that the fireball
+
+of February 18 over narthern Kansas was just that, inasmuch as meteorites
+have been recovered from it." There were found, beginning April 2), first
+several smaller fragments up to one of 1/2 pounds. ‘Then a disturbed
+spot in a clover field led to the digging up of a piece of some 109 pounds
+embedded about two feet in the soil. The stone is what is termed as an
+"achondrite", a technical name for an unusual type of stony meteorite.
+
+It is reported to be of a type which will deteriorate rapidly.
+
+A photograph of the trail of the meteor, made by amateur photographer
+Duane W. Wray of Norton, shows the vapor trail left in the sky by the
+explosion of a meteor which was seen in Oklahoma, New “exico, Colorado,
+Kansas, and “ebraska. It was made at Wray's home, nine miles north of
+Norton, just four minutes after the meteor exploded. A smudge of blue-
+white smoke remained in the sky for an hour February 18th. This photo-
+graph is in file under Incident #101,
+
+Further remarks are contained in supplement.
+
+-
++
+
+~~.
+
+* ® e a
+A : EXHIBIT B ;
+Statement taken from Leland Sammons
+
+My name is Leland Sammons, and I live on a farm 14 miles west of Stockton
+and 1 mile north, off US 2h. ’
+
+On February 18 at about 5 P.M., I was standing near my hog=pen about 100!
+east of my house, when I heard the pheasants raising a disturbance and the
+chickens all rushed to the chicken-house. I looked around toward the house
+to see what was causing it and saw something hovering just above the house.
+
+I ran towardthe house, ami it then lowered over the north end of the house
+and settled toward the ground. Iwas then very near it, approximately 6!
+when it stopped about level with my face, and just wobbled around for an
+instant, fire belching out of it and sucking back in, The thing was about
+
+4" long, shaped something like a funnel. There was a pipe sticking out the
+back of it, and once as it wobbled around, the pipe was sticking right at
+
+my belly. Suddenly there was a lot of sparks showered from it, and the fire
+increased as if a fuse might have lighted, and it took off in a north-westerly
+direction very fast, gaining altituie as it went. My wife heard it leave and
+ran out where I stood, and we watched it go, leaving a trail of smoke all the
+way. Suddenly there was a great cloud of smoke in the sky, not more than
+
+40 seconds after it left my yard, and in a few seconds or more, we heard an
+explosion. I then stepped off from my house to where it had been, and it
+
+was five steps. Yes, it was hot, I could feel the hear from it. Had I not
+been washing my car prior to the occurrence, wetting the ground, there would
+have been a bare spot in the yard where the thing started up because there was
+a@ great rush of fire from it when it left. It must have been quite high when
+it exploded.
+
+Kenneth “ays, son of Floyd Hays, 14 miles east of Norton on US 36, at the Jct.
+of K-60, south side of highway; At about 5 to 5:30 P.M., not sure of time,
+
+was riding his horse in a pasture, when -he heard something queer in the sky.
+Looking up to the south-west, he saw what appeared to him to be a rocket,
+
+just like he had seen duing the war in Europe. It startled him, and he
+
+jumped off the horse. He then remounted, watched its course, almost on
+
+a level but losing altitude a little, and it then exploded with a big cloud
+
+of smoke, apparently over Norton, from where he was, south of Prairie View.
+
+He rode on toward home a ways, when suddenly the sound and jar of the explosion
+reached him. Mrs. Hays was home in the house, when she heard and felt something
+like a truck might have struck the house. She ran out of the house and then
+first saw the huge cloud of smoke. About 0 minutes later, a part of the
+smoke clowi dirfted directly over their house, and went on east over
+Phillipsburg.
+
+Ralph New, postmaster at Norcatur, stated that at about :50 P.M, he was
+standing just inside the front window of the postoffice in Norcatur, when
+
+he observed a blinding flash as if someone had taken a flashlight picture.
+He could locate no one with a camera, but noticed several men walking to the
+center of the street and looking up. He then walked out to where they were
+and looking up, saw a high cloud of smoke in the sky almost diredtly overhead
+
+'
+:
+
+(COPY)
+Ad e
+
+323 W. Tenth St.,
+Pueblo, Colorado
+February 20, 196
+
+Office of the Chief, of Staff
+
+~ U. S. Army
+
+Washington, D. C.
+
+Subject: Explosion in the sky near Norcatur, “ans.
+4200 p.m, (MST) February 18, 1948
+
+Purpose: To call attention to some peculiarities
+in comection, whether coincidental @ not
+
+According to an AP bulletin appearing in the Pueblo CHIEFTAIN
+for February 18, 1918, some object was seen moving eastward
+across the sky on the late afternoon of February 1th, and
+when this thing reached a position approximate to Norcatur,
+Kansas, exploded, or disrupted, or disappeared. The ex-
+plosion is said to have been terrific.
+
+Directions given as to the progress of this appearance in-
+dicate that it moved from west to east.
+
+Information contained in the dispatch under a Denver dateline
+indicate that while many would call this object a bolide -
+e@.g-, exploding meteor - the astronomers of Chamberlin
+Observatory (Denver) did not so assess it: it is said in
+the dispatch that these officials could offer no explanation
+of it. , s
+
+If this is the case, the apparance is anomalous, and may lend
+itself to other meteoric explanation.
+
+A sketch-diagram of the earth and moon's orbit reveals a pe-
+culiarity in connection with the appearance, which may be
+significant.
+
+Ig a line is stricken at right-angles across the meridional
+position of the site of explosion of this meteor at hour
+
+angle four o'clock (local time) and this line be considered
+the west-to-east course of the object, then it will be seen
+that if this lime is continued outward into space toward the
+orbit of the moon it will intersect the lunar orbit at a
+
+place near to where the moon would be at from 80 to one hundred
+hours after the explosion took place.
+
+New moon occurred at 9 D 10 H 2 M February; First Quarter
+
+‘at 17D SH M, February — the moon moves approximately
+. 12.5 degrees per day along its orbit.
+
+1o/
+
+It is held by rocketry experts (example, WILLY LEY - see
+his ROCKETS, p. 192, diagram and note in connection there-
+with) that it would take about 100 hours for a rocket-craft
+to negotiate the distance from Earth to Moon.
+
+Prior to its explosion over Norcatur, this object of Feb.
+18th was variously reported 4s a "falling plane", a "jet
+plane", and a “ball of fire". It is said by some to have
+left a trail of smoke behind it.
+
+It is the suggestion of this writer that the Army collect
+and assimilate reports on this object, with a view to
+determining where it was seen as an object trailing smoke
+and where as a ball of fire.
+
+If this thing is a rocket of some kind headed for the moon,
+it might first have been seen as a streak of smoke, then
+later as a ball of fire, and lastly as a tremendous ex-
+plosion when it at last reached sufficient speed and eleva~
+tion for take-off.
+
+The writer has’in mind the various and wmexplained reports
+on "flying saucers", and bases this speculation upon a
+long consideration of various oddments of reports whose
+significance might be of space-craft from other worlds of
+
+space.
+
+The so-called "meteoric procession" which crossed Toronto
+in February 1913, consisted of a number of groups of
+illimunated bodies traveling in groups of three and moving
+in "rigid formation", all pursuing a course across the
+same streak of the earth's surface. +f a line is projected
+backward along ‘this line of flight it will be seen that
+this line "comes out" at the position of the moon at the
+time. The 1913 phenomenon occurred in the mid=period of
+a series of reports on dirigible aircraft of appearance
+like zeppelins which were seen over England and whose
+appearance terminated - or reports on the appearances
+stopped - just prior to the inferior conjunction of Venus
+of April 2h, 1913.
+
+The writer begs to call attention to the fact that the
+times prior to and just after inferior conjunction of Venus
+are prolific in reports of strange things seen in the sky.
+
+Also that lights have been reported on the moon from time
+to time, back for at least a century.
+
+If in the future of military experiment the moon is selected
+as a base for the launching of rockets (which has been
+
+suggested by some writers), it may be well to look first
+
+rol
+
+wie Teen a
+
+ety | r
+d e
+
+‘ March 1
+
+FILE REF: - SIGGE-M-1 eanceR
+
+From? : Norman G, Markham
+
+; MAIN HOTEL, Pueblo, Colo
+To: a Chief Signal Officer
+A U. S. army, Washington, D.C.
+
+Subject: - Norcatur, Kans., sky explosion
+a4 of 18 February, 196
+
+Purpose: To show a speculation regard~
+
+ing the above phenomenon and
+
+another one of earlier date
+
+and to call attention to
+
+occurrences between the two
+
+which have an appearance of
+= relationship whether coinci-
+dental or not.
+
+The geographical position of the Norcatur explosion suggests possible
+linkage with other occurrences happening inside latitudinal limits arbitrarily
+demarkable between 13° 36' North (which is the latitude of Boise, Idaho)
+and 36° 10! North (the latitule of Nashville, Tenn.), a belt about 185
+miles wide,
+
+This suggestion is gained from positions given for occurrences
+happening between June 2, 197 and February 18, 198, as sHall be
+hereinafter briefly described.
+
+THE BOISE (Idaho) OBJECT—-This was seen either beginning or ending at 330 pm
+2h June 197 and was visible for 20 minutes. It was in the western sky,
+
+was of comet-like appearance, and settled gradually toward the horizon as
+planetary bodies set. It was seen by Lt. Gov. Whitehead and Chief Justice
+Lampert. Its nature was unknom.
+
+The peculiarity which connects this object, for speculative purposes, with
+the explosion of some unknown object over Nor eatur, Kans., on 18 February
+1948 is the seeming of a relationship between the positions of the moon for
+the two phenomena:
+
+In the former case the moon was at the date of phenomenon, about 7%, 63
+before the positionof First Quarter; on the second case it was about 84.73
+beyond the position of first quarter.
+
+Since the Boise object was visible for 20 minutes before it sank this
+argues it was about ten degrees above the horizon when first seen. Now
+if a line be drawn westward and at ten degrees zenithward from the
+
+pola
+e &
+
+horizon of Boise at 3:30 p.m. and another line be dram from the position
+of the moon at one hundred hours before the sighting of the Boise object,
+and projected to the center of the earth, it will be seen that this ten-
+degrees-altitudé and the moon-earth line intersect as a place far above
+a geographical position considerably to the west of Cape Blance, in the
+neighborhoodof about 700 miles off the coast.
+
+The Boise object in its appearance suggests a rocket-typeof craft possibly
+using reaction blasts to brake itself down for a landing on the earth,
+
+The bright point and plumy tail of the description suggest this, as also
+its apparent fixity in space,
+
+HOLLE'S "SHIP IN FLAMES" —— Nine days after the sighting of the Boise ~-
+object a forest lookout named Earl Holle saw at or soon after ):00 p.m.,
+3rd July, 197, something he took to be a "tanker in flames", This was |
+seen horizon-ward from a point in Sonoma County, California, near to Fort
+Ross. A search was instituted by the Navy or Coast Guard, and nothing was
+found. The soviet tanker ELBRUZ, which had been in the vicinity, was
+queried and found to be allright. This was not explained.
+
+Ig this apperance had been on the horizon, there is no telling how far
+it may have been from the observer.
+
+CAPE MENDOCINO BLIMP INCIDENT — Not far from the location of Holle's
+"burning ship" an accident occurred to a navy blimp, 1; July 197, off Cape
+Mendocino.
+
+This blimp suddenly settled into the water, slipped out its crew and rose
+again.
+
+The anomaly here is that one would not expect to find drastic dom-drafts
+of such violence as to thus upset a lighter than air craft. Possibly a
+downdraft accounted for the accident - but if the Signal Officer will look
+up the incident of the British steamer Talma which, at'the time of the
+sighting of a luminous wheel-like phenomenon in the Gulf of Martaban,
+reported a slowing of the engines from some unknown cause, it may be seen
+that possibly forces are generated in some manner by certain unknown
+objects at times in the ocean, which may have physical attraction for
+material objects. This blimp accident occurring in.waters where occurred
+other phenomena shortly to be mentioned, seems to have a doubtful side
+
+to it.
+
+THE QAKIAND OBJECT — Early on the morning of 13th October, 1947, a >
+photographer named Ben Dobus togehter with a taxidriver named A. J,
+Goldman saw a thing "that looked like Saturn with a ring around it."
+
+It shot at terrific speed WESTWARD across the sky of the Bay area, and was
+seen shortly after midnight.
+
+“This may have been heading in the general direction of what may have been
+the goal of two later objects which roughly resemble it in description.
+
+THE TICONDEROGA OBJECTS -— According to the tanker Ticonderoga's
+
+second officer, two "flying discs" were seen heading SOUTHWEST when the
+ship was in 3 degrees fifteen minutes north and 12) degrees 5 minutes
+west, at 0620 GCT, 12th November 197.
+
+These may have been heading for the object seen in the Pacific off the
+Golden Gate, not long afterward - or possibly at the same time, if earlier
+reports on this are consulted. -
+
+THE PHANTOM REEF — On November 2), 197, the Navy denied that it had
+found a phantom reef or other obstruction to navigation at a point about
+400 miles west of San Francisco, The Navay Survey ship MAURY, sent out
+there in response to reports of ships that some hugh object had been
+seen in the water in that neighborhood, reported that when in the
+approximate 1 titude and longitude of the supposed obstruction they
+picked up an echo from something in the water 1600 yards from the
+
+ship; but that when they had steamed to within 00 yards of this, the
+echo vanished,
+
+There seems a possible connectability between the various elements so
+far considered.
+
+Later on January 7, 1948, there were occurrences in the neighborhood of
+Wilmington, 0., Ft. Knox, Ky., Franklin, Ky., and Nashville, Tenn., all of
+which must be now familiar to the archivists of the Signal Office.
+
+Something like a "flying disc" was pursued by one Lt, Mmtell ani two
+other pilots, “antel being killed while in the process of attempting to
+gain altitude to get close to whatever it was he was chasing.
+
+Also, in this connection, it may not be amiss to mention the deaths of
+
+two military officers who were said to have been bringing back material
+evidence from "flying discs" one of which was said to have met with some kind
+of accident over “Maury Island, Puget Sound, around June, 19147.
+
+It will be seen on inspection that the geographical locales of these
+incidents fit inside the belt of latitwies hereinbefore mentioned.
+
+THE NORCATUR EXPLOSION was described in a previous letter of this
+writer, and it was show in that letter that a line tangential to the
+meridian of Norcatur, Kans., at hour-angle 2:20 p.m., would if con-
+tinued outward into space to the orbit of the moon, intersect the
+moon's orbit at a point where the moon would have been at about 100
+hours after the time of the explosion.
+
+According to rocketry theory, it would take a reaction-propelled
+craft of the rocket type about 100 hours to reach the moon,
+
+% \
+
+I submit there is a likelihood that on June 2, 197, something like a
+
+space~ship came here from the moon and upon February 18, 198, returned
+to the noon.
+
+’
+
+This is of course speculation.
+
+But has anyone yet explained the "flying discs" in terms of all the
+pretty-well proven facts in connection with them?
+
+Has anyone yet devised a fuel powerful enough to kick a rocket from
+Earth to the Moon?
+
+There have been hundreds of reports, during the past century, on
+occurrences which imply this world is visited from outside space.
+Absence of contact by these postulatable visiting entities may imply a
+state of culture far beyond ours, to the point where it would be inex-
+pedient for their members to have to do with us en-masse,
+
+These reports have never been seriously considered by science, which MG
+in general ignores them,
+
+However, according to Dr. Rocht of Chamberlin Observatory, Denver, there
+
+is nothing in astronomy to explain the thing which exploded over Norcatur.
+Dr. Nininger's idea that the ‘thing was a meteor flatly disregards Dr, Rocht's
+opinion, which may have been based on the Denver Posts' statement that a
+Denver woman saw the Norcatur object twenty minutes before the explosion
+occurred,
+
+I submit that the Army needs men who are capable of recognizing the anomalies
+beforementioned when they occur, evenif only to aid in speculation regarding
+them.
+
+The undersigned offers his services to that end, if the Army may wish to
+avail itself of them,
+
+/s/ N. G. MARKHAM
+
+: e &
+
+Excerpt of letter dated April 11, 1948 from Dr, Lincoln LaPaz, Director,
+Institute of Meteoritics, University of New Mexico, Albuquerque, New
+Mexico, to the Deputy Executive Director, Committee on Geophysical
+Sciences, Research and Development Board: .
+
+Tank you for the surprising documents sent me under date of March
+30. As you remark, certain aspects of Markham's letters are fantastic
+(for example: (1) the fireball procession of 1913, February 9, was
+genuinely meteoric, although a rare type of chain fall; (2) no astronomer
+could take seriously Markham's “invasion by beings from Venus or the Moon"=
+theory: (3) he appeals to, and biases in his favor, such untrustworthy
+evidence as newspaper stories, e.g., the absurd statement attributed to
+Dr. Rocht of the Chamberlin Observatory). Neventheless, Markham is justi-
+fied in calling attention to certain incidents as wmexplained, for e: le,
+the "flying lenses" (in my opinion 99% hoax and imagination and 1% foal):
+
+As regards the Norcatur, Kansas incident, I remain convinced that,
+like the Four Corners incident, it was a genuine meteorite fall, although
+one of exceptional size (again like the Four Corners fall), However,
+there are many curious aspects of both these falls, some of an objective
+nature, like the singular fact that in spite of intensive searches (ad-
+mittedly under bad terrain and weather conditions), not a trace of meteoritic
+material has so far been found; some of a non-objective nature, like the
+amazing testimony given b y Mr. Leland Sammons, Mr. Alfred Glem, and other
+witnesses of the Norcatur incident, both to members of the State Highway
+Commission of Kansas and to Institute of Meteoritics field survey parties.
+(See exhibits A, -B,-ami C enclosed. )
+
+Some comment on such testimony as appears in A,B, and C would seem
+desirable: /
+
+1. Glenn first reported the battery case as red hot. When I pointed
+out that the paper on it was not charred, his account was changed to
+"too hot to handle". ‘The Institute of Meteorities party found only two
+men, not four, who saw the battery case fall. The battery case has been
+examined by Dr. Victor Regener, Department of Physics, University of
+New Mexico, who states that it appears to be identical with the small
+batteries used in portable radios.
+
+2. K. Hays' identification of the Norcatur object as a rocket has
+the following support: On the moming of February 19, I talked to the
+towerman and two assistants at the Air Base at McCook Field, Nebraska.
+All three denied the Norcatur object was a fireball and described it as
+a black object with an extremely bright jet of flame pouring out of the
+rear. Furthermore, a lj-year old, and presumably unbiased, schoolgirl
+in Oberlin, Kansas wrote me a similar description of the "Fireball."
+
+ay
+
+3. A determined effort is under way to check up on Sammons' veracity
+(and sanity!) I have neither seen nor talked to Sammons, but another member
+of the Institute of Meteoritics party (Dr. D. M. Gragg, an Instructor in the
+Department of Mathematics) who did so believes Sammons (who is a well-to-dO
+farmer) to be sincere and very badly scared. Of course nearness to a big
+meteorite fall would scare one as badly as an atom bomb; but how could it
+produce such testimony as Sammons".
+
+The "meteoritic" incidents from the great fall of 1945, November 29
+(from which no meteorites have been recovered either!) through the sequence
+of similar falls culminating in the Four Corners and Norcatur incidents,
+coupled with such t ings as the Ussuri incident, convince me that either
+the earth is under a most unusual cosmic bombardment or many of the
+fireballs are not meteorites at all. While I still cling to the meteoritic
+hypothesis, it is clear that which ever alternative is the right one, thé
+situation cries aloud for thorough investigation.
+
+&
+. EXHIBIT A e
+Roy W. Cox, Director of Highways
+STATE HIGHWAY COMMISSI ON
+OF KANSAS
+_ Division 3
+Norton
+
+NOTES TAKEN AT NORCATUR, KANSAS, Night of Feb 18
+
+Mr. Ralph New, Postmaster at Norcatur, tells us that at approximately :50 PM
+he was standing in the north window of the post office in Noreatur looking
+toward the City 4all when he was suidenly illuminated very brightly by some
+terrific light.
+
+He ran outside into the street where others were lookirig toward the northeast
+at a very large clowi of white smoke high in the sky. He stated that in about
+a minute and a half, there was a terrific explosion followed by a heavy
+rumbling noise like thunder and that the smoke cloud was growing larger all
+
+the time. Also there was a white smoke trail in the sky from the southwest
+where the missile had come from.
+
+He said that from the ceriter of the street, the explosion ami the first big
+mushroom of smoke was directly overhead and at a tremendous height.
+
+Another man in Norecatur stated that just prior to the explosion, he had heard
+the motors of an airplane.
+
+Chief Scott learned: from some man in Norton that just following the explosion,
+something fell at his feet on the street and he picked it up, to find that it
+was a small flashlight battery resembling those used in ‘fountain pen
+flashlights' and that it was red hot. After a crowd of men gathered and
+examined it, he was unable to findit ami thinks that someone took it.
+
+Kenneth Hays of east of “orton was about 5 miles south of Prairie View when
+he heard something roaring in the sky to the west of him, far away and very
+high. He says that it resembled a rocket traveling northeast toward Norton
+direction, and that suddenly there was a terrific explosion followed by a
+mushroom of white smoke andthat there followed other explosions or something
+resembling explosions. When he saw it, it was nearing the ground or horizon,
+in other words, losing altituie.
+
+Edgar Young's boy at Reager, was standing beside the Reager elevator and heard
+something high over head, looked up to see a very bright flash of light and
+then a lowi explosion followed by a big clow of smoke,
+
+The airport at Norton thought about 20,000 feet, time 4:50. Checked but no
+planes missing. i
+
+=~
+
+eS
+
+« but slightly east. Suddenly, about 1 and'1/2 minutes after he had seen the
+flash, there was a terrific explosion ani jar, shaking the ground and causing
+the windows all around to rattle. Following the explosion, there were several
+lowi reverberating rumblings across the heavens. He- stated that the explosion
+must have been very high.
+
+pe
+
+Edgar a boy living at Regar, just east of Norcatur, was outside the
+elevator, he observed the explosion, looked up and saw the huge cloud
+of smoke. He stated that it was almost overhead but slightly west of him.
+He said that it was a big explosion. The elevator man was out in the
+elevator, when he heard the explosion. He + ought that his oil-burner had
+exploded in the office and ran in to see about it. Finding it 0.K., he ran
+outside to see what had exploded, saw the big cloud of smoke high overhead,
+slightly west.
+
+®
+
+Eastern Kansas newspaper carried a story about 6 days ago of one just
+like this one, coming from the south to vicinity‘of Iola, Kansas, where it
+turned west and disappeared into the sky,
+
+Check with Chief Scott of Norton about a burned flashlight battery
+which fellin the street of Norton just after the explosion. It was too
+hot to be picked up for several minutes. Chief Scott has it.
+
+Note: A copy of Exhibit "C" referred to in letter from Dr, LaPaz, was
+not received.
+
+le
+2.
+Be
+he
+
+25.
+26.
+
+ww
+CHECK=-LIST ~ UNIDENTIFIED FLYING OBJECTS
+Incident # 102
+
+Date 18 Fetruary 19)8
+Time 1500 MST
+
+Locetion itmemmtixgxiameme Air Nea Green River, Utah
+Name of observor Lenord P, Marchese (B-29 Pilot, lt, 28 Bomber Op)
+Carl W. Stueki, lt., Co-Pilot, (see reverse side
+Occupation of obsorvor Pilot for other witnesses)
+Address of observor 77th Bomb Sq, 28th Bomb Gp (VH), Weaver AFB, S.D.
+Placo of obsorvetion 39°N = 100°W - near Green River, Utah
+Numbor of objocts One
+Distance of object from obsorvor 100 miles
+Timo in sight N/S
+Altitude 20,000 feet
+Speod Very high
+Direction of flight Southeast of Limon, Colorado
+Tactics Explosion rate
+Sound Could not be determined due to- B-29 engine noise
+Size Huge
+Color Multicolored ball of fire
+ShapoHuge multi-colored ball of fire and dense cloud of smoke
+Odor dotectod N/S
+Apparent construction N/S
+Exhaust trails Vapor trail with ball of fire at head of trail a
+Woathor conditions Clear
+Effoct on clouds N/S
+Skotehes or photographs None :
+Mannor of disappoarance N/s
+Romarks:  GMaX Over
+
+A buge mlti-colored ball of fire trailing a dense cloud of smoke
+was sighted at 1500 hours MST 18 Feb 4g, B-100° Wat
+approx 20,000 * ie tes S009 givecett at cee Cok @ment Group (YH),
+
+Witnesses: t Howard H, Berodt, AO-49504, 7isth
+‘th Bomb Gp (VE). Pilot of lst Bu29
+
+t Meurice T. Ritenour, A0-'043, 718th Bomb
+“Bson oo (Wa). Co-Pilet of 1a Bog .
+
+ist Lt Leonard P. Marchese, 40~748714, 77th Bomb
++» 28th Bomb Gp (WH), Pilot of 2na B-29
+
+lst Lt. Cerl W. Stucki, A0-' 6, 77th Bomb
+“beth Bomb Gp (VH). CoPilot oe pu B29, ies
+
+NOTE: See Incident 101 - Norcatur Kansas,
+
+Bomb Sq
+
+17.
+18.
+19.
+
+20.
+
+eSTRICTES
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS = -
+Date 18 February 1948 Ancidont # 103
+Time 1500 MST
+
+Locetion jioaanempodagcoux Be near Green River Utah ;
+
+Name of bhservers Capt. How; H, Berodt - Capt Maurice T. Ritenour
+See Inc 102 - corrébrati
+
+Occupation of obsorvor Pilots
+
+Address of observor 718th Bomb Sq, 28th Bomb Gp (VH) Weaver AFB, s.D.
+
+Placo of observation 39°N -100°W - Near Green River, Utah
+
+Numbor of obyeene ®ne
+
+Distance of objoct from obsorver 100 miles
+
+Timo in sight N/S
+
+Altitude 20,000 feet
+
+Speed Very high ;
+
+Direction of flight Southeast (of limon, Colorado)
+
+Tactics Explosion rate
+
+Sound Could not be determined due to B-29 engine noise
+
+Sizo Huge (Seen 100 miles west of the B-29's)
+
+Color Multi-colored ball of fire”
+
+Shapo Hugh milti-colored ball of fire and dense cloud of smoke followed
+
+Odor dotectoa N/S
+
+Apparent construction N/S
+
+Exhaust trails Vapor trail with a pall of fire at the head of trail
+
+Woathor conditions Clear
+
+Effoct on clouds N/S
+
+Sketches or photographs None
+
+Manner of disappearance N/S
+
+Romarks: Wome - Same as incident 102 which see
+
+le
+2.
+Be
+he
+5.
+66
+Te
+8.
+De
+10,
+hz
+12.
+13.
+1h.
+15.
+16.
+17.
+18,
+19.
+20.
+ex,
+22,
+
+236
+
+25.6
+26.
+
+4
+
+eRESTRICTED
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 7 Mer ug Incidont # 104
+Time | 2055 ¢
+Location Suyrna, Tenn,
+amo of observor Frank L, Fi ©O, Smyrna AF Base
+pi Richard G. Pettingill @ Prt Frouk C. Johnson,
+
+Occupation of obsorvors CO of Smyrna & radio and tower operators
+Address of observor PS gets Smyrna, Tenn
+
+Placo of obsorvation Smyrna AAF - 6 miles from (ground)
+
+Numbor of objocts] .
+
+Distance of object from obsorvor 6 miles
+
+Timo in sight 45 mimtes
+Altitudo About 5° above horizon
+Speed very slow
+
+Direction of flight WNW awey from Smyrna
+
+Tactics N/S Faded away
+
+Sound “Bone
+
+Sizo Unknown
+
+Color yellow-orange
+
+Shapo oval .
+
+Odor dotectoa B/S
+
+Apparent construction n/s ~ seemed to be flare
+
+Exhaust trails None
+
+Woathor conditions CAVU - 10 miles
+
+Effoct on clouds x/s |
+Sketches or photographs Fige (2) showing yellow orange flame-like oval
+Manner of disappoarance faded into horizon
+
+Romarks + (over)
+
+1h.
+
+15.
+16.
+= 17.
+
+18.
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+pote 8 Mor Ineidont # 105
+
+Time 1100
+
+Location Belmont, N. C,
+
+Namo of observor Mr. A, ©, Morrieon
+
+Occupation of obsorvor Supt. Meter Dept, Duke Power Co., Charlotte, MN. C,
+Address of obsorvor Charlotte, N. C. (Duke Power Co.)
+
+Placo of obsorvation . Belmont, NW. C. (Sighted from ground)
+
+Numbor of objocts 1
+
+Distance of object from observer n/s
+Timo in sight about 10 seconis
+Altitude N/S - could not be estimated
+Speoa Around 600 MPH ;
+Hisgeeton\'# flight Easterly
+
+Tactics None = moved in straight line at constant speed without
+change in altitude or direction
+
+Sound Mone
+
+Sizo’ From a distance - that of a small coin
+Color bright or silver - looked metallic
+
+Shapo round or sphere (unable to determing which)
+Odor dotectod B/S.
+
+Apparent construction Metallic
+
+Exhaust trails None
+
+Woathor conditions Clear with scattered white clouds
+Effoct on clouds 3/s f
+Skotches or photographs None
+
+Manner of disappoaranco behind small white cloud
+
+Romarks: (over)
+
+-
+
+SESTR
+
+f
+
+A round metallic-appesring object moving idly at an estimated
+speed of: 600 MPH was observed near Belmont, ¥. C, at 1100
+
+the morning of & Mar 48, The weather was clear with excellent visibility
+with a few small scattered fleecy white clouds. It could not be
+determined if the object. were a disc or sphere, Its @ppargnt size was
+that of a small coin of a bright or silver color. It reflected the sun
+maintaining a steady reflection which did not flicker, The object which
+was under observation for some 10 seconds was on an easterly heading and
+moved in a straight line at a constant speed without @pparent change in
+altitude or direction, It was impossible to determine the altitude but
+it was mving above the clouds, No sound of any kind was heard nor was
+any exhaust trail observed,
+
+NOTE: Witness (lr Morrison) is a man of excellent character and reputation,
+a first-grade engineer and employee of Duke Power Co for some 30
+yeers, He impressed the agent as being conservative and sound
+and is a technical man with a very technical and responsible position.
+
+Mr. Morrison was careful in his statements, He does not claim
+he saw the "flying disc' merely skig claiming that they saw
+
+an object which they could not identify with any natural phenomenon
+or known type of aircraft. It resembled "a round metallic
+
+appearing object moving very rapidly."
+
+Witnesses: Mr, Hendrix, assistant Superintendent, Meter Dept
+Duke Power Co., Charlotte, N. C.
+Mr. G. W. Jordan, Gastonia Hlectric Co.,
+Gastonia, WN. C,
+
+bat
+
+r
+
+le
+2.
+de
+
+es
+
+10.
+ll.
+12.
+
+3
+
+13.
+
+1h.
+
+Worse bEyE
+
+[> Rama
+
+a
+
+epevu § US tics
+
+& A
+
+CHECK*LIST = UNIDENTIFIED FLYING OBJECTS
+
+Date 5 March 1948
+Time 1610 = 1655
+Location Bakersfield, California
+Namo of observer George L. Buchner
+
+Oceupation of obsorvor N/S
+
+Incidont # 106
+
+Address of observor Bakersfield, California
+
+Placo of obsorwtion From ground, gouthwest toward Buena Vista Lake,Calif,
+
+Numbor of objocts Two
+
+Distance of object from obsorvor
+Timo in sight N/S
+
+Altitude N/S
+
+Spood N/S
+
+Direction of flight Earthward
+Tactics N/S
+
+Sound N/S
+
+Size n/S
+
+10 - 12 miles
+
+Color Seemingly on fire, black and red smoke trailing behind
+
+Sheapo Similar to falling aircraft
+Odor dotectod N/S
+
+Apparent construction N/S
+
+Exhaust trails Browmish-white smoke and debris trailing
+
+Woathor conditions N/S
+
+FE Or fh
+
+Effoct on clouds N/S
+
+Sketches or photographs None
+
+A FP a g=
+
+Manner of disappoaranco Behind a water tower, which was an obstruction
+to the view
+
+Romarks: Gomments of G. L. Buckner and other witnesses to this
+
+sighting contained in attached supplement.
+
+el > XG = Pe Fam ae.
+: CCGNT dUS EO 2 oA
+
+HEADQUARTERS FOURTH AIR FORCE
+Office of the Assistant Chief of Staff, A-2
+Intelligence
+Hamilton Field, California
+
+hAFDA~3/1208-1
+SUBJECT: Investigation of Flying Disc. Mar 11, 191%
+
+10: Chief of Staff
+United States Air Forces
+Washington, D, C,
+ATIN: DIRECTORATE OF INTELLIGENCE
+Air Intelligence Requirements Branch *
+
+1. Incident seperted on 9 March 198, this headquarters, per telephone
+call from Sgt A. M. “arsen, Sheriff's office, Bakersfield, California,
+
+/
+/ a. “bservation by Mr, (George L) Les Buchner, Bakersfield, Califomia,
+/ pf two objects falling to earth from unknown source on 5 March 1948 between
+1610 and 1655 hours. Description of objects similar to falling aircraft
+with smoke and debris trailing. Observation made at Bakersfield with objects
+sighted southwest toward Buena’ Vista Lake, California,
+
+b. Observation by Mr. Denio, employee of the Pacific General Elect, ic
+Company, Bakersfield, California, of two objects which fell to earth from ~
+unknown source north of Bakersfield, California, § March 198, One object
+seemed to be on fire with red and black smoke trailing behind.
+io 2. Informant Larsen stated that searching parties, aircraft and rescue
+~“ units have made numerous attempts to locate these reported objects without
+success.
+
+3. Investigation of incident has been initiated by this headquarters.
+Report will follow.
+
+/s/ Donald L. Springer
+
+DONALD L. SPRINGER
+
+. It. Colonel, USAF
+AC of S, A-2
+
+Information to:
+ADC, Mitchel Fld, N.Y.
+FBI, San Francisco
+G-2, Sixth Army
+DIO, San Francisco (12th Nav.Dist)
+
+o out
+
+™ OX is] Sy
+ae ‘oe x)
+HEADQUARTERS FOURTH AIR FORCE
+Office of the Assistant Chief of Staff
+Intelligence
+
+Hamilton Field, California
+
+4aFDA-3 /1208-1
+SUBJECT: Investigation of Flying Discs
+SUMMARY OF INFORMATION: |
+
+Information from the Sheriff's Office, Bakersfield, California, revealed
+that numerous calls from residents in Bakersfield concerning peculiar objects
+in the sky over Bakersfield, predicated an investigation by their office and
+contact with A-2 Headquarters Fourth Air Force,
+
+H. B, Nix, stated that they observed a flying object which appeared to be
+consumed in fire, ani left a bromish-white plume of smoke, which suddenly
+stopped and disappeared. Seconds later, what appeared to be a wrachute,
+was seen to be drifting to the east.
+
+The object, as described, appeared to be a burning fabric airplane,
+consumed in smoke, Observations were made in Bakersfield of object to
+the south and southwest, approximately ten to twelve miles distance, around
+1600 hours on 5 March 19148.
+
+ff On 13th March 198, two informants, Mr. George L. Buchner, and “r.
+
+“* On 13th March 1948, informant, Mr. H. B, Nix, stated that he observed
+an object at 0830, & March 198, due north of Bakersfield, approximately five
+K miles distance. ‘The object was a large, orange-red ball of fire, somewhat
+larger than a small airplane, appeared to remain static for approximately
+thirty seconds, then split and continued to burn; each visible as a burning
+half, A parachute, with a black object hanging was then observed to fall,
+\ drift to the east and disappeared into*the hills east of Bakersfield.
+
+oe On 13th March 1948, two informants, Mrs, Callie R. “ason, secretary,
+
+Haberfelde Building, Bakersfield, California, and Dr. J, =, Johnson, dentist
+
+Haberfelde Building, Bakersfield, California, stated that they were in
+
+(\{ Room 518, Haberfelde Building, on the morning of 9 March 1048, Mrs. Mason
+
+was a patient of Dr. Johnson. Hoth informants stated that they observed a
+
+) flaming object which appeared at first to be a very small airplane. Orange
+red flames seemed to envelope the cbject with considerable black smoke
+trailing in a zigzag manner for approximately ),000 to 5,000 feet. The
+
+object was observed at 1,000 feet, approximtely due north of Bakersfield,
+seven to ten miles distant at approximtely 0830 hours.
+
+Informants further stated that the object disappeared behind a water
+tower, which was an obstruction to their view, and was near the ground.
+Both informants watched for an explosion, thinking that it would explode
+upon reaching the ground, but nothing wmusual was noted,
+
+AAPIE
+Wwwini
+
+Arana
+Eolw@ & oak.
+
+ue
+
+© RESTRIOTED
+
+de
+2.
+36
+he
+5e
+by
+Te
+8.
+De
+10.
+BSS
+12.
+1.
+lh.
+15.
+16.
+
+17.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Date 8 March 19h8 Speidont #107
+Time N/S
+Location Bakersfield, California
+wade of observor Mr. Denio
+Occupation of obsorvor Paeific General Electric Company employee
+Address of observor N/S
+Placo of observation Sighted from ground
+Numbor of objects Two :
+Distance of objoct from observer N/S
+Timo in sight N/S
+Altitude N/S
+Spood N/S
+Direction of flight Earthward
+Tactics nfs
+Sound N/S
+Sizo N/S
+Color One object seemingly afire, red and black smoke trailing
+Shapo N/S :
+Odor dotected N/S
+Apparent construction N/S
+Exhaust trails N/S
+
+Woathor conditions N/S Pa
+
+Effoct on clouds N/S G ‘
+
+Sketches or photographs None
+Manner of disappoarance WYS Fell to earth
+
+Romarks: See supplement to Incident #106,
+
+20.
+
+ENE
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Dato 8 March 1948 :
+
+Time 0830
+
+Location Bakersfield, California
+
+Name of observer H, B. Nix
+
+Occupation of observer N/S
+
+Address of observor N/S
+
+Placo of obsorvation Sighted from ground
+Numbor of objocts Une
+
+Distance of objoct from obsorver 5 miles
+
+Incidont # 108
+
+Timo in sight Approx. 30 seconds before splitting and burning
+
+Altitude N/S
+
+Speod Static for approx 30 seconds, and then drifting
+
+Diroction of flight eastward
+Tactics N/S
+
+Sound N/S
+
+Sizo Larger than a small airplane
+Color Orange-red ball of fire
+Shapo Ball
+
+Odor dotected N/S
+
+Apparent construction N/S
+Exhaust trails N/S
+
+Woathor conditions N/S
+Effoct on clouds N/S
+
+Sketches or photographs None
+
+Manner of disappearance Drifted to the east into the hills east of
+
+Bakersfield
+Romarks: See supplement to Incident #106
+
+le
+26
+Be
+he
+De
+oe
+Te
+8.
+Ie
+10.
+ll.
+12.
+13.
+ihe
+15.
+16.
+17.
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Date 9 March 19h8 Incidont #109
+Time "0830
+Location Bakersfield, California
+Name of observers J,E, Johnson and Mrs. Callie R, Mason
+Occupation of obsorvor J,E, Johnson, Dentist, Mrs. Mason, Secretary
+Address of observor N/S
+Placo of observation 5th Floor of business building
+Numbor of objocts One
+Distance of object from obsorvor 7 - 10 miles
+Timo in sight N/S
+Altitude 1000 feet
+Speed N/S
+Direction of flight Due north of Bakersfield
+Tactics Zig-zaging
+Souma N/S
+Sizo Appearance of a very small airplane
+Color Orange-red flame
+Shapo Appearance of a very small airplane
+Odor dotectod N/S
+Apparent construction N/S
+Exhaust trails Considerable black smoke trailing for 1000 to 5000 feet
+Woathor gonditi ons N/s
+
+Effoct on clouds N/S
+
+RPECTPIOTEN
+
+Sketches or photographs None
+
+Manner of disappearance N/S
+Romarks: See supplement to Incident #106
+
+low.
+
+gee
+
+re
+
+>» RESTRICTES =~"
+MEADQURTERS STRATEGIC ATR COMM —A2B
+
+Andrews Field
+Washington 20, D. C,
+
+sac 350 (29 Mar ys)” 29 March 1916
+
+SUBJECT: Report of Unidentified Aerial Sounds.
+?
+
+TO: Chief of Staff
+United States Air Force
+Washington 25, D. Cc.
+Attention: - Director of Intelligence
+
+z .
+
+1, The following is quoted from a copy of a letter, Baltimore
+Office, FBI, addressed to the Director of Intelliyence, Second Army? .
+
+"On March 23, 1948, an individual, who desired that her
+identity be kept confidential, telephonically communicated with this
+office and indicated that she is the wife of a former member of the
+United States military forces, aml that she is presently active in
+American Legion activities, but was emphatic in stating that she was
+in no way hysterical or unduly apprehensive regarding present world
+conditions. She did, however, wish to bring tothe attention of the
+proper authorities that during the past six or eight weeks, on a
+number of occasions between the hours of 3:00 and 5:00 A.M., she has
+heard peculiar soufiding noises in the sky, which appear to come from
+airplanes in the distance, but the sound is not the type of airplane
+motor drone which isgenerally heard from American planes. She has
+discussed the matter with her husband, and he believes that the sound
+is more like that of a foreign type airplane. She recently discussed
+this matter with an unidentified woman who lives in her neighborhood,
+
+which is Hamilton, Baltimore, “aryland, ani this woman stated that she,
+
+too, had heard the noise in question, and that her husband is also an
+ex-G.I, and he has stated that the motors sounded like that of foreign
+planes."
+
+2. No action is contemplated by this headquarters,
+
+FOR THE COMMANDING GENERAL: A
+
+c/e furnished CG, —_ a
+Attn: MCI, he
+aa Asst Adj Gen
+
+ae?
+
+i:
+
+le
+26
+
+3e
+
+5.
+6.
+
+Te
+
+De
+
+10.
+aes
+12.
+3.
+1h.
+15.
+16.
+17.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS F
+Date 23 March 1948 ‘ ig ee |
+Time’ 0300 = 0500 ’
+Location Baltimore (Hamilton) Maryland
+Namo of observor Identity confidential
+
+Occupation of obsorvorActive in American “egion activities
+Address of obsorvor N/S
+
+Placo of observation N/S
+
+Numbor of objects Undetermined
+
+Distance of objoct from obsorvor. N/S
+
+Timo in sight Not sighted
+
+Altitude N/S
+
+Speod N/S \
+Direction of flight N/S
+
+Tactics N/S
+
+Sound Motor drone of foreign type aircraft
+Sizo N/S
+
+Color N/S
+
+Shapo N/S
+
+Odor dotectod N/S
+
+Apparent construction N/S
+
+Exhaust trails N/S
+
+Woathor conditions N/S
+
+Effoct on clouds N/S
+Skotches or photographs None
+
+Manner of disappoarance N/S
+
+Romarks: See Supplement
+
+INCIDENT SUMMARY SHEET
+filled out and retained in files)
+
+Date of Observation LMpral 1948. . . Incident # 111
+Time of Observation 0955 kre
+
+Where was Object(s) Sighted Jau® 3? Mast, 12° 52! worth. -
+
+Observer's Position . Sighted ohject fram planes Phillipine Islands. .
+(i.e. ground, air, control tower, etc.)
+
+Name and Address of Observer Je’ Zit. Robart 4 Meyers, G7th Fighter Sq. 1Sth .
+Fighter Grow. .
+
+Attention Attracted to Object (s) By App@ating dn Mue of sight during flight
+Number of Object(s) Sighted 2.
+
+Size of Object(s) same qpam 30 feat, length 20 feat .
+
+Color of Object(s) Silver .
+
+Shape (Sketch if ED ) A pt. mpon sowiy pe niin @ flying wing type .
+
+Nature of Luminosity
+
+Estimated Distance of Object from Observer . 3 miles
+
+Spsed of Ghiect(s) 200 MPE, disappeared in 5 seconds Aniiéating creat
+Time in Sight . Approximately. @ seconds
+
+Tactics 90° deft turn, then level flight accelerating rapidly
+
+Sound Made by Object(s) .
+
+Direction of Flight of Object(s) . are?
+
+Apparent Construction (Of What Material or Substance) . . 1...
+
+Weather Conditions Existing a’
+
+Pebuliarities Noted Sbjept, made a left. tarn,. leveled. ent on 4 =i —:
+acpelerated ates and disappeared from sight.
+
+ES of Incident 9m, Ist, AprAl, ab, 0955,. ist, Lt Meyers, was. leading. a flight
+CN eS Se eae Os eee ee -s
+
+(Attach a Separate Sheet it Additional Space is 5 Needed)
+
+Meyers immediately started a left turn vi
+
+ee more positively identify the
+
+a left turn, the object mde a
+
+a heading of 2. accelerated rapidly and ere pa
+approxima te: seconds, There was no sound heard, and no
+were observed. St the time of the sigh’ visibility ws
+scattered cumilous, base 3000 feet, tons feet.
+
+NOTE: Because of the distence from which the sighting was made, no
+
+distinguishing festures, i.e. power units, landing gear, armanent or
+cockpit were observed.
+
+The interview with Lt. Meyers indicated that he is a reliable non-
+excitable individual who appeared quite positive in his statements. He wes
+the only witness to this incident as he could not contact his wing men i
+Since his radio was out. Apparently the maneuvers performd by his three (3)
+wing-men prevented their observation of the object.
+
+ne
+on
+
+~*~
+
+6
+
+Q.
+Be
+he
+
+De
+oe.
+
+Te
+
+De
+
+10.
+1,
+
+Tey.
+
+1h.
+
+cide
+
+16.
+
+17s
+
+21.
+22.
+23.
+ah.
+256
+26.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 8 Apr 4g Incidont # 2
+
+Time 1400 - 1430
+
+Location Ashley, Ohio
+
+Namo of observer Miss Winifred Paines - Mrs. Bertha Slack
+
+Occupation of obsorvor Méss Paines: Asst Bank Cashier; Mrs, Slack:
+housekeeper
+
+Address of observor 227 W High St., Ashley, 0.
+
+Placo of observation Ashley, Ohio (ground) ii
+
+Numbor of objocts 1
+
+Distance of object from obsorvor "Quite a distance"
+
+Timo in sight 4N/S
+
+Altitude Could not estimate
+
+Spood slow-moving bi
+
+Direction of flight Southwest
+
+Tactics No maneuvers
+
+Sound N/S
+
+Sizo undetermined
+
+Color silver
+
+Shapo Oblong, long and narrow - like silver streak
+
+Odor dotectod y/s
+
+Apparent construction n/s
+
+Exhaust trails None
+
+Woathor conditions Cleer, no clouds near object
+
+Effoet on clouds N/S = no clouds near object
+
+Skotches or photographs None
+
+Mamer of disappoaranco y/s
+
+Romarks: (over)
+
+&
+Witness thought she heerd plane which appesred to be flying low and making
+
+an unusual amount of noise. Could not locate the plane but did see an
+
+object oblong in shape and long end narrow which had the appeerance of a
+silver streak, It was clearly outlined and moving slowly and steadily ina
+southwesterly direction parallel to the ground and without changing direction.
+
+Altitude and size were not estimated.
+Note: See Incident #112a in which the plane was perceived flying low.
+
+de
+2.
+
+Be
+
+Se
+6.
+Te
+8.
+De
+10.
+
+The:
+
+is
+13.
+1h.
+15.
+16.
+17.
+18.
+19.
+
+20.
+
+coe
+
+eKRESTRUSCU
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date '§ April 1948 Incidont # 112a
+
+Time 1400 = 1430 P
+
+Ree Ashley, Onio
+
+Namo of observer Mrs, “elah Stephens
+
+Occupation of obsorvor Newspaper reporter
+
+Kadepee of observer 226 West High Street, Ashley, Ohio
+Placo of observation From the ground .
+
+Numbor of objocts One
+
+Distance of objoct from obsorver Not stated
+
+Timo in sight Approximiely five minutes
+
+Altitude Quite high
+
+Speod Slow = dirfting
+
+Diroction of flight \Southwesterly
+
+Tactics -None .
+Soumd None
+
+Sizo Smaller than the airplane that was in view at the time
+Color Opalescent - like mother of pearl
+
+Shapo Long cylindrical body, like a stick of firewood
+Odor dotectod None
+
+Apparent construction N/S
+
+Exhaust trails None
+
+Woathor conditions Clear, few clowis in sky but non around object
+Effoct on clouds N/S
+
+Skotehes or photographs None
+
+Manner of disappearance N/S Retin d
+
+Romarks: A plane, which sounded as if it were flying low since there
+was an exceptionally loud roaring noise,first attracted the attention
+
+Se
+
+this witness, She observed a large airplane, heading south, and about
+same time also observed a strange object in the sky travelling slowly
+
+a southwesterly direction, Witness first thought it was sky writing,
+
+it looked like a streak; but later it became clearly outlined, appearing
+be a long gylindrical body like a stick of firewood. “ith the sun shining
+it, it . appeared opalescent, like mother of pearl. The object was much
+higher, and quite a bit smaller than, the airplane, but drifted slowly along
+after the airplane disappeared. It may have been drifting with the wind.
+
+gcerga
+
+jre
+
+25.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+
+Date 8 April 1948 _ Incidont #112p |
+
+Time 1430
+
+Location Delaware, Ohio
+
+Namo of observor Mrs. James B. %tephenson
+
+Occupation of obsorvor Housewife
+
+Address of observer 93 North Franklin Street, Delaware, Ohio
+
+Placo of observation From the ground ©
+
+sNumbor of objocts One
+
+Distance of objoct from obsorvor n/s
+Timo in sight N/S
+
+Altitude N/sS
+
+Speod Slow
+
+Diroction of flight Southwesterly
+Tactics None
+
+Soumd None
+
+Sizo Very large - about the size of a full moon in height but much
+smaller in width
+Color Very white
+
+Shepo Cylindrical, with vapor around the top
+
+Odor dotectod N/S ~~
+Apparent construction N/S
+
+Exhaust trails None
+
+Woathor conditions Clear, no clouds around object
+
+Effoct on clouds N/S
+
+Sketches or photographs, None
+
+Manner of disappoarance N/S
+Remarks: At 1430 Mrs. J. B, Stephenson's attention was | Renae from
+her window by an object of unusual shape in the sky. Upon going outsid(
+
+3?
+
+ed very white, with no shadow@ tt all, was cylindrical
+d the top. When first seen, it appeared to
+be leaning 2+ an angle, and then right itself and move along "perpendicular" to the
+ground. It appeared not to be moving at first, but upon a closer look it was seen
+moving slowly in @ southwesterly direction, without sound or manueverings, and re~
+maining at the same altitwie. ‘The weather was clear, and no exhaust trails were
+seen. ‘the object seemed very large, about tbe size of a full moon in height, but
+much smaller in width. Since + with, she could not
+
+there was nothing to compare i
+pe ‘sure of the size. No statement was made as to whether or not witness heard an
+airplane.
+
+to get a better view it ap}
+in shape and seemed to have vapor aroun
+
+33a
+
+te
+2.
+
+Be
+
+5.
+Cr
+Te
+
+8.
+
+10.
+ll.
+12%,
+3.
+1h.
+15.
+16.
+17.
+18.
+19-
+20.
+21.
+22.
+23.
+
+25.
+
+26.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Date § April 1948 Aneidont # 1320
+Time 1430
+Lotation Delaware, Vhio
+Namo of observor Rev. “ames B, Stephenson
+Occupation of obsorvor Pastor
+Address of obsorvor 9% N. Franklin Street, Delaware, Ohio
+Placo of obsorvaetion From the ground
+Nunbor of objects One
+Distanco of objoct from obsorvor N/S
+Timo in sightN/S
+Altitudon/s
+Speod Slow
+Direction of flight Southwesterly
+Tactics None
+Sound None
+Sizo Not Stated
+Color White
+Shapo Verticle, larger at the bottom and narrow at the top
+Odor dotectod None
+Apparont construction N/S
+Exhaust trails None
+Woathor conditions Clear
+Effoct on clouds N/S
+
+Skotches or photographs None i
+u
+
+Manner of disappoarance N/S
+
+Romarks: Witness first thought that object was a plane on fire, as
+it was surrounded by a vaporous substance, A-plane-was-heard,-and
+
+3
+
+it—seemed_low and made-a-great-dealof noise. After a few seconds' study
+object became clearly outlined and looked similar to a vertical cylinder,
+large at the bottom and narrow at the top, with streamers or streaks of
+vapor attached. “+t gave the appearance of a white cloud, but did not behave
+as acloud. 1¢ retained its shape and maintained a steady movement on a
+straight course against the wind. The Delaware airport was alerted for its
+appearance, but after a half hour it had not been sighted there.
+
+MRIS RT|
+e RESTRIGIED |
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS }
+
+1. Date § April 19hs Incidont # 112a
+
+2. Time 1430 :
+3. Location Delaware, Ohio
+. Name of observer Mrs, John Bergen
+5. Occupation of obsorvor Housewife
+6, Address of observor 111 North Washington Street
+7+ Placo of observation From the ground
+8. Numbor of objects One
+9. Distance of objoct from observor N/S
+10. Timo in sight N/S
+
+ll. Altitude N/S
+
+12. Speod N/S ‘
+13. Direction of flight Southwesterly
+1h. Tactics None
+
+15. Sound Wooex Could not be determined
+16. Size N/S
+
+17. Color White
+
+18, Shapo Spherical "blob" with streaks above it
+19. Odor dotected None
+
+20. Apparent construction N/S
+
+5 Exhaust trails None
+
+22. Woathor conditions Clear
+
+23. Effoct on clouds N/S
+
+2h. Sketches or photographs None
+
+25. Manner of disappearance N/S
+
+26. Romarks: Witness heard planes prior to the sighting, put doesn't
+know whether or not they had any connection with the object.
+
+os
+
+2
+———
+
+-
+2.
+Be
+he
+5s
+6.
+Te
+
+De
+
+10.
+lls
+12.
+LB.
+1h.
+15.
+16.
+le
+18.
+19.
+
+20.
+
+. SesTRicTeo
+
+__CHECK=LIST = UNIDENTIFIED PLYING OBJECTS
+Date & April 196 3 ZpotdontF 1ize
+Time 1430
+ae Delaware, Ynio
+Namo of observer Rev. John H. Bergen
+Occupation of obsorvor Pastor
+Address of observor 111 North Washington Street
+Placo of observation From the ground
+Numbor of objects One
+Distance of objoct from observer Not determined
+Timo in sight Ten minutes
+Altitude Several thousand feet
+Speed Not too fast
+Direction of flight Almost due west into the wind
+Tactics None,
+Soumd None
+Size Not less than 5 feet in width
+Color Very white
+Shapo Spherical, with a small protrusion above it, like vapor streaks
+Odor -detectod None
+Apparent construction N/S -
+Exhaust trails None
+Weather conditions Clear
+
+Effoct on clouds N/S
+
+ij Og ;
+Sketches or photographs None ie witty; Iw UE
+
+Manner of disappoaranco Disappeared from view behind the trees
+
+Remarks; This object appeared like a concentrated bit of cloud
+except it was clearly outlined. The size could not be determined,
+
+Ye!
+
+1h.
+15.
+16.
+17.
+18.
+19.
+20.
+al.
+22.
+
+23.
+
+256
+26.
+
+REO miVvleVv
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Dato & April 1948 x é Incidont # li2e
+
+Time 1430
+
+Location Delaware, Ohio
+
+Namo of observor Mrs, H, S, Kirkpatrick
+
+Occupation of obsorvor Housewife
+
+Address of observer 107 North Washington Street
+
+Placo of observation From the ground |
+Numbor of objocts One
+
+Distance of object from observer N/S
+
+Timo in sight N/S
+
+Altitude n/S
+
+Speed Steady - not too fast
+
+Direction of flight Southwesterly
+
+Tactics None
+
+Soumd None
+
+Sizo It was not large enough for a person to be inside
+
+Color White - about the color of a fleecy cloud
+
+Shapo §$pherical - womewhat larger at top with a protruding end umerneat
+Odor dotected None
+Apparont construction N/S
+
+Exhaust trails None
+
+Woathor conditions Clear, blue sky, sumy
+
+Effoct on clouds N/S
+
+Skotches or photographs None
+
+Manner of disappearance n/S
+
+Romarks: Witness heard, but did’ not see airplane, and saw instead
+a white object, spherical in shape, larger at the top with a protruding ©
+re Nie Abs * doc It
+
+end underneath, It was clearly outlined and maintained the same shape as it moved
+along, steadily, and at the same altitude. Hobert Cochran, son of the witness,
+who is in the Merchant Marine, thought the object very wusual., He said it was in
+the shape of a rainspout. Mi
+
+/
+
+~>
+
+Te
+
+ly
+a.
+3
+he
+5.
+6
+Te
+8.
+De
+10.
+aie
+12.
+2.
+1h.
+15.
+
+CHECK*LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 9 April 19h8 Incidont # 115
+Time 15s,
+
+Location Montgomery, Alabama
+
+Namo of observer Robert B. Hughes, “t. Colonel, USAF
+
+Occupation of obsorvér Pilot
+
+Address of observor Tactics Div., Air Tactical School, Tyndall AF Base
+Placo of observetion From the air
+
+Numbor of objects One
+
+Distance of object from observer N/S
+
+Timo in sight Five seconds
+
+Altitude Approximately 16000 feet
+
+Speod Tn excess of the viewer's 310 mph air speed
+
+Diroction of flight Northwest
+
+Tactics N/S
+
+Sound None
+
+Sizo Top part eight feet diameter
+
+Color Silver
+
+Shapo Had the appearance of a parachute carrying a large canister or
+
+ball
+Odor dotected N/S
+
+L> £m an
+
+Apparont construction N/S Rs eS gy i
+Exhaust trails None
+Woathor conditions Glear, visibility and ceiling unlimited
+Effoct on cloudsN/S
+
+Sketches or photographs - Sketch (trip)
+
+Manner of disappoarance n/s
+Serie hPa Re ME ESTP ere
+2x
+
+The object, sighted at ten o'clock off his left a
+silver disc. immediately completed a sharp bank to the left and was
+able to get a better look at the object, anddescribed it as follows:
+
+& appeared to
+
+"Top part of the object approximately eight feet in diameter, silver
+in color, had the appearance of a parathute, Attached to the bottom of this
+had been a dark cable or shrowi which appeared to be approximately five feet
+long. Suspended upon the cable had been a large canister or ball (Colonel
+Hughes could not discern which) also silver in color, This canister or
+ball had theappearance of being slightly to the rear of the top part of the
+object. The overall appearance of theobject, looked something similar to S
+the parachute and canister containing photographic testing equipment dropped
+from a V-2 rocket."
+
+At the time he lost sight of the object, “ughes' aircraft had been
+indicating 310 miles per hour air speed, and the object had appeared to fly
+away from him on a horizontal plane rather than a vertical decline.
+
+A sketch of the object is attached,
+
+36 a
+
+sa
+
+le
+
+Be
+le
+Se
+
+Te
+8.
+is
+
+10,
+
+20.
+
+CHECK-LIST = UNIDENTIFIED FLYING OBJECTS
+
+Dato =-:18 Apr 4S Incidont # 14
+Time 1306 hours :
+
+Location Approx 1 mile north a Fairbenks, Alaska
+
+Name of observer | Lit Aytch Johnson
+
+Occupation of obsorvor let Lt (discharged £/USAF as per authority
+Address of obsorvor Ft Worth, Texas ay
+Placo of obsorvation Over city of Fairbanks, Alaska
+
+Nunbor of objocts 1
+
+Distance of objoct from obsorvor W/S
+
+Timo in sight few mimtes
+
+Altitude 2000-3000 ft
+
+Speod 250=300 miles (traveled 500 feet in 1 or 2 seconds)
+Direction of flight Northeast towerd southwest
+
+Tactics Oseillated from horizontal plane to vertical plane at very
+Sound aon
+
+Size 8" in diameter
+
+Color silvery
+
+Shapo round and flat *
+
+Odor dotectod xs
+
+Apparent construction y/s
+
+Exhaust trails mo trails of any kind
+
+Woathor conditions Weather clear and visibility unrestricted
+Effoct on clouds B/S
+
+Skotehes or photographs none
+
+Manner of disapposrance 4¥/S
+
+Remarks: (over) =
+
+"yt
+
+of these aircraft. At
+number of aircraft were
+
+Cia
+
+f
+é
+
+Js
+26
+3.
+he
+5.
+6
+ts
+8.
+9
+
+10.
+
+12.
+
+13.
+Ihe
+15.
+16.
+17.
+18.
+19.
+20.
+21.
+22.
+
+23.
+
+256
+26.
+
+,
+Name of observers 1st Lt Francis W, Hennin, Jr.
+& lst Lt Robert G.loomis, USAF
+Occupation of observer Both attached to Liaison sq. Greenville
+
+Address of observers Greenville AP Base, Greenville,S. C.
+
+Placo of observation Greenville AF Base 5
+Numbor of objects # 3-1 at first , 2 later
+Distance of objoct from observer 15,000 to 20,000 ft overhead
+Timo in sight 2 mimtes
+Altitude 15,000 to 2Q000 ft
+Speod Undetermined, Stationary, then rapidly accelerating ani
+clipbing
+Direction of flight North
+Tactics Hover: then acceleration and climbing
+serve:
+
+trail formation
+
+Sound mone audible (7) - states: Witnesses were attracted by sound
+of fighter aircraft in vicinity.
+Sizo undetermined (no mention made of these)
+
+Color white
+
+Staion elliptical
+
+Odor dotected * HWS
+
+Apparent construction 4/s
+
+Exhaust trails No exhemst or condensation trail
+Woathor conditions CAVU
+
+Effoct on clouds 4/s
+Skotehes or photographs 2 pee he Seger te 28 al ah ie aeiag
+
+Mamner of disappearance in distance
+
+Romarks: (over)
+
+"TF
+
+Witnesses were attracted by sound of fighter aircraft in vicinity.
+They started searching the sky for the aircraft and sighted the
+objects. When first sighted, the witnesses thought theobjects might
+be weather balloons, However, when they accelerated so rapidly in
+
+a northerly heading, they determined the objects could not be balloons.
+They were in a trail formation on a North-South line, and moved so
+rapidly they wereout of sight within a few seconds. From original
+sighting in the stationary position to their disappearance, a period
+of gpproximately two (2) mimtes elapsed, of which the objects were
+
+in a stationary position for approximately one (1)mimute,
+
+NOTH: Wind at 20,000 ft from 340° at 10 knots per hour (1230 EST Rpt)
+Wind at 20,000 ft 32° at 13 knots per hour at (1830 EST Rpt)
+
+NOTE: Nearest weather station releasing balloons is Spartanburg, S. C,
+One black balloon was released at 1230 EST,
+
+; VDAPL RPA AAPA Ae
+.
+°
+pendin’
+rest om He
+
+/
+\ }
+
+O
+
+0,
+(4) 0 In approximately 2 minutes objects had disappesred
+| G) oO Objects began moving in a NNE direction and rapidly accelerating
+| 5s ° and climbing. $
+(2) ° ° When first seen objects were in a semi-stationary position,
+
+(1) ° First one object was sighted, next, another one appeared,
+
+le
+a.
+36
+he
+De
+6
+Te
+
+8.
+
+10.
+ll.
+12.
+
+13.
+
+17.
+18.
+19.
+20.
+
+21.
+
+256
+26.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+Date ll Mer 4g Incidont # 116
+
+Timo night
+5
+Location Near shores of James Bay,
+
+Namo of observor V. J. Pratt
+Occupation of obsorvor Employe of Hudson Bay Co.
+
+Address of observor Moose Factory
+
+Placo of observation Moose Factory, Canaca
+Numbor of objocts 1
+
+Distance of objoct from obsorvor y/s
+
+Timo in sight WN/S
+
+Altitude N/S
+
+Speod meteoric
+
+Direction of flight  earthward
+Tactics y/i s
+
+Souna No noise
+
+Sizo Size of fmtixamm football
+Color 2366 Blue flame
+
+Shapo N/S
+
+Odor dotectoa N/S
+
+Apparent construction meteor
+Exhaust trails smamgexkighk N/S
+Woathor conditions Night
+Effoct on clouds - N/s
+
+Sketches or photographs None
+Manner of disappoarance exploded
+
+Romarks: (over)
+
+Fa)
+
+A big ball of blue flame, seemingly the size of a football streaked out
+
+of the sky and exploded neer this Northern Ontario community (Moose Factory)
+near the shores of James Bay, The explosion lit up the entire area brighter
+than daylight, the whole ball disappeared and a second later a streak of
+orange light shot upward from where the ball was last seen. The orange streak
+was gone within a second. Witnesses heard no noise of any kind,
+
+NOTE: Th&s ties up with earlier reports from Cochran, 150 miles south of
+Moose Jaw where several citizens reported seeing what they thought
+to be a meteor around 11.40 P. M. EST Thurs,
+
+One witness ( a Mrs. Charles Giles) said that the object plunged
+downward like-a spent rocket in the northern sky. She described it
+as about the size of a full moon which gave the appearance of
+disintegration as it fell.
+
+~
+}
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS |
+le. Date 7 May 4g : Incidont # woe 7
+2. Time 1500 to 1700 '
+3, Location Memphis, Tenn, |
+1, Mame of observer Miss Jem Bray, Housekeeper et kk al (see other side)
+5. Occupation of obsorvor Housekeeper
+6. Address of obseryor 253 W. Waldorf Ave., Memhis, Tenn.
+7. Placo of observation Memphis, Tenn,
+
+8. Numbor of objects 50 or 60
+9. Distanco of object ‘from obsorvor y/s
+10. Timo in sight W/S
+ll, Altitude extremely high 4
+12,  Speoa faster than any aircraft witnesses had ever seen
+
+13. Direction of flight easterly
+
+lh. Tactics Most traveled in straight line altho some of them
+zig-zagged. :
+15. Souma None
+16. Size Very small
+17. Color shiny - like bright aluminum
+18. Shapo unknomn - possibly like meteor
+19. Odor dotectoa N/S
+20. Apparent construction u/s
+21. Exhaust trails Some objects seemed to have a silvery tail
+which might have been exhmst
+22,  Woathor conditions CAVU, wind: 330 to 340°, 15 MPH at surface increasing
+to 66 MPH at 20,000; Surface temp: 72°; dew point 43° relative humidity 404
+Be Effoct on clouds y/S :
+2h. Skotehes or photographs None
+
+25. Manner of disappearance y/s
+
+26. Romarks: (over) |
+
+«o
+
+=
+
+AA
+
+Fifty tg60 shiny objects were seen moving at a speed faster than any
+known aircraft on en Easterly heading at an extrenely high altitude,
+For the most part these objects traveled in a straight line altho
+some of them zig-zegged slightly. No sound was heard. Some objects
+seemed to have a silvery tail which might have been exhaust. These
+objects could not have been weather balloons as only one balloon was
+released by the Memphis Weather Buream that day,
+
+NOTE: Witnesses thought they had seen a meteor; however subsequent
+investigation seemed to preclude this possibility.
+See Supp II to Trip Report to Memphis - Visit with Dr. Paul
+Herget of the Observatory of Cincinnati, Ohio, in which Dr.
+Herget expressed serious doubt that the 50 or more objects
+observed 7 May 48 in Memhis were meteors. He, was, however
+unable to offer any explanation as to a possible identification
+of the objects.
+
+Dr. Hynak of OSU and Dr. Lincoln LaPaz are to be consulted
+about the possibility of tmmis these being a meteor shower.
+
+~~
+
+Witness of this incident were: Mr. F. J. Kaiser, salesman
+251 W. Weldorf Ave., Memphis
+
+Mrs F. J. Kaiser, housewife
+251 W. Waldorf Ave., Memchis, Tenn,
+le
+2.
+de
+
+he
+
+19.
+
+20,
+
+22.
+he
+256
+
+26.
+
+28 Mer 4S Incidont # 118
+
+o
+
+Timo 1630 hours
+Location Berlin Lichtenrade, Kirchbachstrasse 2
+
+Name of observer Dr Ormans,
+
+Occupation of obsorvor Former guided missile expert at Exeinmetall Borsi
+Address of obsorvor Berlin Lichtenrade, Kirchbachstrasse 2
+
+Placo of observation As above
+
+Numbor of objocts 1
+
+Distanco of objoct from observer n/s
+
+Timo in sight 4&/S
+
+Altitude - 14 kilometers
+
+sod ©=s Father fast
+
+Diroction of flight South to North
+Tactics  ¥/S
+
+Souna No sound reported
+
+Sizo “white point"
+
+Color White
+
+Shapo u/s
+
+Odor dotectod 4/8
+
+Apparent construction W/S
+
+Exhaust trails No exaust trail reported
+Woathor conditions clear
+
+Effoct on clouds B/S
+
+Skotches or photographs Mone
+Manner of @4sappoerance 3/6
+
+Romarks: (over) Par ; is oe
+3
+~SA
+
+Dr Ormans, former Guided Missile expert at Exeinmetall, Borsig mentioned
+that he sighted 1 white point moving from South to North at an approx
+height of 14 Kilometers, Speed undetermined, rather fast, no rpt of
+sound, and no report of exhanst trail.
+
+WITNESSES: Dr ana Mrs, Ormens.
+No photographs available.
+23.
+ak.
+
+25.
+
+ee ESTR:
+
+Check list - Unidentified Flying Objects
+Date 20 Feb 4g
+
+; i Incident # 119
+G o> us
+
+Time 0700 hours
+
+Location Asuncion, Paraguay
+
+Name of observer Mrs “Agustina Vargas de Paula
+
+Occupation of observer N/S
+
+Address of observer resident of Asuncion (southern pert of city)
+Place of observation Asuncion
+
+Number of objects 1 -
+
+Distance of object from observer. N/S
+
+Time“in sight N/S
+
+Altitude N/S
+
+Speed N/S
+
+Direction of flight west to east
+Tactics N/S
+
+Sound n/s
+
+Size y/s
+
+Color N/S
+
+Shepe oval
+
+: Odor detected N/S
+
+Apparent construction N/S
+Exhaust trails highly colored weke
+Weather conditions N/S
+
+Effectcon clouds N/S
+Sketches or photographs None
+
+_Manner of diseppearance N/S
+
+(over)
+
+w § E
+At approximately 0700 hours 20 Feb Ug witness saw object of oval e
+
+traveling thru space from west to east. Its form e: ed in a very thin
+tail of approximately 3 feet in length. The forward part was bulky com-
+pered with the rear, The interior portion of ‘the object gave off green,
+yellow and orange colors and it had a highly colored wake. .
+
+Statesments were obtained from a local newspaper “La Tribuna" which has
+interviewed several people claiming to have seen the saucers,
+
+Te
+8.
+ye
+10.
+ll.
+12.
+13.
+we
+15.
+16.
+NT
+‘8.
+19.
+
+Esl
+
+22.
+23.
+au.
+2.
+26.
+
+CHECK-LIST - UNIDENTIFIED FLYING bak
+Date 20 Feb lig Incident 119a
+Time 0700
+Locetion Aregua eS 10 miles east of Asuncion
+Neme of observer “withheld”
+Occupation of observer employee of Bank of Paraguay
+Address of observer Bank of Paraguay
+Place of observation in Aregua
+Number of objects 1
+Distence of object from observer N/S
+Time in sight N/S
+Altitude N/S
+Speed N/S
+Direction of flight west to east
+
+Tactics’ N/S
+
+Sound n/s |
+Size n/s
+
+Color w4N/S
+
+Shape oval
+
+Odor detected N/S
+
+Apparent construction N/S
+
+Exheust trails N/S
+
+Weather conditions N/S
+
+Effect on clouds N/S
+
+Sketches or photographs None ; j
+Menner of disappearance N/S : ;
+Remarks (over) ie: ; 1
+
+le
+2.
+3e
+he
+De
+be
+Te
+8.
+Qe
+
+10.
+
+BY
+18.
+19.
+20.
+al.
+22.
+236
+ah.
+256
+26.
+
+a
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 20 Feb ug Incidont # 119d
+
+Time 0700
+
+Location Villa Hayes (10 miles NNE of Asuncion)
+Name of observer tam Rancher and laborers
+Occupation of obsorvor Rancher.
+
+Address of observor infhe "Chaco"
+
+Placo of observstion Ranch house in neighborhood of Villa Hayes
+Numbor of objocts 1
+Distance of object from observer n/s
+
+Timo in sight 4/S
+
+Altitude 1,000 ft
+
+Speod less than that of a plane
+
+Direction of flight west to east
+
+tactics 3/S
+
+Sound n/s
+Size y/s
+Color w4W/S
+
+Shapo dise
+
+Odor dotectod wW/S
+
+Apparent construction n/s
+
+Exhaust trails WN/S - gave off an intense green color
+Weather conditions N/S
+
+Effect on clouds W/S
+
+Sketches or photographs None
+
+Manner of disappoerance n/s
+
+Romarks: (@ver)
+"5
+
+Perceived a disc giving off an intense green color. Witness reports
+
+that the object traveled from west to east at a speed less than that of
+
+a plane and at an altitude of approx 1000 ft. Along its edges it gave off
+an aureola with the color green predominant.
+
+le
+2.
+
+Be
+
+De
+6.
+Te.
+8.
+De
+
+10.
+
+23.
+ah.
+256
+26.
+
+StRIGGED
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS |
+Date N/S- around 7 Fed ig | Incidont # 120
+Time 4/S
+
+Location Vejle, Denmark
+
+Name of observer WN/S
+
+Occupation of obsorvor field laborers
+
+Address of observor W/S
+
+Placo of observation Gadbjerg (near Vejle)
+
+Number of objects 1
+
+Distance of object from observer 200 meters altitude
+Timo in sight AS 3 seconds
+
+Altitude 200 meters altitude
+
+Speed high speed ‘
+Direction of flight SB to Nw
+Tactics y/s
+
+Sound N/S |
+Size W/S
+
+Color shining
+
+Shapo N/S
+
+Odor dotectod N/S
+
+Apparent construction y/s
+
+Exhaust trails N/S
+
+Weathor conditions Nj/S
+
+Effoct on clouds N/S
+
+Sketches or photographs None
+
+Manner of disappoarance N/S
+
+Romarks: (Over)
+
+Three mem working in a field in Gadbjerg (neor Vejle) Denmark, have
+Observed @ shining object which moved at high speed over the sky from
+southeast to northwest at ebout 200 meters altitude. It remained visible
+
+- for three seconds.
+
+MA COMME: Ho verification received of the shove,  Bvaluation P=6
+
+i.
+
+3.
+he
+
+10.
+
+ll.
+
+256
+26.
+
+CHECK*LIST = UN
+Date 9 January 1948 . Incidont 121
+
+Time 2330
+
+Location Cartersville, Georgia, 34° 10! N, 84° ho" W
+
+Name of observor Hugh DuBose
+
+Occupation of obsorvor Pilot (EAL)
+
+Address of observor N/S
+
+Placo of obsorvetion Air *
+Numbor of objects One
+
+Distance of object from observer WN/S
+Timo in sight wN/S
+
+Altitude 3000 feet
+
+Speod 00 mph
+
+Diroction of flight 175° M
+
+Tactics None
+
+Sound N/s |
+
+Sizo n/s eS
+
+Color Light, sky-blue
+
+Shapo a except for the top quanta which was flat, pot-
+shape
+
+Odor dotectod u/s
+Apparent construction N/S
+
+Exhaust trails None
+
+Woathor conditions N/S
+
+Effoct on clouds “/9
+Skotches or photographs None
+Manner of. disappoerance 10° below the horizon
+
+Romarks: When object crossed the path of the witness all that could
+be observed was an intense blue flame, in a shape circular except for
+
+the top quarter which was flat, pot-shaped._ The witness states that the
+object definitely did not have the curved trajectory of a wingless missile.
+Shartly after crossing his path, the blue flame sputtered and turned
+immediately earthward, The flame then died altogether but nothing was |
+seen hitting the ground. Witness states that the flame was not ¢ the
+
+long trailing type, bub rather gave the impression that you were looking
+
+down a long exhaust stack at a short but concentrated mass of blue flame |
+and further stated that his connections with RAF pilots in Mngland during |
+the war leads him now to believe this object looked the same as the
+"Buzz Bombs" chased by t ose RAF pilots at night, Arthur Porter, purser
+on this flight 9 January 4S, also saw the object, the flame aa but
+can give no further evidence for its identification.
+
+Mr. DuBose stated on April 29 that seventy-five cattle had died of an
+unknown disease on the farm of a “r. Gordy at Newman, Georgia, and expressed
+concern over a possible connection between the unidentified object he
+reported and this umusual fatality among healthy cattle. However, the
+Atlanta “ffice of the Animal Industry Division, U.S, Department of het
+culture, advises that this "know" disease has persisted for over a |
+year and other cases repeated elsewhere in the country for some time back.
+
+There apparently remains no basis for connection between the object Mr, }
+DuBose reports and the death of seventy-five cattle at Newnan, Georgia, |
+
+sm
+
+1.
+2.
+3.
+Le
+De
+6
+Te
+8.
+De
+
+10.
+
+17.
+18.
+19.
+20.
+21.
+
+23
+
+256
+26.
+
+Location Holloman “Air Force Base
+
+Name of observer Mr, Olsen © : ;
+
+Cccupction of obsorvor ‘rained talloon observer, Geophysics Lab Section
+
+Address of observor N/S 5 a
+
+Placo of observation From the ground ; |
+
+Numbor of objects One ; |
+
+Distance of object from observer N/S ; i
+
+Timo in sight 30 seconds
+
+Altitude Very high
+
+Speed Faster than any known eirevatt
+
+Diroction of flight N/S
+
+Tactics Bratie - completing a large loop after its domward descent,
+then soaring upward and disappearing suddenly
+
+Sound None
+
+Size Large
+
+Color Grey-white
+
+Shapo Rounded, indistinct form |
+
+Odor dotectod ~ N/S
+
+Apparent construction N/S
+
+Exhaust trails N/S |
+
+Weathor conditions C,A.V.U.
+
+Effoct on clouds n/S
+
+Skotches or photographs None
+
+Manner of disappeerance Disappeared suddenly
+
+Romarks: This was evidently the one object, of two sighted by - |
+another witness, that veered to the right and down. Its vaguely |
+
++7
+
+| ata |
+defined form cave, appearance of a large object at a great distance.
+
+The statements of other witnesses to this incident are contained in
+reports 112a and 112b. -
+All witnesses agreed that the object was very high, moved faster than
+
+any known aircraft, possessed a rounded, indistinct form, amd disappeared
+suddenly rather than fading away in the distance. It was under observation
+1/2 minutes or slightly less. + was definitely not a balloon, and ‘ |
+apparently not manned, judging from the violent maneuvers which were
+
+performed at a high rate of speed.
+
++44
+
+10,
+
+ibs
+12,
+13.
+14.
+
+Ds
+
+16.
+7.
+18.
+19.
+20.
+Oke
+22.
+23.
+ah.
+256
+26.
+
+“Altitude ¥/s
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Date * 11, April 19hg
+Time 2330
+Logation 4 miles north pf Alton, Illinois
+Namo of observer Col W. F, Siegmund
+
+Occupation of obsorvor Former Commandant of the Air Base at Kearns, Utch
+and at present sales meneger for Weestern Cartridge, Co., Altor
+
+Address of observor Weestern Certridge,Co., Alton, Ill,
+Placo of obsorvetion | miles north of Alton, Ill - ground
+Numbor of objoots 1
+
+Distance of pbjoct from observer n/s
+
+Timo in sight y/ a
+
+Speed N/' s
+
+Direction of flight H/s
+
+Tactics 7 "flapped its wings"
+
+Sound y/ i)
+
+Size “bigger than en airplane"
+
+Color N/S
+
+Shapo = Resembled a huge fowl and not a type of aircraft
+Odor dotectod n/S
+
+Apparent construction n/s
+
+Exhaust trails _N/S
+
+Woather conditions n/s
+
+Effoct on clouds N/S ‘a
+Sketehes or photographs None
+Manner of disappearance n/s
+
+Romarks: Col Siegmund said he observed the creature at about
+11 i. 11 Apr 8, while ri ing four miles north of Alton,I11
+
+over) Sees
+
+: Incidont # 123
+
+never questioned some sort of investigetion
+
+i.
+2.
+
+Be
+
+De
+6.
+Te
+
+8.
+
+10.
+ll.
+12.
+13.
+1h.
+15.
+16.
+17.
+18.
+
+19.
+
+21.
+22.
+
+23.
+
+25.
+26.
+
+v% Gee YY
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 18 April 1948 Incidont # 9),
+Time 1500 GCT :
+
+Location Nérth Atlantic, 62°0'N 33°0'W
+
+Name of observer N/S
+
+Occupation of obsorvor Weather station patrol
+
+Address of observor First Coast Guard District
+
+Placo of observation Air
+
+Numbor of objects Une
+
+Distance of objoct from observer 6500 yards - 18000 yards
+
+Timo in sight N/S
+Altitude N/S
+
+Speed 30 mph
+
+Direction of flight N/S
+
+Tactics N/S
+
+Soumd N/S
+
+Sizo N/S
+
+Color y/s
+
+Shapo WN/S
+
+Odor dotected N/s
+
+Apparent construction N/S
+
+Exhaust trails wW/S
+
+Woathor conditions C.A.V.U. u me @
+
+Vw
+
+Effoct on cloudsN/S
+Sketches or photographs None
+Manner of disappearance Target strength was S5 fading at 18,000 yards
+
+Romarks: This incident is the result of a radar sighting. Copy
+is also filed in radar sighting file.
+
+ome
+
+~t
+
+This target was contacted on the air search radar at 1500 GCT on 1 April 4s.
+
+ie first contact was made at 6500 yards and was tracked to 18,000 yards !
+giving a velocity of approximately 30 m.p.h. The area in which the
+target was contacted was thoroughly search visually and there were no
+clouds nor weather fronts in said area. There were no target indications
+
+on the surface radar. -The target strength was S5 fadingat 18,000 yards.
+
+le
+26
+
+3.
+
+De
+6.
+Te
+8.
+90
+
+10.
+
+17.
+18,
+19.
+20.
+
+21.
+
+256
+26.
+
+: : see om LA or em |
+
+=
+
+c
+
+CEECK*LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 2 May 198 Incidont # 195
+
+Timo Night —
+Locetion St. “ouis, Missouri, 0°00'N 90°15'W
+Name of observor N/S
+
+Occupation of obsorvor N/S
+
+Address of observer N/S
+
+Placo of observation Ground
+
+Numbor of objocts One
+
+Distance of objoct from obsorvor N/S |
+Timo in sight N/S
+
+Altitude N/S
+
+Speed N/S
+
+Direction of flight N/S
+
+Tactics N/S
+
+Sound N/S
+
+Size N/S
+
+Color Phosphorescent after dark
+Shapo Bird
+
+Odor dotectod N/S
+
+Apparont construction N/S
+Exhaust trails N/S
+
+Woathor conditions N/S
+
+Effoct on clouds N/S
+
+Sketches or photographs None
+Manner of disappearance N/S
+
+Romarks: See Incident #123
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+1. Date 30 April 1948 Incidont # 126
+
+2. Time 1015
+3. Location Anacostia, Naval Air Station, 38°52'N, 77°0'W~
+4. Name of ceeuaves Marcus L.Lowe
+5. Occupation of obsorvor Lt Commander, US Navy
+6, Address of observor N/S
+7- Placo of observation “ir
+8. Numbor of objects One
+9. Distance of object from observer One mile
+10. Timo in sight N/s
+ll. Altitude 1,500 feet
+12. Speed 100 mpeh.
+13. Diroction of flight 360°N
+1h. . Tactics N/S
+15. Sound N/S
+16. Size 25-0 ft diameter
+17~- Color Yellow (light colored)
+18. Shapo Sphere
+19. Odor dotectod N/S
+20. Apparent construction N/S
+21. Exhaust trails N/S
+22. Weathor conditions N/S
+23. Effect on clouds N/S a3 iG
+
+2h.  Skotches or photographs None = © > ‘
+
+_25. Manner of disappearance N/S
+
+- 26, Romarks: The object appeared to the pilot to be a yellow (or
+light colored) balloon, and attracted attention principally because
+
+520%
+
+in ere mm >
+
+of its flight path. No external fittings or attachments were observed
+on the object. ‘The speed of the object was estimated at about 100 m.p.h.
+The flight of the object was in approximately a south to north dire ction,
+despite upper winds from north northwest, and apparently followed a con-
+stant altitwie. Pilot did not pursue object further because it was
+entering the prohibited flying area, U.S, Capitol, White House Area.
+
+le
+26
+
+3e
+
+Se
+6.
+Te
+8.
+oe
+10.
+ll.
+12.
+13.
+lhe
+15.
+16.
+
+17.
+
+256
+26.
+
+ia k Boo
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+
+Incidont # 127
+
+Date 7 May 19s -
+Time N/S
+Location Lake Doiran, along the Yugoslav-Greek frontier
+
+Name of observer N/S
+Occupation of obsorvor N/S
+
+Address of observor N/S
+
+Placo of observation Ground
+
+Numbor of objocts One
+
+Distance of object from observer N/S od
+Timo in sight N/S
+
+Altitude 3000 feet
+
+Speed N/S
+
+pisobhen of flight 160°
+
+Tactics N/S
+
+Sound like artillery shell (shrill whine)
+Size N/S
+Color N/S
+
+Shapo Flying disc
+Odor dotectod N/S
+Apparent construction N/S
+Exhaust trails N/S
+Woathor conditions N/S
+
+Effoct on clouds N/S
+
+1 ee:
+
+TEP
+Skotches or photographs None com Oa
+n/S
+A press dispatch quoted residents of the Lake Doiran
+
+Manner of disappearance
+
+Romarks:
+
+area along the Yugoslav-Greek frontier as saying they saw a “flying
+
+he
+
+5e
+
+Te
+8.
+De
+
+10.
+
+17.
+
+21.
+22.
+23.
+2h.
+254
+26.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+
+Date May 19b8 : Incidont # 128
+Time Night P
+Location(Hobson) ‘Middleport, Ohio, 30° 00' N, 82° 03! W
+
+Name of observer Ben Rupe
+
+Oceupation of obgorvor New York Central System Car Inspector
+Address of observor N/S
+
+Placo of observation Ground
+
+Number of objocts N/S
+
+Distance of object from observer N/S
+
+Timo in sight N/S
+
+Altitude 6 - & miles
+
+Speod Great amount of speed
+
+Direction of flight 90°
+
+Tactics N/S
+
+Sound N/S
+
+Sizo 9" diameter from ground level
+
+Color Fhosphorescent S
+Shapo Round
+
+Odor dotectod N/S
+
+Apparent construction N/S
+
+Exhaust trails Phosphorescent trail in sky
+
+Woathor conditions N/S
+
+Effoct on clouds N/S AS Pr FP AAT A
+
+Sketches or photographs None 28 a> 8
+Manner’ of disappearance N/S
+
+Romarks: The above covers sighting of same objects by Earl Roush, ~
+New York Central System Car Inspector; Bob White, New York Central
+
+57
+
+$7a
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+1. Dato 31 Mey 19hs Incidont # 129
+
+2. Time 1320
+3. Yocation Wilmington, North Carolina, 34° 14! N, Theo w
+4. Namo of observor Mrs, H, D. Alspach
+5. Occupation of obsorvor n/s
+6. Address of observor 709 South 6th
+Te Placo of observetion Ground
+8. Numbor of objocts One
+9. Distance of object from obsorver N/S
+10, Timo in sighty/s
+4s saawoude Awfally high
+12. Speod Fast
+13. Direction of flight 90°
+1h. Tactics “None
+15. Sound n/S
+16. Sizo As large as an arm, and about 3 feet long
+17. Color n/S :
+18. Shapo Oplong
+19. Odor dotected N/s
+20. Apparent construction wN/S
+21. Exhaust trails [mitted smoke
+22. Woathor conditions n/S
+
+ve ee
+
+230 Effoct on clouds y/S
+
+2h. Sketches or photographs None
+25. Manner of disappoarance wN/S
+
+26, Romarks: Mysterious sky object was sighted by Mrs. Alspach, her
+sister Mrs, Colvin, and Mrs. H.D, Hufham, It came at first at a fast
+
+i
+
+———————————————
+
+ae
+en
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+l. Date 17th May 19h8 Incident #130
+
+2. Time ight
+3. Location Between Plevna and Miles City, Montana
+hl. Name of observer W, A, Bonneville
+5. Occupation of obsorver Territory Mgr., B, F. Goodrich Company
+6, Address of obsorvor 15 W. Rosser Ave., Bismark, N. D.
+7» Placo of observation Ground, Route #212, West of Plevna, traveling west |
+8. Numbor of objocts One
+9. Distance of object from observer At closest point, approx. 2500 feet
+0, Timo in sight Some twenty minutes
+11, Altitude n/S
+12. Speed Twice the speed of the Northwest Airlines planes
+13. Direction of flight West, slightly south, then west
+14. Tactics Performed arc
+15. Sound None
+16. Size Fairly large compared with an aircraft
+17. Color White —- (might have had slight bluish-white tinge)
+18. Shape Ball
+19. Odor dotected Nn/S
+
+20. Apparent construction N/S - but apparently meteor-like
+2h, Exhaust trails A long bright light shooting from under it
+22.  Woathor conditions Mopnlight, but clouly
+
+23. Effoct on clouds N/S
+
+2h,  Skotehes or photographs None - Map forwarded showing location of object
+25. fanner of disappoaranco Flew in a dark clowd bank
+
+26,  Romarks: See Supplement
+
+|
+|
+|
+|
+|
+
+THE B. F. GOODRICH COMP, is
+
+Minneapolis 3, Minnesota
+
+415 West Rosser Ave
+Bismark, N. D.
+c 5-23-48 z
+
+United States Army - Intelligence Div.
+Washington, D. C.
+
+Gentlemen:-
+
+On the night of May 17th at about 11:30 PM driving from Baker, Montana
+to Miles City Montana on U.S, Highway #12 just West of Plevna, Montana before
+getting to the hills I noticed a very bright object in the sky to the North-
+west. The sky was overcast in the West but to the South the moon could be
+seen at times - with a broken sky. Having traveled this same route for
+many years - about 15, I am pretty well used to open prairie road at night
+and can tell a star from an musual object when I see it.
+
+Northwest Airlines travel a Western route just North of this route
+also, but I stopped at the Powder River Bridge where the road dips con-
+siderably down from a high ridge - cut off my car motor and watched this
+object as it sailed around in the sky - which at times close and others
+seemed to speed away into the heavy clowl bank to the West and then later
+reappearing, at a very bright white light at what) I would juige about not
+more than several miles away or closer. I carry a pair of field glasses
+with me, and after stopping the car engine watched this thing through my
+glasses, which seemed to appear as a small object with a long very bright
+light shooting from the under part of it. Because of the speed of the
+object and the darkness it was vefy difficult to make out what it might
+
+be, but I am sure that if I had had a more powerful glass I might have
+made it out.
+
+I am perfectly sincere and do not drink so the foregoing is absolutely
+the truth. With some of this newspaper funabout flying saucers etc, this
+had all of the appearance of just that- and in stopping the car if this
+had been an aeroplane I would certainly have been able to hear the motors,
+
+I stopped at a service station just before getting to the Powder River
+Bridge but they hai all gone to bed so did not have anyone along with me
+to witness the object as it flew through the air. It stayed around this
+area for about 20 minutes and then flew off through the heavy cloud bank
+to the West.
+
+I am enclosing a map showing the location of the foregoing.
+Yours very truly,
+The B. F. Goodrich Company
+
+/s/ Wm. Bonneville
+Territory Manager
+
+OSD
+
+sn SO
+
+— ne Rie —
+
+=
+3 & The B, BP, Goodrich Compan ae ©
+1653 Hennepin Avenue
+Minneapolis, Minnesota
+
+Pica iis Sarg fd id See 415 W. Rosser Avenue
+GI § Bod VY A Bismarck, ne egal
+ia: June 18, 1
+
+Col W, R. Clingerman
+U, 5, army Air Forces
+Wright Field
+Dayton, Ohio
+
+Refer - MCIAXO-3
+Dear Sir: -
+
+In reply to your letter of Jume 15th in which there are several questions
+which you desire answ red to the best of my ability - with reference to
+the object which I saw flying through the air between Plevna ami Miles
+City Montana on the night of May 17th, 1 will answer them and give youa
+\ graphic description again with a little more elaboration than my previous
+letter - if that is possible.
+
+Question: - Did the entire object appear to be glowing, or did it give
+the effect of carrying lights. Answer: This thing seemed to be a ball of
+
+* bright white light - and I could not make out if it was being carriedor just
+what made it go — however, it did disturb me quite a little because after
+stopping to view it at the Powder River Bridge I could not hear motors
+humming such as an aircraft in these parts might have, and I therefore tried
+to find out just what it was by the use of my field glasses,
+
+(b) Question: — An estimate of the size of the object in comparison with
+some other known object. Answer - the size of the light which was very
+brilliant would indicate that it was fairly large compared with aircraft -
+and I would say that this exceedingly bright light which was one light
+and not several was as bright as the headlight on a locomotive, only
+¥ y about three times that bright and without direction. By this TI mean that
+2 this light simply glowed very bright and was not a-directed light.
+
+(c) Que tion: - An estimate of the speed of the object in comparison with
+the jet type or conventional aircraft. Answer: This object flew at about -
+twice the speed of any aircraft that Northwest Airlines planes fly - because |
+it would appear coming thro where I was traveling west on Highway #212 or #12
+as we call it out here appearing only faintly first and then growing larger |
+as it approached over the hills north of the highway - until it seemed to
+hang there off in the northwest of me brightly and then would turn south
+toward the highway there it became real bright and then would start back
+West again and fly out of sight. This ting did this several times - which
+actwally got my goat - if I may put it that way. (d) Question: Did the
+object appear to be circling at random or didit follow a definite flight |
+pattern. Answer: As + have explained before - the object appeared first when
+
+e/.
+
+1x0"
+
+ES D
+
+the West - then turning slightly South and turning in a big swing and
+then heading West again - flying out of sight into the dark black
+cloud bank out of sight - then reappearing, and it did this several times.
+(e) Question: - Is it possible that its disappearance into a "heavy clow
+bank" might have been caused by clouds obscuring reflected moonlight
+from a hig ly polished surface. Answer: - No - I have seen aircraft
+many times on moonlight nights - but this was not anything like that -
+this thing glowed brightly white light such as any real white brilliant
+light might. The moon was not bright enough to reflect polished light
+unless the craft might have been South of me in the direct light of the
+moon — which showed (the moon) from time to time through the clowis. ‘This
+objedt was in theblack section of the sky over to the North of me ani
+slightly west, and was a steady oncoming light growing brighter as it
+came, and had the appearance of something carrying this light in the air-
+but without sound, and it certainly was close enough to me to have heard
+motors,
+
+E>
+Ge
+
+I thought it might have been some kind of a jet aircraft that I perhaps had
+never seen — because we as civilians know very little as to what might be
+gbhing on in defense or experimental mechanics however + Pfelt it my duty to
+report the thing regardless as to what it might have been, ‘This was
+somewhat difficult for.me to do because of the crackpot stories making
+
+the rounds in some sections about flying saucers etc., but for the life
+
+of me this had all the ear marks of just that kind of a deal.
+
+I have traveled this road about which I have releated this sighting many
+many times and at night Winter and Summer - and have never before in my
+life seen anything like this - so naturally I was somewhat alarmed about
+it, and have steadfastly kept the whole thing to myself. I will certainly
+be on the lookout for the dammed thing the next trip I make through this
+same area which is generally after dark - because most of the time I work
+from Lemmon South Dakota or Hettinger North Dakota dlong this highway to
+Miles City which is about one days work ith my Dealers. -In times like
+these I feel as before stated anything of this nature which we are not
+familiar with we are duty bound to report to our Defense Forces who may
+be better equipped to understand the unfamiliar than we are.
+
+Yours very truly,
+
+W.A. BONNEVILLE - Territory Mgr
+for the B. “. Goodrich Company
+
+seu
+
+Inc 131
+
+_
+
+10.
+ll,
+12,
+13,
+14,
+15.
+16.
+Lae:
+18,
+19.
+20,
+2l,
+ee.
+23.
+24,
+25.
+
+26.
+
+27. @imeppearance: N/S was sighted o3
+
+Probably true {
+
+CHECK-LIST + UNIDENTIFIED FLYING OBJECTS i
+
+Date 20 June 1948
+
+Time 2230
+
+Location’ Belleville, Illinois
+
+Name of observer Lt Col Wm T, Hull
+
+Occupation of observer Pilot, ar eee ee Flying Teng
+
+Address of observer Scott AF Base, Belleville, Illinois
+
+Place of observation (?) oy
+
+Number of objects 1
+
+Distance of object from observer n/s }
+
+Time in sight y/s
+
+Altitude Undetermined but below 6,000 ft
+
+Speed Approx 500 MPH
+
+Direction of flight 295° S of Base then 340° upon reaching
+south end of Scott AF Base
+
+Tactics Zigzag course
+
+Sound None
+
+Size Six or eight inches in diameter
+
+Color White light
+
+Shape 4Anprox round
+
+Odor detected n/s
+
+Apparent construction n/s
+
+Exhaust trails None
+
+Weather conditions Complete overcast at 6,000 ft
+
+Effect on clouds y/s
+
+Sketches or photographs None @*3 ig e 7 9 ra Tr ry
+
+Manner of disappearance Wsuoe an }
+
+Rehiarks No aircraft flying in the vicinity
+of Soott AF Base at the time light
+
+1.
+2.
+3.
+4.
+5.
+6,
+
+7.
+
+10.
+at)
+2B...
+13.
+14,
+15.
+26.
+17,
+18,
+19.
+20.
+21.
+22.
+23,
+24,
+25.
+
+26.
+
+CHECK-LIST + UNIDENTIFIED FLYING OBJECTS
+
+4
+
+Date 12 Dec 1947
+Time 2205 «& 2208
+Location Oslo, Norway \
+Name of observer : Deughter to MA Kai E, Rasmussen, Col GSC
+
+Occupation of observer n/s
+
+Address of observer Same as MA, Oslo, Norway
+Place of observation Oslo, Norway (Ground)
+Number of objects 1
+
+Distance of object from observer n/s
+
+Time in sight -Between two end three seconds
+
+Altitude N/s (apparently traveling fairly close to
+ground or would be visible to more peonle)
+
+Speed Not quite as fast as a meteor
+
+Direction of flight SSE-SSW to NNW-(?)
+
+Tacticd ©. Performed arc of circle, curvature-very great
+Sound None
+Size N/ s ‘s
+rr , TID <
+Color ‘ Iuminous White with greenish-yellow tail
+Shape n/s
+Odor detected None
+Apparent construction Meteor-like ®
+Exhaust trails Greenish-yellow trail
+Weather conditions No fog, sky clear and ster-lit
+Effect on clouds reser bf en
+Sketches or photographs none a
+Manner of disappearance Trees obscured vision "3
+
+Remarks: Office employee reports umisuel no. of falling stars
+night of 13 Dec.
+
+Univ Observatory has no record of incident, i
+
+AS
+
+INCIDENT 133
+
+10.
+ll.
+12,
+13.
+14,
+
+15.
+
+23.
+
+24,
+
+25.
+
+26.
+
+ SSCTRMOTED
+
+CHECK-LIST + UNIDENTIFIED RL¥ING OBJECTS
+
+Date 20 = 26 Feb ig |
+Time Usually around 2130 hours
+
+Location n/s (Norway Denmark & Sweden)
+
+Name of observer N/ 8
+
+Occupation of observer n/s
+
+Address of observer n/s
+
+Place of observation y/s
+
+Number of objects n/S
+
+Distance of object from observer y/s
+
+Time in sight n/s
+
+Altitude From tree-top level to 20,000 £
+Speed one to two miles per second
+
+Direction of flight Come from direction of Pernemunde
+
+Tactics n/s
+Sound y/s
+Size n/s
+
+Color . (green tail)
+
+Shape n/s
+
+Odor detected 0/8
+
+Apparent construction n/S CHa
+Exhaust trails green
+
+Weather conditions N/s
+
+Effect on clouds n/s
+
+Sketches or photographs None
+
+Manner of disappearance y/s
+
+Remarks The trend of these objects to appear at2130 Bee a 2
+
+might be significants:, =: G> Tem ry bd oP
+
+Incident:
+134
+
+(2)
+
+see sketch
+
+Sad
+
+10.
+ll.
+12.
+13.
+14,
+15.
+16.
+17,
+18,
+19.
+20,
+21.
+22.
+23.
+24,
+25.
+
+26.
+
+&e %
+
+CHECK-LIST ¢ UNIDENTIFIED FLYING OBJECTS
+
+Date FOCGHCOURE 25 May 1948
+
+Time 1500 hours (Eastern Daylight Saving Time)
+
+Location Selfridge Fld, Mt. Clemens, Mich 48 ‘MacDill AF Base
+approx 6 miles east of Monroe, Michigan
+
+Name of observer Lt Kokolonis
+
+Occupation of observer Ist Lt, Corps of Engineers
+
+Address of observer Selfridge Field
+
+Place of observation 6 miles east of Monroe, Michigan
+
+Number of objects 5 - three at first - two later
+
+Distance of object from observer 2 miles to left (first 3)
+2-1/2 miles to left ( two)
+
+Time in sight 10 te 15 seconds
+Altitude 8,000 +
+Speed over 500 MPH
+
+seven o'clock position to es: heading north.
+Direction of flight HHXxheading from MaaDill to Selfridge
+. making abrupt turn to right (pilot's left))
+Tactics Maintained nose-up attitude. Made abrupt turns.
+
+Sound None
+
+Size 300 to 400 ft approx. - size of lake freighters (500 ft)
+Color silvery-gold color
+Shape disc
+Odor detected xfs
+Apparent construction w/s
+Exhaust trails mone
+Weather conditi Clear - visibili “et 41 Ss
+0) 2 ra 2
+
+ig High overcast ea, ft w/ehin stratus
+Effect on clouds Fy hal very broken at 8,000
+Sketches or photographs Sketch showing approx positions
+
+Manner of disappearance lost in he te at 7 o'clock position to pilot
+
+Remarks Objects maintained smooth track thru sky, and flew
+
+in line of stern stepped up. In second sighting the second object
+flew about 50 feet higher than the first. All had hazy or fuzzy outline.
+
+Moy
+
+INCIDENT
+
+é
+is
+
+10.
+ll.
+12.
+13.
+14,
+15.
+16.
+AA
+18,
+19.
+20.
+21.
+22.
+23.
+24,
+25.
+
+26.
+
+CHECK-LIST + UNIDENTIFIED FLYING OBJECTS
+
+Date
+Time
+Location
+Name of
+Occupati
+
+Address
+
+Place of observation
+
+28 May 1948
+
+1500 hours (Eastern Daylight Saving Time)
+
+B>> gute to
+
+fridge Fld., Mt. Clemens,
+Position: 6 miles due east of Monroe, Michigan
+
+observer M/Sgt Ernest Davis, Jr. (colored)
+
+on of observer w/Set
+of observer Selfridge Field
+
+Number of objects e
+
+Distance of object from observer
+
+Time in sight 30 seconds
+Altitude approx 8,000 ft
+Speed
+
+Direction of flight
+
+Tactics
+Sound
+Size
+Color
+
+Shape
+
+Mich f/facDill Fld
+
+eux OU Over 100 miles per hour
+
+Pursued straight course
+
+nfs
+
+Appeared to be four feet in diameter
+
+Shiny brass
+
+round
+
+Odor detected N/S
+
+Apparent construction nfs
+
+Exhaust
+
+Weather
+
+Sketches
+
+Manner of disappearance
+
+Remarks
+
+trails None
+
+conditions Clear, high overo:
+
+6 miles due east of Monroe, Michigan
+
+25 to 30 miles to aux left
+
+South West from 35° at 8:00 o'clock position
+
+ast at 18,000 ft; thin stratus
+
+layer broken at 6,000 ft, lateral visibilitys
+Effect on clouds ie to 15 miles
+
+or photographs Sketoh
+
+Discrepancy as
+as sighted by
+
+seen flying over wo
+
+nfs
+
+to position of 2nd object in group 2
+
+Lt Kokolomie (Inc 13l)
+Witness perceived only top-side of object.
+
+oded section
+
+Objects
+a7
+INCIDENT: 135
+
+af
+
+CHECK-LIST < UNIDENTIFIED. FLYING OBJECTS
+
+Date Between 15th & 20th aug ¥
+
+Time * 2130 MST .
+
+Location Rapid City AF Base, Weaver, S,D,
+
+Name of observer Maj Elmer H. Hamer, #, (A0-46014)
+
+Occupation of observer Intel Officer
+28th Bombardment Group (WR)
+Address of observer Rapid City AFBase
+
+Weaver, S. D.
+Place of observation Weaver, S, D.
+
+Number of objects 12 (Approx)
+
+Distance of object from observer 4 miles
+
+Time in sight yn/s
+
+Altitude 10,000 ft to approx 6,000 ft.
+
+Speed 500 MPH +
+
+Bieitinn at et eee os nee in Si
+Tactics tight diamond-shaped formation
+
+Sound no noise heard
+
+Size Length: 100+ ft estimate
+Color Yellowish-white - brilliant
+Shape Elliptical
+
+Odor detected y/S
+
+* Apparent construction NY)
+
+Exhaust trails None
+
+Weather conditions Clear, no clouds, stars visible, wind, calm
+visibility 30+
+
+Effect on clouds none
+
+Sketches or photographs Sketches
+
+Manner of disappearance Disappeared on a SW heading
+
+Remarks There <ppears to be minor discrepancies as to
+speed and altitude in the report given verbally Z y
+
+to Glasebrook and ltr to this Hq f/¥aj Hammer
+
+——= ss re
+
+At approximately 2140 hours, 30 June,
+with a streemer of bluish color trailing, traveled thru the sky
+
+@ ball of fire of orengescolor
+
+in a westerly direction and disappeered over the horizon to the
+
+west. The object traveld at a very fast rate of speed. No cound
+wes heard. if
+
+Witnesses: Mrs, Whitehouse, wife of Maj Harvey J. Whitehouse,
+- C. 0., ASU 3319 Fennesee 5
+
+ORC instructors, Knoxville, Tenn,
+Mr. Tryus W. Setliff (See Incident 136a)
+
+Mrs, Whitehouse stated that the object remained visible for
+
+3 minutes and that the streamer emitted sparks.
+
+Mr. Setliff stated that: the object was visible for about 3 seconds *
+and traveled at sn estimated speed of 1,000 miles perhour at en
+altitude of about 30,000 fect, 2
+
+approximately
+
+1360
+
+%,
+Ss
+3.
+4.
+5,
+6.
+w
+8.
+9.
+10.
+it,
+12,
+13,
+14,
+15.
+16.
+17,
+18,
+19.
+20,
+
+21,
+
+@ Keo
+CHECK-LIST + UNIDENTIFIED FLYING OB. TS
+
+Date 30 June 1948
+Time 21h0
+“Location S. Knoxville, Tenn
+
+Name of observer Mr Tryus W. Setliff
+Occupation of observer wy/s
+
+Address of observer Oakridge, Tennessee
+Place of observation Knoxville, Tenn
+Number of objects 1
+
+Distance of object from observer N/S
+Time in sight 3 seconds
+
+Altitude LAOOOAASHSEASK 50,000 ft
+Speed 1,000 MPH
+
+Direction of flight Westerly
+
+Tactics n/s
+Sound n/s
+
+Size n/s
+
+Color ofanEe Color
+Shape Ball
+
+Odor detected n/s
+
+Apparent construction Fire
+
+Exhaust trails Bluish Color
+Weather conditions n/s
+Effect on clouds n/s
+
+Sketches or photographs None
+Manner of disappearance Over horizon to West
+
+Remarks
+
+my
+INCIDENT SUMMARY SHEET
+(To be filled out and retained in files)
+
+Date of Observation 7 Jwly- 1948. . . Incident # 137
+Time of Observation@¢M} ama 2125... .
+
+Where was Object(s) Sighted .Gampel MMQ1, Morth Carolina -
+
+Observer's Position Om gyound at.Chgpel,. IG. -.--
+
+(ive. ground, air, control tower, etc.)
+
+Name and Address of Observer University. of North Carolina. .
+
+Occupation and/or Hobbies .Mathemmies. Instructor. .. . .
+
+Attention Attracted to Beh UR) gy eek a. ation te ee” sll gticeie thy
+
+Numbar! of Ob ject(e) Sighted Ms, a wasm ele ws 0 0 Hime Se eae
+
+Size of Object(s) .3-1/2% in.length viewed-perspsctively about size-of a/e
+
+Colon oP Ob SRtCR) ie wits 19 a: Stor Bilas WAR Colgan to fe sie oy) le MIS wees po pln
+
+Shape (Sketch if Possible) Blunt fromb tapering.to @ point in-the-rear - - -
+shaped like a cigar.
+
+Nature of Luminosity 2.066 see ee et ew wee ee ee ee ee
+
+Estimated Distance of Object from Observer Jam. .......
+
+Speed of Object(s) Mge Geek. 2... 2 ee ew ew
+Time in Sight .Apgpyoximately.l.mimte..........
+
+Tactics Did not puysue « general -course, but moved ‘general ly ‘io irth
+
+Sound Made -by/Objech(s) ic) os 6. Bi ecee erie eae Be 0 giclee w
+
+Direction of Flight of Object(s) Mast.Morthimst. .....+.-+6-
+
+Apparent Construction (Of What Material or Substance) . . 2s.
+
+Effect of Objects on Clouds and/or Exhaust Trail Met.visible. ...
+
+Weather Conditions Existing at the Time . Gleam... ‘
+
+Peculiarities Noted . .. +...
+
+Summary of Incident Gbgets-seemed to -leve-a- blunt -
+‘ein the aky, vere about
++ any wings or-any apparent) was-of getting arounl -in the
+(Attach a Separate Sheet i
+
+e
+
+13.
+1h.
+15.
+
+Ter
+
+CHECK-LIST - ‘UNIDENTIFIED FLYING OBJECTS
+Dato 7 Jul 48
+Timo 2114 and 2115
+Location Chapel Hill} -N. C.
+
+Name of observor H. W. Daniels
+
+Occupation of obsorvor Capt., Infantry, Reserve
+
+Address of observor Box 188, Chapel Hill
+Placo of observation Chapel Hill, N. C.
+
+Numbor of objocts three (3)
+
+Distanco of object from observer N/S
+Timo in sight Approximately one (1) mimte
+Altitudo Extreme
+
+Speod High
+
+Direction of flight Hast Northeast
+Tactics n/s
+
+Sound Jet
+
+Size y/s
+
+Color y/S
+
+Shapo y/S
+
+Odor dotectod n/s
+
+Apparent construction n/s
+
+Exhaust trails Not Visible
+
+Weather conditions Clear
+
+Effoct on clouds y/g
+
+Skotches or photographs None
+
+Manner of disappoarance y/s
+
+Romarks:
+
+Incidont # 1372
+
+INCIDENT SUMMARY SHEET
+(To be filled out and retained in files)
+
+Date of Observation .8,dwly 19M... . Incident # 136
+Time of Observation 0920 brs. ....
+Where was Object(s) Sighted .@olumbus Ghfe. ...
+
+BWR by oS Faicie PONE Ae ek aL ose t
+
+Observer's Position .@powmd,. Columbus, Ohio .
+
+(i.e. ground, air, control tower, etc.)
+
+Name and Address of Observer . Mts Wilda 2ittek, 2579. Avalon Ave, .Colusbus -
+
+Occupation and/or Hobbies . Momm@wAf@ .. 0... ....-2250-50.0-,
+
+Abtenbion- Attracted to Object ta)! Byers 6 te? aii ence ce ew ec aS alee lee
+Number of Object(s) Sighted. @... wt enti) Zot aid Se aain eae
+Size of Object(s) .Mi bingeulers (Type M3, .6.x.30).chout.3.1/2" in. length
+Coterl oF Ob sock Cs) MMMM © $6 esse hiecre! ps dey latin we wii on W pep olcmeteciie
+Shape (Sketch if Possible) lm @ Giger @ fompedo.............
+Nature of Luminosity .....
+
+Estimated Distance of Object from Observer @ Mititade.was.about.3000'. . . .
+Speed of: Ghjectla) ass! te)e SN ehiw ewe le alae eo
+
+TActL.cs Ge MMMM 6 se ois orem fede ieee ce)s s ebb es aces 8
+Sound Made by Objects) SRNR. . 6 6 was sre iets 0k ee ale
+
+Direction of Flight-of Object(s) Maret headed North Dast.then North . .
+
+Apparent Construction (Of Material or Substance) . Mewillde. .. .
+
+Effect of Objects on Clouds and/or Exhaust Trail . % Mote.
+
+Weather Conditions Existing at the Time < eileen: as clouds. =
+
+Peculiaritics Noted « Mrs Zittek-said that the objeets looked-like somthing
+£5 fhest nae pelle g req
+locked like a é
+
+—_ ary ©. ferent Tsun Dhtotemment
+fet pro for ttnae ts litt, Ftternn
+the air at: the: tims of* -" pe P
+
+(Attach a Separate cnet Ne Addi: s Needed)
+
+Incident # 138 cont'd
+
+Capt Darnell, pilot of one P-80 wes flying a loose formation in trail
+of Lt. Collins while pacing him in a calibrated speed check, The aircragt
+were not equipped with wing tanks (Tip). The pilots stebed that they were
+in the Columbus Area, Mrs Zittek's position we froma three quarter pos-
+ition at sighting,
+
+4n article was published by the Columbus News Paper, Columbus,
+Chie, 8 July 1948,
+
+242603 Incident # 138
+
+de ée
+
+Information received from Captain Boyd, District Intelligence Office,
+320 Old Post Office, Columbus, Ohio
+
+Unconventional aircraft sighted by Mrs. Wilda Zittek, 2579 Avalon Ave., Columbus
+
+at 0920 on 8 July. Weather was clear, sun shining brightly, no clouds near the
+
+object. She first saw the object with her naked eye, then spent two minutes
+looking for binoculars. Observed the object for about two minutes with them.
+There were two flying objects; both appeared to have a blunt front and seemed
+to taper to a point at the rear, The shape was very much like a cigar. The
+sun was shining on them and they appeared to be silver in color. With the
+naked eye, they appeared to be about the size of airplane when writing in the
+sky. They were about 32" in length and 1" in diameter. In other words, they
+seemed to be a little more than three times the diameter in length. Speed
+was not estimated. Observed for approximately four minutes. When first seen,
+they were headed northeast.:| Seemed to bob up and down rather than pursuing
+a set and steady course. Altitude was judged to be approximately 3000 ft.
+
+No sound audible from the object; no exhaust treil visible. First seen in
+east going toward Fort Columbus, then moved generally north from there.
+
+Binoculars were M3 ¢
+
+The following was broadcast over radio this morning (9 Jul) but persor not yet
+interviewed: On 7 July, five members of one family saw the objects which looked
+
+like pie pans, directly over Port Columbus.
+
+Interrogation ~~ ne
+MCI AXO-3 woraxo-4 12 duly 48
+
+1. Contacted Captain Dwight I. Boyd, District Intelligence Officer, 109 CIC
+Detachment, Old Post Office Building, Columbus, Ohio, at 0900, 10 July 1948. Read the
+agents’ report and proceeded with the agent to the home of Mrs. Paul Vittek, 2579
+Avelon Avenue, Columbus, Ohio
+
+2. Interviewed Mrs. Vittek and received the same information as contained in the
+agents' report (WD AGO Porm 341) except that the bobbing movement described there was
+brought out to be a amoothiguntilatirie: movement “like something going through air
+
+currents".
+
+3. ‘The subject stated that the object was ciger shaped, with a blunt nose and the
+tail obecured. "I couldn't make it out plain. It was like a dark blot”. The main
+thing that had attracted her attention was the sunlight reflected from the shiny center
+of the object, both ends being indistinct.
+
+4, The sudjects' powers of observation were checked on aircraft flying in the
+area and were found to be good as far as direction and movement were concerned, but
+for distance and altitude. The binoculars were checked and found to be Type M3,
+x 30, with artillery mil scales imposed. No blemishes or defects in the optics were
+
+found. The subject had no acurate idea as to the amount of the mil scale the object
+occupied.
+
+5. Acheck at Patterson Field Operations showed two F-80's in the air at the time
+of the sighting. Contacted Captain Darnell, MORFOF, the pilot of one of the F-80's who
+stated that he was in the Columbus area at the time of sighting. He was flying a loose
+formation in trail cf Lt. Collins while pacing him on a calibrated speed check. The
+
+oe were not equipped with wing tip tanks.
+
+6. In view of the fact that Mrs. Vittek's sight of the objects was from a three
+quarter rear position it is highly possible they were the two P-80's in the Columbus area -
+as this position from a distance lends itself to a distortion comparable to what she saw,
+i.e. blunt nose, obscure tail, and apparent lack of wings.
+
+7.  <Acheck was made with the Intelligence Officer at the Port Columbus Naval
+Air Station with negative results. ; a A
+
+ATI Branch, Operations Section
+Technical Intelligence Div
+
+ie
+2.
+
+Be
+
+be
+6.
+Te
+
+8.
+
+22.
+236
+ah.
+256
+26.
+
+ue - UNIDENTIFIED FLYING OBJECTS
+
+Date 9 Jul 4s " Incidont # 139
+Time 2147 :
+Location North end ‘of Osborn, Ohio
+
+Namo of observer (Clarence Glasebrook, lst Lt., USAT, Hq AMC (MCIAXO-4)
+Occupation of obsorvor ATI Investigator
+
+Address of obsorvor Hq AMC (MCIAXO-4)
+
+Placo of observation ground
+
+Numbor of objocts one
+
+Distance of objoct from obsorvor n/s
+
+Timo in sight Appeared 3 times each time being 1-2 second duration
+Altitudo 3000 to 4000 feet
+Speod between 500 & 600
+Direction of flight west (east to west)
+
+Tactics Made intermittent appearances at regulated intervals
+Soumda None
+
+Sizo could not be estimated
+
+Color pale yellowish white (luminous)
+
+Shapo N/S
+
+Odor dotectod y/s
+
+Apparent construction n/s
+
+Exhaust trails None
+
+Woathor conditions Clear w/quarter moon in the East-Southeast.
+Effoct on clouds n/s
+
+Skotches or photographs None
+
+Manner of disappearance Suddenly at angle . rox. 70° to horizon
+
+in front) of observ o was looking na th
+Romarks: 3 y ‘
+Lt. Glasebrook was a reconnaissance pilot in World War II.
+
+AO eae 2
+
+Unidentified Flying Object”
+
+MCTAXO=3 MCTAKO-, 16 July ls
+
+ls At 2147 hours on 9 July 19/8, the undersigned sighted an unidentified object
+flying from east to west at approximately three or four thousand feet over the north
+end of Osborn, Ohios
+
+26 The object appeared as a pale yellowish white light that seemed to glows I+
+was not a direct beame The light was traveling at a rate of speed between five or
+six hundred milese It appeared long enough to allow the observer to determine its
+flight path (approximately one to two seconds) and then went outs There was a pause
+of three seconds, the light then reappeared agein for the same length of time, another
+three-second pause and the pattern was repeateds After the third appearance it was
++ seen againe The final sighting was made with the object at an angle of approximately
+to the horizon in front of the observer who was looking northe The last sighting
+was slightly above the horizon to the west, just north of Pattern Fields The inter=
+mittent appearance of the light was at a regulated intervale
+
+Be The sky was clear with about a quarter moon rising in the East-southeast;
+however, nothing could be ascertained except the glow of the lights ‘There was no sound
+or traile
+
+ls The undersigned was a reconnaissance pilot in World War II and served for
+eight months in the 160th Reconnaissance Sqd+ (J«ePe) flying FP-SO type aircraft.
+It is believed that his powers of observation are above average and that the estimates
+of speed can be considered to be fairly accurates
+
+CLARENCE GLAZEBROOK cwG/aw
+
+lst Lt., USAF Ext 65310
+Bldg 288
+Post 201F
+
+le
+25
+Be
+he
+Se
+6.
+Te
+8.
+De
+10.
+ll.
+12.
+2B.
+ik.
+15.
+
+16.
+
+17.
+18.
+19.
+20.
+
+21.
+
+23.
+
+eX
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+
+Date 1 July 198 Incidont # 10a
+Time Between 2100 and 2200 hours
+
+Location Gahanna, Ohio
+
+Namo of observor Mr Jack Taylor
+
+Occupation of obsorvor N/S but now active in National Guard
+Address of observor n/s
+
+Placo of obsorvation Gahanna, Ohio ( ground )
+Numbor of objocts 1
+
+Distanco of objoct from observer w/s
+
+Timo in sight 2 seconds
+
+Altitude 3000 to 4000 ft
+
+Speod terrific
+
+Diroction of flight Northeast to Southwest
+
+Tactics Pursued xkraightxtina flat line of flight
+Souna None
+
+Sizo nfs
+
+Color bright yellow-white
+
+Shapo B/S
+
+Odor dotectoa N/S
+
+Apparont construction luminous
+
+Exhaust trails WN/S
+
+Woathor conditions Clear - bright moonlight
+Effoct on clouds n/s
+
+Sketches or photographs None
+
+Manner of disappoarance N/S
+
+Romarks : Mr. Chester Taylor gave the same version as that of his
+son. Mr Taylor a did not observe the phenomenon.
+
+Interrogation
+MCTAXO-3 MCIAXO=) 19 July Le
+
+1-  Proceeded to the home of Mr. Howard Enslow in Gahanna, Ohio, with an agent of
+the 109th CIC Detachment at 1000, 10 July 1918.
+
+2- Interviewed Mrs. Howard Enslow who stated that on the night of 1 July 1918
+between 2100 and 2200 hours, she, Mr. Enslow, Mr. and Mrs. Chester Taylor and their Sons,
+Harold and Jack, of 00 Grove St., Columbus, Ohio, sighted an unidentified object flying
+through the air. Mrs. Enslow described it as a "Beattiful golden seucer glowing like a
+halo with a silver rim around ite" Direction of flight was from Northeest to South-
+west and the object was visible for approximately therr secondse Subject was very vague
+
+appeared to attribute the phenomena to holy visitationse Was unable to contact
+© Enslowe
+
+3e Proceeded to the home of Mrs Chester Taylor and interviewed his son Jack, age
+23, who had three years service and is now active in the National Guards He stated that
+the object was a bright yellow-white light that moved through the sky at a terrific rate
+of speeds It was a glow and not a directed light and was ahout two seconds in durations
+It ditntt fade out but ceased abruptly. ‘The line of flight appeared to be flat and the
+object appeared from the Northeast going Southwest, at an altitude of about three or
+four thousand-feet. There was no audible noise although it was a quiet night and the
+object appeared close in at an angle to the horizon of about forty-five degrees.
+Although the sky was clear and the moon was bright nothing but the light was seens
+
+ke Mr. Taylor's story was the same as that of his sonts. Mrs. Taylor was in the
+ear and did not observe the phenomenas fhe other witness was not readily available.
+
+Se Proceeded to the sight of the observation and determined that, under the con-
+
+ions of course and altitude as estimated by the subject, it was possible that their
+e of vision was restricted by a grove of trees thus limiting the observed line of
+ight to the two three-second periods reporteds
+
+CLARENCE GLASEBROOK CwG/ew
+
+lst Lt, USAF Ext 65310
+Bldg 288
+Post 201F
+
+10.
+ll.
+12.
+13.
+1h.
+15.
+16.
+l7.
+18.
+
+19.
+
+21.
+22.
+23.
+2h.
+25.
+26.
+
+stationary and constant for
+
+CHECK=-LIST - UNIDENTIFIED FLYING OBJECTS
+Date 30 June 1948
+Timo 11:25 A. rae to 1:27 PM and shortly thereafter
+Location Hecla, South Dakota
+Namo of observor Norman Pfutsenreuter
+Oceupation of obgsorvor Chemical Engineer - Amateur Astronomer
+
+Address of observor Hecla, South Dakota m
+
+Placo of obsorvation Between Watertown, S. D., & Webster, Ss. D,
+
+Numbor of objects 1
+
+Distance of objoct from obsorvor y/s
+Timo in sight Slightly over two hours
+Altitude 150 miles (7)
+
+Speod Stationary
+
+Diroction of flight Stationary
+pprox
+Tactics Remained in one/pbsition then disintegrated
+
+Soumd Wone
+
+Sizo N/S
+
+Color Like polished aluminum... -~
+Shapo Changing
+
+Odor dotoctod None
+
+Apparont construction Seemed to be a cluster of parts a
+Exhaust trails Particles of disintegrating mass left very faint
+
+trails of vapor
+Woathor conditions Brilliantly clear (CAVU) - Wind velocity 3 MPH
+
+Effoct on clouds No clouds
+Skotches or photographs Map showing locations of sightings
+Manner of disappearance ‘Disintegrated into smaller pieces
+
+Romarks: Object appeared as cluster of parts which remained fairly
+some two hours when it underwent a rather slow
+
+change in shape. A large chunk fell off, Within the next 2-. minutes the —
+pation spot started to very sugeay, See eer Three larger parts meres 7
+over i
+
+é
+
+away out from the mass and formed a perfect isometric triangle, the
+remaining mass slowly moved into hu dreds of small parts seomingly
+leaving very faint vapor trails, The three remaining parts continued
+to move apart holding their related positions of a perfect triangle
+
+but gradually getting smaller and fainter until they dissappeared some 9
+minutes after the initial break-up. It could mmxtimeasily be seen
+
+that the parts were moving away from the earth,
+
+aha
+
+ie
+20
+
+3e
+
+De
+6.
+Te
+8
+
+10.
+
+23
+abe
+256
+
+26.
+
+f
+fk
+kt
+
+FLYING OBJECTS
+
+Date Incidont # 12
+
+Time
+
+Location
+
+Namo of observer Mr. Charles Shangle, Jr.
+Occupation of obsorvor
+
+Address of observor Boise, Idaho
+
+Placo of observation
+
+Number of objocts
+
+Distance of object from obsorver
+
+Timo in sight
+
+Diroction of flight
+Tactics
+
+Sound
+
+Sizo
+
+Color
+
+Shapo
+
+Odor dotected
+
+Apparent construction
+Exhaust trails
+
+Woathor conditions
+Effect on clouds
+Sketehes or photographs
+Manner of disappearance
+
+Romarks:
+
+le
+
+3.
+
+he
+
+7s a
+Ee 11s 1D) i ORE E
+
+WWE Gets S
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Date 2 July 4s - Incidont # yy
+Time 0245 \
+
+Location 20 miles south of Montgomery, Ala
+
+Name of WSECST a Pilot Clarence Shipe Chiles & Co-Pilot John B,
+
+Mr, McKelvie, (Occupation - N/S)
+Occupation of obsorvor Pilot and Co-pilot, EAL
+
+Address of obsorvor Atlanta Office of EAL
+
+Placo of observetion Air - 20 miles south of Montgomery, Ala
+
+Numbor of objects 1
+
+Distance of object from observer s B/S
+
+Timo in sight 5 to 10 seconds
+
+Altitude 5,000 ft
+
+speod 500 to 700 MPH (See Atlanta Constitution of 25 July 48)
+
+Direction of flight Southwest toward Mobile end New Orleans
+
+Tactics Pulled up with tremendous burst of flame (Atlanta
+Constitution - 25 July 4g)
+
+Soumd none
+
+Sizo 100 ft long and sbout twice the diameter of "B-29"
+
+Color n/S
+
+Shapo cigar~shaped
+
+Odor dotectod n/S
+
+Apparent construction y/S
+
+Exhaust trails red-orange fleme
+blue fluorescent glow running beneath the object
+
+Woathor conditions Full moon, cleer with broken cloud coverage of 4/10
+
+at 6,000 ft
+Bffoct on clouds 4/S - pulled up into one
+
+Skotches or photographs 2
+Manner of disappearance Disappeered intoa cloud
+
+Romarks: See attached statements
+
+le
+2.
+3e
+he
+5s
+6.
+Te
+8.
+De
+10.
+ll.
+12.
+13.
+1h.
+
+16,
+17e
+
+per eck.
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Date 24 July 4s : Incidont # ie
+“Time 0230
+
+Lécotion Near Blackstone, Va. enroute to Raleigh-Durham
+Name of observor Louis Feldwery
+Occupation of obsorvor pilot
+
+Address of observer LGA
+Placo of obsorvation Air - neer Blackstone, Va.
+
+Numbor of objocts Maly trail seen
+Distance of objoct from obsorvor n/s
+
+Timo in sight 3/S
+
+Altitude 3/8
+
+Speed terrific speed -
+Direction of flight 230°
+Tactics ‘frail covered an 80° to 90° arc laterally’
+
+Soumd a/s ) |
+
+Size y/ s ) ;
+
+color B/S - trail perceived - object |
+) wes not seen
+
+Shapo ¥/S )
+
+Odor dotectoa B/S
+
+Apparent construction y/s
+
+Exhaust trails Seemed to be a jet or rocket trail
+
+Woathor conditions at at Blackstone: 0/70 @ 4GF 112/73/72/
+wew 5/987. Gremnsboro end Raleigh-Daveh had 0/15 plus
+
+Effoct on clouds ¥/S LA
+
+Sketches or photographs None
+
+Marner of disappoararco ¥/S
+
+Romarks: (over)
+
+° RAPS esis
+
+eee ae ae ee ee icked up t
+appeared to be a jet or rocket trail. object leaving the trail was
+
+at terrific speed in a southwesterly direction and as nearly as
+they could edimate they calculated the degree of travel as 230°.
+
+Ceey See re ene, wre Sime ef 215% The jet or rocket trail at no
+time crossed their flight path. It wes on the distant western horizon at
+approx 20° above the horizon, ‘The trail covered an 80° to 90° arc laterally.
+
+-
+
+Le]
+
+NOTE: There is a 15 mimate difference in time f/this sighting ¥8(0230) to
+: the Tockat sighting at 205 tn sttmta sue 100't0 iS atlee
+stant. cent ee adem
+
+WOTE: The above time (0230) tallies with another ‘sighting by another pilot
+in the vicinity of Blackstone, Va, who saw a very unusual meteor
+that appeared to be on a bearing of about 210° from them traveling
+in a southerly direction above but close to the horizon,
+
+id a
+
+Supplement to Trip Report to Columbus, Ohio - i duly igs
+
+Res Atlanta Sighting
+THRU: Col Clingerman
+TO: Col McCoy
+
+and would periodically glance out the window.
+
+There
+illuminated the ground and the skies and the ground could clesrly be seen.
+Frequently they passed cumulus clouds. On one occasion as he was 1
+out he observed a sudden stresk of light moving in a southeastern direct:
+across the airway above the plane. He wondered if it were lightning but
+
+no
+
+observed the flame moved in a straight lime and
+was bright flame ~ he thought it was probably a light ch
+the edges were mowof a yellow fleme. He shifted his posit:
+
+for better observation, momentarily losing sight of it. Then
+
+agoin, He estimated the flame to be about 1/2 as far above
+plane was cbove the ground. He saw no physical shape - only
+flame moving in a straight line. The whole experience wa:
+
+detailed observation was absent. He heard no sound but stated that
+
+vibration of the plane was much greater than normal end that
+ble to hear amy sound from the outside,
+
+3. In the interview Mr. McKelvie stated to Maj Llewell;
+pilots seemed quite excited and that they appesred nervous over the episode,
+
+:
+:
+
+= om O28 Be ER seo
+a CUR BP & :
+Atlanta, Ga.
+
+Mr, S, L, Shannon
+Eastern Air Lines
+Miami, Fla,
+
+The following is a zepert of an unidentified aircraft which
+was sighted by John tted and me, as we were twenty miles
+southwest of Mon’ » Ala. July 24, 1948, as we were on
+Eastern's trip 576.
+
+At 2:45 A, M. we were cruising at 5,000 feet when there came, ‘
+what looked like a Jet type of atrcraft to our right end slightly .
+above meeting us. It wes a clear moonlight night with the visi-
+
+bility excellent; therefore, we were able to view ti as
+passed for 2 period of eround ten seconis, It
+were no wings present, that it wes by her
+
+type of power shooting fleme from the rear some fifty feet. There
+were two rows of windows,which indicated an and lower deck, from
+inside these windows « very bright light was glowing. Underneath the
+ship there was a blue glow of light,
+
+After it passed it pulled up inte some light broken clouds }
+end was lost from view. There was no
+
+felt ss it passed,
+
+After talking to the only passenger awake at the time, he
+oo eo ae
+
+I called the company at Co’
+ported fet arny craft and requested if the ATC had any aircraft
+under control. I was tela that no such craft was reported by
+either source,
+
+3
+:
+8
+
+/s/ ©. % Chiles
+G. Ss Chiles
+Capt EB. A. L,
+CG Ok Teka
+WW el NOP Sw el ee
+
+17.
+18,
+19.
+20.
+me,
+22.
+23.
+2h.
+256
+26.
+
+CHECK*LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 2 duly 4g
+Time 0230
+
+Incidont #
+
+Location Between Blackstone, Va. and Greensboro, N..C.
+
+Name of observer
+
+Occupation of obsorvor
+
+Address of observor
+
+Capt Perry R, Mansfield,
+Capt on 571/23 EAL
+EAL
+
+1a
+
+Placo of obsorvation Between Blackstone, Va. end Greensboro, HN. C.
+
+Numbor of objects
+
+Distance of object from observer
+
+Timo in sight
+Altitude  N/S
+
+Spood meteoric
+
+Diroction of flight
+
+1
+
+3 seconds
+
+southerly
+
+Tactics traveling horizontally
+
+Souna 4/8
+sizo 4/8
+color ¥/S
+Shapo 4/s
+
+Odor dotectod n/s
+
+Appa rent construction
+
+1/s
+
+Exhaust trails N/S
+
+Woathor conditions MXS CAVU
+
+Effoct on clouds
+
+4/8
+
+Skotches or photographs None
+
+Manner of disappearance
+
+Romarks: (over)
+
+"4ied out" in the
+
+CORT Ee
+
+ae
+4328 Bee
+
+n/s
+
+distance
+
+pilot
+At about 0230 on July 24, 1948, C. Kingsley/and Cept Perry R. Mensfield
+Saw what they thought was an unusual meteor. apo brighter than
+any ever seen before and traveling in a horizontal direction, slightly
+above the horizon. It was observed for 3 seconds before it dicd out,
+At no time did it appear to travel in a downward direction, Kingsley
+& Mansfield discussed the matter that the meteor appesred to be travel-
+ing horizontally.
+
+At the time they were traveling between Blackstone, Va., and Greensboro,
+S. C.. The sky was clear and the visibility unlimited, They were ona
+magnetic heading of 240° and estimated the object to be on a bearing of
+about 210° fpom them ~ that is - about 30 ° to the left of their heading,
+It appecred to be traveling in a southerly direction, above, but close
+to the horizon.
+
+NOTE: There is a 15 minute variance in ‘ikem time f/this sighting
+(0230) to the rocket sighting at O245 in Atiemte some 400 to
+475 miles distant, The time (0230) also tallies with Inc like
+Pilot Louis Feldwary's account of sighting a jet or rocket trail
+just after leaving Blackstone.
+
+- | ae ——
+
+@e © °c! ™@e
+J wWsIs Yas tm OO BOO en
+
+i CHECK-LIST - UNIDENTIFIED FLYING OBJECTS :
+1. Date 9 July 1948 : Incidont # 15
+
+2. Time 1205 AST ~
+
+3e Location Fielding Leake
+4. Namo of observors 1st Lt Dominick J. Caramia & Thomas B. Carpenter
+5. Occupation of obsorver s(VLR) Photo
+6. Address of observor: 72nd RCN Squadron (VIR) Photogrephic
+
+c/o APO 731, c/o Postmaster Seattle Washington
+7. Placo of obsorvetion Fielding Lake, Alaska (63°11' - 145° lo! w
+
+8. Numbor of objects Approximately 20
+
+9. Distance of objoct from obsorver 5,000 + above
+10. Timo in sight 5 seconds or less
+ll. Altitude 5,000 + immediately below the clouds
+12. Speod ~ over 500 MPH
+13. Direction of flight From WNW to ESB
+
+14. Tactics Jockeyed back end forth in the group formation (gave
+impression of shotgun blest pattern) but maintained straight
+
+15. Sound Lomi
+Loud roaring sound heard (thought it was strong wind) before |
+
+@ot objects were sighted; sound sharpened into a buzz as they
+tea Bae approached and passed,
+
+\ A 17. Color grayish black
+
+Shapo Sochetxapmxrentigoxxenixfram Spheroid or disc-shaped i
+
+19, Odor dotectoed N/S
+
+w
+@Q
+.
+
+20. Apparent construction  N/S |
+21. Exhaust trails none visible
+_ 22, Woathor conditions bright and sunny w/,2 strato-cumilus cloud coverage
+| 23. Effoct on clouds none - flew immediately below them
+2h.  Skotehes or photographs sketopy FR :
+(25. Manner of disappoaranco N/s  w/ W/ BW U
+
+Romarks; The odjects resembled a group of dots, grayish black in
+color and numbering about 20, They were plainly visible and either
+
+F spheroid or dise shaped. hay appmereet be ockeying beck tnd
+(over
+
+SERENE eae BBL?! eee SAW et ON A Rg sae oni nee ESE Saba etn
+
+(
+
+a“
+
+i.
+
+be
+
+re
+
+18,
+19.
+20.
+
+el.
+
+gee
+co} pf
+
+CHECK-LIST = UNIDENTIFIED FLY’
+Date 17 duly 1948 Incidont # 146
+
+Time 1650
+Location Vieinity of San Acacia Dem, 65 miles south of Albuquerque
+
+Hamo of observer 8 M/Sgt Wm R, Carter & M/Set Bernard E. Harvey
+
+fax Carter: Armament technician
+Harvey: experienced AF non-com
+
+Address of observor 428th AFBU Kirtland AF Base
+Placo of observetion Vicinity of Sen Acacia Dem
+
+Occupation of obsorvors
+
+Numbor of objcets 7
+
+Distanco of objoct from observer 4/8
+
+Timo in sight ¥/S
+
+Altitude 20,000 ft
+
+Spood 1,500 MPH (if estimated altitude correct)
+
+Diroction of flight northerly heading (between north and northwest)
+Tactics Maintained formation
+
+Souna B/S
+
+Sizo y/s
+
+color Goler of alumimum aircraft at high altitude
+
+shapo Waen overhead: cirealar, After passing zenith: indeterminate
+Odor dotectod 3/S }
+
+Apparent construction metallic s
+Exhaust trails none . 2
+Weather conditions cAyD At 20,600 ft wind velocity 8 to 10 miles
+ekroue od ievoute _a/s
+
+Sketches or photographs Hone
+
+Manner of disappearance 2S In northwest
+
+Romarks: (over)
+
+JXISST CE ELOV G Cth.
+
+About 65 miles south of Albuquerque 7 unidentified objects flying on
+northerly heading were observed, Objects initielly in V formation at
+
+traveling at a great rate of speed, The color wes that of aluminum at
+
++ It the altitude estimation
+is correct the speed could be estimated as 1500 MPH, There was no vapor,
+smoke or other trail visible, They did not appear spherical when viewed
+at oblique angle. Disappeared on heading between north and northwest.
+
+AGENTS NOTES: Set Carter is 2 sober industrious, level heeded individual,
+an armament technician of outstanding vaste © Definitely
+not the type to experience hallucinations, fo received
+in other instances from this individual in each instance
+proven accurate,
+
+Sgt Harvey is an experienced AF non-com accustomed to
+the sight of aircraft at various altitudes and speeds,
+
+EVALUATION OF INFORMANTS: "A"
+OF INFORMATION: 3,
+
+he |
+5e
+6.
+Te
+8.
+De
+10,
+aii
+12.6.
+.
+1h.
+15.
+16.
+17.
+18.
+
+19.
+
+26.
+
+CHECKLIST - UNIDENTIFIED FLYING OBJECTS
+Date 27 duly 19hg
+
+Time + 2200
+
+Location Springfield, Ohio
+
+Hame of observer Mrs, H, H, Gibson
+eee of obsorvor Housewife
+
+\sddross of observor , 1217 East Main St.
+
+[Place of observetion Springfield, Ohio
+Nunbor of objects z
+Distance of object from obsorver N/S :
+
+Tino in sight 3 seconds
+
+Altitude Great height
+
+Speoa Thet of a jet plane
+
+Diroction of flight Heading North
+
+Tactics None - traveled in a straight line
+
+Sound None
+
+Size Witness stated object resembled a "mmge ball"
+Color n/s
+
+Shape Round
+
+Olor dotectea None
+
+Apparent construction 4/s
+
+Exhaust trails Bright red teil of fire.
+
+Weather conditions Some thunder and lightning
+Effoet on clouds 4/5
+
+Sketches or photographs None
+
+Manner of disappearance Flew out of sight ‘
+
+Romarks: See attached
+
+CONFIDENTIAL
+
+Incidont # 147
+
+4
+
+al
+
+10.
+nl.
+2.
+13.
+1h.
+15.
+16.
+17.
+18.
+19.
+
+ps
+22.
+
+2.
+
+256
+
+| ak ;
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 28 July 194g
+Time a i .
+Loestion Springfield, Ohio
+
+Kamo of observor Mrs. Rose Henry
+
+visa of obgorvor Housewife
+
+Address) of observor 826 Dibert Aveme, Springfield, Ohio
+Placo of observetion 26 Dibert Ave., Springfield, Ohio
+Number or objects 1
+
+Distancy of objoct from obsorvor 3/§
+
+Timo ines Ist time: 5 mimates; 24 time: 15 mimtes
+
+Altituag N/S
+
+Spood | Remained nearly stationary
+
+ibbestsen of flight N/S
+
+Tactics Hovering
+
+tness thought she heerd sound of plane before she
+Sound ms wented ob geet fs
+
+Size About the size of a basketball
+Color Intense yellow
+
+Shapo Ron
+
+Odor dotected n/s
+
+Apparent construction 4/8
+
+Bxhaust trails 0/8 P
+Woathor conditions M/S
+
+Effoct on clouds N/S ,
+Skotehcs or photographs Tone
+Mannor of disappoerance Faded away
+
+vB.
+
+lve
+
+19+
+
+20.
+
+2l.
+
+23.
+
+256
+26,
+
+OT RIG | te!
+
+CHECK-LISt - UNIDENTIFIED FLYING OBJECTS
+Date 19 Jen 4g Incidont # 149
+Time 7:30 M
+Location North Jutland (Hjerrin, the Scaw and Hjerup)
+Name of observor 4W/S
+: Taken from OMA R-34-48 (HAD 11796)
+Oceupation of obsorvor W/S as prepared by Lt Col Franklin E,
+Tomlinson
+Address of observor 48/8
+Placo of observation ~ North Jutland
+Numbor of objocts AX Three
+Distance of object from observer x/s
+Timo in sight W/S
+Altitude 4/8
+Speed epperently rocket-like
+Direction of flight 2K East - West
+Tactics “suddenly stopped, exploded and disappesred"
+Sound u/s
+Size B/: 8
+Color ¥/ s
+Shapo ball - saucer
+Odor dotectod 3/s
+Apparent construction rocket~like objects
+Exhaust trails ‘mttoa& tail of green light
+Woathor conditions 3/8
+Effoct on-clouds ¥/ s
+Sketches or photographs Wone 3
+Manner of disappearance “Exploded and disappeared
+
+Romarks: (over)
+
+17.
+18.
+19.
+20,
+al.
+22.
+23.
+bbe
+
+“256
+26.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS"
+Date Approx 1 Mar 4g Incidont # 150
+Time “0930 hours
+Location Swedish Coast
+
+Namo of observor WN/S = a Norwegisn pilot
+
+Occupation of obsorvor ONL pilot
+
+Address of obsorvor y/s Material taken from MA R-130-48
+
+Placo of obsorvation Air = enroute from sates meee
+* Oslo, Norway
+
+Numbor of objocts 1
+
+Distance of objoct from observor y/s
+
+Timo in sight 4 seconds
+
+Altitude 20,000 ft
+
+Spoca WN/S
+
+Direction of flight Southeast - passing along Swedish Coast
+
+and disappearing over Norway
+
+Tactics  N/S - flight path followed earth's surface
+
+Sound W/S
+
+Size 3/s ak tiee
+
+color B/S wat @ bluish-green flame
+
+Shapo y/s
+
+Odor dotectod n/s
+
+Apparent construction y/S
+
+Exhaust trails Mone
+
+Woathor conditions 4§/S
+
+Effoct on clouds §/S
+
+Skotches or photographs None
+
+Manner of disappearance Over Norway
+
+Romarks: (over)
+
+An ONL plane enroute from 4albverg, Denmark, to Oslo, Norway, sighted a
+Projectile coping from the southeast, passing along the Swedish Coast
+
+and disappearing over Norway. The missile was at 20,000 ft and disappeared
+over the horizon in four seconds, It comitted@ a bluish-green flame but
+
+left no trail in the sky. The projectile seemed to fimm follow the
+earbh's surface. i
+
+NOTE: Similar missiles have been observed at Bjuken, Norway & Finse,
+Norway.
+In this connection, it is of interest to know that heavy water
+is currently being produced in Rjuken,
+
+Observers: A Norwegian pilot and his co-pilot,
+
+The pilot served with the Royal Norwegian AF in
+Great Britain,
+
+eo fem
+
+Te
+
+8
+
+De
+10.
+
+11.
+
+&e .
+
+w Wat
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Date 29 duly 1948 BARU gL
+Time 0955
+Location Northeastern part of Indianapolis, Indiana (See attached
+
+sketch of location)
+Name of observers Mr. Jemes W. Toney & Mr, Robert Huggins
+
+Occupation of obsorvors Both employees of W. 0. Jones Rug
+Cleaners “hee
+Address of observer  foney3 235 So Bradley, Indianapolis
+Huggins: 5040 Indiansole, lis
+
+Placo of obsorvation (See attached drawing of locatio:
+
+Numbor of objocts 1
+Distanco of object from obsorvor W/S - not over a few hundred feet
+Timo in sight 4/S
+
+Altitudo 30 feet - just above tree-tops
+
+Speed 25 to 30 MPH
+
+Direction of flight Headed south in bank to left
+
+Tactics gliding with no apparent spinning action
+
+Sound no discernible sound
+
+Size 6 to 8 feet long by 1-1/2 to 2 feet wide (See attach drwg.)
+Color Aluminum and shiny in color
+
+Shapo Shaped like a broad short propeller (See attached drwg.) ©
+Pica diskaciad < om/e
+
+Apparent construction Rauinenleonetraniien
+
+Exhaust trails None
+
+Woathor conditions CAVU - no clouds
+
+Bffoet on clouds Wo elouds
+
+Skotches or photographs 2 7
+Manner of disappoaranes Went down in wooded area (seemingly)
+
+Cm y
+
+Romarks: (over) “ : apne i By
+
+VS
+
+A AYES PPA mm Ace AR
+
+Object was shaped like a broad short propeller approximately 6 to § ft long,
+each blade approximately 2 feet wide and approximately one foot thick with
+cups on upper side of blades. It ered alumimm and shiny in color,
+Traveled approximately 25 to 30 It was sighted just above the trees
+at approximately a 30 ft altitude in bank to the left of approx 20° and
+appeered in a slight descent. There was no discernible sound end no ex-
+haust trail,
+
+NOTH: ‘ruck had just started across bridge (see drwe) when object was
+sighted directly ahead above the trees, Witnesses stopped on the
+other side of the cantilever bridge but could not relocate object.
+
+Seerch by Lt John E, Hoskins, Base PIO, and Lt Russell J. Carey, Jr.
+
+Base Intel Off. (331st AFBU) Res Tng Stout Fld. did not produce any
+result. However the area in which it was believed to have fallen is
+
+densely wooded with many hills and valleys, See diagram attached.
+
+6' to st
+
+/s/ Russell J, Carey, Jr,
+ist Lt., USAF
+Intel Officer
+
+a
+-*
+
+he
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Date 31 July 4s ‘ , Tmeddent # 152
+‘Time 0825 ”
+Location Inddemapolis, Indiana (South-Central part) 4
+
+Name of observers Mr, & Mrs Vernon Swigert
+
+Occupation of obsorvors X@#HBEX an electrician and housewife
+Address of observors 2020 Boyd St., Indianapolis, Indiana
+Placo of observetion As above —
+
+Numbor of objects 1
+
+Distance of object from observer ¥/S
+
+Timo in sight 10 seconds
+
+Altitude 2,000 ft
+
+Speed 1890 MPH
+
+Direction of flight 90° = east
+
+Tactics N/S
+
+Sound None £
+
+Sizo » OGEXE - © tt 10 ee
+
+center - Ratio about 3:1
+Color white with no shine
+
+Shapo like a cymbal
+
+Odor dotectod. ¥/S 7
+Apparent construction u/s
+
+Exhaust trails _ None
+
+Wotthor omanetons Sky clear
+
+Effoct on cow y/S
+
+Sketches or photographs 1
+
+Manner of disappearance 4/S
+
+Remarks: (over)
+
+Object first perceived in the west. The object wes shaped like a cymbal
+
+with smooth surfaces and approximetely 20 feet in diameter at the base
+
+and epproximetely 6 to & feet in height in the center. Ratio was sbout 3:1.
+It appeared to be flat white tn color with no shine. It traveled extremely —
+fast crossing the eky in approximately 10 seconds (a distance of about 5 miles,
+on a 90° heading, It maintained a level course and shimmered in the cun i
+giving the appearance of spinning, The altitude wes estimated at approx
+imately 2,000 ft. Object made no discernible sound and left no exhaust trail.
+No openings were noted. on the object.
+
+NOTE: Mr. Swigert was standing by open bathroom wimimxm window which
+faces the west when he wes attracted by the object in the sky.
+Couldn't believe his eyes. He rushed into adjoining kitchen
+and showed his wife the object thru the kitchen window facing south.
+He xhmmgkt stated the object appeared large enough to carry one
+person
+
+NOTE: Investigation conducted by Intel Officer, 1st Lt Russell J. Carey,
+Jr., on @ call from Mr. Swigert, It wes noted that visibility was
+good from both windows for such observation,
+
+No other reports received on this object.
+
+e sd Vi
+le
+2.
+3e
+he
+5e
+
+Te.
+8.
+
+10.
+id.
+12.
+i.
+1h.
+15.
+16.
+4 17.
+
+18.
+
+-STRICHED
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Dato ‘Xfce 5 Angust hg Incidont # 153
+Time 0100 hours
+Location Between Parrott, Ga, and Richland,Ga.
+Namo of observor Jemes Amaral, Former AF Pilot
+Occupation of obsorvor 4/S ~ but formerly AF pilot
+Address of observor W/S (Info forwarded f/Turner AF Base)
+Placo of obsorvation Between Perrott, Ge, & Richlani, Ga.
+Numbor of objects 1
+Distance of object from observer ¥/S
+Timo in sight 5 to 10 seconds
+Altitude 20,000 to 35,000 ft
+Spood Jf 3600 MPH (estimated)
+Direction of flight 250°
+
+Tactics “N/S .
+
+Sound Wone
+
+Size W/S
+
+Color Ddlue=white streak of light
+Shapo “stfeak"
+
+Odor dotectod 4/S
+
+Apparent construction "rocket-like"
+
+Bxhaoust trails A trail of sparks several miles long followed it
+Woathor conditions CAV
+
+Effoct on clouds -N/S
+
+Sketches or photographs None
+
+Manner of disappearance a/s
+
+Romarks: (over)
+
+a5
+
+A
+
+Witness was Scovel ing Detween Parrott, Ge., and Richland, Ga., in an
+aatomobile when he observed a brilliant blue-wite streak of light which
+lasted from 5 to 10 seconds, traveling in an apparent level flight on a
+heading of approximately 250°, at about 30,000 ft altitude (estimated).
+After the light disappeared a trail of sparks was observed which appeared
+several miles long. This trail lasted from 45 seconds to (1) mimte
+
+NOTE: Mr. Amaral did not believe this to be any celestial bat based on
+his experience as a pilot in the AF, he stated it appeared to be
+a burst of power applied to a rocket or rocket ship.
+
+le
+2.
+be
+he
+5e
+6.
+Te
+
+Qe
+10.
+ll.
+
+12.
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+Dato 2 dug 4S
+
+Pas 1945 hours
+
+Location Columbus, Ohio
+
+Namo of observor Charles Saunders
+
+Occupation of obsorvor Sttorna
+
+Address of observor 2651/2 South High St
+
+Incidont # 154
+
+Placo of observation Yard of 1337 Clifton Ave., Columbus, Ohio
+
+Numbor of objects 1
+
+Distance of object from obsorvor 8/8
+
+Timo in sight 1615 mimtes
+Altitude 1,500 to 2000 ft
+Spood 15 MPH i
+
+Direction of flight Moving south from the north
+Tactics Constant slow speed - Once it hesitated & thin trail of
+
+Sound None
+
+Sizo Judged to be about 20 to 30 ft in diameter
+color W/S, Perimeter: constant grey-black, Center:
+
+amoke issued from opposite direction of travel. Changed position assuming
+
+different shapes
+
+transparent.
+
+circalar
+Sha po Changing. First: side-view: Parallelogram. Second: steskuar
+
+then reverted to original form
+Odor dotectoa B/S
+
+Apparent construction y/s
+
+Exhaust trails thin trail of smoke
+
+ather conditions CAV
+
+Effoct on clouds Mo clouds
+Sketches or photographs 4 sketches
+Manner of disappearance y/S
+
+Romarks: (over)
+
+D
+>
+
+957
+
+2 Ang 48 at approx 1945 a round object which appeared to be about 20 to
+ft in diemeter was observed moving in southerly direction from the
+
+rth over center of Columus, Had constant grey=black perimeter with a
+transparent center, The blue sky could be observed through this grey~black
+perimeter while it moved at a constant, slow speed of about 15 MPH, It
+made no noise of any kind, Once it hesitated in its movesents and a thin
+trail of anoke issued from the opposite direction of travel, The smoke
+
+soon disappesred and wes not seen again during the 10 to 15 mimtes object
+was visible to the observer, The object changed position = but not direction
+of travel - three times. When first seen, it evidently presented a side
+view which was a perellelogram in shape. (See). Slowly its position altered
+and it became circular in form, only to revert after a time to its original
+form, The altitude was judged to be some 1500 to 2000 ft above ground.
+
+SP
+
+8
+
+Agent's Note: Saunders drew the following sketches
+
+a me
+
+The above drawings const: Pare emncpestttens ef) 2nd yhnes. The
+GEatt pasted ns’ sates' at thnen ghozee @uring the 15 mimte period,
+
+2 + @
+
+tes
+
+ie
+
+3e
+he
+5s
+6.
+Te
+8.
+oe
+10.
+12,
+12.
+i.
+1h.
+15.
+16.
+17.
+18,
+19.
+20.
+
+21.
+
+23.
+ah.
+25.
+26.
+
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Dike; fee dna NE Incidont # 15Me
+Timo 7250 P.M.
+
+Location Columbus, Ohio
+
+awe of observer Jaymes Seunders, A, B., M, A,
+Occupation of obsorver Housewife
+
+Address of observor 1337 Clifton Ave, Columbus, Ohio
+Placo of obsorvetion Columbus, Ohio
+
+Numbor of objocts a
+
+Distance of object from obsorvor B/S
+
+Timo in sight 15 mimtes
+
+' Altituae WME 1/2 mile high
+
+Speod slow ahd regular speed
+eer Fy flight ° from North to South to Southwest
+
+Tactics/ Oblong to circular to oblong change in shape
+
+Souma Wone
+Size of emall plane
+Color a/s
+
+Shapo Changing but circular for the most pert
+
+Odor dotectod . ¥/S
+
+Apparent construction’ ¥/S -
+
+Exhaust trails teil of smoke
+
+Woathor conditions fevoreble for observation. Light sufficient
+without interference from son's rays.
+
+Effoct on clouds Cloadless
+
+Skotehes or photographs, None
+
+Manner of disappearance 3/8
+
+Remarks: (ower)
+a
+
+oI
+
+oS ee cB at 7:50 P. M. Mrs, Saunders observed an umsusl
+pinnate the esky. Her attention was directed toward it becouse
+
+some neighborhood children were Seem eden the north. ‘She
+called her lmsband, Charles Saunders, (Inc 154) to witness the
+phenomenon, ‘The sky was cloudless and the light more than
+sufficient, without interference from the rays of the sun which
+were hidden by the buildings of the city.
+
+Object first sppesred oblong in shape and was traveling from
+north to south at a slow, reguler speeds MEEJSEEXGRMSTEREXERIEES
+at a height of a half mile. During the 15 mimtes under
+observation the object treveled approx 7-1/2 miles. Although
+it did not change its course, it presented different erences
+from time to time. Pron chleig' ts eireutae tlhe Ae anlong.
+Object went thru this change three different times until observer
+lost sight of it. However, for the most part it presented a cir~
+colar appesrance, Se
+of the center. : o3
+
+da smoke emanating from the
+rear, “efter wzich the object contimed in a southerly direction,
+This tail of smoke was observed but once, The size appeered to be
+that of a small plane, It made no sound altho at one time observer
+thought she detected one, At approx 6:00 P, M. observer lost sight
+of the object just as it appeared to be changing direction from
+South te Southwest.
+
+10.
+
+ll.
+
+12,
+
+156
+16.
+17.
+18.
+19.
+20.
+21.
+
+23.
+
+256
+26.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+Date 3632 «531 July Lee
+Time 1630
+Location 480 N. Monroe Ave.,
+Namo of observor Mre, Edwerd G, Wateon
+
+Incident # 155
+
+Oceupation of obsorvor Housewife
+
+Address of obsorvor 480 N. Monroe Ave., Columbus, Ohio
+Placo of obsorvation Columbus, Ohio ~
+Numbor of objocts 6er7 5
+
+Distance of object from observer Very great distance away
+Timo in sight B/S
+
+Altitude M/S <= very great
+
+Speod Hovering
+
+Direction of flight 4/8
+
+Tactics Hovering hanging in the sky
+
+Sound y/s -
+
+Size of am ash tray
+
+Color gold
+
+Shapo -— starlike
+
+Qdor dotectod x/s
+
+Apparent construction ¥/S
+
+Exhaust trails n/s
+
+Woathor conditions CAYU - bright sunlight
+
+Effoct on clouds y/s
+None
+
+a/s
+
+Skotches or photographs
+Manner of disappearance
+
+Romarks : (over) va FR
+
+4b
+
+Witness Statement: — - .
+
++ distance and appeared to be about
+s
+lor and seemed to be just hanging in the sky.
+
+Corrowated by truck driver but/Sutd aot obtain his name,
+
+le
+2.
+36
+Le
+De
+5.
+
+8,
+on
+10.
+ll.
+
+12.
+
+17
+
+19.
+20,
+21.
+
+22.
+
+23.
+
+GE lev
+CHECK-LIST - UNIDENTIFIED FLYING OBJECTS
+Date 31 duly 48
+Time 8:00 P. M,
+Location + Columbus, Ohio ~ Trement Rd near WSU radio tower
+
+located near University Golf Course
+Name of observer Mrs, Martin Price & Mrs. Mary Rippetoe
+
+Mrs. Price: housewife
+Mrs. Mary Rippetoe: mother of Mrs, Price
+
+Address of observor 2186 Lemont Aves, Columbus, Ohio
+Placo of observation fremont Rd near WOSU Badio Tower
+
+Incidont # 156
+
+Occupation of obsorvor
+
+Numbor of objocts 2
+
+Distance of objoct from observer 250 feet
+Timo in sight 3/S
+
+Altitude 250 feet
+
+Speed very slow
+
+Direction of flight West to East
+
+Tactics Did not change course or altitude
+Sound No noise
+
+Sizo of gasoline drum = Approx 5' x 6!
+Color RX Black
+
+Shapo Oblong
+
+Odor dotectod ¥s
+
+Apparent construction n/s
+
+Exhaust trails Spouted black smoke from the top
+Woathor conditions Clear with no clouds
+
+» Bffoct on clouds No clouds
+
+Sketches or photographs None f .
+
+Manner of disappearance 3/S
+Romarks : (above) SGT bag se‘
+
+De
+
+On Saturday evening, 31 July 4S, at approximately 8:00 P. M. ,
+while driving south on Tremont Road as observers approached the WOSU
+Radio Tower located on the University Golf Course, a large object resem-
+bling a Img lantern was seen floating in the sky. The weather ws
+clear, and it was still daylight so object could be seen quite clearly.
+It was oblong in shape and about the size of a gasoline drum, It was
+coming from the west and moving very slowly. It passed close to the
+tower and was about 1/2 the height of the tower from the ground. As
+it passed overhead traveling east, it spouted black smoke from the
+the left side there was a dull enclosed light
+1; that of a lamp. ‘The object did not change its course or altitude
+but continued on to the east with black smoke trailing behind, The
+object was black, It did not make any noise. There were no wings visible
+nor did it have any motor. No openings of any kind could be seen.
+
+NOTE: Another car stopped near them with two occupants who claimed
+that they had never witnessed anything like it before.
+
+le
+2.
+Be
+
+he
+
+CHECK*LIST = UNIDENTIFIED FLYING OBJECTS
+Date 31 duly 48 Sar Znoidont # 157
+Time $390 P. M,
+Location Columbus, Ohio
+Name of observor Robert C. Goshorn
+Occupation of obsorvor ‘Teletype Operator
+Afidress of obsorvor State Highway Patrol Radio Station
+Phoeo of obsorvetion Near Golf Driving Ragge, Columbus, Ohio
+Number of objects 1
+
+thetic of object from obsorver Object was balloon which fell
+to earth & was investigated by observer
+
+Timo in sight Ws
+
+Altitude Ceme to earth from around 100 ft (when first observed)
+
+Speed 8/8 ‘
+
+iirdetada of flight earthward
+
+Tactics 3/8
+
+Sound y/s
+
+Sizo 2 ft x 3-1/2 tt
+
+Golor white crepe paper
+
+dhapo N/S = bat said to be like old time "County Fair" balloon - round
+
+ddor dotoctoa ¥/S
+
+FRREGE construction crepe paper
+
+Pehaust trails smoking - cmsed by large ball of weste material
+
+Woathor conditions W/S = (clear = see Incident: 156)
+
+Effoct on clouds B/S (no clouds)
+
+$kotcHes or photographs None
+
+Manner of aiweinsetarie Fell to earth where it was retrieved.
+
+Remarks: (over) 3
+1 > 9 EPSP AP
+
+Fz 8.
+
+fr er
+
+vy
+
+by
+
+Object was perceived floating in the sky coming from the west over Ohio
+State Student Housing Project and was approximately 100 feet off the ground
+when first observed. It got lower all the time and landed in a field nearby.
+Taree small boys ran toward it end observer went over to investigate.
+
+Saw paper beg affair approx 2 feet in diaketer and 3-1/2 feet long made of
+white crepe paper. (like old time "County-Fair" hot air balloons) It
+
+was smoking when first observed and this was caused bya large ball of waste
+
+material woich was fastened underneath it. There were no marks or writing
+mmnbchoico
+
+on it
+;
+
+Hote: See Incident 156 - in which time & direction tally.
+
+IE
+2.
+3e
+he
+5.
+6
+Te
+8.
+De
+
+10.
+ls,
+
+12.
+
+13.
+
+lhe
+
+15.
+
+16.
+
+17s
+
+18.
+
+19.
+
+20.
+
+21.
+
+25-
+26.
+
+&
+| OGG REI ERM ia:
+
+CHECK=LIST = UNIDENTIFIED’ FLYING OBJECTS
+
+Date 1 dug hs Incidont # 158
+Time 2:00 P. M.
+
+Location §S%H9KIE Groveport, Ohio
+
+vhmo of observer Harold A, Yantis
+
+Occupation of obsorvor Student, &
+
+Address of observor 25 West Hinman Ave,
+
+Flaco of observation ] mile west of Groveport, Ohio
+sada of objocts 1 P
+
+Distance of object from obsorvor u/s
+
+Timo in sight y/s
+.Altitudo fit very high
+
+Speca /S
+
+Direction of flight im westerly direction against a light wind
+
+Tactics N/S - just exhast visible - smoke pattern dark & very large
+spices coo emer t wena mame pret streak a mile or so in length
+Sound No sound twisted from wide to narrow streak
+
+: and back,
+
+$izo W/S - object not seen
+
+Color W/S = object not seen
+
+Shapo duét a streak observed
+
+Odor dotectoa B/S
+
+Apparent construction sfx An exhaust trail (smoke)
+
+Exhaust trails Appeared as black cloud with no definite shape but looked
+
+like an anti-aircraft shell a few seconds after it exploded
+
+Woather conditions ioudposomineootoods Few white clouds - but Geer
+Effect on clouds black cloud silhouetted among them that moved
+Sketches or photographs 3 figs.
+
+Mannor of disappoaranco 4¥/S
+
+Romarks: (over)
+> ea
+
+RH ey Ue _ Et Eas 8 US Seo
+
+Vve /
+
+Observer noticed what appeared to be a small black cloud between
+two white ones. ‘Seemed peculiar becemse the weather was
+there were a few white clouds in sky - but no other dark clouds
+or formations of any kind, The black cloud did not have any definite
+shape but looked like an anti-aircraft shell a few seconds after it
+explodes. Suddenly it stretched out into a wide streak with smaller
+vertical streaks, then rapidly turned and twisted, moving into a
+different direction and disappearing. In three or four seconds, the
+smoke burst appeared again spontaneously, approximately 20° west
+of the place where first noticed. Smoke pattern dark, very large, end
+dispersed rapidly, appearing again as a wide streak a mile or so in
+length which appeared to twist from a wide to a narrow streak and then
+back again changing direction as it twisted. Moving in westerly
+direction against light wind. Plainly visible altho far awey and very high.
+No sound heard. Seemed like a streak that would be made if a flying
+ae ore engines Witi= banking and turning and leaving exhaust
+8. =
+
+Note: Yantis was in the war and had seen a lot of anti-aircraft
+shells burst and many vapor trails from planes but had never
+observed anything like this. He states: "It was so spontaneous
+Like a rubber band which is round, then suddenly is stretched at
+length and twisted, and then disappears without a trace."
+
+Agent's Note: Yantis drew the sketches below
+
+Streak twisted and turned - suddenly disappeared n
+
+AED 28
+
+Sie z ees 283) let position
+width same - length |
+estimated at 1 to 2 miles
+
+17.
+18.
+19.
+
+20.
+
+6 gy ¢ ey A oR OP ee
+| e. % bee SY BESS WwW 4 e. t
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Gs 30 July 1948 Incidont # 159
+ime 2015 hours
+
+Location Worthington, Ohio
+
+Name of observer John A, Felton
+Occupation of obsorvor N/S
+
+Address of observor 5800 High St, Worthington, Ohio
+Placo of observation Worthington, Ohio
+Numbor of objocts 1
+
+Distance of object from obsorvor y/s
+Timo in sight 15 mimtes
+
+Altitude Approx 3000 ft
+
+Spooa very slow
+
+Direction of flight Sw
+
+Tactics None
+
+Sound None
+
+Sizo ¥/S
+
+Color silver
+
+Shapo cylindrical
+
+Odor dotectea N/S
+
+Apparent construction y/s
+
+Exhaust trails N/S
+
+Woathor conditions Glear with high scattered clouds, visibility good
+Effoct on clouds N/s 5
+
+Sketches or photographs None
+
+Manner of disappearance n/S
+
+Romarks: (over)
+
+e & ww
+
+Object appeared cylindrical in shape with no apparent wings or tail
+sarfaces, No standard marker lights were displayed and there were no
+engine noises, The object emitted a steady silver glow.
+
+Altitude was gudged to be approximately 3000 ft and the object was moving
+very slowly in a southwest course. It was in line of vision some 15 mimtes.
+No other aircraft, military or civilian were in vicinity of Felton's
+
+hearing or vision. The sky was clear with high scattered clouds and
+
+the visibility was good.
+
+NOTE: Felton questioned by Maj Campbell of the USAF, but nothing
+further was gained by this interview with the exception
+that his wife also saw the object.
+
+17.
+18.
+
+20.
+21,
+22)
+23.
+2h.
+256
+26.
+
+e reo |
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+
+a
+
+é %
+pate 4 July 48 Incidont_ # 160
+Time 11:15 P.M.
+
+Location Dravasburg, Pa.
+
+Namo of observer John Jannicky, Jr.
+
+Occupation of obsorvor y/s
+
+Address of observor Box 227, Dravasburg, Pa.
+
+Placo of observetion Dravasburg, Pa.
+
+Numbor of objocts 1
+
+Distance of objoct from observer 4/8
+
+Timo in sight 20 seconds +
+
+Altitude N/S
+
+Speed Hovering - then moving on at undetermined speed
+
+Diroction of flight 48/8
+
+Tactics moved across sky, stopping three times and resuming movement
+Sound No noise
+
+Sizo of a star
+
+Color same as a star
+Shapo looked like a ster
+Odor dotectod ‘n/S
+Apparent construction 4/S
+
+Exhaust trails n/s
+
+Woathor conditions 4/S
+
+Effect on clouds n/s : E
+Sketches or photographs — Vague sketch
+
+Manner of disappearance | a/s
+
+Romarks: (over)
+
+S
+
+On 4 July 48 at appro. 11:15 P. M., OST, witness and his wife thought
+they sew a star moving. There was a light in the sky the same color and
+size of a star which was moving. wkexfiestnsy tee omens
+
+iocthexeiexiizoxtichexabjertxiit, Then they thought it was a plane but
+
+it made no noise. The object moved across the sky, then changed its course
+
+a bit and went straight and stopped again for about 5 seconds, changed its
+
+course a bit and went straight for awhile and stopped again this time forat
+
+least 15 seconds, then it went across the sky a little ways and disappeared
+etely. When the object stopped in the sky, it resembled a star and only
+
+by following its course could the difference be noticed.
+
+NOTE: Witness states that he lives some 2-1/2 miles from the two woman
+(McKeesport, Pa.) who reported seeing a big silver plate zooming
+cera overhead in the direction of Kennywood Perit. See Inc.
+161.
+
+le
+2.
+
+3e
+
+5e
+be
+Te
+
+8.
+
+10.
+
+ll.
+
+12.
+
+ihe
+15.
+16.
+py
+18.
+19.
+20,
+
+21.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS | %
+
+o. Around July 8, 48 : Incidont # 161
+Time 4/S i : epee : roe
+Location McKeesport, Pa.
+
+Namo of observer Mrs, Nell Veway & Mrs. Elizabeth Goltz
+Occupation of obsorvor housewife i ¢
+
+Address of observor s ee Patirsd 26 ee op) ixeeeat Pa,
+Placo of cake Gece McKeesport, Pa.
+
+Numbor of objocts 1
+
+Distanco of objoct from observer n/s
+
+Timo in sight ¥/S
+Altitude 43/8
+Speod n/s
+Diroction of flight WN/S - toward Kennywood Park
+Tactics y/s
+
+Sound noiseless
+
+Size 12 to 15 inches in dia,
+
+Color silver
+
+Shapo “plate”
+
+Odor dotectea N/S
+
+Apparent construction N/S
+
+Exhaust trails 4/S
+
+Woather conditions y/s
+
+Effoct on clouds disappeared in cloud bank
+Sketches or photographs None
+
+Manner of disappearance disappesred in bloud bank
+
+Romarks: (over) f . y SD pe
+
+723
+
+Oo; “@
+
+\ ‘A
+Witness saw what looked like a "big, silver plate" zooming noiselessly
+overhead in the direction of Kennywood Perk.
+
+"Qh look, that's not a plane, screamed Mrs. Veway of 3404 Grover to
+her neighbor, Mrs. Goltz, 3604 Grover, “it lookeglike one of those
+flying saucers."
+
+Mrs, Vewey said the disc was about 12 to 15 inches in diemeter. It
+disappeered in a cloud pank but reappeared on the far side and was seen
+by Mrs. Goltz. They followed the direction of the disc until out of
+
+sight.
+NOTE: ‘Teken from the Daily News "McKeesport, Pa. - July 8, 1948.
+
+/020—
+ah.
+256
+26.
+
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+Date 11 Ang 48
+
+Time | 1200 and 1215 hours CST
+
+Locapion Hemel, Minnesota
+
+Namo of observer Jerome Leuer (age 10 and Benne Lever (age 8)
+Occupation of obsorvor children ‘
+Address of observor B/R 1 Eemel, Minnesota
+
+Placo of obsorvation As sbove - back yard
+
+Numbor of objocts 1
+
+Distance of object from obsorver 4 matter of a few feet
+Timo in sight - N/S
+
+Altitude rested on ground -
+
+Speod H/' 5
+
+Diroction of flight After resting on ground it ascended to a height of
+oe 2? agp non pedir epee ping er ienight up 20 ft, halted
+and agein made whistling noise. Maneuvered around tree branches & tele
+Sound whistling noise - like steam whistle : vires.
+Size 1 ft thick - 2 feet wide
+
+Color dull gray
+
+Shapo ‘round
+
+Odor dotectoa ~ 4/8
+
+Apparent Ruetrabacn, metallic
+
+Exhaust i¥esin. K/S
+
+Woathor conditions n/s
+
+EBffoct on clouds B/S
+
+Sketches or photographs None
+
+Manner of disappoarance into northeast
+
+Romarks: (over)
+
+VAG
+
+Informents stated that on 11 Ang 4S between 1200 and 1215 hours, CST,
+Jerome and Benno were playing in the back yerd and noticed an object
+in descent approximately twelve feet from the ground which was descending
+between the two of them, It settled to the ground gently - much as a
+balloon, Upon hitting the ground the object spun once, made a sort of
+whistling noise, described by the two boys as resembling a steam whistle,
+and then shot straight up into the air approximtely 20 feet, halted
+and again made a whistling noise. The object then shop upwerd to a height
+of about 30 feet, and, in this ascent, maneuvered around tree branches
+and tel: me wires. Upon reaching a height of approximately 30 feet
+objec jot off in a northeasterly direction. The object approached
+from the northwest.
+
+The boys described the object as “approximately one foot thick, two feet
+side and round." The object had no windows, wires, or any visible
+
+appurtenances. It was a dull gray in color and when it hit the ground,
+it made a slight clanking noise, mech as metal hitting against metal.
+
+Philip and Mrs Leuer stated the boys were visibly frightened when they
+ran into the house and were afraid to tell what they had seen. Upon
+close questioning, the boys related the above story to them.
+
+Mr. Lever advised that hetnen had notified Mr, E. R. Sheridan, Postmasteh
+at Hemel, Minnesota (who subsequently notified the proper anthorities
+
+AGENTS NOTES: Agent noted that the spot where the alleged "flying seucer"
+had landed was approximately 2 feet in diameter and appeared as though
+some heavy object had landed there or had been set down ~ as the
+
+was dented gmt Bre ae rocks had been leveled. The spot was covered by
+a weshtub.
+
+i z, RB, rt P : he had
+reason to doubt steep onsite toned Prank Reaictoace) ‘and
+zo Sis reason had reported the matter to the Federal Bureau of Investigation,
+t. Penl, Minn.
+
+1.
+
+3e
+he
+5e
+6.
+Te
+8.
+De
+100
+7,
+12.
+vB.
+lh.
+15.
+16.
+17.
+18.
+19.
+
+21.
+22.
+
+236
+
+256
+26.
+
+S f.0 a Pe eG x
+BY
+
+CHECKLIST - UNIDENTIFIED FLYING OBJECTS
+
+Dite | 22 daly he Incidont # 163
+
+Time hour before dark
+Location Van Nuys, Calif
+Name of observer t+ Henry Glover & wife
+Ofd-Res) 4
+Occupation of obsorvor Ordnance Reserve Officer
+Address of observor 8531 Variel Ave., Canoga Park, Calif
+Placo of observation Van Nuys, Calif.
+Number of objocts 1
+Distance of object from observor 2000xf% overhead
+
+Timo in sight fix about en hour
+Altitude great height
+
+Speoa N/S
+
+Direction of flight ee the sun from the East or Wxtaxk
+Tactics traveled a the a arc of about 25° or more
+
+Sound n/S
+
+Sizo Of weather balloon at 2000 ft
+
+Color bluish luminescence like fluorescent lamp which gradually
+changed to orange color at dusk
+Shapo round tending to spherical
+
+Odor dotoctea 8/8
+
+Apparent construction 4N/S
+
+Exhaust trails 4/S
+
+Woathor conditions CAVU ground temperature 70-75°
+Effoct on clouds B/S 5
+
+Sketches or photographs None
+
+Manner of disappearance snapped off like a lemp when you throw switch
+§
+
+Romarks; (Over)
+
+mn Dn >
+
+gf dae
+
+Object appeared round and probably spherical. At first looked.
+similar to weather balloon at about 2000 ft but there was no
+characteristic bobbing. The wind was blowing on the ground with
+fair strength and gusty yet the object was se steady. In the
+time it was under observation (about an hour) it traveled thru a
+vertical are of about 25° or mre, After watching the object for
+
+a while the observer concluded that whatever it wes the thing wes
+
+at great height but not a star, It had a bluish luminescence like
+
+a fluorescent lamp and as the sun set the color gradually changed to en
+orange color at dusk and finally snapped off like a lamp when the
+switch is thrown. The outline was clear and sharp and symetricel (no
+fuzziness or blurring), the air clear with visibility unlimited.
+Direction of travel from East directly toward the sun.
+
+»
+
+awry
+
+nf pi. Ud 1 @re
+CHECK=LIST = UNI FIED FLYING OBJECTS
+
+le Date 29th June 5 Incidont # Koha
+
+2. Time 11P.M.
+
+3. Location Uniontown, Pa,
+h. Namo of observor Mx Catherine McDonald
+5, Occupation of lobsorver B/S wktewm widow
+6, Address of observor 38 Kensington Circle, Uniontown
+7. Placo of observation Uniontown, Pa, - Observer's front porch ,
+8. Numbor of objocts three - one at a time
+9. Distance of objoct from observer y/s
+10. Timo in sight 3/S
+11, Altitude 5000 ft
+12. Speed Very fast
+13. Direction of flight MB
+14. Tactics spinning vertically on edge
+15. Soumd none
+16. Sizo ¥/S
+17. Color luminous
+18,  Shapo oval
+19. Odor dotectoa None
+20. Apparent construction ¥/S - transparent
+21. Exhaust trails treil of light about 1 yard long
+
+> Woathor conditions stormy and cloudy
+
+W/S - flew act9ss ne
+ee ‘ ’
+
+2.  Skotehes or photographs vagne sketch —-
+
+25. Manner of disappoarance lost sight of - sonia
+
+26. Romarks:’ (over)
+
+ny
+Ly
+
+23, Effoct on clouds
+
+Witness saw a luminous, oval-shaped object flying at an altitude of
+
+approx 5,000 ft which was traveling beneath the base of some wkmmmix clouds
+from southwest to northeast across the sky. The weather was stormy and
+cloudy and as a second object flew across the sky a flash of lightning
+could be seen thru it. It seemed to be transparent. The objectse(3)
+traveled very fest and seemed to just disappear within 10 seconds. The objects
+appeared at approximately five minute intervals. There was no odor
+
+or sound f@ from them. However, a trail of light about a yard long was
+observed. The objects rolled vertically on their edges and appeared to be
+spinning en end across the sky. Witnesses lost sight of the objects
+
+as neighboring houses obstructed their view.
+
+Witnesses: Mrs, Margaret Holler
+Police Sergeant Shuh & tims his daughter
+
+»y
+
+CHECK-LIST = UNIDENTIFIED FLYING OBJECTS zi eel
+
+le Date 26 July 1948 Incidont # 165
+2, Timo 21008 |
+3. Location Chamblee, Ga.
+h, Mame of observor fs Doyle L. Avery et al
+5. Occupation of obsorvor Observer, Atlenta Navel Air Base
+6. Address of observor Atlanta Naval Air Base, Chamblee, Ge.
+7. Placo of observation Observation tower
+8. Numbor of objocts 1 blue white light
+9. Distance of object from obsorver y/s
+
+10. Timo in sight N/S
+
+ll, Altitude 4/S
+
+12. Speed N/S— like shooting ste ,
+
+13. Direction of flight SB turning § and geining altitude
+
+lh. Tactics straight & level & gaining altitude
+
+15. Sound Mone
+
+16. Sizo 4/8 ale
+17... Color  dlue-white light
+
+18.  Shapo N/S = object not seen
+
+19. Odor dotectoa 3/8
+20, Apparent construction like shooting star us
+21, Exhaust trails N/S = possibly the blue white light wes the exhaust
+
+22,  Woathor conditions 2/10 cirrus at 25,000 ft; 1 to 4/10 of lower strato-
+cirrus at 5,000 ft. Visibility 12 to 15 miles. Surf wind light & variabhe
+
+23. Bffoct on clouds W/S 2-5 MPH
+2h.  Skotches or photographs None :
+25. Manner of disappearance y/s
+
+26. Remarks: (over)
+4 2 =e
+
+4 aes Veal wreeliMae 2.
+
+Me ate oa & Exo UY FUT VE yop
+
+A
+
+Vb0/
+
+165e
+
+Quxkaochee, Doyle L. Avery Observer, Atlanta Naval Air Base, Chamblee,
+
+Ga,, while on duty at the observation tower on 26 July 48 about 2100
+
+hours sighted a blue-white light traveling southeast from the northeast
+
+It wes traveling very fast and maintained a uniform altitude (undetermined)
+and speed, It looked like a shooting star except for the fact that it
+maintained the same altitude. While under observation it then appeared
+
+to gain altitude and then turned sharply to the south. The weather was
+clear and still. There was no sound. Shortly after sighting the light
+several residents of the area called and reported seeing the same t! .
+No flights left or arrived at the station after 1910 hours on 26 July 48,
+
+Witnesses of this who were interviewed made statements
+
+as follows: On 26 July 4S they were seated on the lawn of the Georgia
+School of Technology Housing Project at Chamblee, Ga, About 2045 hours
+Mrs, John Gell sighted a strange light and called it to the attention of
+her companions. The light appeared about the size of a football and
+
+was traveling southeast on a steady course. It was green and faded into a
+silver-colored tail, The light appeared egpmamird to lose altitude slowly
+mach the same as a plane coming in for a landing, It appeared to fade
+away in flight as if extinguished, No sound wa da.
+
+Witnesses? Le & Mrs. Harold Shaw
+. Robert Sebring
+Mrs, Jeanne Hill
+Mrs, Myrtle Renfroe
+Mrs. John Gall
+
+*
+
+‘
+
+le
+26
+
+Be
+
+/ a cae EO
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+Date 30 Aug 4 Incidont # 166
+
+Time 20,000 hours or 8:00 P. M.
+Location Los Angeles, Calif.
+
+lk, Mame of observer  8/Sgt Leroy H. Estes
+5. Occupation of obsorvor 8/Sgt
+6. Address of obsorvor Mf 1301 W. Olympic Blvd., Los Angeles
+7» Placo of Siservattod 1301 W. Olympic Blvd. Los Angeles, Calif.
+8. Numbor of objocts 1
+9- Distance of object from obsorvor n/s
+10, Timo in sight N/S
+ll, .Altitude estimated to be well over 20,000 ft.
+12, Spood thought to be well over 700 MPH
+13. Diroction of flight Weeeevelllint
+1h, Tactics mone - flew level course
+15. Sound No sound
+16. Sizo Larger then B-29
+17. Color silver
+18. Shapo V2 rocket
+19. Odor dotectoa 8/8
+20. Apparent construction rocket - like
+21. Exhaust trails blue exhemst trail
+22. Woather conditions Choo
+23. Effoct on clouds n/S
+2h. Bicetohes or photographs None
+256 Manner of disappearance n/S
+26. Romarks: (over)
+
+'
+
+Ay
+
+he
+
+10,
+
+ll.
+
+lie
+18.
+19.
+20.
+2l.
+
+22.
+
+Ry Wil
+CHECK=LIST = UNIDENTIFIED FLYING OBJECTS
+Date 6 May 1948 Incidont # 167
+
+Time 0905 GCT
+
+Locetion 19° 08' N = 164° 05' E between Kwajalein Island, Marshall
+Islands and Hickam Field.,
+Name of observer Capt Floyd Barnes
+
+Occupation of obsorvor Pilot USAF
+
+Address of observer Pacific Division, Milit Air Trans Service
+Placo of observation Ahead & sbove his plane
+
+Numbor of objects 1
+
+Distance of object from obsorver 4 to 5 miles
+
+Timo in sight split second
+
+Altitude 10,000 ft
+
+Speod n/§
+
+Diroction of flight 3/8
+
+Tactics exploded like a shall
+
+Soumd n/S
+
+Size ¥/ s
+Color white
+Shapo ball
+
+Odor dotectod ¥/S
+
+Apparent construction fix "fire"
+Exhaust trails None
+
+Woathor conditions 5/10 cloud coverage
+
+Effoct on clouds y/S
+Sketches or photographs mone
+Manner of disappoarance exploded
+
+Romarks:
+
+A large white ball of fire was observed some four to five miles
+directly ahead of and slightly above the aircraft, It was observed
+for only a split second and was comparable to the explosion of a shell
+There were no streamers or "tails" observed such as usually related
+
+to a meteor or a distress signal. As the aircraft approached the
+approximate position where the ball of fire was observed a single white
+light was seen on the water surface. However, this disappeared within
+
+after these lights were observed on the water surface when an aircraft
+wes sighted flying a reciprocal course (240°) at about 1000 ft below
+
+the observers's aircraft and slightly to the right of the course,
+
+Capt Barnes made numerous attempts to contact this aircraft on Channel "B"
+end "C", but acknowledgment of his transmission was never teceived,
+
+CHECK=LIST - UNIDENTIFIED FLYING OBJECTS
+le Date 20 duly 19hs~ Incidont # 168
+2, Time 1330 local
+3. Location  Obrechstreet, Arnhem, The Hague
+lk. Mame of observer A. D. Otter
+5. Occupation of obsorvor Ghf.- Investigator of Court of Damege
+6. Address of obsorvor Arnheim, The Hague
+7e Placo of observation 52° 30" §, ye 30' EB
+8. Numbor of objects +
+9. Distance of object from observer 4/S
+10. Timo in sight y/S
+11, Altitude very high |
+12. Speed . high speed - comparable to v-2
+I. Ddrection or fiighe Ms
+1h. Tactics 4/s
+15. Sound Same as V-2
+16. Size y/s
+17. color 3/8
+18.  Shapo Aircraft with 2 decks and no wings
+19. Odor dotected ¥/S
+20. Apparent construction 4/s
+21. Exhaust trails x/s
+
+22, Woather conditions Visibility unlimited - scattered clouds
+
+23.  Effoct on clouds 4/S ‘
+3 > @& aco
+
+2h. Sketches or photographs None
+
+eT Tava |
+
+~ Ps F
+256 Manner of disappearance ¥/: s . S tee
+
+26. Romarks: Object appeared to be wingless aircraft with two
+
+decks, It was traveling at very high altitude and wes seen four times
+intermittently thru clowis. Visibility: unlimited,
+
+10.
+
+ll,
+
+2.
+1h.
+15.
+16.
+17.
+16.
+
+19.
+
+21.
+22,
+
+236
+
+256
+26.
+
+Numbor of obioeks
+Distanco of objoct from obsorvor Ws
+Timo in sight 4/S
+
+Altitude N/S
+
+Speoa ¥/S
+
+Diroction of flight ¥/S enit ay:
+
+Tactics Arose from behind woods - seemed to unravel a silver
+stance that floated earthward
+
+Soua 3/8 i .
+
+Sizo large
+
+Color silver
+
+Shapo sphere
+
+Odor dotectod ¥/S
+
+Apparent construction y/s
+
+Exhaust trails  - silver substance (?)
+
+Woathor conditions y/ s
+
+Sketches or photographs None ‘ -
+Manner of disappoaranco Disintegrated in mid-air
+
+|
+|
+\
+|
+Effoct on clouds ¥/S ; : |
+1
+4
+Romarks: (over)
+
+Witness observed a large silver-colored sphere which seemed to
+
+arive from behind his woods and contimed to float across his farm.
+While in flight it seemed to unravel a silver substance which
+
+floated earthwerd. While under observation it disintegrated in mid-air.
+
+NOTE: Witness seemed very conscientious and sincere while relating this
+incident. Subject arose while witness wes talking to a man from
+this Gommand (MCIAXP) when an airplane chanced to fly overhead,
+
+INCIDENT SUMMARY SHEET
+(To be filled out and retained in files)
+
+Date of Observation £m or about 5 May 1948 Incident # 175
+
+Time of Observation ..-.+.-. «e+e.
+
+Where was on Sighted rot. — aa ev ao ee ee
+
+Observer's Position . Groun@e in village near ‘enint elie AS
+
+(ise. ground, air, control tower, etc.)
+
+Name and Address of Observer . Mews item .extragted from "Yeni Gahah".
+
+Gecupstton: and/or Hobbics 4s) <\g Aveo bie s sce ps or ase
+
+Attention Attracted to Object (s) By...
+Number of Object(s) Sighted .g........
+
+Cine: Of ‘Onjechla) sce ais 9 e's ee ea
+
+Color of Object(s) . ghinimg- .-----
+
+Shape (Sketch if Possible)... sees
+
+Nature of Luminosity « . 6. + es eee oe
+
+Estimated Distance of Object from Observer .
+Speed of -Objeetle)! ccs bbe we a a eS
+
+Time in Sight cesses ce ceceseseceees
+TRCULCE geile = We, 6 eae eR he Se vee
+Sound Made’ by Object(s) sos sc Se ce se ee wae
+Direction of Flight of Object(s) . 2... eee eee
+
+Apparent Construction (Of What Material or Substance)
+
+Effect of Objects on Clouds and/or Exhaust Trail...
+
+Weather Conditions Existing at the Time. .
+
+Peculiaritics Noted . Mepleded. in the air be ame
+
+Sib athe ewe oe Ee Se 78 «mS gas
+
+Summary of Incident=, Shem ito, Seabees weeiaghipae. "ent. sabe Tatasbal, .
+5 vey 19s: tn are tre anne ny ak a ag
+
+objects Like meteors hare deem sighted: in varionn parts Conta
+(Attach a Separate Sheet if Additional pee oF is the coyhtry.
+
+Incident # 170 Cont'd
+
+Some people suggest that these might be rockets, Information received
+from m thorized circles reveals that such a thing passed over
+
+and was eeen to explode in the dtr. Parte of it fell into a village
+nearby and killed a sheep dog. The thing we found to be a rocket and the
+debris will be inspected by exerts. Obers End Quote",
+
+Observers say that the rocket which is claimed to have come from the
+
+gs oo ay was flying at en altitude of 200 meters over Adapazari before
+it fell.
+
+According to rumors , it is possible that the rocket is connected with
+the “flying disc" experiments being conducted by the Russians at the
+station on Mt. Alagoz close to the astern frontiers,
+
+Source: HA Ankara, Turkey, 10 May 1948, Serial S6-U8, Eyal F0
+
+Comments Air Attache, Ankara, Turkey has been requested to investigate
+this incident fully and encourage Turkish General Staff to do likewise,
+Whether incident can be confirmd or not Air Attache has been directed
+to determine sources for information contaimd in Yeni Sabeh article.
+
+~sileGGROF- Incident # 170
+
+INCIDENT SUMMARY SHEET
+(To be filled out and retained in files)
+
+Date of Observation ‘Sang 19S - +: Incident # 171
+Time of Observation . gymget- -----
+
+Where was Object(s) ree aoat- "5 al (2920 nites) “MW 6f” bse
+
+Observer's Position . @pgywmd- + + + ee ee ee ee tw ee
+(i.e. ground, air, control tower, etc.)
+
+Name and Address of Observer . « Moscow, USSR: - - -
+
+Occupation and/or Hobbies pasate iene. a
+
+Attention Attracted to Object (s) By Same 4nte line of -skgixt -
+
+Number of Objecke(a) Sighted: .$iccs: sual os di eos oe
+
+SeeeniOn Cosect Ga) sia at loo 3k ae oa ae ie laa ae sw ate. fee
+
+Color of Object(s) « @home WMghtly ---.-.- Ai Ree er SEE
+Shape (Sketch if Possible) . Jongenarrow -
+Nature of Luminosity 2... 1 2 see eee
+
+Estimated Distance of Object from Observer .
+
+Speed of Object(s) . higty but not- excessive
+
+Timein:Sight < sc < e<.0 0 8: « © sie sw bs © a 6
+Tactics 4 6 0 86 6 0 0 8 0 9 pe 8 ot 86 ee ewe ee wt
+Sound Made by Object(s) « mpmm - ++ ese eee ee we
+
+Direction of Flight of Object(s) . Southwesé=. Berthwest- Gaérection - - -
+Apparent Construction (Of What Material or Substance) Apparently. metallic
+
+Effect of Objects on Clouds and/or Exhaust Trail . 2.2.02 ese ee eee
+
+Weather Conditions Existing at the Time . sumay - Oye a ee he Feri erm)
+
+Peculiaritics Noted .winglesse.leng snd marrew-
+
+Summary of Incident «See- attacked sheet -
+
+(Attach a Separate Sheet if Additional Space is
+
+Incident # 171 Cont'd
+
+About Sunset on 3 Aug 1945, dout 25 kilometers (20miles) northwest of
+American newspaper reporter saw an unidentified
+high attitude. It was long and narrow and proceeded at
++ not excessive speed in a generally south-west- northeast
+rection. It shom very brightly from reflected sunlight.
+4 be seen md no was heagd, It looked like a rigid ¢
+was so identified by a Russian acquaintance who saw it at
+same time, However, the reporter, in gpite of the appearance of
+object was of the opinion that it was not a rigid airship due
+principally to its high speed. He had no theory to offer.
+
+NA COMMENT: This object might have been anything. Its speed seems
+insufficient for a guided missile, but it could have been
+either a jet or a conventioml airplane as umsual light
+conditions and fore-shortening frequently give aircraft a
+freakish appearance, The possibility that it wea dirigible
+should not be excluded. Reference "A" should not be excluded,
+
+REFERENCE As The upper winds in Russia are not published but it we noted
+that on the following morning there were high surface winds
+with storm predictions.
+
+
+```
+## Related
+
+**By content (TF-IDF cosine):**
+- [[38_143685_box7_Incident_Summaries_1-100]] — score 0.60 · PDF
+- [[38_143685_box_Incident_Summaries_173-233]] — score 0.38 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.30 · PDF
+- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.30 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.29 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_4]] — score 0.28 · PDF

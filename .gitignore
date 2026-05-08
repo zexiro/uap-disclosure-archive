@@ -1,0 +1,20 @@
+# Bulk binary assets — Railway volume holds these in production; locally rebuilt by scripts/download.py
+raw/docs/
+raw/docs_ocr/
+raw/images/
+raw/videos/
+
+# Logs and temp
+raw/*.log
+raw/**/*.part
+*.pyc
+__pycache__/
+.DS_Store
+
+# Local-only HTTP server pidfile etc
+/tmp/
+
+# Note: we DO commit raw/text, raw/csv, raw/dvids_meta, raw/records.json,
+# raw/links.json, raw/downloads.tsv, ui/search-index.json, and the vault.
+# That keeps the repo ~15 MB so the UI works the moment the container boots,
+# even before the volume sync finishes.

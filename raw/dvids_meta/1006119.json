@@ -1,0 +1,97 @@
+{
+  "results": {
+    "id": "video:1006119",
+    "type": "video",
+    "title": "NASA Audio 12/5/1965 Low Earth Orbit",
+    "description": "This audio recording contains air to ground communications and the NASA Public Affairs audio feed with commentary, recorded during the flight of the Gemini VII mission. In this excerpted segment of audio, Astronaut Frank Borman reports to NASA mission control in Houston his sighting of an unidentified object, which he referred to as a \"bogey.\" This sighting occurred on December 5, 1965. The dialogue includes Borman's initial report, as well as additional comments by Astronaut Jim Lovell, Borman's fellow crew member.",
+    "keywords": "UAPVIDEOS",
+    "date_published": "2026-05-07T23:23:06-04:00",
+    "date": "1965-12-04T00:00:00-05:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-08T08:16:43-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006119/DOD_111689232.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1006119/nasa-audio-12-5-1965-low-earth-orbit",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "651206-D-D0360-1065",
+    "duration": 371,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 19121943,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 19252171,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 17985081,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 12482870,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 10712461,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 8273345,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689232/DOD_111689232-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 6722013,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1006119.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1006119&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1006119&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006119/DOD_111689232.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

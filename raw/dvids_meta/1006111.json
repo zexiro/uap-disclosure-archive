@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1006111",
+    "type": "video",
+    "title": "DOW-UAP-PR49, Unresolved UAP Report, Department of the Army, 2026",
+    "description": "The Department of the Army submitted a report of an unidentified anomalous phenomenon to the All-domain Anomaly Resolution Office (AARO) consisting of one minute and 49 seconds of video from an infrared sensor aboard a U.S. military platform in 2026. The reporter did not provide any oral or written description of the observation.\r\n\r\nVideo Description:\r\n00:00-00:08: The sensor tracks an initial area of interest.\r\n00:09-00:16: The sensor disengages from its previous area of focus and pans from right to left to track two areas of contrast, narrowing the field-of-view to zoom in while panning to maintain the objects' positions generally within the center of the frame.\r\n00:17-01:03: The sensor widens its field-of-view to zoom out, keeping the areas of contrast generally centered within the display.\r\n01:04-01:08: The sensor field-of-view rapidly cycles between levels of zoom, causing the areas of contrast to appear to rapidly increase and decrease in size.\r\n01:09-01:48: The sensor tracks the areas of contrast while maintaining a generally centered position, intermittently cycling between contrast settings.\r\n\r\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.",
+    "keywords": "UAPVIDEOS",
+    "date_published": "2026-05-08T07:50:33-04:00",
+    "date": "2026-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-08T07:52:45-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006111/DOD_111689168.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1006111/dow-uap-pr49-unresolved-uap-report-department-army-2026",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "260102-D-D0360-9604",
+    "duration": 109,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 17260783,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 20328463,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 12691958,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 6461801,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 4465119,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 2825058,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689168/DOD_111689168-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 2320443,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1006111.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006111/DOD_111689168.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1006083",
+    "type": "video",
+    "title": "DOW-UAP-PR36, Unresolved UAP Report, Middle East, May 2020",
+    "description": "The United States Central Command submitted a report of an unidentified anomalous phenomenon (UAP) to the All-domain Anomaly Resolution Office (AARO) consisting of two minutes and 17 seconds of video footage from an infrared sensor aboard a U.S. military platform in 2020. An accompanying Range Fouler report, DoW-UAP-D38, described the UAP as a solid white object making erratic movements above the water.\r\n\r\nVideo Description:\r\n00:05: An area of contrast briefly enters the sensor field-of-view from the left side of the screen.\r\n00:06-00:18: The sensor pans away from the scene\u2019s initial subject matter while cycling contrast settings and zoom levels.\r\n00:19: The area of contrast re-enters the sensor field-of-view from near the center of the top edge of the screen.\r\n00:20-01:15: The area of contrast remains generally within the sensor field-of-view.\r\n01:16: The sensor narrows its field-of-view to zoom in on the area of contrast.\r\n01:56: The sensor further narrows its field-of-view to zoom in on the area of contrast.\r\n02:10: A blue reticle briefly appears on screen but does not acquire a lock on the area of contrast.\r\n02:15-02:17: The sensor switches to a different modality and loses track of the area of contrast.\r\n\r\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.",
+    "keywords": "UAPVIDEOS",
+    "date_published": "2026-05-08T07:48:58-04:00",
+    "date": "2020-05-01T00:00:00-04:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-08T07:57:50-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006083/DOD_111689030.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1006083/dow-uap-pr36-unresolved-uap-report-middle-east-may-2020",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "200502-D-D0360-5343",
+    "duration": 137,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 142680684,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 124523938,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 84354850,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 44620866,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 29374995,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 12852401,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111689030/DOD_111689030-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 6610403,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1006083.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1006083/DOD_111689030.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

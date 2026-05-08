@@ -1,0 +1,523 @@
+---
+id: DOW-UAP-D63_Mission_Report_Strait_of_Hormuz_October_2020
+title: "DOW-UAP-D63, Mission Report, Strait of Hormuz, October 2020"
+agency: Department of War
+type: PDF
+release_date: 2026-05-08
+incident_date: 10/1/20
+incident_location: Strait of Hormuz
+redaction: TRUE
+tags: [uap, agency/department_of_war, type/pdf]
+source_urls: ["https://www.war.gov/medialink/ufo/release_1/dow-uap-d63-mission-report-strait-of-hormuz-october-2020.pdf"]
+---
+
+# DOW-UAP-D63, Mission Report, Strait of Hormuz, October 2020
+
+## Description
+
+This document is a Mission Report (MISREP), a standardized reporting form the U.S. Military uses to record the circumstances surrounding its operations. U.S. military services often use MISREPs to report Unidentified Anomalous Phenomena (UAP) to AARO. The GENTEXT, or “general text” section of these reports often contains important qualitative, contextual information, distinguishing it from the more quantitative, or numerical, data found elsewhere in the report.
+A U.S. military operator reported observing a UAP.
+All descriptive and estimative language contained in this report reflects the reporter’s subjective interpretation at the time of the event. Such characterizations should not be interpreted as a conclusive indication of the presence or absence of any intrinsic object features or performance characteristics.
+
+## Facts
+
+- **Agency:** Department of War
+- **Type:** PDF
+- **Released:** 2026-05-08
+- **Incident Date:** 10/1/20
+- **Location:** Strait of Hormuz
+- **Redaction:** TRUE
+
+![[dow-uap-d63-mission-report-strait-of-hormuz-october-2020.jpg]]
+
+## Files
+
+- [Local: dow-uap-d63-mission-report-strait-of-hormuz-october-2020.pdf](../../raw/docs/dow-uap-d63-mission-report-strait-of-hormuz-october-2020.pdf)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/release_1/dow-uap-d63-mission-report-strait-of-hormuz-october-2020.pdf)
+
+## Extracted Text
+
+```text
+Misrep 4871281
+
+Narrative
+
+MN AT 22492] 14a [TOOK OFF FROM OKAS. AT 23002|_14a_}ANDED OVER FROM THE
+LRE. FROM 23382 TO 08252, 14a |FROM 1319Z TO
+18552] tda FROM 0117Z TO 18352] 1.40
+
+SUPPORTED NAVCENT FOR OPERATION| (bitiyda VO ARABIAN GULF, STRAIT
+OF HORMUZ AND GULF OF OMAN. SEE ISR LINE |. AT 0727Z{ 14a RECEIVED A
+GUARDCALL. SEE GUARDCALL LINE 1. AT 0854Z{ 14a RECEIVED ‘A GUARD CALL. SEE
+GUARDCALL LINE 2. AT 1122Z RECEIVED A GUARD CALL. SEE GUARDCALL LINE 3.
+AT 12362| 14a RECEIVED A GUARD CALL. SEE GUARD CALL LINE 4. AT 13152,
+RECEIVED GUARDCALL. SEE GUARD CALL LINE 5. AT 1829Z,| 14a OBSERVED 1X UAP, SEE
+OBSERVATION LINE 1. AT 1835Z| 14a WAS CLEARED TO BIB, AT 19222] 1a HANDED
+BACK TO THE LRE. AT 19532! LANDED AT OKAS. FMV WAS EXPLOITED BY DGS-1. 21
+MISSION HOURS, 17.3 IMINT HOURS, | IMINT TASKING PROSECUTED, 15.3[_ 14a _[HOURS. 3
+14a {TASKING PROSECUTED, 4 TOTAL TASKINGS PROSECUTED
+
+Admin
+
+CLASSIFICATION |
+
+* Classification:
+* Associated Caveats:
+
+* Classification Source (MS or Classification Guide ID): MULTIPLE SOURCES
+= Declassification Date (YY YYMMDD): 20450301
+
+OPERATION
+
+* Operation: (pityiaa
+
+Domain: AIR
+
+Operations Center: 609th
+
+Major Command (MAJCOM): AFCENT
+Combatant Command (COCOM): USCENTCOM
+
+MSGID
+
+» Report Type: MISREP
+* Originator (Unit or Sqnadron): 482ATKS |
+* Submit Date (Auto-generated):
+
+2.50. (bV6) J
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOUO-/PA applies 03/16/26 000001
+|
+
+USCENTCOM MDR 26-0028
+
+MSNID
+
+* Tasking Order (ATO): DR
+Mission Type: AREC
+ATO Mission Number: 611,44
+
+Service Tasked: A - AIR FORCE
+
+Poc
+
+POC
+
+¢ Rank: AIC
+
+* Full Nameige, (6)(3), 1306, (bile)
+* Unit: 482 ATKS
+
+* Wing: 432 AEW
+
+* Phone Number: [_35¢ ia) _|
+
+Country Tasked: US - UNITED STATES
+
+* Email: [ 3,5, {by6)
+
+* Service: Air Force
+* Operations Center: 609 CAOC
+
+gc
+* Rank: Cir
+
+Full Name: (_35¢ (pa) _|
+Unit: PAROC
+
+Wing: Other
+
+Phone Number: [3.5c,_(by6) |
+
+°
+
+Email: [ 3.5, (bV6)
+
+°
+
+Service: Air Force
+Operations Center: Other
+
+APPROVER
+
+Rank: Capt
+
+Full Namg¢xg, (y13), 1306, (616)
+Unit: 609 AOC ISRD Unit Support
+Wing: Other
+
+Phone Number: (35¢ () |
+
+.
+
+Service: Air Force
+Operations Center: 609 CAOC
+
+.
+
+Email: 36a) ——]
+
+5c (bia).
+
+Approved for Release to AARO- FOUO/PA applies
+
+ed by MG Richard A
+OM (
+
+03/16/26 000002
+INGEST
+
+* Rank:
+
+* Full Name:
+
+* Unit:
+
+« Wing:
+
+* Phone Number:
+
+* Email:
+
+»* Service:
+
+* Operations Center: |
+
+ACEQUIP
+ACEQUIP
+
+» Aircraft Callsign 14a
+
+¢ Radar Name or Destination: -
+
+* Radar Software Load or Mission Data: -
+
+* Radar Warning Receiver (RWR) Name or Designator: -
+* RWR Software Load or Mission Data: -
+
+°* MWS Name or Designator: -
+
+* MWS Software Load or Mission Data: -
+
+* IRCM Name or Designator: ~
+
+* IRCM Software Load or Mission Data: -
+
+* ECM Name or Designator: -
+
++ ECM Software Load or Mission Data: -
+
+* CMD Name or Designator: -
+
+* Chaff Designator: -
+
+¢ Num Chaff or Cartridges: -
+
+* Flare Designator: -
+
+* Num Flares: -
+
+* Towed Decoy Name or Designator: -
+
+« Towed Decoy Software Load or Mission Data: - |
+* Num Towed Decoys: ~ |
+* Type of Radar-Guided AAM: -
+
+¢ Num Radar-Guided AAM: -
+
+* Type of IR-Guided AAM; -
+
+¢ Num IR-Guided AAM: -
+
++ Gun Name or Designator: -
+
++ Num Gun Rounds: -
+
+¢ Air-to-Ground Wpn to Include Num of Each:1.4(a)
+
+* TGT Pod Name or Designator: ANDAS4
+
+* Additional Avionics: AH-BS_WARIO
+
+[ S.5c. {b\G) ]
+
+|
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOUQ/ PA applies 03/16/26 000003
+
+USCENTCOM MDR 26-0028
+
+* Data Link: -
++ Gentext: -
+
+Timeline
+
+Landing
+
+* Last Land Location (ICAO Code): OKAS
+
+Last Land Time: 021953:00ZOCT20
+
+Last Engine Shutdown Time: 022003:00Z0CT20
+Total Mission Time: 21 hours 4 minutes
+Gentext/Additional Details: -
+
+Takeoff
+
+* Callsign: 14a
+
+¢ Number of Aircraft: |
+« Asset Type (Aircraft fi 4a, (b))1.49
+
+¢ Aircraft Tail Numbenta)fiaa, (y(4)1.4g
+»* Takeoff Location (ICAO Code): OKAS
+* Takeoff Time DTG: 012249:00ZO0CT20
+* Mode 3 (IFF Codes): -
+
+© Gentext/Additional Details: -
+
+* Mission Canceled:
+
+On Station
+
+© Time On Station DTG: 012300:00Z0CT20
+* Callsign: 1.48
+STAR Number: -
+Killbox (Location): -
+Mission Type: AREC
+STAC Callsign: -
+Gentext/A dditional Details: -
+Did not Arrive On Station:
+
+.
+
+.
+
+°
+
+ISR
+
+Time-on Station DTG: 020117:00ZOCT20
+Time-off Station DTG: 021835:00Z0CT20
+
+Aircraft Callsign:| 14a
+
+Msn Type: AREC
+
+B.Sc. {bis}
+
+Approved for Release to AARO- FOUO/-PA applies
+
+03/16/26 000004
+¢ Primary Sensor: ANDAS4
+
++ Sensors Available: AH\GMESH
+* Tasking Type: PLANNED
+
+* Tasking or Request Number (JTAR#, AEM#, PRI#, or TIC#): -
+© BE Number (if NTISR): -
+
+* Tasked Start Point: ISRWK 7a kA ba
+» Activity Description; ISR
+
+* FMV or Image File Name (if NTISR): -
+
+GENTEXTASR
+
++ Gentext: GE 14a COORDINATED WITH NAVCENT 24 HOURS PRIOR
+TO TAKE OFF. PRECOORD WAS SATISFACTORY. AT 0117Z| ARRIVED ON STATION ISO
+NAVCENT FOR OPERATION [_piiida JT CHARACTERIZE IRINUIRGCN VESSELS,
+UAS ACTIVITY, ACTIVITY OUTSIDE OF PORTS, AND TO ESTABLISH PATTERN OF LIFE.
+FROM 0117Z TO 18352, 4.48 [CONDUCTED SCANS IAW THE TARGET DECK IN THE
+ARABIAN GULF (AG). AT 1244Z,[ 44a [OBSERVED 1X UI AIRCRAFT ON RUNWAY AT ABU
+MUSA ISLAND AIRFIELD. AT 13442 +.4¢ PBSERVED IXU/I AIRCRAFT AT ABU MUSA
+ISLAND AIRFIELD ASSESSED TO BE AN ATR 72-500. AT 16572, BSERVED 1X POSS
+NASER WAP DOCKED IVO BUSHERH IRIN BOATYARD. AT 07272 14a RECEIVED A GUARD
+CALL. SEE GUARDCALL LINE 1. AT 0854Z[_1.4a_ RECEIVED A GUARD CALL, SEE
+GUARDCALL LINE 2, AT 1122Z[ 14a_ RECEIVED A GUARD CALL. SEE GUARDCALL LINE 3.
+AT 12362,[ 14a JRECEIVED A GUARD CALL. SEE GUARDCALL LINE 4. AT 1835Z] 44, [WAS
+CLEARED OFF TASKING AND RETURNED TO BASE (RTB)
+
+ISR ASSET UTILIZATION
+
+° Supported Unit: NAVCENT
+
+© Supported Operation: OPERATION __pyayida id:
+* Precoord Time: 24 HOURS
+= Precoord Effectiveness: SATISFACTORY
+
+|
+* Weather: (U) HEAVY HAZE PRECLUDED JMINT ANALYS)
+
+WEATHER
+
+EFFECTIVENESS
+
+° Tasker:
+> Intel Gap Filled?: No
+* Gentext: -
+
+i 5a (6). : )
+
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOUO Le anplies 03/16/26 000005
+
+Off Station
+
++ Time Off Station DTG: 021922:00Z0CT20
+* Total Time On Station: 20 hours 22 minutes
+
+GUARDCALL
+
+« GUARDCALL DTG: 020727:00Z0CT20
+° Aircraft Callsign: 14a
+* Ground Station Callsign: 1.4a, 1.49
+
++ Aircraft Location: 40RCP TCR Ha
+
+* Aircraft Heading: 020M
+
+* Aircraft Altitude: FL180
+
+* Aircraft Airspeed: -
+
++ Number of Calls Noted from the Same Agency: |
+* Guardcall Tone: PROFESSIONAL
+
+GENTEXT/GUARDCALL
+
+© Gentext: QR) AT 0727Z] 14a |WAS HAILED ON GuaARD[ (b)(1)1.4a, (b)(1)1.49
+
+DEFENSE. ORDERS GIVEN: STANDARD CALL] 1.48 SPONDED WITH STANDARD
+RESPONSE 1. NO IMPACT TO THE MISSION
+
+GUARDCALL
+
+* GUARDCALL DTG: 020854:00Z0CT20
+
+« Aircraft Callsign] 44a
+* Ground Station Callsign} 1.4a, 1.49
+
+* Aircrait Location: 40RDP Way Raha
+
+« Aireraft Heading: 145 M
+
+¢ Aircraft Altitude: FL180
+
+¢ Aircraft Airspeed: -
+
+¢ Number of Calls Noted fram the Same Agency: |
+* Guardcall Tone: PROFESSIONAL
+
+GENTEXT/GUARDCALL
+
++ Gentext: GJ AT 0854Z] 1.44 WAS HAILED ON GUARD (b)(1)1.4a, (bY 1}1.49
+
+DEFENSE. ORDERS GIVEN: STANDARD CALL] 4,44 |RESPONDED WITH STANDARD
+RESPONSE I. NO IMPACT TO THE MISSION
+
+GUARDCALL
+
+[ 3 5c (bye) ]
+
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOUQ/-PA applies 03/16/26 000006
+
+* GUARDCALL DTG; 021522:00ZOCT20
+
+* Aircraft Callsign if
+
+* Ground Station Callsig!
+
+* Aircraft Location: 40RCO SEEM e
+
+* Aircraft Heading: 264 M
+
+¢ Aircraft Altitude: FL160
+
+* Aircraft Airspeed: - |
+« Number of Calls Noted from the Same Agency: | |
+* Guardeall Tone: Directive
+
+GENTEXT/GUARDCALL
+
+* Gentext: SMI AT 1122Z) 14a [WAS HAILED ON cuarp|
+
+(b)(1)1.4a, (b}(1)1.49
+
+DEFENSE. ORDERS GIVEN: STANDARD CALI 1.4a JRESPONDED WITH STANDARD
+
+RESPONSE i. NO IMPACT TO THE MISSION
+
+GUARDCALL
+
+* GUARDCALL DTG: 021236:00ZOCT20
+Aircraft Callsign:
+Ground Station Callsign;| 1.da, 1.49
+Aireraft Location: 40RCP Iga ia
+Aircraft Heading: 128 M
+
+Aireraft Altitude: FL 160
+
+Aircraft Airspeed: -
+
+Number of Calls Noted from the Same Agency: 1
+Guardeall Tone: Professional
+
+GENTEXT/GUARDCALL
+
+© Gentext: (SHREE AT 1236Z,| 1.4a WAS HAILED ON GUARI
+
+(bM1)1.4a, (O)1)1.4g
+
+DEFENSE. ORDERS GIVEN: STANDARD CALL] 1.4a [RESPONDED WITH STANDARD
+
+RESPONSE 1. NO IMPACT TO THE MISSION
+
+GUARDCALL
+* GUARDCALL DTG: 021315:00ZOCT20
+
+Aircralt Callsign!
+Ground Station Caitig 1.4a, 1.49
+
+Aircraft Location: 40RCP3{ i RAC ha
+Aircraft Heading: 227 M
+
+Aircraft Altitude: FL 160
+
+Aircraft Airspeed: -
+
+.
+
+°
+
+|
+
+[ 3.5o_(bVG)
+
+1
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOU/PA applies
+
+03/16/26 000007
+* Number of Calls Noted from the Same Agency: |
+
+* Guardcall Tone: Directive
+
+GENTEXT/GUARDCALL
+
+* Gentext: [INE AT 13152[ 14a [WAS HAILED ON GUARD OKO Me Aisa
+
+DEFENSE. ORDERS GIVEN: STANDARD CALL] 4.44 RESPONDED WITH STANDARD
+RESPONSE |. NO IMPACT TO THE MISSION
+
+l B.Sc. (hy6) ]
+
+USCENTCOM MDR 26-0028 Approved for Release to AARO- FOUO/-PA applies 03/16/26 000008
+
+
+```
+## Related
+
+**By content (TF-IDF cosine):**
+- [[DOW-UAP-D65, Mission Report, Persian Gulf, July 2020]] — score 0.72 · PDF
+- [[DOW-UAP-D60, Mission Report, Persian Gulf, August 2020]] — score 0.60 · PDF
+- [[DOW-UAP-D64, Mission Report, Iran, November 2020]] — score 0.58 · PDF
+- [[DOW-UAP-D62, Mission Report, Strait of Hormuz, September 2020]] — score 0.54 · PDF
+- [[DOW-UAP-D61, Mission Report, Persian Gulf, August 2020]] — score 0.51 · PDF
+- [[DOW-UAP-D3, Mission Report, Arabian Gulf, 2020]] — score 0.34 · PDF
