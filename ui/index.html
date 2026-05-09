@@ -98,6 +98,33 @@
   .globe-toggle:hover { border-color: var(--accent); color: var(--accent); }
   .globe-toggle.active { border-color: var(--accent); color: var(--accent); background: #1a2533; }
   body.globe-mode main { display: none; }
+
+  /* ─── Compact header in non-search views ──────────────────────────
+     Search-specific chrome (chips + facets + keyboard hints) is dead
+     weight in globe / graph / timeline views, so we hide it and trim
+     header padding to give the canvas more vertical space.
+
+     Graph view goes further: the search input and dropdown filters
+     are also hidden because the graph view has its own type-ahead
+     and agency-mute panel — running two header search boxes side by
+     side was confusing. */
+  body.globe-mode    .header-chips,
+  body.graph-mode    .header-chips,
+  body.timeline-mode .header-chips,
+  body.globe-mode    .header-kbdhints,
+  body.graph-mode    .header-kbdhints,
+  body.timeline-mode .header-kbdhints { display: none; }
+  body.graph-mode    .header-search-input,
+  body.graph-mode    .header-filters { display: none; }
+  body.globe-mode    header,
+  body.graph-mode    header,
+  body.timeline-mode header { padding: 8px 16px; gap: 10px; }
+  body.globe-mode    header h1,
+  body.graph-mode    header h1,
+  body.timeline-mode header h1 { font-size: 15px; }
+  body.globe-mode    .header-bottom-row,
+  body.graph-mode    .header-bottom-row,
+  body.timeline-mode .header-bottom-row { margin-top: 0; }
   main { display: grid; grid-template-columns: 380px 1fr; min-height: 0; }
   #results {
     overflow-y: auto; border-right: 1px solid var(--border); background: var(--bg2);
@@ -726,19 +753,19 @@
 <body>
 <header>
   <h1><a class="home" href="/ui/">UFO/UAP Disclosure Archive</a> <small>war.gov · Release 1</small></h1>
-  <input id="q" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" autofocus />
-  <div class="filters">
+  <input id="q" class="header-search-input" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" autofocus />
+  <div class="filters header-filters">
     <select id="f-agency"><option value="">All agencies</option></select>
     <select id="f-loc"><option value="">All locations</option></select>
     <button id="f-clear">Clear</button>
   </div>
-  <div class="chips" id="type-chips" style="width:100%;margin-top:6px">
+  <div class="chips header-chips" id="type-chips" style="width:100%;margin-top:6px">
     <span class="chip active" data-type=""><span>All</span><span class="count" id="cn-all"></span></span>
     <span class="chip" data-type="PDF">📄 <span>Documents</span><span class="count" id="cn-pdf"></span></span>
     <span class="chip" data-type="VID">🎞 <span>Videos</span><span class="count" id="cn-vid"></span></span>
     <span class="chip" data-type="IMG">🖼 <span>Images</span><span class="count" id="cn-img"></span></span>
   </div>
-  <div class="chips facets-row" id="facet-chips">
+  <div class="chips facets-row header-chips" id="facet-chips">
     <span class="facet-label">FACETS</span>
     <span class="chip small" data-facet="redacted" data-value="TRUE">⬛ <span>Redacted</span><span class="count" id="cn-fc-redacted"></span></span>
     <span class="chip small" data-facet="hasimages" data-value="1">🖼 <span>Has images</span><span class="count" id="cn-fc-hasimages"></span></span>
@@ -754,8 +781,8 @@
       <option value="">All incidents</option>
     </select>
   </div>
-  <div style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap">
-    <div style="font-size:11px;color:var(--fg-dim)">
+  <div class="header-bottom-row" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap">
+    <div class="header-kbdhints" style="font-size:11px;color:var(--fg-dim)">
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">/</kbd> focus search ·
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">j</kbd>/<kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">k</kbd> navigate ·
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">esc</kbd> blur ·
