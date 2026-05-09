@@ -1,16 +1,48 @@
-name: Deploy to Railway
+name: Deploy to Railway (manual fallback)
+
+# Railway's project-level GitHub integration is the primary deploy path —
+# it picks up every push to `main` automatically via webhook. This workflow
+# is a manual fallback for forcing a redeploy from the GitHub UI (e.g. after
+# rotating an env var, invalidating a cache, or if the native integration
+# is temporarily unavailable). It does NOT run on push.
+#
+# Trigger via:  Actions tab → "Deploy to Railway (manual fallback)" → Run workflow
+# Or via gh:    gh workflow run deploy.yml
+#
+# Requires the RAILWAY_TOKEN repository secret. See DEPLOY.md.
+
 on:
-  push:
-    branches: [main]
   workflow_dispatch:
+    inputs:
+      message:
+        description: "Optional release note attached to the Railway deploy"
+        required: false
+        default: "manual redeploy"
 
 jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+
+      - name: Check RAILWAY_TOKEN presence
+        run: |
+          if [ -z "${RAILWAY_TOKEN}" ]; then
+            echo "::error::RAILWAY_TOKEN repository secret is not set."
+            echo "Run: gh secret set RAILWAY_TOKEN -b \"<token>\" -R ${{ github.repository }}"
+            echo "See DEPLOY.md for instructions on generating a token."
+            exit 1
+          fi
+          echo "RAILWAY_TOKEN is set (${#RAILWAY_TOKEN} chars)."
+        env:
+          RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
+
       - name: Install Railway CLI
-        run: bash <(curl -fsSL cli.new)
+        # `npm install -g` reliably puts the binary on $PATH, unlike the
+        # bash <(curl ...) installer which drops it under $HOME and never
+        # updated $GITHUB_PATH for subsequent steps.
+        run: npm install -g @railway/cli
+
       - name: Deploy
         env:
           RAILWAY_TOKEN: ${{ secrets.RAILWAY_TOKEN }}
@@ -20,4 +52,4 @@ jobs:
             --project 77a51944-0f75-4cad-bfd7-56bad406a8eb \
             --environment production \
             --detach \
-            -m "auto-deploy from ${GITHUB_SHA::7}"
+            -m "manual redeploy from ${GITHUB_SHA::7} — ${{ github.event.inputs.message }}"

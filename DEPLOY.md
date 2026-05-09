@@ -8,36 +8,60 @@
 - **Volume:** `/app/raw` — persistent, holds the 5.6 GB of bulk media
 - **Region:** europe-west4-drams3a
 
-## Day-to-day workflow
+## How deploys actually work
+
+There are **two paths**. Only one is automatic.
+
+### 1. Railway's native GitHub integration (primary, automatic)
+
+The Railway project is connected to this GitHub repo at the project level
+(configured once in the Railway dashboard, not in this codebase). Every push
+to `main` triggers a webhook that rebuilds and redeploys the service with no
+intervention from CI. The persistent volume survives, so the corpus data is
+preserved across deploys.
 
 ```bash
 # Edit code locally, then:
 git add ...
 git commit -m "your change"
-git push
+git push                              # Railway picks it up via webhook
 ```
 
-If the **GitHub Actions deploy** is wired (one-time setup below), `git push`
-to `main` triggers a Railway redeploy automatically. The volume persists, so
-the data survives.
+To verify it's still wired, check the deploy log in the Railway dashboard
+under `uap-disclosure-archive → uap-mirror → Deployments`.
 
-If GH Actions isn't wired yet, run:
+### 2. `.github/workflows/deploy.yml` (manual fallback)
+
+A `workflow_dispatch`-only workflow lets you force a redeploy from the GitHub
+UI even when no commit has been pushed (useful after rotating env vars or
+invalidating a cache). It does **not** run on every push — Railway native
+already handles that, and racing two deploys against each other causes
+flapping.
+
+Trigger it via the Actions tab → `Deploy to Railway (manual fallback)` →
+`Run workflow`, or:
+
+```bash
+gh workflow run deploy.yml
+```
+
+Requires the `RAILWAY_TOKEN` repo secret (see setup below). The workflow
+fails fast with a clear error if the secret is missing.
+
+### Direct CLI (for emergencies)
+
+If GitHub is offline or you need to deploy from a non-`main` branch:
 
 ```bash
 railway up --service uap-mirror --detach -m "your release note"
 ```
 
-## One-time GitHub Actions setup
+## One-time setup for the manual workflow
 
-Enable hands-off deploys on every push:
+Only needed if you want the `workflow_dispatch` fallback to work.
 
-1. **Generate a Railway token:**
-
-   ```bash
-   # Visit https://railway.com/account/tokens
-   # Create a token scoped to project: uap-disclosure-archive
-   # Copy the token value
-   ```
+1. **Generate a Railway token** at <https://railway.com/account/tokens>,
+   scoped to project `uap-disclosure-archive`. Copy the token value.
 
 2. **Add it to the GitHub repo:**
 
@@ -45,9 +69,12 @@ Enable hands-off deploys on every push:
    gh secret set RAILWAY_TOKEN -b "<paste-token-here>" -R zexiro/uap-disclosure-archive
    ```
 
-3. **Done.** `.github/workflows/deploy.yml` runs on every push to `main` and
-   calls `railway up`. Inspect runs at:
-   <https://github.com/zexiro/uap-disclosure-archive/actions>
+3. **Trigger the workflow once** to verify it works:
+
+   ```bash
+   gh workflow run deploy.yml
+   gh run watch
+   ```
 
 ## Initial cold-start
 
