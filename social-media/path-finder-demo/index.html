@@ -1,0 +1,476 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px; overflow: hidden;
+        background: #05070A;
+        font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        color: #cbd5e1;
+      }
+
+      .scanlines {
+        position: absolute; inset: 0; pointer-events: none; z-index: 100;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.018) 0px,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+      }
+      .vignette {
+        position: absolute; inset: 0; pointer-events: none; z-index: 99;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(0,0,0,0) 50%,
+          rgba(0,0,0,0.55) 100%
+        );
+      }
+
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 80px;
+      }
+
+      /* ─── Scene 1: title ─────────────────────────────────── */
+      .s1-eyebrow {
+        font-size: 22px; color: #7c8aa1; letter-spacing: 0.18em;
+        text-transform: uppercase; margin-bottom: 36px;
+      }
+      .s1-eyebrow .sep { color: #ffd34d; margin: 0 14px; }
+      .s1-title {
+        font-size: 144px; font-weight: 700; color: #57c7ff;
+        letter-spacing: 0.02em; line-height: 1.05;
+        white-space: nowrap;
+      }
+      .s1-title .cursor {
+        display: inline-block; width: 0.6ch; margin-left: 6px;
+        background: #57c7ff; height: 0.92em; vertical-align: -0.08em;
+      }
+      .s1-tagline {
+        margin-top: 30px; font-size: 24px; color: #cbd5e1;
+        letter-spacing: 0.06em;
+      }
+      .s1-tagline .accent { color: #ffd34d; }
+
+      /* ─── Scene 2: graph + path ───────────────────────────── */
+      .s2-stage { position: absolute; inset: 0; }
+      .graph-svg {
+        position: absolute; left: 50%; top: 50%;
+        transform: translate(-50%, -50%);
+        width: 1500px; height: 720px;
+      }
+      .s2-hud {
+        position: absolute; top: 60px; left: 80px;
+        font-size: 14px; letter-spacing: 0.16em; color: #7c8aa1;
+        text-transform: uppercase;
+      }
+      .s2-hud .v { color: #57c7ff; }
+      .s2-caption {
+        position: absolute; left: 0; right: 0; bottom: 130px;
+        text-align: center; color: #cbd5e1; font-size: 30px;
+        letter-spacing: 0.04em;
+      }
+      .s2-caption .v { color: #57c7ff; font-weight: 700; }
+      .s2-caption-2 {
+        position: absolute; left: 0; right: 0; bottom: 78px;
+        text-align: center; color: #ffd34d; font-size: 18px;
+        letter-spacing: 0.14em; text-transform: uppercase;
+      }
+      .s2-trail {
+        position: absolute; left: 50%; bottom: 220px;
+        transform: translateX(-50%);
+        font-size: 32px; color: #cbd5e1; white-space: nowrap;
+        letter-spacing: 0.02em;
+      }
+      .s2-trail .ch { display: inline-block; opacity: 0; }
+      .s2-trail .ch.arr { color: #ffd34d; }
+
+      /* ─── Scene 3: outro ─────────────────────────────────── */
+      .s3-url {
+        font-size: 84px; color: #57c7ff; font-weight: 700;
+        letter-spacing: 0.02em;
+        position: relative; padding-bottom: 14px;
+      }
+      .s3-url-underline {
+        position: absolute; left: 0; bottom: 0; height: 4px;
+        background: #ffd34d; transform-origin: left center;
+        transform: scaleX(0); width: 100%;
+      }
+      .s3-route {
+        margin-top: 28px; font-size: 28px; color: #7c8aa1;
+        letter-spacing: 0.06em;
+      }
+      .s3-tag {
+        margin-top: 56px; font-size: 18px; color: #ffd34d;
+        letter-spacing: 0.22em; text-transform: uppercase;
+      }
+
+      /* SVG node + edge styling */
+      .edge { stroke: #57c7ff; stroke-width: 1; opacity: 0; }
+      .node { opacity: 0; }
+      .path-edge {
+        stroke: #22D3EE; stroke-width: 4; fill: none;
+        stroke-linecap: round; opacity: 0;
+      }
+      .path-ring {
+        fill: none; stroke: #FFFFFF; stroke-width: 0;
+      }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1920"
+      data-height="1080"
+      style="position: relative; width: 1920px; height: 1080px; background: #05070A;"
+    >
+      <!-- ─── Scene 1: TITLE ───────────────────────────────── -->
+      <div
+        id="scene-1"
+        class="clip scene"
+        data-start="0"
+        data-duration="2.7"
+        data-track-index="1"
+      >
+        <div class="s1-eyebrow">
+          <span>UFO/UAP DISCLOSURE ARCHIVE</span><span class="sep">·</span><span>/graph</span>
+        </div>
+        <div class="s1-title">
+          <span id="s1-title-text"></span><span class="cursor" id="s1-cursor"></span>
+        </div>
+        <div class="s1-tagline">
+          BFS shortest path across the similarity graph<span class="accent">_</span>
+        </div>
+      </div>
+
+      <!-- ─── Scene 2: GRAPH + PATH ────────────────────────── -->
+      <div
+        id="scene-2"
+        class="clip scene s2-stage"
+        data-start="2.5"
+        data-duration="9.5"
+        data-track-index="2"
+      >
+        <div class="s2-hud">
+          <span class="v" id="s2-hud-nodes">—</span> NODES &nbsp;·&nbsp;
+          <span class="v" id="s2-hud-edges">—</span> EDGES &nbsp;·&nbsp;
+          <span class="v">FORCE</span>
+        </div>
+        <svg class="graph-svg" viewBox="-750 -360 1500 720" preserveAspectRatio="xMidYMid meet">
+          <g id="g-edges"></g>
+          <g id="g-nodes"></g>
+          <g id="g-path-edges"></g>
+          <g id="g-path-rings"></g>
+        </svg>
+        <div class="s2-caption" id="s2-caption">
+          <span class="v">148</span> records &nbsp;·&nbsp;
+          <span class="v">427</span> similarity edges &nbsp;·&nbsp;
+          color = agency
+        </div>
+        <div class="s2-caption-2">BFS shortest path · 4 hops</div>
+        <div class="s2-trail" id="s2-trail"></div>
+      </div>
+
+      <!-- ─── Scene 3: OUTRO ───────────────────────────────── -->
+      <div
+        id="scene-3"
+        class="clip scene"
+        data-start="11.8"
+        data-duration="3.2"
+        data-track-index="3"
+      >
+        <div class="s3-url">
+          uapdisclosuremirror.com
+          <span class="s3-url-underline" id="s3-underline"></span>
+        </div>
+        <div class="s3-route">/ui/#view=graph</div>
+        <div class="s3-tag">PERMANENT MIRROR · CC-BY</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="scanlines"></div>
+    </div>
+
+    <script>
+      // Mulberry32 — deterministic PRNG.
+      function mulberry32(seed) {
+        return function () {
+          seed |= 0;
+          seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      const rng = mulberry32(20260509);
+      const NODE_COUNT = 30;
+      const FIELD_W = 1380, FIELD_H = 620;
+      const AGENCIES = [
+        { color: "#ff6b6b", weight: 0.50 },
+        { color: "#ffd34d", weight: 0.30 },
+        { color: "#57c7ff", weight: 0.12 },
+        { color: "#b07cff", weight: 0.08 },
+      ];
+      function pickAgency(r) {
+        let acc = 0;
+        for (const a of AGENCIES) {
+          acc += a.weight;
+          if (r < acc) return a;
+        }
+        return AGENCIES[0];
+      }
+
+      const PATH_POSITIONS = [
+        { x: -560, y: -180 },
+        { x: -210, y:  100 },
+        { x:  130, y: -210 },
+        { x:  -40, y:  220 },
+        { x:  500, y:   60 },
+      ];
+
+      const nodes = [];
+      for (let i = 0; i < PATH_POSITIONS.length; i++) {
+        nodes.push({
+          i, x: PATH_POSITIONS[i].x, y: PATH_POSITIONS[i].y,
+          r: 9 + rng() * 4,
+          agency: pickAgency(rng()),
+          isPath: true,
+        });
+      }
+      function tooClose(x, y) {
+        for (const n of nodes) {
+          const dx = n.x - x, dy = n.y - y;
+          if (dx * dx + dy * dy < 60 * 60) return true;
+        }
+        return false;
+      }
+      let attempts = 0;
+      while (nodes.length < NODE_COUNT && attempts < 5000) {
+        attempts++;
+        const x = (rng() - 0.5) * FIELD_W;
+        const y = (rng() - 0.5) * FIELD_H;
+        if (tooClose(x, y)) continue;
+        nodes.push({
+          i: nodes.length, x, y,
+          r: 5 + rng() * 5,
+          agency: pickAgency(rng()),
+          isPath: false,
+        });
+      }
+
+      const edges = [];
+      const edgeSet = new Set();
+      function edgeKey(a, b) { return a < b ? `${a}|${b}` : `${b}|${a}`; }
+      for (let i = 0; i < nodes.length; i++) {
+        const a = nodes[i];
+        const distances = [];
+        for (let j = 0; j < nodes.length; j++) {
+          if (j === i) continue;
+          const dx = a.x - nodes[j].x, dy = a.y - nodes[j].y;
+          distances.push({ j, d: dx * dx + dy * dy });
+        }
+        distances.sort((p, q) => p.d - q.d);
+        const k = i < 5 ? 1 : 3;
+        for (let n = 0; n < k && n < distances.length; n++) {
+          const j = distances[n].j;
+          const key = edgeKey(i, j);
+          if (i < 5 && j < 5 && Math.abs(i - j) === 1) continue;
+          if (edgeSet.has(key)) continue;
+          edgeSet.add(key);
+          edges.push({ a: i, b: j });
+        }
+      }
+
+      const gEdges = document.getElementById("g-edges");
+      let edgesHTML = "";
+      for (let e = 0; e < edges.length; e++) {
+        const a = nodes[edges[e].a], b = nodes[edges[e].b];
+        edgesHTML += `<line class="edge" data-i="${e}" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}"/>`;
+      }
+      gEdges.innerHTML = edgesHTML;
+
+      const gNodes = document.getElementById("g-nodes");
+      let nodesHTML = "";
+      for (const n of nodes) {
+        nodesHTML += `<circle class="node" data-i="${n.i}" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${n.r.toFixed(1)}" fill="${n.agency.color}" />`;
+      }
+      gNodes.innerHTML = nodesHTML;
+
+      const gPathEdges = document.getElementById("g-path-edges");
+      let pathEdgesHTML = "";
+      for (let p = 0; p < 4; p++) {
+        const a = nodes[p], b = nodes[p + 1];
+        const dx = b.x - a.x, dy = b.y - a.y;
+        const len = Math.sqrt(dx * dx + dy * dy);
+        pathEdgesHTML += `<line class="path-edge" data-step="${p}" x1="${a.x.toFixed(1)}" y1="${a.y.toFixed(1)}" x2="${b.x.toFixed(1)}" y2="${b.y.toFixed(1)}" stroke-dasharray="${len.toFixed(1)}" stroke-dashoffset="${len.toFixed(1)}" />`;
+      }
+      gPathEdges.innerHTML = pathEdgesHTML;
+
+      const gPathRings = document.getElementById("g-path-rings");
+      let pathRingsHTML = "";
+      for (let p = 0; p < 5; p++) {
+        const n = nodes[p];
+        pathRingsHTML += `<circle class="path-ring" data-step="${p}" cx="${n.x.toFixed(1)}" cy="${n.y.toFixed(1)}" r="${(n.r + 6).toFixed(1)}" />`;
+      }
+      gPathRings.innerHTML = pathRingsHTML;
+
+      // Scene 1 typewriter character spans
+      const TITLE = "PATH-FINDER";
+      const s1TitleEl = document.getElementById("s1-title-text");
+      let s1Html = "";
+      for (let c = 0; c < TITLE.length; c++) {
+        s1Html += `<span class="s1-ch" style="opacity:0">${TITLE[c]}</span>`;
+      }
+      s1TitleEl.innerHTML = s1Html;
+
+      // Scene 2 trail char spans
+      const TRAIL = [
+        { txt: "Section 10",  arrow: true  },
+        { txt: "Defense",     arrow: true  },
+        { txt: "Apollo 17",   arrow: true  },
+        { txt: "t-763",       arrow: true  },
+        { txt: "excerpt",     arrow: false },
+      ];
+      const trailEl = document.getElementById("s2-trail");
+      let trailHTML = "";
+      for (let i = 0; i < TRAIL.length; i++) {
+        const item = TRAIL[i];
+        for (const ch of item.txt) {
+          trailHTML += `<span class="ch">${ch === " " ? "&nbsp;" : ch}</span>`;
+        }
+        if (item.arrow) {
+          trailHTML += `<span class="ch arr"> → </span>`;
+        }
+      }
+      trailEl.innerHTML = trailHTML;
+
+      document.getElementById("s2-hud-nodes").textContent = "148";
+      document.getElementById("s2-hud-edges").textContent = "427";
+
+      // ─── GSAP timeline (paused, registered) ────────────────
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1 entrance
+      tl.from(".s1-eyebrow", {
+        y: -20, opacity: 0, duration: 0.5, ease: "power3.out",
+      }, 0.15);
+      tl.to(".s1-ch", {
+        opacity: 1, duration: 0.05, stagger: 0.07, ease: "none",
+      }, 0.45);
+      tl.to("#s1-cursor", {
+        opacity: 0, duration: 0.5, ease: "steps(4)", repeat: 4, yoyo: true,
+      }, 0.5);
+      tl.from(".s1-tagline", {
+        y: 20, opacity: 0, duration: 0.55, ease: "back.out(1.4)",
+      }, 1.6);
+      // Scene 1 → 2 transition: blur+fade scene 1 out
+      tl.to("#scene-1", {
+        opacity: 0, filter: "blur(12px)", duration: 0.25, ease: "power2.in",
+      }, 2.45);
+
+      // Scene 2 enters
+      tl.fromTo("#scene-2",
+        { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+        2.5
+      );
+      tl.from(".s2-hud", { y: -10, opacity: 0, duration: 0.4, ease: "power3.out" }, 2.7);
+
+      tl.to(".edge", {
+        opacity: 0.18, duration: 0.5, ease: "power1.in",
+        stagger: { amount: 0.4, from: "center" },
+      }, 2.85);
+
+      tl.to(".node", {
+        opacity: 1, duration: 0.35, ease: "back.out(1.6)",
+        stagger: { amount: 1.0, from: "random" },
+      }, 3.05);
+
+      tl.from(".s2-caption", {
+        y: 24, opacity: 0, duration: 0.5, ease: "power2.out",
+      }, 4.4);
+
+      // Path mode begins — dim everything else
+      tl.to(".s2-caption", { opacity: 0.25, duration: 0.4, ease: "power2.in" }, 5.8);
+      tl.to('.node:not([data-i="0"]):not([data-i="1"]):not([data-i="2"]):not([data-i="3"]):not([data-i="4"])', {
+        opacity: 0.18, duration: 0.5, ease: "power2.in",
+      }, 5.8);
+      tl.to(".edge", { opacity: 0.05, duration: 0.5, ease: "power2.in" }, 5.8);
+      tl.from(".s2-caption-2", {
+        y: 12, opacity: 0, duration: 0.4, ease: "power3.out",
+      }, 6.0);
+
+      const ringTime = 0.34;
+      const lineTime = 0.42;
+      let cursor = 6.4;
+      tl.to('.path-ring[data-step="0"]', { strokeWidth: 4, duration: ringTime, ease: "power4.out" }, cursor);
+      cursor += ringTime;
+      for (let p = 0; p < 4; p++) {
+        tl.to(`.path-edge[data-step="${p}"]`, { opacity: 1, duration: 0.05, ease: "none" }, cursor);
+        tl.to(`.path-edge[data-step="${p}"]`, {
+          strokeDashoffset: 0, duration: lineTime, ease: "power2.inOut",
+        }, cursor);
+        cursor += lineTime;
+        tl.to(`.path-ring[data-step="${p + 1}"]`, {
+          strokeWidth: 4, duration: ringTime, ease: "power4.out",
+        }, cursor);
+        cursor += ringTime;
+      }
+
+      // Trail typewriter — runs concurrently with path animation
+      const trailChars = trailEl.querySelectorAll(".ch");
+      tl.to(trailChars, {
+        opacity: 1, duration: 0.06, ease: "none",
+        stagger: 2.4 / trailChars.length,
+      }, 7.0);
+
+      // Pulse on path edges once drawn
+      tl.to(".path-edge", {
+        opacity: 0.7, duration: 0.6, ease: "sine.inOut",
+        repeat: 2, yoyo: true,
+      }, 9.6);
+
+      // Scene 2 → 3 transition
+      tl.to("#scene-2", {
+        opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power2.in",
+      }, 11.7);
+
+      // Scene 3 enters
+      tl.fromTo("#scene-3",
+        { opacity: 0, filter: "blur(10px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" },
+        11.8
+      );
+      tl.from(".s3-url", {
+        y: 28, opacity: 0, duration: 0.6, ease: "back.out(1.2)",
+      }, 12.0);
+      tl.to("#s3-underline", {
+        scaleX: 1, duration: 0.7, ease: "expo.out",
+      }, 12.5);
+      tl.from(".s3-route", {
+        y: 14, opacity: 0, duration: 0.45, ease: "power2.out",
+      }, 12.7);
+      tl.from(".s3-tag", {
+        opacity: 0, letterSpacing: "0.4em", duration: 0.7, ease: "power3.out",
+      }, 13.2);
+      // Final scene fade-out (allowed)
+      tl.to("#scene-3", {
+        opacity: 0.85, duration: 0.5, ease: "power2.inOut",
+      }, 14.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>

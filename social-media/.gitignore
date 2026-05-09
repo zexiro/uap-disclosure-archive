@@ -1,0 +1,11 @@
+# Cruft
+.DS_Store
+**/.DS_Store
+
+# Dev artifacts (npx hyperframes caches outside the project; nothing to ignore here today)
+**/node_modules/
+**/.hyperframes/
+
+# Optional — uncomment to skip the per-project frame stills (intermediate
+# preview JPGs extracted with ffmpeg for visual verification):
+# **/frames/

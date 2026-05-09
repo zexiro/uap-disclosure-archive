@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=1920, height=1080" />
+    <script src="https://cdn.jsdelivr.net/npm/gsap@3.14.2/dist/gsap.min.js"></script>
+    <style>
+      * { margin: 0; padding: 0; box-sizing: border-box; }
+      html, body {
+        width: 1920px; height: 1080px; overflow: hidden;
+        background: #05070A;
+        font-family: ui-monospace, "JetBrains Mono", SFMono-Regular, Menlo, Consolas, monospace;
+        color: #cbd5e1;
+      }
+      .scanlines {
+        position: absolute; inset: 0; pointer-events: none; z-index: 100;
+        background-image: repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,0.018) 0px,
+          rgba(255,255,255,0.018) 1px,
+          transparent 1px,
+          transparent 3px
+        );
+      }
+      .vignette {
+        position: absolute; inset: 0; pointer-events: none; z-index: 99;
+        background: radial-gradient(
+          ellipse at center,
+          rgba(0,0,0,0) 50%,
+          rgba(0,0,0,0.55) 100%
+        );
+      }
+      /* Cumulative bloom overlay — pulses on dense reveal moments */
+      .bloom-pulse {
+        position: absolute; inset: 0; pointer-events: none; z-index: 80;
+        background: radial-gradient(ellipse at center,
+          rgba(87,199,255,0.10) 0%, rgba(87,199,255,0) 55%);
+        opacity: 0;
+      }
+
+      .scene {
+        position: absolute; inset: 0;
+        display: flex; flex-direction: column; align-items: center; justify-content: center;
+        padding: 80px;
+      }
+
+      /* Scene 1 */
+      .s1-eyebrow {
+        font-size: 22px; color: #7c8aa1; letter-spacing: 0.18em;
+        text-transform: uppercase; margin-bottom: 36px;
+      }
+      .s1-eyebrow .sep { color: #ffd34d; margin: 0 14px; }
+      .s1-title {
+        font-size: 130px; font-weight: 700; color: #57c7ff;
+        letter-spacing: 0.02em; line-height: 1.05;
+      }
+      .s1-tagline {
+        margin-top: 30px; font-size: 24px; color: #cbd5e1;
+        letter-spacing: 0.06em;
+      }
+
+      /* Scene 2 */
+      .s2-stage { position: absolute; inset: 0; }
+      .globe-wrap {
+        position: absolute; left: 50%; top: 46%;
+        transform: translate(-50%, -50%);
+        width: 820px; height: 820px;
+        will-change: transform;
+      }
+      .globe-svg { width: 100%; height: 100%; display: block; }
+
+      .s2-caption {
+        position: absolute; left: 0; right: 0; top: 30px;
+        text-align: center; color: #cbd5e1; font-size: 22px;
+        letter-spacing: 0.06em;
+      }
+      .s2-caption .v { color: #57c7ff; }
+      .s2-hud {
+        position: absolute; top: 30px; left: 80px;
+        font-size: 13px; letter-spacing: 0.16em; color: #7c8aa1;
+        text-transform: uppercase;
+      }
+      .s2-hud .v { color: #57c7ff; }
+
+      .slider {
+        position: absolute; left: 50%; bottom: 80px;
+        transform: translateX(-50%);
+        width: 1200px;
+      }
+      .slider .label-row {
+        display: flex; justify-content: space-between; align-items: baseline;
+        margin-bottom: 14px;
+      }
+      .slider .label {
+        font-family: ui-monospace, monospace; font-size: 14px;
+        color: #7c8aa1; letter-spacing: 0.16em; text-transform: uppercase;
+      }
+      .slider .count {
+        font-family: ui-monospace, monospace; font-size: 16px;
+        color: #ffd34d; letter-spacing: 0.06em; font-weight: 700;
+      }
+      .slider .track {
+        position: relative; height: 4px; background: #1f2937;
+        border-radius: 2px;
+      }
+      .slider .fill {
+        position: absolute; left: 0; top: 0; height: 100%;
+        background: linear-gradient(to right, #1f2937 0%, #57c7ff 30%, #57c7ff 100%);
+        border-radius: 2px; width: 0%;
+      }
+      .slider .cursor {
+        position: absolute; top: 50%; transform: translate(-50%, -50%);
+        width: 18px; height: 18px; background: #ffd34d;
+        border-radius: 50%; box-shadow: 0 0 24px 4px rgba(255,211,77,0.55);
+        left: 0%;
+      }
+      .slider .ticks {
+        display: flex; justify-content: space-between;
+        margin-top: 16px; font-family: ui-monospace, monospace;
+        font-size: 14px; color: #7c8aa1; letter-spacing: 0.06em;
+      }
+
+      /* Scene 3 outro */
+      .s3-url {
+        font-size: 84px; color: #57c7ff; font-weight: 700;
+        letter-spacing: 0.02em;
+        position: relative; padding-bottom: 14px;
+      }
+      .s3-url-underline {
+        position: absolute; left: 0; bottom: 0; height: 4px;
+        background: #ffd34d; transform-origin: left center;
+        transform: scaleX(0); width: 100%;
+      }
+      .s3-route {
+        margin-top: 28px; font-size: 28px; color: #7c8aa1;
+        letter-spacing: 0.06em;
+      }
+      .s3-tag {
+        margin-top: 56px; font-size: 18px; color: #ffd34d;
+        letter-spacing: 0.22em; text-transform: uppercase;
+      }
+
+      /* Globe styles */
+      .globe-outline { fill: none; stroke: #57c7ff; stroke-opacity: 0.6; stroke-width: 1.5; }
+      .meridian, .parallel { fill: none; stroke: #1a2030; stroke-width: 1; }
+      .marker-base { fill: #2a3447; stroke: #4a5568; stroke-width: 0.6; }
+      .marker-glow { fill: #57c7ff; }
+      .marker-core { fill: #ffffff; }
+      .marker-burst { fill: none; stroke: #22D3EE; }
+    </style>
+  </head>
+  <body>
+    <div
+      id="root"
+      data-composition-id="main"
+      data-start="0"
+      data-duration="15"
+      data-width="1920"
+      data-height="1080"
+      style="position: relative; width: 1920px; height: 1080px; background: #05070A;"
+    >
+      <div id="scene-1" class="clip scene" data-start="0" data-duration="2.7" data-track-index="1">
+        <div class="s1-eyebrow">
+          <span>UFO/UAP DISCLOSURE ARCHIVE</span><span class="sep">·</span><span>/globe</span>
+        </div>
+        <div class="s1-title">TIME SLIDER</div>
+        <div class="s1-tagline">Scrub through 79 years of UAP encounter geography</div>
+      </div>
+
+      <div id="scene-2" class="clip scene s2-stage" data-start="2.5" data-duration="9.5" data-track-index="2">
+        <div class="s2-hud">
+          GLOBE · <span class="v">REAL-TIME WINDOW</span>
+        </div>
+        <div class="s2-caption" id="s2-caption">
+          Markers brighten as their <span class="v">incident year</span> enters the window
+        </div>
+        <div class="globe-wrap" id="globe-wrap">
+          <svg class="globe-svg" viewBox="-400 -400 800 800" preserveAspectRatio="xMidYMid meet">
+            <defs>
+              <filter id="bloom" x="-100%" y="-100%" width="300%" height="300%">
+                <feGaussianBlur stdDeviation="4" />
+              </filter>
+              <radialGradient id="globe-fill">
+                <stop offset="0%" stop-color="#0d1424" />
+                <stop offset="80%" stop-color="#070a14" />
+                <stop offset="100%" stop-color="#03060c" />
+              </radialGradient>
+            </defs>
+            <circle cx="0" cy="0" r="380" fill="url(#globe-fill)" />
+            <g id="g-parallels"></g>
+            <g id="g-meridians"></g>
+            <circle class="globe-outline" cx="0" cy="0" r="380" />
+            <g id="g-marker-bases"></g>
+            <g id="g-marker-fx"></g>
+          </svg>
+        </div>
+        <div class="bloom-pulse" id="bloom-pulse"></div>
+        <div class="slider">
+          <div class="label-row">
+            <span class="label">WINDOW · 1947 → <span id="readout-cur">1947</span></span>
+            <span class="count" id="count-readout">0 records in range</span>
+          </div>
+          <div class="track">
+            <div class="fill" id="slider-fill"></div>
+            <div class="cursor" id="slider-cursor"></div>
+          </div>
+          <div class="ticks">
+            <span>1947</span><span>1960</span><span>1980</span><span>2000</span><span>2026</span>
+          </div>
+        </div>
+      </div>
+
+      <div id="scene-3" class="clip scene" data-start="11.8" data-duration="3.2" data-track-index="3">
+        <div class="s3-url">
+          uapdisclosuremirror.com
+          <span class="s3-url-underline" id="s3-underline"></span>
+        </div>
+        <div class="s3-route">/ui/#view=globe</div>
+        <div class="s3-tag">PERMANENT MIRROR · CC-BY</div>
+      </div>
+
+      <div class="vignette"></div>
+      <div class="scanlines"></div>
+    </div>
+
+    <script>
+      function mulberry32(seed) {
+        return function () {
+          seed |= 0;
+          seed = (seed + 0x6d2b79f5) | 0;
+          let t = Math.imul(seed ^ (seed >>> 15), 1 | seed);
+          t = (t + Math.imul(t ^ (t >>> 7), 61 | t)) ^ t;
+          return ((t ^ (t >>> 14)) >>> 0) / 4294967296;
+        };
+      }
+
+      const R = 380;
+
+      function project(lat, lng) {
+        const latRad = (lat * Math.PI) / 180;
+        const lngRad = (lng * Math.PI) / 180;
+        const x = (lngRad / Math.PI) * R * 0.92 * Math.cos(latRad * 0.6);
+        const y = -(latRad / (Math.PI / 2)) * R * 0.55;
+        return { x, y };
+      }
+
+      // Parallels & meridians
+      const gPar = document.getElementById("g-parallels");
+      let parHTML = "";
+      for (let lat = -60; lat <= 60; lat += 30) {
+        const yc = -(lat / 90) * R * 0.55;
+        const rx = R * 0.92 * Math.cos((lat * Math.PI / 180) * 0.6);
+        parHTML += `<ellipse class="parallel" cx="0" cy="${yc.toFixed(1)}" rx="${rx.toFixed(1)}" ry="6" />`;
+      }
+      gPar.innerHTML = parHTML;
+
+      const gMer = document.getElementById("g-meridians");
+      let merHTML = "";
+      for (let lng = -150; lng <= 150; lng += 30) {
+        const x = (lng / 180) * R * 0.92;
+        merHTML += `<line class="meridian" x1="${x.toFixed(1)}" y1="${(-R * 0.55).toFixed(1)}" x2="${x.toFixed(1)}" y2="${(R * 0.55).toFixed(1)}" />`;
+      }
+      gMer.innerHTML = merHTML;
+
+      // ─── Markers ───────────────────────────────────────────
+      // 1. Hand-picked famous incidents at their real years.
+      // 2. Plus ~40 deterministic random markers in plausible UAP regions,
+      //    biased toward the 2010-2025 window so the climax of the scrub has
+      //    a satisfying flurry of activity.
+      const FAMOUS = [
+        ["Roswell, NM",          33.4, -104.5, 1947],
+        ["Washington, D.C.",     38.9,  -77.0, 1952],
+        ["Phoenix, AZ",          33.4, -112.0, 1997],
+        ["Stephenville, TX",     32.2,  -98.2, 2008],
+        ["Detroit, MI",          42.3,  -83.0, 1955],
+        ["Aegean Sea",           38.0,   25.0, 2023],
+        ["Iraq",                 33.0,   44.0, 2016],
+        ["Iran",                 32.0,   53.0, 2020],
+        ["Persian Gulf",         26.5,   51.0, 2022],
+        ["Mosul, Iraq",          36.3,   43.1, 2016],
+        ["Aguadilla, P.R.",      18.5,  -67.1, 2013],
+        ["Off San Diego, CA",    32.7, -117.2, 2004],
+        ["Off Jacksonville, FL", 30.3,  -81.6, 2015],
+        ["Kabul, Afghanistan",   34.5,   69.2, 2021],
+        ["Mexico (north)",       23.0, -102.0, 2003],
+        ["Greece",               39.0,   22.0, 2024],
+        ["Japan",                36.0,  138.0, 2019],
+        ["Pacific Ocean",         0.0, -160.0, 2018],
+        ["UK (Rendlesham)",      52.1,    1.4, 1980],
+        ["Germany",              51.0,   10.0, 1976],
+        ["Netherlands",          52.0,    5.5, 1948],
+        ["South Pacific",       -10.0,  170.0, 2014],
+        ["Southern U.S.",        32.0,  -90.0, 1949],
+      ];
+
+      // High-density UAP regions for random markers (lat, lng, spread)
+      const REGIONS = [
+        { lat: 38, lng: -100, spreadLat: 8,  spreadLng: 22 }, // continental US
+        { lat: 35, lng:   45, spreadLat: 12, spreadLng: 18 }, // Middle East
+        { lat: 50, lng:    8, spreadLat: 6,  spreadLng: 12 }, // Western Europe
+        { lat: 35, lng:  135, spreadLat: 8,  spreadLng: 12 }, // Japan / E. China
+        { lat: 25, lng: -105, spreadLat: 6,  spreadLng: 10 }, // Mexico / Caribbean
+        { lat: 20, lng: -150, spreadLat: 12, spreadLng: 25 }, // Pacific
+        { lat: 55, lng:   70, spreadLat: 8,  spreadLng: 25 }, // Russia / Central Asia
+        { lat: -25, lng: 135, spreadLat: 8,  spreadLng: 20 }, // Australia
+      ];
+
+      const rng = mulberry32(20260509);
+      const RANDOM_COUNT = 42;
+      const random = [];
+      function tooClose(lat, lng, list) {
+        for (const m of list) {
+          const dy = (m[1] - lat);
+          const dx = (m[2] - lng);
+          if (dx * dx + dy * dy < 4 * 4) return true;
+        }
+        return false;
+      }
+      let attempts = 0;
+      while (random.length < RANDOM_COUNT && attempts < 5000) {
+        attempts++;
+        const region = REGIONS[Math.floor(rng() * REGIONS.length)];
+        // Gaussian-ish via average of two uniforms
+        const dlat = ((rng() + rng() - 1) * region.spreadLat);
+        const dlng = ((rng() + rng() - 1) * region.spreadLng);
+        const lat = Math.max(-65, Math.min(65, region.lat + dlat));
+        const lng = ((region.lng + dlng + 540) % 360) - 180;
+        if (tooClose(lat, lng, [...FAMOUS, ...random])) continue;
+        // Year bias: cube the random to skew strongly toward recent.
+        const u = rng();
+        const year = 1947 + Math.round((1 - Math.pow(1 - u, 2)) * 79);
+        random.push(["random", lat, lng, year]);
+      }
+
+      const MARKERS = [...FAMOUS, ...random];
+
+      // Render base markers (always-visible dim dots)
+      const gBases = document.getElementById("g-marker-bases");
+      let baseHTML = "";
+      MARKERS.forEach((m, i) => {
+        const { x, y } = project(m[1], m[2]);
+        baseHTML += `<circle class="marker-base" data-i="${i}" cx="${x.toFixed(1)}" cy="${y.toFixed(1)}" r="2.4" />`;
+      });
+      gBases.innerHTML = baseHTML;
+
+      // Render FX layers (burst, glow, core) - all start hidden/zero
+      const gFx = document.getElementById("g-marker-fx");
+      let fxHTML = "";
+      MARKERS.forEach((m, i) => {
+        const { x, y } = project(m[1], m[2]);
+        fxHTML += `<g class="marker-fx" data-i="${i}" data-year="${m[3]}" transform="translate(${x.toFixed(1)},${y.toFixed(1)})">`;
+        // Glow halo (filtered, larger). Hidden until reveal.
+        fxHTML += `<circle class="marker-glow" data-fx="glow" r="14" opacity="0" filter="url(#bloom)" />`;
+        // Burst ring — radial expansion at reveal moment
+        fxHTML += `<circle class="marker-burst" data-fx="burst" r="0" stroke-width="0" opacity="0" />`;
+        // Lit body + bright core stack
+        fxHTML += `<circle class="marker-glow" data-fx="lit" r="0" />`;
+        fxHTML += `<circle class="marker-core" data-fx="core" r="0" />`;
+        fxHTML += `</g>`;
+      });
+      gFx.innerHTML = fxHTML;
+
+      // ─── Timeline ──────────────────────────────────────────
+      window.__timelines = window.__timelines || {};
+      const tl = gsap.timeline({ paused: true });
+
+      // Scene 1
+      tl.from(".s1-eyebrow", { y: -20, opacity: 0, duration: 0.5, ease: "power3.out" }, 0.15);
+      tl.from(".s1-title",   { y: 30, opacity: 0, duration: 0.7, ease: "back.out(1.3)" }, 0.4);
+      tl.from(".s1-tagline", { y: 16, opacity: 0, duration: 0.55, ease: "power2.out" }, 0.9);
+      tl.to("#scene-1", { opacity: 0, filter: "blur(12px)", duration: 0.25, ease: "power2.in" }, 2.45);
+
+      // Scene 2 entrance
+      tl.fromTo("#scene-2",
+        { opacity: 0, filter: "blur(8px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.4, ease: "power2.out" },
+        2.5
+      );
+      tl.from(".s2-hud",     { x: -10, opacity: 0, duration: 0.4, ease: "power3.out" }, 2.7);
+      tl.from(".s2-caption", { y: -10, opacity: 0, duration: 0.45, ease: "power2.out" }, 2.85);
+
+      tl.from(".meridian",      { opacity: 0, duration: 0.4, ease: "power1.in", stagger: 0.02 }, 2.85);
+      tl.from(".parallel",      { opacity: 0, duration: 0.4, ease: "power1.in", stagger: 0.04 }, 3.0);
+      tl.from(".globe-outline", { opacity: 0, duration: 0.5, ease: "power2.out" }, 2.85);
+
+      // Marker bases pop in (small dim dots) staggered
+      tl.from(".marker-base", {
+        opacity: 0, scale: 0, transformOrigin: "center", duration: 0.3,
+        ease: "back.out(2)", stagger: { amount: 0.7, from: "random" },
+      }, 3.4);
+
+      // Slider entrance
+      tl.from(".slider", { y: 24, opacity: 0, duration: 0.5, ease: "power2.out" }, 3.6);
+
+      // Subtle globe drift (slow scale during scrub) — drama via parallax
+      tl.fromTo("#globe-wrap",
+        { scale: 1.0, transformOrigin: "center center" },
+        { scale: 1.04, duration: 7.2, ease: "sine.inOut" },
+        4.4
+      );
+
+      // ─── Time scrub ───────────────────────────────────────
+      const SCRUB_START = 4.6;
+      const SCRUB_DUR = 6.5;
+      const Y_MIN = 1947;
+      const Y_MAX = 2026;
+      const Y_SPAN = Y_MAX - Y_MIN;
+
+      tl.to("#slider-fill",   { width: "100%", duration: SCRUB_DUR, ease: "none" }, SCRUB_START);
+      tl.to("#slider-cursor", { left: "100%", duration: SCRUB_DUR, ease: "none" }, SCRUB_START);
+      // Cursor pulse — gentle scale wobble during scrub
+      tl.to("#slider-cursor", {
+        scale: 1.2, duration: 0.4, ease: "sine.inOut", repeat: 14, yoyo: true,
+      }, SCRUB_START);
+
+      // Year readout updates
+      const STEPS = 65;
+      for (let k = 0; k <= STEPS; k++) {
+        const t = SCRUB_START + (k / STEPS) * SCRUB_DUR;
+        const y = Math.round(Y_MIN + (k / STEPS) * Y_SPAN);
+        tl.set("#readout-cur", { textContent: String(y) }, t);
+      }
+
+      // Marker reveal: dramatic pop with burst, glow, core
+      const sorted = MARKERS.map((m, i) => ({ i, year: m[3] })).sort((a, b) => a.year - b.year);
+      sorted.forEach((m, idx) => {
+        const t = SCRUB_START + ((m.year - Y_MIN) / Y_SPAN) * SCRUB_DUR;
+        const sel = `.marker-fx[data-i="${m.i}"]`;
+        // Burst ring expands outward
+        tl.fromTo(`${sel} [data-fx="burst"]`,
+          { attr: { r: 0, "stroke-width": 3 }, opacity: 0.95 },
+          { attr: { r: 26, "stroke-width": 0 }, opacity: 0, duration: 0.6, ease: "power2.out" },
+          t
+        );
+        // Glow halo: pop then settle to a steady glow
+        tl.fromTo(`${sel} [data-fx="glow"]`,
+          { opacity: 0, attr: { r: 6 } },
+          { opacity: 0.55, attr: { r: 14 }, duration: 0.22, ease: "power3.out" },
+          t
+        );
+        tl.to(`${sel} [data-fx="glow"]`,
+          { opacity: 0.32, duration: 0.4, ease: "sine.inOut" },
+          t + 0.22
+        );
+        // Lit core: scale-pop with overshoot
+        tl.fromTo(`${sel} [data-fx="lit"]`,
+          { attr: { r: 0 } },
+          { attr: { r: 6 }, duration: 0.32, ease: "back.out(2.6)" },
+          t
+        );
+        // White hot core: brief flash, fades to nothing
+        tl.fromTo(`${sel} [data-fx="core"]`,
+          { attr: { r: 0 }, opacity: 1 },
+          { attr: { r: 3.2 }, opacity: 0, duration: 0.4, ease: "power2.out" },
+          t
+        );
+        // Update count
+        tl.set("#count-readout", { textContent: `${idx + 1} records in range` }, t);
+      });
+
+      // Bloom pulses — fire on every 6th marker reveal for crescendo feel
+      sorted.forEach((m, idx) => {
+        if (idx % 6 !== 0 && idx !== sorted.length - 1) return;
+        const t = SCRUB_START + ((m.year - Y_MIN) / Y_SPAN) * SCRUB_DUR;
+        tl.fromTo("#bloom-pulse",
+          { opacity: 0 },
+          { opacity: 0.9, duration: 0.18, ease: "power2.out" },
+          t
+        );
+        tl.to("#bloom-pulse", { opacity: 0, duration: 0.55, ease: "power2.in" }, t + 0.18);
+      });
+
+      // Final emphasis: at end of scrub, all glows pulse together
+      const climax = SCRUB_START + SCRUB_DUR + 0.05;
+      tl.to(".marker-fx [data-fx=\"glow\"]", {
+        opacity: 0.7, duration: 0.4, ease: "power2.out", yoyo: true, repeat: 1,
+      }, climax);
+      tl.to("#bloom-pulse", {
+        opacity: 0.6, duration: 0.5, ease: "power2.out", yoyo: true, repeat: 1,
+      }, climax);
+
+      // Scene 2 transition out
+      tl.to("#scene-2", { opacity: 0, filter: "blur(14px)", duration: 0.3, ease: "power2.in" }, 11.7);
+
+      // Scene 3
+      tl.fromTo("#scene-3",
+        { opacity: 0, filter: "blur(10px)" },
+        { opacity: 1, filter: "blur(0px)", duration: 0.55, ease: "power3.out" },
+        11.8
+      );
+      tl.from(".s3-url", { y: 28, opacity: 0, duration: 0.6, ease: "back.out(1.2)" }, 12.0);
+      tl.to("#s3-underline", { scaleX: 1, duration: 0.7, ease: "expo.out" }, 12.5);
+      tl.from(".s3-route", { y: 14, opacity: 0, duration: 0.45, ease: "power2.out" }, 12.7);
+      tl.from(".s3-tag", { opacity: 0, letterSpacing: "0.4em", duration: 0.7, ease: "power3.out" }, 13.2);
+      tl.to("#scene-3", { opacity: 0.85, duration: 0.5, ease: "power2.inOut" }, 14.5);
+
+      window.__timelines["main"] = tl;
+    </script>
+  </body>
+</html>
