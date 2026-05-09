@@ -22,6 +22,12 @@ python3 scripts/build_vault.py
 echo "==> Building search index…"
 python3 scripts/build_search_index.py
 
+echo "==> Augmenting features (shapes, incidents, graph layout)…"
+python3 scripts/build_features.py
+
+echo "==> Emitting public API + Atom feed…"
+python3 scripts/build_api.py
+
 echo
 echo "===== Corpus summary ====="
 echo "PDFs:    $(ls raw/docs   2>/dev/null | grep -c '\.pdf$')"

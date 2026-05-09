@@ -1,0 +1,44 @@
+{
+  "gimbal-2015": {
+    "id": "gimbal-2015",
+    "name": "Gimbal (USS Theodore Roosevelt, 2015)",
+    "date": "2015-01-21",
+    "location": "Off the coast of Jacksonville, FL",
+    "summary": "FLIR ATFLIR pod video from a Super Hornet showing an apparently rotating, hovering object against the wind."
+  },
+  "eastern-seaboard-2014-2019": {
+    "id": "eastern-seaboard-2014-2019",
+    "name": "Eastern Seaboard sightings (2014–2019)",
+    "date": "2014-01-01",
+    "location": "U.S. East Coast",
+    "summary": "Sustained observations of UAP by Navy aviators training along the East Coast through the 2010s."
+  },
+  "stephenville-2008": {
+    "id": "stephenville-2008",
+    "name": "Stephenville (2008)",
+    "date": "2008-01-08",
+    "location": "Stephenville, TX",
+    "summary": "Multi-witness UAP sighting in central Texas with corroborating radar tracks reported by MUFON."
+  },
+  "roswell-1947": {
+    "id": "roswell-1947",
+    "name": "Roswell Incident (1947)",
+    "date": "1947-07-08",
+    "location": "Roswell, NM",
+    "summary": "Recovery of debris near Roswell Army Air Field initially announced as a 'flying disc' before retraction."
+  },
+  "washington-dc-1952": {
+    "id": "washington-dc-1952",
+    "name": "Washington D.C. flap (1952)",
+    "date": "1952-07-19",
+    "location": "Washington, D.C.",
+    "summary": "Two consecutive weekends of radar/visual UAP encounters over D.C. that prompted CIA's Robertson Panel."
+  },
+  "aaro": {
+    "id": "aaro",
+    "name": "All-domain Anomaly Resolution Office",
+    "date": "2022-07-15",
+    "location": "DoD",
+    "summary": "DoD office responsible for UAP investigation since 2022; publisher of historical record reviews."
+  }
+}

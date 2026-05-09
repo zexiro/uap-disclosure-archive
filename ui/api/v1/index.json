@@ -1,0 +1,13 @@
+{
+  "name": "UFO/UAP Disclosure Archive",
+  "version": "v1",
+  "description": "Permanent mirror of the U.S. Department of War's UAP disclosure release.",
+  "tranche": "release-1-2026-05-08",
+  "endpoints": {
+    "records": "/ui/api/v1/records.json",
+    "record_by_id": "/ui/api/v1/records/{id}.json",
+    "incidents": "/ui/api/v1/incidents.json",
+    "feed": "/ui/feed.xml"
+  },
+  "license": "CC-BY-4.0 attribution to Disclosure Archive; underlying records are U.S. Government works (public domain)."
+}

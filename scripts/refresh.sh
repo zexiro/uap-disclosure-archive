@@ -28,6 +28,8 @@ python3 scripts/ocr.py || true       # OCR errors aren't fatal
 python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketches
 python3 scripts/build_links.py
 python3 scripts/build_search_index.py
+python3 scripts/build_features.py
+python3 scripts/build_api.py
 
 # Vault: rebuild fresh so removed/renamed records don't linger
 rm -rf vault/Releases vault/Index vault/README.md

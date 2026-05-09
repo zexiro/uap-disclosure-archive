@@ -1,7 +1,13 @@
-.PHONY: all parse download ocr links vault index serve clean refetch-csv
+.PHONY: all parse download ocr links vault index features api serve clean refetch-csv
 
-all: parse download ocr links vault index
+all: parse download ocr links vault index features api
 	@echo "✓ Pipeline complete. Run 'make serve' to browse."
+
+features:
+	@python3 scripts/build_features.py
+
+api:
+	@python3 scripts/build_api.py
 
 links:
 	@python3 scripts/build_links.py
@@ -30,4 +36,4 @@ serve:
 	@cd $(CURDIR) && python3 -m http.server 8765
 
 clean:
-	rm -rf raw/text raw/docs_ocr vault ui/search-index.json
+	rm -rf raw/text raw/docs_ocr vault ui/search-index.json ui/incidents.json ui/graph-layout.json ui/feed.xml ui/api
