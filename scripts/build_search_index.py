@@ -187,7 +187,54 @@ if EXTRACTED_PATH.exists():
         })
         extracted_records += 1
 
+# ─── Project Blue Book (USAF, 1947-1969) ──────────────────────────────
+# Pull in NICAP-mirrored "Unknown" cases as additional records, tagged
+# with provenance="official_us_military". They have no PDFs/OCR text, so
+# the text-heavy features (dossiers, links, related) quietly do nothing —
+# but they appear in search/filter, render in the detail panel, and pick
+# up civilian (NUFORC) correlations when nearby in space+time.
+BLUE_BOOK_PATH = RAW / "sightings" / "blue_book" / "sightings.json"
+blue_book_records = 0
+if BLUE_BOOK_PATH.exists():
+    bb = json.loads(BLUE_BOOK_PATH.read_text())
+    for r in bb:
+        case_no = r.get("source_id", "")
+        # Use underscore form in search-index ids (URL-safer than colons).
+        ui_id = f"blue_book_{case_no}"
+        loc = r.get("location", {}) or {}
+        docs.append({
+            "id": ui_id,
+            "title": r.get("title", f"USAF Blue Book case #{case_no}"),
+            "agency": "USAF Project Blue Book",
+            "type": "Case File",
+            "release_date": "1969-12-17",  # Blue Book program closeout
+            "incident_date": r.get("raw", {}).get("date_text", ""),
+            "incident_location": loc.get("name", ""),
+            "redaction": "",
+            "blurb": r.get("summary", ""),
+            "source_url": r.get("source_url", ""),
+            "primary_local": [],
+            "thumbnail_local": [],
+            "thumb_small": "",
+            "video_local": "",
+            "dvids_video_id": "",
+            "text": "",
+            "similar_text":  [],
+            "similar_image": [],
+            "extracted_images": [],
+            "dossiers": [],
+            "dossier_hits": {},
+            "provenance": "official_us_military",
+            "provenance_source": "blue_book",
+            "case_number": case_no,
+        })
+        blue_book_records += 1
+
 out = ROOT / "ui" / "search-index.json"
 out.parent.mkdir(exist_ok=True)
 out.write_text(json.dumps(docs, ensure_ascii=False))
-print(f"Wrote {out} — {len(docs)} records ({extracted_records} synthetic IMG from extracted PDF images), {sum(len(d['text']) for d in docs):,} text chars total")
+print(
+    f"Wrote {out} — {len(docs)} records "
+    f"({extracted_records} synthetic IMG, {blue_book_records} Blue Book), "
+    f"{sum(len(d['text']) for d in docs):,} text chars total"
+)

@@ -353,11 +353,13 @@
 
   /* Header retract / expand */
   body.header-collapsed header {
-    padding: 4px 14px !important;
+    padding: 6px 14px !important;
     gap: 6px !important;
-    overflow: hidden;
+    min-height: 44px;          /* ensure SHOW HEADER button fits */
+    align-items: center;
+    overflow: visible;
   }
-  body.header-collapsed header h1 { font-size: 13px; }
+  body.header-collapsed header h1 { font-size: 13px; line-height: 1; }
   body.header-collapsed header h1 small { display: none; }
   body.header-collapsed header .header-search-input,
   body.header-collapsed header .filters,
@@ -384,9 +386,12 @@
   /* Expand button (visible only when collapsed) — pinned to header right edge */
   body.header-collapsed .header-collapse-handle {
     display: inline-flex !important;
-    position: absolute; right: 14px; top: 8px; z-index: 50;
+    position: absolute; right: 14px; top: 50%; transform: translateY(-50%); z-index: 50;
     box-shadow: 0 0 0 2px rgba(87,199,255,0.15);
     animation: hdr-pulse 2.4s ease-in-out infinite;
+  }
+  body.header-collapsed .header-collapse-handle:hover {
+    transform: translateY(calc(-50% - 1px));
   }
   @keyframes hdr-pulse {
     0%, 100% { box-shadow: 0 0 0 2px rgba(87,199,255,0.15); }
@@ -1760,6 +1765,103 @@
     padding: 2px 7px; font-family: var(--mono); font-size: 10px; border-radius: 3px;
     letter-spacing: 0.06em; text-transform: uppercase; margin-left: 6px;
   }
+
+  /* ─── Provenance: official-released vs civilian/unverified ───────────
+     Mixing Pentagon-released material with crowd-sourced witness reports
+     is the single biggest failure mode for an aggregator like this — so
+     the visual distinction must be unmistakable, not just a chip. */
+
+  /* Small inline badge — sits next to the title on detail panels and
+     anywhere a record name appears alongside content. */
+  .prov-pill {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 2px 8px; border-radius: 3px;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.12em;
+    font-weight: 700; text-transform: uppercase;
+    vertical-align: middle;
+  }
+  .prov-pill.official {
+    background: rgba(87,199,255,0.10);
+    color: var(--accent);
+    border: 1px solid rgba(87,199,255,0.45);
+  }
+  .prov-pill.official::before { content: "✓"; }
+  .prov-pill.civilian {
+    background: rgba(255,179,77,0.12);
+    color: #ffb34d;
+    border: 1px solid rgba(255,179,77,0.55);
+  }
+  .prov-pill.civilian::before { content: "⚠"; }
+
+  /* Civilian-correlations block — appears *under* an official record's
+     details when civilian sightings cluster nearby in space+time.
+     Diagonal caution-tape striping + yellow/amber palette so it can't
+     be confused with the cool-blue official content above it. */
+  .civilian-block {
+    margin: 28px 0 18px;
+    padding: 0;
+    background:
+      repeating-linear-gradient(135deg,
+        rgba(255,179,77,0.05) 0 16px,
+        rgba(255,179,77,0.10) 16px 32px);
+    border: 2px dashed rgba(255,179,77,0.55);
+    border-radius: 6px;
+    position: relative;
+  }
+  .civilian-block::before {
+    content: "⚠ UNVERIFIED CIVILIAN SIGHTINGS NEARBY";
+    position: absolute; top: -11px; left: 18px;
+    padding: 3px 12px;
+    background: #ffb34d; color: #1a1200;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    font-weight: 800;
+    border-radius: 3px;
+    box-shadow: 0 1px 3px rgba(0,0,0,0.4);
+  }
+  .civilian-block .civ-intro {
+    padding: 22px 18px 4px;
+    font-size: 12px; color: #c8a872;
+    line-height: 1.55;
+  }
+  .civilian-block .civ-intro strong { color: #ffd9a0; }
+  .civilian-block .civ-list {
+    padding: 12px 18px 18px;
+    display: flex; flex-direction: column; gap: 10px;
+  }
+  .civilian-block .civ-row {
+    background: rgba(40,28,8,0.55);
+    border: 1px solid rgba(255,179,77,0.25);
+    border-left: 3px solid #ffb34d;
+    border-radius: 4px;
+    padding: 10px 12px 11px;
+    font-size: 13px; line-height: 1.45;
+  }
+  .civilian-block .civ-row .civ-title {
+    font-weight: 600; color: #ffd9a0;
+    margin-bottom: 4px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .civilian-block .civ-row .civ-summary {
+    color: var(--fg);
+  }
+  .civilian-block .civ-row .civ-meta {
+    margin-top: 6px;
+    font-size: 11px; color: #b09060;
+    display: flex; gap: 14px; flex-wrap: wrap;
+    font-family: var(--mono); letter-spacing: 0.04em;
+  }
+  .civilian-block .civ-row .civ-meta strong { color: #ffd9a0; font-weight: 600; }
+  .civilian-block .civ-source {
+    font-family: var(--mono); font-size: 9px; letter-spacing: 0.16em;
+    text-transform: uppercase; color: #c8a872;
+    background: rgba(255,179,77,0.12);
+    padding: 1px 6px; border-radius: 2px;
+  }
+  .civilian-block .civ-footer {
+    padding: 4px 18px 14px;
+    font-size: 11px; color: #8a7350;
+    font-style: italic; line-height: 1.5;
+  }
 </style>
 </head>
 <body>
@@ -2413,6 +2515,63 @@ function incidentBadgeHTML(d) {
   return `<span class="incident-badge" data-incident-id="${escapeHtml(d.incident_id)}"><span class="icon">◉</span> ${escapeHtml(name)}</span>`;
 }
 
+// Civilian sightings (NUFORC) within ~150km / ±30 days of this official
+// record's incident location/date. Civilian reports are eyewitness, mostly
+// uncorroborated, and explicitly NOT to be conflated with the Pentagon-
+// released material — the styling shouts about that.
+function civilianCorrelationsHTML(d) {
+  const all = window.CORRELATIONS || null;
+  if (!all) return "";
+  const entry = all[d.id];
+  if (!entry || !entry.matches || !entry.matches.length) return "";
+
+  const total = entry.match_count || entry.matches.length;
+  const shown = entry.matches.length;
+  const moreNote = total > shown ? ` (showing ${shown} of ${total})` : "";
+
+  const rows = entry.matches.map(m => {
+    const date = (m.occurred_at || "").slice(0, 10);
+    const delta = m.delta_days;
+    const deltaTxt = delta === 0 ? "same day"
+      : delta > 0 ? `${delta} day${delta === 1 ? "" : "s"} after`
+      : `${-delta} day${delta === -1 ? "" : "s"} before`;
+    const where = (m.location && m.location.name) || "";
+    const shapeBit = m.shape ? `<span class="civ-source">${escapeHtml(m.shape)}</span>` : "";
+    const summary = m.summary || m.title || "";
+    return `
+      <div class="civ-row">
+        <div class="civ-title">
+          <span class="prov-pill civilian">Unverified</span>
+          ${shapeBit}
+          <span>${escapeHtml(m.title || "NUFORC sighting")}</span>
+        </div>
+        ${summary ? `<div class="civ-summary">${escapeHtml(summary)}</div>` : ""}
+        <div class="civ-meta">
+          <span><strong>When:</strong> ${escapeHtml(date)} (${escapeHtml(deltaTxt)})</span>
+          <span><strong>Where:</strong> ${escapeHtml(where)}</span>
+          <span><strong>Distance:</strong> ${escapeHtml(String(m.distance_km))} km</span>
+          <span><strong>Source:</strong> ${escapeHtml((m.source || "").toUpperCase())}</span>
+        </div>
+      </div>`;
+  }).join("");
+
+  return `
+    <div class="civilian-block">
+      <div class="civ-intro">
+        <strong>${total} civilian eyewitness report${total === 1 ? "" : "s"}</strong>
+        from third-party databases (NUFORC) cluster within ~150 km and ±30 days of this
+        incident. These are <strong>NOT verified</strong> by any government source and
+        are shown here for context only — they may correlate, may be unrelated, or may
+        be misidentified mundane phenomena${moreNote}.
+      </div>
+      <div class="civ-list">${rows}</div>
+      <div class="civ-footer">
+        Source: NUFORC public mirror (planetsig/ufo-reports). Coverage 1906–2014.
+        Treat as anecdotal — not corroborating evidence.
+      </div>
+    </div>`;
+}
+
 function extractedHTML(d) {
   const imgs = d.extracted_images || [];
   if (!imgs.length) return "";
@@ -2488,7 +2647,7 @@ function showDetail(id, terms = []) {
     <div class="mobile-back" id="mobile-back">← back to results</div>
     ${parentLink}
     ${provenanceHTML(d)}
-    <h2>${highlight(d.title, terms)}</h2>
+    <h2><span class="prov-pill official" title="This record was officially released by the U.S. government">Official Release</span> ${highlight(d.title, terms)}</h2>
     <div class="dmeta">
       <span><strong>Agency:</strong> ${escapeHtml(d.agency)}</span>
       <span><strong>Type:</strong> ${escapeHtml(d.type)}</span>
@@ -2506,6 +2665,7 @@ function showDetail(id, terms = []) {
     ${dossierMentionsHTML(d)}
     ${previewHTML(d)}
     ${extractedHTML(d)}
+    ${civilianCorrelationsHTML(d)}
     <div id="mini-graph-mount"></div>
     ${relatedHTML(d)}
     ${d.text ? `
@@ -5178,9 +5338,12 @@ async function init() {
   // Optionally load supplemental data files. All graceful-degradation.
   // - incidents.json: curated incident definitions
   // - graph-layout.json: pre-computed force-directed layout for full graph
+  // - correlations.json: civilian sightings (NUFORC) within 150km / 30 days
+  //   of each official war.gov record. Keyed by raw record id.
   await Promise.allSettled([
     fetch("incidents.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.INCIDENTS = j.incidents || j; }),
     fetch("graph-layout.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_LAYOUT = j; }),
+    fetch("correlations.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.CORRELATIONS = j; }),
   ]);
 
   mini = new MiniSearch({

@@ -1,0 +1,2178 @@
+{
+  "12-17'N 155-35' W (Pacific)": null,
+  "14'-17\" N 69'57\" E": null,
+  "15 miles south of Houghton": null,
+  "19' N 172\" E (Pacific)": null,
+  "20 miles south of Quartsite, Arizona": null,
+  "200 miles east of Dover (Atlantic)": null,
+  "34'55\" N 164'05\" E (Pacific)": null,
+  "35'-50' N 125'40' W (Pacific)": null,
+  "37' 25' N 132' 25' E (Sea of Japan)": null,
+  "40'-00\" N 175'54\" W (Pacific)": null,
+  "41'N-35'W (Atlantic)": null,
+  "60 miles east of St. Louis, Missouri": null,
+  "Aegean Sea": {
+    "country": "",
+    "lat": 38.0622276,
+    "lng": 25.7205887
+  },
+  "Air radar, Bermuda": null,
+  "Akron, Ohio": {
+    "country": "us",
+    "lat": 41.083064,
+    "lng": -81.518485
+  },
+  "Alamogordo, New Mexico": {
+    "country": "us",
+    "lat": 32.8998822,
+    "lng": -105.9602081
+  },
+  "Alaska": {
+    "country": "us",
+    "lat": 64.4459613,
+    "lng": -149.680909
+  },
+  "Albany, Georgia Area": {
+    "country": "us",
+    "lat": 31.5587854,
+    "lng": -84.1679634
+  },
+  "Albuquerque, New Mexico": {
+    "country": "us",
+    "lat": 35.0841034,
+    "lng": -106.650985
+  },
+  "Allen, Maryland": {
+    "country": "us",
+    "lat": 38.289044,
+    "lng": -75.6919909
+  },
+  "Allentown, Pennsylvania": {
+    "country": "us",
+    "lat": 40.6022552,
+    "lng": -75.4716115
+  },
+  "Alto, Tennessee": {
+    "country": "us",
+    "lat": 35.2706368,
+    "lng": -85.953036
+  },
+  "Altoona, Pennsylvania": {
+    "country": "us",
+    "lat": 40.5193586,
+    "lng": -78.3968299
+  },
+  "Amarillo, Texas": {
+    "country": "us",
+    "lat": 35.20729,
+    "lng": -101.8371192
+  },
+  "Andrews AFB, Washington, D.C.": null,
+  "Annandle, Virginia": null,
+  "Annapolis, Maryland": {
+    "country": "us",
+    "lat": 38.9786401,
+    "lng": -76.492786
+  },
+  "Arabian Gulf": {
+    "country": "",
+    "lat": 27.2381259,
+    "lng": 51.1972311
+  },
+  "Arabian Sea": {
+    "country": "",
+    "lat": 12.4368972,
+    "lng": 63.0026622
+  },
+  "Arlington, Virginia": {
+    "country": "us",
+    "lat": 38.8769326,
+    "lng": -77.0893094
+  },
+  "Arrey, New Mexico": {
+    "country": "us",
+    "lat": 32.8487014,
+    "lng": -107.3195359
+  },
+  "Artesia, New Mexico": {
+    "country": "us",
+    "lat": 32.8423345,
+    "lng": -104.4032963
+  },
+  "Asheville, North Carolina": {
+    "country": "us",
+    "lat": 35.595363,
+    "lng": -82.5508407
+  },
+  "Athens, Georgia": {
+    "country": "us",
+    "lat": 33.9597677,
+    "lng": -83.376398
+  },
+  "Augusta, Maine": {
+    "country": "us",
+    "lat": 44.3148027,
+    "lng": -69.7743945
+  },
+  "Austin, Texas": {
+    "country": "us",
+    "lat": 30.2711286,
+    "lng": -97.7436995
+  },
+  "Azerbaijan": {
+    "country": "az",
+    "lat": 40.3936294,
+    "lng": 47.7872508
+  },
+  "Azores": {
+    "country": "pt",
+    "lat": 37.8085565,
+    "lng": -25.4731374
+  },
+  "Banning, California": {
+    "country": "us",
+    "lat": 33.9255685,
+    "lng": -116.875289
+  },
+  "Bark River, Michigan": {
+    "country": "us",
+    "lat": 45.7099939,
+    "lng": -87.3052091
+  },
+  "Barstow, California": {
+    "country": "us",
+    "lat": 34.8986215,
+    "lng": -117.0244313
+  },
+  "Bayview, Washington": {
+    "country": "us",
+    "lat": 48.0076973,
+    "lng": -122.4610487
+  },
+  "Bedford, Ohio": {
+    "country": "us",
+    "lat": 41.39311,
+    "lng": -81.536509
+  },
+  "Belleville, Michigan": {
+    "country": "us",
+    "lat": 42.2048414,
+    "lng": -83.4852106
+  },
+  "Bellevue Hill, Vermont": {
+    "country": "us",
+    "lat": 44.7819912,
+    "lng": -73.0648613
+  },
+  "Bellingham, Washington": {
+    "country": "us",
+    "lat": 48.7544012,
+    "lng": -122.478836
+  },
+  "Belt, Montana": {
+    "country": "us",
+    "lat": 47.387633,
+    "lng": -110.927528
+  },
+  "Bentor Harbor, Michigan": null,
+  "Bermuda": {
+    "country": "bm",
+    "lat": 32.3040273,
+    "lng": -64.7563086
+  },
+  "Bethesda, Maryland": {
+    "country": "us",
+    "lat": 38.9812726,
+    "lng": -77.1233587
+  },
+  "Beverly, Massachusetts": {
+    "country": "us",
+    "lat": 42.5489744,
+    "lng": -70.8781883
+  },
+  "Biloxi, Mississippi": {
+    "country": "us",
+    "lat": 30.4007626,
+    "lng": -88.8893818
+  },
+  "Boerne, Texas": {
+    "country": "us",
+    "lat": 29.7946641,
+    "lng": -98.7319703
+  },
+  "Bohol Island, Philippines": {
+    "country": "ph",
+    "lat": 11.5865764,
+    "lng": 124.9189142
+  },
+  "Bonlee, North Carolina": {
+    "country": "us",
+    "lat": 35.6459769,
+    "lng": -79.4144654
+  },
+  "Boston-Provincetown, Massachusetts": null,
+  "Bunker Hill AFB , Indiana": null,
+  "Burnsville, North Carolina": {
+    "country": "us",
+    "lat": 35.9172243,
+    "lng": -82.2996695
+  },
+  "Butler, Missouri": {
+    "country": "us",
+    "lat": 36.7151346,
+    "lng": -90.4146358
+  },
+  "California Area": {
+    "country": "cr",
+    "lat": 9.9327507,
+    "lng": -84.0672449
+  },
+  "Cambridge, Massachusetts": {
+    "country": "us",
+    "lat": 42.3656347,
+    "lng": -71.1040018
+  },
+  "Cape Cod, Massachusetts": {
+    "country": "us",
+    "lat": 41.7987588,
+    "lng": -69.9960655
+  },
+  "Cape Province, South Africa": {
+    "country": "za",
+    "lat": -33.9252902,
+    "lng": 18.4185215
+  },
+  "Caribou, Maine": {
+    "country": "us",
+    "lat": 46.8606301,
+    "lng": -68.0116807
+  },
+  "Carson Sink, Nevada": {
+    "country": "us",
+    "lat": 39.8155579,
+    "lng": -118.5332801
+  },
+  "Castalia, Ohio": {
+    "country": "us",
+    "lat": 41.4000523,
+    "lng": -82.8085204
+  },
+  "Cedar Grove, New Jersey": {
+    "country": "us",
+    "lat": 40.8517662,
+    "lng": -74.229035
+  },
+  "Charleston AFB, South Carolina": {
+    "country": "us",
+    "lat": 32.9005391,
+    "lng": -80.0513575
+  },
+  "Charleston, West Virginia": {
+    "country": "us",
+    "lat": 38.3505995,
+    "lng": -81.6332812
+  },
+  "Cheffy Creek, New York": null,
+  "Cheyenne, Wyoming": {
+    "country": "us",
+    "lat": 41.139981,
+    "lng": -104.820246
+  },
+  "Chicago, Illinois": {
+    "country": "us",
+    "lat": 41.8755616,
+    "lng": -87.6244212
+  },
+  "Chicago, lllinois": null,
+  "Chickasaw, Alabama": {
+    "country": "us",
+    "lat": 30.7637991,
+    "lng": -88.0747222
+  },
+  "Chisholm, Minnesota": {
+    "country": "us",
+    "lat": 47.489926,
+    "lng": -92.883528
+  },
+  "Chula Vista, California": {
+    "country": "us",
+    "lat": 32.6400541,
+    "lng": -117.084195
+  },
+  "Claremont, California": {
+    "country": "us",
+    "lat": 34.0966764,
+    "lng": -117.7197785
+  },
+  "Clasgow and Opheim, Montana": null,
+  "Cleveland, Ohio": {
+    "country": "us",
+    "lat": 41.4996574,
+    "lng": -81.6936772
+  },
+  "Clinton, Iowa--Littleton, Illinois": null,
+  "Clovis, New Mexico": {
+    "country": "us",
+    "lat": 34.405472,
+    "lng": -103.2050709
+  },
+  "Cochise, New Mexico": {
+    "country": "us",
+    "lat": 35.0403729,
+    "lng": -106.7376586
+  },
+  "Col Anahuac, Mexico": {
+    "country": "mx",
+    "lat": 24.4094644,
+    "lng": -104.6103369
+  },
+  "Cold Bay AFS, Alaska": null,
+  "Colorado Springs, Colorado": {
+    "country": "us",
+    "lat": 38.8339578,
+    "lng": -104.825348
+  },
+  "Columbus, Nebraska": {
+    "country": "us",
+    "lat": 41.4292988,
+    "lng": -97.3581439
+  },
+  "Columbus, Ohio": {
+    "country": "us",
+    "lat": 39.9622601,
+    "lng": -83.0007065
+  },
+  "Columbus, Wisconsin": {
+    "country": "us",
+    "lat": 43.3392616,
+    "lng": -89.0157723
+  },
+  "Concord, New Hampshire": {
+    "country": "us",
+    "lat": 43.207178,
+    "lng": -71.537476
+  },
+  "Copemiah, Michigan": null,
+  "Corner Brook, Newfoundland": {
+    "country": "ca",
+    "lat": 48.95317,
+    "lng": -57.947388
+  },
+  "Corona, California": {
+    "country": "us",
+    "lat": 33.8752945,
+    "lng": -117.566444
+  },
+  "Corsica, Pennsylvania": {
+    "country": "us",
+    "lat": 41.1811753,
+    "lng": -79.2022618
+  },
+  "Cortex, Florida": null,
+  "Corvallis, Oregon": {
+    "country": "us",
+    "lat": 44.5645659,
+    "lng": -123.2620435
+  },
+  "Craig, Montana": {
+    "country": "us",
+    "lat": 47.0743889,
+    "lng": -111.9633302
+  },
+  "Crete, Illinois": {
+    "country": "us",
+    "lat": 41.4445334,
+    "lng": -87.6313829
+  },
+  "Crittendon, Virginia": {
+    "country": "us",
+    "lat": 37.3145547,
+    "lng": -79.9445595
+  },
+  "Cupar Fife, Scotland": {
+    "country": "gb",
+    "lat": 56.3193913,
+    "lng": -3.0116545
+  },
+  "Dallas, Texas": {
+    "country": "us",
+    "lat": 32.7762719,
+    "lng": -96.7968559
+  },
+  "Damon, Texas": {
+    "country": "us",
+    "lat": 29.290523,
+    "lng": -95.7346708
+  },
+  "Danvers, Massachusetts": {
+    "country": "us",
+    "lat": 42.5664984,
+    "lng": -70.9362957
+  },
+  "Danville, Virginia": {
+    "country": "us",
+    "lat": 36.5879877,
+    "lng": -79.3916713
+  },
+  "Delaware, Ohio": {
+    "country": "us",
+    "lat": 40.2317686,
+    "lng": -82.9651045
+  },
+  "Denver, California [sic]": null,
+  "Denver, Colorado": {
+    "country": "us",
+    "lat": 39.7392364,
+    "lng": -104.984862
+  },
+  "Detroit, MI": {
+    "country": "us",
+    "lat": 42.3315509,
+    "lng": -83.0466403
+  },
+  "Djibouti": {
+    "country": "dj",
+    "lat": 11.8145966,
+    "lng": 42.8453061
+  },
+  "Dodgeville, Wisconsin": {
+    "country": "us",
+    "lat": 42.9600059,
+    "lng": -90.1304461
+  },
+  "Donnybrook, North Dakota": {
+    "country": "us",
+    "lat": 48.509465,
+    "lng": -101.8851618
+  },
+  "Dorchester, Massachusetts": {
+    "country": "us",
+    "lat": 42.2973205,
+    "lng": -71.0744952
+  },
+  "Dubuque, Iowa": {
+    "country": "us",
+    "lat": 42.5006243,
+    "lng": -90.6647985
+  },
+  "Duncanville, Texas": {
+    "country": "us",
+    "lat": 32.6518004,
+    "lng": -96.9083366
+  },
+  "Durban, South Africa": {
+    "country": "za",
+    "lat": -29.861825,
+    "lng": 31.009909
+  },
+  "East China Sea": {
+    "country": "",
+    "lat": 28.9999625,
+    "lng": 125.0000442
+  },
+  "East Ely, Nevada": {
+    "country": "us",
+    "lat": 39.2531065,
+    "lng": -114.8668499
+  },
+  "Edmonton, Alberta, Canada": {
+    "country": "ca",
+    "lat": 53.5462055,
+    "lng": -113.491241
+  },
+  "El Cajon, California": {
+    "country": "us",
+    "lat": 32.7947731,
+    "lng": -116.962526
+  },
+  "El Paso, Texas": {
+    "country": "us",
+    "lat": 31.7601001,
+    "lng": -106.4870476
+  },
+  "Elberton, Alabama": null,
+  "Elkins Park, Pennsylvania": {
+    "country": "us",
+    "lat": 40.0770553,
+    "lng": -75.1268413
+  },
+  "Ellenton, South Carolina": {
+    "country": "us",
+    "lat": 33.421531,
+    "lng": -81.6856654
+  },
+  "Elmira, New York": {
+    "country": "us",
+    "lat": 42.0897965,
+    "lng": -76.8077338
+  },
+  "Elsinore, California": {
+    "country": "us",
+    "lat": 33.6680772,
+    "lng": -117.3272615
+  },
+  "Emmett, Idaho": {
+    "country": "us",
+    "lat": 43.8734979,
+    "lng": -116.4993012
+  },
+  "England": {
+    "country": "gb",
+    "lat": 52.5310214,
+    "lng": -1.2649062
+  },
+  "Ennis, Montana": {
+    "country": "us",
+    "lat": 45.348817,
+    "lng": -111.729697
+  },
+  "Erding Air Depot, Germany": null,
+  "Estacado, Texas": {
+    "country": "us",
+    "lat": 33.7523056,
+    "lng": -101.5618297
+  },
+  "Exeter, New Hampshire": {
+    "country": "us",
+    "lat": 42.981477,
+    "lng": -70.9478343
+  },
+  "Fairfield, California": {
+    "country": "us",
+    "lat": 38.2493581,
+    "lng": -122.039966
+  },
+  "Fairfield-Suisan AFB, California": null,
+  "Farmington, Utah": {
+    "country": "us",
+    "lat": 40.9804423,
+    "lng": -111.8874688
+  },
+  "Fayetteville, Georgia": {
+    "country": "us",
+    "lat": 33.4487257,
+    "lng": -84.4549262
+  },
+  "Fort Austin, Michigan": {
+    "country": "us",
+    "lat": 44.2735151,
+    "lng": -84.2313947
+  },
+  "Fort Benning, Georgia": {
+    "country": "us",
+    "lat": 32.3944604,
+    "lng": -84.8062645
+  },
+  "Fort Bliss, Texas": {
+    "country": "us",
+    "lat": 32.2463821,
+    "lng": -106.3742617
+  },
+  "Fort Bragg, North Carolina": {
+    "country": "us",
+    "lat": 35.140311,
+    "lng": -79.1541465
+  },
+  "Fort Meyers, Florida": {
+    "country": "us",
+    "lat": 27.8100635,
+    "lng": -81.3318611
+  },
+  "Fort Monmouth, New Jersey": {
+    "country": "us",
+    "lat": 40.3118633,
+    "lng": -74.04508
+  },
+  "Forth Smith, Arkansas": null,
+  "Franklin Springs, New York": {
+    "country": "us",
+    "lat": 43.0367363,
+    "lng": -75.392115
+  },
+  "Fruita, Colorado": {
+    "country": "us",
+    "lat": 39.1588826,
+    "lng": -108.7336414
+  },
+  "Fukuoka, Japan": {
+    "country": "jp",
+    "lat": 33.6251241,
+    "lng": 130.6180016
+  },
+  "Fulda, Germany": {
+    "country": "de",
+    "lat": 50.5514658,
+    "lng": 9.6762161
+  },
+  "Galesburg, Moline, Illinois": null,
+  "Gander Lake, Newfoundland": {
+    "country": "ca",
+    "lat": 48.9090271,
+    "lng": -54.9140698
+  },
+  "Gatlinburg, Tennessee": {
+    "country": "us",
+    "lat": 35.714259,
+    "lng": -83.5101638
+  },
+  "Gaylesville, Alabama": {
+    "country": "us",
+    "lat": 34.268426,
+    "lng": -85.5569057
+  },
+  "George AFB, California": {
+    "country": "us",
+    "lat": 34.599735,
+    "lng": -117.3784879
+  },
+  "Georgia": {
+    "country": "us",
+    "lat": 32.3293809,
+    "lng": -83.1137366
+  },
+  "Germany": {
+    "country": "de",
+    "lat": 51.1638175,
+    "lng": 10.4478313
+  },
+  "Gills Rock, Wisconsin": {
+    "country": "us",
+    "lat": 45.289985,
+    "lng": -87.021783
+  },
+  "Glen Ellyn, Illinois": {
+    "country": "us",
+    "lat": 41.8775293,
+    "lng": -88.0670118
+  },
+  "Goodfellow AFB, Texas": {
+    "country": "us",
+    "lat": 31.43207,
+    "lng": -100.4062284
+  },
+  "Goose AFB, Labrador": null,
+  "Goose Bay, Labrador": {
+    "country": "ca",
+    "lat": 53.333333,
+    "lng": -60.416667
+  },
+  "Governors Island, New York": {
+    "country": "us",
+    "lat": 40.6886536,
+    "lng": -74.018276
+  },
+  "Grand Haven, Michigan": {
+    "country": "us",
+    "lat": 43.0630734,
+    "lng": -86.2283864
+  },
+  "Grand Rapids, Michigan": {
+    "country": "us",
+    "lat": 42.9632425,
+    "lng": -85.6678639
+  },
+  "Greece": {
+    "country": "gr",
+    "lat": 38.9953683,
+    "lng": 21.9877132
+  },
+  "Greenville, Mississippi": {
+    "country": "us",
+    "lat": 33.4111051,
+    "lng": -91.0635857
+  },
+  "Groveton, Missouri": {
+    "country": "us",
+    "lat": 38.4811039,
+    "lng": -90.375385
+  },
+  "Guam": {
+    "country": "us",
+    "lat": 13.4499943,
+    "lng": 144.7651677
+  },
+  "Guatemala": {
+    "country": "gt",
+    "lat": 15.5855545,
+    "lng": -90.345759
+  },
+  "Gulf of Aden": {
+    "country": "",
+    "lat": 12.6147301,
+    "lng": 47.5063378
+  },
+  "Gulf of Oman": {
+    "country": "",
+    "lat": 24.2138029,
+    "lng": 58.9845823
+  },
+  "Gulfport, Mississippi": {
+    "country": "us",
+    "lat": 30.3674198,
+    "lng": -89.0928155
+  },
+  "Gwinner, North Dakota": {
+    "country": "us",
+    "lat": 46.225796,
+    "lng": -97.662596
+  },
+  "Hackettstown, New Jersey": {
+    "country": "us",
+    "lat": 40.8538589,
+    "lng": -74.8292553
+  },
+  "Hamilton Field, California": {
+    "country": "us",
+    "lat": 38.0635933,
+    "lng": -122.5237046
+  },
+  "Haneda AFB, Japan": null,
+  "Hartland, Maine": {
+    "country": "us",
+    "lat": 44.8831798,
+    "lng": -69.4476611
+  },
+  "Hassleholm, Sweden": {
+    "country": "se",
+    "lat": 56.157986,
+    "lng": 13.7653328
+  },
+  "Healdsburg, California": {
+    "country": "us",
+    "lat": 38.6106812,
+    "lng": -122.870138
+  },
+  "Heidelberg, Germany": {
+    "country": "de",
+    "lat": 49.4093582,
+    "lng": 8.694724
+  },
+  "Hermanas, New Mexico": {
+    "country": "us",
+    "lat": 31.8509325,
+    "lng": -107.9519754
+  },
+  "Hickam Field Hawaii": {
+    "country": "us",
+    "lat": 21.3276152,
+    "lng": -157.9528703
+  },
+  "Highland, North Carolina": {
+    "country": "us",
+    "lat": 39.8608662,
+    "lng": -95.2604973
+  },
+  "Holloman AFB, New Mexico": {
+    "country": "us",
+    "lat": 33.076831,
+    "lng": -106.2190016
+  },
+  "Holyoke, Massachusetts": {
+    "country": "us",
+    "lat": 42.2071184,
+    "lng": -72.6075851
+  },
+  "Houston, Texas": {
+    "country": "us",
+    "lat": 29.7589382,
+    "lng": -95.3676974
+  },
+  "Iceland": {
+    "country": "is",
+    "lat": 64.9841821,
+    "lng": -18.1059013
+  },
+  "Indian Lake, Ohio": {
+    "country": "us",
+    "lat": 40.4971171,
+    "lng": -83.8988187
+  },
+  "Indianapolis, Indiana": {
+    "country": "us",
+    "lat": 39.7683331,
+    "lng": -86.1583502
+  },
+  "Inyokern, California": {
+    "country": "us",
+    "lat": 35.652055,
+    "lng": -117.817663
+  },
+  "Iran": {
+    "country": "ir",
+    "lat": 32.6475314,
+    "lng": 54.5643516
+  },
+  "Iraq": {
+    "country": "iq",
+    "lat": 33.0955793,
+    "lng": 44.1749775
+  },
+  "Irondequoit, New York": {
+    "country": "us",
+    "lat": 43.2133955,
+    "lng": -77.5797226
+  },
+  "Iwo Jima": {
+    "country": "jp",
+    "lat": 24.7803301,
+    "lng": 141.3205867
+  },
+  "Japan": {
+    "country": "jp",
+    "lat": 36.5748441,
+    "lng": 139.2394179
+  },
+  "Japan, Korea Area": null,
+  "Johnson AB, Japan": {
+    "country": "jp",
+    "lat": 35.8326694,
+    "lng": 139.3983064
+  },
+  "Juniata, Pennsylvania": {
+    "country": "us",
+    "lat": 40.5368022,
+    "lng": -77.4300565
+  },
+  "Kadena APB, Okinawa": null,
+  "Kadena, Okinawa": {
+    "country": "jp",
+    "lat": 26.3617602,
+    "lng": 127.7554216
+  },
+  "Kansas City, Kansas": {
+    "country": "us",
+    "lat": 39.1134562,
+    "lng": -94.626497
+  },
+  "Kansas City, Missouri": {
+    "country": "us",
+    "lat": 39.100105,
+    "lng": -94.5781416
+  },
+  "Kansas, Ohio": {
+    "country": "us",
+    "lat": 41.2450533,
+    "lng": -83.2846453
+  },
+  "Kazakhstan": {
+    "country": "kz",
+    "lat": 48.1012954,
+    "lng": 66.7780818
+  },
+  "Keesler AFB, Mississippi": {
+    "country": "us",
+    "lat": 30.4094294,
+    "lng": -88.918865
+  },
+  "Keflavik Airport, Iceland": {
+    "country": "is",
+    "lat": 63.9950427,
+    "lng": -22.6238642
+  },
+  "Kelly AFB, Texas": {
+    "country": "us",
+    "lat": 29.3828,
+    "lng": -98.55939
+  },
+  "Kemah, Texas": {
+    "country": "us",
+    "lat": 29.5427297,
+    "lng": -95.0204837
+  },
+  "Kiel, Wisconsin": {
+    "country": "us",
+    "lat": 43.912493,
+    "lng": -88.0356515
+  },
+  "Killeen Base, Camp Hood, Texas": null,
+  "Killeen, Texas": {
+    "country": "us",
+    "lat": 31.1171441,
+    "lng": -97.727796
+  },
+  "Kimpo AB, Korea": {
+    "country": "kr",
+    "lat": 37.6155683,
+    "lng": 126.7157798
+  },
+  "Kirksville, Missouri": {
+    "country": "us",
+    "lat": 40.1948848,
+    "lng": -92.5833939
+  },
+  "Kirtland AFB, New Mexico": {
+    "country": "us",
+    "lat": 35.0011307,
+    "lng": -106.5157255
+  },
+  "Kit Carson, Colorado": {
+    "country": "us",
+    "lat": 39.3080613,
+    "lng": -102.62075
+  },
+  "Knoxville, Tennessee": {
+    "country": "us",
+    "lat": 35.9603948,
+    "lng": -83.9210261
+  },
+  "Kokomo, Indiana": {
+    "country": "us",
+    "lat": 40.4864444,
+    "lng": -86.1336351
+  },
+  "Korea": {
+    "country": "kr",
+    "lat": 36.638392,
+    "lng": 127.6961188
+  },
+  "Kotzebue, Alaska": {
+    "country": "us",
+    "lat": 66.8982057,
+    "lng": -162.5977621
+  },
+  "Kutztown, Pennsylvania": {
+    "country": "us",
+    "lat": 40.5173165,
+    "lng": -75.7774177
+  },
+  "Kyushu, Japan": {
+    "country": "jp",
+    "lat": 32.4821421,
+    "lng": 131.1008966
+  },
+  "La Camp, Louisiana": {
+    "country": "us",
+    "lat": 31.4170287,
+    "lng": -92.4022024
+  },
+  "La Crosse, Wisconsin": {
+    "country": "us",
+    "lat": 43.8122836,
+    "lng": -91.2514355
+  },
+  "La Porte, Indiana": {
+    "country": "us",
+    "lat": 41.6105983,
+    "lng": -86.7225227
+  },
+  "LaVeta, Colorado": {
+    "country": "us",
+    "lat": 39.0507391,
+    "lng": -108.5636304
+  },
+  "Ladd AFB, Alaska": null,
+  "Lagarfiot River, Iceland": null,
+  "Lake Charles AFB, Louisiana": null,
+  "Lake Charles, Louisiana": {
+    "country": "us",
+    "lat": 30.2305095,
+    "lng": -93.2169807
+  },
+  "Lake City, Tennessee": {
+    "country": "us",
+    "lat": 36.2178566,
+    "lng": -84.1546452
+  },
+  "Lake Kishkonoug, Wisconsin": null,
+  "Lakeland, Florida": {
+    "country": "us",
+    "lat": 28.0394654,
+    "lng": -81.9498042
+  },
+  "Lancaster, California": {
+    "country": "us",
+    "lat": 34.6981064,
+    "lng": -118.1366153
+  },
+  "Langley APB, Virginia": null,
+  "Laredo AFB, Texas": {
+    "country": "us",
+    "lat": 27.5436051,
+    "lng": -99.4552568
+  },
+  "Larson AFB, Washington": null,
+  "Lathrop Wells, Nevada": {
+    "country": "us",
+    "lat": 36.6429332,
+    "lng": -116.397806
+  },
+  "Lavalette, New Jersey": {
+    "country": "us",
+    "lat": 39.7850555,
+    "lng": -74.2284715
+  },
+  "Leveland, Texas": null,
+  "Lincoln, Nebraska": {
+    "country": "us",
+    "lat": 40.8088861,
+    "lng": -96.7077751
+  },
+  "Livermore, California": {
+    "country": "us",
+    "lat": 37.6820583,
+    "lng": -121.768053
+  },
+  "Lizelia, Mississippi": {
+    "country": "us",
+    "lat": 32.5356947,
+    "lng": -88.6600438
+  },
+  "Lock Raven Dam, Maryland": null,
+  "Lockbourne AFB, Ohio": null,
+  "Longmeadow, Massachusetts": {
+    "country": "us",
+    "lat": 42.0504498,
+    "lng": -72.5824639
+  },
+  "Longmont, Colorado": {
+    "country": "us",
+    "lat": 40.1672117,
+    "lng": -105.101928
+  },
+  "Loogootee, Indiana": {
+    "country": "us",
+    "lat": 38.6769945,
+    "lng": -86.9141696
+  },
+  "Los Alamos, New Mexico": {
+    "country": "us",
+    "lat": 35.88137,
+    "lng": -106.298959
+  },
+  "Los Angeles, California": {
+    "country": "us",
+    "lat": 34.0536909,
+    "lng": -118.242766
+  },
+  "Louisville, Kentucky": {
+    "country": "us",
+    "lat": 38.2542376,
+    "lng": -85.759407
+  },
+  "Lycoming, New York": {
+    "country": "us",
+    "lat": 43.4991093,
+    "lng": -76.3858112
+  },
+  "Lynchburg, Virginia": {
+    "country": "us",
+    "lat": 37.4137536,
+    "lng": -79.1422464
+  },
+  "Madison, Wisconsin": {
+    "country": "us",
+    "lat": 43.07469,
+    "lng": -89.3841663
+  },
+  "Manila, Philippines": {
+    "country": "ph",
+    "lat": 14.5904492,
+    "lng": 120.9803621
+  },
+  "Mankato, Minnesota": {
+    "country": "us",
+    "lat": 44.1658533,
+    "lng": -94.0028013
+  },
+  "Marietta, Georgia": {
+    "country": "us",
+    "lat": 33.9528472,
+    "lng": -84.5496148
+  },
+  "Marion, Virginia": {
+    "country": "us",
+    "lat": 36.8331284,
+    "lng": -81.519515
+  },
+  "Marrakech, Morrocco": null,
+  "Marrowhode Lake, Tennessee": null,
+  "Marshall, Texas": {
+    "country": "us",
+    "lat": 32.5447756,
+    "lng": -94.3661004
+  },
+  "Marshfield, Missouri": {
+    "country": "us",
+    "lat": 37.3371209,
+    "lng": -92.9065915
+  },
+  "Marysville, California": {
+    "country": "us",
+    "lat": 39.1457247,
+    "lng": -121.5913516
+  },
+  "Matador, Texas": {
+    "country": "us",
+    "lat": 34.0120211,
+    "lng": -100.822078
+  },
+  "McChord AFB, Washington": {
+    "country": "us",
+    "lat": 47.1309548,
+    "lng": -122.502686
+  },
+  "McClellan AFB, California": {
+    "country": "us",
+    "lat": 38.6646655,
+    "lng": -121.4095056
+  },
+  "McGuire AFB, New Jersey": {
+    "country": "us",
+    "lat": 40.0171621,
+    "lng": -74.5902049
+  },
+  "McKinney, Texas": {
+    "country": "us",
+    "lat": 33.1976496,
+    "lng": -96.6154471
+  },
+  "McMinnville, Oregon": {
+    "country": "us",
+    "lat": 45.2100367,
+    "lng": -123.194463
+  },
+  "Mediterranean Sea": {
+    "country": "",
+    "lat": 35.0000035,
+    "lng": 19.9999957
+  },
+  "Memphis, Tennessee": {
+    "country": "us",
+    "lat": 35.1460249,
+    "lng": -90.0517638
+  },
+  "Menomonee Falls, Wisconsin": {
+    "country": "us",
+    "lat": 43.1790768,
+    "lng": -88.1170784
+  },
+  "Merced, Calffornia": null,
+  "Meridian, Idaho": {
+    "country": "us",
+    "lat": 43.6086295,
+    "lng": -116.392326
+  },
+  "Merrick, Long Island, New York": null,
+  "Metuchen, New Jersey": {
+    "country": "us",
+    "lat": 40.5431598,
+    "lng": -74.3632049
+  },
+  "Mexico": {
+    "country": "mx",
+    "lat": 23.6585116,
+    "lng": -102.0077097
+  },
+  "Miami Beach, Florida": {
+    "country": "us",
+    "lat": 25.7929198,
+    "lng": -80.1353006
+  },
+  "Miami, Florida": {
+    "country": "us",
+    "lat": 25.7741566,
+    "lng": -80.1935973
+  },
+  "Middle East": {
+    "country": "us",
+    "lat": 39.3014159,
+    "lng": -76.5888477
+  },
+  "Middletown, New York": {
+    "country": "us",
+    "lat": 41.45011,
+    "lng": -74.4164807
+  },
+  "Middletown, Ohio": {
+    "country": "us",
+    "lat": 39.516644,
+    "lng": -84.4041725
+  },
+  "Middletown, Pennsylvania": {
+    "country": "us",
+    "lat": 40.1701367,
+    "lng": -74.8851959
+  },
+  "Miho AB, Japan": {
+    "country": "jp",
+    "lat": 36.00496,
+    "lng": 140.3022512
+  },
+  "Milan, Italy": {
+    "country": "it",
+    "lat": 45.4641943,
+    "lng": 9.1896346
+  },
+  "Milton, Massachusetts": {
+    "country": "us",
+    "lat": 42.2501425,
+    "lng": -71.065573
+  },
+  "Mims, Florida": {
+    "country": "us",
+    "lat": 28.683293,
+    "lng": -80.8457402
+  },
+  "Minneapolis, Minnesota": {
+    "country": "us",
+    "lat": 44.9772995,
+    "lng": -93.2654692
+  },
+  "Minot, North Dakota": {
+    "country": "us",
+    "lat": 48.23251,
+    "lng": -101.296273
+  },
+  "Miramar NAS, California": null,
+  "Misawa AFB, Japan": null,
+  "Miyako Jima Air Station, Japan": null,
+  "Monroe, Oregon": {
+    "country": "us",
+    "lat": 44.3144964,
+    "lng": -123.2974348
+  },
+  "Monticello, Wisconsin": {
+    "country": "us",
+    "lat": 42.7473452,
+    "lng": -89.5943215
+  },
+  "Moses Lake, Washington": {
+    "country": "us",
+    "lat": 47.1301417,
+    "lng": -119.278077
+  },
+  "Motobu, Okinawa": {
+    "country": "jp",
+    "lat": 26.6579272,
+    "lng": 127.8980117
+  },
+  "Mount Airy, Maryland": {
+    "country": "us",
+    "lat": 39.3765918,
+    "lng": -77.1549078
+  },
+  "Mount Hood, Oregon": {
+    "country": "us",
+    "lat": 45.3735129,
+    "lng": -121.695878
+  },
+  "Mount Kisco, New York": {
+    "country": "us",
+    "lat": 41.2042616,
+    "lng": -73.7270761
+  },
+  "Mount Taylor, New Mexico": {
+    "country": "us",
+    "lat": 35.2386573,
+    "lng": -107.6084018
+  },
+  "Mount Vernon, New York": {
+    "country": "us",
+    "lat": 40.9125085,
+    "lng": -73.8386504
+  },
+  "Mount Vernon, Virginia": {
+    "country": "us",
+    "lat": 38.710179,
+    "lng": -77.0888199
+  },
+  "Mountain Home, Idaho": {
+    "country": "us",
+    "lat": 43.1318937,
+    "lng": -115.6939827
+  },
+  "Muroc AFB, California": null,
+  "Nagoya, Honshu, Japan": null,
+  "Nanyika, Kenya, Africa": null,
+  "Naperville, Illinois": {
+    "country": "us",
+    "lat": 41.7728699,
+    "lng": -88.1479278
+  },
+  "Near Owensboro, Kentucky": null,
+  "Nederland, Texas": {
+    "country": "us",
+    "lat": 29.9743803,
+    "lng": -93.9923965
+  },
+  "Neffesville, Pennsylvania": null,
+  "Netherlands": {
+    "country": "nl",
+    "lat": 52.2434979,
+    "lng": 5.6343227
+  },
+  "New Delhi, India": {
+    "country": "in",
+    "lat": 28.6138954,
+    "lng": 77.2090057
+  },
+  "New Orleans, Louisiana": {
+    "country": "us",
+    "lat": 29.9561422,
+    "lng": -90.0733934
+  },
+  "New Plymouth, New Zealand": {
+    "country": "nz",
+    "lat": -39.0579941,
+    "lng": 174.0806474
+  },
+  "New Winchester, Ohio": {
+    "country": "us",
+    "lat": 40.7189471,
+    "lng": -82.9190734
+  },
+  "New York City, New York": {
+    "country": "us",
+    "lat": 40.7127281,
+    "lng": -74.0060152
+  },
+  "Newburyport, Massachusetts": {
+    "country": "us",
+    "lat": 42.8116592,
+    "lng": -70.8719271
+  },
+  "Newton, Georgia": {
+    "country": "us",
+    "lat": 33.5715512,
+    "lng": -83.8446101
+  },
+  "Niagara Falls, New York": {
+    "country": "us",
+    "lat": 43.084841,
+    "lng": -79.0701786
+  },
+  "Nicosia, Cyprus": {
+    "country": "cy",
+    "lat": 35.1746503,
+    "lng": 33.3638783
+  },
+  "Norfolk, Virginia": {
+    "country": "us",
+    "lat": 36.8493695,
+    "lng": -76.2899539
+  },
+  "Norman, Oklahoma": {
+    "country": "us",
+    "lat": 35.2225717,
+    "lng": -97.4394816
+  },
+  "Normandy, Missouri": {
+    "country": "us",
+    "lat": 38.7054848,
+    "lng": -90.3014077
+  },
+  "North America": {
+    "country": "",
+    "lat": 51.0000002,
+    "lng": -109.0
+  },
+  "North Atlantic": {
+    "country": "ni",
+    "lat": 14.0557499,
+    "lng": -83.7475765
+  },
+  "North Bay, Ontario": {
+    "country": "ca",
+    "lat": 46.3092115,
+    "lng": -79.4607617
+  },
+  "North of Goodland, Kansas": null,
+  "Norwich, New York": {
+    "country": "us",
+    "lat": 42.5311809,
+    "lng": -75.5235149
+  },
+  "Nouasseur, French Morocco": null,
+  "O'Hare Airport, Chicago, Illinois": {
+    "country": "us",
+    "lat": 41.977419,
+    "lng": -87.9038559
+  },
+  "Oak Ridge, Tennessee": {
+    "country": "us",
+    "lat": 36.0103562,
+    "lng": -84.2696449
+  },
+  "Ocala, Florida": {
+    "country": "us",
+    "lat": 29.1871986,
+    "lng": -82.1400923
+  },
+  "Ocean Springs, Mississippi": {
+    "country": "us",
+    "lat": 30.4112904,
+    "lng": -88.8279165
+  },
+  "Odessa, Delaware": {
+    "country": "us",
+    "lat": 39.457334,
+    "lng": -75.6613184
+  },
+  "Offutt AFB, Nebraska": {
+    "country": "us",
+    "lat": 41.1171964,
+    "lng": -95.9081666
+  },
+  "Okinawa": {
+    "country": "jp",
+    "lat": 26.5707754,
+    "lng": 128.0255901
+  },
+  "Oldsmar, Florida": {
+    "country": "us",
+    "lat": 28.0341847,
+    "lng": -82.6650992
+  },
+  "Oldtown, Florida": null,
+  "Olmsted AFB, Pennsylvania": null,
+  "Onawa, lowa": null,
+  "Operation Mainbrace": null,
+  "Osceola, Wisconsin": {
+    "country": "us",
+    "lat": 45.3211518,
+    "lng": -92.7054903
+  },
+  "Oswego, Oregon": {
+    "country": "us",
+    "lat": 45.4206749,
+    "lng": -122.670649
+  },
+  "Otis AFB, Massachusetts": {
+    "country": "us",
+    "lat": 41.6520301,
+    "lng": -70.5722501
+  },
+  "Ottawa, Ohio": {
+    "country": "us",
+    "lat": 41.5421375,
+    "lng": -83.213342
+  },
+  "Oxford, Michigan": {
+    "country": "us",
+    "lat": 42.8247524,
+    "lng": -83.2646624
+  },
+  "Oxford, Wisconsin": {
+    "country": "us",
+    "lat": 43.7813653,
+    "lng": -89.572636
+  },
+  "Pacific Ocean": {
+    "country": "",
+    "lat": -0.703107,
+    "lng": -120.9375
+  },
+  "Pacific Time Zone": {
+    "country": "au",
+    "lat": -29.066847,
+    "lng": 167.9552881
+  },
+  "Palmer, Alaska": {
+    "country": "us",
+    "lat": 61.5995703,
+    "lng": -149.11109
+  },
+  "Papua New Guinea": {
+    "country": "pg",
+    "lat": -5.6816069,
+    "lng": 144.2489081
+  },
+  "Pascagoula, Mississippi": {
+    "country": "us",
+    "lat": 30.3646795,
+    "lng": -88.5585995
+  },
+  "Patrick AFB, Florida": {
+    "country": "us",
+    "lat": 28.2422228,
+    "lng": -80.6091074
+  },
+  "Patuxent River, Maryland": {
+    "country": "us",
+    "lat": 38.3142782,
+    "lng": -76.4417733
+  },
+  "Pennsylvania": {
+    "country": "us",
+    "lat": 40.9699889,
+    "lng": -77.7278831
+  },
+  "Pequannock, New Jersey": {
+    "country": "us",
+    "lat": 40.9600102,
+    "lng": -74.2974765
+  },
+  "Persian Gulf": {
+    "country": "",
+    "lat": 27.2381259,
+    "lng": 51.1972311
+  },
+  "Philippines": {
+    "country": "ph",
+    "lat": 12.7503486,
+    "lng": 122.7312101
+  },
+  "Phoenix, Arizona": {
+    "country": "us",
+    "lat": 33.4484367,
+    "lng": -112.074141
+  },
+  "Phoenix. Arizona": {
+    "country": "us",
+    "lat": 33.4484367,
+    "lng": -112.074141
+  },
+  "Pittsburg, Kansas": {
+    "country": "us",
+    "lat": 37.4108841,
+    "lng": -94.70496
+  },
+  "Pittsburgh, Pennsylvania": {
+    "country": "us",
+    "lat": 40.4406968,
+    "lng": -80.0025666
+  },
+  "Pittsfield, Maine": {
+    "country": "us",
+    "lat": 44.7830841,
+    "lng": -69.3820474
+  },
+  "Plainville, Kansas": {
+    "country": "us",
+    "lat": 39.234732,
+    "lng": -99.298156
+  },
+  "Pleasantview, Pennsylvania": {
+    "country": "us",
+    "lat": 40.0552857,
+    "lng": -79.3824614
+  },
+  "Point Conception, California": {
+    "country": "us",
+    "lat": 34.448613,
+    "lng": -120.4717299
+  },
+  "Point Lookout, Maryland": {
+    "country": "us",
+    "lat": 38.0580197,
+    "lng": -76.3348567
+  },
+  "Point Muga, California": null,
+  "Pontiac, Michigan": {
+    "country": "us",
+    "lat": 42.6389216,
+    "lng": -83.2910468
+  },
+  "Pope AFB, North Carolina": null,
+  "Port Austin, Michigan": {
+    "country": "us",
+    "lat": 44.0462652,
+    "lng": -82.9936835
+  },
+  "Portland, Maine": {
+    "country": "us",
+    "lat": 43.6573605,
+    "lng": -70.2586618
+  },
+  "Portland, Oregon": {
+    "country": "us",
+    "lat": 45.5202471,
+    "lng": -122.674194
+  },
+  "Portsmouth, New Hampshire": {
+    "country": "us",
+    "lat": 43.0751306,
+    "lng": -70.7601826
+  },
+  "Pottstown, Pennsylvania": {
+    "country": "us",
+    "lat": 40.2452976,
+    "lng": -75.6496424
+  },
+  "Presque Isle State Park,": {
+    "country": "us",
+    "lat": 42.1428144,
+    "lng": -80.1359458
+  },
+  "Prince Christian, Greenland": {
+    "country": "gl",
+    "lat": 60.1146442,
+    "lng": -43.551382
+  },
+  "Provincetown, Massachusetts": {
+    "country": "us",
+    "lat": 42.0525612,
+    "lng": -70.1858639
+  },
+  "Pueblo, Colorado": {
+    "country": "us",
+    "lat": 38.263995,
+    "lng": -104.6141867
+  },
+  "Puerto Rico": {
+    "country": "us",
+    "lat": 18.2247706,
+    "lng": -66.4858295
+  },
+  "Queen Annes City, Maryland": null,
+  "Rabat, French Morocco": null,
+  "Radium Springs, New Mexico": {
+    "country": "us",
+    "lat": 32.484919,
+    "lng": -106.9117665
+  },
+  "Ramstein AFB, Germany": null,
+  "Randolph AFB, Texas": {
+    "country": "us",
+    "lat": 29.5285568,
+    "lng": -98.2792383
+  },
+  "Rapid City, South Dakota": {
+    "country": "us",
+    "lat": 44.0806041,
+    "lng": -103.228023
+  },
+  "Red Bluff, California": {
+    "country": "us",
+    "lat": 40.1784279,
+    "lng": -122.235923
+  },
+  "Redstone Arsenal, Georgia": null,
+  "Richards, Gebaur AB, Missouri": null,
+  "Richmond, Virginia": {
+    "country": "us",
+    "lat": 37.5385087,
+    "lng": -77.43428
+  },
+  "Ridgecrest, California": {
+    "country": "us",
+    "lat": 35.6206924,
+    "lng": -117.672097
+  },
+  "Ringgold, Louisiana": {
+    "country": "us",
+    "lat": 32.3284899,
+    "lng": -93.2798917
+  },
+  "Robins AFB, Georgia": {
+    "country": "us",
+    "lat": 32.6178258,
+    "lng": -83.5770746
+  },
+  "Rock Garden, Tennessee": {
+    "country": "us",
+    "lat": 36.0886848,
+    "lng": -84.712999
+  },
+  "Rockville, Indiana": {
+    "country": "us",
+    "lat": 39.7625404,
+    "lng": -87.2291809
+  },
+  "Rodio, New Mexico": null,
+  "Rome, New York": {
+    "country": "us",
+    "lat": 43.2102196,
+    "lng": -75.4583956
+  },
+  "Roseville, Michigan": {
+    "country": "us",
+    "lat": 42.4972583,
+    "lng": -82.9371409
+  },
+  "Rural Hall, North Carolina": {
+    "country": "us",
+    "lat": 36.2404158,
+    "lng": -80.2933838
+  },
+  "Saginaw, Minnesota": {
+    "country": "us",
+    "lat": 46.8591081,
+    "lng": -92.4443566
+  },
+  "Saigon, Indochina": {
+    "country": "vn",
+    "lat": 10.7994493,
+    "lng": 106.7372349
+  },
+  "Salem, New York": {
+    "country": "us",
+    "lat": 43.1714488,
+    "lng": -73.3301547
+  },
+  "Salisbury, North Carolina": {
+    "country": "us",
+    "lat": 35.6709727,
+    "lng": -80.4742261
+  },
+  "San Antonio, Texas": {
+    "country": "us",
+    "lat": 29.4246002,
+    "lng": -98.4951405
+  },
+  "San Marcos AFB, Texas": {
+    "country": "us",
+    "lat": 29.8948549,
+    "lng": -97.8645355
+  },
+  "San Marcos, Texas": {
+    "country": "us",
+    "lat": 29.8826436,
+    "lng": -97.9405828
+  },
+  "San Pablo, California": {
+    "country": "us",
+    "lat": 37.9621457,
+    "lng": -122.3455263
+  },
+  "Sandy Point, Newfoundland": {
+    "country": "ca",
+    "lat": 47.1602103,
+    "lng": -55.1542881
+  },
+  "Santa Barbara, California": {
+    "country": "us",
+    "lat": 34.4221319,
+    "lng": -119.702667
+  },
+  "Santa Cruz, California": {
+    "country": "us",
+    "lat": 37.050096,
+    "lng": -121.99059
+  },
+  "Santa Maria Airport, Azores": {
+    "country": "pt",
+    "lat": 36.9717954,
+    "lng": -25.170285
+  },
+  "Santiago, Chile": {
+    "country": "cl",
+    "lat": -33.4376995,
+    "lng": -70.6510671
+  },
+  "Scotch Plain, New Jersey": null,
+  "Seattle, Washington": {
+    "country": "us",
+    "lat": 47.6038321,
+    "lng": -122.330062
+  },
+  "Selfridge AFB, Michigan": null,
+  "Shaw AFB, South Carolina": {
+    "country": "us",
+    "lat": 33.9736956,
+    "lng": -80.4664914
+  },
+  "Sherman, Texas": {
+    "country": "us",
+    "lat": 36.2452294,
+    "lng": -101.8858689
+  },
+  "Shreveport, Louisiana": {
+    "country": "us",
+    "lat": 32.5135356,
+    "lng": -93.7477839
+  },
+  "Simiutak, Greenland": null,
+  "Sinuiju, North Korea": {
+    "country": "kp",
+    "lat": 40.0940758,
+    "lng": 124.3977559
+  },
+  "Sioux City, Iowa": {
+    "country": "us",
+    "lat": 42.4966815,
+    "lng": -96.4058782
+  },
+  "Soap Lake, Washington": {
+    "country": "us",
+    "lat": 47.3893133,
+    "lng": -119.490493
+  },
+  "Socorro, New Mexico": {
+    "country": "us",
+    "lat": 34.0572858,
+    "lng": -106.8930799
+  },
+  "Sonoma, California": {
+    "country": "us",
+    "lat": 38.5110803,
+    "lng": -122.8473388
+  },
+  "South Bend, Indiana": {
+    "country": "us",
+    "lat": 41.6833813,
+    "lng": -86.2500066
+  },
+  "South Brookville, Maine": null,
+  "South Hill, Virginia": {
+    "country": "us",
+    "lat": 36.7265449,
+    "lng": -78.1291308
+  },
+  "South of Crystal Springs,": {
+    "country": "ca",
+    "lat": 44.5555192,
+    "lng": -76.346997
+  },
+  "South of Fort Worth, Texas": null,
+  "South of Kyushu, Japan": null,
+  "Southern Pines, North Carolina": {
+    "country": "us",
+    "lat": 35.1740471,
+    "lng": -79.3922539
+  },
+  "Southern United States": {
+    "country": "us",
+    "lat": 34.021869,
+    "lng": -118.2858579
+  },
+  "Southern, Oregon": {
+    "country": "us",
+    "lat": 42.0988712,
+    "lng": -78.44009
+  },
+  "Spokane, Washington": {
+    "country": "us",
+    "lat": 47.6571934,
+    "lng": -117.42351
+  },
+  "Spooner, Wisconsin": {
+    "country": "us",
+    "lat": 45.8267729,
+    "lng": -91.8882375
+  },
+  "Springfield, Ohio": {
+    "country": "us",
+    "lat": 39.9234046,
+    "lng": -83.810138
+  },
+  "St. Calen, Switzerland": null,
+  "St. Louis, Missouri": {
+    "country": "us",
+    "lat": 38.6254063,
+    "lng": -90.190009
+  },
+  "Stafford, Virginia": {
+    "country": "us",
+    "lat": 38.4167265,
+    "lng": -77.4579783
+  },
+  "Stockton, California": {
+    "country": "us",
+    "lat": 37.9577016,
+    "lng": -121.290779
+  },
+  "Stoughton, Wisconsin": {
+    "country": "us",
+    "lat": 42.9167389,
+    "lng": -89.2178997
+  },
+  "Strait of Hormuz": {
+    "country": "om",
+    "lat": 26.4494061,
+    "lng": 56.2027702
+  },
+  "Stroudsburg, Pennsylvania": {
+    "country": "us",
+    "lat": 40.9864261,
+    "lng": -75.1946649
+  },
+  "Stuttgart, Arkansas": {
+    "country": "us",
+    "lat": 34.5003748,
+    "lng": -91.5526281
+  },
+  "Suffolk County AFB, New York": null,
+  "Sunbury, Ohio": {
+    "country": "us",
+    "lat": 40.2425623,
+    "lng": -82.8590673
+  },
+  "Syria": {
+    "country": "sy",
+    "lat": 34.6401861,
+    "lng": 39.0494106
+  },
+  "Tampa, Florida": {
+    "country": "us",
+    "lat": 27.9449854,
+    "lng": -82.4583107
+  },
+  "Taos, New Mexico": {
+    "country": "us",
+    "lat": 36.4072377,
+    "lng": -105.573284
+  },
+  "Telephone Ridge, Oregon": null,
+  "Temple, Oklahoma": {
+    "country": "us",
+    "lat": 34.2720338,
+    "lng": -98.2358781
+  },
+  "Temple, Texas": {
+    "country": "us",
+    "lat": 31.0983747,
+    "lng": -97.3429563
+  },
+  "Tenafly, New Jersey": {
+    "country": "us",
+    "lat": 40.9253766,
+    "lng": -73.9629154
+  },
+  "Terre Haute, Indiana": {
+    "country": "us",
+    "lat": 39.4667025,
+    "lng": -87.4139119
+  },
+  "Texahoma, Oklahoma": null,
+  "Texarkana, Texas": {
+    "country": "us",
+    "lat": 33.4466745,
+    "lng": -94.0771483
+  },
+  "Tierra Amarilla, New Mexico": {
+    "country": "us",
+    "lat": 36.703689,
+    "lng": -106.5644017
+  },
+  "Tinley Park, Illinois": {
+    "country": "us",
+    "lat": 41.5733669,
+    "lng": -87.7844944
+  },
+  "Tokyo": {
+    "country": "jp",
+    "lat": 35.6768601,
+    "lng": 139.7638947
+  },
+  "Tokyo, Japan": {
+    "country": "jp",
+    "lat": 35.6768601,
+    "lng": 139.7638947
+  },
+  "Toledo, Ohio": {
+    "country": "us",
+    "lat": 41.6529143,
+    "lng": -83.5378173
+  },
+  "Topeka, Kansas": {
+    "country": "us",
+    "lat": 39.049011,
+    "lng": -95.677556
+  },
+  "Travis AFB, California": {
+    "country": "us",
+    "lat": 38.2632199,
+    "lng": -121.945363
+  },
+  "Travis County, Texas": {
+    "country": "us",
+    "lat": 30.2878569,
+    "lng": -97.7561392
+  },
+  "Trenton, New Jersey": {
+    "country": "us",
+    "lat": 40.2203074,
+    "lng": -74.7659
+  },
+  "Tucson, Arizona": {
+    "country": "us",
+    "lat": 32.2228765,
+    "lng": -110.974847
+  },
+  "Turkmenistan": {
+    "country": "tm",
+    "lat": 39.3763807,
+    "lng": 59.3924609
+  },
+  "Tyndall AFB, Florida": {
+    "country": "us",
+    "lat": 30.0691172,
+    "lng": -85.5772755
+  },
+  "Union, Pennsylvania": {
+    "country": "us",
+    "lat": 40.9745493,
+    "lng": -77.0785945
+  },
+  "United Arab Emirates": {
+    "country": "ae",
+    "lat": 24.0002488,
+    "lng": 53.9994829
+  },
+  "United States": {
+    "country": "us",
+    "lat": 39.7837304,
+    "lng": -100.445882
+  },
+  "Urbana, Ohio": {
+    "country": "us",
+    "lat": 40.1083912,
+    "lng": -83.7524298
+  },
+  "Uvalde, Texas": {
+    "country": "us",
+    "lat": 29.300357,
+    "lng": -99.7733181
+  },
+  "Vanceboro, North Carolina": {
+    "country": "us",
+    "lat": 35.2995434,
+    "lng": -77.1522321
+  },
+  "Vandalia, Ohio": {
+    "country": "us",
+    "lat": 39.8906122,
+    "lng": -84.1988308
+  },
+  "Vineland, New Jersey": {
+    "country": "us",
+    "lat": 39.4862777,
+    "lng": -75.0254256
+  },
+  "WSW of Biloxi, Mississippi": null,
+  "Wake Island": {
+    "country": "us",
+    "lat": 19.2960859,
+    "lng": 166.6269779
+  },
+  "Walker AFB, New Mexico": {
+    "country": "us",
+    "lat": 33.1329187,
+    "lng": -104.5433025
+  },
+  "Walla Walla, Washington": {
+    "country": "us",
+    "lat": 46.2055155,
+    "lng": -118.5174284
+  },
+  "Walnut Lake, Michigan": {
+    "country": "us",
+    "lat": 42.5613216,
+    "lng": -83.3318367
+  },
+  "Wapello, Iowa": {
+    "country": "us",
+    "lat": 41.0137597,
+    "lng": -92.4140217
+  },
+  "Warner Robins, Georgia": {
+    "country": "us",
+    "lat": 32.6200973,
+    "lng": -83.606568
+  },
+  "Warren, Michigan": {
+    "country": "us",
+    "lat": 42.4932575,
+    "lng": -83.0062746
+  },
+  "Warrenville, Illinois": {
+    "country": "us",
+    "lat": 41.8179303,
+    "lng": -88.174097
+  },
+  "Washington, D.C.": {
+    "country": "us",
+    "lat": 38.8950982,
+    "lng": -77.0363849
+  },
+  "Washington, D.C.; Andrews AFB": null,
+  "West Palm Beach, Florida": {
+    "country": "us",
+    "lat": 26.715364,
+    "lng": -80.0532942
+  },
+  "Western United States": {
+    "country": "us",
+    "lat": 43.3380689,
+    "lng": -75.3896929
+  },
+  "Westfield, Massachusetts": {
+    "country": "us",
+    "lat": 42.1205411,
+    "lng": -72.7489158
+  },
+  "Westlake, Ohio": {
+    "country": "us",
+    "lat": 41.4553232,
+    "lng": -81.9179174
+  },
+  "Wheelus AFB, Tripoli": null,
+  "White Lake, South Dakota": {
+    "country": "us",
+    "lat": 43.730273,
+    "lng": -98.7137
+  },
+  "White Plains, New York": {
+    "country": "us",
+    "lat": 41.0339862,
+    "lng": -73.7629097
+  },
+  "Wichita, Kansas": {
+    "country": "us",
+    "lat": 37.6922361,
+    "lng": -97.3375448
+  },
+  "Wiesbaden, Germany": {
+    "country": "de",
+    "lat": 50.0820384,
+    "lng": 8.2416556
+  },
+  "Williamsburg, Virginia": {
+    "country": "us",
+    "lat": 37.2712497,
+    "lng": -76.700035
+  },
+  "Williston, North Dakota": {
+    "country": "us",
+    "lat": 48.1465457,
+    "lng": -103.621814
+  },
+  "Willsboro, New York": {
+    "country": "us",
+    "lat": 44.3620961,
+    "lng": -73.3913457
+  },
+  "Wilmington, Delaware": {
+    "country": "us",
+    "lat": 39.7459468,
+    "lng": -75.546589
+  },
+  "Wilmington, Ohio": {
+    "country": "us",
+    "lat": 39.4453393,
+    "lng": -83.8285375
+  },
+  "Witchita Falls, Texas": {
+    "country": "us",
+    "lat": 26.3389276,
+    "lng": -98.2648625
+  },
+  "Witchita, Kansas": null,
+  "Wurtland, Kentucky": {
+    "country": "us",
+    "lat": 38.5503577,
+    "lng": -82.7779437
+  },
+  "Yaak, Montana": {
+    "country": "us",
+    "lat": 48.8319678,
+    "lng": -115.7090665
+  },
+  "Yakima, Washington": {
+    "country": "us",
+    "lat": 46.601557,
+    "lng": -120.510842
+  },
+  "Yosemite Park, California": {
+    "country": "us",
+    "lat": 33.5526492,
+    "lng": -117.7030654
+  },
+  "Yuma Test Station, Arizona": null,
+  "Yuma, Arizona": {
+    "country": "us",
+    "lat": 32.7254216,
+    "lng": -114.6198088
+  }
+}

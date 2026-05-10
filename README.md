@@ -93,11 +93,14 @@ re-deploys are fast and don't lose data.
 - [x] Obsidian vault with cross-linked notes (open in graph view)
 - [x] Single-page search UI with media-type chips, filters, URL state, keyboard nav
 - [ ] **Map + timeline view of incident locations** *(in progress — see [Disclosure Globe](#disclosure-globe-vision) below)*
+- [x] **Multi-source aggregation** (NUFORC + Project Blue Book civilian/historical sources, with provenance tagging and geo+temporal correlations against the official archive)
+- [x] **Hourly war.gov change-watcher** (HEAD/GET sweep, hash-based diff, OCR-text drift flag, fires early refresh on detected changes)
 - [ ] Semantic embeddings (CLIP for images, SBERT for text)
 - [ ] Named-entity extraction (people, codenames, redacted-name fingerprints)
 - [ ] Cross-reference graph from in-PDF case-number citations
 - [ ] RAG / "Ask the archive" with citations
 - [ ] User-submitted corrections + annotations
+- [ ] **Live collaborative analysis surface** — anonymous per-session presence, common chat channel, ability to tag and share files / pages / photos / filter URLs in the chat, follow-mode that mirrors another visitor's view (so groups can investigate together in real time). Privacy: free-text inputs (search box, ask widget) are scrubbed from broadcast to avoid leaks.
 
 ## Disclosure Globe vision
 

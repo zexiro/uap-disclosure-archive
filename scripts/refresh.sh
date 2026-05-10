@@ -42,6 +42,17 @@ python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 
+# Multi-source sightings aggregator (NUFORC civilian + war.gov, projected to a
+# unified schema with provenance tagging; correlations pass finds civilian
+# reports near each official incident). NUFORC CSV is cached; subsequent
+# runs are essentially free.
+python3 scripts/sightings/fetch_nuforc.py || true
+python3 scripts/sightings/fetch_blue_book.py || true
+python3 scripts/sightings/fetch_reddit.py || true
+python3 scripts/sightings/fetch_news.py || true
+python3 scripts/sightings/build_unified.py || true
+python3 scripts/sightings/build_correlations.py || true
+
 # Vault: rebuild fresh so removed/renamed records don't linger
 rm -rf vault/Releases vault/Index vault/README.md
 python3 scripts/build_vault.py

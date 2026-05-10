@@ -6,9 +6,27 @@ raw/images_extracted/
 raw/thumbs/
 raw/videos/
 
+# Multi-source sightings: bulk artifacts rebuilt by scripts/sightings/*.
+# We DO commit raw/sightings/correlations.json and raw/sightings/geocache.json
+# (small, avoids re-geocoding on every container boot). Blue Book is small
+# (~553 cases at <300KB) so we commit its normalized form too — only the
+# bulk-redownloadable raw/ folder is excluded.
+raw/sightings/nuforc/raw/
+raw/sightings/nuforc/sightings.json
+raw/sightings/blue_book/raw/
+raw/sightings/reddit/raw/
+raw/sightings/reddit/sightings.json
+raw/sightings/news/raw/
+raw/sightings/news/sightings.json
+raw/sightings/sightings.json
+
 # Logs and temp
 raw/*.log
 raw/**/*.part
+# Hourly change-watcher writes this sentinel when it sees drift; the
+# entrypoint loop consumes it then deletes it. Never commit — a stale
+# committed copy would force an unnecessary refresh on every fresh boot.
+raw/wargov_changes_pending
 *.pyc
 __pycache__/
 .DS_Store

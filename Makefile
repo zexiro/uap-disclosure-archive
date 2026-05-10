@@ -1,7 +1,15 @@
-.PHONY: all parse download ocr links vault index features api serve clean refetch-csv
+.PHONY: all parse download ocr links vault index features api serve clean refetch-csv sightings
 
-all: parse download ocr links vault index features api
+all: parse download ocr links vault index features api sightings
 	@echo "✓ Pipeline complete. Run 'make serve' to browse."
+
+sightings:
+	@python3 scripts/sightings/fetch_nuforc.py
+	@python3 scripts/sightings/fetch_blue_book.py
+	@python3 scripts/sightings/fetch_reddit.py
+	@python3 scripts/sightings/fetch_news.py
+	@python3 scripts/sightings/build_unified.py
+	@python3 scripts/sightings/build_correlations.py
 
 features:
 	@python3 scripts/build_features.py
