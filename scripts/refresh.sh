@@ -21,6 +21,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   echo "[refresh] no change in source CSV — running incremental steps only"
   python3 scripts/build_thumbs.py || true
   python3 scripts/classify_dossier_hits.py || true
+  python3 scripts/build_image_embeddings.py || true  # pick up any newly-downloaded images
   exit 0
 fi
 
@@ -39,6 +40,7 @@ python3 scripts/build_search_index.py
 # runs only call the API for genuinely new hits. Graceful no-op without
 # ANTHROPIC_API_KEY — the UI falls back to keyword-only matching.
 python3 scripts/classify_dossier_hits.py || true
+python3 scripts/build_image_embeddings.py || true  # CLIP visual embeddings for IMG records
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 

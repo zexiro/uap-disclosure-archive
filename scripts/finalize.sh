@@ -22,6 +22,9 @@ python3 scripts/build_vault.py
 echo "==> Building search index…"
 python3 scripts/build_search_index.py
 
+echo "==> Building CLIP image embeddings for IMG records…"
+python3 scripts/build_image_embeddings.py || true
+
 echo "==> Augmenting features (shapes, incidents, graph layout)…"
 python3 scripts/build_features.py
 
