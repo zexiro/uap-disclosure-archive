@@ -12,7 +12,7 @@ from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 
 
 class Handler(SimpleHTTPRequestHandler):
-    def do_GET(self):
+    def _handle_special(self, write_body):
         # Liveness probe for Railway. Must stay cheap (no disk reads) so it
         # still answers when /raw/* image traffic is saturating worker threads.
         if self.path in ("/healthz", "/healthz/"):
@@ -22,14 +22,25 @@ class Handler(SimpleHTTPRequestHandler):
             self.send_header("Content-Length", str(len(body)))
             self.send_header("Cache-Control", "no-store")
             self.end_headers()
-            self.wfile.write(body)
-            return
+            if write_body:
+                self.wfile.write(body)
+            return True
         if self.path in ("", "/", "/index.html"):
             self.send_response(302)
             self.send_header("Location", "/ui/")
             self.end_headers()
+            return True
+        return False
+
+    def do_GET(self):
+        if self._handle_special(write_body=True):
             return
         return super().do_GET()
+
+    def do_HEAD(self):
+        if self._handle_special(write_body=False):
+            return
+        return super().do_HEAD()
 
     def end_headers(self):
         # Range support is automatic in SimpleHTTPRequestHandler since 3.7
