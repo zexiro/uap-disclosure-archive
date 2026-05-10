@@ -52,6 +52,14 @@ fails fast with a clear error if the secret is missing.
 
 If GitHub is offline or you need to deploy from a non-`main` branch:
 
+> **Note:** The server now runs via uvicorn + starlette (ASGI) instead of the
+> previous `python scripts/serve.py` (ThreadingHTTPServer). The entrypoint is
+> unchanged from Railway's perspective — `entrypoint.sh` still starts the
+> foreground process. Locally you can run:
+> ```bash
+> uvicorn scripts.serve:app --host 0.0.0.0 --port 8000 --workers 1
+> ```
+
 ```bash
 railway up --service uap-mirror --detach -m "your release note"
 ```

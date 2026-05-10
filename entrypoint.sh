@@ -39,5 +39,7 @@ cd /app
   done
 ) &
 
-# Foreground: HTTP server (Railway tracks this PID for health)
-exec python3 scripts/serve.py
+# Foreground: ASGI HTTP server (Railway tracks this PID for health).
+# Single worker: embeddings.npz is loaded once per process; adding workers
+# would duplicate the ~500 MB in-memory matrix. Use --workers 1 always.
+exec uvicorn scripts.serve:app --host 0.0.0.0 --port "${PORT:-8000}" --workers 1
