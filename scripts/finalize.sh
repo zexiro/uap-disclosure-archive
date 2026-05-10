@@ -15,6 +15,9 @@ python3 scripts/ocr.py || true
 echo "==> Computing relationship links (text + image)…"
 python3 scripts/build_links.py
 
+echo "==> Extracting in-PDF citation graph…"
+python3 scripts/extract_citations.py
+
 echo "==> Building vault notes…"
 rm -rf vault/Releases vault/Index vault/README.md
 python3 scripts/build_vault.py
