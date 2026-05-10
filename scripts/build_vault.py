@@ -151,6 +151,37 @@ def build_release_note(rec):
         body.append(f"- [Source: war.gov]({rec['pdf_image_link']})")
     body.append("")
 
+    # AI-confirmed enrichments (only `approved` claims, never raw candidates).
+    enrich_path = ROOT / "ui" / "enrichments" / f"document_{re.sub(r'[^a-zA-Z0-9._-]+', '_', rec['id'])[:160]}.json"
+    if enrich_path.exists():
+        try:
+            store = json.loads(enrich_path.read_text())
+            approved = []
+            for run in store.get("runs", []):
+                for c in run.get("claims", []):
+                    if c.get("status") == "approved":
+                        approved.append(c)
+            if approved:
+                body.append("## AI-Confirmed Enrichments")
+                body.append("")
+                body.append("> Web-discovered facts that were verified and manually approved.")
+                body.append("> Source: Disclosure Archive enrichment pipeline.")
+                body.append("")
+                for c in approved:
+                    body.append(f"- **{c.get('claim','').strip()}**")
+                    meta = []
+                    if c.get('verdict'): meta.append(c['verdict'])
+                    if c.get('confidence'): meta.append(f"conf: {c['confidence']}")
+                    if c.get('date'): meta.append(c['date'])
+                    if c.get('location'): meta.append(c['location'])
+                    if meta:
+                        body.append(f"  - _{' · '.join(meta)}_")
+                    for u in (c.get('supporting_urls') or [])[:5]:
+                        body.append(f"  - [Source]({u})")
+                body.append("")
+        except Exception:
+            pass
+
     # Extracted PDF text
     txt = find_text(rec)
     if txt:

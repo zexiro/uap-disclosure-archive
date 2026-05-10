@@ -1,0 +1,23 @@
+{
+  "milestones": [
+    {"id": "arnold-1947",        "date": "1947-06-24",                       "label": "Arnold sighting",          "kind": "event",   "blurb": "Kenneth Arnold's report of nine objects near Mt Rainier — origin of 'flying saucer'."},
+    {"id": "roswell-1947",       "date": "1947-07-08",                       "label": "Roswell",                  "kind": "event",   "blurb": "RAAF announces recovery of a 'flying disc' near Roswell, NM, then retracts within a day."},
+    {"id": "robertson-panel",    "date": "1953-01-14",                       "label": "Robertson Panel",          "kind": "policy", "blurb": "CIA convenes panel to assess UAP after the 1952 D.C. flap; recommends public debunking."},
+    {"id": "blue-book-close",    "date": "1969-12-17",                       "label": "Blue Book closed",         "kind": "policy", "blurb": "USAF terminates Project Blue Book after the Condon Report."},
+    {"id": "close-encounters",   "date": "1977-11-16",                       "label": "Close Encounters",         "kind": "media",  "blurb": "Spielberg's film cements the modern UAP imagination in mainstream culture."},
+    {"id": "belgian-wave",       "date": "1989-11-29", "end": "1990-04-30", "label": "Belgian wave",             "kind": "event",  "blurb": "Months of triangular UFO sightings over Belgium with corroborating F-16 radar tracks."},
+    {"id": "x-files",            "date": "1993-09-10",                       "label": "X-Files premiere",         "kind": "media",  "blurb": "The Truth Is Out There — UAP enters prestige TV."},
+    {"id": "phoenix-lights",     "date": "1997-03-13",                       "label": "Phoenix Lights",           "kind": "event",  "blurb": "Mass sighting of a V-shaped formation over Arizona witnessed by thousands."},
+    {"id": "tic-tac",            "date": "2004-11-14",                       "label": "Tic Tac",                  "kind": "event",  "blurb": "USS Nimitz F/A-18 crews encounter a Tic-Tac shaped object off Baja California."},
+    {"id": "aatip-stood-up",     "date": "2007-09-01",                       "label": "AATIP stood up",           "kind": "policy", "blurb": "Advanced Aerospace Threat Identification Program quietly funded inside the DoD."},
+    {"id": "nyt-aatip",          "date": "2017-12-16",                       "label": "NYT reveals AATIP",        "kind": "media",  "blurb": "NYT publishes the AATIP article, surfacing the Tic Tac and Gimbal videos to the public."},
+    {"id": "uaptf-stood-up",     "date": "2020-08-04",                       "label": "UAP Task Force",           "kind": "policy", "blurb": "DoD formalizes the UAP Task Force after years of internal pressure."},
+    {"id": "60min-2021",         "date": "2021-05-16",                       "label": "60 Minutes UAP",           "kind": "media",  "blurb": "Mainstream prime-time coverage featuring Navy aviators and former AATIP staff."},
+    {"id": "odni-2021",          "date": "2021-06-25",                       "label": "ODNI preliminary report",  "kind": "policy", "blurb": "First unclassified ODNI assessment of UAP incidents reported by U.S. military aviators."},
+    {"id": "aaro-stood-up",      "date": "2022-07-15",                       "label": "AARO stood up",            "kind": "policy", "blurb": "All-domain Anomaly Resolution Office consolidates UAP work across the DoD/IC."},
+    {"id": "grusch",             "date": "2023-07-26",                       "label": "Grusch testimony",         "kind": "hearing","blurb": "House Oversight subcommittee hearing with David Grusch, Ryan Graves, David Fravor."},
+    {"id": "schumer-amendment",  "date": "2023-07-13",                       "label": "Schumer UAP Disclosure Act", "kind": "policy", "blurb": "Senate amendment proposing a sweeping UAP records review board, modelled on the JFK Records Act."},
+    {"id": "burchett-luna-2024", "date": "2024-11-13",                       "label": "Burchett-Luna hearing",    "kind": "hearing","blurb": "House subcommittee hearing focused on alleged classified UAP retrieval programs."},
+    {"id": "pursue-2026",        "date": "2026-05-08",                       "label": "PURSUE launch",            "kind": "policy", "blurb": "war.gov publishes its consolidated UAP records release portal."}
+  ]
+}

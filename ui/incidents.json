@@ -1,39 +1,164 @@
 {
   "incidents": {
-    "gimbal-2015": {
-      "id": "gimbal-2015",
-      "name": "Gimbal (USS Theodore Roosevelt, 2015)",
-      "date": "2015-01-21",
-      "location": "Off the coast of Jacksonville, FL",
-      "summary": "FLIR ATFLIR pod video from a Super Hornet showing an apparently rotating, hovering object against the wind."
+    "foo-fighters-1944": {
+      "id": "foo-fighters-1944",
+      "name": "Foo Fighters (1944)",
+      "date": "1944-12-13",
+      "location": "European & Pacific theatres",
+      "status": "debunked",
+      "summary": "Wartime Allied pilots report glowing balls pacing aircraft; later attributed to ball lightning, St Elmo's fire, and reflections."
     },
-    "eastern-seaboard-2014-2019": {
-      "id": "eastern-seaboard-2014-2019",
-      "name": "Eastern Seaboard sightings (2014–2019)",
-      "date": "2014-01-01",
-      "location": "U.S. East Coast",
-      "summary": "Sustained observations of UAP by Navy aviators training along the East Coast through the 2010s."
-    },
-    "stephenville-2008": {
-      "id": "stephenville-2008",
-      "name": "Stephenville (2008)",
-      "date": "2008-01-08",
-      "location": "Stephenville, TX",
-      "summary": "Multi-witness UAP sighting in central Texas with corroborating radar tracks reported by MUFON."
+    "arnold-1947": {
+      "id": "arnold-1947",
+      "name": "Kenneth Arnold sighting (1947)",
+      "date": "1947-06-24",
+      "location": "Mt Rainier, WA",
+      "status": "unresolved",
+      "summary": "Civilian pilot reports nine objects flying in formation 'like saucers skipping on water' — origin of 'flying saucer'."
     },
     "roswell-1947": {
       "id": "roswell-1947",
       "name": "Roswell Incident (1947)",
       "date": "1947-07-08",
       "location": "Roswell, NM",
+      "status": "disputed",
       "summary": "Recovery of debris near Roswell Army Air Field initially announced as a 'flying disc' before retraction."
+    },
+    "mantell-1948": {
+      "id": "mantell-1948",
+      "name": "Mantell incident (1948)",
+      "date": "1948-01-07",
+      "location": "Franklin, KY",
+      "status": "debunked",
+      "summary": "P-51 pilot Thomas Mantell killed pursuing a UAP later identified as a Skyhook balloon."
+    },
+    "mariana-film-1950": {
+      "id": "mariana-film-1950",
+      "name": "Mariana film (1950)",
+      "date": "1950-08-15",
+      "location": "Great Falls, MT",
+      "status": "unresolved",
+      "summary": "16mm film by Nicholas Mariana of two silvery objects over a baseball stadium; investigated by USAF, never resolved."
     },
     "washington-dc-1952": {
       "id": "washington-dc-1952",
       "name": "Washington D.C. flap (1952)",
       "date": "1952-07-19",
       "location": "Washington, D.C.",
+      "status": "disputed",
       "summary": "Two consecutive weekends of radar/visual UAP encounters over D.C. that prompted CIA's Robertson Panel."
+    },
+    "soccoro-1964": {
+      "id": "soccoro-1964",
+      "name": "Lonnie Zamora landing (1964)",
+      "date": "1964-04-24",
+      "location": "Socorro, NM",
+      "status": "unresolved",
+      "summary": "Police officer reports egg-shaped craft with two occupants; physical traces at landing site documented by USAF investigators."
+    },
+    "malmstrom-1967": {
+      "id": "malmstrom-1967",
+      "name": "Malmstrom missile shutdown (1967)",
+      "date": "1967-03-16",
+      "location": "Malmstrom AFB, MT",
+      "status": "unresolved",
+      "summary": "Multiple Minuteman ICBMs go offline coincident with reported UAP overflight; deputy commander Robert Salas testimony."
+    },
+    "iran-1976": {
+      "id": "iran-1976",
+      "name": "Imperial Iranian Air Force F-4 chase (1976)",
+      "date": "1976-09-19",
+      "location": "Tehran, Iran",
+      "status": "unresolved",
+      "summary": "Two F-4 Phantoms vector on a brilliant UAP that disabled their weapons and instruments; DIA cable widely cited."
+    },
+    "rendlesham-1980": {
+      "id": "rendlesham-1980",
+      "name": "Rendlesham Forest (1980)",
+      "date": "1980-12-26",
+      "location": "Suffolk, UK",
+      "status": "unresolved",
+      "summary": "U.S. Air Force personnel reported lights and an object near RAF Bentwaters/Woodbridge."
+    },
+    "jal-1628-1986": {
+      "id": "jal-1628-1986",
+      "name": "JAL 1628 (1986)",
+      "date": "1986-11-17",
+      "location": "Over Alaska",
+      "status": "unresolved",
+      "summary": "Japan Air Lines 747 cargo flight tracks a giant UAP over Alaska; FAA radar corroboration."
+    },
+    "belgian-wave-1989": {
+      "id": "belgian-wave-1989",
+      "name": "Belgian wave (1989-1990)",
+      "date": "1989-11-29",
+      "location": "Belgium",
+      "status": "unresolved",
+      "summary": "Months of triangular UFO sightings over Belgium with corroborating F-16 radar lock and military investigation."
+    },
+    "phoenix-lights-1997": {
+      "id": "phoenix-lights-1997",
+      "name": "Phoenix Lights (1997)",
+      "date": "1997-03-13",
+      "location": "Phoenix, AZ",
+      "status": "disputed",
+      "summary": "Mass-witness V-formation of lights observed over Arizona; one of the most-reported civilian UAP events."
+    },
+    "ohare-2006": {
+      "id": "ohare-2006",
+      "name": "O'Hare disc (2006)",
+      "date": "2006-11-07",
+      "location": "Chicago O'Hare Intl, IL",
+      "status": "unresolved",
+      "summary": "United Airlines ground crew and pilots report a metallic disc hovering over Gate C17, departing through cloud layer leaving a hole."
+    },
+    "stephenville-2008": {
+      "id": "stephenville-2008",
+      "name": "Stephenville (2008)",
+      "date": "2008-01-08",
+      "location": "Stephenville, TX",
+      "status": "unresolved",
+      "summary": "Multi-witness UAP sighting in central Texas with corroborating radar tracks reported by MUFON."
+    },
+    "nimitz-tic-tac-2004": {
+      "id": "nimitz-tic-tac-2004",
+      "name": "Nimitz Tic Tac (2004)",
+      "date": "2004-11-14",
+      "location": "Off Baja California",
+      "status": "unresolved",
+      "summary": "USS Nimitz F/A-18s under Cdr Fravor encounter a Tic-Tac shaped object descending from 80,000 ft; ATFLIR footage later released."
+    },
+    "aguadilla-2013": {
+      "id": "aguadilla-2013",
+      "name": "Aguadilla (CBP, 2013)",
+      "date": "2013-04-25",
+      "location": "Aguadilla, Puerto Rico",
+      "status": "unresolved",
+      "summary": "Customs and Border Protection thermal video of a low-altitude object that appeared to enter the ocean and split."
+    },
+    "eastern-seaboard-2014-2019": {
+      "id": "eastern-seaboard-2014-2019",
+      "name": "Eastern Seaboard sightings (2014–2019)",
+      "date": "2014-01-01",
+      "location": "U.S. East Coast",
+      "status": "unresolved",
+      "summary": "Sustained observations of UAP by Navy aviators training along the East Coast through the 2010s."
+    },
+    "gimbal-2015": {
+      "id": "gimbal-2015",
+      "name": "Gimbal (USS Theodore Roosevelt, 2015)",
+      "date": "2015-01-21",
+      "location": "Off the coast of Jacksonville, FL",
+      "status": "disputed",
+      "summary": "FLIR ATFLIR pod video from a Super Hornet showing an apparently rotating, hovering object against the wind."
+    },
+    "go-fast-2015": {
+      "id": "go-fast-2015",
+      "name": "Go Fast (USS Theodore Roosevelt, 2015)",
+      "date": "2015-01-21",
+      "location": "Off the East Coast of the U.S.",
+      "status": "disputed",
+      "summary": "FLIR video of a small object speeding low over the ocean as tracked by an F/A-18."
     },
     "aaro": {
       "id": "aaro",

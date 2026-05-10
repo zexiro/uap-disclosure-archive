@@ -1,0 +1,12 @@
+{
+  "programs": [
+    {"id": "blue-book",  "label": "Project Blue Book",                                 "agency": "USAF",       "start": "1952-03-01", "end": "1969-12-17", "blurb": "USAF's longest-running official UAP investigation program, closed after the Condon Report."},
+    {"id": "condign",    "label": "Project Condign",                                   "agency": "UK MoD",     "start": "1996-12-01", "end": "2000-02-01", "blurb": "Classified UK Defence Intelligence Staff study of UAP, declassified 2006."},
+    {"id": "aatip",      "label": "AATIP",                                             "agency": "DoD",        "start": "2007-09-22", "end": "2012-12-31", "blurb": "Advanced Aerospace Threat Identification Program — Reid-funded DIA effort."},
+    {"id": "aawsap",     "label": "AAWSAP",                                            "agency": "DIA",        "start": "2008-09-22", "end": "2010-09-30", "blurb": "Advanced Aerospace Weapon System Applications Program — DIA contract preceding AATIP scope."},
+    {"id": "baass",      "label": "BAASS (contractor)",                                "agency": "BAASS",      "start": "2008-08-01", "end": "2010-12-31", "blurb": "Bigelow Aerospace Advanced Space Studies — primary AAWSAP contractor."},
+    {"id": "uaptf",      "label": "UAP Task Force",                                    "agency": "DoN",        "start": "2020-08-04", "end": "2021-11-23", "blurb": "Navy-led task force consolidating UAP reporting; precursor to AOIMSG."},
+    {"id": "aoimsg",     "label": "AOIMSG / AIRWG",                                    "agency": "DoD",        "start": "2021-11-23", "end": "2022-07-15", "blurb": "Airborne Object Identification and Management Sync Group — short-lived bridge to AARO."},
+    {"id": "aaro",       "label": "AARO",                                              "agency": "DoD",        "start": "2022-07-15",                       "blurb": "All-domain Anomaly Resolution Office — current cross-domain UAP authority."}
+  ]
+}

@@ -1,5 +1,22 @@
 [
   {
+    "id": "hearings",
+    "label": "Hearings & testimony",
+    "emoji": "⚖️",
+    "description": "Congressional testimony, sworn statements, and formal hearing transcripts.",
+    "keywords_ci": [
+      "\\bcongressional (?:hearing|testimony|inquiry)",
+      "\\bsubcommittee\\b",
+      "\\bhouse oversight\\b",
+      "\\bsenate (?:armed services|intelligence|select)",
+      "\\b(?:sworn|under oath)\\b",
+      "\\btestimony of\\b",
+      "\\bbefore the (?:committee|subcommittee|house|senate)",
+      "\\bstatement of [A-Z][a-z]+ [A-Z][a-z]+\\b"
+    ],
+    "keywords_cs": []
+  },
+  {
     "id": "biologics",
     "label": "Beings / biologics",
     "emoji": "🧬",

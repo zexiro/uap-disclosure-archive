@@ -30,6 +30,7 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = ROOT / "ui" / "search-index.json"
 INCIDENTS_PATH = ROOT / "ui" / "incidents.json"
 LAYOUT_PATH = ROOT / "ui" / "graph-layout.json"
+TODAY_INDEX_PATH = ROOT / "ui" / "today_index.json"
 
 TRANCHE_ID = "release-1-2026-05-08"
 LAST_VERIFIED = date.today().isoformat()
@@ -335,14 +336,106 @@ def main():
     INDEX_PATH.write_text(json.dumps(docs, ensure_ascii=False))
     print(f"  → {INDEX_PATH}")
 
-    # Emit incidents.json (only those that were matched + their metadata)
+    # Emit incidents.json — MERGE: preserve hand-curated entries (incl. `status`)
+    # and overlay/insert script-derived metadata for any matched incident.
+    existing: dict = {}
+    if INCIDENTS_PATH.exists():
+        try:
+            prev = json.loads(INCIDENTS_PATH.read_text())
+            existing = prev.get("incidents", prev) or {}
+        except Exception:
+            existing = {}
     matched_ids = {d["incident_id"] for d in docs if d.get("incident_id")}
-    incidents_out = {
-        inc["id"]: {k: v for k, v in inc.items() if k != "patterns"}
-        for inc in INCIDENTS if inc["id"] in matched_ids
-    }
-    INCIDENTS_PATH.write_text(json.dumps({"incidents": incidents_out}, ensure_ascii=False, indent=2))
-    print(f"  → {INCIDENTS_PATH} ({len(incidents_out)} incidents matched)")
+    merged: dict = dict(existing)
+    for inc in INCIDENTS:
+        if inc["id"] not in matched_ids and inc["id"] not in merged:
+            continue  # script-derived but never matched, and not curated → skip
+        cur = dict(merged.get(inc["id"], {}))
+        for k, v in inc.items():
+            if k == "patterns":
+                continue
+            if k == "status":
+                continue  # never let the script clobber curated status
+            cur.setdefault(k, v)
+            # but DO refresh summary/date/location if the script has values
+            if k in ("name", "summary", "date", "location"):
+                cur[k] = v
+        # restore curated status if any
+        if "status" in merged.get(inc["id"], {}):
+            cur["status"] = merged[inc["id"]]["status"]
+        merged[inc["id"]] = cur
+    INCIDENTS_PATH.write_text(json.dumps({"incidents": merged}, ensure_ascii=False, indent=2))
+    print(f"  → {INCIDENTS_PATH} ({len(merged)} total: {len(matched_ids)} matched, {len(merged) - len(matched_ids)} curated-only)")
+
+    # ─── today_index.json — MM-DD bucket for "This Day in Disclosure" ───
+    today_idx: dict[str, list[dict]] = {}
+    def _bucket(mm_dd: str, entry: dict):
+        today_idx.setdefault(mm_dd, []).append(entry)
+
+    def _parse_iso(s: str):
+        if not s: return None
+        try:
+            y, m, d = s[:10].split("-")
+            return int(y), int(m), int(d)
+        except Exception:
+            return None
+
+    def _parse_us(s: str):
+        # "5/8/26", "10/28/2001-10/29/2001"
+        if not s: return None
+        s = s.split("-")[0].strip()
+        parts = s.split("/")
+        if len(parts) != 3: return None
+        try:
+            mo, d, y = int(parts[0]), int(parts[1]), int(parts[2])
+            if y < 100: y += 2000 if y < 50 else 1900
+            return y, mo, d
+        except Exception:
+            return None
+
+    # Bucket incidents
+    for iid, inc in merged.items():
+        ymd = _parse_iso(inc.get("date", ""))
+        if not ymd: continue
+        y, m, d = ymd
+        notability = 3 + (2 if inc.get("status") == "identified" else 0)
+        _bucket(f"{m:02d}-{d:02d}", {
+            "kind": "incident",
+            "id": iid,
+            "year": y,
+            "label": inc.get("name") or iid,
+            "notability": notability,
+        })
+
+    # Bucket records
+    for d in docs:
+        for src in (d.get("incident_date"), d.get("release_date")):
+            ymd = _parse_iso(src) or _parse_us(src or "")
+            if not ymd:
+                continue
+            y, mo, day = ymd
+            notability = (
+                (3 if d.get("incident_id") else 0)
+                + len(d.get("dossier_hits") or {})
+                + (1 if len(d.get("text") or "") > 5000 else 0)
+            )
+            _bucket(f"{mo:02d}-{day:02d}", {
+                "kind": "document",
+                "id": d["id"],
+                "year": y,
+                "label": d.get("title") or d["id"],
+                "agency": d.get("agency") or "",
+                "thumb": d.get("thumb_small") or (d.get("thumbnail_local") or [""])[0] if isinstance(d.get("thumbnail_local"), list) else d.get("thumbnail_local"),
+                "notability": notability,
+            })
+            break  # don't double-count if both dates exist
+
+    # Sort each bucket by notability desc, year desc
+    for k in list(today_idx.keys()):
+        today_idx[k].sort(key=lambda e: (-e["notability"], -e["year"]))
+
+    TODAY_INDEX_PATH.write_text(json.dumps({"by_mmdd": today_idx, "generated": LAST_VERIFIED}, ensure_ascii=False))
+    print(f"  → {TODAY_INDEX_PATH} ({len(today_idx)} MM-DD buckets, {sum(len(v) for v in today_idx.values())} entries)")
 
     # Compute force-directed graph layout for the full corpus.
     # Skip synthetic IMG records (parent_id is set on those) — including them
