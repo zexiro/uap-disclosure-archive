@@ -15,7 +15,12 @@ prev_hash=$(shasum -a 256 raw/csv/uap-csv.csv 2>/dev/null | awk '{print $1}' || 
 new_hash=$(shasum -a 256 raw/csv/uap-csv.csv | awk '{print $1}')
 
 if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
-  echo "[refresh] no change in source CSV — skipping pipeline"
+  # CSV unchanged, but cheap incremental steps still run (idempotent + cached).
+  # Lets newly-added dossier keywords or a freshly-set ANTHROPIC_API_KEY take
+  # effect without requiring a bogus CSV change.
+  echo "[refresh] no change in source CSV — running incremental steps only"
+  python3 scripts/build_thumbs.py || true
+  python3 scripts/classify_dossier_hits.py || true
   exit 0
 fi
 
@@ -29,6 +34,11 @@ python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketch
 python3 scripts/build_thumbs.py || true         # small JPEGs for row/grid views
 python3 scripts/build_links.py
 python3 scripts/build_search_index.py
+# Cheap-LLM relevance check on each dossier keyword hit (false-positive filter).
+# Cached by hash(kw, ctx) under raw/dossier_classifications.json so subsequent
+# runs only call the API for genuinely new hits. Graceful no-op without
+# ANTHROPIC_API_KEY — the UI falls back to keyword-only matching.
+python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 

@@ -2,3 +2,4 @@ scikit-learn>=1.4
 numpy>=1.26
 imagehash>=4.3
 Pillow>=10
+anthropic>=0.40

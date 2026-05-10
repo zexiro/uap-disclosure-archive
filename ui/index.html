@@ -193,7 +193,26 @@
     border: 1px solid rgba(124, 92, 224, 0.35); padding: 2px 8px; border-radius: 10px;
   }
   .dossier-jump:hover { background: rgba(124, 92, 224, 0.22); }
+  .dossier-jump.rejected {
+    color: var(--fg-dim); background: transparent;
+    border-color: rgba(255,255,255,0.10); text-decoration: line-through;
+    text-decoration-color: rgba(255,255,255,0.35);
+  }
+  .dossier-jump.rejected:hover { background: rgba(255,255,255,0.05); }
+  .dossier-buttons { display: inline-flex; flex-wrap: wrap; gap: 6px; }
+  .dossier-buttons.rejected { display: inline-flex; opacity: 0.85; margin-top: 4px; }
+  .dossier-buttons.rejected[hidden] { display: none !important; }
+  .dossier-audit-toggle {
+    display: inline-block; margin-top: 8px; cursor: pointer;
+    font-size: 11px; color: var(--fg-dim); background: transparent;
+    border: 1px dashed var(--border); padding: 3px 8px; border-radius: 4px;
+  }
+  .dossier-audit-toggle:hover { color: var(--fg); border-color: rgba(255,255,255,0.25); }
   mark.dossier-match { background: rgba(124, 92, 224, 0.45); color: #fff; outline: 1px solid rgba(124, 92, 224, 0.7); }
+  mark.dossier-match-rejected {
+    background: rgba(255,255,255,0.06) !important; color: var(--fg-dim) !important;
+    outline: 1px dashed rgba(255,255,255,0.2) !important;
+  }
   mark.dossier-match.flash { animation: dh-flash 1.4s ease-out; }
   @keyframes dh-flash {
     0% { box-shadow: 0 0 0 0 rgba(124, 92, 224, 0.9); background: rgba(124, 92, 224, 0.85); }
@@ -1014,9 +1033,22 @@ function highlight(text, terms) {
   });
   return html;
 }
+// AI classification: hits with `relevant === false` are false positives flagged
+// by Claude Haiku 4.5; we hide them from row pills and the jump panel by
+// default. Unclassified hits (no `relevant` key — pre-AI or API skipped) are
+// treated as relevant so the UI degrades gracefully.
+function isRelevantHit(h) { return h.relevant !== false; }
+
+// Per-doc helper: does any hit survive the relevance filter?
+function hasRelevantHit(d) {
+  const hits = d.dossier_hits || {};
+  for (const list of Object.values(hits)) for (const h of list) if (isRelevantHit(h)) return true;
+  return false;
+}
+
 // Render a list of "🧬 humanoid · creatures · MARTIANS" pills under a row when
-// the doc was tagged by one or more dossiers. Each pill carries the surrounding
-// text snippet as its title (tooltip) so the user can audit/tune.
+// the doc was tagged by one or more dossiers. Pills show the AI summary as
+// tooltip when available, otherwise the raw context. Rejected hits hidden.
 function dossierHitsRowHTML(d) {
   const hits = d.dossier_hits || {};
   const ids = Object.keys(hits);
@@ -1026,35 +1058,60 @@ function dossierHitsRowHTML(d) {
     const dos = (DOSSIERS || []).find(x => x.id === did);
     const emoji = (dos && dos.emoji) || "🏷";
     for (const h of hits[did]) {
+      if (!isRelevantHit(h)) continue;
       const label = escapeHtml(h.kw);
-      const tip = escapeHtml(`${dos ? dos.label : did} · pattern ${h.pat}\n\n…${h.ctx}…`);
+      const summary = h.summary ? `${h.summary}\n\n` : "";
+      const tip = escapeHtml(`${dos ? dos.label : did} · pattern ${h.pat}\n\n${summary}…${h.ctx}…`);
       parts.push(`<span class="dossier-hit" title="${tip}">${emoji} ${label}</span>`);
     }
   }
+  if (!parts.length) return "";
   return `<div class="dossier-hits">${parts.join("")}</div>`;
 }
 
-// Detail-view "Mentions" panel: one clickable button per hit. Click jumps to
-// the first occurrence of that pattern inside the OCR text block.
+// Detail-view "Mentions" panel: one clickable button per relevant hit.
+// Rejected hits are stashed under an audit toggle so power users can see
+// what the AI filtered out (and tune dossier keywords accordingly).
 function dossierMentionsHTML(d) {
   const hits = d.dossier_hits || {};
   const ids = Object.keys(hits);
   if (!ids.length) return "";
   const groups = [];
+  let totalRelevant = 0, totalRejected = 0, anyClassified = false;
   for (const did of ids) {
     const dos = (DOSSIERS || []).find(x => x.id === did);
     const emoji = (dos && dos.emoji) || "🏷";
     const label = escapeHtml(dos ? dos.label : did);
-    const buttons = hits[did].map((h, i) => {
+    const okBtns = [];
+    const rejBtns = [];
+    hits[did].forEach((h, i) => {
+      if ("relevant" in h) anyClassified = true;
       const target = `dh-${did}-${i}`;
-      const tip = escapeHtml(`pattern ${h.pat}\n\n…${h.ctx}…`);
-      return `<button class="dossier-jump" data-target="${target}" title="${tip}">${escapeHtml(h.kw)}</button>`;
-    }).join("");
-    groups.push(`<div class="dossier-mention-group"><span class="dossier-group-label">${emoji} ${label}</span>${buttons}</div>`);
+      const summary = h.summary ? `${h.summary}\n\n` : "";
+      const tip = escapeHtml(`${summary}…${h.ctx}…`);
+      const labelText = h.summary ? `${escapeHtml(h.kw)} — ${escapeHtml(h.summary)}` : escapeHtml(h.kw);
+      const btnHtml = `<button class="dossier-jump" data-target="${target}" title="${tip}">${labelText}</button>`;
+      if (isRelevantHit(h)) { okBtns.push(btnHtml); totalRelevant++; }
+      else { rejBtns.push(`<button class="dossier-jump rejected" data-target="${target}" title="${tip}">${labelText}</button>`); totalRejected++; }
+    });
+    if (okBtns.length || rejBtns.length) {
+      groups.push(`<div class="dossier-mention-group"><span class="dossier-group-label">${emoji} ${label}</span>
+        <div class="dossier-buttons relevant">${okBtns.join("")}</div>
+        ${rejBtns.length ? `<div class="dossier-buttons rejected" hidden>${rejBtns.join("")}</div>` : ""}
+      </div>`);
+    }
   }
+  if (!groups.length) return "";
+  const auditToggle = totalRejected > 0
+    ? `<button class="dossier-audit-toggle" type="button">Show ${totalRejected} match${totalRejected===1?"":"es"} the AI filtered out</button>`
+    : "";
+  const hint = anyClassified
+    ? `${totalRelevant} relevant match${totalRelevant===1?"":"es"}${totalRejected ? ` (${totalRejected} hidden by AI relevance check)` : ""} — click to jump:`
+    : `Matched in this record — click to jump:`;
   return `<div class="dossier-mentions">
-    <div class="dossier-mentions-hint">Matched in this record — click to jump:</div>
+    <div class="dossier-mentions-hint">${hint}</div>
     ${groups.join("")}
+    ${auditToggle}
   </div>`;
 }
 
@@ -1070,10 +1127,11 @@ function markDossierHits(html, hits) {
       try {
         const re = new RegExp("(" + h.pat + ")", "i");  // first occurrence only
         let replaced = false;
+        const cls = isRelevantHit(h) ? "dossier-match" : "dossier-match dossier-match-rejected";
         html = html.replace(re, m => {
           if (replaced) return m;
           replaced = true;
-          return `<mark class="dossier-match" id="dh-${did}-${i}">${m}</mark>`;
+          return `<mark class="${cls}" id="dh-${did}-${i}">${m}</mark>`;
         });
       } catch (_) { /* ignore patterns that don't compile in JS regex */ }
     });
@@ -1351,6 +1409,17 @@ function showDetail(id, terms = []) {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       openCiteModal(el.dataset.citeId);
+    });
+  });
+  // Audit toggle: reveal/hide the AI-rejected match buttons inside the panel.
+  detailEl.querySelectorAll(".dossier-audit-toggle").forEach(el => {
+    const showLabel = el.textContent;
+    el.addEventListener("click", () => {
+      const panel = el.closest(".dossier-mentions");
+      const groups = panel.querySelectorAll(".dossier-buttons.rejected");
+      const willShow = groups[0] && groups[0].hidden;
+      groups.forEach(g => g.hidden = !willShow);
+      el.textContent = willShow ? "Hide AI-rejected matches" : showLabel;
     });
   });
   // Dossier mention buttons → expand text block, scroll the marked match into
@@ -2955,6 +3024,19 @@ async function init() {
   } catch (e) {
     stat.textContent = "Failed to load search-index.json — run scripts/build_search_index.py first.";
     return;
+  }
+
+  // Recompute each doc's dossier list from its dossier_hits, taking AI relevance
+  // into account. A doc is tagged with a dossier ONLY if it has at least one
+  // hit the AI confirmed (or that's still unclassified — treated as relevant).
+  // This drops false-positive docs from the dossier filter and stops synthetic
+  // IMG records (no hits of their own) from inflating the count.
+  for (const d of docs) {
+    const fresh = [];
+    for (const [did, list] of Object.entries(d.dossier_hits || {})) {
+      if (list.some(isRelevantHit)) fresh.push(did);
+    }
+    d.dossiers = fresh;
   }
 
   // Augment each doc with a derived craft_shape if the build pipeline didn't
