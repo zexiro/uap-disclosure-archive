@@ -781,6 +781,10 @@
       <option value="">All incidents</option>
     </select>
   </div>
+  <div class="chips facets-row header-chips" id="dossier-chips" hidden>
+    <span class="facet-label">DOSSIERS</span>
+    <!-- chips injected from ui/dossiers.json -->
+  </div>
   <div class="header-bottom-row" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap">
     <div class="header-kbdhints" style="font-size:11px;color:var(--fg-dim)">
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">/</kbd> focus search ·
@@ -1278,6 +1282,10 @@ let activeFacets = {
   hasvideo: false,    // requires video_local || dvids_video_id
   hassource: false,   // requires source_url
 };
+// Thematic dossiers loaded from ui/dossiers.json. activeDossiers holds the
+// set of dossier ids the user has toggled on; matching is OR (any tag hits).
+let DOSSIERS = [];
+let activeDossiers = new Set();
 
 function recordYear(d) {
   // Parse incident_date like "10/28/2001-10/29/2001", "1/24/85", or "" → number or null.
@@ -1312,6 +1320,12 @@ function applyFilters(matches) {
     }
     if (shape && (d.craft_shape || "") !== shape) return false;
     if (incident && (d.incident_id || "") !== incident) return false;
+    if (activeDossiers.size) {
+      const tags = d.dossiers || [];
+      let hit = false;
+      for (const t of tags) if (activeDossiers.has(t)) { hit = true; break; }
+      if (!hit) return false;
+    }
     return true;
   });
 }
@@ -1510,6 +1524,7 @@ function syncUrl() {
   for (const k of Object.keys(activeFacets)) {
     if (activeFacets[k]) p.set("fc_" + k, "1");
   }
+  if (activeDossiers.size) p.set("dossier", [...activeDossiers].join(","));
   if (currentView === "graph") {
     if (graphState.layout && graphState.layout !== "force") p.set("layout", graphState.layout);
     if (graphState.selected) p.set("focus", graphState.selected.id);
@@ -1535,6 +1550,8 @@ function loadUrl() {
   for (const k of ["redacted", "hasimages", "hasvideo", "hassource"]) {
     if (p.get("fc_" + k) === "1") activeFacets[k] = true;
   }
+  const dossierParam = p.get("dossier");
+  if (dossierParam) for (const id of dossierParam.split(",").filter(Boolean)) activeDossiers.add(id);
   // Graph state — stash for ensureGraph() to apply once layout/data are ready.
   const lay = p.get("layout");
   if (lay && ["force", "radial", "chrono"].includes(lay)) graphState.layout = lay;
@@ -2213,7 +2230,7 @@ function drawGraph() {
 
 function computeMatchingIds() {
   const q = $("#q").value.trim();
-  if (!q && !$("#f-agency").value && !$("#f-loc").value && !activeTypeFilter && !$("#f-decade").value && !$("#f-shape").value && !$("#f-incident").value && !Object.values(activeFacets).some(Boolean)) return null;
+  if (!q && !$("#f-agency").value && !$("#f-loc").value && !activeTypeFilter && !$("#f-decade").value && !$("#f-shape").value && !$("#f-incident").value && !Object.values(activeFacets).some(Boolean) && !activeDossiers.size) return null;
   let results;
   if (q) {
     const ids = new Set(mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: "AND" }).map(r => r.id));
@@ -2898,6 +2915,36 @@ async function init() {
     });
   });
 
+  // Dossier chips: load config, render one chip per dossier with a count, wire clicks.
+  try {
+    const dres = await fetch("dossiers.json");
+    if (dres.ok) DOSSIERS = await dres.json();
+  } catch (_) { /* dossiers.json missing — feature degrades to hidden row */ }
+  const dossierEl = $("#dossier-chips");
+  if (DOSSIERS.length && dossierEl) {
+    const dCounts = {};
+    for (const d of docs) {
+      for (const id of (d.dossiers || [])) dCounts[id] = (dCounts[id] || 0) + 1;
+    }
+    for (const dos of DOSSIERS) {
+      if (!dCounts[dos.id]) continue;  // skip empty dossiers (e.g. before pipeline tags anything)
+      const chip = document.createElement("span");
+      chip.className = "chip small";
+      chip.dataset.dossier = dos.id;
+      const desc = dos.description ? ` title="${dos.description.replace(/"/g, "&quot;")}"` : "";
+      chip.innerHTML = `${dos.emoji || "📁"} <span>${dos.label}</span><span class="count">${dCounts[dos.id]}</span>`;
+      if (desc) chip.setAttribute("title", dos.description);
+      chip.addEventListener("click", () => {
+        if (activeDossiers.has(dos.id)) activeDossiers.delete(dos.id);
+        else activeDossiers.add(dos.id);
+        chip.classList.toggle("active", activeDossiers.has(dos.id));
+        onChange();
+      });
+      dossierEl.appendChild(chip);
+    }
+    if (dossierEl.querySelector(".chip[data-dossier]")) dossierEl.hidden = false;
+  }
+
   loadUrl();
   // Reflect URL-loaded type filter on chips
   document.querySelectorAll("#type-chips .chip").forEach(c => {
@@ -2905,6 +2952,9 @@ async function init() {
   });
   document.querySelectorAll("#facet-chips .chip[data-facet]").forEach(c => {
     c.classList.toggle("active", !!activeFacets[c.dataset.facet]);
+  });
+  document.querySelectorAll("#dossier-chips .chip[data-dossier]").forEach(c => {
+    c.classList.toggle("active", activeDossiers.has(c.dataset.dossier));
   });
 
   const onChange = () => {
@@ -2927,6 +2977,8 @@ async function init() {
     setTypeFilter("");
     for (const k of Object.keys(activeFacets)) activeFacets[k] = false;
     document.querySelectorAll("#facet-chips .chip[data-facet]").forEach(c => c.classList.remove("active"));
+    activeDossiers.clear();
+    document.querySelectorAll("#dossier-chips .chip[data-dossier]").forEach(c => c.classList.remove("active"));
     activeId = null;
     onChange();
   });

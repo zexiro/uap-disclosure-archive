@@ -1,0 +1,26 @@
+[
+  {
+    "id": "biologics",
+    "label": "Beings / biologics",
+    "emoji": "🧬",
+    "description": "Records that mention non-human beings, biologics, occupants, or entity-language used in UAP literature.",
+    "keywords_ci": [
+      "\\bbiologic[s]?\\b",
+      "\\bhumanoid\\w*\\b",
+      "non[- ]?human (?:intelligence|biologic|being|entit)",
+      "extraterrestrial biological entit",
+      "\\balien (?:body|bodies|being|beings|occupant|life|race|pilot)",
+      "\\boccupant\\w*\\b",
+      "\\bcreatur\\w*\\b",
+      "\\bbeings\\b",
+      "\\bmartian\\w*\\b",
+      "\\bextraterrestrial\\w*\\b",
+      "visitors? from (?:other|another|outer|space|mars)",
+      "space beings?"
+    ],
+    "keywords_cs": [
+      "\\bEBE[s]?\\b",
+      "\\bNHI\\b"
+    ]
+  }
+]

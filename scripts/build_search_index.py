@@ -8,6 +8,7 @@ For each record we pack:
   thumbs[], primary[], video.
 """
 import json
+import re
 from pathlib import Path
 
 from build_thumbs import thumb_path_for
@@ -18,6 +19,30 @@ TEXT = RAW / "text"
 RECORDS = json.loads((RAW / "records.json").read_text())
 LINKS_PATH = RAW / "links.json"
 LINKS = json.loads(LINKS_PATH.read_text()) if LINKS_PATH.exists() else {}
+
+DOSSIERS_PATH = ROOT / "ui" / "dossiers.json"
+DOSSIERS = json.loads(DOSSIERS_PATH.read_text()) if DOSSIERS_PATH.exists() else []
+# Pre-compile combined regexes per dossier (one for case-insensitive, one for case-sensitive)
+_DOSSIER_RES: list[tuple[str, re.Pattern | None, re.Pattern | None]] = []
+for _d in DOSSIERS:
+    ci_pat = "|".join(_d.get("keywords_ci", [])) or None
+    cs_pat = "|".join(_d.get("keywords_cs", [])) or None
+    _DOSSIER_RES.append((
+        _d["id"],
+        re.compile(ci_pat, re.IGNORECASE) if ci_pat else None,
+        re.compile(cs_pat) if cs_pat else None,
+    ))
+
+
+def dossiers_for(text: str) -> list[str]:
+    """Return list of dossier IDs whose keyword set matches anywhere in text."""
+    if not text:
+        return []
+    out = []
+    for did, ci_re, cs_re in _DOSSIER_RES:
+        if (ci_re and ci_re.search(text)) or (cs_re and cs_re.search(text)):
+            out.append(did)
+    return out
 
 
 def small_thumb(src_rel: str) -> str:
@@ -69,6 +94,8 @@ for r in RECORDS:
     thumbs = r.get("thumbnail_local", []) or []
     primary_imgs = [p for p in r.get("primary_local", []) or [] if p.lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp"))]
     row_src = (thumbs[0] if thumbs else (primary_imgs[0] if primary_imgs else ""))
+    rec_text = text_for(r)
+    rec_dossiers = dossiers_for(rec_text)
     docs.append({
         "id": r["id"],
         "title": r["title"],
@@ -85,11 +112,14 @@ for r in RECORDS:
         "thumb_small": small_thumb(row_src),
         "video_local": r.get("video_local", ""),
         "dvids_video_id": r.get("dvids_video_id", ""),
-        "text": text_for(r),
+        "text": rec_text,
         "similar_text":  LINKS.get(r["id"], {}).get("similar_text",  []),
         "similar_image": LINKS.get(r["id"], {}).get("similar_image", []),
         "extracted_images": extracted,
+        "dossiers": rec_dossiers,
     })
+    # Stash parent dossiers so synthetic IMG records can inherit them
+    r["_dossiers"] = rec_dossiers
 
 # Synthesize one IMG record per extracted image so the Images filter
 # surfaces them at the top level (not just hidden in their parent's gallery).
@@ -133,6 +163,7 @@ if EXTRACTED_PATH.exists():
             "similar_text":  [],
             "similar_image": [],
             "extracted_images": [],
+            "dossiers": parent.get("_dossiers", []),
             "extracted_from_id": parent_id,
             "extracted_page": page,
         })
