@@ -22,26 +22,42 @@ LINKS = json.loads(LINKS_PATH.read_text()) if LINKS_PATH.exists() else {}
 
 DOSSIERS_PATH = ROOT / "ui" / "dossiers.json"
 DOSSIERS = json.loads(DOSSIERS_PATH.read_text()) if DOSSIERS_PATH.exists() else []
-# Pre-compile combined regexes per dossier (one for case-insensitive, one for case-sensitive)
-_DOSSIER_RES: list[tuple[str, re.Pattern | None, re.Pattern | None]] = []
+# Pre-compile each pattern individually so we can attribute hits back to the
+# specific keyword that fired — needed for the UI's match-details display.
+_DOSSIER_PATTERNS: list[tuple[str, list[tuple[str, re.Pattern]]]] = []
 for _d in DOSSIERS:
-    ci_pat = "|".join(_d.get("keywords_ci", [])) or None
-    cs_pat = "|".join(_d.get("keywords_cs", [])) or None
-    _DOSSIER_RES.append((
-        _d["id"],
-        re.compile(ci_pat, re.IGNORECASE) if ci_pat else None,
-        re.compile(cs_pat) if cs_pat else None,
-    ))
+    pats: list[tuple[str, re.Pattern]] = []
+    for raw in _d.get("keywords_ci", []):
+        pats.append((raw, re.compile(raw, re.IGNORECASE)))
+    for raw in _d.get("keywords_cs", []):
+        pats.append((raw, re.compile(raw)))
+    _DOSSIER_PATTERNS.append((_d["id"], pats))
+
+CTX_BEFORE = 50
+CTX_AFTER = 60
+MAX_HITS_PER_DOSSIER = 8
 
 
-def dossiers_for(text: str) -> list[str]:
-    """Return list of dossier IDs whose keyword set matches anywhere in text."""
+def dossier_hits_for(text: str) -> dict[str, list[dict]]:
+    """Per-dossier list of {kw, pat, ctx} for the first occurrence of each
+    matching keyword. Empty dict if no dossier matches."""
     if not text:
-        return []
-    out = []
-    for did, ci_re, cs_re in _DOSSIER_RES:
-        if (ci_re and ci_re.search(text)) or (cs_re and cs_re.search(text)):
-            out.append(did)
+        return {}
+    out: dict[str, list[dict]] = {}
+    for did, pats in _DOSSIER_PATTERNS:
+        hits: list[dict] = []
+        for raw, rx in pats:
+            m = rx.search(text)
+            if not m:
+                continue
+            s = max(0, m.start() - CTX_BEFORE)
+            e = min(len(text), m.end() + CTX_AFTER)
+            ctx = text[s:e].replace("\n", " ").replace("  ", " ").strip()
+            hits.append({"kw": m.group(), "pat": raw, "ctx": ctx})
+            if len(hits) >= MAX_HITS_PER_DOSSIER:
+                break
+        if hits:
+            out[did] = hits
     return out
 
 
@@ -95,7 +111,8 @@ for r in RECORDS:
     primary_imgs = [p for p in r.get("primary_local", []) or [] if p.lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp"))]
     row_src = (thumbs[0] if thumbs else (primary_imgs[0] if primary_imgs else ""))
     rec_text = text_for(r)
-    rec_dossiers = dossiers_for(rec_text)
+    rec_hits = dossier_hits_for(rec_text)
+    rec_dossiers = list(rec_hits.keys())
     docs.append({
         "id": r["id"],
         "title": r["title"],
@@ -117,6 +134,7 @@ for r in RECORDS:
         "similar_image": LINKS.get(r["id"], {}).get("similar_image", []),
         "extracted_images": extracted,
         "dossiers": rec_dossiers,
+        "dossier_hits": rec_hits,
     })
     # Stash parent dossiers so synthetic IMG records can inherit them
     r["_dossiers"] = rec_dossiers

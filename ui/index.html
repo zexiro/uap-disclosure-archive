@@ -173,6 +173,32 @@
   .badge.img { color: var(--img); border-color: #4a3162; }
   .snippet { font-size: 11.5px; color: var(--fg-dim); margin-top: 6px; max-height: 3em; overflow: hidden; }
   mark { background: var(--hl); color: #fff; padding: 0 1px; border-radius: 2px; }
+  /* Dossier hits: pills under each row + jump panel inside the detail view */
+  .dossier-hits { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 6px; }
+  .dossier-hit {
+    font-size: 10.5px; font-family: var(--mono); color: var(--accent);
+    background: rgba(124, 92, 224, 0.10); border: 1px solid rgba(124, 92, 224, 0.30);
+    padding: 1px 6px; border-radius: 10px; cursor: help;
+  }
+  .dossier-mentions {
+    margin: 12px 0; padding: 10px 12px;
+    background: var(--bg2); border: 1px solid var(--border); border-radius: 8px;
+  }
+  .dossier-mentions-hint { font-size: 11px; color: var(--fg-dim); margin-bottom: 6px; }
+  .dossier-mention-group { display: flex; flex-wrap: wrap; align-items: center; gap: 6px; margin-top: 4px; }
+  .dossier-group-label { font-size: 11px; color: var(--fg-dim); margin-right: 4px; }
+  .dossier-jump {
+    font-family: var(--mono); font-size: 11px; cursor: pointer;
+    color: var(--accent); background: rgba(124, 92, 224, 0.10);
+    border: 1px solid rgba(124, 92, 224, 0.35); padding: 2px 8px; border-radius: 10px;
+  }
+  .dossier-jump:hover { background: rgba(124, 92, 224, 0.22); }
+  mark.dossier-match { background: rgba(124, 92, 224, 0.45); color: #fff; outline: 1px solid rgba(124, 92, 224, 0.7); }
+  mark.dossier-match.flash { animation: dh-flash 1.4s ease-out; }
+  @keyframes dh-flash {
+    0% { box-shadow: 0 0 0 0 rgba(124, 92, 224, 0.9); background: rgba(124, 92, 224, 0.85); }
+    100% { box-shadow: 0 0 0 14px rgba(124, 92, 224, 0); background: rgba(124, 92, 224, 0.45); }
+  }
   #detail { overflow-y: auto; padding: 24px 32px; min-width: 0; }
   #detail h2 { margin: 0 0 6px 0; font-size: 22px; }
   .dmeta { display: flex; flex-wrap: wrap; gap: 12px; font-size: 12px; color: var(--fg-dim); margin-bottom: 14px; }
@@ -988,6 +1014,73 @@ function highlight(text, terms) {
   });
   return html;
 }
+// Render a list of "🧬 humanoid · creatures · MARTIANS" pills under a row when
+// the doc was tagged by one or more dossiers. Each pill carries the surrounding
+// text snippet as its title (tooltip) so the user can audit/tune.
+function dossierHitsRowHTML(d) {
+  const hits = d.dossier_hits || {};
+  const ids = Object.keys(hits);
+  if (!ids.length) return "";
+  const parts = [];
+  for (const did of ids) {
+    const dos = (DOSSIERS || []).find(x => x.id === did);
+    const emoji = (dos && dos.emoji) || "🏷";
+    for (const h of hits[did]) {
+      const label = escapeHtml(h.kw);
+      const tip = escapeHtml(`${dos ? dos.label : did} · pattern ${h.pat}\n\n…${h.ctx}…`);
+      parts.push(`<span class="dossier-hit" title="${tip}">${emoji} ${label}</span>`);
+    }
+  }
+  return `<div class="dossier-hits">${parts.join("")}</div>`;
+}
+
+// Detail-view "Mentions" panel: one clickable button per hit. Click jumps to
+// the first occurrence of that pattern inside the OCR text block.
+function dossierMentionsHTML(d) {
+  const hits = d.dossier_hits || {};
+  const ids = Object.keys(hits);
+  if (!ids.length) return "";
+  const groups = [];
+  for (const did of ids) {
+    const dos = (DOSSIERS || []).find(x => x.id === did);
+    const emoji = (dos && dos.emoji) || "🏷";
+    const label = escapeHtml(dos ? dos.label : did);
+    const buttons = hits[did].map((h, i) => {
+      const target = `dh-${did}-${i}`;
+      const tip = escapeHtml(`pattern ${h.pat}\n\n…${h.ctx}…`);
+      return `<button class="dossier-jump" data-target="${target}" title="${tip}">${escapeHtml(h.kw)}</button>`;
+    }).join("");
+    groups.push(`<div class="dossier-mention-group"><span class="dossier-group-label">${emoji} ${label}</span>${buttons}</div>`);
+  }
+  return `<div class="dossier-mentions">
+    <div class="dossier-mentions-hint">Matched in this record — click to jump:</div>
+    ${groups.join("")}
+  </div>`;
+}
+
+// Wrap the FIRST occurrence of each dossier-hit pattern in already-highlighted
+// HTML with a <mark class="dossier-match" id="dh-<did>-<i>"> so the jump
+// buttons can scroll to it. Keep the regex case-insensitive for visual purposes
+// even when the original keyword was case-sensitive (matters only for EBE/NHI
+// — extra case-insensitive marks are harmless visual noise at worst).
+function markDossierHits(html, hits) {
+  if (!hits) return html;
+  for (const [did, list] of Object.entries(hits)) {
+    list.forEach((h, i) => {
+      try {
+        const re = new RegExp("(" + h.pat + ")", "i");  // first occurrence only
+        let replaced = false;
+        html = html.replace(re, m => {
+          if (replaced) return m;
+          replaced = true;
+          return `<mark class="dossier-match" id="dh-${did}-${i}">${m}</mark>`;
+        });
+      } catch (_) { /* ignore patterns that don't compile in JS regex */ }
+    });
+  }
+  return html;
+}
+
 // Map a source image path (raw/...) to its pre-generated thumbnail path.
 // Mirrors build_thumbs.thumb_path_for. Falls back to the source via <img onerror>.
 function thumbForPath(src) {
@@ -1055,6 +1148,7 @@ function render(matches, terms) {
         <div class="t">${highlight(d.title, terms)}</div>
         <div class="meta">${badge(d.type)} <span>${escapeHtml(d.agency)}</span> <span>${escapeHtml(d.incident_location || "—")}</span> <span>${escapeHtml(d.incident_date || "")}</span></div>
         ${sn ? `<div class="snippet">${highlight(sn, terms)}</div>` : ""}
+        ${dossierHitsRowHTML(d)}
       </div>
       ${activeTypeFilter === "IMG" ? `<div class="grid-cap">${escapeHtml(d.title.slice(0, 60))}</div>` : ""}
     `;
@@ -1226,14 +1320,15 @@ function showDetail(id, terms = []) {
     ${incidentBadgeHTML(d) ? `<div style="margin:10px 0">${incidentBadgeHTML(d)}</div>` : ""}
     ${linksHTML(d)}
     ${d.blurb ? `<div class="blurb">${highlight(d.blurb, terms)}</div>` : ""}
+    ${dossierMentionsHTML(d)}
     ${previewHTML(d)}
     ${extractedHTML(d)}
     <div id="mini-graph-mount"></div>
     ${relatedHTML(d)}
     ${d.text ? `
-      <details open>
+      <details open id="dossier-text-details">
         <summary>Extracted text (${d.text.length.toLocaleString()} chars)</summary>
-        <div class="text">${highlight(d.text, terms)}</div>
+        <div class="text">${markDossierHits(highlight(d.text, terms), d.dossier_hits)}</div>
       </details>` : ""}
   `;
   // Render the mini-graph (1-hop ego network) into its mount point.
@@ -1256,6 +1351,35 @@ function showDetail(id, terms = []) {
     el.addEventListener("click", (e) => {
       e.preventDefault();
       openCiteModal(el.dataset.citeId);
+    });
+  });
+  // Dossier mention buttons → expand text block, scroll the marked match into
+  // view, and pulse it briefly so the user can see exactly where it landed.
+  // The OCR text is in a nested overflow:auto container, so scrollIntoView
+  // alone doesn't reliably reach it — scroll both the inner .text and the
+  // outer #detail explicitly using getBoundingClientRect deltas.
+  detailEl.querySelectorAll(".dossier-jump").forEach(el => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const target = el.dataset.target;
+      const details = $("#dossier-text-details");
+      if (details && !details.open) details.open = true;
+      const mark = detailEl.querySelector("#" + CSS.escape(target));
+      if (!mark) return;
+      const textBox = mark.closest(".text");
+      if (textBox) {
+        const mr = mark.getBoundingClientRect();
+        const tr = textBox.getBoundingClientRect();
+        textBox.scrollTop += (mr.top - tr.top) - textBox.clientHeight / 2;
+      }
+      // Then bring the .text container into the detail panel's view.
+      requestAnimationFrame(() => {
+        const mr2 = mark.getBoundingClientRect();
+        const dr = detailEl.getBoundingClientRect();
+        detailEl.scrollTop += (mr2.top - dr.top) - detailEl.clientHeight / 2;
+        mark.classList.add("flash");
+        setTimeout(() => mark.classList.remove("flash"), 1400);
+      });
     });
   });
   // Incident badge → filter to that incident
