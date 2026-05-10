@@ -9,14 +9,19 @@ streaming endpoint that powers the ⌘K interrogator.
 - POST /api/ask streams a Claude response over SSE, grounded in the
   search-index.json corpus with retrieval, citation enforcement, and a
   per-IP rate limit.
+- POST /api/corrections  — submit a user correction/annotation for a record.
+- GET  /api/corrections/<record_id> — list corrections for a record.
 """
+import hashlib
 import json
 import os
 import re
 import sys
 import threading
 import time
+import uuid
 from collections import defaultdict, deque
+from datetime import datetime, timezone
 from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse
@@ -27,6 +32,8 @@ INCIDENTS_PATH = ROOT / "ui" / "incidents.json"
 EMBED_PATH = ROOT / "ui" / "embeddings.npz"
 ENRICH_DIR = ROOT / "ui" / "enrichments"
 ENV_PATH = ROOT / ".env"
+CORRECTIONS_DIR = ROOT / "vault" / "corrections"
+CORRECTIONS_JSONL = CORRECTIONS_DIR / "corrections.jsonl"
 ENRICH_DIR.mkdir(exist_ok=True)
 
 # Minimal .env loader so ANTHROPIC_API_KEY can be persisted in the project root
@@ -286,6 +293,103 @@ def build_prompt(question, sources, mode):
     return user
 
 
+# ─── Corrections store ────────────────────────────────────────────────
+# Allowed field names for a correction submission.
+CORRECTION_FIELDS = frozenset(
+    ("title", "date", "location", "summary", "transcript", "tag", "link", "general")
+)
+
+# Max payload size: 8 KB.
+CORRECTIONS_MAX_BODY = 8 * 1024
+
+# Cache of valid record IDs, loaded once from search-index.json.
+_VALID_IDS: set | None = None
+_VALID_IDS_LOCK = threading.Lock()
+
+# Per-IP hourly correction rate limit (separate from the /api/ask bucket).
+_CORR_RATE_LOCK = threading.Lock()
+_CORR_BUCKETS: defaultdict[str, deque] = defaultdict(deque)
+_CORR_RATE_LIMIT = int(os.environ.get("CORRECTIONS_RATE_HOURLY", "5"))
+
+# File-write lock so concurrent requests don't interleave JSONL lines.
+_CORRECTIONS_WRITE_LOCK = threading.Lock()
+
+
+def _load_valid_ids() -> set:
+    global _VALID_IDS
+    if _VALID_IDS is not None:
+        return _VALID_IDS
+    with _VALID_IDS_LOCK:
+        if _VALID_IDS is None:
+            try:
+                index = json.loads(INDEX_PATH.read_text())
+                _VALID_IDS = {d.get("id") for d in index if d.get("id")}
+            except Exception as e:
+                print(f"[corrections] failed to load search index: {e}", file=sys.stderr)
+                _VALID_IDS = set()
+    return _VALID_IDS
+
+
+def _hash_ip(ip: str) -> str:
+    """SHA-256 of the raw IP string, truncated to 12 hex chars for storage."""
+    return hashlib.sha256(ip.encode()).hexdigest()[:12]
+
+
+def _corr_rate_check(ip: str):
+    """Returns (ok: bool, retry_seconds: int)."""
+    now = time.time()
+    cutoff = now - 3600
+    with _CORR_RATE_LOCK:
+        q = _CORR_BUCKETS[ip]
+        while q and q[0] < cutoff:
+            q.popleft()
+        if len(q) >= _CORR_RATE_LIMIT:
+            reset = int(q[0] + 3600 - now)
+            return False, max(reset, 1)
+        q.append(now)
+    return True, 0
+
+
+def _append_correction(record: dict) -> None:
+    """Append a single correction record as a JSONL line (thread-safe, sync)."""
+    CORRECTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(record, ensure_ascii=False) + "\n"
+    with _CORRECTIONS_WRITE_LOCK:
+        with CORRECTIONS_JSONL.open("a", encoding="utf-8") as fh:
+            fh.write(line)
+
+
+def _read_corrections(record_id: str) -> list:
+    """Return all correction records for a given record_id."""
+    if not CORRECTIONS_JSONL.exists():
+        return []
+    out = []
+    try:
+        with CORRECTIONS_JSONL.open("r", encoding="utf-8") as fh:
+            for raw in fh:
+                raw = raw.strip()
+                if not raw:
+                    continue
+                try:
+                    obj = json.loads(raw)
+                except json.JSONDecodeError:
+                    continue
+                if obj.get("record_id") == record_id:
+                    out.append({
+                        "id": obj.get("id"),
+                        "field": obj.get("field"),
+                        "current_value": obj.get("current_value", ""),
+                        "suggested_value": obj.get("suggested_value"),
+                        "rationale": obj.get("rationale", ""),
+                        "submitter_handle": obj.get("submitter_handle", ""),
+                        "submitted_at": obj.get("submitted_at"),
+                        "status": obj.get("status", "pending"),
+                    })
+    except Exception as e:
+        print(f"[corrections] read error: {e}", file=sys.stderr)
+    return out
+
+
 # ─── Rate limit ───────────────────────────────────────────────────────
 _RATE_LOCK = threading.Lock()
 _BUCKETS = defaultdict(deque)            # ip -> deque[ts] (hourly)
@@ -429,6 +533,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self._handle_enrich_all()
         if path.startswith("/api/enrich/get/"):
             return self._handle_enrich_get(path[len("/api/enrich/get/"):])
+        if path.startswith("/api/corrections/"):
+            return self._handle_corrections_get(path[len("/api/corrections/"):])
         return super().do_GET()
 
     def _handle_ai_status(self):
@@ -463,6 +569,8 @@ class Handler(SimpleHTTPRequestHandler):
             return self._handle_enrich()
         if path == "/api/enrich/decide":
             return self._handle_enrich_decide()
+        if path in ("/api/corrections", "/api/corrections/"):
+            return self._handle_corrections_post()
         self.send_response(404)
         self.send_header("Content-Type", "text/plain")
         self.end_headers()
@@ -1003,6 +1111,114 @@ class Handler(SimpleHTTPRequestHandler):
         self.send_header("Content-Length", str(len(body_out)))
         self.end_headers()
         self.wfile.write(body_out)
+
+    # ───────────────────────────────────────────────────────────────────
+    # /api/corrections — user-submitted corrections / annotations
+    # ───────────────────────────────────────────────────────────────────
+    def _json_response(self, status: int, data: dict, extra_headers: dict | None = None):
+        """Send a JSON response with CORS headers."""
+        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
+        self.send_response(status)
+        self.send_header("Content-Type", "application/json")
+        self.send_header("Cache-Control", "no-store")
+        self.send_header("Access-Control-Allow-Origin", "*")
+        self.send_header("Content-Length", str(len(body)))
+        if extra_headers:
+            for k, v in extra_headers.items():
+                self.send_header(k, str(v))
+        self.end_headers()
+        self.wfile.write(body)
+
+    def _handle_corrections_post(self):
+        ip = self._client_ip()
+
+        # ── 1. Size guard ───────────────────────────────────────────
+        try:
+            length = int(self.headers.get("Content-Length", "0"))
+        except ValueError:
+            return self._json_response(400, {"error": "invalid Content-Length"})
+        if length > CORRECTIONS_MAX_BODY:
+            return self._json_response(413, {"error": "payload too large (max 8 KB)"})
+
+        # ── 2. Parse body ───────────────────────────────────────────
+        try:
+            raw = self.rfile.read(length).decode("utf-8") if length else "{}"
+            body = json.loads(raw)
+        except Exception as e:
+            return self._json_response(400, {"error": f"invalid JSON: {e}"})
+        if not isinstance(body, dict):
+            return self._json_response(400, {"error": "body must be a JSON object"})
+
+        # ── 3. Validate fields ──────────────────────────────────────
+        record_id = (body.get("record_id") or "").strip()
+        field = (body.get("field") or "").strip()
+        current_value = str(body.get("current_value") or "").strip()
+        suggested_value = str(body.get("suggested_value") or "").strip()
+        rationale = str(body.get("rationale") or "").strip()
+        submitter_handle = str(body.get("submitter_handle") or "").strip()
+
+        if not record_id:
+            return self._json_response(400, {"error": "record_id is required"})
+        if not field:
+            return self._json_response(400, {"error": "field is required"})
+        if field not in CORRECTION_FIELDS:
+            return self._json_response(400, {
+                "error": f"field must be one of: {', '.join(sorted(CORRECTION_FIELDS))}"
+            })
+        if not suggested_value:
+            return self._json_response(400, {"error": "suggested_value is required and must not be empty"})
+        if len(rationale) > 2000:
+            return self._json_response(400, {"error": "rationale exceeds 2000 character limit"})
+        if len(submitter_handle) > 64:
+            return self._json_response(400, {"error": "submitter_handle exceeds 64 character limit"})
+
+        # ── 4. Validate record_id against index ─────────────────────
+        valid_ids = _load_valid_ids()
+        if record_id not in valid_ids:
+            return self._json_response(404, {"error": f"record_id '{record_id}' not found in archive index"})
+
+        # ── 5. Rate limit ────────────────────────────────────────────
+        ok, retry_after = _corr_rate_check(ip)
+        if not ok:
+            return self._json_response(
+                429,
+                {"error": f"rate limit exceeded — max {_CORR_RATE_LIMIT} corrections per IP per hour"},
+                extra_headers={"Retry-After": retry_after},
+            )
+
+        # ── 6. Build and store the correction record ─────────────────
+        corr_id = str(uuid.uuid4())
+        now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+        record = {
+            "id": corr_id,
+            "record_id": record_id,
+            "field": field,
+            "current_value": current_value,
+            "suggested_value": suggested_value,
+            "rationale": rationale,
+            "submitter_handle": submitter_handle,
+            "submitted_at": now_iso,
+            "status": "pending",
+            "client_ip_hash": _hash_ip(ip),
+        }
+        try:
+            _append_correction(record)
+        except Exception as e:
+            print(f"[corrections] write error: {e}", file=sys.stderr)
+            return self._json_response(500, {"error": "failed to persist correction"})
+
+        print(f"[corrections] new correction {corr_id} for record {record_id!r} field={field!r} ip_hash={_hash_ip(ip)}", flush=True)
+        return self._json_response(201, {"id": corr_id, "status": "received"})
+
+    def _handle_corrections_get(self, record_id: str):
+        record_id = (record_id or "").strip().strip("/")
+        if not record_id:
+            return self._json_response(400, {"error": "record_id path segment is required"})
+        valid_ids = _load_valid_ids()
+        if record_id not in valid_ids:
+            return self._json_response(404, {"error": f"record_id '{record_id}' not found in archive index"})
+        corrections = _read_corrections(record_id)
+        return self._json_response(200, {"record_id": record_id, "corrections": corrections})
 
     def end_headers(self):
         # Range support is automatic in SimpleHTTPRequestHandler since 3.7

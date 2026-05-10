@@ -1863,6 +1863,64 @@
     font-style: italic; line-height: 1.5;
   }
 </style>
+<!-- ─── Stream F: Corrections modal styles ───────────────────────── -->
+<style>
+  /* correction link in the detail panel links row */
+  a.correction-btn {
+    color: var(--fg-dim);
+    text-decoration: none;
+    border: 1px solid var(--border);
+    border-radius: 6px;
+    padding: 4px 10px;
+    font-size: 12px;
+    display: inline-flex; align-items: center; gap: 4px;
+  }
+  a.correction-btn:hover { border-color: var(--accent2); color: var(--accent2); }
+  /* corrections modal */
+  #corr-modal-backdrop {
+    position: fixed; inset: 0; z-index: 9000;
+    background: rgba(0,0,0,.7);
+    display: flex; align-items: center; justify-content: center;
+  }
+  #corr-modal-backdrop[hidden] { display: none; }
+  #corr-modal {
+    background: var(--bg2); border: 1px solid var(--border);
+    border-radius: 12px; padding: 24px 28px; width: min(520px, 95vw);
+    max-height: 90vh; overflow-y: auto; position: relative;
+  }
+  #corr-modal h3 { margin: 0 0 16px; font-size: 17px; color: var(--fg); }
+  #corr-modal label { display: block; font-size: 12px; color: var(--fg-dim); margin: 12px 0 4px; }
+  #corr-modal select, #corr-modal input, #corr-modal textarea {
+    width: 100%; background: var(--bg3); border: 1px solid var(--border);
+    color: var(--fg); border-radius: 6px; padding: 8px 10px; font-size: 13px;
+    font-family: inherit;
+  }
+  #corr-modal select:focus, #corr-modal input:focus, #corr-modal textarea:focus {
+    outline: none; border-color: var(--accent);
+  }
+  #corr-modal textarea { resize: vertical; min-height: 72px; }
+  #corr-modal .corr-actions {
+    display: flex; gap: 10px; justify-content: flex-end; margin-top: 18px;
+  }
+  #corr-modal button {
+    padding: 8px 18px; border-radius: 7px; font-size: 13px; cursor: pointer;
+    border: 1px solid var(--border); background: var(--bg3); color: var(--fg);
+  }
+  #corr-modal button:hover { border-color: var(--accent); }
+  #corr-modal button.primary {
+    background: var(--accent); color: var(--bg); border-color: var(--accent); font-weight: 600;
+  }
+  #corr-modal button.primary:hover { background: #7dd8ff; }
+  #corr-modal .corr-msg { font-size: 13px; margin-top: 10px; min-height: 18px; }
+  #corr-modal .corr-msg.ok { color: #5dde8a; }
+  #corr-modal .corr-msg.err { color: #ff6b6b; }
+  #corr-modal .modal-close {
+    position: absolute; top: 12px; right: 14px;
+    background: none; border: 1px solid var(--border); color: var(--fg-dim);
+    border-radius: 6px; cursor: pointer; padding: 2px 8px; font-size: 13px;
+  }
+  #corr-modal .modal-close:hover { border-color: var(--accent); color: var(--accent); }
+</style>
 </head>
 <body>
 <header>
@@ -2495,6 +2553,7 @@ function linksHTML(d) {
   if (d.source_url) a.push(`<a href="${d.source_url}" target="_blank">↗ war.gov source</a>`);
   if (d.dvids_video_id) a.push(`<a href="https://www.dvidshub.net/video/${d.dvids_video_id}" target="_blank">↗ DVIDS</a>`);
   a.push(`<a class="cite-btn" href="#" data-cite-id="${escapeHtml(d.id)}">❝ Cite this</a>`);
+  a.push(`<a class="correction-btn" href="#" data-corr-id="${escapeHtml(d.id)}">✏️ Suggest correction</a>`);
   a.push(`<a class="bmc-inline" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener">☕ Tip the archivist</a>`);
   return a.length ? `<div class="links">${a.join("")}</div>` : "";
 }
@@ -7582,6 +7641,124 @@ function pullTimelineStateToGlobeRange() {
 }
 
 init();
+
+// ─── Stream F: Corrections modal ─────────────────────────────────────
+(function () {
+  // Inject the modal DOM once.
+  const backdrop = document.createElement("div");
+  backdrop.id = "corr-modal-backdrop";
+  backdrop.hidden = true;
+  backdrop.setAttribute("role", "dialog");
+  backdrop.setAttribute("aria-label", "Suggest a correction");
+  backdrop.innerHTML = `
+    <div id="corr-modal">
+      <button class="modal-close" id="corr-close">✕</button>
+      <h3>✏️ Suggest a correction</h3>
+      <p style="font-size:12px;color:var(--fg-dim);margin:0 0 4px">
+        Record: <code id="corr-record-id" style="color:var(--accent)"></code>
+      </p>
+      <label for="corr-field">Field</label>
+      <select id="corr-field">
+        <option value="general">General</option>
+        <option value="title">Title</option>
+        <option value="date">Date</option>
+        <option value="location">Location</option>
+        <option value="summary">Summary</option>
+        <option value="transcript">Transcript</option>
+        <option value="tag">Tag</option>
+        <option value="link">Link</option>
+      </select>
+      <label for="corr-current">Current value (what you see — optional)</label>
+      <input id="corr-current" type="text" placeholder="Paste the text as shown…" />
+      <label for="corr-suggested">Suggested value <span style="color:#ff6b6b">*</span></label>
+      <input id="corr-suggested" type="text" placeholder="Your corrected value…" />
+      <label for="corr-rationale">Rationale / source (optional, max 2000 chars)</label>
+      <textarea id="corr-rationale" placeholder="Cite a source or explain why this is incorrect…"></textarea>
+      <label for="corr-handle">Your handle / name (optional, max 64 chars)</label>
+      <input id="corr-handle" type="text" placeholder="anonymous" maxlength="64" />
+      <div class="corr-actions">
+        <button id="corr-cancel">Cancel</button>
+        <button class="primary" id="corr-submit">Submit</button>
+      </div>
+      <div class="corr-msg" id="corr-msg"></div>
+    </div>`;
+  document.body.appendChild(backdrop);
+
+  let _corrRecordId = "";
+
+  function openCorrModal(recordId) {
+    _corrRecordId = recordId;
+    document.getElementById("corr-record-id").textContent = recordId;
+    document.getElementById("corr-field").value = "general";
+    document.getElementById("corr-current").value = "";
+    document.getElementById("corr-suggested").value = "";
+    document.getElementById("corr-rationale").value = "";
+    document.getElementById("corr-handle").value = "";
+    document.getElementById("corr-msg").textContent = "";
+    document.getElementById("corr-msg").className = "corr-msg";
+    backdrop.hidden = false;
+  }
+
+  function closeCorrModal() { backdrop.hidden = true; }
+
+  document.getElementById("corr-close").addEventListener("click", closeCorrModal);
+  document.getElementById("corr-cancel").addEventListener("click", closeCorrModal);
+  backdrop.addEventListener("click", (e) => { if (e.target === backdrop) closeCorrModal(); });
+  document.addEventListener("keydown", (e) => { if (!backdrop.hidden && e.key === "Escape") closeCorrModal(); });
+
+  document.getElementById("corr-submit").addEventListener("click", async () => {
+    const msg = document.getElementById("corr-msg");
+    const suggested = document.getElementById("corr-suggested").value.trim();
+    if (!suggested) {
+      msg.className = "corr-msg err";
+      msg.textContent = "Suggested value is required.";
+      return;
+    }
+    const payload = {
+      record_id: _corrRecordId,
+      field: document.getElementById("corr-field").value,
+      current_value: document.getElementById("corr-current").value.trim(),
+      suggested_value: suggested,
+      rationale: document.getElementById("corr-rationale").value.trim(),
+      submitter_handle: document.getElementById("corr-handle").value.trim(),
+    };
+    msg.className = "corr-msg";
+    msg.textContent = "Submitting…";
+    document.getElementById("corr-submit").disabled = true;
+    try {
+      const resp = await fetch("/api/corrections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await resp.json();
+      if (resp.ok) {
+        msg.className = "corr-msg ok";
+        msg.textContent = `Received (id: ${data.id}). Thank you!`;
+        setTimeout(closeCorrModal, 2400);
+      } else {
+        msg.className = "corr-msg err";
+        msg.textContent = data.error || `Error ${resp.status}`;
+      }
+    } catch (e) {
+      msg.className = "corr-msg err";
+      msg.textContent = `Network error: ${e.message}`;
+    } finally {
+      document.getElementById("corr-submit").disabled = false;
+    }
+  });
+
+  // Expose so the detail-panel link builder can call it.
+  window.openCorrModal = openCorrModal;
+
+  // Delegate: clicks on .correction-btn[data-corr-id] open the modal.
+  document.addEventListener("click", (e) => {
+    const a = e.target.closest(".correction-btn[data-corr-id]");
+    if (!a) return;
+    e.preventDefault();
+    openCorrModal(a.dataset.corrId);
+  });
+})();
 </script>
 </body>
 </html>
