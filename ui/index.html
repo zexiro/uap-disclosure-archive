@@ -1038,8 +1038,15 @@ function render(matches, terms) {
     const thumb = d.thumb_small ||
                   (d.thumbnail_local && d.thumbnail_local[0]) ||
                   (d.primary_local && d.primary_local.find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p))) || "";
+    // Fallback: if the pre-generated thumb is missing on the volume (e.g. between
+    // a deploy and the next refresh), drop to the full-size source so users see
+    // *something* rather than a broken-image icon.
+    const fallback = (d.thumbnail_local && d.thumbnail_local[0]) ||
+                     (d.primary_local && d.primary_local.find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p))) || "";
+    const onerr = (thumb && fallback && thumb !== fallback)
+      ? ` onerror="this.onerror=null;this.src='${ROOT_REL}/${fallback}'"` : "";
     row.innerHTML = `
-      ${thumb ? `<img class="thumb" src="${ROOT_REL}/${thumb}" loading="lazy" alt=""/>` : ""}
+      ${thumb ? `<img class="thumb" src="${ROOT_REL}/${thumb}" loading="lazy" alt=""${onerr}/>` : ""}
       <div class="body">
         <div class="t">${highlight(d.title, terms)}</div>
         <div class="meta">${badge(d.type)} <span>${escapeHtml(d.agency)}</span> <span>${escapeHtml(d.incident_location || "—")}</span> <span>${escapeHtml(d.incident_date || "")}</span></div>
@@ -1171,9 +1178,13 @@ function relatedHTML(d) {
       const thumb = (od && od.thumb_small) ||
                     (od && od.thumbnail_local && od.thumbnail_local[0]) ||
                     (od && od.primary_local || []).find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p)) || "";
+      const fb = (od && od.thumbnail_local && od.thumbnail_local[0]) ||
+                 (od && od.primary_local || []).find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p)) || "";
+      const oe = (thumb && fb && thumb !== fb)
+        ? ` onerror="this.onerror=null;this.src='${ROOT_REL}/${fb}'"` : "";
       parts.push(
         `<a class="item image-link" data-link-id="${escapeHtml(s.id)}" title="${escapeHtml(s.title)}">` +
-        (thumb ? `<img src="${ROOT_REL}/${thumb}" loading="lazy"/>` : "") +
+        (thumb ? `<img src="${ROOT_REL}/${thumb}" loading="lazy"${oe}/>` : "") +
         `<span style="font-size:11px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(s.title)}</span>` +
         `<span class="score">d=${s.distance}</span>` +
         `</a>`
