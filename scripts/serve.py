@@ -1,23 +1,28 @@
 #!/usr/bin/env python3
-"""Tiny static file server tuned for this project, plus a /api/ask
-streaming endpoint that powers the ⌘K interrogator.
+"""ASGI server (uvicorn + starlette) for the Disclosure Archive.
 
-- Serves the entire repo root so /ui/, /raw/, /vault/ all resolve.
-- Redirects "/" → "/ui/" so the search UI is the home page.
-- Sets long cache headers on raw/* (immutable assets) and short on ui/* (changes often).
-- Honours the PORT env var (Railway).
-- POST /api/ask streams a Claude response over SSE, grounded in the
-  search-index.json corpus with retrieval, citation enforcement, and a
-  per-IP rate limit.
+Run via:
+    uvicorn scripts.serve:app --host 0.0.0.0 --port $PORT --workers 1
+
+Routes:
+  GET  /                    → 302 /ui/
+  GET  /healthz             → 200 ok
+  GET  /api/ai/status       → JSON capability flags
+  POST /api/ask             → SSE streaming RAG answer (OpenRouter)
+  POST /api/enrich          → SSE streaming enrichment (Anthropic + web_search)
+  POST /api/enrich/decide   → approve/reject a candidate enrichment claim
+  GET  /api/enrich/all      → approved claims across all entities
+  GET  /api/enrich/get/{kind}/{id} → raw enrichment store for one entity
+  GET  /raw/*               → static files, long cache (immutable media)
+  GET  /ui/*                → static files, short cache (changing UI assets)
 """
+import asyncio
 import json
 import os
 import re
 import sys
-import threading
 import time
 from collections import defaultdict, deque
-from http.server import ThreadingHTTPServer, SimpleHTTPRequestHandler
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -32,13 +37,15 @@ ENRICH_DIR.mkdir(exist_ok=True)
 # Minimal .env loader so ANTHROPIC_API_KEY can be persisted in the project root
 # without depending on a shell startup file. Lines like KEY=value or KEY="value".
 if ENV_PATH.exists():
-    for line in ENV_PATH.read_text().splitlines():
-        line = line.strip()
-        if not line or line.startswith("#") or "=" not in line:
+    for _line in ENV_PATH.read_text().splitlines():
+        _line = _line.strip()
+        if not _line or _line.startswith("#") or "=" not in _line:
             continue
-        k, _, v = line.partition("=")
-        v = v.strip().strip('"').strip("'")
-        os.environ.setdefault(k.strip(), v)
+        _k, _, _v = _line.partition("=")
+        _v = _v.strip().strip('"').strip("'")
+        os.environ.setdefault(_k.strip(), _v)
+
+import threading
 
 # Lazily loaded so a missing/old index doesn't break the static server.
 _CORPUS = None
@@ -319,36 +326,40 @@ def rate_check(ip, is_owner=False):
         return True, 0, ""
 
 
-# ─── AI gating: ask is public-grade, enrich is owner-only ────────────
+# ─── AI gating ────────────────────────────────────────────────────────
 def _is_localhost(ip):
     return ip in ("127.0.0.1", "::1", "localhost")
 
 def _bool_env(name):
     return (os.environ.get(name) or "").strip().lower() in ("1", "true", "yes", "on")
 
-def is_owner(handler):
+def _get_client_ip(request):
+    """Honour XFF when present (single hop)."""
+    xff = request.headers.get("x-forwarded-for", "")
+    if xff:
+        return xff.split(",")[0].strip()
+    return request.client.host if request.client else "127.0.0.1"
+
+def _is_owner_request(request):
     """Localhost OR matching ASK_OWNER_TOKEN (header or ?owner=)."""
-    if _is_localhost(handler._client_ip()):
+    ip = _get_client_ip(request)
+    if _is_localhost(ip):
         return True
     token = (os.environ.get("ASK_OWNER_TOKEN") or "").strip()
     if not token:
         return False
-    hdr = handler.headers.get("x-ask-token", "").strip()
+    hdr = request.headers.get("x-ask-token", "").strip()
     if hdr and hdr == token:
         return True
-    qs = urlparse(handler.path).query
-    if qs:
-        from urllib.parse import parse_qs
-        qp = parse_qs(qs)
-        if qp.get("owner", [""])[0] == token:
-            return True
+    owner_qs = request.query_params.get("owner", "")
+    if owner_qs and owner_qs == token:
+        return True
     return False
 
-def ai_status_for(handler):
-    """Client-facing: {ask_enabled, enrich_enabled, owner, model, rate_public, rate_owner}."""
-    owner = is_owner(handler)
-    ask_enabled = _bool_env("ASK_ENABLED") or owner   # owner always enabled
-    # Enrich requires explicit ENRICH_ENABLED, AND owner.
+def ai_status_for_request(request):
+    """Client-facing capability flags."""
+    owner = _is_owner_request(request)
+    ask_enabled = _bool_env("ASK_ENABLED") or owner
     enrich_enabled = (_bool_env("ENRICH_ENABLED") and owner)
     return {
         "ask_enabled": bool(ask_enabled),
@@ -358,14 +369,6 @@ def ai_status_for(handler):
         "rate_public": _RATE_PUBLIC,
         "rate_owner": _RATE_OWNER,
     }
-
-def is_ask_authorized(handler):
-    s = ai_status_for(handler)
-    return s["ask_enabled"]
-
-def is_enrich_authorized(handler):
-    s = ai_status_for(handler)
-    return s["enrich_enabled"]
 
 
 # ─── Citation guardrail ───────────────────────────────────────────────
@@ -390,150 +393,181 @@ def sse(event, data):
     return f"data: {json.dumps(data, ensure_ascii=False)}\n\n".encode("utf-8")
 
 
-# ─── Handler ──────────────────────────────────────────────────────────
-class Handler(SimpleHTTPRequestHandler):
-    def _client_ip(self):
-        # Honour XFF when present (single hop)
-        xff = self.headers.get("x-forwarded-for", "")
-        if xff:
-            return xff.split(",")[0].strip()
-        return self.client_address[0]
+# ─── Enrichment helpers (sync file I/O — fast, small JSON files) ──────
+def _enrich_path(kind, eid):
+    safe = re.sub(r"[^a-zA-Z0-9._-]+", "_", eid)[:160]
+    return ENRICH_DIR / f"{kind}_{safe}.json"
 
-    def _handle_special(self, write_body):
-        # Liveness probe for Railway. Must stay cheap (no disk reads) so it
-        # still answers when /raw/* image traffic is saturating worker threads.
-        if self.path in ("/healthz", "/healthz/"):
-            body = b"ok"
-            self.send_response(200)
-            self.send_header("Content-Type", "text/plain")
-            self.send_header("Content-Length", str(len(body)))
-            self.send_header("Cache-Control", "no-store")
-            self.end_headers()
-            if write_body:
-                self.wfile.write(body)
-            return True
-        if self.path in ("", "/", "/index.html"):
-            self.send_response(302)
-            self.send_header("Location", "/ui/")
-            self.end_headers()
-            return True
-        return False
-
-    def do_GET(self):
-        if self._handle_special(write_body=True):
-            return
-        path = urlparse(self.path).path
-        if path == "/api/ai/status":
-            return self._handle_ai_status()
-        if path == "/api/enrich/all":
-            return self._handle_enrich_all()
-        if path.startswith("/api/enrich/get/"):
-            return self._handle_enrich_get(path[len("/api/enrich/get/"):])
-        return super().do_GET()
-
-    def _handle_ai_status(self):
-        s = ai_status_for(self)
-        body = json.dumps(s).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def do_HEAD(self):
-        if self._handle_special(write_body=False):
-            return
-        return super().do_HEAD()
-
-    def do_OPTIONS(self):
-        self.send_response(204)
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Access-Control-Allow-Methods", "POST, GET, OPTIONS")
-        self.send_header("Access-Control-Allow-Headers", "content-type")
-        self.send_header("Access-Control-Max-Age", "86400")
-        self.end_headers()
-
-    def do_POST(self):
-        path = urlparse(self.path).path
-        if path in ("/api/ask", "/api/ask/"):
-            return self._handle_ask()
-        if path in ("/api/enrich", "/api/enrich/"):
-            return self._handle_enrich()
-        if path == "/api/enrich/decide":
-            return self._handle_enrich_decide()
-        self.send_response(404)
-        self.send_header("Content-Type", "text/plain")
-        self.end_headers()
-        self.wfile.write(b"not found")
-
-    def _send_sse_headers(self):
-        self.send_response(200)
-        self.send_header("Content-Type", "text/event-stream")
-        self.send_header("Cache-Control", "no-cache, no-transform")
-        self.send_header("Connection", "keep-alive")
-        self.send_header("X-Accel-Buffering", "no")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.end_headers()
-
-    def _ssend(self, chunk):
+def _enrich_load(kind, eid):
+    p = _enrich_path(kind, eid)
+    if p.exists():
         try:
-            self.wfile.write(chunk)
-            self.wfile.flush()
-        except (BrokenPipeError, ConnectionResetError):
-            return False
-        return True
+            return json.loads(p.read_text())
+        except Exception:
+            return {}
+    return {}
 
-    def _handle_ask(self):
-        # Parse body
+def _enrich_save(kind, eid, data):
+    p = _enrich_path(kind, eid)
+    p.write_text(json.dumps(data, ensure_ascii=False, indent=2))
+
+def _extract_json_block(text):
+    if not text:
+        return None
+    m = re.search(r"```(?:json)?\s*(\{[\s\S]*?\})\s*```", text)
+    candidate = m.group(1) if m else None
+    if not candidate:
+        m = re.search(r"\{[\s\S]*\}", text)
+        candidate = m.group(0) if m else None
+    if not candidate:
+        return None
+    try:
+        return json.loads(candidate)
+    except Exception:
+        cleaned = re.sub(r",(\s*[}\]])", r"\1", candidate)
         try:
-            length = int(self.headers.get("Content-Length", "0"))
-            body = json.loads(self.rfile.read(length).decode("utf-8")) if length else {}
-        except Exception as e:
-            self.send_response(400)
-            self.send_header("Content-Type", "text/plain")
-            self.end_headers()
-            self.wfile.write(b"bad request: " + str(e).encode())
-            return
+            return json.loads(cleaned)
+        except Exception:
+            return None
 
-        question = (body.get("question") or "").strip()
-        mode = body.get("mode") or "researcher"
-        if mode not in MODE_SUFFIX:
-            mode = "researcher"
-        scope = body.get("scope") or None
-        history = body.get("history") or []  # [{q, a}], unused for now but reserved
+def _enrich_existing_context(kind, eid, name):
+    corpus, incidents = load_corpus()
+    if kind == "incident":
+        inc = (incidents or {}).get(eid)
+        if not inc:
+            return None
+        related = [d for d in corpus if d.get("incident_id") == eid][:6]
+        parts = [
+            f"Name: {inc.get('name')}",
+            f"Date: {inc.get('date','')}",
+            f"Location: {inc.get('location','')}",
+            f"Status: {inc.get('status','')}",
+            f"Curated summary: {inc.get('summary','')}",
+        ]
+        if related:
+            parts.append("Linked archive documents:")
+            for d in related:
+                parts.append(f"  - {d.get('title')} [{d.get('agency','')}]: {(d.get('blurb') or '')[:200]}")
+        return "\n".join(parts)
+    elif kind == "document":
+        d = next((x for x in corpus if x.get("id") == eid), None)
+        if not d:
+            return None
+        parts = [
+            f"Title: {d.get('title')}",
+            f"Agency: {d.get('agency','')}",
+            f"Released: {d.get('release_date','')}",
+            f"Incident date: {d.get('incident_date','')}",
+            f"Location: {d.get('incident_location','')}",
+            f"Summary: {d.get('blurb','')}",
+            f"Excerpt: {(d.get('text') or '')[:1500]}",
+        ]
+        return "\n".join(parts)
+    return None
 
-        if not question:
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "empty question"}))
-            return
 
-        if not is_ask_authorized(self):
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "AI is disabled on this server."}))
-            return
+# ─── ASGI app via Starlette ───────────────────────────────────────────
+from starlette.applications import Starlette
+from starlette.requests import Request
+from starlette.responses import (
+    Response, JSONResponse, RedirectResponse, StreamingResponse, FileResponse
+)
+from starlette.routing import Route, Mount
+from starlette.staticfiles import StaticFiles
 
-        ip = self._client_ip()
-        owner = is_owner(self)
-        ok, reset, reason = rate_check(ip, is_owner=owner)
-        if not ok:
-            self._send_sse_headers()
-            tip = "rate limit reached" if reason == "hourly" else "the archive is busy — daily AI budget is exhausted"
-            self._ssend(sse("error", {"message": f"{tip} — try again in {reset // 60}m {reset % 60}s"}))
-            return
 
-        # Retrieve
-        sources = retrieve(question, scope=scope, k=8)
+LONG_CACHE_EXTS = {".pdf", ".mp4", ".jpg", ".jpeg", ".png", ".webm"}
+
+CORS_HEADERS = {
+    "Access-Control-Allow-Origin": "*",
+    "Access-Control-Allow-Methods": "POST, GET, OPTIONS",
+    "Access-Control-Allow-Headers": "content-type",
+    "Access-Control-Max-Age": "86400",
+}
+
+
+async def healthz(request: Request):
+    return Response("ok", media_type="text/plain", headers={"Cache-Control": "no-store"})
+
+
+async def root_redirect(request: Request):
+    return RedirectResponse(url="/ui/", status_code=302)
+
+
+async def ai_status(request: Request):
+    s = ai_status_for_request(request)
+    return JSONResponse(s, headers={"Cache-Control": "no-store", **CORS_HEADERS})
+
+
+async def options_handler(request: Request):
+    return Response(status_code=204, headers=CORS_HEADERS)
+
+
+async def ask(request: Request):
+    """POST /api/ask — streaming SSE RAG answer via OpenRouter."""
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=CORS_HEADERS)
+    # Parse body
+    try:
+        body = await request.json()
+    except Exception as e:
+        return Response(f"bad request: {e}", status_code=400, media_type="text/plain")
+
+    question = (body.get("question") or "").strip()
+    mode = body.get("mode") or "researcher"
+    if mode not in MODE_SUFFIX:
+        mode = "researcher"
+    scope = body.get("scope") or None
+    # history reserved for future use
+    # history = body.get("history") or []
+
+    sse_headers = {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache, no-transform",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+        **CORS_HEADERS,
+    }
+
+    async def stream_error(msg):
+        yield sse("error", {"message": msg})
+
+    if not question:
+        return StreamingResponse(stream_error("empty question"), headers=sse_headers)
+
+    status = ai_status_for_request(request)
+    if not status["ask_enabled"]:
+        return StreamingResponse(
+            stream_error("AI is disabled on this server."), headers=sse_headers
+        )
+
+    ip = _get_client_ip(request)
+    owner = status["owner"]
+    ok, reset, reason = rate_check(ip, is_owner=owner)
+    if not ok:
+        tip = "rate limit reached" if reason == "hourly" else "the archive is busy — daily AI budget is exhausted"
+        return StreamingResponse(
+            stream_error(f"{tip} — try again in {reset // 60}m {reset % 60}s"),
+            headers=sse_headers,
+        )
+
+    # Run CPU-bound retrieval in a thread so the event loop stays free.
+    sources = await asyncio.get_event_loop().run_in_executor(
+        None, lambda: retrieve(question, scope=scope, k=8)
+    )
+
+    async def generate():
         if not sources:
-            self._send_sse_headers()
-            self._ssend(sse("sources", {"sources": []}))
-            self._ssend(sse("token", {"text": "I couldn't find any documents in this corpus that match your question. Try rephrasing with different keywords, or open the search view to browse the index directly."}))
-            self._ssend(sse("done", {"dropped_citations": 0}))
+            yield sse("sources", {"sources": []})
+            yield sse("token", {"text": (
+                "I couldn't find any documents in this corpus that match your question. "
+                "Try rephrasing with different keywords, or open the search view to "
+                "browse the index directly."
+            )})
+            yield sse("done", {"dropped_citations": 0})
             return
 
-        # Stream sources first so the user can read them while the answer streams
-        self._send_sse_headers()
+        # Stream sources first so the user can read while answer streams.
         sources_payload = []
         for i, s in enumerate(sources, 1):
             d = s["doc"]
@@ -545,72 +579,98 @@ class Handler(SimpleHTTPRequestHandler):
                 "release_date": d.get("release_date"),
                 "incident_date": d.get("incident_date"),
                 "thumb": d.get("thumb_small") or (
-                    d["thumbnail_local"][0] if isinstance(d.get("thumbnail_local"), list) and d["thumbnail_local"] else None
+                    d["thumbnail_local"][0]
+                    if isinstance(d.get("thumbnail_local"), list) and d["thumbnail_local"]
+                    else None
                 ),
                 "blurb": (d.get("blurb") or "")[:280],
                 "snippet": make_snippet(d.get("text") or "", _tokens(question), max_chars=240),
                 "score": s["score"],
             })
-        if not self._ssend(sse("sources", {"sources": sources_payload, "mode": mode})):
-            return
+        yield sse("sources", {"sources": sources_payload, "mode": mode})
 
         # Build prompt
         prompt = build_prompt(question, sources, mode)
         sys_prompt = SYSTEM_BASE + MODE_SUFFIX[mode]
 
-        # /api/ask uses OpenRouter (cheap public). /api/enrich uses Anthropic
-        # directly because it needs the web_search tool.
         or_key = os.environ.get("OPENROUTER_API_KEY", "").strip()
         if not or_key:
-            self._ssend(sse("token", {"text": (
+            yield sse("token", {"text": (
                 "(server-side OPENROUTER_API_KEY is not set — showing retrieved sources only. "
-                "Set the env var and restart serve.py to enable AI synthesis.)"
-            )}))
-            self._ssend(sse("done", {"dropped_citations": 0}))
+                "Set the env var and restart the server to enable AI synthesis.)"
+            )})
+            yield sse("done", {"dropped_citations": 0})
             return
+
         try:
             import openai
         except Exception as e:
-            self._ssend(sse("error", {"message": f"openai SDK missing: {e}"})); return
+            yield sse("error", {"message": f"openai SDK missing: {e}"})
+            return
 
         valid_ns = set(range(1, len(sources_payload) + 1))
         model = os.environ.get("OPENROUTER_MODEL", "deepseek/deepseek-chat-v3-0324")
         full_text = []
         carry = ""
         n_dropped = 0
+
         try:
             client = openai.OpenAI(
                 base_url="https://openrouter.ai/api/v1",
                 api_key=or_key,
-                # Optional but polite — OpenRouter shows these in your dashboard.
                 default_headers={
                     "HTTP-Referer": "https://uapdisclosuremirror.com/",
                     "X-Title": "Disclosure Archive - Ask",
                 },
             )
-            stream = client.chat.completions.create(
-                model=model,
-                max_tokens=1024,
-                stream=True,
-                messages=[
-                    {"role": "system", "content": sys_prompt},
-                    {"role": "user", "content": prompt},
-                ],
-            )
-            # Once any of the trailing meta-blocks starts, swallow everything until
-            # end-of-stream (we still parse them from full_text afterwards).
+            # Run the blocking OpenAI streaming call in a thread executor so we
+            # don't block the event loop. We collect chunks via a queue.
+            loop = asyncio.get_event_loop()
+            chunk_queue: asyncio.Queue = asyncio.Queue()
+
+            def _do_stream():
+                try:
+                    stream = client.chat.completions.create(
+                        model=model,
+                        max_tokens=1024,
+                        stream=True,
+                        messages=[
+                            {"role": "system", "content": sys_prompt},
+                            {"role": "user", "content": prompt},
+                        ],
+                    )
+                    for chunk in stream:
+                        if not chunk.choices:
+                            continue
+                        delta = chunk.choices[0].delta
+                        text = getattr(delta, "content", None) or ""
+                        if text:
+                            loop.call_soon_threadsafe(chunk_queue.put_nowait, text)
+                except Exception as exc:
+                    loop.call_soon_threadsafe(chunk_queue.put_nowait, exc)
+                finally:
+                    loop.call_soon_threadsafe(chunk_queue.put_nowait, None)  # sentinel
+
+            # Start the blocking stream in a thread
+            fut = loop.run_in_executor(None, _do_stream)
+
             in_meta = False
             META_TAGS = ["<evidence>", "<follow_ups>"]
-            for chunk in stream:
-                if not chunk.choices: continue
-                delta = chunk.choices[0].delta
-                text = getattr(delta, "content", None) or ""
-                if not text: continue
+
+            while True:
+                item = await chunk_queue.get()
+                if item is None:
+                    break
+                if isinstance(item, Exception):
+                    yield sse("error", {"message": f"AI call failed: {item}"})
+                    return
+
+                text = item
                 full_text.append(text)
                 if in_meta:
                     continue
+
                 buf = carry + text
-                # If any meta tag appears, emit everything before it and lock down.
                 first_idx = -1
                 for tag in META_TAGS:
                     idx = buf.find(tag)
@@ -620,8 +680,6 @@ class Handler(SimpleHTTPRequestHandler):
                     emit, carry = buf[:first_idx], ""
                     in_meta = True
                 else:
-                    # Hold back any tail that could be a partial meta tag OR a
-                    # partial [^N] citation.
                     hold = 0
                     max_tag_len = max(len(t) for t in META_TAGS)
                     for k in range(min(len(buf), max_tag_len), 0, -1):
@@ -631,27 +689,34 @@ class Handler(SimpleHTTPRequestHandler):
                             break
                     if not hold:
                         m = re.search(r"\[\^?\d*$", buf)
-                        if m: hold = len(buf) - m.start()
+                        if m:
+                            hold = len(buf) - m.start()
                     if hold:
                         emit, carry = buf[:-hold], buf[-hold:]
                     else:
                         emit, carry = buf, ""
+
                 if emit:
                     cleaned, dropped = strip_unmatched_citations(emit, valid_ns)
                     n_dropped += dropped
-                    if cleaned and not self._ssend(sse("token", {"text": cleaned})):
-                        return
+                    if cleaned:
+                        yield sse("token", {"text": cleaned})
+
+            await fut  # propagate any thread-side exception
+
             if carry and not in_meta:
                 cleaned, dropped = strip_unmatched_citations(carry, valid_ns)
                 n_dropped += dropped
                 if cleaned:
-                    self._ssend(sse("token", {"text": cleaned}))
+                    yield sse("token", {"text": cleaned})
+
         except Exception as e:
-            self._ssend(sse("error", {"message": f"AI call failed: {e}"})); return
+            yield sse("error", {"message": f"AI call failed: {e}"})
+            return
 
         joined = "".join(full_text)
 
-        # Parse <evidence> block: per-citation verbatim quote.
+        # Parse <evidence> block
         evidence = {}
         em = re.search(r"<evidence>([\s\S]*?)</evidence>", joined, re.I)
         if em:
@@ -662,76 +727,91 @@ class Handler(SimpleHTTPRequestHandler):
                     if n in valid_ns:
                         evidence[str(n)] = lm.group(2).strip()
 
-        # Parse follow-ups from the assistant's emitted text. Try the structured
-        # block first; fall back to grabbing any trailing question lines.
+        # Parse follow-ups
         follow = []
-        m = re.search(r"<follow_ups>([\s\S]*?)</follow_ups>", joined, re.I)
-        if m:
-            blob = m.group(1)
+        fm = re.search(r"<follow_ups>([\s\S]*?)</follow_ups>", joined, re.I)
+        if fm:
+            blob = fm.group(1)
         else:
-            # Fallback 1: a fenced "Follow-up questions" header style
-            m2 = re.search(r"(?:follow[- ]?ups?|follow[- ]?up\s+questions?)\s*:?\s*\n+([\s\S]+?)$",
-                           joined, re.I)
+            m2 = re.search(
+                r"(?:follow[- ]?ups?|follow[- ]?up\s+questions?)\s*:?\s*\n+([\s\S]+?)$",
+                joined, re.I
+            )
             blob = m2.group(1) if m2 else ""
         if blob:
             for line in blob.strip().splitlines():
                 q = line.strip().lstrip("-•*0123456789. )").strip().strip('"').strip("'")
-                # accept anything that looks like a question
-                if q and len(q) >= 6 and ("?" in q or q.lower().startswith(("what", "who", "when", "where", "why", "how", "which", "did", "does", "is", "are"))):
+                if q and len(q) >= 6 and (
+                    "?" in q or q.lower().startswith(
+                        ("what", "who", "when", "where", "why", "how", "which", "did", "does", "is", "are")
+                    )
+                ):
                     if not q.endswith("?"):
                         q = q + "?"
                     follow.append(q)
             follow = follow[:3]
-        # Last-ditch fallback: take the last 3 question-shaped sentences in the answer body
         if not follow:
             tail = joined[-1500:]
             cands = re.findall(r"([A-Z][^.!?\n]{6,120}\?)", tail)
             follow = cands[-3:]
-        self._ssend(sse("done", {"dropped_citations": n_dropped, "follow_ups": follow, "evidence": evidence}))
 
-    # ───────────────────────────────────────────────────────────────────
-    # /api/enrich — discover + verify new facts about an entity via web_search
-    # ───────────────────────────────────────────────────────────────────
-    def _handle_enrich(self):
-        try:
-            length = int(self.headers.get("Content-Length", "0"))
-            body = json.loads(self.rfile.read(length).decode("utf-8")) if length else {}
-        except Exception as e:
-            self.send_response(400); self.send_header("Content-Type","text/plain"); self.end_headers()
-            self.wfile.write(b"bad request: " + str(e).encode()); return
-        if not is_enrich_authorized(self):
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "Enrichment is owner-only and requires ENRICH_ENABLED=true."})); return
+        yield sse("done", {"dropped_citations": n_dropped, "follow_ups": follow, "evidence": evidence})
+
+    return StreamingResponse(generate(), headers=sse_headers)
+
+
+async def enrich(request: Request):
+    """POST /api/enrich — owner-only SSE streaming enrichment via Anthropic."""
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=CORS_HEADERS)
+    sse_headers = {
+        "Content-Type": "text/event-stream",
+        "Cache-Control": "no-cache, no-transform",
+        "Connection": "keep-alive",
+        "X-Accel-Buffering": "no",
+        **CORS_HEADERS,
+    }
+
+    try:
+        body = await request.json()
+    except Exception as e:
+        return Response(f"bad request: {e}", status_code=400, media_type="text/plain")
+
+    async def generate():
+        status = ai_status_for_request(request)
+        if not status["enrich_enabled"]:
+            yield sse("error", {"message": "Enrichment is owner-only and requires ENRICH_ENABLED=true."})
+            return
 
         kind = body.get("kind") or ""
         eid = body.get("id") or ""
         name = body.get("name") or eid
         if kind not in ("incident", "document") or not eid:
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "kind ('incident' or 'document') and id required"})); return
+            yield sse("error", {"message": "kind ('incident' or 'document') and id required"})
+            return
 
-        # Build existing-context blurb so the model knows what NOT to re-discover.
-        ctx = self._enrich_existing_context(kind, eid, name)
+        ctx = await asyncio.get_event_loop().run_in_executor(
+            None, lambda: _enrich_existing_context(kind, eid, name)
+        )
         if not ctx:
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "entity not found"})); return
+            yield sse("error", {"message": "entity not found"})
+            return
 
         api_key = os.environ.get("ANTHROPIC_API_KEY", "").strip()
         if not api_key:
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": "ANTHROPIC_API_KEY not set on the server"})); return
+            yield sse("error", {"message": "ANTHROPIC_API_KEY not set on the server"})
+            return
         try:
             import anthropic
         except Exception as e:
-            self._send_sse_headers()
-            self._ssend(sse("error", {"message": f"anthropic SDK missing: {e}"})); return
+            yield sse("error", {"message": f"anthropic SDK missing: {e}"})
+            return
 
         client = anthropic.Anthropic(api_key=api_key)
         model = os.environ.get("ASK_MODEL", "claude-sonnet-4-5")
 
-        self._send_sse_headers()
         run_id = f"r{int(time.time())}"
-        self._ssend(sse("status", {"phase": "discover", "msg": f"Asking Claude to research {name}…"}))
+        yield sse("status", {"phase": "discover", "msg": f"Asking Claude to research {name}…"})
 
         # ─── Discovery pass ────────────────────────────────────────────
         discover_sys = (
@@ -754,35 +834,39 @@ class Handler(SimpleHTTPRequestHandler):
             "    }\n  ]\n}"
         )
 
+        loop = asyncio.get_event_loop()
+
         try:
-            resp = client.messages.create(
+            resp = await loop.run_in_executor(None, lambda: client.messages.create(
                 model=model,
                 max_tokens=2048,
                 system=discover_sys,
                 tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 5}],
                 messages=[{"role": "user", "content": discover_user}],
-            )
+            ))
         except Exception as e:
-            self._ssend(sse("error", {"message": f"discovery failed: {e}"})); return
+            yield sse("error", {"message": f"discovery failed: {e}"})
+            return
 
-        # Extract any text response and parse JSON
         text_blocks = [b.text for b in resp.content if getattr(b, "type", None) == "text"]
-        joined = "\n".join(text_blocks)
-        claims_raw = self._extract_json_block(joined) or {}
+        joined_disc = "\n".join(text_blocks)
+        claims_raw = _extract_json_block(joined_disc) or {}
         claims = (claims_raw.get("claims") or []) if isinstance(claims_raw, dict) else []
-        self._ssend(sse("discovery", {"n_candidates": len(claims), "raw_text": joined[:1500]}))
+        yield sse("discovery", {"n_candidates": len(claims), "raw_text": joined_disc[:1500]})
 
         if not claims:
-            self._ssend(sse("error", {"message": "Discovery returned no parseable claims. Raw text included above."}))
+            yield sse("error", {"message": "Discovery returned no parseable claims. Raw text included above."})
             return
 
         # ─── Verification pass (per claim) ─────────────────────────────
         verified = []
         for i, c in enumerate(claims, 1):
-            if not isinstance(c, dict): continue
+            if not isinstance(c, dict):
+                continue
             claim_text = (c.get("claim") or "").strip()
-            if not claim_text: continue
-            self._ssend(sse("status", {"phase": "verify", "msg": f"Verifying claim {i}/{len(claims)}…", "claim": claim_text}))
+            if not claim_text:
+                continue
+            yield sse("status", {"phase": "verify", "msg": f"Verifying claim {i}/{len(claims)}…", "claim": claim_text})
             v_sys = (
                 "Independently verify the user's claim using fresh web_search queries. "
                 "Find AT LEAST 2 reputable INDEPENDENT sources (different domains) that confirm "
@@ -804,23 +888,27 @@ class Handler(SimpleHTTPRequestHandler):
                 "}"
             )
             try:
-                vresp = client.messages.create(
+                vresp = await loop.run_in_executor(None, lambda: client.messages.create(
                     model=model,
                     max_tokens=1024,
                     system=v_sys,
                     tools=[{"type": "web_search_20250305", "name": "web_search", "max_uses": 4}],
                     messages=[{"role": "user", "content": v_user}],
-                )
+                ))
                 vtext = "\n".join(b.text for b in vresp.content if getattr(b, "type", None) == "text")
-                vjson = self._extract_json_block(vtext) or {}
+                vjson = _extract_json_block(vtext) or {}
             except Exception as e:
                 vjson = {"verdict": "error", "notes": str(e), "supporting_urls": [], "dissenting_urls": []}
+
             geo = vjson.get("geo")
             if isinstance(geo, list) and len(geo) == 2:
-                try: geo = [float(geo[0]), float(geo[1])]
-                except Exception: geo = None
+                try:
+                    geo = [float(geo[0]), float(geo[1])]
+                except Exception:
+                    geo = None
             else:
                 geo = None
+
             merged = {
                 "id": f"c{i}",
                 "claim": claim_text,
@@ -829,7 +917,9 @@ class Handler(SimpleHTTPRequestHandler):
                 "discovery_urls": c.get("supporting_urls") or [],
                 "discovery_notes": c.get("notes") or "",
                 "verdict": (vjson.get("verdict") or "unverified").lower(),
-                "supporting_urls": list(dict.fromkeys((c.get("supporting_urls") or []) + (vjson.get("supporting_urls") or []))),
+                "supporting_urls": list(dict.fromkeys(
+                    (c.get("supporting_urls") or []) + (vjson.get("supporting_urls") or [])
+                )),
                 "dissenting_urls": vjson.get("dissenting_urls") or [],
                 "date": (vjson.get("date") or None),
                 "location": (vjson.get("location") or None),
@@ -839,198 +929,169 @@ class Handler(SimpleHTTPRequestHandler):
                 "ts": int(time.time()),
             }
             verified.append(merged)
-            self._ssend(sse("claim", {"claim": merged}))
+            yield sse("claim", {"claim": merged})
 
-        # Persist
-        store = self._enrich_load(kind, eid)
-        store.setdefault("kind", kind); store["id"] = eid; store["name"] = name
+        # Persist (sync write is fine — small JSON, rare operation)
+        store = _enrich_load(kind, eid)
+        store.setdefault("kind", kind)
+        store["id"] = eid
+        store["name"] = name
         store.setdefault("runs", []).append({
             "run_id": run_id,
             "ts": int(time.time()),
             "model": model,
             "claims": verified,
         })
-        self._enrich_save(kind, eid, store)
-        self._ssend(sse("done", {"run_id": run_id, "n_saved": len(verified)}))
+        _enrich_save(kind, eid, store)
+        yield sse("done", {"run_id": run_id, "n_saved": len(verified)})
 
-    def _enrich_existing_context(self, kind, eid, name):
-        corpus, incidents = load_corpus()
-        if kind == "incident":
-            inc = (incidents or {}).get(eid)
-            if not inc: return None
-            related = [d for d in corpus if d.get("incident_id") == eid][:6]
-            parts = [
-                f"Name: {inc.get('name')}",
-                f"Date: {inc.get('date','')}",
-                f"Location: {inc.get('location','')}",
-                f"Status: {inc.get('status','')}",
-                f"Curated summary: {inc.get('summary','')}",
-            ]
-            if related:
-                parts.append("Linked archive documents:")
-                for d in related:
-                    parts.append(f"  - {d.get('title')} [{d.get('agency','')}]: {(d.get('blurb') or '')[:200]}")
-            return "\n".join(parts)
-        elif kind == "document":
-            d = next((x for x in corpus if x.get("id") == eid), None)
-            if not d: return None
-            parts = [
-                f"Title: {d.get('title')}",
-                f"Agency: {d.get('agency','')}",
-                f"Released: {d.get('release_date','')}",
-                f"Incident date: {d.get('incident_date','')}",
-                f"Location: {d.get('incident_location','')}",
-                f"Summary: {d.get('blurb','')}",
-                f"Excerpt: {(d.get('text') or '')[:1500]}",
-            ]
-            return "\n".join(parts)
-        return None
-
-    def _extract_json_block(self, text):
-        if not text: return None
-        # Try fenced ```json ... ``` first
-        m = re.search(r"```(?:json)?\s*(\{[\s\S]*?\})\s*```", text)
-        candidate = m.group(1) if m else None
-        if not candidate:
-            # Otherwise try the first balanced { ... } chunk
-            m = re.search(r"\{[\s\S]*\}", text)
-            candidate = m.group(0) if m else None
-        if not candidate: return None
-        try:
-            return json.loads(candidate)
-        except Exception:
-            # try to repair common issue: trailing commas
-            cleaned = re.sub(r",(\s*[}\]])", r"\1", candidate)
-            try: return json.loads(cleaned)
-            except Exception: return None
-
-    def _enrich_path(self, kind, eid):
-        safe = re.sub(r"[^a-zA-Z0-9._-]+", "_", eid)[:160]
-        return ENRICH_DIR / f"{kind}_{safe}.json"
-
-    def _enrich_load(self, kind, eid):
-        p = self._enrich_path(kind, eid)
-        if p.exists():
-            try: return json.loads(p.read_text())
-            except Exception: return {}
-        return {}
-
-    def _enrich_save(self, kind, eid, data):
-        p = self._enrich_path(kind, eid)
-        p.write_text(json.dumps(data, ensure_ascii=False, indent=2))
-
-    def _handle_enrich_all(self):
-        """Return ONLY approved claims across all entities — for graph/timeline/globe overlays."""
-        out = []
-        try:
-            for p in sorted(ENRICH_DIR.glob("*.json")):
-                try:
-                    data = json.loads(p.read_text())
-                except Exception:
-                    continue
-                kind = data.get("kind"); eid = data.get("id"); name = data.get("name")
-                for run in data.get("runs", []):
-                    for c in run.get("claims", []):
-                        if c.get("status") != "approved":
-                            continue
-                        out.append({
-                            "kind": kind, "entity_id": eid, "entity_name": name,
-                            "run_id": run.get("run_id"),
-                            "claim_id": c.get("id"),
-                            "claim": c.get("claim"),
-                            "verdict": c.get("verdict"),
-                            "date": c.get("date"),
-                            "location": c.get("location"),
-                            "geo": c.get("geo"),
-                            "supporting_urls": c.get("supporting_urls") or [],
-                        })
-        except Exception as e:
-            print(f"[enrich/all] {e}", file=sys.stderr)
-        body = json.dumps({"approved": out}).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def _handle_enrich_get(self, rest):
-        # rest: "{kind}/{id}"
-        try:
-            kind, eid = rest.split("/", 1)
-        except ValueError:
-            self.send_response(400); self.end_headers(); return
-        if kind not in ("incident", "document"):
-            self.send_response(400); self.end_headers(); return
-        data = self._enrich_load(kind, eid)
-        body = json.dumps(data, ensure_ascii=False).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Cache-Control", "no-store")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Content-Length", str(len(body)))
-        self.end_headers()
-        self.wfile.write(body)
-
-    def _handle_enrich_decide(self):
-        if not is_enrich_authorized(self):
-            self.send_response(403); self.end_headers()
-            self.wfile.write(b"enrichment owner-gated"); return
-        try:
-            length = int(self.headers.get("Content-Length", "0"))
-            body = json.loads(self.rfile.read(length).decode("utf-8")) if length else {}
-        except Exception:
-            self.send_response(400); self.end_headers(); return
-        kind = body.get("kind"); eid = body.get("id")
-        run_id = body.get("run_id"); claim_id = body.get("claim_id")
-        decision = body.get("decision")  # "approved" | "rejected"
-        if decision not in ("approved", "rejected"):
-            self.send_response(400); self.end_headers(); return
-        store = self._enrich_load(kind, eid)
-        for run in store.get("runs", []):
-            if run.get("run_id") != run_id: continue
-            for c in run.get("claims", []):
-                if c.get("id") == claim_id:
-                    c["status"] = decision
-                    c["decided_at"] = int(time.time())
-                    break
-        self._enrich_save(kind, eid, store)
-        body_out = json.dumps({"ok": True}).encode("utf-8")
-        self.send_response(200)
-        self.send_header("Content-Type", "application/json")
-        self.send_header("Access-Control-Allow-Origin", "*")
-        self.send_header("Content-Length", str(len(body_out)))
-        self.end_headers()
-        self.wfile.write(body_out)
-
-    def end_headers(self):
-        # Range support is automatic in SimpleHTTPRequestHandler since 3.7
-        if self.path in ("/healthz", "/healthz/"):
-            pass  # /healthz already wrote its own headers
-        elif self.path.startswith("/raw/") and any(
-            self.path.endswith(ext) for ext in (".pdf", ".mp4", ".jpg", ".jpeg", ".png", ".webm")
-        ):
-            self.send_header("Cache-Control", "public, max-age=31536000, immutable")
-        elif self.path.startswith("/ui/"):
-            self.send_header("Cache-Control", "public, max-age=300")
-        # CORS so iframes / clients work cleanly
-        self.send_header("Access-Control-Allow-Origin", "*")
-        super().end_headers()
-
-    def log_message(self, fmt, *args):
-        sys.stdout.write("[http] %s %s\n" % (self.log_date_time_string(), fmt % args))
-        sys.stdout.flush()
+    return StreamingResponse(generate(), headers=sse_headers)
 
 
-def main():
+async def enrich_all(request: Request):
+    """GET /api/enrich/all — approved claims across all entities."""
+    out = []
+    try:
+        for p in sorted(ENRICH_DIR.glob("*.json")):
+            try:
+                data = json.loads(p.read_text())
+            except Exception:
+                continue
+            kind = data.get("kind")
+            eid = data.get("id")
+            name = data.get("name")
+            for run in data.get("runs", []):
+                for c in run.get("claims", []):
+                    if c.get("status") != "approved":
+                        continue
+                    out.append({
+                        "kind": kind, "entity_id": eid, "entity_name": name,
+                        "run_id": run.get("run_id"),
+                        "claim_id": c.get("id"),
+                        "claim": c.get("claim"),
+                        "verdict": c.get("verdict"),
+                        "date": c.get("date"),
+                        "location": c.get("location"),
+                        "geo": c.get("geo"),
+                        "supporting_urls": c.get("supporting_urls") or [],
+                    })
+    except Exception as e:
+        print(f"[enrich/all] {e}", file=sys.stderr)
+    return JSONResponse(
+        {"approved": out},
+        headers={"Cache-Control": "no-store", **CORS_HEADERS},
+    )
+
+
+async def enrich_get(request: Request):
+    """GET /api/enrich/get/{kind}/{id}"""
+    kind = request.path_params.get("kind", "")
+    eid = request.path_params.get("id", "")
+    if kind not in ("incident", "document"):
+        return Response("bad request", status_code=400)
+    data = _enrich_load(kind, eid)
+    return JSONResponse(
+        data,
+        headers={"Cache-Control": "no-store", **CORS_HEADERS},
+    )
+
+
+async def enrich_decide(request: Request):
+    """POST /api/enrich/decide — approve or reject a candidate claim."""
+    if not _is_owner_request(request):
+        return Response("enrichment owner-gated", status_code=403)
+    try:
+        body = await request.json()
+    except Exception:
+        return Response("bad request", status_code=400)
+
+    kind = body.get("kind")
+    eid = body.get("id")
+    run_id = body.get("run_id")
+    claim_id = body.get("claim_id")
+    decision = body.get("decision")
+    if decision not in ("approved", "rejected"):
+        return Response("bad request", status_code=400)
+
+    store = _enrich_load(kind, eid)
+    for run in store.get("runs", []):
+        if run.get("run_id") != run_id:
+            continue
+        for c in run.get("claims", []):
+            if c.get("id") == claim_id:
+                c["status"] = decision
+                c["decided_at"] = int(time.time())
+                break
+    _enrich_save(kind, eid, store)
+    return JSONResponse({"ok": True}, headers=CORS_HEADERS)
+
+
+# ─── Static file handlers with correct cache headers ─────────────────
+async def serve_raw(request: Request):
+    """Serve /raw/* with long immutable cache for media files."""
+    path_suffix = request.path_params.get("path", "")
+    file_path = ROOT / "raw" / path_suffix
+    if not file_path.exists() or not file_path.is_file():
+        return Response("not found", status_code=404)
+    # Prevent directory traversal
+    try:
+        file_path.resolve().relative_to((ROOT / "raw").resolve())
+    except ValueError:
+        return Response("forbidden", status_code=403)
+
+    suffix = file_path.suffix.lower()
+    if suffix in LONG_CACHE_EXTS:
+        cache = "public, max-age=31536000, immutable"
+    else:
+        cache = "public, max-age=300"
+
+    return FileResponse(
+        file_path,
+        headers={"Cache-Control": cache, "Access-Control-Allow-Origin": "*"},
+    )
+
+
+async def serve_ui(request: Request):
+    """Serve /ui/* with short cache."""
+    path_suffix = request.path_params.get("path", "")
+    file_path = ROOT / "ui" / path_suffix
+    if not file_path.exists() or not file_path.is_file():
+        return Response("not found", status_code=404)
+    try:
+        file_path.resolve().relative_to((ROOT / "ui").resolve())
+    except ValueError:
+        return Response("forbidden", status_code=403)
+
+    return FileResponse(
+        file_path,
+        headers={"Cache-Control": "public, max-age=300", "Access-Control-Allow-Origin": "*"},
+    )
+
+
+# ─── Route table ─────────────────────────────────────────────────────
+routes = [
+    Route("/", endpoint=root_redirect, methods=["GET", "HEAD"]),
+    Route("/healthz", endpoint=healthz, methods=["GET", "HEAD"]),
+    Route("/healthz/", endpoint=healthz, methods=["GET", "HEAD"]),
+    Route("/api/ai/status", endpoint=ai_status, methods=["GET", "OPTIONS"]),
+    Route("/api/ask", endpoint=ask, methods=["POST", "OPTIONS"]),
+    Route("/api/ask/", endpoint=ask, methods=["POST", "OPTIONS"]),
+    Route("/api/enrich", endpoint=enrich, methods=["POST", "OPTIONS"]),
+    Route("/api/enrich/", endpoint=enrich, methods=["POST", "OPTIONS"]),
+    Route("/api/enrich/all", endpoint=enrich_all, methods=["GET", "OPTIONS"]),
+    Route("/api/enrich/decide", endpoint=enrich_decide, methods=["POST", "OPTIONS"]),
+    Route("/api/enrich/get/{kind}/{id:path}", endpoint=enrich_get, methods=["GET", "OPTIONS"]),
+    Route("/raw/{path:path}", endpoint=serve_raw, methods=["GET", "HEAD", "OPTIONS"]),
+    Route("/ui/{path:path}", endpoint=serve_ui, methods=["GET", "HEAD", "OPTIONS"]),
+]
+
+app = Starlette(routes=routes)
+
+
+# ─── Legacy __main__ entrypoint (for local dev without uvicorn CLI) ───
+if __name__ == "__main__":
+    import uvicorn
     port = int(os.environ.get("PORT", "8000"))
     addr = os.environ.get("BIND", "0.0.0.0")
-    httpd = ThreadingHTTPServer((addr, port), Handler)
-    httpd.daemon_threads = True
     print(f"[http] serving on http://{addr}:{port}/", flush=True)
-    httpd.serve_forever()
-
-
-if __name__ == "__main__":
-    main()
+    uvicorn.run(app, host=addr, port=port, workers=1)

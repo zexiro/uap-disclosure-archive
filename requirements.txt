@@ -3,6 +3,11 @@ numpy>=1.26
 imagehash>=4.3
 Pillow>=10
 
+# ASGI server (replaces ThreadingHTTPServer)
+uvicorn[standard]>=0.29
+starlette>=0.37
+aiofiles>=23.2
+
 # AI / Q&A pipeline
 anthropic>=0.40       # /api/enrich (Claude with web_search tool)
 openai>=1.50          # /api/ask via OpenRouter (OpenAI-compatible API)
