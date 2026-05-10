@@ -26,6 +26,7 @@ python3 scripts/parse_csv.py
 python3 scripts/download.py
 python3 scripts/ocr.py || true       # OCR errors aren't fatal
 python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketches
+python3 scripts/build_thumbs.py || true         # small JPEGs for row/grid views
 python3 scripts/build_links.py
 python3 scripts/build_search_index.py
 python3 scripts/build_features.py

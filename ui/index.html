@@ -984,6 +984,14 @@ function highlight(text, terms) {
   });
   return html;
 }
+// Map a source image path (raw/...) to its pre-generated thumbnail path.
+// Mirrors build_thumbs.thumb_path_for. Falls back to the source via <img onerror>.
+function thumbForPath(src) {
+  if (!src) return "";
+  if (!/\.(jpg|jpeg|png|gif|webp|jp2|tiff?)$/i.test(src)) return "";
+  if (!src.startsWith("raw/")) return "";
+  return "raw/thumbs/" + src.slice(4).replace(/\.(jpg|jpeg|png|gif|webp|jp2|tiff?)$/i, ".jpg");
+}
 function snippet(text, terms, len=240) {
   if (!text) return "";
   let idx = -1;
@@ -1027,7 +1035,8 @@ function render(matches, terms) {
     row.className = "row" + (d.id === activeId ? " active" : "");
     row.dataset.id = d.id;
     const sn = snippet(d.text, terms);
-    const thumb = (d.thumbnail_local && d.thumbnail_local[0]) ||
+    const thumb = d.thumb_small ||
+                  (d.thumbnail_local && d.thumbnail_local[0]) ||
                   (d.primary_local && d.primary_local.find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p))) || "";
     row.innerHTML = `
       ${thumb ? `<img class="thumb" src="${ROOT_REL}/${thumb}" loading="lazy" alt=""/>` : ""}
@@ -1129,7 +1138,12 @@ function extractedHTML(d) {
     <h3>Images extracted from this PDF (${imgs.length})</h3>
     <div class="meta">Embedded photographs, sketches, clippings, and figures pulled from the source PDF (excluding full-page scans).</div>
     <div class="grid">
-      ${imgs.map(p => `<a href="${ROOT_REL}/${p}" target="_blank" rel="noopener"><img src="${ROOT_REL}/${p}" loading="lazy" alt=""/></a>`).join("")}
+      ${imgs.map(p => {
+        const t = thumbForPath(p);
+        const small = t ? `${ROOT_REL}/${t}` : `${ROOT_REL}/${p}`;
+        const full = `${ROOT_REL}/${p}`;
+        return `<a href="${full}" target="_blank" rel="noopener"><img src="${small}" loading="lazy" alt="" onerror="this.onerror=null;this.src='${full}'"/></a>`;
+      }).join("")}
     </div>
   </div>`;
 }
@@ -1154,7 +1168,8 @@ function relatedHTML(d) {
     parts.push('<div class="related-grid">');
     for (const s of im) {
       const od = docs.find(x => x.id === s.id);
-      const thumb = (od && od.thumbnail_local && od.thumbnail_local[0]) ||
+      const thumb = (od && od.thumb_small) ||
+                    (od && od.thumbnail_local && od.thumbnail_local[0]) ||
                     (od && od.primary_local || []).find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p)) || "";
       parts.push(
         `<a class="item image-link" data-link-id="${escapeHtml(s.id)}" title="${escapeHtml(s.title)}">` +

@@ -10,12 +10,24 @@ For each record we pack:
 import json
 from pathlib import Path
 
+from build_thumbs import thumb_path_for
+
 ROOT = Path(__file__).resolve().parent.parent
 RAW = ROOT / "raw"
 TEXT = RAW / "text"
 RECORDS = json.loads((RAW / "records.json").read_text())
 LINKS_PATH = RAW / "links.json"
 LINKS = json.loads(LINKS_PATH.read_text()) if LINKS_PATH.exists() else {}
+
+
+def small_thumb(src_rel: str) -> str:
+    """Path to generated thumb if it exists on disk, else "" (UI falls back to full-size)."""
+    if not src_rel:
+        return ""
+    dst = thumb_path_for(src_rel)
+    if dst is None or not dst.exists():
+        return ""
+    return str(dst.relative_to(ROOT))
 
 # Group extracted-image entries by their src_pdf so we can surface them per record
 EXTRACTED_PATH = RAW / "extracted_images.json"
@@ -53,6 +65,10 @@ for r in RECORDS:
         if lp.endswith(".pdf"):
             extracted.extend(EXTRACTED_BY_PDF.get(lp, []))
     records_by_id[r["id"]] = r
+    # Pick the source image the row/grid will display; same logic as the UI fallback chain.
+    thumbs = r.get("thumbnail_local", []) or []
+    primary_imgs = [p for p in r.get("primary_local", []) or [] if p.lower().endswith((".jpg", ".jpeg", ".png", ".gif", ".webp"))]
+    row_src = (thumbs[0] if thumbs else (primary_imgs[0] if primary_imgs else ""))
     docs.append({
         "id": r["id"],
         "title": r["title"],
@@ -66,6 +82,7 @@ for r in RECORDS:
         "source_url": r.get("pdf_image_link", ""),
         "primary_local": r.get("primary_local", []),
         "thumbnail_local": r.get("thumbnail_local", []),
+        "thumb_small": small_thumb(row_src),
         "video_local": r.get("video_local", ""),
         "dvids_video_id": r.get("dvids_video_id", ""),
         "text": text_for(r),
@@ -109,6 +126,7 @@ if EXTRACTED_PATH.exists():
             "source_url": parent.get("pdf_image_link", ""),
             "primary_local": [entry["file"]],
             "thumbnail_local": [entry["file"]],
+            "thumb_small": small_thumb(entry["file"]),
             "video_local": "",
             "dvids_video_id": "",
             "text": "",
