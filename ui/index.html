@@ -485,21 +485,23 @@
   }
   .type-seg.narrow .seg-label { display: none; }
   /* "More filters" expander — collapses facets/dossiers/topics behind a
-     single toggle so the default header is just search + media-type bar. */
-  #more-filters-bar {
-    width: 100%; display: flex; align-items: center; gap: 10px;
-    margin-top: 6px; flex-wrap: wrap;
-  }
+     single toggle in the top-right filter row so the default header is
+     just search + media-type bar. The toggle stays highlighted while
+     the expander is open. */
   #more-filters-toggle {
     background: rgba(10,13,18,0.6); border: 1px solid var(--border);
-    color: var(--fg-dim); border-radius: 999px;
-    padding: 4px 12px; font-size: 12px; cursor: pointer;
+    color: var(--fg-dim); border-radius: 6px;
+    padding: 5px 10px; font-size: 12px; cursor: pointer;
     display: inline-flex; align-items: center; gap: 6px;
-    transition: border-color 0.15s, color 0.15s;
+    transition: border-color 0.15s, color 0.15s, background 0.15s;
+    white-space: nowrap;
   }
   #more-filters-toggle:hover { border-color: var(--accent); color: var(--accent); }
   #more-filters-toggle .mft-caret {
     transition: transform 0.15s ease; display: inline-block; font-size: 10px;
+  }
+  #more-filters-toggle[aria-expanded="true"] {
+    background: rgba(87,199,255,0.16); border-color: var(--accent); color: var(--accent);
   }
   #more-filters-toggle[aria-expanded="true"] .mft-caret { transform: rotate(90deg); }
   #more-filters-toggle .mft-active-count {
@@ -507,8 +509,10 @@
     padding: 0 6px; font-size: 10px; font-weight: 700; margin-left: 2px;
     font-family: var(--mono);
   }
-  .mft-hint { color: var(--fg-dim); font-size: 11px; letter-spacing: 0.04em; }
-  #more-filters-body { width: 100%; }
+  #more-filters-toggle[aria-expanded="true"] .mft-active-count {
+    background: #0b0e14; color: var(--accent);
+  }
+  #more-filters-body { width: 100%; margin-top: 6px; }
   /* Active-filter summary bar — appears above results when any filter is
      applied. Each pill removes that one filter; "Clear all" wipes them. */
   #active-filters {
@@ -2533,6 +2537,11 @@
     <select id="f-agency"><option value="">All agencies</option></select>
     <select id="f-loc"><option value="">All locations</option></select>
     <button id="f-clear">Clear</button>
+    <button id="more-filters-toggle" type="button" aria-expanded="false" aria-controls="more-filters-body" title="Show / hide facets, dossiers, topics">
+      <span class="mft-caret">▸</span>
+      <span class="mft-label">More filters</span>
+      <span class="mft-active-count" id="mft-active-count" hidden>0</span>
+    </button>
   </div>
   <div class="chips header-chips" id="type-chips" style="width:100%;margin-top:6px">
     <span class="chip active" data-type="" title="Every record in the corpus — click to reset the media-type filter"><span>All</span><span class="count" id="cn-all"></span></span>
@@ -2554,14 +2563,6 @@
         <span class="seg-count" id="cn-vid">—</span>
       </button>
     </div>
-  </div>
-  <div id="more-filters-bar">
-    <button id="more-filters-toggle" type="button" aria-expanded="false" aria-controls="more-filters-body">
-      <span class="mft-caret">▸</span>
-      <span class="mft-label">More filters</span>
-      <span class="mft-active-count" id="mft-active-count" hidden>0</span>
-    </button>
-    <span class="mft-hint">facets · dossiers · topics</span>
   </div>
   <div id="more-filters-body" hidden>
   <div class="chips facets-row header-chips" id="facet-chips">
