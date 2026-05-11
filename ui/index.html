@@ -37,6 +37,8 @@
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
 <link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
 <script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
+<!-- h3-js browser build (for hex → GeoJSON polygon conversion) -->
+<script src="https://unpkg.com/h3-js@4.1.0/dist/browser/h3-js.umd.js" defer></script>
 
 <!-- PDF.js (loaded for the document viewer) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
@@ -2152,6 +2154,28 @@
   }
   .collab-share-btn:hover { border-color: #57c7ff; color: #57c7ff; }
 </style>
+
+<!-- ── Stream K: H3 Hotspot layer styles ─────────────────────────── -->
+<style>
+  /* Hex-layer toggle bar — sits above the Leaflet stat overlay */
+  #hex-toggle-bar {
+    position: absolute; top: 12px; right: 12px; z-index: 700;
+    display: flex; gap: 4px; flex-direction: column; align-items: flex-end;
+  }
+  .hex-layer-toggle {
+    font-family: var(--mono, monospace); font-size: 10px; letter-spacing: 0.07em;
+    text-transform: uppercase; padding: 4px 10px; cursor: pointer;
+    background: rgba(10,13,18,0.88); border: 1px solid rgba(255,255,255,0.18);
+    color: var(--fg-dim, #8899aa); border-radius: 3px; transition: all .15s;
+  }
+  .hex-layer-toggle:hover { border-color: var(--accent, #57c7ff); color: var(--accent, #57c7ff); }
+  .hex-layer-toggle.active { border-color: var(--accent, #57c7ff); color: var(--accent, #57c7ff); background: #1a2533; }
+  .hex-layer-toggle.dim { opacity: 0.55; }
+  /* toggle row: source buttons side-by-side */
+  #hex-source-row { display: flex; gap: 4px; }
+  /* show-all toggle */
+  #hex-sig-toggle { font-size: 9px; opacity: 0.7; }
+</style>
 </head>
 <body>
 <header>
@@ -2396,6 +2420,20 @@
     PLOTTING <strong id="map-official-count">—</strong> OFFICIAL ·
     <span class="civ-count"><strong id="map-civ-count">—</strong> CIVILIAN</span> ·
     CLICK TO OPEN RECORD
+  </div>
+  <!-- Stream K: hotspot layer toggle bar -->
+  <div id="hex-toggle-bar">
+    <div id="hex-source-row">
+      <button class="hex-layer-toggle" id="hex-btn-off"       type="button">HOTSPOTS OFF</button>
+      <button class="hex-layer-toggle" id="hex-btn-all"       type="button">ALL</button>
+      <button class="hex-layer-toggle" id="hex-btn-official"  type="button">OFFICIAL</button>
+      <button class="hex-layer-toggle" id="hex-btn-civilian"  type="button">CIVILIAN</button>
+    </div>
+    <div id="hex-res-row" style="display:flex;gap:4px;margin-top:2px;">
+      <button class="hex-layer-toggle" id="hex-btn-r4"  type="button">RES 4</button>
+      <button class="hex-layer-toggle active" id="hex-btn-r6"  type="button">RES 6</button>
+    </div>
+    <button class="hex-layer-toggle" id="hex-sig-toggle" type="button">SIG ONLY (p&lt;0.05)</button>
   </div>
 </section>
 
@@ -8609,6 +8647,187 @@ init();
 
   // Kick off connection
   connect();
+})();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Stream K — H3 Gi* hotspot hex layer (appended; does NOT modify Stream E code)
+// ─────────────────────────────────────────────────────────────────────────────
+(function initHexLayer() {
+  // State
+  const hexState = {
+    data: null,          // parsed hotspots.json
+    activeSource: null,  // "all" | "official" | "civilian" | null (off)
+    activeRes: "h3_resolution_6",
+    sigOnly: true,
+    geoLayer: null,
+  };
+
+  // ── colour ramp: z-score → RGBA string ──────────────────────────────────
+  function zToColour(z) {
+    // Map z into [0,1]: centre=0 → green, high → red
+    const t = Math.min(1, Math.max(0, (z - 0) / 4));  // saturate at z≈4
+    // green (#22c55e) → yellow (#eab308) → red (#ef4444)
+    let r, g, b;
+    if (t < 0.5) {
+      const s = t * 2;
+      r = Math.round(34  + (234 - 34)  * s);
+      g = Math.round(197 + (179 - 197) * s);
+      b = Math.round(94  + (8   - 94)  * s);
+    } else {
+      const s = (t - 0.5) * 2;
+      r = Math.round(234 + (239 - 234) * s);
+      g = Math.round(179 + (68  - 179) * s);
+      b = Math.round(8   + (68  - 8)   * s);
+    }
+    const opacity = 0.35 + 0.45 * t;
+    return `rgba(${r},${g},${b},${opacity.toFixed(2)})`;
+  }
+
+  // ── H3 hex → GeoJSON Polygon ─────────────────────────────────────────────
+  function hexToGeoJSON(hexId) {
+    // h3-js browser API: h3.cellToBoundary(hexId) → [[lat,lng], ...]
+    if (!window.h3) return null;
+    try {
+      const boundary = window.h3.cellToBoundary(hexId);
+      // GeoJSON coords are [lng, lat]; boundary is [[lat,lng],...]
+      const coords = boundary.map(([lat, lng]) => [lng, lat]);
+      coords.push(coords[0]); // close ring
+      return { type: "Feature", geometry: { type: "Polygon", coordinates: [coords] } };
+    } catch (_) { return null; }
+  }
+
+  // ── Repaint hex layer ─────────────────────────────────────────────────────
+  function repaintHex() {
+    if (!window.mapState || !mapState.map) return;
+
+    // Remove existing hex layer
+    if (hexState.geoLayer) {
+      mapState.map.removeLayer(hexState.geoLayer);
+      hexState.geoLayer = null;
+    }
+
+    if (!hexState.activeSource || !hexState.data) return;
+
+    const resData = hexState.data[hexState.activeRes];
+    if (!resData) return;
+    const hexes = resData[hexState.activeSource] || [];
+
+    const features = [];
+    for (const entry of hexes) {
+      if (hexState.sigOnly && entry.p >= 0.05) continue;
+      if (entry.count === 0) continue;
+      const feat = hexToGeoJSON(entry.hex);
+      if (!feat) continue;
+      feat.properties = { z: entry.z, p: entry.p, count: entry.count, hex: entry.hex };
+      features.push(feat);
+    }
+
+    if (!features.length) return;
+
+    hexState.geoLayer = L.geoJSON(
+      { type: "FeatureCollection", features },
+      {
+        style: feat => ({
+          color:       zToColour(feat.properties.z),
+          fillColor:   zToColour(feat.properties.z),
+          fillOpacity: 0.55,
+          weight:      1,
+          opacity:     0.8,
+        }),
+        onEachFeature(feat, layer) {
+          const { z, p, count, hex } = feat.properties;
+          layer.bindTooltip(
+            `<span style="font-family:monospace;font-size:11px">` +
+            `z=${z.toFixed(2)} &nbsp;p=${p.toFixed(4)}<br>` +
+            `n=${count} events<br>` +
+            `<span style="color:#8899aa;font-size:9px">${hex}</span></span>`,
+            { sticky: true, opacity: 0.92 }
+          );
+        },
+      }
+    ).addTo(mapState.map);
+  }
+
+  // ── Wire UI buttons ───────────────────────────────────────────────────────
+  function syncButtons() {
+    const srcBtns = { off: "#hex-btn-off", all: "#hex-btn-all", official: "#hex-btn-official", civilian: "#hex-btn-civilian" };
+    for (const [src, sel] of Object.entries(srcBtns)) {
+      const el = document.querySelector(sel);
+      if (!el) continue;
+      const isActive = src === "off" ? hexState.activeSource === null : hexState.activeSource === src;
+      el.classList.toggle("active", isActive);
+    }
+    const r4 = document.querySelector("#hex-btn-r4");
+    const r6 = document.querySelector("#hex-btn-r6");
+    if (r4) r4.classList.toggle("active", hexState.activeRes === "h3_resolution_4");
+    if (r6) r6.classList.toggle("active", hexState.activeRes === "h3_resolution_6");
+    const st = document.querySelector("#hex-sig-toggle");
+    if (st) st.classList.toggle("active", hexState.sigOnly);
+  }
+
+  function wireButtons() {
+    const pairs = [
+      ["#hex-btn-off",      () => { hexState.activeSource = null; }],
+      ["#hex-btn-all",      () => { hexState.activeSource = "all"; }],
+      ["#hex-btn-official", () => { hexState.activeSource = "official"; }],
+      ["#hex-btn-civilian", () => { hexState.activeSource = "civilian"; }],
+      ["#hex-btn-r4",       () => { hexState.activeRes = "h3_resolution_4"; }],
+      ["#hex-btn-r6",       () => { hexState.activeRes = "h3_resolution_6"; }],
+      ["#hex-sig-toggle",   () => { hexState.sigOnly = !hexState.sigOnly; }],
+    ];
+    for (const [sel, fn] of pairs) {
+      const el = document.querySelector(sel);
+      if (!el) continue;
+      el.addEventListener("click", () => { fn(); syncButtons(); repaintHex(); });
+    }
+  }
+
+  // ── Load hotspots.json and initialise ─────────────────────────────────────
+  async function loadHotspots() {
+    try {
+      const res = await fetch("hotspots.json");
+      if (!res.ok) { console.warn("[hotspots] hotspots.json not found"); return; }
+      hexState.data = await res.json();
+      console.log("[hotspots] loaded hotspots.json");
+    } catch (e) {
+      console.warn("[hotspots] failed to load hotspots.json:", e);
+    }
+  }
+
+  // ── Bootstrap: hook into map activation ───────────────────────────────────
+  // We patch ensureMap's promise (which is defined earlier) so the hex layer
+  // initialises after the map is ready without touching Stream E's code.
+  const _origSetView = typeof setView === "function" ? setView : null;
+
+  // Use MutationObserver on #map-view's hidden attribute removal as trigger.
+  const mapViewEl = document.getElementById("map-view");
+  let hexInit = false;
+
+  function maybeInitHex() {
+    if (hexInit) { repaintHex(); return; }
+    if (!window.L || !window.h3 || !window.mapState || !mapState.map) return;
+    hexInit = true;
+    wireButtons();
+    syncButtons();
+    if (hexState.data) repaintHex();
+  }
+
+  if (mapViewEl) {
+    new MutationObserver(() => {
+      if (!mapViewEl.hasAttribute("hidden")) {
+        // Map view is now visible; wait a tick for Leaflet to render
+        setTimeout(maybeInitHex, 400);
+      }
+    }).observe(mapViewEl, { attributes: true, attributeFilter: ["hidden"] });
+  }
+
+  // Load data early (non-blocking)
+  loadHotspots().then(() => {
+    // If map is already open, paint immediately
+    if (mapViewEl && !mapViewEl.hasAttribute("hidden") && window.h3 && window.mapState && mapState.map) {
+      maybeInitHex();
+    }
+  });
 })();
 </script>
 </body>

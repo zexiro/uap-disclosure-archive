@@ -13,3 +13,8 @@ anthropic>=0.40       # /api/enrich (Claude with web_search tool)
 openai>=1.50          # /api/ask via OpenRouter (OpenAI-compatible API)
 fastembed>=0.3        # local ONNX embeddings: text (BAAI/bge-small-en-v1.5) + image CLIP (Qdrant/clip-ViT-B-32-vision)
 spacy>=3.7,<4         # NER over OCR text — auto-downloads en_core_web_sm on first use
+
+# Hotspot analysis (Stream K)
+h3>=4.0               # H3 hierarchical hexagonal grid (lat/lng → cell)
+esda>=2.7             # Exploratory Spatial Data Analysis (Getis-Ord Gi*)
+libpysal>=4.10        # Spatial weights (KNN) used by esda
