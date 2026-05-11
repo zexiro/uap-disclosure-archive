@@ -2116,8 +2116,14 @@
     user-select: none; transition: border-color 0.15s;
   }
   #collab-pill:hover { border-color: #57c7ff; }
-  #collab-pill .dot { color: #4ade80; font-size: 10px; }
-  #collab-pill .dot.offline { color: #6b7280; }
+  #collab-pill .icon { font-size: 13px; line-height: 1; }
+  #collab-pill .chevron {
+    color: #57c7ff; font-size: 12px; line-height: 1;
+    display: inline-block; transition: transform 0.18s ease;
+  }
+  #collab-pill.open .chevron { transform: rotate(180deg); }
+  #collab-pill.offline .icon { filter: grayscale(1); opacity: 0.55; }
+  #collab-pill.offline .chevron { color: #4a5568; }
 
   /* Side panel */
   #collab-panel {
@@ -8874,7 +8880,11 @@ init();
   // Presence pill
   const pill = document.createElement("div");
   pill.id = "collab-pill";
-  pill.innerHTML = '<span class="dot offline">●</span> <span id="collab-count">0 online</span>';
+  pill.innerHTML = '<span class="icon">&#x1F4AC;</span> <span id="collab-count">offline</span> <span class="chevron" aria-hidden="true">&#x203A;</span>';
+  pill.classList.add("offline");
+  pill.setAttribute("role", "button");
+  pill.setAttribute("aria-label", "Open chat");
+  pill.title = "Open chat";
   document.body.appendChild(pill);
 
   // Toast container
@@ -8908,14 +8918,25 @@ init();
   document.body.appendChild(panel);
 
   // ── Panel open/close ──────────────────────────────────────────────
-  pill.addEventListener("click", () => panel.classList.toggle("open"));
+  function syncPanelChrome() {
+    const isOpen = panel.classList.contains("open");
+    pill.classList.toggle("open", isOpen);
+    pill.title = isOpen ? "Close chat" : "Open chat";
+    pill.setAttribute("aria-label", isOpen ? "Close chat" : "Open chat");
+  }
+  pill.addEventListener("click", () => {
+    panel.classList.toggle("open");
+    syncPanelChrome();
+  });
   panel.querySelector("#collab-panel-close").addEventListener("click", () => {
     panel.classList.remove("open");
+    syncPanelChrome();
   });
   // Restore panel-open state after a share-click triggered reload.
   if (sessionStorage.getItem("collab_reopen_panel") === "1") {
     sessionStorage.removeItem("collab_reopen_panel");
     panel.classList.add("open");
+    syncPanelChrome();
   }
 
   // ── In-memory message log (max 50) ────────────────────────────────
@@ -8933,13 +8954,12 @@ init();
   }
 
   function updatePill() {
-    const dot = pill.querySelector(".dot");
     const countEl = document.getElementById("collab-count");
     if (ws && ws.readyState === WebSocket.OPEN) {
-      dot.classList.remove("offline");
+      pill.classList.remove("offline");
       countEl.textContent = online.length + " online";
     } else {
-      dot.classList.add("offline");
+      pill.classList.add("offline");
       countEl.textContent = "offline";
     }
   }
