@@ -561,8 +561,9 @@ from starlette.requests import Request
 from starlette.responses import (
     Response, JSONResponse, RedirectResponse, StreamingResponse, FileResponse
 )
-from starlette.routing import Route, Mount
+from starlette.routing import Route, Mount, WebSocketRoute
 from starlette.staticfiles import StaticFiles
+from starlette.websockets import WebSocket, WebSocketDisconnect
 
 
 LONG_CACHE_EXTS = {".pdf", ".mp4", ".jpg", ".jpeg", ".png", ".webm"}
@@ -1251,6 +1252,124 @@ async def serve_ui(request: Request):
     )
 
 
+# ─── Collab WebSocket hub ─────────────────────────────────────────────
+# Ephemeral process-memory state. Drops on restart. Single-worker only.
+class CollabHub:
+    def __init__(self):
+        self._sessions: dict[str, WebSocket] = {}
+        self._ip_sessions: dict[str, set] = {}
+        self._msg_ts: dict[str, deque] = {}
+        self._lock = asyncio.Lock()
+
+    async def connect(self, ws: WebSocket, session_id: str, ip: str) -> bool:
+        async with self._lock:
+            sessions_for_ip = self._ip_sessions.setdefault(ip, set())
+            if len(sessions_for_ip) >= 3:
+                await ws.close(code=1008, reason="too many connections from this IP")
+                return False
+            self._sessions[session_id] = ws
+            sessions_for_ip.add(session_id)
+            self._msg_ts[session_id] = deque()
+        await self._broadcast({
+            "type": "presence",
+            "online": list(self._sessions.keys()),
+            "joined": session_id,
+        })
+        return True
+
+    async def disconnect(self, session_id: str, ip: str):
+        async with self._lock:
+            self._sessions.pop(session_id, None)
+            self._msg_ts.pop(session_id, None)
+            sessions_for_ip = self._ip_sessions.get(ip, set())
+            sessions_for_ip.discard(session_id)
+            if not sessions_for_ip:
+                self._ip_sessions.pop(ip, None)
+        await self._broadcast({
+            "type": "presence",
+            "online": list(self._sessions.keys()),
+            "left": session_id,
+        })
+
+    async def handle_message(self, session_id: str, raw: str):
+        try:
+            msg = json.loads(raw)
+        except Exception:
+            return None
+        now = time.time()
+        cutoff = now - 60
+        q = self._msg_ts.get(session_id)
+        if q is None:
+            return None
+        while q and q[0] < cutoff:
+            q.popleft()
+        if len(q) >= 30:
+            retry = int(q[0] + 60 - now) + 1
+            return {"type": "error", "code": "rate", "retry_after_s": retry}
+        q.append(now)
+
+        kind = msg.get("type")
+        ts = datetime.now(timezone.utc).isoformat()
+        if kind == "chat":
+            text = (msg.get("text") or "")[:500]
+            await self._broadcast({"type": "chat", "from": session_id, "text": text, "ts": ts})
+        elif kind == "share":
+            share_kind = msg.get("kind", "")
+            if share_kind in ("search-query", "ask-query"):
+                print(f"[collab] dropped share kind={share_kind!r} from {session_id}", file=sys.stderr)
+                return None
+            payload = msg.get("payload") or {}
+            await self._broadcast({"type": "share", "from": session_id, "kind": share_kind, "payload": payload, "ts": ts})
+        elif kind == "follow":
+            await self._broadcast({"type": "follow", "follower": session_id, "target": msg.get("target", ""), "ts": ts})
+        elif kind == "unfollow":
+            await self._broadcast({"type": "follow", "follower": session_id, "target": None, "ts": ts})
+        return None
+
+    async def _broadcast(self, payload: dict):
+        data = json.dumps(payload, ensure_ascii=False)
+        dead = []
+        for sid, ws in list(self._sessions.items()):
+            try:
+                await ws.send_text(data)
+            except Exception:
+                dead.append(sid)
+        for sid in dead:
+            self._sessions.pop(sid, None)
+
+
+_HUB = CollabHub()
+
+
+async def ws_collab(ws: WebSocket):
+    """WebSocket endpoint for /ws/collab — ephemeral collab surface."""
+    session_id = ws.query_params.get("session", "") or "anon"
+    session_id = re.sub(r"[^a-zA-Z0-9\-]", "", session_id)[:36] or "anon"
+    ip = (
+        (ws.headers.get("x-forwarded-for") or "").split(",")[0].strip()
+        or (ws.client.host if ws.client else "unknown")
+    )
+    await ws.accept()
+    if not await _HUB.connect(ws, session_id, ip):
+        return
+    try:
+        while True:
+            try:
+                data = await ws.receive_text()
+            except WebSocketDisconnect:
+                break
+            except Exception:
+                break
+            err = await _HUB.handle_message(session_id, data)
+            if err:
+                try:
+                    await ws.send_text(json.dumps(err))
+                except Exception:
+                    pass
+    finally:
+        await _HUB.disconnect(session_id, ip)
+
+
 # ─── Route table ─────────────────────────────────────────────────────
 routes = [
     Route("/", endpoint=root_redirect, methods=["GET", "HEAD"]),
@@ -1269,6 +1388,7 @@ routes = [
     Route("/api/corrections/{record_id}", endpoint=corrections_get, methods=["GET", "OPTIONS"]),
     Route("/raw/{path:path}", endpoint=serve_raw, methods=["GET", "HEAD", "OPTIONS"]),
     Route("/ui/{path:path}", endpoint=serve_ui, methods=["GET", "HEAD", "OPTIONS"]),
+    WebSocketRoute("/ws/collab", endpoint=ws_collab),
 ]
 
 app = Starlette(routes=routes)
