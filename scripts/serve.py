@@ -1362,9 +1362,11 @@ async def serve_raw(request: Request):
 
 
 async def serve_ui(request: Request):
-    """Serve /ui/* with short cache."""
+    """Serve /ui/* with short cache. Resolves directories to their index.html."""
     path_suffix = request.path_params.get("path", "")
     file_path = ROOT / "ui" / path_suffix
+    if file_path.is_dir():
+        file_path = file_path / "index.html"
     if not file_path.exists() or not file_path.is_file():
         return Response("not found", status_code=404)
     try:
