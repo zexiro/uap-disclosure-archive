@@ -394,25 +394,25 @@
   .header-collapse-handle:hover, .header-expand-handle:hover {
     background: var(--accent); color: var(--bg); transform: translateY(-1px);
   }
-  /* Collapse button (visible only when expanded) — sits at end of header bottom-row */
-  .header-expand-handle { margin-left: auto; }
-  body:not(.header-collapsed) .header-expand-handle { display: inline-flex !important; }
-  /* Expand button (visible only when collapsed) — pinned to header right
-     edge, but offset to clear the fixed collab presence pill in the
-     top-right corner (pill is ~110px wide + 14px from edge). */
+  /* Collapse / expand buttons are both pinned to the same top-right spot
+     so the toggle "doesn't move" when the user switches between states.
+     They live at top: 10px so they always read as a header chrome control
+     (not somewhere lost in the middle of an expanded header). right: 130px
+     clears the fixed collab presence pill in the corner. */
+  body:not(.header-collapsed) .header-expand-handle {
+    display: inline-flex !important;
+    position: absolute; top: 10px; right: 130px; z-index: 50;
+  }
   body.header-collapsed .header-collapse-handle {
     display: inline-flex !important;
-    position: absolute; right: 130px; top: 50%; transform: translateY(-50%); z-index: 50;
+    position: absolute; top: 10px; right: 130px; z-index: 50;
     box-shadow: 0 0 0 2px rgba(87,199,255,0.15);
     animation: hdr-pulse 2.4s ease-in-out infinite;
   }
-  body.header-collapsed .header-collapse-handle:hover {
-    transform: translateY(calc(-50% - 1px));
-  }
-  /* When the collab pill is hidden (e.g. on graph view or narrow viewport
-     where the pill could be missing), fall back to the original right
-     edge so SHOW HEADER doesn't float in dead space. */
+  /* When the collab pill is hidden (narrow viewport / non-search views),
+     SHOW HEADER falls back to the corner so it doesn't float in dead space. */
   @media (max-width: 760px) {
+    body:not(.header-collapsed) .header-expand-handle,
     body.header-collapsed .header-collapse-handle { right: 14px; }
   }
   @keyframes hdr-pulse {
