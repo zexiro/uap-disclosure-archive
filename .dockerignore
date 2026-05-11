@@ -1,0 +1,35 @@
+# Persistent volume data — never bake into the image
+raw/
+vault/
+
+# Local-only / dev artifacts
+.git/
+.github/
+.claude/
+.venv/
+__pycache__/
+**/__pycache__/
+*.pyc
+*.pyo
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.DS_Store
+
+# Video projects — multi-GB, irrelevant to runtime
+social-media/
+
+# Node deps if any sneak in
+node_modules/
+**/node_modules/
+
+# Docs / scratch
+DEPLOY.md
+README.md
+ATTRIBUTION.md
+LICENSE
+*.md.bak
+
+# Editor state
+.idea/
+.vscode/
