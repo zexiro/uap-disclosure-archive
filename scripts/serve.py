@@ -17,12 +17,15 @@ Routes:
   GET  /ui/*                → static files, short cache (changing UI assets)
 """
 import asyncio
+import hashlib
 import json
 import os
 import re
 import sys
 import time
+import uuid
 from collections import defaultdict, deque
+from datetime import datetime, timezone
 from pathlib import Path
 from urllib.parse import urlparse
 
@@ -32,6 +35,8 @@ INCIDENTS_PATH = ROOT / "ui" / "incidents.json"
 EMBED_PATH = ROOT / "ui" / "embeddings.npz"
 ENRICH_DIR = ROOT / "ui" / "enrichments"
 ENV_PATH = ROOT / ".env"
+CORRECTIONS_DIR = ROOT / "vault" / "corrections"
+CORRECTIONS_JSONL = CORRECTIONS_DIR / "corrections.jsonl"
 ENRICH_DIR.mkdir(exist_ok=True)
 
 # Minimal .env loader so ANTHROPIC_API_KEY can be persisted in the project root
@@ -324,6 +329,90 @@ def rate_check(ip, is_owner=False):
         q.append(now)
         _GLOBAL_BUCKET.append(now)
         return True, 0, ""
+
+
+# ─── Corrections store ────────────────────────────────────────────────
+CORRECTION_FIELDS = frozenset(
+    ("title", "date", "location", "summary", "transcript", "tag", "link", "general")
+)
+CORRECTIONS_MAX_BODY = 8 * 1024
+_VALID_IDS: set | None = None
+_VALID_IDS_LOCK = threading.Lock()
+_CORR_RATE_LOCK = threading.Lock()
+_CORR_BUCKETS: defaultdict = defaultdict(deque)
+_CORR_RATE_LIMIT = int(os.environ.get("CORRECTIONS_RATE_HOURLY", "5"))
+_CORRECTIONS_WRITE_LOCK = threading.Lock()
+
+
+def _load_valid_ids() -> set:
+    global _VALID_IDS
+    if _VALID_IDS is not None:
+        return _VALID_IDS
+    with _VALID_IDS_LOCK:
+        if _VALID_IDS is None:
+            try:
+                index = json.loads(INDEX_PATH.read_text())
+                _VALID_IDS = {d.get("id") for d in index if d.get("id")}
+            except Exception as e:
+                print(f"[corrections] failed to load search index: {e}", file=sys.stderr)
+                _VALID_IDS = set()
+    return _VALID_IDS
+
+
+def _hash_ip(ip: str) -> str:
+    return hashlib.sha256(ip.encode()).hexdigest()[:12]
+
+
+def _corr_rate_check(ip: str):
+    now = time.time()
+    cutoff = now - 3600
+    with _CORR_RATE_LOCK:
+        q = _CORR_BUCKETS[ip]
+        while q and q[0] < cutoff:
+            q.popleft()
+        if len(q) >= _CORR_RATE_LIMIT:
+            reset = int(q[0] + 3600 - now)
+            return False, max(reset, 1)
+        q.append(now)
+    return True, 0
+
+
+def _append_correction(record: dict) -> None:
+    CORRECTIONS_DIR.mkdir(parents=True, exist_ok=True)
+    line = json.dumps(record, ensure_ascii=False) + "\n"
+    with _CORRECTIONS_WRITE_LOCK:
+        with CORRECTIONS_JSONL.open("a", encoding="utf-8") as fh:
+            fh.write(line)
+
+
+def _read_corrections(record_id: str) -> list:
+    if not CORRECTIONS_JSONL.exists():
+        return []
+    out = []
+    try:
+        with CORRECTIONS_JSONL.open("r", encoding="utf-8") as fh:
+            for raw in fh:
+                raw = raw.strip()
+                if not raw:
+                    continue
+                try:
+                    obj = json.loads(raw)
+                except json.JSONDecodeError:
+                    continue
+                if obj.get("record_id") == record_id:
+                    out.append({
+                        "id": obj.get("id"),
+                        "field": obj.get("field"),
+                        "current_value": obj.get("current_value", ""),
+                        "suggested_value": obj.get("suggested_value"),
+                        "rationale": obj.get("rationale", ""),
+                        "submitter_handle": obj.get("submitter_handle", ""),
+                        "submitted_at": obj.get("submitted_at"),
+                        "status": obj.get("status", "pending"),
+                    })
+    except Exception as e:
+        print(f"[corrections] read error: {e}", file=sys.stderr)
+    return out
 
 
 # ─── AI gating ────────────────────────────────────────────────────────
@@ -1026,6 +1115,100 @@ async def enrich_decide(request: Request):
     return JSONResponse({"ok": True}, headers=CORS_HEADERS)
 
 
+# ─── Corrections endpoints ────────────────────────────────────────────
+async def corrections_post(request: Request):
+    """POST /api/corrections — submit a user correction/annotation for a record."""
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=CORS_HEADERS)
+
+    ip = _get_client_ip(request)
+
+    body_bytes = await request.body()
+    if len(body_bytes) > CORRECTIONS_MAX_BODY:
+        return JSONResponse({"error": "payload too large (max 8 KB)"}, status_code=413, headers=CORS_HEADERS)
+    try:
+        body = json.loads(body_bytes or b"{}")
+    except Exception as e:
+        return JSONResponse({"error": f"invalid JSON: {e}"}, status_code=400, headers=CORS_HEADERS)
+    if not isinstance(body, dict):
+        return JSONResponse({"error": "body must be a JSON object"}, status_code=400, headers=CORS_HEADERS)
+
+    record_id = (body.get("record_id") or "").strip()
+    field = (body.get("field") or "").strip()
+    current_value = str(body.get("current_value") or "").strip()
+    suggested_value = str(body.get("suggested_value") or "").strip()
+    rationale = str(body.get("rationale") or "").strip()
+    submitter_handle = str(body.get("submitter_handle") or "").strip()
+
+    if not record_id:
+        return JSONResponse({"error": "record_id is required"}, status_code=400, headers=CORS_HEADERS)
+    if not field:
+        return JSONResponse({"error": "field is required"}, status_code=400, headers=CORS_HEADERS)
+    if field not in CORRECTION_FIELDS:
+        return JSONResponse(
+            {"error": f"field must be one of: {', '.join(sorted(CORRECTION_FIELDS))}"},
+            status_code=400, headers=CORS_HEADERS,
+        )
+    if not suggested_value:
+        return JSONResponse({"error": "suggested_value is required and must not be empty"}, status_code=400, headers=CORS_HEADERS)
+    if len(rationale) > 2000:
+        return JSONResponse({"error": "rationale exceeds 2000 character limit"}, status_code=400, headers=CORS_HEADERS)
+    if len(submitter_handle) > 64:
+        return JSONResponse({"error": "submitter_handle exceeds 64 character limit"}, status_code=400, headers=CORS_HEADERS)
+
+    valid_ids = _load_valid_ids()
+    if record_id not in valid_ids:
+        return JSONResponse({"error": f"record_id '{record_id}' not found in archive index"}, status_code=404, headers=CORS_HEADERS)
+
+    ok, retry_after = _corr_rate_check(ip)
+    if not ok:
+        return JSONResponse(
+            {"error": f"rate limit exceeded — max {_CORR_RATE_LIMIT} corrections per IP per hour"},
+            status_code=429,
+            headers={"Retry-After": str(retry_after), **CORS_HEADERS},
+        )
+
+    corr_id = str(uuid.uuid4())
+    now_iso = datetime.now(timezone.utc).strftime("%Y-%m-%dT%H:%M:%SZ")
+    record = {
+        "id": corr_id,
+        "record_id": record_id,
+        "field": field,
+        "current_value": current_value,
+        "suggested_value": suggested_value,
+        "rationale": rationale,
+        "submitter_handle": submitter_handle,
+        "submitted_at": now_iso,
+        "status": "pending",
+        "client_ip_hash": _hash_ip(ip),
+    }
+    try:
+        await asyncio.get_event_loop().run_in_executor(None, _append_correction, record)
+    except Exception as e:
+        print(f"[corrections] write error: {e}", file=sys.stderr)
+        return JSONResponse({"error": "failed to persist correction"}, status_code=500, headers=CORS_HEADERS)
+
+    print(f"[corrections] new {corr_id} record={record_id!r} field={field!r} ip_hash={_hash_ip(ip)}", flush=True)
+    return JSONResponse({"id": corr_id, "status": "received"}, status_code=201, headers=CORS_HEADERS)
+
+
+async def corrections_get(request: Request):
+    """GET /api/corrections/{record_id} — list corrections for a record."""
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=CORS_HEADERS)
+    record_id = (request.path_params.get("record_id") or "").strip()
+    if not record_id:
+        return JSONResponse({"error": "record_id path segment is required"}, status_code=400, headers=CORS_HEADERS)
+    valid_ids = _load_valid_ids()
+    if record_id not in valid_ids:
+        return JSONResponse({"error": f"record_id '{record_id}' not found in archive index"}, status_code=404, headers=CORS_HEADERS)
+    corrections = await asyncio.get_event_loop().run_in_executor(None, _read_corrections, record_id)
+    return JSONResponse(
+        {"record_id": record_id, "corrections": corrections},
+        headers={"Cache-Control": "no-store", **CORS_HEADERS},
+    )
+
+
 # ─── Static file handlers with correct cache headers ─────────────────
 async def serve_raw(request: Request):
     """Serve /raw/* with long immutable cache for media files."""
@@ -1081,6 +1264,9 @@ routes = [
     Route("/api/enrich/all", endpoint=enrich_all, methods=["GET", "OPTIONS"]),
     Route("/api/enrich/decide", endpoint=enrich_decide, methods=["POST", "OPTIONS"]),
     Route("/api/enrich/get/{kind}/{id:path}", endpoint=enrich_get, methods=["GET", "OPTIONS"]),
+    Route("/api/corrections", endpoint=corrections_post, methods=["POST", "OPTIONS"]),
+    Route("/api/corrections/", endpoint=corrections_post, methods=["POST", "OPTIONS"]),
+    Route("/api/corrections/{record_id}", endpoint=corrections_get, methods=["GET", "OPTIONS"]),
     Route("/raw/{path:path}", endpoint=serve_raw, methods=["GET", "HEAD", "OPTIONS"]),
     Route("/ui/{path:path}", endpoint=serve_ui, methods=["GET", "HEAD", "OPTIONS"]),
 ]
