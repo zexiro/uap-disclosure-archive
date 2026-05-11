@@ -15,6 +15,9 @@ python3 scripts/ocr.py || true
 echo "==> Computing relationship links (text + image)…"
 python3 scripts/build_links.py
 
+echo "==> Extracting named entities (spaCy NER over OCR text)…"
+python3 scripts/extract_entities.py || true
+
 echo "==> Building vault notes…"
 rm -rf vault/Releases vault/Index vault/README.md
 python3 scripts/build_vault.py

@@ -7,3 +7,4 @@ Pillow>=10
 anthropic>=0.40       # /api/enrich (Claude with web_search tool)
 openai>=1.50          # /api/ask via OpenRouter (OpenAI-compatible API)
 fastembed>=0.3        # local ONNX embeddings (BAAI/bge-small-en-v1.5)
+spacy>=3.7,<4
