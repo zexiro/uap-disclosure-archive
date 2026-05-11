@@ -434,6 +434,10 @@
     color: var(--fg-dim); white-space: nowrap;
   }
   .header-counts strong { font-weight: 600; }
+  .header-counts .hc-label {
+    color: var(--fg-dim); font-size: 10px; letter-spacing: 0.08em;
+    text-transform: uppercase; margin-right: 2px;
+  }
   .header-counts .hc-off strong { color: var(--accent); }
   .header-counts .hc-civ { color: #b8a26e; }
   .header-counts .hc-civ strong { color: #ffb34d; }
@@ -2433,24 +2437,25 @@
     <button id="f-clear">Clear</button>
   </div>
   <div class="chips header-chips" id="type-chips" style="width:100%;margin-top:6px">
-    <span class="chip active" data-type=""><span>All</span><span class="count" id="cn-all"></span></span>
-    <span class="chip" data-type="PDF">📄 <span>Documents</span><span class="count" id="cn-pdf"></span></span>
-    <span class="chip" data-type="VID">🎞 <span>Videos</span><span class="count" id="cn-vid"></span></span>
-    <span class="chip" data-type="IMG">🖼 <span>Images</span><span class="count" id="cn-img"></span></span>
+    <span class="chip active" data-type="" title="Every record in the corpus"><span>All</span><span class="count" id="cn-all"></span></span>
+    <span class="chip" data-type="Case File" title="Text-only records (mostly war.gov UAP filings) with no downloaded media artifact"><span>Case files</span><span class="count" id="cn-case"></span></span>
+    <span class="chip" data-type="PDF" title="Records whose primary medium is a PDF document">📄 <span>PDFs</span><span class="count" id="cn-pdf"></span></span>
+    <span class="chip" data-type="VID" title="Records whose primary medium is a video file">🎞 <span>Videos</span><span class="count" id="cn-vid"></span></span>
+    <span class="chip" data-type="IMG" title="Records whose primary medium is a standalone image">🖼 <span>Image files</span><span class="count" id="cn-img"></span></span>
   </div>
   <div class="chips facets-row header-chips" id="facet-chips">
-    <span class="facet-label">FACETS</span>
-    <span class="chip small" data-facet="redacted" data-value="TRUE">⬛ <span>Redacted</span><span class="count" id="cn-fc-redacted"></span></span>
-    <span class="chip small" data-facet="hasimages" data-value="1">🖼 <span>Has images</span><span class="count" id="cn-fc-hasimages"></span></span>
-    <span class="chip small" data-facet="hasvideo" data-value="1">🎞 <span>Has video</span><span class="count" id="cn-fc-hasvideo"></span></span>
-    <span class="chip small" data-facet="hassource" data-value="1">↗ <span>Source URL</span><span class="count" id="cn-fc-hassource"></span></span>
-    <select class="chip small" id="f-decade" style="appearance:auto;cursor:pointer">
+    <span class="facet-label" title="Compound flags — these combine with the media-type row above">FACETS</span>
+    <span class="chip small" data-facet="redacted" data-value="TRUE" title="Records that contain visible redactions in the source material">⬛ <span>Redacted</span><span class="count" id="cn-fc-redacted"></span></span>
+    <span class="chip small" data-facet="hasimages" data-value="1" title="Records with embedded images extracted from the source (distinct from the 'Image files' media type above)">🖼 <span>Embeds image</span><span class="count" id="cn-fc-hasimages"></span></span>
+    <span class="chip small" data-facet="hasvideo" data-value="1" title="Records with an attached video file (distinct from the 'Videos' media type above)">🎞 <span>Embeds video</span><span class="count" id="cn-fc-hasvideo"></span></span>
+    <span class="chip small" data-facet="hassource" data-value="1" title="Records that link back to a canonical source URL on the publisher's site">↗ <span>Source URL</span><span class="count" id="cn-fc-hassource"></span></span>
+    <select class="chip small" id="f-decade" style="appearance:auto;cursor:pointer" title="Filter records by the decade of their incident date">
       <option value="">All decades</option>
     </select>
-    <select class="chip small" id="f-shape" style="appearance:auto;cursor:pointer">
+    <select class="chip small" id="f-shape" style="appearance:auto;cursor:pointer" title="Filter records by the reported craft shape (tic-tac, triangle, disc, etc.)">
       <option value="">All shapes</option>
     </select>
-    <select class="chip small" id="f-incident" style="appearance:auto;cursor:pointer">
+    <select class="chip small" id="f-incident" style="appearance:auto;cursor:pointer" title="Filter records linked to a known canonical incident (Roswell, Tic Tac, etc.)">
       <option value="">All incidents</option>
     </select>
   </div>
@@ -2477,7 +2482,8 @@
       <button class="globe-toggle" data-view="map" type="button">🗺 Map</button>
     </div>
     <button class="askk-cue" id="askk-cue" type="button" title="Ask the archive (Cmd/Ctrl + K)">⌘ ASK<kbd>⌘K</kbd></button>
-    <div class="header-counts" id="header-counts" title="Total records geocoded across the corpus">
+    <div class="header-counts" id="header-counts" title="Geocoded incidents that appear as pins on the Map view — not the corpus total (use the All chip above for that)">
+      <span class="hc-label">Mapped:</span>
       <span class="hc-off"><strong id="hc-off-n">—</strong> official</span>
       <span class="hc-sep">·</span>
       <span class="hc-civ"><strong id="hc-civ-n">—</strong> civilian</span>
@@ -3408,7 +3414,7 @@ function showDetail(id, terms = []) {
   if (typeof syncUrl === "function") syncUrl();
 }
 
-let activeTypeFilter = "";   // "" | "PDF" | "VID" | "IMG"
+let activeTypeFilter = "";   // "" | "Case File" | "PDF" | "VID" | "IMG"
 let activeFacets = {
   redacted: false,    // requires redaction === "TRUE"
   hasimages: false,   // requires extracted_images.length > 0
@@ -6537,9 +6543,10 @@ async function init() {
   });
 
   // Type-chip counts
-  const counts = { "": docs.length, PDF: 0, VID: 0, IMG: 0 };
+  const counts = { "": docs.length, "Case File": 0, PDF: 0, VID: 0, IMG: 0 };
   docs.forEach(d => { const k = (d.type || "").replace(/\s+$/, ""); if (counts[k] != null) counts[k]++; });
   $("#cn-all").textContent = counts[""];
+  $("#cn-case").textContent = counts["Case File"];
   $("#cn-pdf").textContent = counts.PDF;
   $("#cn-vid").textContent = counts.VID;
   $("#cn-img").textContent = counts.IMG;
