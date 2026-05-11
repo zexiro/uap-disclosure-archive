@@ -2300,6 +2300,52 @@
     color: #4a5568;
   }
 </style>
+
+<!-- ─── Collapse left results panel (press [ or click the rail) ───── -->
+<style>
+  /* Smooth grid-column transition when toggling */
+  main { transition: grid-template-columns 0.18s ease; }
+  body.results-collapsed main { grid-template-columns: 0 1fr; }
+  body.results-collapsed #results { display: none; }
+
+  /* Toggle button: small chevron tab on the right edge of #results.
+     Sits inside the results panel border at the seam. */
+  #results-collapse-btn {
+    position: absolute;
+    left: 380px;             /* aligned with the grid seam */
+    top: 50%;
+    transform: translate(-50%, -50%);
+    z-index: 60;
+    width: 18px; height: 48px;
+    background: var(--bg3); border: 1px solid var(--border);
+    border-radius: 4px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    color: var(--fg-dim); font-size: 12px; padding: 0;
+    transition: left 0.18s ease, color 0.12s, border-color 0.12s, background 0.12s;
+  }
+  #results-collapse-btn:hover { color: var(--accent); border-color: var(--accent); background: var(--bg2); }
+  body.results-collapsed #results-collapse-btn {
+    left: 0;
+    transform: translate(0, -50%);
+    border-left: none;
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+  }
+  /* Hide the button when we're not in the default results+detail view
+     (globe / graph / timeline / map / viewer modes use the full <main> area
+     differently and have their own layouts) */
+  body.globe-mode    #results-collapse-btn,
+  body.graph-mode    #results-collapse-btn,
+  body.timeline-mode #results-collapse-btn,
+  body.map-mode      #results-collapse-btn,
+  body.viewer-mode   #results-collapse-btn { display: none; }
+  /* On mobile widths, the panel toggle conflicts with the existing
+     mobile-detail-mode flow — hide it there. */
+  @media (max-width: 760px) {
+    #results-collapse-btn { display: none; }
+    body.results-collapsed main { grid-template-columns: 1fr; }
+  }
+</style>
 </head>
 <body>
 <header>
@@ -2363,6 +2409,7 @@
   <button class="header-collapse-handle" id="hdr-expand" type="button" title="Expand header (press h)">▼ SHOW HEADER</button>
 </header>
 <main>
+  <button id="results-collapse-btn" type="button" title="Collapse results panel (press [ to toggle)" aria-label="Toggle results panel">‹</button>
   <aside id="results">
     <div class="stat" id="stat">Loading…</div>
     <div id="rows"></div>
@@ -9263,6 +9310,44 @@ init();
 
   // Kick off after page init (DOMContentLoaded has already fired at this point)
   loadTopics();
+})();
+
+// ─── Collapse-left-panel toggle ──────────────────────────────────────────────
+// Lets the user hide the #results sidebar so the detail view goes near-full-
+// screen. State persists in localStorage. Hotkey: [ (matches editor conventions).
+(function () {
+  const KEY = "uap.resultsCollapsed";
+  const btn = document.getElementById("results-collapse-btn");
+  if (!btn) return;
+
+  function apply(collapsed) {
+    document.body.classList.toggle("results-collapsed", collapsed);
+    btn.textContent = collapsed ? "›" : "‹";
+    btn.title = collapsed
+      ? "Show results panel (press [ to toggle)"
+      : "Collapse results panel (press [ to toggle)";
+    btn.setAttribute("aria-expanded", String(!collapsed));
+  }
+
+  // Restore prior state
+  apply(localStorage.getItem(KEY) === "1");
+
+  function toggle() {
+    const next = !document.body.classList.contains("results-collapsed");
+    apply(next);
+    try { localStorage.setItem(KEY, next ? "1" : "0"); } catch (_) {}
+  }
+
+  btn.addEventListener("click", toggle);
+
+  // Hotkey: [ — but only when not typing into an input/textarea.
+  document.addEventListener("keydown", (e) => {
+    if (e.key !== "[" || e.ctrlKey || e.metaKey || e.altKey) return;
+    const t = e.target;
+    if (t && (t.tagName === "INPUT" || t.tagName === "TEXTAREA" || t.isContentEditable)) return;
+    e.preventDefault();
+    toggle();
+  });
 })();
 </script>
 </body>
