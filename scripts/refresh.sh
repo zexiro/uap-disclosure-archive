@@ -58,6 +58,7 @@ python3 scripts/sightings/fetch_reddit.py || true
 python3 scripts/sightings/fetch_news.py || true
 python3 scripts/sightings/build_unified.py || true
 python3 scripts/sightings/build_correlations.py || true
+python3 scripts/build_hotspots.py || true          # Stream K: Gi* hexbin hotspots
 
 # Vault: rebuild fresh so removed/renamed records don't linger
 rm -rf vault/Releases vault/Index vault/README.md
