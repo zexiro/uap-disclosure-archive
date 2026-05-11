@@ -451,14 +451,15 @@
      of the corpus — relationships are visible at a glance instead of
      left to mental arithmetic. */
   .type-bar {
-    display: flex; flex: 1; min-width: 0;
+    display: flex; flex: 0 1 620px;
+    width: 620px; max-width: 100%; min-width: 320px;
     height: 28px; border: 1px solid var(--border); border-radius: 999px;
     overflow: hidden; background: rgba(10,13,18,0.6);
   }
   .type-seg {
     background: none; border: 0; color: var(--fg-dim);
-    padding: 0 12px; font-size: 12px; line-height: 1; cursor: pointer;
-    display: flex; align-items: center; justify-content: center; gap: 8px;
+    padding: 0 10px; font-size: 12px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: flex-start; gap: 6px;
     min-width: 0; overflow: hidden; white-space: nowrap;
     border-right: 1px solid rgba(31,41,55,0.7);
     transition: background 0.15s, color 0.15s;
@@ -469,15 +470,19 @@
   .type-seg.active {
     background: rgba(87,199,255,0.18); color: var(--accent); font-weight: 600;
   }
-  .type-seg .seg-label { overflow: hidden; text-overflow: ellipsis; }
+  .type-seg .seg-label {
+    overflow: hidden; text-overflow: ellipsis; flex-shrink: 1; min-width: 0;
+  }
   .type-seg .seg-count {
     font-family: var(--mono); color: var(--fg); font-size: 11px;
     opacity: 0.85; flex-shrink: 0;
   }
   .type-seg.active .seg-count { color: var(--accent); opacity: 1; }
-  /* When a segment gets too narrow, hide the text label and keep only the
-     count so the bar still reflects proportional widths. */
-  @container type-bar (max-width: 0) { }
+  /* When a segment gets too narrow for its label, hide the label so the
+     count stays readable and the bar still reflects proportional widths. */
+  .type-seg.narrow {
+    padding: 0 8px; justify-content: center;
+  }
   .type-seg.narrow .seg-label { display: none; }
   .links a.bmc-inline {
     background: var(--accent2); color: #1a1410; border-color: var(--accent2); font-weight: 700;
@@ -2477,15 +2482,15 @@
         <span class="seg-count" id="cn-case">—</span>
       </button>
       <button class="type-seg" type="button" data-type="IMG" title="Records whose primary medium is a standalone image">
-        <span class="seg-label">🖼 Image files</span>
+        <span class="seg-label">Image files</span>
         <span class="seg-count" id="cn-img">—</span>
       </button>
       <button class="type-seg" type="button" data-type="PDF" title="Records whose primary medium is a PDF document">
-        <span class="seg-label">📄 PDFs</span>
+        <span class="seg-label">PDFs</span>
         <span class="seg-count" id="cn-pdf">—</span>
       </button>
       <button class="type-seg" type="button" data-type="VID" title="Records whose primary medium is a video file">
-        <span class="seg-label">🎞 Videos</span>
+        <span class="seg-label">Videos</span>
         <span class="seg-count" id="cn-vid">—</span>
       </button>
     </div>
@@ -6599,18 +6604,29 @@ async function init() {
   $("#cn-img").textContent = counts.IMG;
   // Drive segment widths from counts so the bar's visual proportions match
   // the data. flex-grow of N gives a slice proportional to N within the
-  // remaining space.
+  // remaining space. After layout settles, hide any label that would
+  // truncate so the segment cleanly falls back to count-only.
   document.querySelectorAll(".type-seg").forEach(seg => {
     const t = seg.dataset.type;
-    const n = counts[t] || 0;
-    seg.style.flexGrow = String(n);
-    // Floor for visibility: segments below ~5% would otherwise vanish.
-    if (counts[""] > 0 && n / counts[""] < 0.05) {
-      seg.classList.add("narrow");
-    } else {
-      seg.classList.remove("narrow");
-    }
+    seg.style.flexGrow = String(counts[t] || 0);
+    seg.classList.remove("narrow");
   });
+  function reflowSegLabels() {
+    document.querySelectorAll(".type-seg").forEach(seg => {
+      const lbl = seg.querySelector(".seg-label");
+      if (!lbl) return;
+      seg.classList.remove("narrow");
+      // Read after flex layout; if the label can't fit in its slot, drop
+      // to count-only mode. scrollWidth > clientWidth signals truncation.
+      if (lbl.scrollWidth > lbl.clientWidth + 1) seg.classList.add("narrow");
+    });
+  }
+  requestAnimationFrame(reflowSegLabels);
+  // Resize observer keeps labels in sync if the header wraps/unwraps.
+  if (window.ResizeObserver) {
+    const bar = document.querySelector(".type-bar");
+    if (bar) new ResizeObserver(reflowSegLabels).observe(bar);
+  }
   document.querySelectorAll("#type-chips .chip, #type-chips .type-seg").forEach(c => {
     c.addEventListener("click", () => setTypeFilter(c.dataset.type || ""));
   });
