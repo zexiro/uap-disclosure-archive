@@ -15,7 +15,10 @@ fastembed>=0.3        # local ONNX embeddings: text (BAAI/bge-small-en-v1.5) + i
 faiss-cpu>=1.7        # FAISS IndexFlatIP for image similarity search (/api/image/similar)
 spacy>=3.7,<4         # NER over OCR text — auto-downloads en_core_web_sm on first use
 
-# Hotspot analysis (Stream K)
+# Geospatial hotspot analysis
 h3>=4.0               # H3 hierarchical hexagonal grid (lat/lng → cell)
-esda>=2.7             # Exploratory Spatial Data Analysis (Getis-Ord Gi*)
-libpysal>=4.10        # Spatial weights (KNN) used by esda
+esda>=2.7             # Getis-Ord Gi* via PySAL
+libpysal>=4.10        # KNN spatial weights for esda
+
+# Knowledge graph + community detection
+networkx>=3.2         # unified graph, Louvain (built-in 3.x), centrality metrics

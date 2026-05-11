@@ -2154,7 +2154,6 @@
   }
   .collab-share-btn:hover { border-color: #57c7ff; color: #57c7ff; }
 </style>
-
 <!-- ── Stream K: H3 Hotspot layer styles ─────────────────────────── -->
 <style>
   /* Hex-layer toggle bar — sits above the Leaflet stat overlay */
@@ -2175,6 +2174,38 @@
   #hex-source-row { display: flex; gap: 4px; }
   /* show-all toggle */
   #hex-sig-toggle { font-size: 9px; opacity: 0.7; }
+</style>
+
+<!-- Stream-L: community colouring for the corpus graph view -->
+<style id="stream-l-community-styles">
+  /* Community legend pill shown in graph tooltip */
+  .comm-pill {
+    display: inline-block;
+    padding: 1px 6px;
+    border-radius: 10px;
+    font-size: 10px;
+    font-weight: 600;
+    color: #fff;
+    opacity: 0.9;
+    margin-right: 4px;
+    vertical-align: middle;
+  }
+  /* Centrality bar micro-chart inside tooltip */
+  .comm-cent {
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: 1px 4px;
+    font-size: 10px;
+    color: var(--fg-dim, #7c8aa1);
+    margin-top: 3px;
+  }
+  .comm-cent .bar {
+    height: 4px;
+    border-radius: 2px;
+    margin-top: 3px;
+    background: var(--accent, #57c7ff);
+    opacity: 0.7;
+  }
 </style>
 </head>
 <body>
@@ -6006,6 +6037,8 @@ async function init() {
     fetch("incidents.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.INCIDENTS = j.incidents || j; }),
     fetch("graph-layout.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_LAYOUT = j; }),
     fetch("correlations.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.CORRELATIONS = j; }),
+    // Stream-L: load community + centrality data (graceful no-op if absent)
+    fetch("graph_communities.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_COMMUNITIES = j; }),
   ]);
 
   mini = new MiniSearch({
@@ -8828,6 +8861,175 @@ init();
       maybeInitHex();
     }
   });
+})();
+
+// ─────────────────────────────────────────────────────────────────────────────
+// Stream-L: community colouring — augments the existing graph view.
+// Reads window.GRAPH_COMMUNITIES (loaded above) and:
+//   1. Replaces agencyColor() lookup with communityColor() for graph nodes.
+//   2. Augments the hover tooltip with community label + centrality bars.
+// NO existing graph code is modified — only additive overrides.
+// ─────────────────────────────────────────────────────────────────────────────
+(function streamLCommunities() {
+  // ── helpers ──────────────────────────────────────────────────────────────
+
+  /**
+   * Deterministic HSL colour from an integer community id.
+   * Uses a golden-angle step so adjacent ids are visually distinct.
+   */
+  function communityHSL(cid) {
+    const hue = ((cid * 137.508) % 360);   // golden angle
+    return `hsl(${hue.toFixed(1)},60%,52%)`;
+  }
+
+  /**
+   * Return the fill colour for a graph node, preferring community colour when
+   * GRAPH_COMMUNITIES is available, falling back to the existing agencyColor.
+   */
+  function nodeColor(n) {
+    if (!window.GRAPH_COMMUNITIES) return agencyColor(n.agency);
+    const comm = window.GRAPH_COMMUNITIES;
+    const cid = comm.by_node && comm.by_node[n.id];
+    if (cid != null) return communityHSL(cid);
+    return agencyColor(n.agency);
+  }
+
+  /**
+   * Build the community + centrality fragment for the graph tooltip.
+   */
+  function communityTooltipFrag(nodeId) {
+    const gc = window.GRAPH_COMMUNITIES;
+    if (!gc) return "";
+    const cid = gc.by_node && gc.by_node[nodeId];
+    if (cid == null) return "";
+    const commMeta = gc.communities && gc.communities[cid];
+    const label = commMeta ? commMeta.label : `Community ${cid}`;
+    const size  = commMeta ? commMeta.size  : "?";
+    const color = communityHSL(cid);
+    const cent  = gc.centrality && gc.centrality[nodeId];
+    let centHtml = "";
+    if (cent) {
+      const pct = (v) => Math.round(v * 100);
+      centHtml = `<div class="comm-cent">
+        <span>degree</span><span><div class="bar" style="width:${Math.min(100, pct(cent.degree) * 4)}%"></div></span>
+        <span>between</span><span><div class="bar" style="width:${Math.min(100, pct(cent.betweenness) * 20)}%"></div></span>
+        <span>eigen</span><span><div class="bar" style="width:${Math.min(100, pct(cent.eigenvector) * 4)}%"></div></span>
+      </div>`;
+    }
+    return `<br><span class="comm-pill" style="background:${color}">#${cid}</span><span style="font-size:10px;color:var(--fg-dim)">${escapeHtml(label)} (${size} members)</span>${centHtml}`;
+  }
+
+  // ── Patch drawGraph to use community colours ──────────────────────────────
+  // We monkey-patch by overriding the line:
+  //   ctx.fillStyle = n.aiSource ? "#5ec8a0" : agencyColor(n.agency);
+  // This is done by redefining drawGraph after the original is defined (both
+  // live in the same JS closure-scope at module level, so the last assignment
+  // wins when drawGraph is called). We wrap, not replace.
+  const _origDrawGraph = drawGraph;
+  drawGraph = function communityAwareDrawGraph() {
+    _origDrawGraph();
+    // Community colouring is applied as a second pass only if GRAPH_COMMUNITIES
+    // is loaded. We re-draw the node fill layer on top using the community
+    // colour so we don't have to duplicate all the clipping / opacity logic.
+    const gc = window.GRAPH_COMMUNITIES;
+    if (!gc || !gc.by_node) return;
+
+    const canvas = document.getElementById("graph-canvas");
+    if (!canvas) return;
+    const ctx = canvas.getContext("2d");
+    const dpr = window.devicePixelRatio || 1;
+    const rect = canvas.getBoundingClientRect();
+    ctx.save();
+    ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    ctx.translate(graphState.tx, graphState.ty);
+    ctx.scale(graphState.scale, graphState.scale);
+
+    const sel  = graphState.selected;
+    const hover = graphState.hover;
+    const path  = graphState.path;
+    const pathSet = new Set(path.map(n => n.id));
+    const pinned  = graphState.pinned;
+    const hidden  = graphState.hidden;
+    const subgraphSet = graphState._lastSubgraphSet; // may be undefined — OK
+
+    for (const n of graphState.nodes) {
+      if (hidden.has(n.id)) continue;
+      const cid = gc.by_node[n.id];
+      if (cid == null) continue;               // no community data → leave agency colour
+      if (n.aiSource) continue;                // AI-injected URL nodes keep green
+
+      const isActive = n === sel || n.id === activeId;
+      const isHover  = n === hover;
+      const deg = graphState.degreeById.get(n.id) || 0;
+      const r   = isActive ? 8 : Math.max(4, Math.min(18, 3 + Math.sqrt(deg)));
+
+      // Recompute opacity (mirrors nodeOpacity logic in drawGraph)
+      const muted = graphState.mutedAgencies;
+      let op = 1;
+      if (subgraphSet && !subgraphSet.has(n.id)) op = 0.05;
+      if (muted.has(n.agency)) op = 0.05;
+
+      ctx.globalAlpha = op;
+      ctx.beginPath();
+      ctx.arc(n.x, n.y, r / graphState.scale, 0, Math.PI * 2);
+      ctx.fillStyle = communityHSL(cid);
+      ctx.fill();
+
+      // Re-draw stroke rings for active / hover / path
+      if (pathSet.has(n.id)) {
+        ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 3 / graphState.scale; ctx.stroke();
+      } else if (isActive) {
+        ctx.strokeStyle = "#FFFFFF"; ctx.lineWidth = 2 / graphState.scale; ctx.stroke();
+      } else if (isHover) {
+        ctx.strokeStyle = "#22D3EE"; ctx.lineWidth = 2 / graphState.scale; ctx.stroke();
+      }
+    }
+    ctx.globalAlpha = 1;
+    ctx.restore();
+  };
+
+  // ── Patch hover tooltip ───────────────────────────────────────────────────
+  // The tooltip innerHTML is set inside bindGraphInteraction → pointermove.
+  // We patch it by observing mutations on the tooltip element once DOM is ready.
+  function patchTooltip() {
+    const tip = document.getElementById("graph-tooltip");
+    if (!tip) return;
+    const obs = new MutationObserver(() => {
+      // Only inject community fragment if the tooltip is visible and doesn't
+      // already contain community data.
+      if (tip.hidden || tip.dataset.commInjected === "1") return;
+      const gc = window.GRAPH_COMMUNITIES;
+      if (!gc) return;
+      // Find which node is hovered.
+      const node = graphState.hover;
+      if (!node) return;
+      const frag = communityTooltipFrag(node.id);
+      if (!frag) return;
+      tip.dataset.commInjected = "1";
+      tip.innerHTML += frag;
+    });
+    obs.observe(tip, { childList: true, characterData: true, subtree: true, attributes: true });
+    // Clear injection guard when tooltip hides
+    const origHide = Object.getOwnPropertyDescriptor(HTMLElement.prototype, "hidden");
+    // Watch for hidden attribute changes via the same observer (attributes: true above covers it)
+    obs.observe(tip, { attributes: true, attributeFilter: ["hidden"] });
+    // Reset guard when tip hides
+    const _tipHiddenObserver = new MutationObserver(muts => {
+      for (const m of muts) {
+        if (m.type === "attributes" && m.attributeName === "hidden" && tip.hidden) {
+          tip.dataset.commInjected = "0";
+        }
+      }
+    });
+    _tipHiddenObserver.observe(tip, { attributes: true, attributeFilter: ["hidden"] });
+  }
+
+  // Wait for DOM ready (script is at end of body so DOM is already parsed).
+  if (document.readyState !== "loading") {
+    patchTooltip();
+  } else {
+    document.addEventListener("DOMContentLoaded", patchTooltip);
+  }
 })();
 </script>
 </body>
