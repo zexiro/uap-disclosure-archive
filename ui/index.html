@@ -484,6 +484,66 @@
     padding: 0 8px; justify-content: center;
   }
   .type-seg.narrow .seg-label { display: none; }
+  /* "More filters" expander — collapses facets/dossiers/topics behind a
+     single toggle so the default header is just search + media-type bar. */
+  #more-filters-bar {
+    width: 100%; display: flex; align-items: center; gap: 10px;
+    margin-top: 6px; flex-wrap: wrap;
+  }
+  #more-filters-toggle {
+    background: rgba(10,13,18,0.6); border: 1px solid var(--border);
+    color: var(--fg-dim); border-radius: 999px;
+    padding: 4px 12px; font-size: 12px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 6px;
+    transition: border-color 0.15s, color 0.15s;
+  }
+  #more-filters-toggle:hover { border-color: var(--accent); color: var(--accent); }
+  #more-filters-toggle .mft-caret {
+    transition: transform 0.15s ease; display: inline-block; font-size: 10px;
+  }
+  #more-filters-toggle[aria-expanded="true"] .mft-caret { transform: rotate(90deg); }
+  #more-filters-toggle .mft-active-count {
+    background: var(--accent); color: #0b0e14; border-radius: 999px;
+    padding: 0 6px; font-size: 10px; font-weight: 700; margin-left: 2px;
+    font-family: var(--mono);
+  }
+  .mft-hint { color: var(--fg-dim); font-size: 11px; letter-spacing: 0.04em; }
+  #more-filters-body { width: 100%; }
+  /* Active-filter summary bar — appears above results when any filter is
+     applied. Each pill removes that one filter; "Clear all" wipes them. */
+  #active-filters {
+    display: none; flex-wrap: wrap; gap: 6px;
+    padding: 8px 12px; border-bottom: 1px solid var(--border);
+    background: rgba(10,13,18,0.4);
+    align-items: center; font-size: 12px;
+  }
+  #active-filters.has-filters { display: flex; }
+  #active-filters .af-label {
+    color: var(--fg-dim); font-size: 11px; letter-spacing: 0.05em;
+    text-transform: uppercase; margin-right: 4px;
+  }
+  #active-filters .af-pill {
+    background: rgba(87,199,255,0.12); border: 1px solid rgba(87,199,255,0.45);
+    color: var(--fg); border-radius: 999px;
+    padding: 2px 4px 2px 10px;
+    display: inline-flex; align-items: center; gap: 6px;
+    font-family: var(--mono); font-size: 11px; line-height: 1.4;
+  }
+  #active-filters .af-pill .af-key {
+    color: var(--accent); text-transform: uppercase;
+    font-size: 10px; letter-spacing: 0.08em;
+  }
+  #active-filters .af-pill .af-remove {
+    background: none; border: 0; color: var(--fg-dim); cursor: pointer;
+    font-size: 13px; line-height: 1; padding: 0 4px;
+  }
+  #active-filters .af-pill .af-remove:hover { color: var(--accent); }
+  #active-filters .af-clear-all {
+    background: none; border: 1px solid var(--border); color: var(--fg-dim);
+    border-radius: 999px; padding: 2px 10px; font-size: 11px; cursor: pointer;
+    margin-left: 4px;
+  }
+  #active-filters .af-clear-all:hover { border-color: var(--accent); color: var(--accent); }
   .links a.bmc-inline {
     background: var(--accent2); color: #1a1410; border-color: var(--accent2); font-weight: 700;
   }
@@ -2495,6 +2555,15 @@
       </button>
     </div>
   </div>
+  <div id="more-filters-bar">
+    <button id="more-filters-toggle" type="button" aria-expanded="false" aria-controls="more-filters-body">
+      <span class="mft-caret">▸</span>
+      <span class="mft-label">More filters</span>
+      <span class="mft-active-count" id="mft-active-count" hidden>0</span>
+    </button>
+    <span class="mft-hint">facets · dossiers · topics</span>
+  </div>
+  <div id="more-filters-body" hidden>
   <div class="chips facets-row header-chips" id="facet-chips">
     <span class="facet-label" title="Compound flags — these combine with the media-type row above">FACETS</span>
     <span class="chip small" data-facet="redacted" data-value="TRUE" title="Records that contain visible redactions in the source material">⬛ <span>Redacted</span><span class="count" id="cn-fc-redacted"></span></span>
@@ -2519,6 +2588,7 @@
     <span class="facet-label">TOPICS</span>
     <!-- chips injected from ui/topics.json by Stream-I JS below -->
   </div>
+  </div><!-- /#more-filters-body -->
   <div class="header-bottom-row" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap">
     <div class="header-kbdhints" style="font-size:11px;color:var(--fg-dim)">
       <kbd style="font-family:var(--mono);background:var(--bg3);padding:1px 5px;border-radius:3px">/</kbd> focus search ·
@@ -2550,6 +2620,7 @@
 <main>
   <button id="results-collapse-btn" type="button" title="Collapse results panel (press [ to toggle)" aria-label="Toggle results panel">‹</button>
   <aside id="results">
+    <div id="active-filters" aria-live="polite"></div>
     <div class="stat" id="stat">Loading…</div>
     <div id="rows"></div>
   </aside>
@@ -9935,6 +10006,165 @@ init();
     e.preventDefault();
     toggle();
   });
+})();
+
+// ═══════════════════════════════════════════════════════════════════════
+// More-filters expander + active-filter summary (Tier 3)
+// Collapses facets/dossiers/topics behind one toggle; shows what's active
+// in a single chip row above results so the user always sees current state.
+// ═══════════════════════════════════════════════════════════════════════
+(function () {
+  "use strict";
+  const STORAGE_KEY = "uap.moreFiltersOpen";
+  const toggle = document.getElementById("more-filters-toggle");
+  const body = document.getElementById("more-filters-body");
+  if (!toggle || !body) return;
+
+  function applyOpenState(open) {
+    body.hidden = !open;
+    toggle.setAttribute("aria-expanded", String(open));
+  }
+  applyOpenState(localStorage.getItem(STORAGE_KEY) === "1");
+
+  toggle.addEventListener("click", () => {
+    const next = body.hidden;  // open if currently closed
+    applyOpenState(next);
+    try { localStorage.setItem(STORAGE_KEY, next ? "1" : "0"); } catch (_) {}
+  });
+
+  // ── Active filter chips (above results) ─────────────────────────────
+  const af = document.getElementById("active-filters");
+  if (!af) return;
+  const badge = document.getElementById("mft-active-count");
+
+  const KIND_LABELS = {
+    q: "Search", agency: "Agency", loc: "Location", type: "Type",
+    decade: "Decade", shape: "Shape", incident: "Incident",
+    redacted: "Redacted", hasimages: "Embeds image",
+    hasvideo: "Embeds video", hassource: "Source URL",
+    dossier: "Dossier", topic: "Topic",
+  };
+  // Which filter kinds live in the collapsed section — these drive the
+  // active-count badge on the toggle so users notice hidden filters.
+  const HIDDEN_KINDS = new Set([
+    "redacted", "hasimages", "hasvideo", "hassource",
+    "decade", "shape", "incident", "dossier", "topic",
+  ]);
+
+  function escapeHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  function collectActiveFilters() {
+    const out = [];
+    const qEl = document.getElementById("q");
+    const q = (qEl && qEl.value || "").trim();
+    if (q) out.push({ kind: "q", value: q, remove: () => {
+      qEl.value = ""; qEl.dispatchEvent(new Event("input"));
+    } });
+
+    for (const k of ["agency", "loc", "decade", "shape", "incident"]) {
+      const el = document.getElementById("f-" + k);
+      if (!el || !el.value) continue;
+      const optText = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : el.value;
+      out.push({ kind: k, value: optText, remove: () => {
+        el.value = ""; el.dispatchEvent(new Event("change"));
+      } });
+    }
+
+    if (typeof activeTypeFilter !== "undefined" && activeTypeFilter) {
+      const seg = document.querySelector('#type-chips [data-type="' + CSS.escape(activeTypeFilter) + '"]');
+      const lblEl = seg ? (seg.querySelector(".seg-label") || seg.querySelector("span")) : null;
+      const lbl = lblEl ? lblEl.textContent.trim() : activeTypeFilter;
+      out.push({ kind: "type", value: lbl, remove: () => {
+        if (typeof setTypeFilter === "function") setTypeFilter("");
+      } });
+    }
+
+    if (typeof activeFacets !== "undefined") {
+      for (const k of Object.keys(activeFacets)) {
+        if (!activeFacets[k]) continue;
+        out.push({ kind: k, value: "yes", remove: () => {
+          const chip = document.querySelector('#facet-chips .chip[data-facet="' + k + '"]');
+          if (chip) chip.click();
+        } });
+      }
+    }
+
+    if (typeof activeDossiers !== "undefined" && activeDossiers.size) {
+      for (const id of activeDossiers) {
+        const chip = document.querySelector('#dossier-chips .chip[data-dossier="' + CSS.escape(id) + '"]');
+        const lblEl = chip ? chip.querySelector("span:not(.count)") : null;
+        const lbl = lblEl ? lblEl.textContent.trim() : id;
+        out.push({ kind: "dossier", value: lbl, remove: () => { if (chip) chip.click(); } });
+      }
+    }
+
+    document.querySelectorAll('#topic-chips .chip[data-topic].active').forEach(chip => {
+      const lblEl = chip.querySelector("span:not(.count)");
+      const lbl = lblEl ? lblEl.textContent.trim() : "topic";
+      out.push({ kind: "topic", value: lbl, remove: () => chip.click() });
+    });
+
+    return out;
+  }
+
+  function renderActiveFilters() {
+    const filters = collectActiveFilters();
+    af.classList.toggle("has-filters", filters.length > 0);
+    af.innerHTML = "";
+    if (filters.length === 0) {
+      if (badge) badge.hidden = true;
+      return;
+    }
+    const lbl = document.createElement("span");
+    lbl.className = "af-label"; lbl.textContent = "Filtered:";
+    af.appendChild(lbl);
+    for (const f of filters) {
+      const pill = document.createElement("span");
+      pill.className = "af-pill";
+      pill.innerHTML = '<span class="af-key">' + escapeHtml(KIND_LABELS[f.kind] || f.kind) + '</span>' + escapeHtml(f.value);
+      const rm = document.createElement("button");
+      rm.className = "af-remove"; rm.title = "Remove this filter"; rm.setAttribute("aria-label", "Remove " + (KIND_LABELS[f.kind] || f.kind) + " filter");
+      rm.textContent = "×";
+      rm.addEventListener("click", () => { try { f.remove(); } catch (e) {} });
+      pill.appendChild(rm);
+      af.appendChild(pill);
+    }
+    const clearAll = document.createElement("button");
+    clearAll.className = "af-clear-all"; clearAll.textContent = "Clear all";
+    clearAll.addEventListener("click", () => {
+      const fc = document.getElementById("f-clear");
+      if (fc) fc.click();
+    });
+    af.appendChild(clearAll);
+
+    if (badge) {
+      const n = filters.filter(f => HIDDEN_KINDS.has(f.kind)).length;
+      if (n > 0) { badge.textContent = String(n); badge.hidden = false; }
+      else badge.hidden = true;
+    }
+  }
+
+  // syncUrl() is the convergence point for filter mutations — patch it so
+  // every filter change also refreshes the active-filter chip row.
+  if (typeof window.syncUrl === "function") {
+    const _origSyncUrl = window.syncUrl;
+    window.syncUrl = function () {
+      const r = _origSyncUrl.apply(this, arguments);
+      try { renderActiveFilters(); } catch (e) { console.warn("[af]", e); }
+      return r;
+    };
+  }
+  // Also refresh after the search box changes (input event doesn't go via syncUrl directly)
+  document.getElementById("q")?.addEventListener("input", () => {
+    setTimeout(renderActiveFilters, 0);
+  });
+
+  // Initial paint after the page settles (data loaded, URL applied)
+  setTimeout(renderActiveFilters, 300);
 })();
 </script>
 </body>
