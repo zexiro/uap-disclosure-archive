@@ -33,6 +33,9 @@ ROOT = Path(__file__).resolve().parent.parent
 INDEX_PATH = ROOT / "ui" / "search-index.json"
 INCIDENTS_PATH = ROOT / "ui" / "incidents.json"
 EMBED_PATH = ROOT / "ui" / "embeddings.npz"
+IMG_EMBED_PATH = ROOT / "ui" / "image_embeddings.npz"
+IMG_FAISS_PATH = ROOT / "ui" / "image_index.faiss"
+IMG_IDS_PATH = ROOT / "ui" / "image_index_ids.json"
 ENRICH_DIR = ROOT / "ui" / "enrichments"
 ENV_PATH = ROOT / ".env"
 CORRECTIONS_DIR = ROOT / "vault" / "corrections"
@@ -63,6 +66,13 @@ _EMB_MATRIX = None     # np.ndarray[float32], shape (N, D), L2-normalized
 _EMB_ID_TO_IDX = None  # dict[str, int]
 _EMBEDDER = None       # fastembed.TextEmbedding, lazily initialized
 _EMB_LOCK = threading.Lock()
+
+# Image FAISS index (lazily loaded on first /api/image/similar request).
+_IMG_INDEX = None         # faiss.IndexFlatIP
+_IMG_IDS = None           # list[str], vector-row order
+_IMG_ID_TO_IDX = None     # dict[str, int]
+_IMG_VEC_MATRIX = None    # np.ndarray[float32], shape (N, 512) — for vector lookup
+_IMG_INDEX_LOCK = threading.Lock()
 
 
 def load_corpus():
@@ -117,6 +127,71 @@ def get_query_embedder():
                 print(f"[ask] embedder unavailable: {e}", file=sys.stderr)
                 _EMBEDDER = False
     return _EMBEDDER if _EMBEDDER is not False else None
+
+
+# ─── Image FAISS index ────────────────────────────────────────────────
+
+def load_image_index() -> bool:
+    """Lazily load the FAISS image similarity index into module globals (idempotent)."""
+    global _IMG_INDEX, _IMG_IDS, _IMG_ID_TO_IDX, _IMG_VEC_MATRIX
+    if _IMG_INDEX is not None:
+        return True
+    with _IMG_INDEX_LOCK:
+        if _IMG_INDEX is not None:
+            return True
+        if not IMG_FAISS_PATH.exists() or not IMG_IDS_PATH.exists():
+            return False
+        try:
+            import faiss
+            import numpy as np
+            idx = faiss.read_index(str(IMG_FAISS_PATH))
+            ids = json.loads(IMG_IDS_PATH.read_text())
+            npz = np.load(IMG_EMBED_PATH, allow_pickle=True)
+            _IMG_IDS = ids
+            _IMG_ID_TO_IDX = {rid: i for i, rid in enumerate(ids)}
+            _IMG_VEC_MATRIX = npz["vectors"].astype("float32")
+            _IMG_INDEX = idx
+            print(f"[img-sim] image index loaded: {idx.ntotal} vectors", flush=True)
+            return True
+        except Exception as e:
+            print(f"[img-sim] image index load failed: {e}", file=sys.stderr)
+            return False
+
+
+def image_similar_lookup(record_id: str, k: int = 10) -> dict | None:
+    """Return top-k nearest neighbours for record_id (excluding self).
+
+    Returns None if record_id is not in the index.
+    Returns dict with keys: query_id, neighbours (list of dicts).
+    """
+    import numpy as np
+    if not load_image_index():
+        return None
+    idx = _IMG_ID_TO_IDX.get(record_id)
+    if idx is None:
+        return None
+
+    # Grab the query vector (already L2-normalised → inner product = cosine).
+    qvec = _IMG_VEC_MATRIX[idx : idx + 1]  # shape (1, D)
+
+    # Search for k+1 to exclude self.
+    scores, indices = _IMG_INDEX.search(qvec, k + 1)
+    scores = scores[0].tolist()
+    indices = indices[0].tolist()
+
+    # Build neighbour list (skip self).
+    neighbours = []
+    for score, row in zip(scores, indices):
+        if row < 0:
+            continue
+        nb_id = _IMG_IDS[row]
+        if nb_id == record_id:
+            continue
+        neighbours.append({"id": nb_id, "score": round(float(score), 6)})
+        if len(neighbours) >= k:
+            break
+
+    return {"query_id": record_id, "neighbours": neighbours}
 
 
 # ─── Retrieval ────────────────────────────────────────────────────────
@@ -1210,6 +1285,57 @@ async def corrections_get(request: Request):
     )
 
 
+# ─── Image similarity endpoint ────────────────────────────────────────
+
+async def image_similar(request: Request):
+    """GET /api/image/similar/{record_id}?k=10
+
+    Returns top-k visually similar records using FAISS inner-product search
+    over L2-normalised CLIP-ViT-B-32 embeddings (cosine similarity).
+
+    Response:
+        {"query_id": "...", "neighbours": [{"id": "...", "score": 0.94,
+          "title": "...", "source": "...", "thumb": "..."}, ...]}
+    """
+    if request.method == "OPTIONS":
+        return Response(status_code=204, headers=CORS_HEADERS)
+
+    record_id = (request.path_params.get("record_id") or "").strip()
+    if not record_id:
+        return JSONResponse({"error": "record_id path segment is required"}, status_code=400, headers=CORS_HEADERS)
+
+    try:
+        k = max(1, min(50, int(request.query_params.get("k", "10"))))
+    except (ValueError, TypeError):
+        k = 10
+
+    if not load_image_index():
+        return JSONResponse({"error": "image similarity index not available"}, status_code=503, headers=CORS_HEADERS)
+
+    result = await asyncio.get_event_loop().run_in_executor(None, image_similar_lookup, record_id, k)
+    if result is None:
+        return JSONResponse({"error": f"record_id '{record_id}' not found in image index"}, status_code=404, headers=CORS_HEADERS)
+
+    # Enrich neighbours with metadata from the search index.
+    corpus, _ = load_corpus()
+    by_id = {d.get("id"): d for d in (corpus or [])}
+    enriched = []
+    for nb in result["neighbours"]:
+        doc = by_id.get(nb["id"]) or {}
+        enriched.append({
+            "id": nb["id"],
+            "score": nb["score"],
+            "title": doc.get("title") or "",
+            "source": doc.get("source") or "",
+            "thumb": doc.get("thumb_small") or "",
+        })
+
+    return JSONResponse(
+        {"query_id": record_id, "neighbours": enriched},
+        headers={"Cache-Control": "public, max-age=300", **CORS_HEADERS},
+    )
+
+
 # ─── Static file handlers with correct cache headers ─────────────────
 async def serve_raw(request: Request):
     """Serve /raw/* with long immutable cache for media files."""
@@ -1386,6 +1512,7 @@ routes = [
     Route("/api/corrections", endpoint=corrections_post, methods=["POST", "OPTIONS"]),
     Route("/api/corrections/", endpoint=corrections_post, methods=["POST", "OPTIONS"]),
     Route("/api/corrections/{record_id}", endpoint=corrections_get, methods=["GET", "OPTIONS"]),
+    Route("/api/image/similar/{record_id}", endpoint=image_similar, methods=["GET", "OPTIONS"]),
     Route("/raw/{path:path}", endpoint=serve_raw, methods=["GET", "HEAD", "OPTIONS"]),
     Route("/ui/{path:path}", endpoint=serve_ui, methods=["GET", "HEAD", "OPTIONS"]),
     WebSocketRoute("/ws/collab", endpoint=ws_collab),
