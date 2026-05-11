@@ -4119,24 +4119,41 @@ async function ensureGraph() {
   const edgesText = [];
   const edgesImage = [];
   const neighbors = new Map(nodes.map(n => [n.id, []]));
+  // Track seen edge keys so an asymmetric similar_text/similar_image
+  // (only one side lists the other) still produces a drawable edge.
+  // Previously the push was gated on `a.id < b.id`, which silently
+  // dropped half of the asymmetric cases — leaving connections invisible
+  // even though they existed in `neighborsById`.
+  const seenTextEdges = new Set();
+  const seenImageEdges = new Set();
   for (const d of baseDocs) {
     const a = idx.get(d.id); if (!a) continue;
     for (const e of d.similar_text || []) {
       const b = idx.get(e.id);
-      if (b && a.id < b.id) edgesText.push({ a, b, score: e.score, kind: "text" });
-      if (b) {
-        neighbors.get(a.id).push({ node: b, kind: "text", weight: e.score });
-        neighbors.get(b.id).push({ node: a, kind: "text", weight: e.score });
+      if (!b) continue;
+      const k = a.id < b.id ? a.id + "||" + b.id : b.id + "||" + a.id;
+      if (!seenTextEdges.has(k)) {
+        seenTextEdges.add(k);
+        const lo = a.id < b.id ? a : b;
+        const hi = a.id < b.id ? b : a;
+        edgesText.push({ a: lo, b: hi, score: e.score, kind: "text" });
       }
+      neighbors.get(a.id).push({ node: b, kind: "text", weight: e.score });
+      neighbors.get(b.id).push({ node: a, kind: "text", weight: e.score });
     }
     for (const e of d.similar_image || []) {
       const b = idx.get(e.id);
-      if (b && a.id < b.id) edgesImage.push({ a, b, distance: e.distance, kind: "image" });
-      if (b) {
-        const w = 1 - (e.distance || 0) / 32;
-        neighbors.get(a.id).push({ node: b, kind: "image", weight: w });
-        neighbors.get(b.id).push({ node: a, kind: "image", weight: w });
+      if (!b) continue;
+      const k = a.id < b.id ? a.id + "||" + b.id : b.id + "||" + a.id;
+      if (!seenImageEdges.has(k)) {
+        seenImageEdges.add(k);
+        const lo = a.id < b.id ? a : b;
+        const hi = a.id < b.id ? b : a;
+        edgesImage.push({ a: lo, b: hi, distance: e.distance, kind: "image" });
       }
+      const w = 1 - (e.distance || 0) / 32;
+      neighbors.get(a.id).push({ node: b, kind: "image", weight: w });
+      neighbors.get(b.id).push({ node: a, kind: "image", weight: w });
     }
   }
   // Dedupe neighbors by id (keep stronger weight + merge kinds)
@@ -4558,22 +4575,25 @@ function drawGraph() {
   // active path on top with a white halo + amber core so it stays
   // readable against the dense edge field at any zoom level.
   if (showText) {
-    ctx.lineWidth = 0.5 / graphState.scale;
+    // Floor bumped from 0.05 → 0.20 and width 0.5 → 1.0 so connectivity
+    // is legible without selecting anything. Previously the network
+    // looked like disconnected dots, which made picking valid path
+    // endpoints a guessing game.
+    ctx.lineWidth = 1.0 / graphState.scale;
     for (const e of graphState.edgesText) {
       if (path.has(pathKey(e.a, e.b))) continue; // saved for pass 2
       const op = Math.min(nodeOpacity(e.a), nodeOpacity(e.b));
-      ctx.strokeStyle = `rgba(87,199,255,${0.05 + op * (0.1 + Math.min(0.4, (e.score || 0) * 0.6))})`;
-      ctx.lineWidth = 0.5 / graphState.scale;
+      ctx.strokeStyle = `rgba(87,199,255,${0.20 + op * (0.15 + Math.min(0.45, (e.score || 0) * 0.7))})`;
       ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
     }
   }
   if (showImage) {
     ctx.setLineDash([2 / graphState.scale, 2 / graphState.scale]);
+    ctx.lineWidth = 1.1 / graphState.scale;
     for (const e of graphState.edgesImage) {
       if (path.has(pathKey(e.a, e.b))) continue; // saved for pass 2
       const op = Math.min(nodeOpacity(e.a), nodeOpacity(e.b));
-      ctx.strokeStyle = `rgba(176,124,255,${0.05 + op * 0.45})`;
-      ctx.lineWidth = 0.7 / graphState.scale;
+      ctx.strokeStyle = `rgba(176,124,255,${0.22 + op * 0.50})`;
       ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
     }
     ctx.setLineDash([]);
