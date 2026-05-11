@@ -4579,16 +4579,26 @@ function drawGraph() {
     ctx.setLineDash([]);
   }
   // Path-edges pass: walked AFTER regular edges so they sit on top of
-  // everything. Three concentric strokes: a soft outer glow, then a
+  // everything. Three concentric strokes — soft outer glow, then a
   // thick white halo for separation against the dense edge field, then
   // the bright amber core. All widths are kept constant in screen
   // space (divide by scale), with an extra bump when zoomed-out so the
   // path stays unmistakable even at small thumbnails of the graph.
-  if (path.size) {
+  //
+  // Important: we iterate the ordered path-node list, not edgesText /
+  // edgesImage. The BFS in findPathBFS walks `neighborsById`, which
+  // contains edges (asymmetric similar_text/similar_image relationships)
+  // that never made it into edgesText. Drawing straight pairs from the
+  // path always matches what BFS produced.
+  if (graphState.path && graphState.path.length >= 2) {
     ctx.setLineDash([]);
     const prevCap = ctx.lineCap, prevJoin = ctx.lineJoin;
     ctx.lineCap = "round"; ctx.lineJoin = "round";
-    const allEdges = (graphState.edgesText || []).concat(graphState.edgesImage || []);
+    const segs = [];
+    for (let i = 0; i < graphState.path.length - 1; i++) {
+      const a = graphState.path[i], b = graphState.path[i + 1];
+      if (a && b) segs.push([a, b]);
+    }
     // When zoomed out (scale < 1), bump screen widths so the path
     // stays visible against the noisy edge field at low zooms.
     const zoomBump = Math.max(1, 1 / Math.sqrt(Math.max(0.15, graphState.scale)));
@@ -4598,23 +4608,20 @@ function drawGraph() {
     // Outer glow — soft amber bloom
     ctx.strokeStyle = "rgba(255,211,77,0.28)";
     ctx.lineWidth = glowPx / graphState.scale;
-    for (const e of allEdges) {
-      if (!path.has(pathKey(e.a, e.b))) continue;
-      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    for (const [a, b] of segs) {
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     }
     // White halo
     ctx.strokeStyle = "rgba(255,255,255,0.92)";
     ctx.lineWidth = haloPx / graphState.scale;
-    for (const e of allEdges) {
-      if (!path.has(pathKey(e.a, e.b))) continue;
-      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    for (const [a, b] of segs) {
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     }
     // Amber core
     ctx.strokeStyle = "#ffd34d";
     ctx.lineWidth = corePx / graphState.scale;
-    for (const e of allEdges) {
-      if (!path.has(pathKey(e.a, e.b))) continue;
-      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    for (const [a, b] of segs) {
+      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
     }
     ctx.lineCap = prevCap; ctx.lineJoin = prevJoin;
   }
