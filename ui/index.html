@@ -751,6 +751,20 @@
     overflow-y: auto; padding: 56px 18px 24px;
     color: var(--fg); font-size: 13px;
   }
+  /* Small reopen tab on the right edge — shown when the panel is hidden
+     so the user always has a way back without having to remember that
+     "click any node" reopens it. */
+  .gp-reopen {
+    position: absolute; right: 0; top: 50%; transform: translateY(-50%);
+    background: rgba(8,12,20,0.96); border: 1px solid var(--border);
+    border-right: none; border-radius: 6px 0 0 6px;
+    padding: 16px 6px; color: var(--fg-dim); cursor: pointer;
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.18em;
+    writing-mode: vertical-rl; text-orientation: mixed;
+    z-index: 11; text-transform: uppercase;
+  }
+  .gp-reopen:hover { color: var(--accent); border-color: var(--accent); }
+  .gp-reopen[hidden] { display: none; }
   .graph-panel .gp-close {
     position: absolute; top: 14px; right: 14px;
     background: var(--bg3); border: 1px solid var(--border); color: var(--fg);
@@ -2538,6 +2552,7 @@
   </div>
 
   <!-- right side panel (selection) -->
+  <button class="gp-reopen" id="gp-reopen" type="button" hidden title="Show panel">▶ panel</button>
   <aside class="graph-panel" id="graph-panel" hidden>
     <button class="gp-close" id="gp-close" type="button">✕ close</button>
     <h3 id="gp-title">—</h3>
@@ -4902,7 +4917,10 @@ function selectNode(id, fromUrl) {
   const n = graphState.nodeById.get(id);
   if (!n) return;
   graphState.selected = n;
+  graphState.lastSelectedId = id;
   populatePanel(n);
+  const reopenTab = document.getElementById("gp-reopen");
+  if (reopenTab) reopenTab.hidden = true;
   if (!fromUrl) {
     // Animate pan/zoom to center on the node.
     const c = $("#graph-canvas").getBoundingClientRect();
@@ -4997,9 +5015,30 @@ function bindPanelControls() {
   $("#gp-close").addEventListener("click", () => {
     graphState.selected = null;
     $("#graph-panel").hidden = true;
+    // Expose the reopen tab so the user has a clear way to bring the
+    // panel back without having to remember that any node click does it.
+    const reopen = document.getElementById("gp-reopen");
+    if (reopen) reopen.hidden = false;
     drawGraph();
     syncUrl();
   });
+  const reopenBtn = document.getElementById("gp-reopen");
+  if (reopenBtn) {
+    reopenBtn.addEventListener("click", () => {
+      // Prefer the last-selected node. Fall back to the highest-degree
+      // visible node so the panel always has something useful to show.
+      let id = graphState.lastSelectedId;
+      if (!id || !graphState.nodeById.has(id)) {
+        let best = null, bestDeg = -1;
+        for (const n of (graphState.nodes || [])) {
+          const d = graphState.degreeById.get(n.id) || 0;
+          if (d > bestDeg) { bestDeg = d; best = n; }
+        }
+        if (best) id = best.id;
+      }
+      if (id) selectNode(id, false);
+    });
+  }
 }
 
 // ─────────────────────────────────────────────────────────────────────
