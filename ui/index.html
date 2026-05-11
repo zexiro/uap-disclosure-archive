@@ -2138,6 +2138,10 @@
     cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 4px;
   }
   #collab-panel-close:hover { color: #cbd5e1; }
+  #collab-privacy-notice {
+    padding: 8px 14px; background: #1c1408; border-bottom: 1px solid #3a2a10;
+    color: #f0c987; font-size: 11px; line-height: 1.45;
+  }
   #collab-presence {
     padding: 8px 14px; border-bottom: 1px solid #1f2937;
     font-size: 11px; color: #7c8aa1; line-height: 1.7;
@@ -8862,10 +8866,13 @@ init();
       <span>Live Collaboration</span>
       <button id="collab-panel-close">×</button>
     </div>
+    <div id="collab-privacy-notice">
+      Public channel — don't share personal info (email, phone, address, payment details). Detected patterns are auto-redacted before broadcast.
+    </div>
     <div id="collab-presence"><em>Connecting…</em></div>
     <div id="collab-messages"></div>
     <div id="collab-input-row">
-      <input id="collab-input" placeholder="Say something…" maxlength="500" />
+      <input id="collab-input" placeholder="Say something… (no personal info)" maxlength="500" />
       <button id="collab-send">Send</button>
     </div>
   `;

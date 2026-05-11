@@ -1382,6 +1382,37 @@ async def serve_ui(request: Request):
 
 # ─── Collab WebSocket hub ─────────────────────────────────────────────
 # Ephemeral process-memory state. Drops on restart. Single-worker only.
+
+# PII redaction patterns applied to chat messages before broadcast. The chat
+# is anonymous and ephemeral, but a user who accidentally types their email
+# / phone / SSN / card number broadcasts it to every other connected session
+# — so we scrub before fan-out. Sender sees the redacted version echo back,
+# which doubles as a UX signal that filtering ran.
+_PII_PATTERNS = [
+    # Email addresses.
+    (re.compile(r"\b[A-Za-z0-9._%+\-]+@[A-Za-z0-9.\-]+\.[A-Za-z]{2,}\b"), "[redacted email]"),
+    # US SSN: 3-2-4 dashed. Loose match — false positives are tolerable.
+    (re.compile(r"\b\d{3}-\d{2}-\d{4}\b"), "[redacted ssn]"),
+    # IPv4 addresses. Must run before the phone pattern, which would otherwise
+    # eat dotted-quad sequences as a long digit run.
+    (re.compile(r"\b(?:\d{1,3}\.){3}\d{1,3}\b"), "[redacted ip]"),
+    # 13–19 digit runs with optional spaces or dashes (catches card numbers
+    # in common formats). Anchored on digit/word boundaries so the trailing
+    # separator before the next word is not consumed.
+    (re.compile(r"\b\d(?:[ -]?\d){12,18}\b"), "[redacted card]"),
+    # Phone numbers: optional leading paren and +country code, 10+ digits in
+    # the run, allowing spaces / dashes / parens between. Conservative lower
+    # bound to skip case-number-style sequences that show up in the archive.
+    (re.compile(r"(?<!\w)\(?\+?\d[\d \-().]{9,}\d(?!\w)"), "[redacted phone]"),
+]
+
+
+def redact_pii(text: str) -> str:
+    for pat, replacement in _PII_PATTERNS:
+        text = pat.sub(replacement, text)
+    return text
+
+
 class CollabHub:
     def __init__(self):
         self._sessions: dict[str, WebSocket] = {}
@@ -1439,7 +1470,7 @@ class CollabHub:
         kind = msg.get("type")
         ts = datetime.now(timezone.utc).isoformat()
         if kind == "chat":
-            text = (msg.get("text") or "")[:500]
+            text = redact_pii((msg.get("text") or "")[:500])
             await self._broadcast({"type": "chat", "from": session_id, "text": text, "ts": ts})
         elif kind == "share":
             share_kind = msg.get("kind", "")
