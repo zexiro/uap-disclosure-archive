@@ -2499,7 +2499,14 @@
   /* Smooth grid-column transition when toggling */
   main { transition: grid-template-columns 0.18s ease; }
   body.results-collapsed main { grid-template-columns: 0 1fr; }
-  body.results-collapsed #results { display: none; }
+  /* Use visibility: hidden + width:0 instead of display:none so the
+     results aside stays in the grid as the first item. Otherwise the
+     grid auto-flows the lone remaining #detail into column 1 (0px)
+     and the content collapses to a thin sliver. */
+  body.results-collapsed #results {
+    visibility: hidden; width: 0; padding: 0; overflow: hidden;
+  }
+  body.results-collapsed #detail { grid-column: 2; }
 
   /* Toggle button: small chevron tab on the right edge of #results.
      Sits inside the results panel border at the seam. */
