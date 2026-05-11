@@ -15,7 +15,9 @@ FROM python:3.11-slim-bookworm
 #                  scripts/extract_pdf_images.py)
 # ocrmypdf      → optional OCR for scanned PDFs; pulls in tesseract +
 #                  ghostscript as transitive deps so we get the full chain
-# build-essential + libomp1 → required to install/load faiss-cpu wheels
+# build-essential + libgomp1 → required to install/load faiss-cpu wheels
+#                  (libgomp1 = GCC OpenMP runtime; libomp1 is the LLVM
+#                   variant and isn't in Debian's main repos)
 # curl          → handy for healthcheck debugging from inside the container
 # tini          → minimal init so PID 1 reaps zombies and signals propagate
 RUN apt-get update \
@@ -26,7 +28,7 @@ RUN apt-get update \
         tesseract-ocr-eng \
         ghostscript \
         build-essential \
-        libomp1 \
+        libgomp1 \
         curl \
         tini \
         ca-certificates \
