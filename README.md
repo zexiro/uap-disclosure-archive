@@ -92,15 +92,16 @@ re-deploys are fast and don't lose data.
 - [x] Visual similarity links (perceptual hash on thumbnails + photos)
 - [x] Obsidian vault with cross-linked notes (open in graph view)
 - [x] Single-page search UI with media-type chips, filters, URL state, keyboard nav
-- [ ] **Map + timeline view of incident locations** *(in progress — see [Disclosure Globe](#disclosure-globe-vision) below)*
 - [x] **Multi-source aggregation** (NUFORC + Project Blue Book civilian/historical sources, with provenance tagging and geo+temporal correlations against the official archive)
 - [x] **Hourly war.gov change-watcher** (HEAD/GET sweep, hash-based diff, OCR-text drift flag, fires early refresh on detected changes)
-- [ ] Semantic embeddings (CLIP for images, SBERT for text)
-- [ ] Named-entity extraction (people, codenames, redacted-name fingerprints)
-- [ ] Cross-reference graph from in-PDF case-number citations
-- [ ] RAG / "Ask the archive" with citations
-- [ ] User-submitted corrections + annotations
-- [ ] **Live collaborative analysis surface** — anonymous per-session presence, common chat channel, ability to tag and share files / pages / photos / filter URLs in the chat, follow-mode that mirrors another visitor's view (so groups can investigate together in real time). Privacy: free-text inputs (search box, ask widget) are scrubbed from broadcast to avoid leaks.
+- [x] **ASGI server** (uvicorn + starlette) — async file serving + non-blocking SSE streaming, replaces ThreadingHTTPServer
+- [x] **Semantic embeddings** — text via BAAI/bge-small-en-v1.5 (`ui/embeddings.npz`), images via CLIP-ViT-B-32 (`ui/image_embeddings.npz`), both ONNX/fastembed
+- [x] **Named-entity extraction** — auto-extracted via spaCy en_core_web_sm: PERSON / ORG / GPE / DATE / LAW / EVENT / CODENAME plus redacted-name length-class fingerprints (`ui/entities.json`); the curated `ui/entity-gazetteer.json` remains the high-quality canonical list
+- [x] **Cross-reference graph** — TF-IDF + pHash similarity (`raw/links.json`), plus auto-extracted in-PDF case-number citations as an explicit edge graph (`ui/citations.json`)
+- [x] **RAG / "Ask the archive" with citations** — `/api/ask` SSE-streamed, hybrid dense+lexical retrieval, server-side citation enforcement
+- [x] **Map + timeline views** — Leaflet basemap with marker-clustered incidents, vis-timeline scrubber over corpus + 16 milestones, both provenance-aware (civilian records visually distinct at layout level)
+- [x] **User-submitted corrections + annotations** — `POST /api/corrections` with field allowlist, hashed-IP rate limit, append-only JSONL store at `vault/corrections/`; UI affordance in detail panel
+- [ ] **Live collaborative analysis surface** *(in progress)* — anonymous per-session presence, common chat channel, ability to tag and share files / pages / photos / filter URLs in the chat, follow-mode that mirrors another visitor's view (so groups can investigate together in real time). Privacy: free-text inputs (search box, ask widget) are scrubbed from broadcast to avoid leaks.
 
 ## Disclosure Globe vision
 
