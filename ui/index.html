@@ -446,6 +446,39 @@
     .header-counts { display: none; }
   }
   body.header-collapsed header .header-counts { display: none !important; }
+  /* Proportional segmented bar for media-type filter. Each segment's
+     flex-grow is set from its count, so segment width reflects its share
+     of the corpus — relationships are visible at a glance instead of
+     left to mental arithmetic. */
+  .type-bar {
+    display: flex; flex: 1; min-width: 0;
+    height: 28px; border: 1px solid var(--border); border-radius: 999px;
+    overflow: hidden; background: rgba(10,13,18,0.6);
+  }
+  .type-seg {
+    background: none; border: 0; color: var(--fg-dim);
+    padding: 0 12px; font-size: 12px; line-height: 1; cursor: pointer;
+    display: flex; align-items: center; justify-content: center; gap: 8px;
+    min-width: 0; overflow: hidden; white-space: nowrap;
+    border-right: 1px solid rgba(31,41,55,0.7);
+    transition: background 0.15s, color 0.15s;
+    flex-grow: 1; flex-basis: 0;
+  }
+  .type-seg:last-child { border-right: 0; }
+  .type-seg:hover { background: rgba(87,199,255,0.08); color: var(--fg); }
+  .type-seg.active {
+    background: rgba(87,199,255,0.18); color: var(--accent); font-weight: 600;
+  }
+  .type-seg .seg-label { overflow: hidden; text-overflow: ellipsis; }
+  .type-seg .seg-count {
+    font-family: var(--mono); color: var(--fg); font-size: 11px;
+    opacity: 0.85; flex-shrink: 0;
+  }
+  .type-seg.active .seg-count { color: var(--accent); opacity: 1; }
+  /* When a segment gets too narrow, hide the text label and keep only the
+     count so the bar still reflects proportional widths. */
+  @container type-bar (max-width: 0) { }
+  .type-seg.narrow .seg-label { display: none; }
   .links a.bmc-inline {
     background: var(--accent2); color: #1a1410; border-color: var(--accent2); font-weight: 700;
   }
@@ -2437,11 +2470,25 @@
     <button id="f-clear">Clear</button>
   </div>
   <div class="chips header-chips" id="type-chips" style="width:100%;margin-top:6px">
-    <span class="chip active" data-type="" title="Every record in the corpus"><span>All</span><span class="count" id="cn-all"></span></span>
-    <span class="chip" data-type="Case File" title="Text-only records (mostly war.gov UAP filings) with no downloaded media artifact"><span>Case files</span><span class="count" id="cn-case"></span></span>
-    <span class="chip" data-type="PDF" title="Records whose primary medium is a PDF document">📄 <span>PDFs</span><span class="count" id="cn-pdf"></span></span>
-    <span class="chip" data-type="VID" title="Records whose primary medium is a video file">🎞 <span>Videos</span><span class="count" id="cn-vid"></span></span>
-    <span class="chip" data-type="IMG" title="Records whose primary medium is a standalone image">🖼 <span>Image files</span><span class="count" id="cn-img"></span></span>
+    <span class="chip active" data-type="" title="Every record in the corpus — click to reset the media-type filter"><span>All</span><span class="count" id="cn-all"></span></span>
+    <div class="type-bar" role="group" aria-label="Filter by media type — segment widths show share of corpus">
+      <button class="type-seg" type="button" data-type="Case File" title="Text-only records (mostly war.gov UAP filings) with no downloaded media artifact">
+        <span class="seg-label">Case files</span>
+        <span class="seg-count" id="cn-case">—</span>
+      </button>
+      <button class="type-seg" type="button" data-type="IMG" title="Records whose primary medium is a standalone image">
+        <span class="seg-label">🖼 Image files</span>
+        <span class="seg-count" id="cn-img">—</span>
+      </button>
+      <button class="type-seg" type="button" data-type="PDF" title="Records whose primary medium is a PDF document">
+        <span class="seg-label">📄 PDFs</span>
+        <span class="seg-count" id="cn-pdf">—</span>
+      </button>
+      <button class="type-seg" type="button" data-type="VID" title="Records whose primary medium is a video file">
+        <span class="seg-label">🎞 Videos</span>
+        <span class="seg-count" id="cn-vid">—</span>
+      </button>
+    </div>
   </div>
   <div class="chips facets-row header-chips" id="facet-chips">
     <span class="facet-label" title="Compound flags — these combine with the media-type row above">FACETS</span>
@@ -3778,7 +3825,7 @@ function loadUrl() {
 }
 function setTypeFilter(t) {
   activeTypeFilter = t;
-  document.querySelectorAll("#type-chips .chip").forEach(c => {
+  document.querySelectorAll("#type-chips .chip, #type-chips .type-seg").forEach(c => {
     c.classList.toggle("active", (c.dataset.type || "") === activeTypeFilter);
   });
   search();
@@ -6542,7 +6589,7 @@ async function init() {
     incidentSel.appendChild(o);
   });
 
-  // Type-chip counts
+  // Type-chip counts + proportional segment widths
   const counts = { "": docs.length, "Case File": 0, PDF: 0, VID: 0, IMG: 0 };
   docs.forEach(d => { const k = (d.type || "").replace(/\s+$/, ""); if (counts[k] != null) counts[k]++; });
   $("#cn-all").textContent = counts[""];
@@ -6550,7 +6597,21 @@ async function init() {
   $("#cn-pdf").textContent = counts.PDF;
   $("#cn-vid").textContent = counts.VID;
   $("#cn-img").textContent = counts.IMG;
-  document.querySelectorAll("#type-chips .chip").forEach(c => {
+  // Drive segment widths from counts so the bar's visual proportions match
+  // the data. flex-grow of N gives a slice proportional to N within the
+  // remaining space.
+  document.querySelectorAll(".type-seg").forEach(seg => {
+    const t = seg.dataset.type;
+    const n = counts[t] || 0;
+    seg.style.flexGrow = String(n);
+    // Floor for visibility: segments below ~5% would otherwise vanish.
+    if (counts[""] > 0 && n / counts[""] < 0.05) {
+      seg.classList.add("narrow");
+    } else {
+      seg.classList.remove("narrow");
+    }
+  });
+  document.querySelectorAll("#type-chips .chip, #type-chips .type-seg").forEach(c => {
     c.addEventListener("click", () => setTypeFilter(c.dataset.type || ""));
   });
 
@@ -6604,8 +6665,8 @@ async function init() {
   }
 
   loadUrl();
-  // Reflect URL-loaded type filter on chips
-  document.querySelectorAll("#type-chips .chip").forEach(c => {
+  // Reflect URL-loaded type filter on chips + bar segments
+  document.querySelectorAll("#type-chips .chip, #type-chips .type-seg").forEach(c => {
     c.classList.toggle("active", (c.dataset.type || "") === activeTypeFilter);
   });
   document.querySelectorAll("#facet-chips .chip[data-facet]").forEach(c => {
@@ -9686,7 +9747,11 @@ init();
   let TOPIC_BY_RECORD = {};
   let activeTopics = new Set();   // set of topic ids (integers) currently filtered
 
-  // Patch applyFilters to additionally gate on activeTopics
+  // Patch applyFilters to additionally gate on activeTopics. The synthetic
+  // topic id -1 means "no topic" — that covers both BERTopic's noise cluster
+  // AND records that were never fed into the topic model. Either way, no
+  // topic_id was assigned, so a record passes the -1 filter if its id has
+  // no entry in TOPIC_BY_RECORD or maps to -1.
   const _origApplyFilters = applyFilters;
   applyFilters = function (matches) {
     let result = _origApplyFilters(matches);
@@ -9694,7 +9759,8 @@ init();
       result = result.filter(m => {
         const d = m.doc || m;
         const tid = TOPIC_BY_RECORD[d.id];
-        return tid !== undefined && activeTopics.has(tid);
+        if (tid !== undefined) return activeTopics.has(tid);
+        return activeTopics.has(-1);
       });
     }
     return result;
@@ -9727,27 +9793,87 @@ init();
     const container = document.getElementById("topic-chips");
     if (!container) return;
 
-    for (const topic of topics) {
-      const isNoise = topic.id === -1;
+    const modelledCount = Object.keys(TOPIC_BY_RECORD).length;
+    const noise = topics.find(t => t.id === -1);
+    const labelled = topics.filter(t => t.id !== -1);
+
+    // The corpus total may not be in the DOM yet (search-index still loading).
+    // We use whatever the All-chip shows now, render the chip, and then keep
+    // it in sync via a MutationObserver in case the count comes in later.
+    function getCorpusTotal() {
+      const fromDom = parseInt(document.getElementById("cn-all")?.textContent, 10);
+      return Number.isFinite(fromDom) && fromDom > 0 ? fromDom : modelledCount;
+    }
+    function computeUncategorisedTotal() {
+      const corpus = getCorpusTotal();
+      const unmodelled = Math.max(0, corpus - modelledCount);
+      return (noise ? noise.size : 0) + unmodelled;
+    }
+    const uncategorisedTotal = computeUncategorisedTotal();
+
+    function makeChip(opts) {
       const chip = document.createElement("span");
       chip.className = "chip small";
-      chip.dataset.topic = isNoise ? "noise" : String(topic.id);
-      const displayLabel = isNoise ? "uncategorised" : topic.label;
-      const title = isNoise ? "Records not assigned to any topic" :
-        "Keywords: " + topic.keywords.slice(0, 6).join(", ");
-      chip.title = title;
-      chip.innerHTML = `<span>${displayLabel}</span><span class="count">${topic.size}</span>`;
+      chip.dataset.topic = opts.topicKey;
+      chip.title = opts.title;
+      chip.innerHTML = `<span>${opts.label}</span><span class="count">${opts.size}</span>`;
       chip.addEventListener("click", () => {
-        const tid = isNoise ? -1 : topic.id;
+        const tid = opts.tid;
         if (activeTopics.has(tid)) activeTopics.delete(tid);
         else activeTopics.add(tid);
         chip.classList.toggle("active", activeTopics.has(tid));
-        // Trigger search refresh via the global onChange if available,
-        // otherwise dispatch input event on #q.
         if (typeof onChange === "function") onChange();
         else document.getElementById("q")?.dispatchEvent(new Event("input"));
       });
       container.appendChild(chip);
+    }
+
+    for (const topic of labelled) {
+      makeChip({
+        topicKey: String(topic.id),
+        tid: topic.id,
+        label: topic.label,
+        size: topic.size,
+        title: "Keywords: " + topic.keywords.slice(0, 6).join(", "),
+      });
+    }
+    // Always render the uncategorised chip so the tail isn't invisible —
+    // even if the corpus total isn't loaded yet, we want a stable slot in
+    // the DOM that we can patch when the count settles.
+    const unmodelledNow = Math.max(0, getCorpusTotal() - modelledCount);
+    const initialTitle = unmodelledNow && noise
+      ? `Records with no topic assignment: ${noise.size} BERTopic-noise + ${unmodelledNow} not modelled`
+      : unmodelledNow
+      ? `${unmodelledNow} records that the topic model didn't cover`
+      : noise
+      ? `${noise.size} records the topic model couldn't cluster`
+      : "Records with no topic assignment";
+    makeChip({
+      topicKey: "noise",
+      tid: -1,
+      label: "uncategorised",
+      size: uncategorisedTotal,
+      title: initialTitle,
+    });
+    const uncatChip = container.querySelector('.chip[data-topic="noise"]');
+    const uncatCount = uncatChip ? uncatChip.querySelector(".count") : null;
+    // Re-sync if the All-chip count is populated/changed after we rendered.
+    const allEl = document.getElementById("cn-all");
+    if (allEl && uncatCount && window.MutationObserver) {
+      new MutationObserver(() => {
+        const next = computeUncategorisedTotal();
+        if (String(next) !== uncatCount.textContent) {
+          uncatCount.textContent = String(next);
+          const unmod = Math.max(0, getCorpusTotal() - modelledCount);
+          uncatChip.title = unmod && noise
+            ? `Records with no topic assignment: ${noise.size} BERTopic-noise + ${unmod} not modelled`
+            : unmod
+            ? `${unmod} records that the topic model didn't cover`
+            : noise
+            ? `${noise.size} records the topic model couldn't cluster`
+            : "Records with no topic assignment";
+        }
+      }).observe(allEl, { childList: true, characterData: true, subtree: true });
     }
 
     if (container.querySelector(".chip[data-topic]")) container.hidden = false;
