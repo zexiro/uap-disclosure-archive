@@ -43,6 +43,7 @@ python3 scripts/build_search_index.py
 # ANTHROPIC_API_KEY — the UI falls back to keyword-only matching.
 python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_image_embeddings.py || true  # CLIP visual embeddings for IMG records
+python3 scripts/build_topics.py || true            # BERTopic auto-discovered themes → ui/topics.json
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 
