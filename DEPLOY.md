@@ -2,11 +2,16 @@
 
 ## Live deployment
 
-- **URL:** https://uap-mirror-production.up.railway.app
+- **URL:** https://uapdisclosuremirror.com — the custom domain. The
+  Railway-assigned `uap-mirror-production.up.railway.app` subdomain has
+  been retired; probing it returns Railway's edge fallback 404.
 - **Railway project:** [`uap-disclosure-archive`](https://railway.com/project/77a51944-0f75-4cad-bfd7-56bad406a8eb)
 - **Service:** `uap-mirror` (single service, single container)
 - **Volume:** `/app/raw` — persistent, holds the 5.6 GB of bulk media
 - **Region:** europe-west4-drams3a
+- **Builder:** Dockerfile (see `Dockerfile` at repo root). Switched from
+  RAILPACK on 2026-05-11 so UI-only commits skip the slow pip install
+  step and rebuild in ~30s instead of 3-4 minutes (pip layer cached).
 
 ## How deploys actually work
 
