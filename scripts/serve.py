@@ -1032,5 +1032,185 @@ def main():
     httpd.serve_forever()
 
 
+# ─── Collab WebSocket hub ─────────────────────────────────────────────
+# All state is in process memory; no persistence.  Everything drops on restart.
+
+import asyncio
+from datetime import datetime, timezone
+
+class CollabHub:
+    """Ephemeral session registry + broadcast bus for /ws/collab."""
+
+    def __init__(self):
+        self._sessions: dict = {}           # session_id -> WebSocket
+        self._ip_sessions: dict = {}        # ip -> set[session_id]
+        # Per-session message timestamps for rate limiting (max 30/min).
+        self._msg_ts: dict = {}             # session_id -> deque[float]
+        self._lock = asyncio.Lock()
+
+    async def connect(self, ws, session_id: str, ip: str):
+        async with self._lock:
+            # Per-IP connection cap: 3
+            sessions_for_ip = self._ip_sessions.setdefault(ip, set())
+            if len(sessions_for_ip) >= 3:
+                await ws.close(code=1008, reason="too many connections from this IP")
+                return False
+            self._sessions[session_id] = ws
+            sessions_for_ip.add(session_id)
+            self._msg_ts[session_id] = deque()
+        await self._broadcast({
+            "type": "presence",
+            "online": list(self._sessions.keys()),
+            "joined": session_id,
+        })
+        return True
+
+    async def disconnect(self, session_id: str, ip: str):
+        async with self._lock:
+            self._sessions.pop(session_id, None)
+            self._msg_ts.pop(session_id, None)
+            sessions_for_ip = self._ip_sessions.get(ip, set())
+            sessions_for_ip.discard(session_id)
+            if not sessions_for_ip:
+                self._ip_sessions.pop(ip, None)
+        await self._broadcast({
+            "type": "presence",
+            "online": list(self._sessions.keys()),
+            "left": session_id,
+        })
+
+    async def handle_message(self, session_id: str, raw: str):
+        """Validate, scrub, route a client message.  Returns error dict or None."""
+        try:
+            msg = json.loads(raw)
+        except Exception:
+            return None  # silently drop malformed
+
+        # Rate limit: 30 messages / 60 seconds per session
+        now = time.time()
+        cutoff = now - 60
+        q = self._msg_ts.get(session_id)
+        if q is None:
+            return None
+        while q and q[0] < cutoff:
+            q.popleft()
+        if len(q) >= 30:
+            retry = int(q[0] + 60 - now) + 1
+            return {"type": "error", "code": "rate", "retry_after_s": retry}
+        q.append(now)
+
+        kind = msg.get("type")
+        ts = datetime.now(timezone.utc).isoformat()
+
+        if kind == "chat":
+            text = (msg.get("text") or "")[:500]  # truncate to 500 chars
+            await self._broadcast({"type": "chat", "from": session_id, "text": text, "ts": ts})
+
+        elif kind == "share":
+            share_kind = msg.get("kind", "")
+            # Reject privacy-sensitive kinds
+            if share_kind in ("search-query", "ask-query"):
+                print(f"[collab] dropped share kind={share_kind!r} from {session_id}", file=sys.stderr)
+                return None
+            payload = msg.get("payload") or {}
+            await self._broadcast({
+                "type": "share",
+                "from": session_id,
+                "kind": share_kind,
+                "payload": payload,
+                "ts": ts,
+            })
+
+        elif kind == "follow":
+            target = msg.get("target", "")
+            await self._broadcast({
+                "type": "follow",
+                "follower": session_id,
+                "target": target,
+                "ts": ts,
+            })
+
+        elif kind == "unfollow":
+            await self._broadcast({
+                "type": "follow",
+                "follower": session_id,
+                "target": None,
+                "ts": ts,
+            })
+
+        return None  # no error
+
+    async def _broadcast(self, payload: dict):
+        data = json.dumps(payload, ensure_ascii=False)
+        dead = []
+        for sid, ws in list(self._sessions.items()):
+            try:
+                await ws.send_text(data)
+            except Exception:
+                dead.append(sid)
+        # Prune dead connections (best-effort, no lock needed here)
+        for sid in dead:
+            self._sessions.pop(sid, None)
+
+
+_HUB = CollabHub()
+
+
+async def ws_collab(ws):
+    """Starlette WebSocket endpoint for /ws/collab."""
+    from starlette.websockets import WebSocketState
+    session_id = ws.query_params.get("session", "") or "anon"
+    # Sanitise session_id: alphanumeric + dash only, max 36 chars
+    session_id = re.sub(r"[^a-zA-Z0-9\-]", "", session_id)[:36] or "anon"
+    # Best-effort client IP from headers
+    ip = (
+        (ws.headers.get("x-forwarded-for") or "").split(",")[0].strip()
+        or ws.client.host
+        or "unknown"
+    )
+
+    await ws.accept()
+    connected = await _HUB.connect(ws, session_id, ip)
+    if not connected:
+        return
+
+    try:
+        while True:
+            try:
+                data = await ws.receive_text()
+            except Exception:
+                break
+            err = await _HUB.handle_message(session_id, data)
+            if err:
+                try:
+                    await ws.send_text(json.dumps(err))
+                except Exception:
+                    pass
+    finally:
+        await _HUB.disconnect(session_id, ip)
+
+
+# ─── Starlette ASGI app (used when launched via uvicorn) ─────────────
+# The existing ThreadingHTTPServer main() still works for plain HTTP.
+# When deployed under uvicorn, this `app` object is the entry point and
+# handles WebSocket upgrade for /ws/collab; all other paths fall through
+# to the WSGI bridge wrapping the existing Handler class.
+try:
+    from starlette.applications import Starlette
+    from starlette.routing import Route as StarletteRoute, WebSocketRoute, Mount
+    from starlette.staticfiles import StaticFiles
+    from starlette.middleware import Middleware
+
+    routes = [
+        WebSocketRoute("/ws/collab", endpoint=ws_collab),
+        # Serve the repo root as static files for all other paths.
+        Mount("/", app=StaticFiles(directory=str(ROOT), html=True)),
+    ]
+    app = Starlette(routes=routes)
+except ImportError as _e:
+    app = None
+    print(f"[collab] Starlette not available; /ws/collab disabled: {_e}", file=sys.stderr)
+
+
 if __name__ == "__main__":
     main()

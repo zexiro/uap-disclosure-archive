@@ -1863,6 +1863,98 @@
     font-style: italic; line-height: 1.5;
   }
 </style>
+<!-- ═══ COLLAB STYLES (stream-g) ════════════════════════════════════ -->
+<style>
+  /* Presence pill — top-right corner */
+  #collab-pill {
+    position: fixed; top: 10px; right: 14px; z-index: 9000;
+    display: flex; align-items: center; gap: 6px;
+    padding: 5px 12px; border-radius: 999px;
+    background: #11151c; border: 1px solid #1f2937;
+    color: #cbd5e1; font-size: 12px; cursor: pointer;
+    user-select: none; transition: border-color 0.15s;
+  }
+  #collab-pill:hover { border-color: #57c7ff; }
+  #collab-pill .dot { color: #4ade80; font-size: 10px; }
+  #collab-pill .dot.offline { color: #6b7280; }
+
+  /* Side panel */
+  #collab-panel {
+    position: fixed; top: 0; right: 0; bottom: 0; z-index: 8999;
+    width: 320px; background: #11151c; border-left: 1px solid #1f2937;
+    display: flex; flex-direction: column;
+    transform: translateX(100%); transition: transform 0.2s ease;
+    font-size: 13px; color: #cbd5e1;
+  }
+  #collab-panel.open { transform: translateX(0); }
+  #collab-panel-header {
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 12px 14px; border-bottom: 1px solid #1f2937;
+    font-weight: 600; font-size: 13px;
+  }
+  #collab-panel-close {
+    background: none; border: none; color: #7c8aa1;
+    cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 4px;
+  }
+  #collab-panel-close:hover { color: #cbd5e1; }
+  #collab-presence {
+    padding: 8px 14px; border-bottom: 1px solid #1f2937;
+    font-size: 11px; color: #7c8aa1; line-height: 1.7;
+  }
+  #collab-presence .handle { color: #cbd5e1; font-family: monospace; }
+  #collab-messages {
+    flex: 1; overflow-y: auto; padding: 10px 14px;
+    display: flex; flex-direction: column; gap: 6px;
+  }
+  .collab-msg {
+    background: #161b24; border: 1px solid #1f2937; border-radius: 6px;
+    padding: 6px 10px; font-size: 12px; line-height: 1.4;
+  }
+  .collab-msg .collab-from { color: #57c7ff; font-family: monospace; font-size: 11px; }
+  .collab-msg .collab-share-link {
+    color: #57c7ff; cursor: pointer; text-decoration: underline dotted;
+    background: none; border: none; padding: 0; font-size: 12px;
+  }
+  #collab-input-row {
+    display: flex; gap: 6px; padding: 10px 14px; border-top: 1px solid #1f2937;
+  }
+  #collab-input {
+    flex: 1; background: #161b24; border: 1px solid #1f2937; color: #cbd5e1;
+    border-radius: 6px; padding: 6px 10px; font-size: 12px; outline: none;
+  }
+  #collab-input:focus { border-color: #57c7ff; }
+  #collab-send {
+    background: #1a2533; border: 1px solid #57c7ff; color: #57c7ff;
+    border-radius: 6px; padding: 6px 12px; cursor: pointer; font-size: 12px;
+  }
+  #collab-send:hover { background: #57c7ff; color: #0b0e14; }
+
+  /* Toast notification */
+  #collab-toast-container {
+    position: fixed; bottom: 20px; right: 14px; z-index: 9100;
+    display: flex; flex-direction: column-reverse; gap: 8px;
+    pointer-events: none;
+  }
+  .collab-toast {
+    background: #11151c; border: 1px solid #57c7ff; color: #cbd5e1;
+    border-radius: 8px; padding: 10px 14px; font-size: 12px; max-width: 280px;
+    pointer-events: auto; cursor: pointer; animation: collab-fadein 0.2s ease;
+    line-height: 1.4;
+  }
+  .collab-toast .toast-from { color: #57c7ff; font-family: monospace; }
+  @keyframes collab-fadein {
+    from { opacity: 0; transform: translateY(8px); }
+    to   { opacity: 1; transform: translateY(0); }
+  }
+
+  /* Share button in detail panel */
+  .collab-share-btn {
+    background: #161b24; border: 1px solid #1f2937; color: #7c8aa1;
+    border-radius: 6px; padding: 5px 10px; font-size: 12px; cursor: pointer;
+    display: inline-flex; align-items: center; gap: 5px;
+  }
+  .collab-share-btn:hover { border-color: #57c7ff; color: #57c7ff; }
+</style>
 </head>
 <body>
 <header>
@@ -7582,6 +7674,292 @@ function pullTimelineStateToGlobeRange() {
 }
 
 init();
+
+// ═══════════════════════════════════════════════════════════════════════
+// COLLAB MODULE (stream-g) — presence, chat, share-link broadcast
+// All state is ephemeral; no auth; anonymous per-session handles.
+// ═══════════════════════════════════════════════════════════════════════
+(function() {
+  "use strict";
+
+  // ── Session identity ──────────────────────────────────────────────
+  const SESSION_KEY = "collab_session_id";
+  let sessionId = sessionStorage.getItem(SESSION_KEY);
+  if (!sessionId) {
+    sessionId = crypto.randomUUID().slice(0, 8);
+    sessionStorage.setItem(SESSION_KEY, sessionId);
+  }
+
+  // Anonymised display handle derived from session id
+  function handle(sid) {
+    return "guest-" + sid.slice(0, 4);
+  }
+  const MY_HANDLE = handle(sessionId);
+
+  // ── DOM scaffolding ───────────────────────────────────────────────
+  // Presence pill
+  const pill = document.createElement("div");
+  pill.id = "collab-pill";
+  pill.innerHTML = '<span class="dot offline">●</span> <span id="collab-count">0 online</span>';
+  document.body.appendChild(pill);
+
+  // Toast container
+  const toastContainer = document.createElement("div");
+  toastContainer.id = "collab-toast-container";
+  document.body.appendChild(toastContainer);
+
+  // Side panel
+  const panel = document.createElement("div");
+  panel.id = "collab-panel";
+  panel.innerHTML = `
+    <div id="collab-panel-header">
+      <span>Live Collaboration</span>
+      <button id="collab-panel-close">×</button>
+    </div>
+    <div id="collab-presence"><em>Connecting…</em></div>
+    <div id="collab-messages"></div>
+    <div id="collab-input-row">
+      <input id="collab-input" placeholder="Say something…" maxlength="500" />
+      <button id="collab-send">Send</button>
+    </div>
+  `;
+  document.body.appendChild(panel);
+
+  // ── Panel open/close ──────────────────────────────────────────────
+  pill.addEventListener("click", () => panel.classList.toggle("open"));
+  panel.querySelector("#collab-panel-close").addEventListener("click", () => {
+    panel.classList.remove("open");
+  });
+
+  // ── In-memory message log (max 50) ────────────────────────────────
+  const msgLog = [];
+  const MAX_MSGS = 50;
+
+  // ── WebSocket connection ──────────────────────────────────────────
+  let ws = null;
+  let online = [];
+  let reconnectTimer = null;
+
+  function wsUrl() {
+    const proto = location.protocol === "https:" ? "wss:" : "ws:";
+    return proto + "//" + location.host + "/ws/collab?session=" + encodeURIComponent(sessionId);
+  }
+
+  function updatePill() {
+    const dot = pill.querySelector(".dot");
+    const countEl = document.getElementById("collab-count");
+    if (ws && ws.readyState === WebSocket.OPEN) {
+      dot.classList.remove("offline");
+      countEl.textContent = online.length + " online";
+    } else {
+      dot.classList.add("offline");
+      countEl.textContent = "offline";
+    }
+  }
+
+  function updatePresenceList() {
+    const el = document.getElementById("collab-presence");
+    if (!online.length) { el.innerHTML = "<em>No one else online.</em>"; return; }
+    el.innerHTML = online.map(sid => {
+      const cls = sid === sessionId ? "handle" : "handle";
+      const suffix = sid === sessionId ? " (you)" : "";
+      return `<span class="${cls}">${handle(sid)}${suffix}</span>`;
+    }).join("  ");
+  }
+
+  function renderMessages() {
+    const el = document.getElementById("collab-messages");
+    el.innerHTML = "";
+    for (const m of msgLog) {
+      const div = document.createElement("div");
+      div.className = "collab-msg";
+      if (m.type === "chat") {
+        div.innerHTML = `<span class="collab-from">${handle(m.from)}</span> ${escHtml(m.text)}`;
+      } else if (m.type === "share") {
+        const label = m.kind === "record" ? "shared a record" :
+                      m.kind === "filter-url" ? "shared a filter" : "shared a page";
+        const btn = document.createElement("button");
+        btn.className = "collab-share-link";
+        btn.textContent = "→ open";
+        btn.addEventListener("click", () => handleShareClick(m));
+        div.innerHTML = `<span class="collab-from">${handle(m.from)}</span> ${label} `;
+        div.appendChild(btn);
+      } else {
+        div.textContent = JSON.stringify(m);
+      }
+      el.appendChild(div);
+    }
+    el.scrollTop = el.scrollHeight;
+  }
+
+  function pushMsg(m) {
+    msgLog.push(m);
+    if (msgLog.length > MAX_MSGS) msgLog.shift();
+    renderMessages();
+  }
+
+  function escHtml(s) {
+    return String(s)
+      .replace(/&/g, "&amp;").replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;").replace(/"/g, "&quot;");
+  }
+
+  // ── Toast ─────────────────────────────────────────────────────────
+  function showToast(msg) {
+    const toast = document.createElement("div");
+    toast.className = "collab-toast";
+    if (msg.type === "share" && msg.kind === "record") {
+      toast.innerHTML = `<span class="toast-from">${handle(msg.from)}</span> shared a record → <u>open</u>`;
+      toast.addEventListener("click", () => { handleShareClick(msg); toast.remove(); });
+    } else {
+      return;  // only toast record shares per spec
+    }
+    toastContainer.appendChild(toast);
+    setTimeout(() => toast.remove(), 7000);
+  }
+
+  // ── Share click handler ───────────────────────────────────────────
+  function handleShareClick(m) {
+    if (m.kind === "record" && m.payload && m.payload.id) {
+      // Try to open the record in the existing search UI
+      if (typeof openDetail === "function") {
+        // Search for the record in the loaded data
+        const idx = window._searchIndex || [];
+        const doc = idx.find(d => d.id === m.payload.id);
+        if (doc) { openDetail(doc); return; }
+      }
+      // Fallback: navigate via hash
+      const p = new URLSearchParams(location.hash.slice(1));
+      p.set("id", m.payload.id);
+      location.hash = p.toString();
+    } else if (m.kind === "filter-url" && m.payload && m.payload.url) {
+      location.href = m.payload.url;
+    }
+    panel.classList.add("open");
+  }
+
+  // ── Send chat ─────────────────────────────────────────────────────
+  function sendChat(text) {
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    ws.send(JSON.stringify({ type: "chat", text }));
+  }
+
+  panel.querySelector("#collab-send").addEventListener("click", () => {
+    const inp = panel.querySelector("#collab-input");
+    const text = (inp.value || "").trim();
+    if (!text) return;
+    sendChat(text);
+    inp.value = "";
+  });
+  panel.querySelector("#collab-input").addEventListener("keydown", (e) => {
+    if (e.key === "Enter") {
+      const inp = panel.querySelector("#collab-input");
+      const text = (inp.value || "").trim();
+      if (!text) return;
+      sendChat(text);
+      inp.value = "";
+      e.preventDefault();
+    }
+  });
+
+  // ── Inject Share button into detail panel ─────────────────────────
+  // We watch for the detail panel to populate and inject a share button.
+  function injectShareButton(recordId) {
+    const existing = document.getElementById("collab-detail-share-btn");
+    if (existing) existing.remove();
+    if (!recordId) return;
+    // Find the links bar in the detail panel
+    const links = document.querySelector("#detail .links");
+    if (!links) return;
+    const btn = document.createElement("button");
+    btn.id = "collab-detail-share-btn";
+    btn.className = "collab-share-btn";
+    btn.innerHTML = "&#x1F4E4; Share record";
+    btn.addEventListener("click", () => {
+      if (!ws || ws.readyState !== WebSocket.OPEN) return;
+      ws.send(JSON.stringify({ type: "share", kind: "record", payload: { id: recordId } }));
+      btn.textContent = "Shared!";
+      setTimeout(() => { btn.innerHTML = "&#x1F4E4; Share record"; }, 2000);
+    });
+    links.appendChild(btn);
+  }
+
+  // Watch for detail panel updates via MutationObserver
+  const detailEl = document.getElementById("detail");
+  if (detailEl) {
+    let lastId = null;
+    const obs = new MutationObserver(() => {
+      const h2 = detailEl.querySelector("h2");
+      const idEl = detailEl.querySelector("[data-record-id]");
+      // Try data attribute first, then fall back to hash
+      const p = new URLSearchParams(location.hash.slice(1));
+      const currentId = (idEl && idEl.dataset.recordId) || p.get("id") || null;
+      if (currentId !== lastId) {
+        lastId = currentId;
+        injectShareButton(currentId);
+      }
+    });
+    obs.observe(detailEl, { childList: true, subtree: false });
+  }
+
+  // ── WebSocket lifecycle ───────────────────────────────────────────
+  function connect() {
+    if (ws && (ws.readyState === WebSocket.OPEN || ws.readyState === WebSocket.CONNECTING)) return;
+    try { ws = new WebSocket(wsUrl()); } catch(e) { scheduleReconnect(); return; }
+
+    ws.addEventListener("open", () => {
+      updatePill();
+    });
+
+    ws.addEventListener("message", (evt) => {
+      let msg;
+      try { msg = JSON.parse(evt.data); } catch(e) { return; }
+
+      if (msg.type === "presence") {
+        online = msg.online || [];
+        updatePill();
+        updatePresenceList();
+
+      } else if (msg.type === "chat") {
+        pushMsg(msg);
+
+      } else if (msg.type === "share") {
+        pushMsg(msg);
+        // Toast only for shares from other sessions
+        if (msg.from !== sessionId) showToast(msg);
+
+      } else if (msg.type === "follow") {
+        // No special UI beyond logging for now
+        pushMsg(msg);
+
+      } else if (msg.type === "error") {
+        console.warn("[collab] server error:", msg);
+      }
+    });
+
+    ws.addEventListener("close", () => {
+      online = [];
+      updatePill();
+      updatePresenceList();
+      scheduleReconnect();
+    });
+
+    ws.addEventListener("error", () => {
+      // close event will fire next
+    });
+  }
+
+  function scheduleReconnect() {
+    if (reconnectTimer) return;
+    reconnectTimer = setTimeout(() => {
+      reconnectTimer = null;
+      connect();
+    }, 3000);
+  }
+
+  // Kick off connection
+  connect();
+})();
 </script>
 </body>
 </html>
