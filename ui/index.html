@@ -815,6 +815,10 @@
     display: flex; flex-direction: column; gap: 8px;
   }
   .pathfinder .pf-row { display: flex; gap: 6px; align-items: center; }
+  .pathfinder .pf-label.pf-next {
+    color: var(--accent);
+    text-shadow: 0 0 6px rgba(87,199,255,0.5);
+  }
   .pathfinder .pf-row > .pf-label {
     color: var(--accent); letter-spacing: 0.06em; min-width: 28px;
   }
@@ -4396,6 +4400,38 @@ document.addEventListener("pointerdown", (e) => {
 }, true);
 window.addEventListener("blur", closeContextMenu);
 
+// Which pathfinder slot the next graph-node click fills. Toggles between
+// "from" and "to" so a user can click two nodes in a row and immediately
+// hit "Find path" without touching the inputs. Reset to "from" by the
+// Clear button.
+let pfNextSlot = "from";
+
+function pfAutoFillFromClick(node) {
+  const fromInp = document.getElementById("pf-from");
+  const toInp = document.getElementById("pf-to");
+  if (!fromInp || !toInp) return;
+  // If the user clicked the node already in the next slot, do nothing —
+  // avoids overwriting with the same value and confusing the alternation.
+  const target = pfNextSlot === "from" ? fromInp : toInp;
+  if (target.dataset.id === node.id) return;
+  target.value = node.title;
+  target.dataset.id = node.id;
+  pfNextSlot = pfNextSlot === "from" ? "to" : "from";
+  updatePathfinderState();
+  pfUpdateNextSlotHighlight();
+}
+
+function pfUpdateNextSlotHighlight() {
+  // Highlight the label of the slot the next click will fill, so the
+  // user can predict the behaviour without reading the inputs.
+  const labels = document.querySelectorAll(".pathfinder .pf-label");
+  labels.forEach(l => l.classList.remove("pf-next"));
+  const wanted = pfNextSlot === "from" ? "FROM" : "TO";
+  for (const l of labels) {
+    if (l.textContent.trim() === wanted) { l.classList.add("pf-next"); break; }
+  }
+}
+
 // Re-evaluate Find-button enable state + same-endpoint hint after any
 // pf input changes. Stub here; full body lives near bindPathfinder.
 function updatePathfinderState() {
@@ -4518,35 +4554,69 @@ function drawGraph() {
     return 1;
   }
 
-  // Edges
+  // Edges — two passes. Pass 1 draws regular edges; pass 2 draws the
+  // active path on top with a white halo + amber core so it stays
+  // readable against the dense edge field at any zoom level.
   if (showText) {
     ctx.lineWidth = 0.5 / graphState.scale;
     for (const e of graphState.edgesText) {
-      const isPath = path.has(pathKey(e.a, e.b));
+      if (path.has(pathKey(e.a, e.b))) continue; // saved for pass 2
       const op = Math.min(nodeOpacity(e.a), nodeOpacity(e.b));
-      if (isPath) {
-        ctx.strokeStyle = "#22D3EE"; ctx.lineWidth = 2.4 / graphState.scale;
-      } else {
-        ctx.strokeStyle = `rgba(87,199,255,${0.05 + op * (0.1 + Math.min(0.4, (e.score || 0) * 0.6))})`;
-        ctx.lineWidth = 0.5 / graphState.scale;
-      }
+      ctx.strokeStyle = `rgba(87,199,255,${0.05 + op * (0.1 + Math.min(0.4, (e.score || 0) * 0.6))})`;
+      ctx.lineWidth = 0.5 / graphState.scale;
       ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
     }
   }
   if (showImage) {
     ctx.setLineDash([2 / graphState.scale, 2 / graphState.scale]);
     for (const e of graphState.edgesImage) {
-      const isPath = path.has(pathKey(e.a, e.b));
+      if (path.has(pathKey(e.a, e.b))) continue; // saved for pass 2
       const op = Math.min(nodeOpacity(e.a), nodeOpacity(e.b));
-      if (isPath) {
-        ctx.strokeStyle = "#22D3EE"; ctx.lineWidth = 2.4 / graphState.scale;
-      } else {
-        ctx.strokeStyle = `rgba(176,124,255,${0.05 + op * 0.45})`;
-        ctx.lineWidth = 0.7 / graphState.scale;
-      }
+      ctx.strokeStyle = `rgba(176,124,255,${0.05 + op * 0.45})`;
+      ctx.lineWidth = 0.7 / graphState.scale;
       ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
     }
     ctx.setLineDash([]);
+  }
+  // Path-edges pass: walked AFTER regular edges so they sit on top of
+  // everything. Three concentric strokes: a soft outer glow, then a
+  // thick white halo for separation against the dense edge field, then
+  // the bright amber core. All widths are kept constant in screen
+  // space (divide by scale), with an extra bump when zoomed-out so the
+  // path stays unmistakable even at small thumbnails of the graph.
+  if (path.size) {
+    ctx.setLineDash([]);
+    const prevCap = ctx.lineCap, prevJoin = ctx.lineJoin;
+    ctx.lineCap = "round"; ctx.lineJoin = "round";
+    const allEdges = (graphState.edgesText || []).concat(graphState.edgesImage || []);
+    // When zoomed out (scale < 1), bump screen widths so the path
+    // stays visible against the noisy edge field at low zooms.
+    const zoomBump = Math.max(1, 1 / Math.sqrt(Math.max(0.15, graphState.scale)));
+    const glowPx = 16 * zoomBump;
+    const haloPx = 8  * zoomBump;
+    const corePx = 4  * zoomBump;
+    // Outer glow — soft amber bloom
+    ctx.strokeStyle = "rgba(255,211,77,0.28)";
+    ctx.lineWidth = glowPx / graphState.scale;
+    for (const e of allEdges) {
+      if (!path.has(pathKey(e.a, e.b))) continue;
+      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    }
+    // White halo
+    ctx.strokeStyle = "rgba(255,255,255,0.92)";
+    ctx.lineWidth = haloPx / graphState.scale;
+    for (const e of allEdges) {
+      if (!path.has(pathKey(e.a, e.b))) continue;
+      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    }
+    // Amber core
+    ctx.strokeStyle = "#ffd34d";
+    ctx.lineWidth = corePx / graphState.scale;
+    for (const e of allEdges) {
+      if (!path.has(pathKey(e.a, e.b))) continue;
+      ctx.beginPath(); ctx.moveTo(e.a.x, e.a.y); ctx.lineTo(e.b.x, e.b.y); ctx.stroke();
+    }
+    ctx.lineCap = prevCap; ctx.lineJoin = prevJoin;
   }
   // AI-confirmed enrichment edges: dashed green lines from doc → URL nodes
   if (graphState.aiEdges && graphState.aiEdges.length) {
@@ -4758,8 +4828,13 @@ function bindGraphInteraction(canvas) {
       savePins();
       drawGraph();
     } else if (wasNode && !moved) {
-      // Treat as click → select.
+      // Treat as click → select AND auto-fill the next pathfinder slot.
+      // First click after a clear fills FROM, second fills TO; clicks
+      // after that alternate. Right-click context menu still works for
+      // explicit FROM/TO assignment, and the suggestion dropdowns work
+      // as before.
       selectNode(node.id, false);
+      pfAutoFillFromClick(node);
     }
   });
 
@@ -5185,9 +5260,14 @@ function bindPathfinder() {
     $("#pf-to").value = "";   $("#pf-to").dataset.id = "";
     $("#pf-trail").className = "pf-trail empty";
     $("#pf-trail").textContent = "no path computed — pick two nodes and find a path";
+    pfNextSlot = "from";
+    pfUpdateNextSlotHighlight();
     updatePathfinderState();
     drawGraph(); syncUrl();
   });
+  // Prime the highlight once on graph init so the user can see which
+  // slot the first click will fill.
+  pfUpdateNextSlotHighlight();
 }
 
 // ─────────────────────────────────────────────────────────────────────
