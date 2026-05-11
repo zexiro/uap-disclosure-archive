@@ -22,6 +22,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   python3 scripts/build_thumbs.py || true
   python3 scripts/classify_dossier_hits.py || true
   python3 scripts/build_image_embeddings.py || true  # pick up any newly-downloaded images
+  python3 scripts/build_video_keyframes.py || true  # extract/embed new video keyframes
   exit 0
 fi
 
@@ -43,6 +44,7 @@ python3 scripts/build_search_index.py
 # ANTHROPIC_API_KEY — the UI falls back to keyword-only matching.
 python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_image_embeddings.py || true  # CLIP visual embeddings for IMG records
+python3 scripts/build_video_keyframes.py || true   # scene keyframes + CLIP embeddings for VID records
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 
