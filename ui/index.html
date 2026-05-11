@@ -1202,15 +1202,21 @@
     padding: 8px;
   }
 
-  /* Map stat overlay */
+  /* Map stat overlay. Sits between the tile pane (z=200) and the Leaflet
+     map pane (z=400). The map pane creates its own stacking context that
+     wraps every marker/popup/tooltip pane, so matching its z-index would
+     let the stat win on source order and clip popups behind it. */
   .map-stat {
-    position: absolute; top: 12px; left: 12px; padding: 6px 10px; z-index: 600;
+    position: absolute; top: 12px; left: 12px; padding: 6px 10px; z-index: 350;
     background: rgba(0,0,0,0.75); border: 1px solid var(--border);
     color: var(--fg-dim); font-family: var(--mono); font-size: 11px;
     letter-spacing: 0.05em; pointer-events: none;
   }
   .map-stat strong { color: var(--accent); font-weight: normal; }
   .map-stat .civ-count { color: #ffb34d; }
+  /* Push Leaflet's top-left zoom control below the stat overlay so the
+     two don't overlap. The stat row is ~28px tall plus its 12px top inset. */
+  body.map-mode .leaflet-top.leaflet-left { margin-top: 44px; }
 
   /* MarkerCluster dark theming */
   .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
@@ -2592,7 +2598,7 @@
 <section id="map-view" hidden>
   <div id="map-leaflet"></div>
   <div class="map-stat" id="map-stat">
-    PLOTTING <strong id="map-official-count">—</strong> OFFICIAL ·
+    PLOTTING <span class="off-count"><strong id="map-official-count">—</strong> OFFICIAL</span> ·
     <span class="civ-count"><strong id="map-civ-count">—</strong> CIVILIAN</span> ·
     CLICK TO OPEN RECORD
   </div>
@@ -6108,6 +6114,11 @@ function mapBuildMarkers() {
   const officialIcon  = mapMakeIcon("official");
   const civilianIcon  = mapMakeIcon("civilian");
   const addTarget = mapState.clusterGroup || mapState.map;
+  // Source filter from the top-right toggle bar: "official" | "civilian"
+  // hide the other kind. "all" / null (HOTSPOTS OFF) show both.
+  const srcFilter = (window.__hexState && window.__hexState.activeSource) || null;
+  const showOfficial = srcFilter !== "civilian";
+  const showCivilian = srcFilter !== "official";
   // Pre-build a quick lookup: corrKey → docId
   const corrKeyToDocId = {};
   for (const key of Object.keys(corr)) {
@@ -6118,7 +6129,11 @@ function mapBuildMarkers() {
     if (doc2) corrKeyToDocId[key] = doc2.id;
   }
 
-  // Official markers
+  // Official markers. Counts reflect how many records the data contains
+  // (subject to the date/agency filters in the URL params) — they do NOT
+  // dip when the OFFICIAL/CIVILIAN toggle hides the other kind, so the
+  // stat overlay reads as a stable inventory rather than as "you just
+  // erased 157 sightings".
   for (const [key, entry] of Object.entries(corr)) {
     const rec = entry.official;
     if (!rec) continue;
@@ -6126,24 +6141,28 @@ function mapBuildMarkers() {
     if (!loc.lat || !loc.lng) continue;
     // Apply active date/source filter if set
     if (!mapPassesFilter(rec.occurred_at, rec.source)) continue;
-    const marker = L.marker([loc.lat, loc.lng], { icon: officialIcon });
-    marker.bindPopup(mapOfficialPopupHtml(entry, key, corrKeyToDocId), { maxWidth: 280 });
-    marker._mapKind = "official";
-    marker._recId = key;
-    addTarget.addLayer(marker);
     officialCount++;
+    if (showOfficial) {
+      const marker = L.marker([loc.lat, loc.lng], { icon: officialIcon });
+      marker.bindPopup(mapOfficialPopupHtml(entry, key, corrKeyToDocId), { maxWidth: 280 });
+      marker._mapKind = "official";
+      marker._recId = key;
+      addTarget.addLayer(marker);
+    }
 
     // Civilian NUFORC markers for this official record's matches
     for (const match of (entry.matches || [])) {
       const ml = match.location || {};
       if (!ml.lat || !ml.lng) continue;
       if (!mapPassesFilter(match.occurred_at, "nuforc")) continue;
-      const cm = L.marker([ml.lat, ml.lng], { icon: civilianIcon });
-      cm.bindPopup(mapCivilianPopupHtml(match), { maxWidth: 280 });
-      cm._mapKind = "civilian";
-      cm._matchId = match.id;
-      addTarget.addLayer(cm);
       civCount++;
+      if (showCivilian) {
+        const cm = L.marker([ml.lat, ml.lng], { icon: civilianIcon });
+        cm.bindPopup(mapCivilianPopupHtml(match), { maxWidth: 280 });
+        cm._mapKind = "civilian";
+        cm._matchId = match.id;
+        addTarget.addLayer(cm);
+      }
     }
   }
 
@@ -6151,6 +6170,13 @@ function mapBuildMarkers() {
   const cc = $("#map-civ-count");
   if (oc) oc.textContent = String(officialCount);
   if (cc) cc.textContent = String(civCount);
+  // Visually dim whichever count is currently filtered out, so the user can
+  // see that the OFFICIAL/CIVILIAN toggle is hiding a layer without the
+  // count itself collapsing to zero.
+  const ocWrap = document.querySelector("#map-stat .off-count");
+  const ccWrap = document.querySelector("#map-stat .civ-count");
+  if (ocWrap) ocWrap.style.opacity = showOfficial ? "" : "0.35";
+  if (ccWrap) ccWrap.style.opacity = showCivilian ? "" : "0.35";
 }
 
 function mapPassesFilter(dateStr, source) {
@@ -6175,7 +6201,6 @@ function mapPassesFilter(dateStr, source) {
 
 function mapRefreshFilters() {
   if (!mapState.map || !mapState.built) return;
-  const addTarget = mapState.clusterGroup || mapState.map;
   // Clear and rebuild
   if (mapState.clusterGroup) {
     mapState.clusterGroup.clearLayers();
@@ -6184,6 +6209,7 @@ function mapRefreshFilters() {
   }
   mapBuildMarkers();
 }
+window.mapRefreshFilters = mapRefreshFilters;
 
 // Wire map refresh into the existing filter events.
 // Watch for map-mode filter changes and refresh the marker set.
@@ -8887,8 +8913,9 @@ init();
 // Stream K — H3 Gi* hotspot hex layer (appended; does NOT modify Stream E code)
 // ─────────────────────────────────────────────────────────────────────────────
 (function initHexLayer() {
-  // State
-  const hexState = {
+  // State — exposed on window so mapBuildMarkers() can read activeSource
+  // and filter markers to match the OFFICIAL/CIVILIAN button selection.
+  const hexState = window.__hexState = {
     data: null,          // parsed hotspots.json
     activeSource: null,  // "all" | "official" | "civilian" | null (off)
     activeRes: "h3_resolution_6",
@@ -8932,7 +8959,7 @@ init();
 
   // ── Repaint hex layer ─────────────────────────────────────────────────────
   function repaintHex() {
-    if (!window.mapState || !mapState.map) return;
+    if (typeof mapState === "undefined" || !mapState.map) return;
 
     // Remove existing hex layer
     if (hexState.geoLayer) {
@@ -8940,6 +8967,10 @@ init();
       hexState.geoLayer = null;
     }
 
+    // Hex polygons need h3-js (loaded from CDN). Without it the buttons
+    // still toggle their active state and filter the markers, but the
+    // hotspot overlay simply doesn't render.
+    if (!window.h3) return;
     if (!hexState.activeSource || !hexState.data) return;
 
     const resData = hexState.data[hexState.activeRes];
@@ -9000,19 +9031,28 @@ init();
   }
 
   function wireButtons() {
+    // Source buttons (off/all/official/civilian) also filter markers — the
+    // other buttons (resolution, sig-only) only touch the hex overlay.
     const pairs = [
-      ["#hex-btn-off",      () => { hexState.activeSource = null; }],
-      ["#hex-btn-all",      () => { hexState.activeSource = "all"; }],
-      ["#hex-btn-official", () => { hexState.activeSource = "official"; }],
-      ["#hex-btn-civilian", () => { hexState.activeSource = "civilian"; }],
-      ["#hex-btn-r4",       () => { hexState.activeRes = "h3_resolution_4"; }],
-      ["#hex-btn-r6",       () => { hexState.activeRes = "h3_resolution_6"; }],
-      ["#hex-sig-toggle",   () => { hexState.sigOnly = !hexState.sigOnly; }],
+      ["#hex-btn-off",      () => { hexState.activeSource = null;       }, true],
+      ["#hex-btn-all",      () => { hexState.activeSource = "all";      }, true],
+      ["#hex-btn-official", () => { hexState.activeSource = "official"; }, true],
+      ["#hex-btn-civilian", () => { hexState.activeSource = "civilian"; }, true],
+      ["#hex-btn-r4",       () => { hexState.activeRes = "h3_resolution_4"; }, false],
+      ["#hex-btn-r6",       () => { hexState.activeRes = "h3_resolution_6"; }, false],
+      ["#hex-sig-toggle",   () => { hexState.sigOnly = !hexState.sigOnly;  }, false],
     ];
-    for (const [sel, fn] of pairs) {
+    for (const [sel, fn, refreshMarkers] of pairs) {
       const el = document.querySelector(sel);
       if (!el) continue;
-      el.addEventListener("click", () => { fn(); syncButtons(); repaintHex(); });
+      el.addEventListener("click", () => {
+        fn();
+        syncButtons();
+        repaintHex();
+        if (refreshMarkers && typeof window.mapRefreshFilters === "function") {
+          window.mapRefreshFilters();
+        }
+      });
     }
   }
 
@@ -9037,9 +9077,20 @@ init();
   const mapViewEl = document.getElementById("map-view");
   let hexInit = false;
 
+  let maybeInitTries = 0;
   function maybeInitHex() {
     if (hexInit) { repaintHex(); return; }
-    if (!window.L || !window.h3 || !window.mapState || !mapState.map) return;
+    // Button wiring only needs Leaflet + the map. The hex overlay itself
+    // also needs h3-js (CDN), but if h3 fails to load we still want the
+    // source-filter buttons (OFFICIAL/CIVILIAN/ALL) to filter markers.
+    if (!window.L || typeof mapState === "undefined" || !mapState.map) {
+      // ensureMap() builds the map asynchronously (network fetch for the
+      // GeoJSON basemap). The MutationObserver fires the moment #map-view
+      // is unhidden, which is usually *before* the map is ready — retry
+      // until it is, capped at ~10s.
+      if (maybeInitTries++ < 40) setTimeout(maybeInitHex, 250);
+      return;
+    }
     hexInit = true;
     wireButtons();
     syncButtons();
@@ -9058,7 +9109,7 @@ init();
   // Load data early (non-blocking)
   loadHotspots().then(() => {
     // If map is already open, paint immediately
-    if (mapViewEl && !mapViewEl.hasAttribute("hidden") && window.h3 && window.mapState && mapState.map) {
+    if (mapViewEl && !mapViewEl.hasAttribute("hidden") && typeof mapState !== "undefined" && mapState.map) {
       maybeInitHex();
     }
   });
