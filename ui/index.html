@@ -394,24 +394,29 @@
   .header-collapse-handle:hover, .header-expand-handle:hover {
     background: var(--accent); color: var(--bg); transform: translateY(-1px);
   }
-  /* Collapse / expand buttons are both pinned to the same top-right spot
-     so the toggle "doesn't move" when the user switches between states.
-     They live at top: 10px so they always read as a header chrome control
-     (not somewhere lost in the middle of an expanded header). right: 130px
-     clears the fixed collab presence pill in the corner. */
+  /* Collapse / expand buttons are both pinned to the same fixed top-right
+     spot so the toggle "doesn't move" when the user switches between
+     states. position: fixed (not absolute) keeps them out of the header's
+     flex flow, and the header reserves matching right padding below so
+     flex content (search input, etc.) doesn't extend behind the button
+     or the collab presence pill. */
   body:not(.header-collapsed) .header-expand-handle {
     display: inline-flex !important;
-    position: absolute; top: 10px; right: 130px; z-index: 50;
+    position: fixed; top: 10px; right: 130px; z-index: 50;
   }
   body.header-collapsed .header-collapse-handle {
     display: inline-flex !important;
-    position: absolute; top: 10px; right: 130px; z-index: 50;
+    position: fixed; top: 10px; right: 130px; z-index: 50;
     box-shadow: 0 0 0 2px rgba(87,199,255,0.15);
     animation: hdr-pulse 2.4s ease-in-out infinite;
   }
-  /* When the collab pill is hidden (narrow viewport / non-search views),
-     SHOW HEADER falls back to the corner so it doesn't float in dead space. */
+  /* Reserve right-edge space inside the header so the search input and
+     other flex children don't grow under the fixed HIDE/SHOW HEADER
+     button + the collab presence pill. */
+  header { padding-right: 270px; }
+  /* On narrow viewports the pill is hidden — reclaim that space. */
   @media (max-width: 760px) {
+    header { padding-right: 20px; }
     body:not(.header-collapsed) .header-expand-handle,
     body.header-collapsed .header-collapse-handle { right: 14px; }
   }
