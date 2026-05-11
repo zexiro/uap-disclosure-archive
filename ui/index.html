@@ -2138,6 +2138,16 @@
     cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 4px;
   }
   #collab-panel-close:hover { color: #cbd5e1; }
+  #collab-header-actions {
+    display: inline-flex; align-items: center; gap: 8px;
+  }
+  #collab-share-view-btn {
+    background: #161b24; border: 1px solid #1f2937; color: #7c8aa1;
+    border-radius: 6px; padding: 4px 9px; font-size: 11px; cursor: pointer;
+    line-height: 1.2;
+  }
+  #collab-share-view-btn:hover { border-color: #57c7ff; color: #57c7ff; }
+  #collab-share-view-btn.flash { background: #57c7ff; color: #0b0e14; border-color: #57c7ff; }
   #collab-privacy-notice {
     padding: 8px 14px; background: #1c1408; border-bottom: 1px solid #3a2a10;
     color: #f0c987; font-size: 11px; line-height: 1.45;
@@ -8864,15 +8874,18 @@ init();
   panel.innerHTML = `
     <div id="collab-panel-header">
       <span>Live Collaboration</span>
-      <button id="collab-panel-close">×</button>
+      <div id="collab-header-actions">
+        <button id="collab-share-view-btn" title="Share the current URL — including filters, view, opened record">&#x1F4E4; Share view</button>
+        <button id="collab-panel-close">×</button>
+      </div>
     </div>
     <div id="collab-privacy-notice">
-      Public channel — don't share personal info (email, phone, address, payment details). Detected patterns are auto-redacted before broadcast.
+      Public channel — don't share personal info (email, phone, address, payment details). Detected patterns are auto-redacted before broadcast. Paste a link to this site and it'll auto-share as a view.
     </div>
     <div id="collab-presence"><em>Connecting…</em></div>
     <div id="collab-messages"></div>
     <div id="collab-input-row">
-      <input id="collab-input" placeholder="Say something… (no personal info)" maxlength="500" />
+      <input id="collab-input" placeholder="Say something or paste a link…" maxlength="500" />
       <button id="collab-send">Send</button>
     </div>
   `;
@@ -8930,10 +8943,11 @@ init();
         div.innerHTML = `<span class="collab-from">${handle(m.from)}</span> ${escHtml(m.text)}`;
       } else if (m.type === "share") {
         const label = m.kind === "record" ? "shared a record" :
-                      m.kind === "filter-url" ? "shared a filter" : "shared a page";
+                      m.kind === "filter-url" ? "shared a view" : "shared a page";
         const btn = document.createElement("button");
         btn.className = "collab-share-link";
-        btn.textContent = "→ open";
+        btn.textContent = shareLinkLabel(m);
+        btn.title = shareLinkTitle(m);
         btn.addEventListener("click", () => handleShareClick(m));
         div.innerHTML = `<span class="collab-from">${handle(m.from)}</span> ${label} `;
         div.appendChild(btn);
@@ -8971,6 +8985,24 @@ init();
     setTimeout(() => toast.remove(), 7000);
   }
 
+  // Short label shown on the share chip — usually "→ open", but for
+  // filter-url shares we show a snippet of the pathname/hash so the
+  // recipient knows what they'd be jumping to before they click.
+  function shareLinkLabel(m) {
+    if (m.kind !== "filter-url" || !m.payload || !m.payload.url) return "→ open";
+    try {
+      const u = new URL(m.payload.url);
+      const tail = (u.pathname + u.search + u.hash).replace(/^\/ui/, "") || "/";
+      const trimmed = tail.length > 40 ? tail.slice(0, 38) + "…" : tail;
+      return "→ " + trimmed;
+    } catch (e) { return "→ open"; }
+  }
+  function shareLinkTitle(m) {
+    if (m.kind === "filter-url" && m.payload && m.payload.url) return m.payload.url;
+    if (m.kind === "record"     && m.payload && m.payload.id)  return "record " + m.payload.id;
+    return "open";
+  }
+
   // ── Share click handler ───────────────────────────────────────────
   function handleShareClick(m) {
     if (m.kind === "record" && m.payload && m.payload.id) {
@@ -8985,16 +9017,51 @@ init();
       const p = new URLSearchParams(location.hash.slice(1));
       p.set("id", m.payload.id);
       location.hash = p.toString();
-    } else if (m.kind === "filter-url" && m.payload && m.payload.url) {
-      location.href = m.payload.url;
+    } else if ((m.kind === "filter-url" || m.kind === "page") && m.payload && m.payload.url) {
+      // Same-origin → swap the hash/path in place to avoid a full reload
+      // that would tear down the WS connection. Cross-origin shouldn't
+      // happen (server-side broadcasts only what was sent) but we fall
+      // back to a navigation if URL parsing fails.
+      try {
+        const u = new URL(m.payload.url);
+        if (u.origin === location.origin) {
+          history.pushState({}, "", u.pathname + u.search + u.hash);
+          window.dispatchEvent(new HashChangeEvent("hashchange"));
+        } else {
+          location.href = m.payload.url;
+        }
+      } catch (e) {
+        location.href = m.payload.url;
+      }
     }
     panel.classList.add("open");
   }
 
-  // ── Send chat ─────────────────────────────────────────────────────
+  // ── Send chat (with auto-share for same-origin URLs) ──────────────
   function sendChat(text) {
     if (!ws || ws.readyState !== WebSocket.OPEN) return;
-    ws.send(JSON.stringify({ type: "chat", text }));
+    const shareUrl = extractShareableUrl(text);
+    if (shareUrl) {
+      ws.send(JSON.stringify({ type: "share", kind: "filter-url", payload: { url: shareUrl } }));
+    } else {
+      ws.send(JSON.stringify({ type: "chat", text }));
+    }
+  }
+
+  // If the entire trimmed text is a single same-origin URL (absolute or
+  // root-relative), return its absolute form. Otherwise null — fall back
+  // to plain chat. We're conservative: must be the only thing in the
+  // message, not embedded in prose.
+  function extractShareableUrl(text) {
+    const t = text.trim();
+    if (/\s/.test(t)) return null;
+    try {
+      const u = new URL(t, location.origin);
+      if (u.origin !== location.origin) return null;
+      return u.href;
+    } catch (e) {
+      return null;
+    }
   }
 
   panel.querySelector("#collab-send").addEventListener("click", () => {
@@ -9013,6 +9080,20 @@ init();
       inp.value = "";
       e.preventDefault();
     }
+  });
+
+  // ── Share-view button: broadcast current URL as a filter-url share ──
+  panel.querySelector("#collab-share-view-btn").addEventListener("click", (e) => {
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    ws.send(JSON.stringify({ type: "share", kind: "filter-url", payload: { url: location.href } }));
+    const btn = e.currentTarget;
+    btn.classList.add("flash");
+    const orig = btn.innerHTML;
+    btn.innerHTML = "Shared!";
+    setTimeout(() => {
+      btn.classList.remove("flash");
+      btn.innerHTML = orig;
+    }, 1400);
   });
 
   // ── Inject Share button into detail panel ─────────────────────────
