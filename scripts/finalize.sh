@@ -31,6 +31,9 @@ python3 scripts/build_search_index.py
 echo "==> Building CLIP image embeddings for IMG records…"
 python3 scripts/build_image_embeddings.py || true
 
+echo "==> Building FAISS image similarity index…"
+python3 scripts/build_image_index.py || true
+
 echo "==> Augmenting features (shapes, incidents, graph layout)…"
 python3 scripts/build_features.py
 
