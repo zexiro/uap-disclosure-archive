@@ -35,6 +35,7 @@ python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketch
 python3 scripts/build_thumbs.py || true         # small JPEGs for row/grid views
 python3 scripts/build_links.py
 python3 scripts/extract_citations.py
+python3 scripts/extract_entities.py || true     # spaCy NER over OCR text → ui/entities.json
 python3 scripts/build_search_index.py
 # Cheap-LLM relevance check on each dossier keyword hit (false-positive filter).
 # Cached by hash(kw, ctx) under raw/dossier_classifications.json so subsequent
