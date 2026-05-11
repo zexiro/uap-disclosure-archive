@@ -397,15 +397,23 @@
   /* Collapse button (visible only when expanded) — sits at end of header bottom-row */
   .header-expand-handle { margin-left: auto; }
   body:not(.header-collapsed) .header-expand-handle { display: inline-flex !important; }
-  /* Expand button (visible only when collapsed) — pinned to header right edge */
+  /* Expand button (visible only when collapsed) — pinned to header right
+     edge, but offset to clear the fixed collab presence pill in the
+     top-right corner (pill is ~110px wide + 14px from edge). */
   body.header-collapsed .header-collapse-handle {
     display: inline-flex !important;
-    position: absolute; right: 14px; top: 50%; transform: translateY(-50%); z-index: 50;
+    position: absolute; right: 130px; top: 50%; transform: translateY(-50%); z-index: 50;
     box-shadow: 0 0 0 2px rgba(87,199,255,0.15);
     animation: hdr-pulse 2.4s ease-in-out infinite;
   }
   body.header-collapsed .header-collapse-handle:hover {
     transform: translateY(calc(-50% - 1px));
+  }
+  /* When the collab pill is hidden (e.g. on graph view or narrow viewport
+     where the pill could be missing), fall back to the original right
+     edge so SHOW HEADER doesn't float in dead space. */
+  @media (max-width: 760px) {
+    body.header-collapsed .header-collapse-handle { right: 14px; }
   }
   @keyframes hdr-pulse {
     0%, 100% { box-shadow: 0 0 0 2px rgba(87,199,255,0.15); }
