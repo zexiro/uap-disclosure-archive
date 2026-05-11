@@ -423,6 +423,25 @@
     box-shadow: 0 0 16px rgba(255,211,77,0.25);
   }
   .bmc:hover { background: #ffe48a; border-color: #ffe48a; box-shadow: 0 0 24px rgba(255,211,77,0.5); transform: translateY(-1px); }
+  /* Persistent corpus counts pill in the header bottom row. Always shows
+     the geocoded inventory so the user sees the dataset size regardless
+     of which view is active. Hidden on narrow viewports to avoid wrap. */
+  .header-counts {
+    display: inline-flex; align-items: center; gap: 8px;
+    padding: 5px 12px; border-radius: 4px;
+    background: rgba(10,13,18,0.6); border: 1px solid var(--border);
+    font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
+    color: var(--fg-dim); white-space: nowrap;
+  }
+  .header-counts strong { font-weight: 600; }
+  .header-counts .hc-off strong { color: var(--accent); }
+  .header-counts .hc-civ { color: #b8a26e; }
+  .header-counts .hc-civ strong { color: #ffb34d; }
+  .header-counts .hc-sep { color: #3a4452; }
+  @media (max-width: 900px) {
+    .header-counts { display: none; }
+  }
+  body.header-collapsed header .header-counts { display: none !important; }
   .links a.bmc-inline {
     background: var(--accent2); color: #1a1410; border-color: var(--accent2); font-weight: 700;
   }
@@ -2407,6 +2426,11 @@
       <button class="globe-toggle" data-view="map" type="button">🗺 Map</button>
     </div>
     <button class="askk-cue" id="askk-cue" type="button" title="Ask the archive (Cmd/Ctrl + K)">⌘ ASK<kbd>⌘K</kbd></button>
+    <div class="header-counts" id="header-counts" title="Total records geocoded across the corpus">
+      <span class="hc-off"><strong id="hc-off-n">—</strong> official</span>
+      <span class="hc-sep">·</span>
+      <span class="hc-civ"><strong id="hc-civ-n">—</strong> civilian</span>
+    </div>
     <a class="bmc" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener" title="Help keep this archive online">
       ☕ Buy me a coffee
     </a>
@@ -3579,6 +3603,14 @@ async function setView(v) {
   if (v === "graph")    { try { await ensureGraph();    } catch (e) { console.error("[graph]", e); } }
   if (v === "timeline") { renderTimeline(); }
   if (v === "map")      { try { await ensureMap(); } catch (e) { console.error("[map]", e); } }
+  // Reset the header counts pill dim when leaving the map — the map's
+  // source-filter buttons are only meaningful in the map view.
+  if (v !== "map") {
+    const hcOff = document.querySelector("#header-counts .hc-off");
+    const hcCiv = document.querySelector("#header-counts .hc-civ");
+    if (hcOff) hcOff.style.opacity = "";
+    if (hcCiv) hcCiv.style.opacity = "";
+  }
   if (v === "viewer")   { try { await renderViewer();   } catch (e) { console.error("[viewer]", e); } }
   syncUrl();
 }
@@ -6172,11 +6204,17 @@ function mapBuildMarkers() {
   if (cc) cc.textContent = String(civCount);
   // Visually dim whichever count is currently filtered out, so the user can
   // see that the OFFICIAL/CIVILIAN toggle is hiding a layer without the
-  // count itself collapsing to zero.
+  // count itself collapsing to zero. Mirrored on the persistent header
+  // counts pill so the cue is consistent across the stat overlay and the
+  // always-visible header.
   const ocWrap = document.querySelector("#map-stat .off-count");
   const ccWrap = document.querySelector("#map-stat .civ-count");
   if (ocWrap) ocWrap.style.opacity = showOfficial ? "" : "0.35";
   if (ccWrap) ccWrap.style.opacity = showCivilian ? "" : "0.35";
+  const hcOff = document.querySelector("#header-counts .hc-off");
+  const hcCiv = document.querySelector("#header-counts .hc-civ");
+  if (hcOff) hcOff.style.opacity = showOfficial ? "" : "0.35";
+  if (hcCiv) hcCiv.style.opacity = showCivilian ? "" : "0.35";
 }
 
 function mapPassesFilter(dateStr, source) {
@@ -6261,7 +6299,22 @@ async function init() {
   await Promise.allSettled([
     fetch("incidents.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.INCIDENTS = j.incidents || j; }),
     fetch("graph-layout.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_LAYOUT = j; }),
-    fetch("correlations.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.CORRELATIONS = j; }),
+    fetch("correlations.json").then(r => r.ok ? r.json() : null).then(j => {
+      if (!j) return;
+      window.CORRELATIONS = j;
+      // Populate the persistent corpus counts pill in the header bottom row.
+      let off = 0, civ = 0;
+      for (const entry of Object.values(j)) {
+        if (entry && entry.official && entry.official.location && entry.official.location.lat) off++;
+        for (const m of (entry && entry.matches) || []) {
+          if (m && m.location && m.location.lat) civ++;
+        }
+      }
+      const elOff = document.getElementById("hc-off-n");
+      const elCiv = document.getElementById("hc-civ-n");
+      if (elOff) elOff.textContent = String(off);
+      if (elCiv) elCiv.textContent = String(civ);
+    }),
     // Stream-L: load community + centrality data (graceful no-op if absent)
     fetch("graph_communities.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_COMMUNITIES = j; }),
     // Splink cross-source dedup clusters (Stream H)
