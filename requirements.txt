@@ -29,3 +29,7 @@ bertopic>=0.16        # auto-discover thematic topics via HDBSCAN + c-TF-IDF
 # Probabilistic record linkage
 splink>=4.0           # Splink entity resolution — cross-source dedup via Bayesian scoring
 duckdb>=1.0           # Splink's default backend
+
+# Video keyframe extraction
+scenedetect>=0.6      # PySceneDetect: scene-boundary detection for video keyframes
+opencv-python-headless>=4.10  # headless OpenCV required by scenedetect

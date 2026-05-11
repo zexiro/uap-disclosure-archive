@@ -37,6 +37,9 @@ python3 scripts/build_search_index.py
 echo "==> Building CLIP image embeddings for IMG records…"
 python3 scripts/build_image_embeddings.py || true
 
+echo "==> Extracting video keyframes + CLIP embeddings for VID records…"
+python3 scripts/build_video_keyframes.py || true
+
 echo "==> Building FAISS image similarity index…"
 python3 scripts/build_image_index.py || true
 
