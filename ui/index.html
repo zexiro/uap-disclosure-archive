@@ -2138,16 +2138,30 @@
     cursor: pointer; font-size: 18px; line-height: 1; padding: 2px 4px;
   }
   #collab-panel-close:hover { color: #cbd5e1; }
-  #collab-header-actions {
-    display: inline-flex; align-items: center; gap: 8px;
+  #collab-share-toolbar {
+    display: flex; align-items: center; gap: 6px;
+    padding: 8px 14px; border-top: 1px solid #1f2937;
+    background: #0d1219; flex-wrap: wrap;
   }
-  #collab-share-view-btn {
-    background: #161b24; border: 1px solid #1f2937; color: #7c8aa1;
+  .collab-toolbar-label {
+    color: #7c8aa1; font-size: 11px; margin-right: 2px; letter-spacing: 0.04em;
+  }
+  .collab-share-action {
+    background: #161b24; border: 1px solid #1f2937; color: #cbd5e1;
     border-radius: 6px; padding: 4px 9px; font-size: 11px; cursor: pointer;
-    line-height: 1.2;
+    line-height: 1.3; transition: border-color 0.15s, color 0.15s, background 0.15s;
   }
-  #collab-share-view-btn:hover { border-color: #57c7ff; color: #57c7ff; }
-  #collab-share-view-btn.flash { background: #57c7ff; color: #0b0e14; border-color: #57c7ff; }
+  .collab-share-action:hover { border-color: #57c7ff; color: #57c7ff; }
+  .collab-share-action[data-disabled="1"] {
+    color: #4a5568; border-color: #1a1f29; background: #0d1219;
+    cursor: not-allowed;
+  }
+  .collab-share-action[data-disabled="1"]:hover {
+    border-color: #1a1f29; color: #4a5568;
+  }
+  .collab-share-action.flash {
+    background: #57c7ff; color: #0b0e14; border-color: #57c7ff;
+  }
   #collab-privacy-notice {
     padding: 8px 14px; background: #1c1408; border-bottom: 1px solid #3a2a10;
     color: #f0c987; font-size: 11px; line-height: 1.45;
@@ -8874,16 +8888,18 @@ init();
   panel.innerHTML = `
     <div id="collab-panel-header">
       <span>Live Collaboration</span>
-      <div id="collab-header-actions">
-        <button id="collab-share-view-btn" title="Share the current URL — including filters, view, opened record">&#x1F4E4; Share view</button>
-        <button id="collab-panel-close">×</button>
-      </div>
+      <button id="collab-panel-close">×</button>
     </div>
     <div id="collab-privacy-notice">
-      Public channel — don't share personal info (email, phone, address, payment details). Detected patterns are auto-redacted before broadcast. Paste a link to this site and it'll auto-share as a view.
+      Public channel — don't share personal info (email, phone, address, payment details). Detected patterns are auto-redacted before broadcast.
     </div>
     <div id="collab-presence"><em>Connecting…</em></div>
     <div id="collab-messages"></div>
+    <div id="collab-share-toolbar">
+      <span class="collab-toolbar-label">Attach:</span>
+      <button class="collab-share-action" data-action="view" title="Share the current URL — view, filters, search">&#x1F4CD; View</button>
+      <button class="collab-share-action" data-action="record" data-disabled="1" title="Open a record first">&#x1F4C4; Record</button>
+    </div>
     <div id="collab-input-row">
       <input id="collab-input" placeholder="Say something or paste a link…" maxlength="500" />
       <button id="collab-send">Send</button>
@@ -9082,19 +9098,66 @@ init();
     }
   });
 
-  // ── Share-view button: broadcast current URL as a filter-url share ──
-  panel.querySelector("#collab-share-view-btn").addEventListener("click", (e) => {
-    if (!ws || ws.readyState !== WebSocket.OPEN) return;
-    ws.send(JSON.stringify({ type: "share", kind: "filter-url", payload: { url: location.href } }));
-    const btn = e.currentTarget;
+  // ── Share toolbar: contextual attach buttons above the input ─────
+  // Returns the id of the currently-open record (if any) by checking the
+  // detail panel's data attribute first, then falling back to the hash.
+  function currentRecordId() {
+    const idEl = document.querySelector("#detail [data-record-id]");
+    if (idEl && idEl.dataset.recordId) return idEl.dataset.recordId;
+    const p = new URLSearchParams(location.hash.slice(1));
+    return p.get("id") || null;
+  }
+
+  // Toggle disabled state on the toolbar buttons based on what's available
+  // right now. "View" is always available — the others light up only when
+  // the relevant thing is on screen.
+  function refreshShareToolbar() {
+    const recBtn = panel.querySelector('.collab-share-action[data-action="record"]');
+    if (!recBtn) return;
+    const id = currentRecordId();
+    if (id) {
+      recBtn.removeAttribute("data-disabled");
+      recBtn.title = "Share the currently opened record";
+    } else {
+      recBtn.setAttribute("data-disabled", "1");
+      recBtn.title = "Open a record first";
+    }
+  }
+
+  // Flash a button to confirm the share landed.
+  function flashShareBtn(btn) {
     btn.classList.add("flash");
     const orig = btn.innerHTML;
     btn.innerHTML = "Shared!";
     setTimeout(() => {
       btn.classList.remove("flash");
       btn.innerHTML = orig;
-    }, 1400);
+    }, 1200);
+  }
+
+  // Dispatch clicks on any toolbar button.
+  panel.querySelector("#collab-share-toolbar").addEventListener("click", (e) => {
+    const btn = e.target.closest(".collab-share-action");
+    if (!btn) return;
+    if (btn.getAttribute("data-disabled") === "1") return;
+    if (!ws || ws.readyState !== WebSocket.OPEN) return;
+    const action = btn.dataset.action;
+    if (action === "view") {
+      ws.send(JSON.stringify({ type: "share", kind: "filter-url", payload: { url: location.href } }));
+      flashShareBtn(btn);
+    } else if (action === "record") {
+      const id = currentRecordId();
+      if (!id) return;
+      ws.send(JSON.stringify({ type: "share", kind: "record", payload: { id } }));
+      flashShareBtn(btn);
+    }
   });
+
+  // Refresh the toolbar when the panel opens, when the URL hash changes
+  // (record id is encoded there), and whenever the detail panel mutates.
+  pill.addEventListener("click", refreshShareToolbar);
+  window.addEventListener("hashchange", refreshShareToolbar);
+  refreshShareToolbar();
 
   // ── Inject Share button into detail panel ─────────────────────────
   // We watch for the detail panel to populate and inject a share button.
@@ -9131,6 +9194,7 @@ init();
       if (currentId !== lastId) {
         lastId = currentId;
         injectShareButton(currentId);
+        refreshShareToolbar();
       }
     });
     obs.observe(detailEl, { childList: true, subtree: false });
