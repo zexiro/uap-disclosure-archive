@@ -31,6 +31,13 @@
 <link rel="stylesheet" href="https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" />
 <script src="https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js" defer></script>
 
+<!-- Leaflet + MarkerCluster (loaded for the map view) -->
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" defer></script>
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js" defer></script>
+
 <!-- PDF.js (loaded for the document viewer) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
 <script type="module">
@@ -126,20 +133,25 @@
   body.globe-mode    .header-chips,
   body.graph-mode    .header-chips,
   body.timeline-mode .header-chips,
+  body.map-mode      .header-chips,
   body.globe-mode    .header-kbdhints,
   body.graph-mode    .header-kbdhints,
-  body.timeline-mode .header-kbdhints { display: none; }
+  body.timeline-mode .header-kbdhints,
+  body.map-mode      .header-kbdhints { display: none; }
   body.graph-mode    .header-search-input,
   body.graph-mode    .header-filters { display: none; }
   body.globe-mode    header,
   body.graph-mode    header,
-  body.timeline-mode header { padding: 8px 16px; gap: 10px; }
+  body.timeline-mode header,
+  body.map-mode      header { padding: 8px 16px; gap: 10px; }
   body.globe-mode    header h1,
   body.graph-mode    header h1,
-  body.timeline-mode header h1 { font-size: 15px; }
+  body.timeline-mode header h1,
+  body.map-mode      header h1 { font-size: 15px; }
   body.globe-mode    .header-bottom-row,
   body.graph-mode    .header-bottom-row,
-  body.timeline-mode .header-bottom-row { margin-top: 0; }
+  body.timeline-mode .header-bottom-row,
+  body.map-mode      .header-bottom-row { margin-top: 0; }
   main { display: grid; grid-template-columns: 380px 1fr; min-height: 0; position: relative; }
   #results {
     overflow-y: auto; border-right: 1px solid var(--border); background: var(--bg2);
@@ -1044,6 +1056,39 @@
   .vis-item.tl-dossier.d-biologics { background: #5ec8a0 !important; }
   .vis-item.tl-dossier.d-hearings  { background: #ff7eb2 !important; }
 
+  /* ── Milestone items — always-visible label, heavier border ─────── */
+  .vis-item.tl-milestone {
+    background-color: rgba(255,211,77,0.22) !important;
+    border-color: var(--accent2) !important;
+    border-width: 2px !important;
+    color: var(--accent2) !important;
+    font-weight: 700 !important;
+  }
+  .vis-item.tl-milestone .vis-item-content { overflow: visible !important; white-space: nowrap !important; }
+  .vis-item.tl-milestone.ms-kind-policy  { background-color: rgba(255,211,77,0.25) !important; border-color: #ffd34d !important; }
+  .vis-item.tl-milestone.ms-kind-event   { background-color: rgba(87,199,255,0.22) !important; border-color: var(--accent) !important; color: var(--accent) !important; }
+  .vis-item.tl-milestone.ms-kind-media   { background-color: rgba(176,124,255,0.22) !important; border-color: #b07cff !important; color: #b07cff !important; }
+  .vis-item.tl-milestone.ms-kind-hearing { background-color: rgba(255,126,178,0.22) !important; border-color: #ff7eb2 !important; color: #ff7eb2 !important; }
+
+  /* ── NUFORC / civilian items — amber/orange tint, dashed border ─── */
+  /* Layout-level provenance distinction: amber diagonal-stripe background,
+     dashed amber border — mirrors the .civilian-block treatment. */
+  .vis-item.tl-civilian {
+    background: repeating-linear-gradient(
+      135deg,
+      rgba(255,179,77,0.13) 0 8px,
+      rgba(255,179,77,0.22) 8px 16px
+    ) !important;
+    border: 2px dashed #ffb34d !important;
+    border-color: #ffb34d !important;
+    color: #ffd9a0 !important;
+    border-radius: 2px !important;
+  }
+  .vis-item.tl-civilian.vis-selected {
+    background-color: rgba(255,179,77,0.40) !important;
+    border-color: #ffd34d !important;
+  }
+
   /* ─── Globe time slider ──────────────────────────────────────────── */
   .globe-timeslider {
     position: absolute; bottom: 16px; left: 50%; transform: translateX(-50%);
@@ -1083,7 +1128,100 @@
   .row-viewer-btn:hover { background: var(--accent); color: var(--bg); }
 
   /* ─── Document viewer ────────────────────────────────────────────── */
-  body.viewer-mode main, body.viewer-mode #globe-view, body.viewer-mode #graph-view, body.viewer-mode #timeline-view { display: none; }
+  /* ─── Map view ──────────────────────────────────────────────────── */
+  body.map-mode main, body.map-mode #globe-view, body.map-mode #graph-view, body.map-mode #timeline-view { display: none; }
+  #map-view[hidden] { display: none; }
+  #map-view {
+    grid-row: 2 / 3; position: relative; background: var(--bg); min-height: 0; overflow: hidden;
+    display: flex; flex-direction: column; height: 100%;
+  }
+  #map-leaflet { flex: 1 1 auto; min-height: 0; height: 100%; }
+
+  /* Leaflet dark-mode overrides */
+  .leaflet-container { background: #0a0d12 !important; font-family: var(--mono) !important; }
+  .leaflet-tile { filter: brightness(0.45) saturate(0.6) hue-rotate(180deg); }
+  .leaflet-control-attribution { background: rgba(11,14,20,0.85) !important; color: var(--fg-dim) !important; font-size: 9px !important; }
+  .leaflet-control-attribution a { color: var(--accent) !important; }
+  .leaflet-control-zoom a { background: var(--bg3) !important; color: var(--fg) !important; border-color: var(--border) !important; }
+  .leaflet-control-zoom a:hover { background: var(--bg2) !important; color: var(--accent) !important; }
+
+  /* ── Official marker (cyan, solid) ────────────────────────────── */
+  .map-marker-official {
+    width: 18px; height: 18px;
+    background: var(--accent);
+    border: 3px solid rgba(255,255,255,0.85);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(87,199,255,0.55), 0 2px 6px rgba(0,0,0,0.6);
+  }
+
+  /* ── Civilian/NUFORC marker (amber, smaller) ───────────────────── */
+  .map-marker-civilian {
+    width: 12px; height: 12px;
+    background: #ffb34d;
+    border: 2px solid rgba(255,255,255,0.7);
+    border-radius: 50%;
+    box-shadow: 0 0 0 2px rgba(255,179,77,0.45), 0 1px 4px rgba(0,0,0,0.5);
+  }
+
+  /* Leaflet popup dark-mode */
+  .leaflet-popup-content-wrapper {
+    background: rgba(11,14,20,0.97) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: 4px !important;
+    color: var(--fg) !important;
+    box-shadow: 0 6px 20px rgba(0,0,0,0.6) !important;
+  }
+  .leaflet-popup-tip { background: rgba(11,14,20,0.97) !important; }
+  .leaflet-popup-content { margin: 10px 14px !important; font-size: 12px !important; line-height: 1.45 !important; }
+  .map-popup-official { border-top: 3px solid var(--accent); padding-top: 6px; }
+  .map-popup-civilian { border-top: 3px solid #ffb34d; padding-top: 6px; }
+  .map-popup-title { font-weight: 700; color: var(--fg); margin-bottom: 4px; }
+  .map-popup-meta { font-size: 10.5px; color: var(--fg-dim); margin-bottom: 6px; font-family: var(--mono); letter-spacing: 0.04em; }
+  .map-popup-prov { display: inline-flex; align-items: center; gap: 4px; margin-bottom: 6px; }
+  .map-popup-btn {
+    display: inline-block; margin-top: 4px;
+    background: rgba(87,199,255,0.10); border: 1px solid var(--accent); color: var(--accent);
+    font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; text-transform: uppercase;
+    padding: 3px 8px; border-radius: 3px; cursor: pointer;
+  }
+  .map-popup-btn:hover { background: var(--accent); color: var(--bg); }
+  .map-popup-btn.civ-btn {
+    background: rgba(255,179,77,0.10); border-color: #ffb34d; color: #ffb34d;
+  }
+  .map-popup-btn.civ-btn:hover { background: #ffb34d; color: #1a1200; }
+
+  /* Civilian popup block styling mirrors .civilian-block */
+  .map-popup-civilian-wrapper {
+    background: repeating-linear-gradient(135deg,
+      rgba(255,179,77,0.04) 0 12px,
+      rgba(255,179,77,0.09) 12px 24px);
+    border: 1.5px dashed rgba(255,179,77,0.55);
+    border-radius: 4px;
+    padding: 8px;
+  }
+
+  /* Map stat overlay */
+  .map-stat {
+    position: absolute; top: 12px; left: 12px; padding: 6px 10px; z-index: 600;
+    background: rgba(0,0,0,0.75); border: 1px solid var(--border);
+    color: var(--fg-dim); font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.05em; pointer-events: none;
+  }
+  .map-stat strong { color: var(--accent); font-weight: normal; }
+  .map-stat .civ-count { color: #ffb34d; }
+
+  /* MarkerCluster dark theming */
+  .marker-cluster-small div, .marker-cluster-medium div, .marker-cluster-large div {
+    background: rgba(87,199,255,0.75) !important;
+    color: var(--bg) !important;
+    font-family: var(--mono) !important; font-size: 11px !important; font-weight: 700 !important;
+  }
+  .marker-cluster-small, .marker-cluster-medium, .marker-cluster-large {
+    background: rgba(87,199,255,0.30) !important;
+    border: 1px solid var(--accent) !important;
+  }
+
+  body.viewer-mode main, body.viewer-mode #globe-view, body.viewer-mode #graph-view, body.viewer-mode #timeline-view, body.viewer-mode #map-view { display: none; }
   body.viewer-mode #viewer-view { display: grid; }
   body.viewer-mode #viewer-progress { display: block; }
   /* In viewer mode the viewer's own top bar fully replaces the site header. */
@@ -1911,6 +2049,7 @@
       <button class="globe-toggle" data-view="globe" type="button">🌐 Globe</button>
       <button class="globe-toggle" data-view="graph" type="button">🕸 Graph</button>
       <button class="globe-toggle" data-view="timeline" type="button">📅 Timeline</button>
+      <button class="globe-toggle" data-view="map" type="button">🗺 Map</button>
     </div>
     <button class="askk-cue" id="askk-cue" type="button" title="Ask the archive (Cmd/Ctrl + K)">⌘ ASK<kbd>⌘K</kbd></button>
     <a class="bmc" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener" title="Help keep this archive online">
@@ -2075,8 +2214,10 @@
 
     <div class="tl-hud tl-hud-bl">
       <span class="lane-label">LANES</span>
+      <button data-lane="milestones" class="active" type="button">Milestones</button>
       <button data-lane="incidents" class="active" type="button">Incidents</button>
-      <button data-lane="documents" class="active" type="button">Documents</button>
+      <button data-lane="documents" class="active" type="button">Official Releases</button>
+      <button data-lane="nuforc" class="active" type="button">⚠ NUFORC</button>
       <button data-lane="programs" class="active" type="button">Programs</button>
       <button data-lane="dossiers" type="button">Dossiers</button>
       <button data-lane="arcs" class="active" type="button">Arcs</button>
@@ -2096,6 +2237,15 @@
     <button data-d="2020">2020s</button>
   </div>
   <div id="timeline-results" class="empty"></div>
+</section>
+
+<section id="map-view" hidden>
+  <div id="map-leaflet"></div>
+  <div class="map-stat" id="map-stat">
+    PLOTTING <strong id="map-official-count">—</strong> OFFICIAL ·
+    <span class="civ-count"><strong id="map-civ-count">—</strong> CIVILIAN</span> ·
+    CLICK TO OPEN RECORD
+  </div>
 </section>
 
 <section id="viewer-view">
@@ -2963,7 +3113,7 @@ async function ensureGlobe() {
 
 let currentView = "search";
 async function setView(v) {
-  if (!["search", "globe", "graph", "timeline", "viewer"].includes(v)) v = "search";
+  if (!["search", "globe", "graph", "timeline", "map", "viewer"].includes(v)) v = "search";
   currentView = v;
   // Switching to a non-search view should drop mobile master-detail mode so
   // the new view occupies the full viewport.
@@ -2971,10 +3121,12 @@ async function setView(v) {
   document.body.classList.toggle("globe-mode",    v === "globe");
   document.body.classList.toggle("graph-mode",    v === "graph");
   document.body.classList.toggle("timeline-mode", v === "timeline");
+  document.body.classList.toggle("map-mode",      v === "map");
   document.body.classList.toggle("viewer-mode",   v === "viewer");
   $("#globe-view").toggleAttribute("hidden",    v !== "globe");
   $("#graph-view").toggleAttribute("hidden",    v !== "graph");
   $("#timeline-view").toggleAttribute("hidden", v !== "timeline");
+  $("#map-view").toggleAttribute("hidden",      v !== "map");
   document.querySelectorAll(".view-switch [data-view]").forEach(b => {
     b.classList.toggle("active", b.dataset.view === v);
     b.setAttribute("aria-pressed", b.dataset.view === v ? "true" : "false");
@@ -3000,6 +3152,7 @@ async function setView(v) {
   }
   if (v === "graph")    { try { await ensureGraph();    } catch (e) { console.error("[graph]", e); } }
   if (v === "timeline") { renderTimeline(); }
+  if (v === "map")      { try { await ensureMap(); } catch (e) { console.error("[map]", e); } }
   if (v === "viewer")   { try { await renderViewer();   } catch (e) { console.error("[viewer]", e); } }
   syncUrl();
 }
@@ -4591,19 +4744,21 @@ let tlState = {
   density: false,
   arcs: true,
   arcsVisible: new Set(["aaro","gimbal-2015","roswell-1947","stephenville-2008","washington-dc-1952","eastern-seaboard-2014-2019"]),
-  visibleLanes: new Set(["incidents", "documents", "programs"]),
+  visibleLanes: new Set(["milestones", "incidents", "documents", "nuforc", "programs"]),
   brush: null,    // {startX, endX, fromDate, toDate}
   brushing: false,
   hoverItem: null,
   pendingFrom: null, pendingTo: null, pendingFocus: null,
 };
 
-const LANE_ORDER = ["incidents", "documents", "programs", "dossiers"];
+const LANE_ORDER = ["milestones", "incidents", "documents", "nuforc", "programs", "dossiers"];
 const LANE_TITLES = {
-  incidents: "INCIDENTS",
-  documents: "DOCUMENTS",
-  programs:  "PROGRAMS",
-  dossiers:  "DOSSIERS",
+  milestones: "MILESTONES",
+  incidents:  "INCIDENTS",
+  documents:  "OFFICIAL RELEASES",
+  nuforc:     "NUFORC CIVILIAN",
+  programs:   "PROGRAMS",
+  dossiers:   "DOSSIERS",
 };
 
 function tlAgencyClass(ag) {
@@ -4653,6 +4808,45 @@ function tlBuildItems() {
   // within their lane band. Lane separation is drawn by the SVG overlay.
   const items = [];
   const inc = (window.INCIDENTS || {});
+
+  // ── Milestones (always visible as a distinct top lane) ────────────────
+  if (tlState.visibleLanes.has("milestones")) {
+    for (const m of tlState.milestones) {
+      const d = tlParseDate(m.date); if (!d) continue;
+      const end = m.end ? tlParseDate(m.end) : new Date(d.getTime() + 90 * 86400000);
+      const kindCls = "tl-milestone ms-kind-" + (m.kind || "event");
+      items.push({
+        id: "ms:" + m.id, group: "main", subgroup: "milestones",
+        start: d, end, type: "range", className: kindCls,
+        content: `<strong>${escapeHtml(m.label)}</strong>`,
+        title: `<strong>${escapeHtml(m.label)}</strong><br>${escapeHtml(m.blurb || "")}`,
+        _kind: "milestone", _id: m.id, _milestone: m,
+      });
+    }
+  }
+
+  // ── NUFORC civilian sightings from correlations.json ─────────────────
+  if (tlState.visibleLanes.has("nuforc")) {
+    const corr = window.CORRELATIONS || {};
+    const seen = new Set();
+    for (const entry of Object.values(corr)) {
+      for (const match of (entry.matches || [])) {
+        if (seen.has(match.id)) continue;
+        seen.add(match.id);
+        const d = tlParseDate(match.occurred_at); if (!d) continue;
+        const end = new Date(d.getTime() + 30 * 86400000);
+        items.push({
+          id: "nuforc:" + match.id, group: "main", subgroup: "nuforc",
+          start: d, end, type: "range",
+          className: "tl-nuforc tl-civilian",
+          content: "",
+          title: `⚠ CIVILIAN · ${escapeHtml(match.title || "NUFORC sighting")}`,
+          _kind: "nuforc", _id: match.id, _match: match,
+        });
+      }
+    }
+  }
+
   if (tlState.visibleLanes.has("incidents")) {
     for (const [id, i] of Object.entries(inc)) {
       const d = tlParseDate(i.date); if (!d) continue;
@@ -4816,6 +5010,10 @@ async function renderTimeline() {
     } else if (it._kind === "program") {
       const p = tlState.programs.find(x => x.id === it._id);
       if (p) showProgramInfo(p);
+    } else if (it._kind === "milestone") {
+      showMilestoneInfo(it._milestone);
+    } else if (it._kind === "nuforc") {
+      showNuforcInfo(it._match);
     }
   });
   tlState.timeline.on("doubleClick", (e) => {
@@ -4856,11 +5054,14 @@ async function renderTimeline() {
 
 function tlBuildCountsText(items) {
   const counts = {};
-  items.forEach(it => { counts[it.group] = (counts[it.group] || 0) + 1; });
+  items.forEach(it => {
+    const lane = it.subgroup || it.group;
+    counts[lane] = (counts[lane] || 0) + 1;
+  });
   return LANE_ORDER
     .filter(l => counts[l])
     .map(l => `${LANE_TITLES[l]}: ${counts[l]}`)
-    .join("  ·  ");
+    .join("  ·  ") || "—";
 }
 
 function showIncidentInfo(inc) {
@@ -4919,6 +5120,39 @@ function applyPendingTimelineFocus() {
   const it = tlState.items.get(id);
   if (!it) return;
   tlState.timeline.setSelection([id], { focus: true, animation: true });
+}
+
+function showMilestoneInfo(m) {
+  if (!m) return;
+  const kindColor = { policy: "var(--accent2)", event: "var(--accent)", media: "#b07cff", hearing: "#ff7eb2" };
+  const c = kindColor[m.kind] || "var(--accent)";
+  setView("search");
+  detailEl.innerHTML = `
+    <div style="padding:24px;max-width:780px">
+      <div style="font-family:var(--mono);color:${c};font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">MILESTONE · ${escapeHtml(m.kind || "event")} · ${escapeHtml(m.date)}</div>
+      <h2 style="margin:0 0 10px;font-size:22px;color:var(--fg)">${escapeHtml(m.label)}</h2>
+      <p style="line-height:1.55;color:var(--fg)">${escapeHtml(m.blurb || "")}</p>
+    </div>`;
+}
+
+function showNuforcInfo(match) {
+  if (!match) return;
+  setView("search");
+  const loc = match.location ? `${escapeHtml(match.location.name || "")}` : "—";
+  detailEl.innerHTML = `
+    <div style="padding:24px;max-width:780px">
+      <span class="prov-pill civilian">⚠ Unverified Civilian Report</span>
+      <h2 style="margin:10px 0 6px;font-size:20px;color:#ffd9a0">${escapeHtml(match.title || "NUFORC Sighting")}</h2>
+      <div style="font-family:var(--mono);color:var(--fg-dim);font-size:11px;margin-bottom:14px">
+        ${escapeHtml(match.occurred_at || "")} · ${loc}${match.shape ? " · shape: " + escapeHtml(match.shape) : ""}
+      </div>
+      <div class="civilian-block" style="padding:16px 18px 18px">
+        <div class="civ-intro">${escapeHtml(match.summary || "No summary available.")}</div>
+        <div class="civ-footer" style="margin-top:12px;font-size:10.5px;color:#c8a872">
+          Source: NUFORC public mirror (planetsig/ufo-reports). Unverified civilian eyewitness report.
+        </div>
+      </div>
+    </div>`;
 }
 
 // ─── Overlay (milestones, arcs, brush) ────────────────────────────────
@@ -5303,6 +5537,244 @@ function initGlobeTimeslider() {
     }, 350);
   });
 }
+
+// ─────────────────────────────────────────────────────────────────────
+// Map view — Leaflet + MarkerCluster + correlations.json
+// ─────────────────────────────────────────────────────────────────────
+let mapState = {
+  map: null,
+  officialLayer: null,
+  civilianLayer: null,
+  clusterGroup: null,
+  geojsonLayer: null,
+  built: false,
+};
+
+function mapMakeIcon(type) {
+  // type: "official" | "civilian"
+  const isOfficial = type === "official";
+  return window.L && L.divIcon({
+    className: "",
+    html: `<div class="map-marker-${type}"></div>`,
+    iconSize:   isOfficial ? [18, 18] : [12, 12],
+    iconAnchor: isOfficial ? [9,  9]  : [6,  6],
+    popupAnchor: isOfficial ? [0, -10] : [0, -7],
+  });
+}
+
+function mapOfficialPopupHtml(entry, corrKey, corrKeyToDocId) {
+  const rec = entry.official;
+  const loc = rec.location || {};
+  const occurred = rec.occurred_at ? rec.occurred_at.slice(0, 10) : "—";
+  // corrKey is the key in correlations.json; corrKeyToDocId maps it to the search-index doc id.
+  const docId = (corrKeyToDocId && corrKey && corrKeyToDocId[corrKey]) || null;
+  const btnHtml = docId
+    ? `<button class="map-popup-btn" onclick="mapOpenDetail(${JSON.stringify(docId)})">↗ OPEN RECORD</button>`
+    : "";
+  return `<div class="map-popup-official">
+    <div class="map-popup-prov"><span class="prov-pill official">✓ Official Release</span></div>
+    <div class="map-popup-title">${escapeHtml(rec.title || "Unnamed record")}</div>
+    <div class="map-popup-meta">${occurred} · ${escapeHtml(loc.name || "")}</div>
+    ${entry.match_count ? `<div style="font-size:10.5px;color:#ffb34d;margin-bottom:4px">⚠ ${entry.match_count} civilian sighting${entry.match_count === 1 ? "" : "s"} nearby</div>` : ""}
+    ${btnHtml}
+  </div>`;
+}
+
+function mapCivilianPopupHtml(match) {
+  const loc = match.location || {};
+  const occurred = (match.occurred_at || "").slice(0, 10);
+  return `<div class="map-popup-civilian">
+    <div class="map-popup-prov"><span class="prov-pill civilian">⚠ Unverified</span></div>
+    <div class="map-popup-civilian-wrapper">
+      <div class="map-popup-title" style="color:#ffd9a0">${escapeHtml(match.title || "NUFORC sighting")}</div>
+      <div class="map-popup-meta">${occurred} · ${escapeHtml(loc.name || "")}</div>
+      <div style="font-size:11px;color:var(--fg);margin-top:4px">${escapeHtml((match.summary || "").slice(0, 120))}${match.summary && match.summary.length > 120 ? "…" : ""}</div>
+      <button class="map-popup-btn civ-btn" onclick="mapOpenNuforc(${JSON.stringify(match.id)})">VIEW DETAILS</button>
+    </div>
+  </div>`;
+}
+
+window.mapOpenDetail = function(docId) {
+  setView("search");
+  showDetail(docId, []);
+};
+
+window.mapOpenNuforc = function(matchId) {
+  const corr = window.CORRELATIONS || {};
+  for (const entry of Object.values(corr)) {
+    const m = (entry.matches || []).find(x => x.id === matchId);
+    if (m) { showNuforcInfo(m); return; }
+  }
+};
+
+async function ensureMap() {
+  if (!window.L) {
+    // Leaflet CDN not yet loaded — defer until script fires
+    setTimeout(() => ensureMap(), 300);
+    return;
+  }
+  const container = $("#map-leaflet");
+  if (!container) return;
+
+  if (mapState.map) {
+    // Already built — invalidate size in case container was hidden
+    mapState.map.invalidateSize();
+    // Re-apply filters if docs changed
+    mapRefreshFilters();
+    return;
+  }
+
+  // Build map
+  mapState.map = L.map(container, {
+    center: [30, -30],
+    zoom: 2,
+    minZoom: 1,
+    maxZoom: 12,
+    zoomControl: true,
+  });
+
+  // OSM tile layer (styled dark by CSS filter)
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+    maxZoom: 19,
+  }).addTo(mapState.map);
+
+  // GeoJSON basemap overlay (country outlines)
+  try {
+    const res = await fetch("geo/ne_110m_admin_0_countries.geojson");
+    if (res.ok) {
+      const gj = await res.json();
+      mapState.geojsonLayer = L.geoJSON(gj, {
+        style: {
+          color: "#1f2937",
+          weight: 1,
+          fillColor: "#0b0e14",
+          fillOpacity: 0.0,
+        },
+        interactive: false,
+      }).addTo(mapState.map);
+    }
+  } catch (e) {
+    console.warn("[map] GeoJSON basemap unavailable:", e);
+  }
+
+  // Cluster group for all markers
+  if (window.L.MarkerClusterGroup) {
+    mapState.clusterGroup = L.markerClusterGroup({
+      maxClusterRadius: 40,
+      disableClusteringAtZoom: 8,
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      chunkedLoading: true,
+    });
+  }
+
+  mapBuildMarkers();
+
+  if (mapState.clusterGroup) {
+    mapState.map.addLayer(mapState.clusterGroup);
+  }
+
+  mapState.built = true;
+
+  // After map is mounted, invalidate size (it may have been hidden)
+  requestAnimationFrame(() => mapState.map && mapState.map.invalidateSize());
+}
+
+function mapBuildMarkers() {
+  const corr = window.CORRELATIONS || {};
+  let officialCount = 0;
+  let civCount = 0;
+  const officialIcon  = mapMakeIcon("official");
+  const civilianIcon  = mapMakeIcon("civilian");
+  const addTarget = mapState.clusterGroup || mapState.map;
+  // Pre-build a quick lookup: corrKey → docId
+  const corrKeyToDocId = {};
+  for (const key of Object.keys(corr)) {
+    const doc = docs.find(d => d.id === key);
+    if (doc) { corrKeyToDocId[key] = doc.id; continue; }
+    const byColon = key.replace(":", "_");  // shouldn't happen but guard
+    const doc2 = docs.find(d => d.id === byColon);
+    if (doc2) corrKeyToDocId[key] = doc2.id;
+  }
+
+  // Official markers
+  for (const [key, entry] of Object.entries(corr)) {
+    const rec = entry.official;
+    if (!rec) continue;
+    const loc = rec.location || {};
+    if (!loc.lat || !loc.lng) continue;
+    // Apply active date/source filter if set
+    if (!mapPassesFilter(rec.occurred_at, rec.source)) continue;
+    const marker = L.marker([loc.lat, loc.lng], { icon: officialIcon });
+    marker.bindPopup(mapOfficialPopupHtml(entry, key, corrKeyToDocId), { maxWidth: 280 });
+    marker._mapKind = "official";
+    marker._recId = key;
+    addTarget.addLayer(marker);
+    officialCount++;
+
+    // Civilian NUFORC markers for this official record's matches
+    for (const match of (entry.matches || [])) {
+      const ml = match.location || {};
+      if (!ml.lat || !ml.lng) continue;
+      if (!mapPassesFilter(match.occurred_at, "nuforc")) continue;
+      const cm = L.marker([ml.lat, ml.lng], { icon: civilianIcon });
+      cm.bindPopup(mapCivilianPopupHtml(match), { maxWidth: 280 });
+      cm._mapKind = "civilian";
+      cm._matchId = match.id;
+      addTarget.addLayer(cm);
+      civCount++;
+    }
+  }
+
+  const oc = $("#map-official-count");
+  const cc = $("#map-civ-count");
+  if (oc) oc.textContent = String(officialCount);
+  if (cc) cc.textContent = String(civCount);
+}
+
+function mapPassesFilter(dateStr, source) {
+  // Apply the main UI's active date filter if set (from decade/date-range selectors)
+  const decadeEl = $("#f-decade");
+  if (decadeEl && decadeEl.value) {
+    const decade = parseInt(decadeEl.value, 10);
+    if (dateStr) {
+      const y = parseInt((dateStr || "").slice(0, 4), 10);
+      if (y < decade || y >= decade + 10) return false;
+    }
+  }
+  // Apply source filter: "nuforc" sources match if agency filter is blank or "nuforc"
+  const agencyEl = $("#f-agency");
+  if (agencyEl && agencyEl.value) {
+    const af = agencyEl.value.toLowerCase();
+    if (source === "nuforc" && af !== "nuforc") return false;
+    if (source !== "nuforc" && af === "nuforc") return false;
+  }
+  return true;
+}
+
+function mapRefreshFilters() {
+  if (!mapState.map || !mapState.built) return;
+  const addTarget = mapState.clusterGroup || mapState.map;
+  // Clear and rebuild
+  if (mapState.clusterGroup) {
+    mapState.clusterGroup.clearLayers();
+  } else {
+    mapState.map.eachLayer(l => { if (l._mapKind) mapState.map.removeLayer(l); });
+  }
+  mapBuildMarkers();
+}
+
+// Wire map refresh into the existing filter events.
+// Watch for map-mode filter changes and refresh the marker set.
+document.addEventListener("change", (e) => {
+  if (currentView === "map" && mapState.built) {
+    const t = e.target;
+    if (t.id === "f-agency" || t.id === "f-decade" || t.id === "f-loc") {
+      mapRefreshFilters();
+    }
+  }
+});
 
 // ─────────────────────────────────────────────────────────────────────
 async function init() {
