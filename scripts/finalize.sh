@@ -24,6 +24,9 @@ python3 scripts/extract_entities.py || true
 echo "==> Building knowledge graph communities (Louvain + centrality)…"
 python3 scripts/build_communities.py || true
 
+echo "==> Cross-source probabilistic record linkage (Splink)…"
+python3 scripts/dedup_records.py || true
+
 echo "==> Building vault notes…"
 rm -rf vault/Releases vault/Index vault/README.md
 python3 scripts/build_vault.py

@@ -62,6 +62,10 @@ python3 scripts/sightings/build_unified.py || true
 python3 scripts/sightings/build_correlations.py || true
 python3 scripts/build_hotspots.py || true          # Stream K: Gi* hexbin hotspots
 
+# Cross-source probabilistic record linkage (Splink, Stream H).
+# Produces ui/dedup_clusters.json — used by the detail panel "Same incident as:" block.
+python3 scripts/dedup_records.py || true
+
 # Vault: rebuild fresh so removed/renamed records don't linger
 rm -rf vault/Releases vault/Index vault/README.md
 python3 scripts/build_vault.py

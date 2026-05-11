@@ -2223,6 +2223,83 @@
     background: transparent;
   }
 </style>
+
+<!-- Dedup / entity-resolution styles (Stream H) -->
+<style>
+  /* "Same incident as:" panel in the detail view */
+  .dedup-block {
+    margin: 14px 0;
+    background: #0f151e;
+    border: 1px solid #1a2535;
+    border-radius: 8px;
+    padding: 12px 14px;
+    font-size: 13px;
+  }
+  .dedup-block .dedup-heading {
+    font-size: 11px;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: #7c8aa1;
+    margin-bottom: 8px;
+    font-weight: 600;
+  }
+  .dedup-block .dedup-intro {
+    color: #a0aec0;
+    font-size: 12px;
+    margin-bottom: 10px;
+    line-height: 1.5;
+  }
+  .dedup-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+  }
+  /* Provenance-coded chips: cyan = official, amber = civilian/unverified */
+  .dedup-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 5px;
+    padding: 4px 9px;
+    border-radius: 5px;
+    font-size: 11.5px;
+    cursor: pointer;
+    transition: opacity 0.15s;
+    max-width: 260px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    border: none;
+    text-align: left;
+  }
+  .dedup-chip:hover { opacity: 0.8; }
+  /* Official sources (war.gov, Blue Book, NASA, FBI) */
+  .dedup-chip.official {
+    background: rgba(87, 199, 255, 0.12);
+    border: 1px solid rgba(87, 199, 255, 0.35);
+    color: #57c7ff;
+  }
+  /* Civilian / unverified sources (NUFORC, Reddit, news) */
+  .dedup-chip.civilian {
+    background: rgba(255, 211, 77, 0.10);
+    border: 1px solid rgba(255, 211, 77, 0.35);
+    color: #ffd34d;
+  }
+  .dedup-chip .chip-source {
+    font-weight: 700;
+    font-size: 10px;
+    opacity: 0.85;
+  }
+  .dedup-chip .chip-score {
+    font-size: 10px;
+    opacity: 0.6;
+    margin-left: 2px;
+  }
+  .dedup-meta {
+    margin-top: 8px;
+    font-size: 11px;
+    color: #4a5568;
+  }
+</style>
 </head>
 <body>
 <header>
@@ -2963,6 +3040,60 @@ function civilianCorrelationsHTML(d) {
     </div>`;
 }
 
+// Cross-source dedup cluster block (Stream H — Splink probabilistic linkage).
+// Shows other official records that Splink assessed as likely the same incident.
+// Only official sources appear here; civilian NUFORC sightings are shown
+// separately in civilianCorrelationsHTML above.
+function dedupLinksHTML(d) {
+  const dd = window.DEDUP_CLUSTERS;
+  if (!dd || !dd.by_record || !dd.clusters) return "";
+  const clusterId = dd.by_record[d.id];
+  if (!clusterId) return "";
+  const cluster = dd.clusters.find(c => c.cluster_id === clusterId);
+  if (!cluster) return "";
+  // Filter out the current record itself
+  const others = cluster.members.filter(m => m.record_id !== d.id);
+  if (!others.length) return "";
+
+  const OFFICIAL_SOURCES = new Set(["wargov", "blue_book", "fbi", "nasa"]);
+  const SOURCE_LABELS = {
+    wargov: "WAR.GOV", blue_book: "BLUE BOOK", fbi: "FBI",
+    nasa: "NASA", nuforc: "NUFORC",
+  };
+
+  const chips = others.map(m => {
+    const doc = docs.find(x => x.id === m.record_id);
+    const isOfficial = OFFICIAL_SOURCES.has(m.source);
+    const cls = isOfficial ? "official" : "civilian";
+    const srcLabel = SOURCE_LABELS[m.source] || (m.source || "?").toUpperCase();
+    const title = doc ? doc.title : m.record_id;
+    const scoreStr = m.match_score ? `${Math.round(m.match_score * 100)}%` : "";
+    const clickAttr = doc ? ` data-link-id="${escapeHtml(m.record_id)}"` : "";
+    return `<button class="dedup-chip ${cls}" title="${escapeHtml(title)}"${clickAttr}>` +
+      `<span class="chip-source">${escapeHtml(srcLabel)}</span>` +
+      `<span class="chip-label">${escapeHtml(title.slice(0, 45))}${title.length > 45 ? "…" : ""}</span>` +
+      `<span class="chip-score">${escapeHtml(scoreStr)}</span>` +
+      `</button>`;
+  }).join("");
+
+  const dateNote = cluster.consensus_date ? ` · consensus date: ${escapeHtml(cluster.consensus_date)}` : "";
+  const locNote = cluster.consensus_location ? ` · ${escapeHtml(cluster.consensus_location)}` : "";
+
+  return `
+    <div class="dedup-block">
+      <div class="dedup-heading">Same incident as:</div>
+      <div class="dedup-intro">
+        Probabilistic record linkage (Splink) identified ${others.length} other
+        record${others.length === 1 ? "" : "s"} in the archive likely describing
+        the same event${dateNote}${locNote}.
+        <strong>Cyan = official release, amber = civilian report.</strong>
+        Match scores shown; links below 65% are excluded.
+      </div>
+      <div class="dedup-chips">${chips}</div>
+      <div class="dedup-meta">Cluster ${escapeHtml(clusterId)} · ${cluster.members.length} total members</div>
+    </div>`;
+}
+
 function extractedHTML(d) {
   const imgs = d.extracted_images || [];
   if (!imgs.length) return "";
@@ -3057,6 +3188,7 @@ function showDetail(id, terms = []) {
     ${previewHTML(d)}
     ${extractedHTML(d)}
     ${civilianCorrelationsHTML(d)}
+    ${dedupLinksHTML(d)}
     <div id="mini-graph-mount"></div>
     ${relatedHTML(d)}
     ${d.text ? `
@@ -6059,6 +6191,8 @@ async function init() {
     fetch("correlations.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.CORRELATIONS = j; }),
     // Stream-L: load community + centrality data (graceful no-op if absent)
     fetch("graph_communities.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.GRAPH_COMMUNITIES = j; }),
+    // Splink cross-source dedup clusters (Stream H)
+    fetch("dedup_clusters.json").then(r => r.ok ? r.json() : null).then(j => { if (j) window.DEDUP_CLUSTERS = j; }),
   ]);
 
   mini = new MiniSearch({

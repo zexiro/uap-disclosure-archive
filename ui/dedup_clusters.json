@@ -1,0 +1,215 @@
+{
+  "generated_at": "2026-05-11T02:45:02.024886Z",
+  "total_records_evaluated": 606,
+  "match_threshold": 0.65,
+  "clusters": [
+    {
+      "cluster_id": "c_0001",
+      "members": [
+        {
+          "record_id": "59_64634_711.5612_7-2852",
+          "source": "wargov",
+          "match_score": 0.7611
+        },
+        {
+          "record_id": "blue_book_1431",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1436",
+          "source": "blue_book",
+          "match_score": 0.7083
+        },
+        {
+          "record_id": "blue_book_1444",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1451",
+          "source": "blue_book",
+          "match_score": 0.7028
+        },
+        {
+          "record_id": "blue_book_1476",
+          "source": "blue_book",
+          "match_score": 0.7028
+        },
+        {
+          "record_id": "blue_book_1479",
+          "source": "blue_book",
+          "match_score": 0.7028
+        },
+        {
+          "record_id": "blue_book_1482",
+          "source": "blue_book",
+          "match_score": 0.7556
+        },
+        {
+          "record_id": "blue_book_1483",
+          "source": "blue_book",
+          "match_score": 0.7611
+        },
+        {
+          "record_id": "blue_book_1485",
+          "source": "blue_book",
+          "match_score": 0.7528
+        },
+        {
+          "record_id": "blue_book_1492",
+          "source": "blue_book",
+          "match_score": 0.7028
+        },
+        {
+          "record_id": "blue_book_1494",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1501",
+          "source": "blue_book",
+          "match_score": 0.7139
+        },
+        {
+          "record_id": "blue_book_1502",
+          "source": "blue_book",
+          "match_score": 0.7139
+        },
+        {
+          "record_id": "blue_book_1504",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1514",
+          "source": "blue_book",
+          "match_score": 0.7194
+        },
+        {
+          "record_id": "blue_book_1516",
+          "source": "blue_book",
+          "match_score": 0.7194
+        },
+        {
+          "record_id": "blue_book_1522",
+          "source": "blue_book",
+          "match_score": 0.7139
+        },
+        {
+          "record_id": "blue_book_1524",
+          "source": "blue_book",
+          "match_score": 0.7194
+        },
+        {
+          "record_id": "blue_book_1533",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1536",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1538",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1554",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1556",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1567",
+          "source": "blue_book",
+          "match_score": 0.7194
+        },
+        {
+          "record_id": "blue_book_1572",
+          "source": "blue_book",
+          "match_score": 0.7139
+        },
+        {
+          "record_id": "blue_book_1578",
+          "source": "blue_book",
+          "match_score": 0.7056
+        },
+        {
+          "record_id": "blue_book_1584",
+          "source": "blue_book",
+          "match_score": 0.7111
+        },
+        {
+          "record_id": "blue_book_1588",
+          "source": "blue_book",
+          "match_score": 0.7056
+        },
+        {
+          "record_id": "blue_book_1654",
+          "source": "blue_book",
+          "match_score": 0.7111
+        }
+      ],
+      "consensus_date": "1952-07-12",
+      "consensus_location": "Lockbourne AFB, Ohio"
+    },
+    {
+      "cluster_id": "c_0002",
+      "members": [
+        {
+          "record_id": "65_HS1-101634279_100-DE-26505",
+          "source": "fbi",
+          "match_score": 0.7379
+        },
+        {
+          "record_id": "blue_book_5254",
+          "source": "blue_book",
+          "match_score": 0.7379
+        }
+      ],
+      "consensus_date": "1957-11-07",
+      "consensus_location": "Germany"
+    }
+  ],
+  "by_record": {
+    "59_64634_711.5612_7-2852": "c_0001",
+    "blue_book_1431": "c_0001",
+    "blue_book_1436": "c_0001",
+    "blue_book_1444": "c_0001",
+    "blue_book_1451": "c_0001",
+    "blue_book_1476": "c_0001",
+    "blue_book_1479": "c_0001",
+    "blue_book_1482": "c_0001",
+    "blue_book_1483": "c_0001",
+    "blue_book_1485": "c_0001",
+    "blue_book_1492": "c_0001",
+    "blue_book_1494": "c_0001",
+    "blue_book_1501": "c_0001",
+    "blue_book_1502": "c_0001",
+    "blue_book_1504": "c_0001",
+    "blue_book_1514": "c_0001",
+    "blue_book_1516": "c_0001",
+    "blue_book_1522": "c_0001",
+    "blue_book_1524": "c_0001",
+    "blue_book_1533": "c_0001",
+    "blue_book_1536": "c_0001",
+    "blue_book_1538": "c_0001",
+    "blue_book_1554": "c_0001",
+    "blue_book_1556": "c_0001",
+    "blue_book_1567": "c_0001",
+    "blue_book_1572": "c_0001",
+    "blue_book_1578": "c_0001",
+    "blue_book_1584": "c_0001",
+    "blue_book_1588": "c_0001",
+    "blue_book_1654": "c_0001",
+    "65_HS1-101634279_100-DE-26505": "c_0002",
+    "blue_book_5254": "c_0002"
+  }
+}
