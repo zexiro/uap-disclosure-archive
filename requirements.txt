@@ -22,3 +22,6 @@ libpysal>=4.10        # KNN spatial weights for esda
 
 # Knowledge graph + community detection
 networkx>=3.2         # unified graph, Louvain (built-in 3.x), centrality metrics
+
+# Topic modelling
+bertopic>=0.16        # auto-discover thematic topics via HDBSCAN + c-TF-IDF

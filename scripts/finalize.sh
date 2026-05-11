@@ -37,6 +37,9 @@ python3 scripts/build_image_embeddings.py || true
 echo "==> Building FAISS image similarity index…"
 python3 scripts/build_image_index.py || true
 
+echo "==> Discovering topics (BERTopic over BGE embeddings)…"
+python3 scripts/build_topics.py || true
+
 echo "==> Augmenting features (shapes, incidents, graph layout)…"
 python3 scripts/build_features.py
 

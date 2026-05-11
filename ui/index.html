@@ -2207,6 +2207,22 @@
     opacity: 0.7;
   }
 </style>
+
+<!-- Stream-I: BERTopic topics filter — localised CSS; no changes to other sections -->
+<style>
+  /* Topic chip accent: warm amber to distinguish from dossier purple */
+  #topic-chips .chip[data-topic].active {
+    border-color: var(--accent2);
+    color: var(--accent2);
+    background: #2a2010;
+  }
+  #topic-chips .chip[data-topic].active .count { color: var(--accent2); }
+  #topic-chips .chip[data-topic="noise"].active {
+    border-color: var(--fg-dim);
+    color: var(--fg-dim);
+    background: transparent;
+  }
+</style>
 </head>
 <body>
 <header>
@@ -2242,6 +2258,10 @@
   <div class="chips facets-row header-chips" id="dossier-chips" hidden>
     <span class="facet-label">DOSSIERS</span>
     <!-- chips injected from ui/dossiers.json -->
+  </div>
+  <div class="chips facets-row header-chips" id="topic-chips" hidden>
+    <span class="facet-label">TOPICS</span>
+    <!-- chips injected from ui/topics.json by Stream-I JS below -->
   </div>
   <div class="header-bottom-row" style="width:100%;display:flex;justify-content:space-between;align-items:center;gap:12px;margin-top:4px;flex-wrap:wrap">
     <div class="header-kbdhints" style="font-size:11px;color:var(--fg-dim)">
@@ -9030,6 +9050,85 @@ init();
   } else {
     document.addEventListener("DOMContentLoaded", patchTooltip);
   }
+})();
+
+// ─── Stream-I: BERTopic Topics filter ────────────────────────────────────────
+// Self-contained; only touches #topic-chips, activeTopics, and monkey-patches
+// applyFilters. No other UI sections are modified.
+(function () {
+  // by_record: { record_id → topic_id }
+  let TOPIC_BY_RECORD = {};
+  let activeTopics = new Set();   // set of topic ids (integers) currently filtered
+
+  // Patch applyFilters to additionally gate on activeTopics
+  const _origApplyFilters = applyFilters;
+  applyFilters = function (matches) {
+    let result = _origApplyFilters(matches);
+    if (activeTopics.size) {
+      result = result.filter(m => {
+        const d = m.doc || m;
+        const tid = TOPIC_BY_RECORD[d.id];
+        return tid !== undefined && activeTopics.has(tid);
+      });
+    }
+    return result;
+  };
+
+  // Patch f-clear button to also clear topic chips
+  const origClearClick = document.getElementById("f-clear")
+    ? document.getElementById("f-clear").onclick : null;
+  const fClear = document.getElementById("f-clear");
+  if (fClear) {
+    fClear.addEventListener("click", () => {
+      activeTopics.clear();
+      document.querySelectorAll("#topic-chips .chip[data-topic]")
+        .forEach(c => c.classList.remove("active"));
+    });
+  }
+
+  async function loadTopics() {
+    let data;
+    try {
+      const res = await fetch("topics.json");
+      if (!res.ok) return;
+      data = await res.json();
+    } catch (_) { return; }
+
+    TOPIC_BY_RECORD = data.by_record || {};
+    const topics = data.topics || [];
+    if (!topics.length) return;
+
+    const container = document.getElementById("topic-chips");
+    if (!container) return;
+
+    for (const topic of topics) {
+      const isNoise = topic.id === -1;
+      const chip = document.createElement("span");
+      chip.className = "chip small";
+      chip.dataset.topic = isNoise ? "noise" : String(topic.id);
+      const displayLabel = isNoise ? "uncategorised" : topic.label;
+      const title = isNoise ? "Records not assigned to any topic" :
+        "Keywords: " + topic.keywords.slice(0, 6).join(", ");
+      chip.title = title;
+      chip.innerHTML = `<span>${displayLabel}</span><span class="count">${topic.size}</span>`;
+      chip.addEventListener("click", () => {
+        const tid = isNoise ? -1 : topic.id;
+        if (activeTopics.has(tid)) activeTopics.delete(tid);
+        else activeTopics.add(tid);
+        chip.classList.toggle("active", activeTopics.has(tid));
+        // Trigger search refresh via the global onChange if available,
+        // otherwise dispatch input event on #q.
+        if (typeof onChange === "function") onChange();
+        else document.getElementById("q")?.dispatchEvent(new Event("input"));
+      });
+      container.appendChild(chip);
+    }
+
+    if (container.querySelector(".chip[data-topic]")) container.hidden = false;
+  }
+
+  // Kick off after page init (DOMContentLoaded has already fired at this point)
+  loadTopics();
 })();
 </script>
 </body>

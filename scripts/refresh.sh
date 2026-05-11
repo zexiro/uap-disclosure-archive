@@ -46,6 +46,7 @@ python3 scripts/build_search_index.py
 python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_image_embeddings.py || true  # CLIP visual embeddings for IMG records
 python3 scripts/build_image_index.py || true       # FAISS image similarity index
+python3 scripts/build_topics.py || true            # BERTopic auto-discovered themes → ui/topics.json
 python3 scripts/build_features.py
 python3 scripts/build_api.py
 
