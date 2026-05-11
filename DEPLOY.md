@@ -135,11 +135,20 @@ curl -fsS -N -m 6 -X POST "$HOST/api/ask" \
   -H 'content-type: application/json' \
   -d '{"question":"smoke"}' | head -3
 
-# 5. WebSocket route is registered (HTTP GET on a WS path returns 426)
-curl -fsS -o /dev/null -w "/ws/collab %{http_code} (expect 426)\n" "$HOST/ws/collab"
+# 5. WebSocket upgrade handshake (must return 101 Switching Protocols).
+#    Note: a plain HTTP GET on /ws/collab returns 404 in Starlette — that
+#    is normal (there's no separate "wrong protocol" handler), so we have
+#    to send the actual upgrade headers to know the route is wired.
+curl -fsS -o /dev/null -w "/ws/collab upgrade %{http_code} (expect 101)\n" \
+  --http1.1 \
+  -H "Connection: Upgrade" \
+  -H "Upgrade: websocket" \
+  -H "Sec-WebSocket-Version: 13" \
+  -H "Sec-WebSocket-Key: dGhlIHNhbXBsZSBub25jZQ==" \
+  "$HOST/ws/collab"
 ```
 
-All HTTP checks should return 200 (302 acceptable for `/`). Any 404, 500, or connection refused means something regressed — check `railway logs --latest --lines 200` and compare against the previous deploy.
+Expected statuses: `200` for everything HTTP, `302` for `/`, `101` for the WebSocket upgrade. Any other code means something regressed — check `railway logs --latest --lines 200` and compare against the previous deploy.
 
 ## Useful commands
 
