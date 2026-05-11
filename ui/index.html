@@ -8912,6 +8912,11 @@ init();
   panel.querySelector("#collab-panel-close").addEventListener("click", () => {
     panel.classList.remove("open");
   });
+  // Restore panel-open state after a share-click triggered reload.
+  if (sessionStorage.getItem("collab_reopen_panel") === "1") {
+    sessionStorage.removeItem("collab_reopen_panel");
+    panel.classList.add("open");
+  }
 
   // ── In-memory message log (max 50) ────────────────────────────────
   const msgLog = [];
@@ -9034,21 +9039,25 @@ init();
       p.set("id", m.payload.id);
       location.hash = p.toString();
     } else if ((m.kind === "filter-url" || m.kind === "page") && m.payload && m.payload.url) {
-      // Same-origin → swap the hash/path in place to avoid a full reload
-      // that would tear down the WS connection. Cross-origin shouldn't
-      // happen (server-side broadcasts only what was sent) but we fall
-      // back to a navigation if URL parsing fails.
+      // Reading shared filter-url state cleanly requires re-running the
+      // app's own URL→state loader, which is keyed off many listeners.
+      // The simplest reliable path is a real navigation; we set a flag
+      // so the panel auto-opens after the reload-driven reconnect.
+      sessionStorage.setItem("collab_reopen_panel", "1");
       try {
-        const u = new URL(m.payload.url);
-        if (u.origin === location.origin) {
-          history.pushState({}, "", u.pathname + u.search + u.hash);
-          window.dispatchEvent(new HashChangeEvent("hashchange"));
+        const u = new URL(m.payload.url, location.origin);
+        if (u.origin === location.origin && u.pathname === location.pathname) {
+          // Same path: only the hash differs — set it and reload so
+          // loadUrl() runs against the new fragment.
+          location.hash = u.hash || "";
+          location.reload();
         } else {
-          location.href = m.payload.url;
+          location.href = u.href;
         }
       } catch (e) {
         location.href = m.payload.url;
       }
+      return;
     }
     panel.classList.add("open");
   }
