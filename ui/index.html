@@ -9227,6 +9227,14 @@ init();
         updatePill();
         updatePresenceList();
 
+      } else if (msg.type === "history") {
+        // Replay buffer sent on connect — hydrate msgLog without toasting.
+        for (const m of (msg.messages || [])) {
+          msgLog.push(m);
+        }
+        while (msgLog.length > MAX_MSGS) msgLog.shift();
+        renderMessages();
+
       } else if (msg.type === "chat") {
         pushMsg(msg);
 

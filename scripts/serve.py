@@ -1414,10 +1414,16 @@ def redact_pii(text: str) -> str:
 
 
 class CollabHub:
+    # Ring buffer of recent chat/share/follow payloads, replayed to each
+    # new socket on connect so refreshing the page or joining late doesn't
+    # show an empty channel. Still ephemeral — drops on process restart.
+    HISTORY_LIMIT = 50
+
     def __init__(self):
         self._sessions: dict[str, WebSocket] = {}
         self._ip_sessions: dict[str, set] = {}
         self._msg_ts: dict[str, deque] = {}
+        self._recent: deque = deque(maxlen=self.HISTORY_LIMIT)
         self._lock = asyncio.Lock()
 
     async def connect(self, ws: WebSocket, session_id: str, ip: str) -> bool:
@@ -1429,11 +1435,20 @@ class CollabHub:
             self._sessions[session_id] = ws
             sessions_for_ip.add(session_id)
             self._msg_ts[session_id] = deque()
+            recent_snapshot = list(self._recent)
         await self._broadcast({
             "type": "presence",
             "online": list(self._sessions.keys()),
             "joined": session_id,
         })
+        if recent_snapshot:
+            try:
+                await ws.send_text(json.dumps(
+                    {"type": "history", "messages": recent_snapshot},
+                    ensure_ascii=False,
+                ))
+            except Exception:
+                pass
         return True
 
     async def disconnect(self, session_id: str, ip: str):
@@ -1469,20 +1484,28 @@ class CollabHub:
 
         kind = msg.get("type")
         ts = datetime.now(timezone.utc).isoformat()
+        payload = None
         if kind == "chat":
             text = redact_pii((msg.get("text") or "")[:500])
-            await self._broadcast({"type": "chat", "from": session_id, "text": text, "ts": ts})
+            payload = {"type": "chat", "from": session_id, "text": text, "ts": ts}
         elif kind == "share":
             share_kind = msg.get("kind", "")
             if share_kind in ("search-query", "ask-query"):
                 print(f"[collab] dropped share kind={share_kind!r} from {session_id}", file=sys.stderr)
                 return None
-            payload = msg.get("payload") or {}
-            await self._broadcast({"type": "share", "from": session_id, "kind": share_kind, "payload": payload, "ts": ts})
+            payload = {"type": "share", "from": session_id, "kind": share_kind,
+                       "payload": msg.get("payload") or {}, "ts": ts}
         elif kind == "follow":
-            await self._broadcast({"type": "follow", "follower": session_id, "target": msg.get("target", ""), "ts": ts})
+            payload = {"type": "follow", "follower": session_id, "target": msg.get("target", ""), "ts": ts}
         elif kind == "unfollow":
-            await self._broadcast({"type": "follow", "follower": session_id, "target": None, "ts": ts})
+            payload = {"type": "follow", "follower": session_id, "target": None, "ts": ts}
+
+        if payload is not None:
+            # Only chat + share are worth replaying. Follow events go stale
+            # the moment their sender leaves, so we don't pollute history.
+            if payload["type"] in ("chat", "share"):
+                self._recent.append(payload)
+            await self._broadcast(payload)
         return None
 
     async def _broadcast(self, payload: dict):
