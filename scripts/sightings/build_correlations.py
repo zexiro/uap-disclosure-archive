@@ -111,8 +111,11 @@ def main() -> int:
                 continue
             candidates.append((km, delta_days, c))
 
-        if not candidates:
-            continue
+        # Keep ALL geocoded official records (not just those with civilian
+        # matches). NUFORC is US-centric, so filtering by "must have civilian
+        # match" was dropping every international official record. The map
+        # view consumes this file and needs every geocoded record to render
+        # a marker — civilian-correlation lists can be empty.
 
         # Closest in space first, then closest in time
         candidates.sort(key=lambda x: (x[0], abs(x[1])))
@@ -162,9 +165,11 @@ def main() -> int:
         json.dump(ui_correlations, f, ensure_ascii=False, separators=(",", ":"))
 
     total_matches = sum(c["match_count"] for c in correlations.values())
+    with_matches = sum(1 for c in correlations.values() if c["match_count"] > 0)
     print(
-        f"[corr] {len(correlations)}/{len(official)} official records have civilian matches "
-        f"(total {total_matches:,} matches) → {OUT.relative_to(ROOT)} + {UI_OUT.relative_to(ROOT)}"
+        f"[corr] {len(correlations)} geocoded official records emitted "
+        f"({with_matches} have civilian matches, total {total_matches:,} matches) "
+        f"→ {OUT.relative_to(ROOT)} + {UI_OUT.relative_to(ROOT)}"
     )
     return 0
 
