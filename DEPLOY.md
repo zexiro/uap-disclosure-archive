@@ -107,6 +107,40 @@ entirely (the cron only re-runs it when war.gov publishes a new tranche).
 # Add your domain, then add the CNAME they give you to your DNS.
 ```
 
+## Post-deploy smoke checks
+
+Run these after every deploy that touches `scripts/serve.py`, `entrypoint.sh`, or `requirements.txt`. Each one tests a route class that has bitten us before:
+
+```bash
+HOST=https://uapdisclosuremirror.com
+
+# 1. Server is up at all
+curl -fsS -o /dev/null -w "healthz %{http_code}\n"           "$HOST/healthz"
+
+# 2. Front door — directory index.
+#    REGRESSION HISTORY: the ASGI port (commit 651d6fa) lost stdlib
+#    SimpleHTTPRequestHandler's directory-index behaviour. /ui/ matched the
+#    /ui/{path:path} route with empty path → resolved to the ui/ directory
+#    → is_file() False → 404. Fixed in ccd4127. Always test /ui/ explicitly,
+#    not just /ui/index.html — they hit different code paths.
+curl -fsS -o /dev/null -w "/ %{http_code}\n"                 "$HOST/"
+curl -fsS -o /dev/null -w "/ui/ %{http_code}\n"              "$HOST/ui/"
+curl -fsS -o /dev/null -w "/ui/index.html %{http_code}\n"    "$HOST/ui/index.html"
+
+# 3. Static asset serving
+curl -fsS -o /dev/null -w "/raw/records.json %{http_code}\n" "$HOST/raw/records.json"
+
+# 4. RAG endpoint (sources event must arrive even with a dummy key)
+curl -fsS -N -m 6 -X POST "$HOST/api/ask" \
+  -H 'content-type: application/json' \
+  -d '{"question":"smoke"}' | head -3
+
+# 5. WebSocket route is registered (HTTP GET on a WS path returns 426)
+curl -fsS -o /dev/null -w "/ws/collab %{http_code} (expect 426)\n" "$HOST/ws/collab"
+```
+
+All HTTP checks should return 200 (302 acceptable for `/`). Any 404, 500, or connection refused means something regressed — check `railway logs --latest --lines 200` and compare against the previous deploy.
+
 ## Useful commands
 
 ```bash
