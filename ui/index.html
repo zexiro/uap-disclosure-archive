@@ -9287,10 +9287,13 @@ init();
   // If the entire trimmed text is a single same-origin URL (absolute or
   // root-relative), return its absolute form. Otherwise null — fall back
   // to plain chat. We're conservative: must be the only thing in the
-  // message, not embedded in prose.
+  // message, not embedded in prose, and must actually look like a URL
+  // (has a scheme or starts with "/") — otherwise bare words like "yo"
+  // would resolve against location.origin and broadcast as a /yo share.
   function extractShareableUrl(text) {
     const t = text.trim();
     if (/\s/.test(t)) return null;
+    if (!/^https?:\/\//i.test(t) && !t.startsWith("/")) return null;
     try {
       const u = new URL(t, location.origin);
       if (u.origin !== location.origin) return null;
