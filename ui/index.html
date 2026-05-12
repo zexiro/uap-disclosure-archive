@@ -761,6 +761,41 @@
     color: var(--fg-dim); font-style: italic; padding: 20px 0; text-align: center;
   }
   #lb-meta-body code { font-family: var(--mono); color: #88ccff; }
+  /* CLIP zero-shot synthetic-likelihood bar — colour reflects which side of
+     the prompt softmax the image leans toward. Framing emphasised in copy. */
+  #lb-meta-body .mp-clip-bar {
+    position: relative; height: 22px; border: 1px solid var(--border); border-radius: 3px;
+    background: rgba(255,255,255,0.04); overflow: hidden; margin: 4px 0 6px;
+  }
+  #lb-meta-body .mp-clip-fill {
+    position: absolute; top: 0; bottom: 0; left: 0;
+    background: linear-gradient(90deg, rgba(120,200,140,0.5), rgba(255,180,0,0.6));
+  }
+  #lb-meta-body .mp-clip-high .mp-clip-fill {
+    background: linear-gradient(90deg, rgba(255,180,0,0.6), rgba(255,90,90,0.7));
+  }
+  #lb-meta-body .mp-clip-mid  .mp-clip-fill { background: rgba(255,180,0,0.55); }
+  #lb-meta-body .mp-clip-low  .mp-clip-fill { background: rgba(120,200,140,0.5); }
+  #lb-meta-body .mp-clip-label {
+    position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+    font-size: 10px; letter-spacing: 0.04em; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+  }
+  #lb-meta-body .mp-clip-hint {
+    color: var(--fg-dim); font-size: 10px; line-height: 1.45; margin-bottom: 8px;
+  }
+  #lb-meta-body .mp-clip-hint strong { color: var(--fg); }
+  #lb-meta-body .mp-tags {
+    display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px;
+  }
+  #lb-meta-body .mp-tag {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(124,92,224,0.14); color: #cdb6ff;
+    border: 1px solid rgba(124,92,224,0.35);
+    padding: 2px 6px; border-radius: 3px; font-size: 10px;
+  }
+  #lb-meta-body .mp-tag-score {
+    color: var(--fg-dim); font-size: 9px;
+  }
   #lightbox .lb-help {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     background: rgba(0,0,0,0.7); border: 1px solid var(--border); color: var(--fg-dim);
@@ -4259,6 +4294,8 @@ const lbFx = {
   metaIndex: null,      // Wave-2 forensics index { filename: {flags} }, lazy
   metaIndexLoading: null,  // in-flight promise for the index
   metaCache: new Map(), // filename → sidecar record (or null if 404)
+  clipLabels: null,     // Wave-3 CLIP zero-shot label table { filename: {...} }
+  clipLabelsLoading: null,
 };
 
 function lbFxToggleBar() {
@@ -4641,6 +4678,24 @@ async function lbFxLoadSidecar(filename) {
   }
 }
 
+async function lbFxLoadClipLabels() {
+  // One-shot fetch of the CLIP-zero-shot label table (~80 KB gzipped).
+  // Cached in memory; subsequent metadata-panel opens are free.
+  if (lbFx.clipLabels) return lbFx.clipLabels;
+  if (lbFx.clipLabelsLoading) return lbFx.clipLabelsLoading;
+  lbFx.clipLabelsLoading = (async () => {
+    try {
+      const r = await fetch("clip_labels.json", { cache: "force-cache" });
+      lbFx.clipLabels = r.ok ? await r.json() : {};
+    } catch (e) {
+      console.warn("[forensics] clip labels unavailable:", e);
+      lbFx.clipLabels = {};
+    }
+    return lbFx.clipLabels;
+  })();
+  return lbFx.clipLabelsLoading;
+}
+
 function lbFxToggleMetadata() {
   lbFx.metaOpen = !lbFx.metaOpen;
   document.querySelector("#lb-fx-bar button[data-fx='metadata']")?.classList.toggle("active", lbFx.metaOpen);
@@ -4654,10 +4709,14 @@ async function lbFxRenderMetadata() {
   const fname = _currentImageFilename();
   if (!fname) { body.innerHTML = `<div class="mp-empty">no image loaded</div>`; return; }
   body.innerHTML = `<div class="mp-empty">loading…</div>`;
-  const rec = await lbFxLoadSidecar(fname);
+  const [rec, clipLabels] = await Promise.all([
+    lbFxLoadSidecar(fname),
+    lbFxLoadClipLabels(),
+  ]);
   // The image might have been swapped while we were awaiting — bail if so.
   if (fname !== _currentImageFilename()) return;
-  if (!rec) {
+  const clip = clipLabels[fname] || null;
+  if (!rec && !clip) {
     body.innerHTML = `
       <div class="mp-empty">
         No forensic sidecar for <code>${escapeHtml(fname)}</code>.<br>
@@ -4665,14 +4724,15 @@ async function lbFxRenderMetadata() {
       </div>`;
     return;
   }
-  body.innerHTML = _formatForensics(rec, fname);
+  body.innerHTML = _formatForensics(rec, fname, clip);
 }
 
-function _formatForensics(rec, fname) {
+function _formatForensics(rec, fname, clip) {
   const esc = escapeHtml;
   const dash = `<span class="mp-v mp-muted">—</span>`;
   const val = v => (v == null || v === "" ? dash : `<span class="mp-v">${esc(String(v))}</span>`);
   const row = (k, v) => `<div class="mp-row"><span class="mp-k">${esc(k)}</span>${val(v)}</div>`;
+  rec = rec || { exif: {}, jpeg_markers: [], notes: [] };
   const e = rec.exif || {};
 
   let banner = "";
@@ -4680,7 +4740,7 @@ function _formatForensics(rec, fname) {
     banner = `<div class="mp-banner">⚠ EDIT SIGNATURE: ${rec.edit_signatures.map(esc).join(", ")}</div>`;
   }
 
-  const sizeKb = (rec.size_bytes / 1024).toFixed(1) + " KB";
+  const sizeKb = rec.size_bytes ? (rec.size_bytes / 1024).toFixed(1) + " KB" : null;
   const dims = rec.dimensions ? `${rec.dimensions[0]} × ${rec.dimensions[1]}` : null;
   const shortHash = h => h ? `<code>${esc(h.slice(0,12))}…${esc(h.slice(-6))}</code>` : null;
 
@@ -4688,9 +4748,9 @@ function _formatForensics(rec, fname) {
     <div class="mp-section">
       <div class="mp-head">FILE</div>
       ${row("name", fname)}
-      ${row("size", `${sizeKb} · ${dims || "?"}`)}
+      ${row("size", sizeKb || dims ? `${sizeKb || "?"} · ${dims || "?"}` : null)}
       <div class="mp-row"><span class="mp-k">sha-256</span><span class="mp-v">${shortHash(rec.sha256) || dash}</span></div>
-      <div class="mp-row"><span class="mp-k">phash</span><span class="mp-v"><code>${esc(rec.phash || "")}</code></span></div>
+      <div class="mp-row"><span class="mp-k">phash</span><span class="mp-v">${rec.phash ? `<code>${esc(rec.phash)}</code>` : dash}</span></div>
     </div>`;
 
   const exifSection = `
@@ -4735,7 +4795,32 @@ function _formatForensics(rec, fname) {
       <ul class="mp-notes">${notes}</ul>
     </div>` : "";
 
-  return banner + fileSection + exifSection + markerSection + celestialSection + notesSection;
+  // CLIP zero-shot labels — Wave 3. Surfaced as similarity scores, not a
+  // verdict. The synthetic-likelihood bar is colour-coded but the prompt
+  // set + model name are always visible so visitors can judge the framing.
+  let clipSection = "";
+  if (clip) {
+    const syn = clip.synthetic_score;
+    const synPct = (syn * 100).toFixed(0);
+    const tags = (clip.tags || []).map(t =>
+      `<span class="mp-tag">${esc(t.label)}<span class="mp-tag-score">${(t.score*100).toFixed(0)}%</span></span>`
+    ).join("");
+    let level = "low", levelLabel = "more similar to real photographs";
+    if (syn > 0.65)      { level = "high";   levelLabel = "more similar to AI / CGI prompts"; }
+    else if (syn > 0.4)  { level = "mid";    levelLabel = "ambiguous — falls between the two prompt sets"; }
+    clipSection = `
+      <div class="mp-section">
+        <div class="mp-head">CLIP ZERO-SHOT (${esc(clip.model || "CLIP")})</div>
+        <div class="mp-clip-bar mp-clip-${level}">
+          <div class="mp-clip-fill" style="width: ${synPct}%"></div>
+          <div class="mp-clip-label">synthetic similarity: ${synPct}%</div>
+        </div>
+        <div class="mp-clip-hint">${esc(levelLabel)}. <strong>Not a verdict</strong> — this is the softmax probability that the image is closer to AI/CGI prompts than to real-photo prompts under CLIP zero-shot. CLIP confuses grainy or aerial photos for CGI, so use this as a hint, not evidence.</div>
+        ${tags ? `<div class="mp-tags">${tags}</div>` : ""}
+      </div>`;
+  }
+
+  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + notesSection;
 }
 
 // Wire up the forensics toolbar buttons.

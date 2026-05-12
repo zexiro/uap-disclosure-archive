@@ -25,6 +25,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   python3 scripts/build_image_embeddings.py || true  # pick up any newly-downloaded images
   python3 scripts/build_video_keyframes.py || true  # extract/embed new video keyframes
   python3 scripts/build_image_index.py || true       # rebuild FAISS image similarity index
+  python3 scripts/build_clip_labels.py || true       # refresh CLIP zero-shot labels
   exit 0
 fi
 
@@ -50,6 +51,7 @@ python3 scripts/classify_dossier_hits.py || true
 python3 scripts/build_image_embeddings.py || true  # CLIP visual embeddings for IMG records
 python3 scripts/build_video_keyframes.py || true   # scene keyframes + CLIP embeddings for VID records
 python3 scripts/build_image_index.py || true       # FAISS image similarity index (after keyframes)
+python3 scripts/build_clip_labels.py || true       # CLIP zero-shot labels + synthetic similarity score
 python3 scripts/build_topics.py || true            # BERTopic auto-discovered themes → ui/topics.json
 python3 scripts/build_features.py
 python3 scripts/build_api.py
