@@ -27,6 +27,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   python3 scripts/build_image_index.py || true       # rebuild FAISS image similarity index
   python3 scripts/build_clip_labels.py || true       # refresh CLIP zero-shot labels
   python3 scripts/build_object_detections.py || true # refresh YOLOv8n object detections
+  python3 scripts/build_image_depth.py || true       # Depth-Anything-v2 depth maps for any new images
   python3 scripts/build_image_enhanced.py || true    # Real-ESRGAN upscales for any new images
   exit 0
 fi
@@ -55,6 +56,7 @@ python3 scripts/build_video_keyframes.py || true   # scene keyframes + CLIP embe
 python3 scripts/build_image_index.py || true       # FAISS image similarity index (after keyframes)
 python3 scripts/build_clip_labels.py || true       # CLIP zero-shot labels + synthetic similarity score
 python3 scripts/build_object_detections.py || true # YOLOv8n COCO-80 object detection → ui/object_detections.json
+python3 scripts/build_image_depth.py || true       # Depth-Anything-v2 monocular depth maps → raw/images_depth/
 python3 scripts/build_image_enhanced.py || true    # Real-ESRGAN 4× upscales → raw/images_enhanced/ (idempotent, slow first run)
 python3 scripts/build_topics.py || true            # BERTopic auto-discovered themes → ui/topics.json
 python3 scripts/build_features.py

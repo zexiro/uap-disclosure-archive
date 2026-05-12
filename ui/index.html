@@ -730,6 +730,17 @@
   }
   #lb-enhance-banner[hidden] { display: none; }
   #lb-enhance-banner strong { color: #fff; }
+  /* Depth banner uses the cool end of the turbo colormap so it sits
+     visually with the depth overlay it announces. */
+  #lb-depth-banner {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(80, 180, 220, 0.18); border: 1px solid rgba(80, 180, 220, 0.55);
+    color: #aee0f5; padding: 6px 14px; border-radius: 3px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+    z-index: 4; pointer-events: none; max-width: 90%; text-align: center;
+  }
+  #lb-depth-banner[hidden] { display: none; }
+  #lb-depth-banner strong { color: #fff; }
 
   /* Metadata side-panel — slides in from the right inside the lightbox stage.
      Holds EXIF, hashes, JPEG markers, edit signatures, celestial calcs. */
@@ -3113,6 +3124,7 @@
     <button data-fx="ela"       title="Error Level Analysis — re-encodes JPEG @ q=0.9, amplifies the diff, highlights edited regions">ELA</button>
     <button data-fx="boxes"     title="Draw YOLOv8 detection boxes over the image (B)">⛶ boxes</button>
     <span class="lb-fx-sep"></span>
+    <button data-fx="depth"     title="Depth-Anything-v2 monocular depth map — relative depth estimate, not a measurement">🌊 depth</button>
     <button data-fx="enhance"   title="Real-ESRGAN 4× upscale — plausible reconstruction, not new evidence">✨ 4× enhance</button>
     <span class="lb-fx-spacer"></span>
     <button data-fx="reset"     title="Clear filter (X)">✕ clear</button>
@@ -3123,6 +3135,7 @@
     <canvas id="lb-canvas" hidden></canvas>
     <svg id="lb-boxes" xmlns="http://www.w3.org/2000/svg" hidden></svg>
     <div id="lb-enhance-banner" hidden>▲ 4× RECONSTRUCTION · Real-ESRGAN · plausible interpolation, <strong>not new evidence</strong></div>
+    <div id="lb-depth-banner" hidden>🌊 MONOCULAR DEPTH · Depth-Anything-v2 · red = near, blue = far. <strong>Estimate, not measurement</strong></div>
     <aside id="lb-meta-panel" hidden aria-label="Image forensics metadata">
       <header>
         <span>METADATA</span>
@@ -4354,6 +4367,8 @@ const lbFx = {
   boxesActive: false,   // SVG bounding-box overlay toggle
   enhanceActive: false, // Wave-3 enhance toggle — swaps img src to raw/images_enhanced/
   enhanceCache: new Map(), // filename → bool: HEAD-check result for enhanced availability
+  depthActive: false,   // Depth-Anything monocular depth-map toggle
+  depthCache: new Map(),// filename → bool: HEAD-check result for depth availability
 };
 
 function lbFxToggleBar() {
@@ -4371,12 +4386,17 @@ function lbFxResetForNewImage() {
   lbFx.sourceCanvas = null;
   lbFx.sourceSrc = null;
   lbFxClear();
-  // Enhance is per-image — turn it off when the visible image changes.
+  // Enhance + depth are per-image — turn off when the visible image changes.
   lbFx.enhanceActive = false;
-  const btn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
-  if (btn) btn.classList.remove("active");
+  lbFx.depthActive = false;
+  const eBtn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
+  if (eBtn) eBtn.classList.remove("active");
+  const dBtn = document.querySelector("#lb-fx-bar button[data-fx='depth']");
+  if (dBtn) dBtn.classList.remove("active");
   const banner = $("#lb-enhance-banner");
   if (banner) banner.hidden = true;
+  const dBanner = $("#lb-depth-banner");
+  if (dBanner) dBanner.hidden = true;
   // Re-render boxes for the new image (if the overlay is open). The
   // box positions are keyed by filename so they need a fresh redraw.
   if (lbFx.boxesActive) lbFxRenderBoxes();
@@ -4856,6 +4876,79 @@ function _enhancedUrlFor(originalSrc) {
   } catch { return null; }
 }
 
+function _depthUrlFor(originalSrc) {
+  if (!originalSrc) return null;
+  try {
+    const u = new URL(originalSrc);
+    if (u.pathname.includes("/images_extracted/")) return null;
+    const name = u.pathname.split("/").pop() || "";
+    const stem = name.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+    if (!stem) return null;
+    return new URL(`/raw/images_depth/${stem}.png`, u.origin).href;
+  } catch { return null; }
+}
+
+async function lbFxToggleDepth() {
+  if (lbFx.busy) return;
+  const btn = document.querySelector("#lb-fx-bar button[data-fx='depth']");
+  const banner = $("#lb-depth-banner");
+
+  if (lbFx.depthActive) {
+    const orig = _originalImageUrl();
+    if (orig) $("#lb-img").src = orig;
+    lbFx.depthActive = false;
+    if (btn) btn.classList.remove("active");
+    if (banner) banner.hidden = true;
+    lbFx.source = null;
+    lbFx.sourceCanvas = null;
+    lbFx.sourceSrc = null;
+    lbFxClear();
+    lbFxStatus("");
+    if (lbFx.boxesActive) lbFxRenderBoxes();
+    return;
+  }
+
+  // Depth and enhance are mutually exclusive — same channel (img.src).
+  if (lbFx.enhanceActive) {
+    lbFxStatus("turn off enhance first");
+    return;
+  }
+
+  const orig = _originalImageUrl();
+  const depthUrl = _depthUrlFor(orig);
+  if (!depthUrl) {
+    lbFxStatus("depth n/a (PDF-extracted)");
+    return;
+  }
+  let exists = lbFx.depthCache.get(depthUrl);
+  if (exists === undefined) {
+    lbFxStatus("checking…");
+    try {
+      const r = await fetch(depthUrl, { method: "HEAD" });
+      exists = r.ok;
+    } catch { exists = false; }
+    lbFx.depthCache.set(depthUrl, exists);
+  }
+  if (!exists) {
+    lbFxStatus("not built yet");
+    return;
+  }
+
+  $("#lb-img").src = depthUrl;
+  lbFx.depthActive = true;
+  lbFx.source = null;
+  lbFx.sourceCanvas = null;
+  lbFx.sourceSrc = null;
+  lbFxClear();
+  if (btn) btn.classList.add("active");
+  if (banner) banner.hidden = false;
+  lbFxStatus("depth active");
+  // Boxes are in original-image space — they'd still line up here
+  // because the depth PNG is rendered at source resolution, but for
+  // visual clarity hide them while a depth heatmap is showing.
+  if (lbFx.boxesActive) $("#lb-boxes").setAttribute("hidden", "");
+}
+
 async function lbFxToggleEnhance() {
   if (lbFx.busy) return;
   const btn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
@@ -5125,6 +5218,7 @@ document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
     if (name === "reset") lbFxClear();
     else if (name === "metadata") lbFxToggleMetadata();
     else if (name === "enhance") lbFxToggleEnhance();
+    else if (name === "depth") lbFxToggleDepth();
     else if (name === "boxes") lbFxToggleBoxes();
     else lbFxApply(name);
   });
