@@ -661,14 +661,36 @@
   }
   #lightbox .lb-stage.dragging { cursor: grabbing; }
   #lightbox .lb-stage img,
-  #lightbox .lb-stage canvas {
+  #lightbox .lb-stage canvas,
+  #lightbox .lb-stage svg#lb-boxes {
     position: absolute; top: 50%; left: 50%;
     transform-origin: center center;
     pointer-events: none; max-width: none; max-height: none;
     will-change: transform;
   }
-  #lightbox .lb-stage canvas[hidden] { display: none; }
+  #lightbox .lb-stage svg#lb-boxes {
+    /* Inline SVG defaults to inline-flow box; force block so width/height
+       styles set in JS actually take effect. */
+    display: block; overflow: visible;
+  }
+  #lightbox .lb-stage canvas[hidden],
+  #lightbox .lb-stage svg#lb-boxes[hidden] { display: none !important; }
   #lightbox .lb-stage img.fx-hidden { opacity: 0; }
+  /* YOLOv8 box overlay — orange stroke matches the metadata chip palette,
+     thin label tag pinned to the top-left of each box. Coordinates are
+     in the image's native pixel space (svg viewBox) so the existing zoom
+     transform scales boxes and image together pixel-for-pixel. */
+  #lightbox .lb-stage svg#lb-boxes .det-box {
+    fill: none; stroke: #ff9c4d; stroke-width: 3; vector-effect: non-scaling-stroke;
+  }
+  #lightbox .lb-stage svg#lb-boxes .det-bg {
+    fill: rgba(255,156,77,0.85);
+  }
+  #lightbox .lb-stage svg#lb-boxes .det-label {
+    fill: #1a1408; font-family: var(--mono); font-weight: 600;
+    /* paint-order so the stroke acts as a shadow when scaled tiny */
+    paint-order: stroke; stroke: rgba(255,156,77,0.85); stroke-width: 0.5;
+  }
   /* Second toolbar row — forensics filter buttons. Hidden until "FX" is toggled. */
   #lightbox .lb-fx-bar {
     flex: 0 0 auto; padding: 8px 16px; display: flex; gap: 6px; align-items: center;
@@ -3089,6 +3111,7 @@
     <button data-fx="unsharp"   title="Unsharp-mask sharpen (no hallucination)">sharpen</button>
     <button data-fx="sigma"     title="Sigma-clipped anomaly heatmap — flags bright pixels &gt;3σ above local mean">σ-anomaly</button>
     <button data-fx="ela"       title="Error Level Analysis — re-encodes JPEG @ q=0.9, amplifies the diff, highlights edited regions">ELA</button>
+    <button data-fx="boxes"     title="Draw YOLOv8 detection boxes over the image (B)">⛶ boxes</button>
     <span class="lb-fx-sep"></span>
     <button data-fx="enhance"   title="Real-ESRGAN 4× upscale — plausible reconstruction, not new evidence">✨ 4× enhance</button>
     <span class="lb-fx-spacer"></span>
@@ -3098,6 +3121,7 @@
   <div class="lb-stage" id="lb-stage">
     <img id="lb-img" alt=""/>
     <canvas id="lb-canvas" hidden></canvas>
+    <svg id="lb-boxes" xmlns="http://www.w3.org/2000/svg" hidden></svg>
     <div id="lb-enhance-banner" hidden>▲ 4× RECONSTRUCTION · Real-ESRGAN · plausible interpolation, <strong>not new evidence</strong></div>
     <aside id="lb-meta-panel" hidden aria-label="Image forensics metadata">
       <header>
@@ -3108,7 +3132,7 @@
     </aside>
     <div class="lb-nav prev" id="lb-prev" aria-label="Previous">‹</div>
     <div class="lb-nav next" id="lb-next" aria-label="Next">›</div>
-    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · F forensics · M metadata · X clear · ←/→ navigate · Esc close</div>
+    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · F forensics · M metadata · B boxes · X clear · ←/→ navigate · Esc close</div>
   </div>
 </div>
 
@@ -4221,6 +4245,8 @@ function applyLbTransform() {
   $("#lb-img").style.transform = t;
   const canvas = $("#lb-canvas");
   if (canvas) canvas.style.transform = t;
+  const boxes = $("#lb-boxes");
+  if (boxes) boxes.style.transform = t;
 }
 function lbZoom(delta, cx, cy) {
   const stage = $("#lb-stage");
@@ -4245,6 +4271,7 @@ function lightboxKey(e) {
   else if (e.key === "r" || e.key === "R") { e.preventDefault(); lbState.rot = (lbState.rot + 90) % 360; applyLbTransform(); }
   else if (e.key === "f" || e.key === "F") { e.preventDefault(); lbFxToggleBar(); }
   else if (e.key === "m" || e.key === "M") { e.preventDefault(); lbFxToggleMetadata(); }
+  else if (e.key === "b" || e.key === "B") { e.preventDefault(); lbFxToggleBoxes(); }
   else if (e.key === "x" || e.key === "X") { e.preventDefault(); lbFxClear(); }
 }
 function bindLightbox() {
@@ -4324,6 +4351,7 @@ const lbFx = {
   clipLabelsLoading: null,
   detections: null,     // Wave-3 YOLOv8n object detections { filename: {...} }
   detectionsLoading: null,
+  boxesActive: false,   // SVG bounding-box overlay toggle
   enhanceActive: false, // Wave-3 enhance toggle — swaps img src to raw/images_enhanced/
   enhanceCache: new Map(), // filename → bool: HEAD-check result for enhanced availability
 };
@@ -4349,6 +4377,9 @@ function lbFxResetForNewImage() {
   if (btn) btn.classList.remove("active");
   const banner = $("#lb-enhance-banner");
   if (banner) banner.hidden = true;
+  // Re-render boxes for the new image (if the overlay is open). The
+  // box positions are keyed by filename so they need a fresh redraw.
+  if (lbFx.boxesActive) lbFxRenderBoxes();
   if (lbFx.metaOpen) lbFxRenderMetadata();
 }
 
@@ -4714,6 +4745,85 @@ async function lbFxLoadSidecar(filename) {
   }
 }
 
+// ── Bounding-box overlay (YOLOv8 detections, SVG) ─────────────────────
+//
+// Renders detection boxes from ui/object_detections.json as an SVG
+// inside .lb-stage. The SVG's viewBox is the image's natural pixel
+// dimensions and it shares the same CSS transform as #lb-img — so the
+// existing zoom / pan / rotate pipeline scales boxes pixel-for-pixel
+// with the image without any extra plumbing.
+//
+// Boxes hide automatically when enhance is active (the enhanced image
+// is 4× the native size, so original-pixel-space boxes would be off by
+// the same factor). Easy to re-enable; the toggle persists across
+// image navigations.
+
+function lbFxRenderBoxes() {
+  const svg = $("#lb-boxes");
+  if (!svg) return;
+  if (!lbFx.detections || lbFx.enhanceActive) { svg.setAttribute("hidden", ""); return; }
+  const fname = _currentImageFilename();
+  const rec = fname ? lbFx.detections[fname] : null;
+  const visible = (rec?.detections || []).filter(d => d.score >= 0.35);
+  if (!rec || !visible.length) { svg.setAttribute("hidden", ""); return; }
+
+  const [iw, ih] = rec.image_size;
+  // Detection coords live in the full-resolution coordinate space (the
+  // size YOLO saw). The lightbox often shows a thumbnail — set the
+  // SVG's CSS box to match the IMG's natural display size and let the
+  // viewBox handle the proportional remap from detection-space to
+  // display-space.
+  const img = $("#lb-img");
+  const dispW = img.naturalWidth || iw;
+  const dispH = img.naturalHeight || ih;
+  svg.setAttribute("viewBox", `0 0 ${iw} ${ih}`);
+  svg.style.width = dispW + "px";
+  svg.style.height = dispH + "px";
+
+  // Label font scales with image height so it stays readable when
+  // the image is huge but doesn't dominate when it's a thumbnail.
+  const fontSize = Math.max(12, Math.round(ih * 0.018));
+  const padX = Math.max(4, fontSize * 0.45);
+  const padY = Math.max(3, fontSize * 0.3);
+
+  const parts = [];
+  for (const d of visible) {
+    const [x1, y1, x2, y2] = d.box;
+    const bw = Math.max(1, x2 - x1);
+    const bh = Math.max(1, y2 - y1);
+    const label = `${d.label} ${Math.round(d.score * 100)}%`;
+    const charW = fontSize * 0.6;
+    const labelW = label.length * charW + padX * 2;
+    const labelH = fontSize + padY * 2;
+    const ly = y1 - labelH > 0 ? y1 - labelH : y1;
+    parts.push(`<rect class="det-box" x="${x1}" y="${y1}" width="${bw}" height="${bh}" />`);
+    parts.push(`<rect class="det-bg"  x="${x1}" y="${ly}" width="${Math.min(labelW, iw - x1)}" height="${labelH}" />`);
+    parts.push(`<text class="det-label" x="${x1 + padX}" y="${ly + labelH - padY}" font-size="${fontSize}">${escapeHtml(label)}</text>`);
+  }
+  svg.innerHTML = parts.join("");
+  svg.removeAttribute("hidden");
+  applyLbTransform();
+}
+
+async function lbFxToggleBoxes() {
+  const btn = document.querySelector("#lb-fx-bar button[data-fx='boxes']");
+  if (lbFx.boxesActive) {
+    lbFx.boxesActive = false;
+    $("#lb-boxes").setAttribute("hidden", "");
+    if (btn) btn.classList.remove("active");
+    lbFxStatus("");
+    return;
+  }
+  lbFxStatus("loading…");
+  await lbFxLoadDetections();
+  lbFx.boxesActive = true;
+  if (btn) btn.classList.add("active");
+  lbFxRenderBoxes();
+  const fname = _currentImageFilename();
+  const visible = (lbFx.detections?.[fname]?.detections || []).filter(d => d.score >= 0.35);
+  lbFxStatus(visible.length ? `${visible.length} box${visible.length === 1 ? "" : "es"}` : "no detections");
+}
+
 // ── Enhance toggle (Real-ESRGAN 4× upscale) ──────────────────────────
 //
 // When active, the lightbox img src is swapped to /raw/images_enhanced/
@@ -4765,6 +4875,7 @@ async function lbFxToggleEnhance() {
     lbFx.sourceSrc = null;
     lbFxClear();
     lbFxStatus("");
+    if (lbFx.boxesActive) lbFxRenderBoxes();
     return;
   }
 
@@ -4802,6 +4913,8 @@ async function lbFxToggleEnhance() {
   if (btn) btn.classList.add("active");
   if (banner) banner.hidden = false;
   lbFxStatus("4× active");
+  // Boxes are in original-pixel-space; hide them while enhanced is up.
+  if (lbFx.boxesActive) $("#lb-boxes").setAttribute("hidden", "");
 }
 
 async function lbFxLoadClipLabels() {
@@ -5012,6 +5125,7 @@ document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
     if (name === "reset") lbFxClear();
     else if (name === "metadata") lbFxToggleMetadata();
     else if (name === "enhance") lbFxToggleEnhance();
+    else if (name === "boxes") lbFxToggleBoxes();
     else lbFxApply(name);
   });
 });
