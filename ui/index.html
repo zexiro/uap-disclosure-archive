@@ -668,6 +668,18 @@
     flex: 1 1 auto; position: relative; overflow: hidden; cursor: grab;
   }
   #lightbox .lb-stage.dragging { cursor: grabbing; }
+  /* Checkerboard pattern revealed under the image when cutout mode is on,
+     so the visitor can tell which pixels are transparent vs black. */
+  #lightbox .lb-stage.cutout-bg {
+    background-image:
+      linear-gradient(45deg, #20242b 25%, transparent 25%),
+      linear-gradient(-45deg, #20242b 25%, transparent 25%),
+      linear-gradient(45deg, transparent 75%, #20242b 75%),
+      linear-gradient(-45deg, transparent 75%, #20242b 75%);
+    background-size: 24px 24px;
+    background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+    background-color: #13161c;
+  }
   #lightbox .lb-stage img,
   #lightbox .lb-stage canvas,
   #lightbox .lb-stage svg#lb-boxes {
@@ -3133,6 +3145,7 @@
     <button data-fx="boxes"     title="Draw YOLOv8 detection boxes over the image (B)">⛶ boxes</button>
     <span class="lb-fx-sep"></span>
     <button data-fx="depth"     title="Depth-Anything-v2 monocular depth map — relative depth estimate, not a measurement">🌊 depth</button>
+    <button data-fx="cutout"    title="BiRefNet foreground cutout — salient object isolated on a transparent background">✂ cutout</button>
     <button data-fx="enhance"   title="Real-ESRGAN 4× upscale — plausible reconstruction, not new evidence">✨ 4× enhance</button>
     <span class="lb-fx-spacer"></span>
     <button data-fx="reset"     title="Clear filter (X)">✕ clear</button>
@@ -4379,6 +4392,8 @@ const lbFx = {
   enhanceCache: new Map(), // filename → bool: HEAD-check result for enhanced availability
   depthActive: false,   // Depth-Anything monocular depth-map toggle
   depthCache: new Map(),// filename → bool: HEAD-check result for depth availability
+  cutoutActive: false,  // BiRefNet foreground-cutout toggle
+  cutoutCache: new Map(),
 };
 
 function lbFxToggleBar() {
@@ -4396,17 +4411,20 @@ function lbFxResetForNewImage() {
   lbFx.sourceCanvas = null;
   lbFx.sourceSrc = null;
   lbFxClear();
-  // Enhance + depth are per-image — turn off when the visible image changes.
+  // Enhance / depth / cutout are per-image — turn off when the image changes.
   lbFx.enhanceActive = false;
   lbFx.depthActive = false;
-  const eBtn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
-  if (eBtn) eBtn.classList.remove("active");
-  const dBtn = document.querySelector("#lb-fx-bar button[data-fx='depth']");
-  if (dBtn) dBtn.classList.remove("active");
+  lbFx.cutoutActive = false;
+  for (const fx of ["enhance", "depth", "cutout"]) {
+    const b = document.querySelector(`#lb-fx-bar button[data-fx='${fx}']`);
+    if (b) b.classList.remove("active");
+  }
   const banner = $("#lb-enhance-banner");
   if (banner) banner.hidden = true;
   const dBanner = $("#lb-depth-banner");
   if (dBanner) dBanner.hidden = true;
+  const stage = $("#lb-stage");
+  if (stage) stage.classList.remove("cutout-bg");
   // Re-render boxes for the new image (if the overlay is open). The
   // box positions are keyed by filename so they need a fresh redraw.
   if (lbFx.boxesActive) lbFxRenderBoxes();
@@ -4898,6 +4916,76 @@ function _depthUrlFor(originalSrc) {
   } catch { return null; }
 }
 
+function _cutoutUrlFor(originalSrc) {
+  if (!originalSrc) return null;
+  try {
+    const u = new URL(originalSrc);
+    if (u.pathname.includes("/images_extracted/")) return null;
+    const name = u.pathname.split("/").pop() || "";
+    const stem = name.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+    if (!stem) return null;
+    return new URL(`/raw/images_cutout/${stem}.png`, u.origin).href;
+  } catch { return null; }
+}
+
+async function lbFxToggleCutout() {
+  if (lbFx.busy) return;
+  const btn = document.querySelector("#lb-fx-bar button[data-fx='cutout']");
+  const stage = $("#lb-stage");
+
+  if (lbFx.cutoutActive) {
+    const orig = _originalImageUrl();
+    if (orig) $("#lb-img").src = orig;
+    lbFx.cutoutActive = false;
+    if (btn) btn.classList.remove("active");
+    if (stage) stage.classList.remove("cutout-bg");
+    lbFx.source = null;
+    lbFx.sourceCanvas = null;
+    lbFx.sourceSrc = null;
+    lbFxClear();
+    lbFxStatus("");
+    if (lbFx.boxesActive) lbFxRenderBoxes();
+    return;
+  }
+
+  // Mutually exclusive with depth and enhance — they share img.src.
+  if (lbFx.depthActive || lbFx.enhanceActive) {
+    lbFxStatus("turn off depth/enhance first");
+    return;
+  }
+
+  const orig = _originalImageUrl();
+  const cutUrl = _cutoutUrlFor(orig);
+  if (!cutUrl) {
+    lbFxStatus("cutout n/a (PDF-extracted)");
+    return;
+  }
+  let exists = lbFx.cutoutCache.get(cutUrl);
+  if (exists === undefined) {
+    lbFxStatus("checking…");
+    try {
+      const r = await fetch(cutUrl, { method: "HEAD" });
+      exists = r.ok;
+    } catch { exists = false; }
+    lbFx.cutoutCache.set(cutUrl, exists);
+  }
+  if (!exists) {
+    lbFxStatus("not built yet");
+    return;
+  }
+
+  $("#lb-img").src = cutUrl;
+  lbFx.cutoutActive = true;
+  lbFx.source = null;
+  lbFx.sourceCanvas = null;
+  lbFx.sourceSrc = null;
+  lbFxClear();
+  if (btn) btn.classList.add("active");
+  if (stage) stage.classList.add("cutout-bg");
+  lbFxStatus("cutout active");
+  if (lbFx.boxesActive) $("#lb-boxes").setAttribute("hidden", "");
+}
+
 async function lbFxToggleDepth() {
   if (lbFx.busy) return;
   const btn = document.querySelector("#lb-fx-bar button[data-fx='depth']");
@@ -5269,6 +5357,7 @@ document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
     else if (name === "metadata") lbFxToggleMetadata();
     else if (name === "enhance") lbFxToggleEnhance();
     else if (name === "depth") lbFxToggleDepth();
+    else if (name === "cutout") lbFxToggleCutout();
     else if (name === "boxes") lbFxToggleBoxes();
     else lbFxApply(name);
   });

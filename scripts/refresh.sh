@@ -29,6 +29,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   python3 scripts/build_object_detections.py || true # refresh YOLOv8n object detections
   python3 scripts/build_ai_detector.py || true       # refresh trained AI-detector scores
   python3 scripts/build_image_depth.py || true       # Depth-Anything-v2 depth maps for any new images
+  python3 scripts/build_image_cutout.py || true      # BiRefNet_lite cutouts for any new images
   python3 scripts/build_image_enhanced.py || true    # Real-ESRGAN upscales for any new images
   exit 0
 fi
@@ -59,6 +60,7 @@ python3 scripts/build_clip_labels.py || true       # CLIP zero-shot labels + syn
 python3 scripts/build_object_detections.py || true # YOLOv8n COCO-80 object detection → ui/object_detections.json
 python3 scripts/build_ai_detector.py || true       # Deep-Fake-Detector-v2 trained classifier → ui/ai_detector.json
 python3 scripts/build_image_depth.py || true       # Depth-Anything-v2 monocular depth maps → raw/images_depth/
+python3 scripts/build_image_cutout.py || true      # BiRefNet_lite foreground cutouts → raw/images_cutout/
 python3 scripts/build_image_enhanced.py || true    # Real-ESRGAN 4× upscales → raw/images_enhanced/ (idempotent, slow first run)
 python3 scripts/build_topics.py || true            # BERTopic auto-discovered themes → ui/topics.json
 python3 scripts/build_features.py
