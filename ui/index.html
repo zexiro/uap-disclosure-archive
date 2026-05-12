@@ -4826,6 +4826,13 @@ function _formatForensics(rec, fname, clip) {
 // Wire up the forensics toolbar buttons.
 $("#lb-fx").addEventListener("click", lbFxToggleBar);
 $("#lb-meta-close").addEventListener("click", lbFxToggleMetadata);
+// The lightbox stage captures the pointer on pointerdown so you can drag
+// to pan — but that capture also swallows any click that originates
+// inside the metadata panel (the X button never fires). Block pointerdown
+// from bubbling out of the panel so the stage never grabs capture in the
+// first place. Wheel too, so scrolling the panel doesn't zoom the image.
+$("#lb-meta-panel").addEventListener("pointerdown", (e) => e.stopPropagation());
+$("#lb-meta-panel").addEventListener("wheel", (e) => e.stopPropagation(), { passive: true });
 document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
   btn.addEventListener("click", () => {
     const name = btn.dataset.fx;
