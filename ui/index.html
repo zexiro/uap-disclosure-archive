@@ -637,7 +637,9 @@
   /* ─── Image lightbox ─────────────────────────────────────────────── */
   #lightbox[hidden] { display: none; }
   #lightbox {
-    position: fixed; inset: 0; z-index: 1000;
+    /* z-index above the collab presence pill (9000) — when the viewer is
+       open, top-right chrome shouldn't bleed over the toolbar / close. */
+    position: fixed; inset: 0; z-index: 10000;
     background: rgba(5,8,12,0.92);
     display: flex; flex-direction: column;
     user-select: none; touch-action: none;
@@ -653,6 +655,12 @@
     padding: 5px 10px; border-radius: 4px; cursor: pointer; font-family: var(--mono); font-size: 11px;
   }
   #lightbox .lb-bar button:hover { border-color: var(--accent); color: var(--accent); }
+  /* Close button stands out so it's obvious how to exit the viewer. */
+  #lightbox #lb-close {
+    background: rgba(255, 90, 90, 0.18); border-color: rgba(255, 90, 90, 0.55);
+    color: #ff9999; padding: 5px 12px; font-weight: 600; letter-spacing: 0.04em;
+  }
+  #lightbox #lb-close:hover { background: rgba(255, 90, 90, 0.32); border-color: #ff5a5a; color: #fff; }
   #lightbox .lb-bar .lb-title {
     color: var(--fg); max-width: 50ch; overflow: hidden; text-overflow: ellipsis; white-space: nowrap;
   }
@@ -3107,7 +3115,7 @@
     <button id="lb-reset" title="Reset (0)">⤢</button>
     <button id="lb-fx" title="Forensics toolbar (F)">FX</button>
     <a id="lb-open" href="#" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;padding:5px 10px;border:1px solid var(--border);border-radius:4px;font-family:var(--mono);font-size:11px">↗ open</a>
-    <button id="lb-close" title="Close (Esc)">✕</button>
+    <button id="lb-close" title="Close (Esc)" aria-label="Close viewer">✕ close</button>
   </div>
   <div class="lb-fx-bar" id="lb-fx-bar" hidden>
     <span class="lb-fx-label">FORENSICS</span>
