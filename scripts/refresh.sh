@@ -20,6 +20,7 @@ if [ "$prev_hash" = "$new_hash" ] && [ -f raw/records.json ]; then
   # effect without requiring a bogus CSV change.
   echo "[refresh] no change in source CSV — running incremental steps only"
   python3 scripts/build_thumbs.py || true
+  python3 scripts/forensics.py || true               # per-image EXIF / hash / celestial sidecar
   python3 scripts/classify_dossier_hits.py || true
   python3 scripts/build_image_embeddings.py || true  # pick up any newly-downloaded images
   python3 scripts/build_video_keyframes.py || true  # extract/embed new video keyframes
@@ -35,6 +36,7 @@ python3 scripts/download.py
 python3 scripts/ocr.py || true       # OCR errors aren't fatal
 python3 scripts/extract_pdf_images.py || true   # extract embedded photos/sketches
 python3 scripts/build_thumbs.py || true         # small JPEGs for row/grid views
+python3 scripts/forensics.py || true            # per-image EXIF / hash / celestial sidecar → ui/image_forensics.json
 python3 scripts/build_links.py
 python3 scripts/extract_citations.py
 python3 scripts/extract_entities.py || true     # spaCy NER over OCR text → ui/entities.json

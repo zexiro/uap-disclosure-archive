@@ -689,10 +689,78 @@
     background: var(--accent); color: var(--bg); border-color: var(--accent);
   }
   #lightbox .lb-fx-bar .lb-fx-spacer { flex: 1; }
+  #lightbox .lb-fx-bar .lb-fx-sep {
+    width: 1px; height: 18px; background: var(--border); margin: 0 4px;
+  }
   #lightbox .lb-fx-bar .lb-fx-status {
     color: var(--fg-dim); font-size: 10px; font-style: italic; min-width: 6ch; text-align: right;
   }
   #lb-fx.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+
+  /* Metadata side-panel — slides in from the right inside the lightbox stage.
+     Holds EXIF, hashes, JPEG markers, edit signatures, celestial calcs. */
+  #lb-meta-panel {
+    position: absolute; top: 0; right: 0; bottom: 0; width: min(420px, 92vw);
+    background: rgba(8,12,18,0.96); border-left: 1px solid var(--border);
+    color: var(--fg); font-family: var(--mono); font-size: 11px;
+    display: flex; flex-direction: column;
+    z-index: 5;
+  }
+  #lb-meta-panel[hidden] { display: none; }
+  #lb-meta-panel header {
+    flex: 0 0 auto; padding: 10px 14px;
+    display: flex; align-items: center; justify-content: space-between;
+    border-bottom: 1px solid var(--border);
+    background: rgba(0,0,0,0.4);
+    letter-spacing: 0.1em; font-size: 11px; color: var(--accent);
+  }
+  #lb-meta-panel header button {
+    background: transparent; border: 1px solid var(--border); color: var(--fg-dim);
+    width: 24px; height: 24px; border-radius: 3px; cursor: pointer; font-size: 12px;
+  }
+  #lb-meta-panel header button:hover { color: var(--fg); border-color: var(--accent); }
+  #lb-meta-body {
+    flex: 1 1 auto; overflow-y: auto; padding: 12px 14px;
+    line-height: 1.5;
+  }
+  #lb-meta-body .mp-section {
+    margin: 0 0 14px 0;
+  }
+  #lb-meta-body .mp-section:last-child { margin-bottom: 0; }
+  #lb-meta-body .mp-head {
+    color: var(--accent); font-size: 10px; letter-spacing: 0.1em;
+    border-bottom: 1px dashed var(--border); padding-bottom: 3px; margin-bottom: 6px;
+  }
+  #lb-meta-body .mp-row {
+    display: flex; gap: 8px; font-size: 11px; padding: 2px 0;
+  }
+  #lb-meta-body .mp-row .mp-k {
+    color: var(--fg-dim); min-width: 78px; flex: 0 0 auto;
+  }
+  #lb-meta-body .mp-row .mp-v {
+    color: var(--fg); word-break: break-all; flex: 1 1 auto;
+  }
+  #lb-meta-body .mp-row .mp-v.mp-muted { color: var(--fg-dim); font-style: italic; }
+  #lb-meta-body .mp-banner {
+    background: rgba(255, 180, 0, 0.12); border: 1px solid rgba(255, 180, 0, 0.4);
+    color: #ffcc66; padding: 8px 10px; border-radius: 3px; margin-bottom: 12px;
+    font-size: 11px; letter-spacing: 0.04em;
+  }
+  #lb-meta-body .mp-notes {
+    margin: 0; padding: 0; list-style: none;
+  }
+  #lb-meta-body .mp-notes li {
+    color: var(--fg-dim); padding: 4px 0 4px 14px; position: relative;
+    border-bottom: 1px dotted var(--border);
+  }
+  #lb-meta-body .mp-notes li::before {
+    content: "·"; position: absolute; left: 4px; color: var(--accent);
+  }
+  #lb-meta-body .mp-notes li:last-child { border-bottom: none; }
+  #lb-meta-body .mp-empty {
+    color: var(--fg-dim); font-style: italic; padding: 20px 0; text-align: center;
+  }
+  #lb-meta-body code { font-family: var(--mono); color: #88ccff; }
   #lightbox .lb-help {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     background: rgba(0,0,0,0.7); border: 1px solid var(--border); color: var(--fg-dim);
@@ -2952,6 +3020,8 @@
   </div>
   <div class="lb-fx-bar" id="lb-fx-bar" hidden>
     <span class="lb-fx-label">FORENSICS</span>
+    <button data-fx="metadata"  title="EXIF, hashes, edit signatures, sun/moon position">ⓘ metadata</button>
+    <span class="lb-fx-sep"></span>
     <button data-fx="invert"    title="Invert / negative — reveals detail in deep shadows">invert</button>
     <button data-fx="channel-r" title="Red channel only">R</button>
     <button data-fx="channel-g" title="Green channel only">G</button>
@@ -2968,9 +3038,16 @@
   <div class="lb-stage" id="lb-stage">
     <img id="lb-img" alt=""/>
     <canvas id="lb-canvas" hidden></canvas>
+    <aside id="lb-meta-panel" hidden aria-label="Image forensics metadata">
+      <header>
+        <span>METADATA</span>
+        <button id="lb-meta-close" title="Close (M)">✕</button>
+      </header>
+      <div id="lb-meta-body"></div>
+    </aside>
     <div class="lb-nav prev" id="lb-prev" aria-label="Previous">‹</div>
     <div class="lb-nav next" id="lb-next" aria-label="Next">›</div>
-    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · F forensics · X clear · ←/→ navigate · Esc close</div>
+    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · F forensics · M metadata · X clear · ←/→ navigate · Esc close</div>
   </div>
 </div>
 
@@ -4106,6 +4183,7 @@ function lightboxKey(e) {
   else if (e.key === "0") { e.preventDefault(); lbState.scale = 1; lbState.tx = 0; lbState.ty = 0; lbState.rot = 0; applyLbTransform(); }
   else if (e.key === "r" || e.key === "R") { e.preventDefault(); lbState.rot = (lbState.rot + 90) % 360; applyLbTransform(); }
   else if (e.key === "f" || e.key === "F") { e.preventDefault(); lbFxToggleBar(); }
+  else if (e.key === "m" || e.key === "M") { e.preventDefault(); lbFxToggleMetadata(); }
   else if (e.key === "x" || e.key === "X") { e.preventDefault(); lbFxClear(); }
 }
 function bindLightbox() {
@@ -4177,6 +4255,10 @@ const lbFx = {
   sourceCanvas: null,   // offscreen canvas with the source drawn
   sourceSrc: null,      // src URL we captured from (cache key)
   busy: false,
+  metaOpen: false,
+  metaIndex: null,      // Wave-2 forensics index { filename: {flags} }, lazy
+  metaIndexLoading: null,  // in-flight promise for the index
+  metaCache: new Map(), // filename → sidecar record (or null if 404)
 };
 
 function lbFxToggleBar() {
@@ -4188,10 +4270,13 @@ function lbFxToggleBar() {
 function lbFxResetForNewImage() {
   // Called when the lightbox loads a different image (or closes). The
   // source ImageData is keyed by URL — we drop the cache and clear UI.
+  // Also re-renders the metadata panel for the new image (it stays open
+  // across navigations so users can flip through and compare metadata).
   lbFx.source = null;
   lbFx.sourceCanvas = null;
   lbFx.sourceSrc = null;
   lbFxClear();
+  if (lbFx.metaOpen) lbFxRenderMetadata();
 }
 
 function lbFxClear() {
@@ -4502,12 +4587,165 @@ async function fxEla(src) {
   return new ImageData(out, w, h);
 }
 
+// ── Metadata panel (Wave 2 — build-time EXIF / hash / celestial sidecars) ──
+//
+// Sidecar JSON is generated by scripts/forensics.py and lives at
+// `ui/forensics/<filename>.jpg.json`. An index at `ui/forensics_index.json`
+// lists what's available so we can short-circuit fetches for images
+// without sidecars (e.g. videos, freshly-added images before next refresh).
+
+function _currentImageFilename() {
+  const src = $("#lb-img").src || "";
+  if (!src) return null;
+  try {
+    const u = new URL(src);
+    const tail = u.pathname.split("/").pop() || "";
+    return decodeURIComponent(tail);
+  } catch { return null; }
+}
+
+async function lbFxLoadIndex() {
+  if (lbFx.metaIndex) return lbFx.metaIndex;
+  if (lbFx.metaIndexLoading) return lbFx.metaIndexLoading;
+  lbFx.metaIndexLoading = (async () => {
+    try {
+      const r = await fetch("forensics_index.json", { cache: "force-cache" });
+      if (!r.ok) throw new Error("index " + r.status);
+      lbFx.metaIndex = await r.json();
+    } catch (e) {
+      console.warn("[forensics] index unavailable:", e);
+      lbFx.metaIndex = {};
+    }
+    return lbFx.metaIndex;
+  })();
+  return lbFx.metaIndexLoading;
+}
+
+async function lbFxLoadSidecar(filename) {
+  if (lbFx.metaCache.has(filename)) return lbFx.metaCache.get(filename);
+  const index = await lbFxLoadIndex();
+  if (!(filename in index)) {
+    lbFx.metaCache.set(filename, null);
+    return null;
+  }
+  try {
+    const r = await fetch(`forensics/${encodeURIComponent(filename)}.json`, { cache: "force-cache" });
+    if (!r.ok) throw new Error("sidecar " + r.status);
+    const rec = await r.json();
+    lbFx.metaCache.set(filename, rec);
+    return rec;
+  } catch (e) {
+    console.warn("[forensics] sidecar fetch failed:", e);
+    lbFx.metaCache.set(filename, null);
+    return null;
+  }
+}
+
+function lbFxToggleMetadata() {
+  lbFx.metaOpen = !lbFx.metaOpen;
+  document.querySelector("#lb-fx-bar button[data-fx='metadata']")?.classList.toggle("active", lbFx.metaOpen);
+  $("#lb-meta-panel").hidden = !lbFx.metaOpen;
+  if (lbFx.metaOpen) lbFxRenderMetadata();
+}
+
+async function lbFxRenderMetadata() {
+  const body = $("#lb-meta-body");
+  if (!body) return;
+  const fname = _currentImageFilename();
+  if (!fname) { body.innerHTML = `<div class="mp-empty">no image loaded</div>`; return; }
+  body.innerHTML = `<div class="mp-empty">loading…</div>`;
+  const rec = await lbFxLoadSidecar(fname);
+  // The image might have been swapped while we were awaiting — bail if so.
+  if (fname !== _currentImageFilename()) return;
+  if (!rec) {
+    body.innerHTML = `
+      <div class="mp-empty">
+        No forensic sidecar for <code>${escapeHtml(fname)}</code>.<br>
+        Sidecars are generated at build time by <code>scripts/forensics.py</code>.
+      </div>`;
+    return;
+  }
+  body.innerHTML = _formatForensics(rec, fname);
+}
+
+function _formatForensics(rec, fname) {
+  const esc = escapeHtml;
+  const dash = `<span class="mp-v mp-muted">—</span>`;
+  const val = v => (v == null || v === "" ? dash : `<span class="mp-v">${esc(String(v))}</span>`);
+  const row = (k, v) => `<div class="mp-row"><span class="mp-k">${esc(k)}</span>${val(v)}</div>`;
+  const e = rec.exif || {};
+
+  let banner = "";
+  if (rec.edit_signatures && rec.edit_signatures.length) {
+    banner = `<div class="mp-banner">⚠ EDIT SIGNATURE: ${rec.edit_signatures.map(esc).join(", ")}</div>`;
+  }
+
+  const sizeKb = (rec.size_bytes / 1024).toFixed(1) + " KB";
+  const dims = rec.dimensions ? `${rec.dimensions[0]} × ${rec.dimensions[1]}` : null;
+  const shortHash = h => h ? `<code>${esc(h.slice(0,12))}…${esc(h.slice(-6))}</code>` : null;
+
+  const fileSection = `
+    <div class="mp-section">
+      <div class="mp-head">FILE</div>
+      ${row("name", fname)}
+      ${row("size", `${sizeKb} · ${dims || "?"}`)}
+      <div class="mp-row"><span class="mp-k">sha-256</span><span class="mp-v">${shortHash(rec.sha256) || dash}</span></div>
+      <div class="mp-row"><span class="mp-k">phash</span><span class="mp-v"><code>${esc(rec.phash || "")}</code></span></div>
+    </div>`;
+
+  const exifSection = `
+    <div class="mp-section">
+      <div class="mp-head">EXIF (${e.tag_count || 0} tags)</div>
+      ${row("camera", e.camera)}
+      ${row("lens", e.lens)}
+      ${row("software", e.software)}
+      ${row("datetime", e.datetime)}
+      ${row("GPS", e.gps ? `${e.gps[0]}, ${e.gps[1]}` : null)}
+      ${row("orientation", e.orientation)}
+      ${row("DPI", e.resolution_dpi ? e.resolution_dpi.join(" × ") : null)}
+    </div>`;
+
+  const markers = (rec.jpeg_markers || []).map(esc).join(", ") || dash;
+  const markerSection = `
+    <div class="mp-section">
+      <div class="mp-head">JPEG MARKERS</div>
+      <div class="mp-row"><span class="mp-k">segments</span><span class="mp-v">${markers}</span></div>
+      ${row("fingerprint", rec.marker_fingerprint)}
+      ${rec.jpeg_comment ? row("comment", rec.jpeg_comment) : ""}
+    </div>`;
+
+  let celestialSection = "";
+  if (rec.celestial) {
+    const s = rec.celestial.sun, m = rec.celestial.moon;
+    celestialSection = `
+      <div class="mp-section">
+        <div class="mp-head">CELESTIAL (at recorded GPS + time)</div>
+        ${row("☀ sun alt", `${s.altitude_deg}° (${s.above_horizon ? "above horizon" : "below horizon"})`)}
+        ${row("☀ sun az", `${s.azimuth_deg}°`)}
+        ${row("☾ moon alt", `${m.altitude_deg}° (${m.above_horizon ? "above" : "below"})`)}
+        ${row("☾ moon az", `${m.azimuth_deg}°`)}
+        ${row("☾ phase", `${m.phase_name} (${(m.phase * 100).toFixed(0)}% illuminated)`)}
+      </div>`;
+  }
+
+  const notes = (rec.notes || []).map(n => `<li>${esc(n)}</li>`).join("");
+  const notesSection = notes ? `
+    <div class="mp-section">
+      <div class="mp-head">NOTES</div>
+      <ul class="mp-notes">${notes}</ul>
+    </div>` : "";
+
+  return banner + fileSection + exifSection + markerSection + celestialSection + notesSection;
+}
+
 // Wire up the forensics toolbar buttons.
 $("#lb-fx").addEventListener("click", lbFxToggleBar);
+$("#lb-meta-close").addEventListener("click", lbFxToggleMetadata);
 document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
   btn.addEventListener("click", () => {
     const name = btn.dataset.fx;
     if (name === "reset") lbFxClear();
+    else if (name === "metadata") lbFxToggleMetadata();
     else lbFxApply(name);
   });
 });
