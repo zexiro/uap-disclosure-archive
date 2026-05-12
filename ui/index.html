@@ -697,6 +697,18 @@
   }
   #lb-fx.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
 
+  /* Reconstruction banner — shown when the enhance toggle is active so
+     the visitor can't accidentally treat the upscaled output as evidence. */
+  #lb-enhance-banner {
+    position: absolute; top: 12px; left: 50%; transform: translateX(-50%);
+    background: rgba(255, 180, 0, 0.18); border: 1px solid rgba(255, 180, 0, 0.55);
+    color: #ffcc66; padding: 6px 14px; border-radius: 3px;
+    font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+    z-index: 4; pointer-events: none; max-width: 90%; text-align: center;
+  }
+  #lb-enhance-banner[hidden] { display: none; }
+  #lb-enhance-banner strong { color: #fff; }
+
   /* Metadata side-panel — slides in from the right inside the lightbox stage.
      Holds EXIF, hashes, JPEG markers, edit signatures, celestial calcs. */
   #lb-meta-panel {
@@ -3066,6 +3078,8 @@
     <button data-fx="unsharp"   title="Unsharp-mask sharpen (no hallucination)">sharpen</button>
     <button data-fx="sigma"     title="Sigma-clipped anomaly heatmap — flags bright pixels &gt;3σ above local mean">σ-anomaly</button>
     <button data-fx="ela"       title="Error Level Analysis — re-encodes JPEG @ q=0.9, amplifies the diff, highlights edited regions">ELA</button>
+    <span class="lb-fx-sep"></span>
+    <button data-fx="enhance"   title="Real-ESRGAN 4× upscale — plausible reconstruction, not new evidence">✨ 4× enhance</button>
     <span class="lb-fx-spacer"></span>
     <button data-fx="reset"     title="Clear filter (X)">✕ clear</button>
     <span class="lb-fx-status" id="lb-fx-status"></span>
@@ -3073,6 +3087,7 @@
   <div class="lb-stage" id="lb-stage">
     <img id="lb-img" alt=""/>
     <canvas id="lb-canvas" hidden></canvas>
+    <div id="lb-enhance-banner" hidden>▲ 4× RECONSTRUCTION · Real-ESRGAN · plausible interpolation, <strong>not new evidence</strong></div>
     <aside id="lb-meta-panel" hidden aria-label="Image forensics metadata">
       <header>
         <span>METADATA</span>
@@ -4296,6 +4311,8 @@ const lbFx = {
   metaCache: new Map(), // filename → sidecar record (or null if 404)
   clipLabels: null,     // Wave-3 CLIP zero-shot label table { filename: {...} }
   clipLabelsLoading: null,
+  enhanceActive: false, // Wave-3 enhance toggle — swaps img src to raw/images_enhanced/
+  enhanceCache: new Map(), // filename → bool: HEAD-check result for enhanced availability
 };
 
 function lbFxToggleBar() {
@@ -4313,6 +4330,12 @@ function lbFxResetForNewImage() {
   lbFx.sourceCanvas = null;
   lbFx.sourceSrc = null;
   lbFxClear();
+  // Enhance is per-image — turn it off when the visible image changes.
+  lbFx.enhanceActive = false;
+  const btn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
+  if (btn) btn.classList.remove("active");
+  const banner = $("#lb-enhance-banner");
+  if (banner) banner.hidden = true;
   if (lbFx.metaOpen) lbFxRenderMetadata();
 }
 
@@ -4678,6 +4701,96 @@ async function lbFxLoadSidecar(filename) {
   }
 }
 
+// ── Enhance toggle (Real-ESRGAN 4× upscale) ──────────────────────────
+//
+// When active, the lightbox img src is swapped to /raw/images_enhanced/
+// <stem>.jpg. The existing forensic filter pipeline still runs on top
+// (CLAHE, sobel, etc. all sample the enhanced image as their source),
+// but a prominent banner stays visible to remind the visitor this is
+// a plausible reconstruction, not new evidence. Enhanced files only
+// exist for raw/images/ — PDF-extracted images are excluded.
+
+function _originalImageUrl() {
+  // The currently-loaded gallery URL (i.e. the one openLightbox was
+  // called with). When enhance is OFF this is also #lb-img.src; when
+  // ON, we keep this around so we can revert.
+  const g = lbState.gallery[lbState.idx];
+  return g ? g.src : null;
+}
+
+function _enhancedUrlFor(originalSrc) {
+  if (!originalSrc) return null;
+  try {
+    const u = new URL(originalSrc);
+    // PDF-extracted images are deliberately excluded by the build
+    // script — enhancing an already-pdfimages-rescaled JPEG stacks
+    // two scalers and produces obvious artifacts.
+    if (u.pathname.includes("/images_extracted/")) return null;
+    const name = u.pathname.split("/").pop() || "";
+    const stem = name.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+    if (!stem) return null;
+    return new URL(`/raw/images_enhanced/${stem}.jpg`, u.origin).href;
+  } catch { return null; }
+}
+
+async function lbFxToggleEnhance() {
+  if (lbFx.busy) return;
+  const btn = document.querySelector("#lb-fx-bar button[data-fx='enhance']");
+  const banner = $("#lb-enhance-banner");
+
+  if (lbFx.enhanceActive) {
+    // Toggle off — revert to the gallery source.
+    const orig = _originalImageUrl();
+    if (orig) $("#lb-img").src = orig;
+    lbFx.enhanceActive = false;
+    if (btn) btn.classList.remove("active");
+    if (banner) banner.hidden = true;
+    // Invalidate the captured source ImageData so any subsequent filter
+    // re-captures from the now-restored original.
+    lbFx.source = null;
+    lbFx.sourceCanvas = null;
+    lbFx.sourceSrc = null;
+    lbFxClear();
+    lbFxStatus("");
+    return;
+  }
+
+  const orig = _originalImageUrl();
+  const enhanced = _enhancedUrlFor(orig);
+  if (!enhanced) {
+    lbFxStatus("enhance n/a (PDF-extracted)");
+    return;
+  }
+  // HEAD-check cache — for fresh containers the enhanced file may not
+  // exist yet (the upscale pipeline takes ~hour on first run).
+  let exists = lbFx.enhanceCache.get(enhanced);
+  if (exists === undefined) {
+    lbFxStatus("checking…");
+    try {
+      const r = await fetch(enhanced, { method: "HEAD" });
+      exists = r.ok;
+    } catch { exists = false; }
+    lbFx.enhanceCache.set(enhanced, exists);
+  }
+  if (!exists) {
+    lbFxStatus("not built yet");
+    return;
+  }
+
+  // Swap. Cache invalidation for the filter source happens because
+  // lbFxCaptureSource keys by img.src — the next filter click will
+  // re-read the enhanced bitmap.
+  $("#lb-img").src = enhanced;
+  lbFx.enhanceActive = true;
+  lbFx.source = null;
+  lbFx.sourceCanvas = null;
+  lbFx.sourceSrc = null;
+  lbFxClear();
+  if (btn) btn.classList.add("active");
+  if (banner) banner.hidden = false;
+  lbFxStatus("4× active");
+}
+
 async function lbFxLoadClipLabels() {
   // One-shot fetch of the CLIP-zero-shot label table (~80 KB gzipped).
   // Cached in memory; subsequent metadata-panel opens are free.
@@ -4838,6 +4951,7 @@ document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
     const name = btn.dataset.fx;
     if (name === "reset") lbFxClear();
     else if (name === "metadata") lbFxToggleMetadata();
+    else if (name === "enhance") lbFxToggleEnhance();
     else lbFxApply(name);
   });
 });
