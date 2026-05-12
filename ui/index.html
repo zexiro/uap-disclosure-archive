@@ -4362,6 +4362,8 @@ const lbFx = {
   metaCache: new Map(), // filename → sidecar record (or null if 404)
   clipLabels: null,     // Wave-3 CLIP zero-shot label table { filename: {...} }
   clipLabelsLoading: null,
+  aiDetector: null,     // Wave-3 trained AI-detector scores { filename: {...} }
+  aiDetectorLoading: null,
   detections: null,     // Wave-3 YOLOv8n object detections { filename: {...} }
   detectionsLoading: null,
   boxesActive: false,   // SVG bounding-box overlay toggle
@@ -5028,6 +5030,22 @@ async function lbFxLoadClipLabels() {
   return lbFx.clipLabelsLoading;
 }
 
+async function lbFxLoadAiDetector() {
+  if (lbFx.aiDetector) return lbFx.aiDetector;
+  if (lbFx.aiDetectorLoading) return lbFx.aiDetectorLoading;
+  lbFx.aiDetectorLoading = (async () => {
+    try {
+      const r = await fetch("ai_detector.json", { cache: "force-cache" });
+      lbFx.aiDetector = r.ok ? await r.json() : {};
+    } catch (e) {
+      console.warn("[forensics] ai detector unavailable:", e);
+      lbFx.aiDetector = {};
+    }
+    return lbFx.aiDetector;
+  })();
+  return lbFx.aiDetectorLoading;
+}
+
 async function lbFxLoadDetections() {
   if (lbFx.detections) return lbFx.detections;
   if (lbFx.detectionsLoading) return lbFx.detectionsLoading;
@@ -5057,16 +5075,18 @@ async function lbFxRenderMetadata() {
   const fname = _currentImageFilename();
   if (!fname) { body.innerHTML = `<div class="mp-empty">no image loaded</div>`; return; }
   body.innerHTML = `<div class="mp-empty">loading…</div>`;
-  const [rec, clipLabels, detections] = await Promise.all([
+  const [rec, clipLabels, aiDetector, detections] = await Promise.all([
     lbFxLoadSidecar(fname),
     lbFxLoadClipLabels(),
+    lbFxLoadAiDetector(),
     lbFxLoadDetections(),
   ]);
   // The image might have been swapped while we were awaiting — bail if so.
   if (fname !== _currentImageFilename()) return;
   const clip = clipLabels[fname] || null;
+  const ai = aiDetector[fname] || null;
   const dets = detections[fname] || null;
-  if (!rec && !clip && !dets) {
+  if (!rec && !clip && !ai && !dets) {
     body.innerHTML = `
       <div class="mp-empty">
         No forensic sidecar for <code>${escapeHtml(fname)}</code>.<br>
@@ -5074,10 +5094,10 @@ async function lbFxRenderMetadata() {
       </div>`;
     return;
   }
-  body.innerHTML = _formatForensics(rec, fname, clip, dets);
+  body.innerHTML = _formatForensics(rec, fname, clip, dets, ai);
 }
 
-function _formatForensics(rec, fname, clip, dets) {
+function _formatForensics(rec, fname, clip, dets, ai) {
   const esc = escapeHtml;
   const dash = `<span class="mp-v mp-muted">—</span>`;
   const val = v => (v == null || v === "" ? dash : `<span class="mp-v">${esc(String(v))}</span>`);
@@ -5170,6 +5190,28 @@ function _formatForensics(rec, fname, clip, dets) {
       </div>`;
   }
 
+  // Trained AI-detector — ViT binary classifier (deepfake / realism).
+  // Pairs with the CLIP zero-shot section above: the two scores often
+  // disagree on edge cases (grainy aerial photos, hand sketches), and
+  // showing both prevents the visitor from anchoring on a single number.
+  let aiSection = "";
+  if (ai) {
+    const p = ai.deepfake;
+    const pct = (p * 100).toFixed(0);
+    let level = "low", levelLabel = "leans REAL under the trained classifier";
+    if (p > 0.65)      { level = "high";   levelLabel = "leans SYNTHETIC under the trained classifier"; }
+    else if (p > 0.45) { level = "mid";    levelLabel = "borderline — the classifier is uncertain"; }
+    aiSection = `
+      <div class="mp-section">
+        <div class="mp-head">AI-CLASSIFIER (${esc(ai.model || "trained")})</div>
+        <div class="mp-clip-bar mp-clip-${level}">
+          <div class="mp-clip-fill" style="width: ${pct}%"></div>
+          <div class="mp-clip-label">P(synthetic): ${pct}%</div>
+        </div>
+        <div class="mp-clip-hint">${esc(levelLabel)}. <strong>Not infallible</strong> — the model was trained primarily on face-deepfake and modern generative-image data, and it tends to flag stylised sketches, scanned documents, and grainy aerial photos as synthetic even when they're authentic.</div>
+      </div>`;
+  }
+
   // YOLOv8n object detection — render at score >= 0.35 so the panel
   // doesn't drown in low-confidence hallucinations on stylised sketches.
   // Each chip shows label + count (if >1) + best-confidence percentage.
@@ -5199,7 +5241,7 @@ function _formatForensics(rec, fname, clip, dets) {
     }
   }
 
-  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + detSection + notesSection;
+  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + aiSection + detSection + notesSection;
 }
 
 // Wire up the forensics toolbar buttons.
