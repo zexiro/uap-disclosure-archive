@@ -660,12 +660,39 @@
     flex: 1 1 auto; position: relative; overflow: hidden; cursor: grab;
   }
   #lightbox .lb-stage.dragging { cursor: grabbing; }
-  #lightbox .lb-stage img {
+  #lightbox .lb-stage img,
+  #lightbox .lb-stage canvas {
     position: absolute; top: 50%; left: 50%;
     transform-origin: center center;
     pointer-events: none; max-width: none; max-height: none;
     will-change: transform;
   }
+  #lightbox .lb-stage canvas[hidden] { display: none; }
+  #lightbox .lb-stage img.fx-hidden { opacity: 0; }
+  /* Second toolbar row — forensics filter buttons. Hidden until "FX" is toggled. */
+  #lightbox .lb-fx-bar {
+    flex: 0 0 auto; padding: 8px 16px; display: flex; gap: 6px; align-items: center;
+    background: rgba(0,0,0,0.45); border-bottom: 1px solid var(--border);
+    font-family: var(--mono); font-size: 11px; color: var(--fg-dim); flex-wrap: wrap;
+  }
+  #lightbox .lb-fx-bar[hidden] { display: none; }
+  #lightbox .lb-fx-bar .lb-fx-label {
+    color: var(--accent); letter-spacing: 0.08em; font-size: 10px;
+    padding-right: 8px; border-right: 1px solid var(--border); margin-right: 4px;
+  }
+  #lightbox .lb-fx-bar button {
+    background: var(--bg3); border: 1px solid var(--border); color: var(--fg);
+    padding: 4px 8px; border-radius: 3px; cursor: pointer; font-family: var(--mono); font-size: 11px;
+  }
+  #lightbox .lb-fx-bar button:hover { border-color: var(--accent); color: var(--accent); }
+  #lightbox .lb-fx-bar button.active {
+    background: var(--accent); color: var(--bg); border-color: var(--accent);
+  }
+  #lightbox .lb-fx-bar .lb-fx-spacer { flex: 1; }
+  #lightbox .lb-fx-bar .lb-fx-status {
+    color: var(--fg-dim); font-size: 10px; font-style: italic; min-width: 6ch; text-align: right;
+  }
+  #lb-fx.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
   #lightbox .lb-help {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     background: rgba(0,0,0,0.7); border: 1px solid var(--border); color: var(--fg-dim);
@@ -2919,14 +2946,31 @@
     <button id="lb-zoom-in" title="Zoom in (+)">+</button>
     <button id="lb-rotate" title="Rotate 90° (R)">↻</button>
     <button id="lb-reset" title="Reset (0)">⤢</button>
+    <button id="lb-fx" title="Forensics toolbar (F)">FX</button>
     <a id="lb-open" href="#" target="_blank" rel="noopener" style="color:var(--accent);text-decoration:none;padding:5px 10px;border:1px solid var(--border);border-radius:4px;font-family:var(--mono);font-size:11px">↗ open</a>
     <button id="lb-close" title="Close (Esc)">✕</button>
   </div>
+  <div class="lb-fx-bar" id="lb-fx-bar" hidden>
+    <span class="lb-fx-label">FORENSICS</span>
+    <button data-fx="invert"    title="Invert / negative — reveals detail in deep shadows">invert</button>
+    <button data-fx="channel-r" title="Red channel only">R</button>
+    <button data-fx="channel-g" title="Green channel only">G</button>
+    <button data-fx="channel-b" title="Blue channel only">B</button>
+    <button data-fx="clahe"     title="CLAHE adaptive contrast stretch — pulls faint detail out of the sky">CLAHE</button>
+    <button data-fx="sobel"     title="Sobel edge magnitude overlay">edges</button>
+    <button data-fx="unsharp"   title="Unsharp-mask sharpen (no hallucination)">sharpen</button>
+    <button data-fx="sigma"     title="Sigma-clipped anomaly heatmap — flags bright pixels &gt;3σ above local mean">σ-anomaly</button>
+    <button data-fx="ela"       title="Error Level Analysis — re-encodes JPEG @ q=0.9, amplifies the diff, highlights edited regions">ELA</button>
+    <span class="lb-fx-spacer"></span>
+    <button data-fx="reset"     title="Clear filter (X)">✕ clear</button>
+    <span class="lb-fx-status" id="lb-fx-status"></span>
+  </div>
   <div class="lb-stage" id="lb-stage">
     <img id="lb-img" alt=""/>
+    <canvas id="lb-canvas" hidden></canvas>
     <div class="lb-nav prev" id="lb-prev" aria-label="Previous">‹</div>
     <div class="lb-nav next" id="lb-next" aria-label="Next">›</div>
-    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · ←/→ navigate · Esc close</div>
+    <div class="lb-help">drag · wheel/pinch zoom · R rotate · 0 reset · F forensics · X clear · ←/→ navigate · Esc close</div>
   </div>
 </div>
 
@@ -4014,12 +4058,14 @@ function closeLightbox() {
   $("#lightbox").hidden = true;
   window.LB_OPEN = false;
   $("#lb-img").src = "";
+  lbFxResetForNewImage();
 }
 function showLightboxAt(i) {
   const n = lbState.gallery.length;
   if (!n) return;
   lbState.idx = ((i % n) + n) % n;
   const g = lbState.gallery[lbState.idx];
+  lbFxResetForNewImage();
   $("#lb-img").src = g.src;
   $("#lb-img").alt = g.alt;
   $("#lb-title").textContent = g.title || g.src.split("/").pop();
@@ -4032,10 +4078,11 @@ function showLightboxAt(i) {
   applyLbTransform();
 }
 function applyLbTransform() {
-  const img = $("#lb-img");
-  img.style.transform =
-    `translate(-50%, -50%) translate(${lbState.tx}px, ${lbState.ty}px) ` +
-    `rotate(${lbState.rot}deg) scale(${lbState.scale})`;
+  const t = `translate(-50%, -50%) translate(${lbState.tx}px, ${lbState.ty}px) ` +
+            `rotate(${lbState.rot}deg) scale(${lbState.scale})`;
+  $("#lb-img").style.transform = t;
+  const canvas = $("#lb-canvas");
+  if (canvas) canvas.style.transform = t;
 }
 function lbZoom(delta, cx, cy) {
   const stage = $("#lb-stage");
@@ -4058,6 +4105,8 @@ function lightboxKey(e) {
   else if (e.key === "-" || e.key === "_") { e.preventDefault(); lbZoom(-1); }
   else if (e.key === "0") { e.preventDefault(); lbState.scale = 1; lbState.tx = 0; lbState.ty = 0; lbState.rot = 0; applyLbTransform(); }
   else if (e.key === "r" || e.key === "R") { e.preventDefault(); lbState.rot = (lbState.rot + 90) % 360; applyLbTransform(); }
+  else if (e.key === "f" || e.key === "F") { e.preventDefault(); lbFxToggleBar(); }
+  else if (e.key === "x" || e.key === "X") { e.preventDefault(); lbFxClear(); }
 }
 function bindLightbox() {
   const stage = $("#lb-stage");
@@ -4107,6 +4156,361 @@ function bindLightbox() {
   $("#lb-next").addEventListener("click",     (e) => { e.stopPropagation(); showLightboxAt(lbState.idx + 1); });
 }
 bindLightbox();
+
+// ─────────────────────────────────────────────────────────────────────
+// Lightbox forensics — client-side image-analysis filters
+//
+// Wave 1 of the forensics roadmap (see IMAGE_FORENSICS_PLAN.md). Every
+// filter is a pure function `(ImageData) → ImageData` that runs in the
+// browser on the already-loaded image. No server cost, no model
+// downloads, results are deterministic so visitors can verify the math.
+//
+// Filters are mutually exclusive (radio behaviour) — clicking a filter
+// activates it and clears any other, clicking the same one toggles back
+// to the original. The result is rendered into #lb-canvas which sits
+// on top of #lb-img; both share the lightbox's zoom/rotate transform.
+// ─────────────────────────────────────────────────────────────────────
+const lbFx = {
+  barOpen: false,
+  active: null,         // filter name, or null
+  source: null,         // ImageData of the original
+  sourceCanvas: null,   // offscreen canvas with the source drawn
+  sourceSrc: null,      // src URL we captured from (cache key)
+  busy: false,
+};
+
+function lbFxToggleBar() {
+  lbFx.barOpen = !lbFx.barOpen;
+  $("#lb-fx-bar").hidden = !lbFx.barOpen;
+  $("#lb-fx").classList.toggle("active", lbFx.barOpen);
+}
+
+function lbFxResetForNewImage() {
+  // Called when the lightbox loads a different image (or closes). The
+  // source ImageData is keyed by URL — we drop the cache and clear UI.
+  lbFx.source = null;
+  lbFx.sourceCanvas = null;
+  lbFx.sourceSrc = null;
+  lbFxClear();
+}
+
+function lbFxClear() {
+  lbFx.active = null;
+  const canvas = $("#lb-canvas");
+  if (canvas) canvas.hidden = true;
+  const img = $("#lb-img");
+  if (img) img.classList.remove("fx-hidden");
+  document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(b => b.classList.remove("active"));
+  lbFxStatus("");
+}
+
+function lbFxStatus(s) {
+  const el = $("#lb-fx-status");
+  if (el) el.textContent = s;
+}
+
+async function lbFxCaptureSource() {
+  // Cache the original ImageData once per image so repeat-filter clicks
+  // don't re-decode. Same-origin so canvas tainting isn't an issue.
+  const img = $("#lb-img");
+  if (lbFx.source && lbFx.sourceSrc === img.src) return;
+  if (!img.complete || !img.naturalWidth) {
+    await new Promise((resolve, reject) => {
+      img.addEventListener("load",  resolve, { once: true });
+      img.addEventListener("error", reject,  { once: true });
+    });
+  }
+  const w = img.naturalWidth, h = img.naturalHeight;
+  if (!w || !h) throw new Error("image has no natural dimensions");
+  const canvas = document.createElement("canvas");
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(img, 0, 0);
+  lbFx.sourceCanvas = canvas;
+  lbFx.source = ctx.getImageData(0, 0, w, h);
+  lbFx.sourceSrc = img.src;
+}
+
+async function lbFxApply(name) {
+  if (lbFx.busy) return;
+  if (lbFx.active === name) { lbFxClear(); return; }
+  lbFx.busy = true;
+  lbFx.active = name;
+  document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(b => {
+    b.classList.toggle("active", b.dataset.fx === name);
+  });
+  lbFxStatus("…");
+  const t0 = performance.now();
+  try {
+    await lbFxCaptureSource();
+    const result = await lbFxRun(name, lbFx.source);
+    const canvas = $("#lb-canvas");
+    canvas.width = result.width;
+    canvas.height = result.height;
+    canvas.getContext("2d").putImageData(result, 0, 0);
+    canvas.hidden = false;
+    $("#lb-img").classList.add("fx-hidden");
+    applyLbTransform();
+    lbFxStatus(`${(performance.now() - t0).toFixed(0)}ms`);
+  } catch (e) {
+    console.error("[forensics] filter failed:", e);
+    lbFxStatus("error");
+    lbFx.active = null;
+    document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(b => b.classList.remove("active"));
+  } finally {
+    lbFx.busy = false;
+  }
+}
+
+async function lbFxRun(name, src) {
+  switch (name) {
+    case "invert":    return fxInvert(src);
+    case "channel-r": return fxChannel(src, 0);
+    case "channel-g": return fxChannel(src, 1);
+    case "channel-b": return fxChannel(src, 2);
+    case "clahe":     return fxClahe(src);
+    case "sobel":     return fxSobel(src);
+    case "unsharp":   return fxUnsharp(src);
+    case "sigma":     return fxSigmaAnomaly(src);
+    case "ela":       return await fxEla(src);
+    default: throw new Error("unknown filter: " + name);
+  }
+}
+
+// ── Filter implementations ────────────────────────────────────────────
+// Each takes ImageData, returns ImageData. Pure, deterministic.
+
+function _cloneImageData(src) {
+  return new ImageData(new Uint8ClampedArray(src.data), src.width, src.height);
+}
+
+// BT.601 luma — same coefficients used by most browsers' canvas internals.
+function _toLuma(src) {
+  const d = src.data;
+  const y = new Float32Array(src.width * src.height);
+  for (let i = 0, j = 0; i < d.length; i += 4, j++) {
+    y[j] = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+  }
+  return y;
+}
+
+function _lumaToImageData(y, w, h) {
+  const data = new Uint8ClampedArray(w * h * 4);
+  for (let j = 0, i = 0; j < y.length; j++, i += 4) {
+    const v = y[j];
+    data[i] = v; data[i+1] = v; data[i+2] = v; data[i+3] = 255;
+  }
+  return new ImageData(data, w, h);
+}
+
+function fxInvert(src) {
+  const out = _cloneImageData(src);
+  const d = out.data;
+  for (let i = 0; i < d.length; i += 4) {
+    d[i]   = 255 - d[i];
+    d[i+1] = 255 - d[i+1];
+    d[i+2] = 255 - d[i+2];
+  }
+  return out;
+}
+
+function fxChannel(src, ch) {
+  const out = _cloneImageData(src);
+  const d = out.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const v = d[i + ch];
+    d[i] = v; d[i+1] = v; d[i+2] = v;
+  }
+  return out;
+}
+
+// CLAHE — Contrast-Limited Adaptive Histogram Equalization on luma. The
+// image is split into 8×8 tiles; each tile's histogram is clipped and
+// redistributed before building a CDF lookup. Per-pixel output is
+// bilinearly interpolated between the four nearest tile LUTs. Returns
+// a greyscale (luma-only) result so the user can see the pulled detail
+// without colour distractions.
+function fxClahe(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  const tilesX = 8, tilesY = 8;
+  const tileW = Math.ceil(w / tilesX);
+  const tileH = Math.ceil(h / tilesY);
+  const clipLimit = 2.0;
+  const luts = new Array(tilesX * tilesY);
+  for (let ty = 0; ty < tilesY; ty++) {
+    for (let tx = 0; tx < tilesX; tx++) {
+      const x0 = tx * tileW, y0 = ty * tileH;
+      const x1 = Math.min(x0 + tileW, w), y1 = Math.min(y0 + tileH, h);
+      const hist = new Uint32Array(256);
+      let count = 0;
+      for (let py = y0; py < y1; py++) {
+        for (let px = x0; px < x1; px++) {
+          const v = Math.max(0, Math.min(255, Math.round(y[py * w + px])));
+          hist[v]++; count++;
+        }
+      }
+      const clip = Math.max(1, Math.floor(count * clipLimit / 256));
+      let excess = 0;
+      for (let i = 0; i < 256; i++) {
+        if (hist[i] > clip) { excess += hist[i] - clip; hist[i] = clip; }
+      }
+      const spread = Math.floor(excess / 256);
+      for (let i = 0; i < 256; i++) hist[i] += spread;
+      const lut = new Uint8Array(256);
+      let cdf = 0;
+      for (let i = 0; i < 256; i++) {
+        cdf += hist[i];
+        lut[i] = Math.round(255 * cdf / Math.max(1, count));
+      }
+      luts[ty * tilesX + tx] = lut;
+    }
+  }
+  const out = new Float32Array(w * h);
+  for (let py = 0; py < h; py++) {
+    const fy = (py + 0.5) / tileH - 0.5;
+    const ty0 = Math.max(0, Math.min(tilesY - 1, Math.floor(fy)));
+    const ty1 = Math.max(0, Math.min(tilesY - 1, ty0 + 1));
+    const wy = Math.max(0, Math.min(1, fy - ty0));
+    for (let px = 0; px < w; px++) {
+      const fx = (px + 0.5) / tileW - 0.5;
+      const tx0 = Math.max(0, Math.min(tilesX - 1, Math.floor(fx)));
+      const tx1 = Math.max(0, Math.min(tilesX - 1, tx0 + 1));
+      const wx = Math.max(0, Math.min(1, fx - tx0));
+      const v = Math.max(0, Math.min(255, Math.round(y[py * w + px])));
+      const a = luts[ty0 * tilesX + tx0][v];
+      const b = luts[ty0 * tilesX + tx1][v];
+      const c = luts[ty1 * tilesX + tx0][v];
+      const e = luts[ty1 * tilesX + tx1][v];
+      out[py * w + px] = (1-wy) * ((1-wx) * a + wx * b) + wy * ((1-wx) * c + wx * e);
+    }
+  }
+  return _lumaToImageData(out, w, h);
+}
+
+// Sobel edge magnitude. Dims the original luma and overlays gradient
+// magnitude in red so the geometry pops against the muted backdrop.
+function fxSobel(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  const out = new Uint8ClampedArray(w * h * 4);
+  for (let py = 1; py < h - 1; py++) {
+    for (let px = 1; px < w - 1; px++) {
+      const i = py * w + px;
+      const gx = -y[i-w-1] - 2*y[i-1] - y[i+w-1] + y[i-w+1] + 2*y[i+1] + y[i+w+1];
+      const gy = -y[i-w-1] - 2*y[i-w] - y[i-w+1] + y[i+w-1] + 2*y[i+w] + y[i+w+1];
+      const mag = Math.min(255, Math.sqrt(gx*gx + gy*gy));
+      const luma = y[i] * 0.25;
+      const p = i * 4;
+      out[p]   = Math.min(255, luma + mag * 1.4);
+      out[p+1] = luma;
+      out[p+2] = luma;
+      out[p+3] = 255;
+    }
+  }
+  return new ImageData(out, w, h);
+}
+
+// Unsharp mask. 3×3 box-blur the source then add (src - blur) * strength
+// back to the source. Pure linear operation — no hallucinated detail.
+function fxUnsharp(src) {
+  const w = src.width, h = src.height;
+  const sd = src.data;
+  const blur = new Float32Array(sd.length);
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      let r = 0, g = 0, b = 0, n = 0;
+      for (let dy = -1; dy <= 1; dy++) {
+        const qy = py + dy; if (qy < 0 || qy >= h) continue;
+        for (let dx = -1; dx <= 1; dx++) {
+          const qx = px + dx; if (qx < 0 || qx >= w) continue;
+          const q = (qy * w + qx) * 4;
+          r += sd[q]; g += sd[q+1]; b += sd[q+2]; n++;
+        }
+      }
+      const p = (py * w + px) * 4;
+      blur[p] = r / n; blur[p+1] = g / n; blur[p+2] = b / n;
+    }
+  }
+  const strength = 1.4;
+  const out = new Uint8ClampedArray(sd.length);
+  for (let i = 0; i < sd.length; i += 4) {
+    out[i]   = Math.max(0, Math.min(255, sd[i]   + strength * (sd[i]   - blur[i])));
+    out[i+1] = Math.max(0, Math.min(255, sd[i+1] + strength * (sd[i+1] - blur[i+1])));
+    out[i+2] = Math.max(0, Math.min(255, sd[i+2] + strength * (sd[i+2] - blur[i+2])));
+    out[i+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+
+// Sigma-clipped anomaly heatmap. Compute global luma mean + std, render
+// pixels >3σ above mean as a red→yellow→white heat overlay, dimming the
+// rest. Cuts through "is that a real bright object or just noise" quickly.
+function fxSigmaAnomaly(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  let sum = 0, sumSq = 0;
+  for (let i = 0; i < y.length; i++) { sum += y[i]; sumSq += y[i] * y[i]; }
+  const mean = sum / y.length;
+  const variance = Math.max(1, sumSq / y.length - mean * mean);
+  const std = Math.sqrt(variance);
+  const threshold = 3.0;
+  const out = new Uint8ClampedArray(w * h * 4);
+  for (let i = 0; i < y.length; i++) {
+    const z = (y[i] - mean) / std;
+    const p = i * 4;
+    const base = y[i] * 0.22;
+    if (z > threshold) {
+      const heat = Math.min(1, (z - threshold) / 3);
+      out[p]   = 255;
+      out[p+1] = Math.round(255 * heat);
+      out[p+2] = Math.round(200 * Math.max(0, heat - 0.5));
+    } else {
+      out[p] = base; out[p+1] = base; out[p+2] = base;
+    }
+    out[p+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+
+// Error Level Analysis. Re-encode the source as JPEG at q=0.9 in-browser,
+// decode it back, take the per-channel abs-diff and amplify. Regions
+// re-saved at a different quality from the rest of the image (typical
+// splice / paste artifacts) light up at a different intensity from
+// surrounding pixels. Won't catch every edit — modern editors flatten
+// the ELA signal — but it's the classic baseline forensic test.
+async function fxEla(src) {
+  const w = src.width, h = src.height;
+  const srcCanvas = lbFx.sourceCanvas;
+  if (!srcCanvas) throw new Error("ELA: no source canvas");
+  const blob = await new Promise(resolve => srcCanvas.toBlob(resolve, "image/jpeg", 0.9));
+  if (!blob) throw new Error("ELA: toBlob returned null");
+  const bitmap = await createImageBitmap(blob);
+  const tmp = document.createElement("canvas");
+  tmp.width = w; tmp.height = h;
+  const tctx = tmp.getContext("2d", { willReadFrequently: true });
+  tctx.drawImage(bitmap, 0, 0);
+  const reEncoded = tctx.getImageData(0, 0, w, h).data;
+  const out = new Uint8ClampedArray(src.data.length);
+  const amp = 15;
+  for (let i = 0; i < out.length; i += 4) {
+    out[i]   = Math.min(255, Math.abs(src.data[i]   - reEncoded[i])   * amp);
+    out[i+1] = Math.min(255, Math.abs(src.data[i+1] - reEncoded[i+1]) * amp);
+    out[i+2] = Math.min(255, Math.abs(src.data[i+2] - reEncoded[i+2]) * amp);
+    out[i+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+
+// Wire up the forensics toolbar buttons.
+$("#lb-fx").addEventListener("click", lbFxToggleBar);
+document.querySelectorAll("#lb-fx-bar button[data-fx]").forEach(btn => {
+  btn.addEventListener("click", () => {
+    const name = btn.dataset.fx;
+    if (name === "reset") lbFxClear();
+    else lbFxApply(name);
+  });
+});
 
 // ─────────────────────────────────────────────────────────────────────
 // Citation modal — BibTeX, APA, Chicago. Copy-to-clipboard per format.
