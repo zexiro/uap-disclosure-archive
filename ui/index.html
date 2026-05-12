@@ -808,6 +808,17 @@
   #lb-meta-body .mp-tag-score {
     color: var(--fg-dim); font-size: 9px;
   }
+  /* YOLOv8 detection chips — orange to distinguish from CLIP's purple tags. */
+  #lb-meta-body .mp-detboxes {
+    display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 6px;
+  }
+  #lb-meta-body .mp-detbox {
+    display: inline-flex; align-items: center; gap: 4px;
+    background: rgba(255, 140, 60, 0.13); color: #ffb380;
+    border: 1px solid rgba(255, 140, 60, 0.35);
+    padding: 2px 6px; border-radius: 3px; font-size: 10px;
+  }
+  #lb-meta-body .mp-detbox-score { color: var(--fg-dim); font-size: 9px; }
   #lightbox .lb-help {
     position: absolute; bottom: 10px; left: 50%; transform: translateX(-50%);
     background: rgba(0,0,0,0.7); border: 1px solid var(--border); color: var(--fg-dim);
@@ -4311,6 +4322,8 @@ const lbFx = {
   metaCache: new Map(), // filename → sidecar record (or null if 404)
   clipLabels: null,     // Wave-3 CLIP zero-shot label table { filename: {...} }
   clipLabelsLoading: null,
+  detections: null,     // Wave-3 YOLOv8n object detections { filename: {...} }
+  detectionsLoading: null,
   enhanceActive: false, // Wave-3 enhance toggle — swaps img src to raw/images_enhanced/
   enhanceCache: new Map(), // filename → bool: HEAD-check result for enhanced availability
 };
@@ -4809,6 +4822,22 @@ async function lbFxLoadClipLabels() {
   return lbFx.clipLabelsLoading;
 }
 
+async function lbFxLoadDetections() {
+  if (lbFx.detections) return lbFx.detections;
+  if (lbFx.detectionsLoading) return lbFx.detectionsLoading;
+  lbFx.detectionsLoading = (async () => {
+    try {
+      const r = await fetch("object_detections.json", { cache: "force-cache" });
+      lbFx.detections = r.ok ? await r.json() : {};
+    } catch (e) {
+      console.warn("[forensics] object detections unavailable:", e);
+      lbFx.detections = {};
+    }
+    return lbFx.detections;
+  })();
+  return lbFx.detectionsLoading;
+}
+
 function lbFxToggleMetadata() {
   lbFx.metaOpen = !lbFx.metaOpen;
   document.querySelector("#lb-fx-bar button[data-fx='metadata']")?.classList.toggle("active", lbFx.metaOpen);
@@ -4822,14 +4851,16 @@ async function lbFxRenderMetadata() {
   const fname = _currentImageFilename();
   if (!fname) { body.innerHTML = `<div class="mp-empty">no image loaded</div>`; return; }
   body.innerHTML = `<div class="mp-empty">loading…</div>`;
-  const [rec, clipLabels] = await Promise.all([
+  const [rec, clipLabels, detections] = await Promise.all([
     lbFxLoadSidecar(fname),
     lbFxLoadClipLabels(),
+    lbFxLoadDetections(),
   ]);
   // The image might have been swapped while we were awaiting — bail if so.
   if (fname !== _currentImageFilename()) return;
   const clip = clipLabels[fname] || null;
-  if (!rec && !clip) {
+  const dets = detections[fname] || null;
+  if (!rec && !clip && !dets) {
     body.innerHTML = `
       <div class="mp-empty">
         No forensic sidecar for <code>${escapeHtml(fname)}</code>.<br>
@@ -4837,10 +4868,10 @@ async function lbFxRenderMetadata() {
       </div>`;
     return;
   }
-  body.innerHTML = _formatForensics(rec, fname, clip);
+  body.innerHTML = _formatForensics(rec, fname, clip, dets);
 }
 
-function _formatForensics(rec, fname, clip) {
+function _formatForensics(rec, fname, clip, dets) {
   const esc = escapeHtml;
   const dash = `<span class="mp-v mp-muted">—</span>`;
   const val = v => (v == null || v === "" ? dash : `<span class="mp-v">${esc(String(v))}</span>`);
@@ -4933,7 +4964,36 @@ function _formatForensics(rec, fname, clip) {
       </div>`;
   }
 
-  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + notesSection;
+  // YOLOv8n object detection — render at score >= 0.35 so the panel
+  // doesn't drown in low-confidence hallucinations on stylised sketches.
+  // Each chip shows label + count (if >1) + best-confidence percentage.
+  let detSection = "";
+  if (dets) {
+    const visible = (dets.detections || []).filter(d => d.score >= 0.35);
+    if (visible.length) {
+      const byLabel = new Map();
+      for (const d of visible) {
+        const cur = byLabel.get(d.label) || { count: 0, best: 0 };
+        cur.count += 1;
+        cur.best = Math.max(cur.best, d.score);
+        byLabel.set(d.label, cur);
+      }
+      const chips = [...byLabel.entries()]
+        .sort((a, b) => b[1].best - a[1].best)
+        .map(([label, info]) => {
+          const countLabel = info.count > 1 ? ` ×${info.count}` : "";
+          return `<span class="mp-detbox">${esc(label)}${countLabel}<span class="mp-detbox-score">${Math.round(info.best * 100)}%</span></span>`;
+        }).join("");
+      detSection = `
+        <div class="mp-section">
+          <div class="mp-head">DETECTED OBJECTS (${esc(dets.model || "yolo")})</div>
+          <div class="mp-detboxes">${chips}</div>
+          <div class="mp-clip-hint">COCO-80 categories — these models reach for the nearest training label when shown a UAP sketch (a disc becomes a frisbee, an orb becomes a sports ball). Useful for filtering, <strong>not</strong> for identification.</div>
+        </div>`;
+    }
+  }
+
+  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + detSection + notesSection;
 }
 
 // Wire up the forensics toolbar buttons.
