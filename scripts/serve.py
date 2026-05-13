@@ -380,6 +380,30 @@ _GLOBAL_BUCKET = deque()                 # global deque[ts] (daily cap)
 _RATE_PUBLIC   = int(os.environ.get("ASK_RATE_PUBLIC", "10"))
 _RATE_OWNER    = int(os.environ.get("ASK_RATE_OWNER",  "60"))
 _GLOBAL_DAILY  = int(os.environ.get("ASK_GLOBAL_DAILY_CAP", "500"))
+# Hard cap on bucket-dict size so an attacker rotating spoofed XFF values
+# can't grow the rate-limiter into memory exhaustion. When we're over
+# capacity, evict the oldest entries whose deques are empty (or oldest by
+# last-touch). 10k IPs of headroom is plenty for legitimate traffic.
+_BUCKET_MAX_KEYS = int(os.environ.get("RATE_BUCKET_MAX_KEYS", "10000"))
+
+
+def _evict_buckets_locked(buckets: dict, cutoff: float, cap: int):
+    """Called under the bucket's lock. Drops empty / stale entries, then
+    if still over cap, drops the oldest-first arbitrary ones."""
+    drop = []
+    for k, q in buckets.items():
+        while q and q[0] < cutoff:
+            q.popleft()
+        if not q:
+            drop.append(k)
+    for k in drop:
+        buckets.pop(k, None)
+    over = len(buckets) - cap
+    if over > 0:
+        # Drop arbitrary excess (defaultdict insertion order — first N inserted).
+        for k in list(buckets.keys())[:over]:
+            buckets.pop(k, None)
+
 
 def rate_check(ip, is_owner=False):
     """Returns (ok, retry_seconds, reason)."""
@@ -403,6 +427,10 @@ def rate_check(ip, is_owner=False):
             return False, reset, "hourly"
         q.append(now)
         _GLOBAL_BUCKET.append(now)
+        # Periodic eviction so the dict doesn't grow unboundedly under
+        # spoofed-IP flood. 1-in-256 amortises the cost over real traffic.
+        if (int(now) & 0xFF) == 0 or len(_BUCKETS) > _BUCKET_MAX_KEYS:
+            _evict_buckets_locked(_BUCKETS, cutoff, _BUCKET_MAX_KEYS)
         return True, 0, ""
 
 
@@ -449,15 +477,34 @@ def _corr_rate_check(ip: str):
             reset = int(q[0] + 3600 - now)
             return False, max(reset, 1)
         q.append(now)
+        # Same eviction discipline as the ask-rate buckets — prevents an
+        # XFF-spoof flood from growing the dict without bound.
+        if (int(now) & 0xFF) == 0 or len(_CORR_BUCKETS) > _BUCKET_MAX_KEYS:
+            _evict_buckets_locked(_CORR_BUCKETS, cutoff, _BUCKET_MAX_KEYS)
     return True, 0
 
 
-def _append_correction(record: dict) -> None:
+# Hard cap on the corrections JSONL — once it crosses this size, new
+# submissions are refused. Stops a malicious flood from filling the
+# Railway volume. Tune via env if the legit submission rate grows.
+CORRECTIONS_MAX_FILE_BYTES = int(os.environ.get("CORRECTIONS_MAX_FILE_BYTES", str(50 * 1024 * 1024)))
+
+
+def _append_correction(record: dict) -> bool:
+    """Appends one record to the JSONL store. Returns False if the file
+    is at its size cap (caller should surface a 429-ish response)."""
     CORRECTIONS_DIR.mkdir(parents=True, exist_ok=True)
     line = json.dumps(record, ensure_ascii=False) + "\n"
     with _CORRECTIONS_WRITE_LOCK:
+        try:
+            cur_size = CORRECTIONS_JSONL.stat().st_size
+        except FileNotFoundError:
+            cur_size = 0
+        if cur_size + len(line.encode("utf-8")) > CORRECTIONS_MAX_FILE_BYTES:
+            return False
         with CORRECTIONS_JSONL.open("a", encoding="utf-8") as fh:
             fh.write(line)
+    return True
 
 
 def _read_corrections(record_id: str) -> list:
@@ -498,16 +545,30 @@ def _bool_env(name):
     return (os.environ.get(name) or "").strip().lower() in ("1", "true", "yes", "on")
 
 def _get_client_ip(request):
-    """Honour XFF when present (single hop)."""
+    """Best-effort client IP. We honour X-Forwarded-For (single hop) so
+    that requests routed through the Railway edge identify by the real
+    visitor IP instead of all collapsing onto the edge address. This is
+    safe-ish for *rate limiting* (worst case: attacker spoofs IPs and
+    burns the global daily cap, which is bounded), but the value is
+    NEVER trusted for authentication — see _is_owner_request below."""
     xff = request.headers.get("x-forwarded-for", "")
     if xff:
         return xff.split(",")[0].strip()
     return request.client.host if request.client else "127.0.0.1"
 
 def _is_owner_request(request):
-    """Localhost OR matching ASK_OWNER_TOKEN (header or ?owner=)."""
-    ip = _get_client_ip(request)
-    if _is_localhost(ip):
+    """Auth gate for write/budget endpoints.
+
+    Owner = matches ASK_OWNER_TOKEN (header or ?owner=) OR the request
+    came from a loopback peer at the socket level (NOT just any IP that
+    claims to be 127.0.0.1 in X-Forwarded-For). On Railway the immediate
+    peer is the edge, not loopback, so the token is the only path. For
+    local dev, request.client.host is 127.0.0.1 and dev usage works.
+
+    Previous version trusted XFF for the localhost check — a spoofed
+    `X-Forwarded-For: 127.0.0.1` granted owner privileges to anyone."""
+    peer_host = request.client.host if request.client else ""
+    if _is_localhost(peer_host):
         return True
     token = (os.environ.get("ASK_OWNER_TOKEN") or "").strip()
     if not token:
@@ -1259,10 +1320,16 @@ async def corrections_post(request: Request):
         "client_ip_hash": _hash_ip(ip),
     }
     try:
-        await asyncio.get_event_loop().run_in_executor(None, _append_correction, record)
+        ok_write = await asyncio.get_event_loop().run_in_executor(None, _append_correction, record)
     except Exception as e:
         print(f"[corrections] write error: {e}", file=sys.stderr)
         return JSONResponse({"error": "failed to persist correction"}, status_code=500, headers=CORS_HEADERS)
+    if not ok_write:
+        print(f"[corrections] refused — file at size cap", file=sys.stderr)
+        return JSONResponse(
+            {"error": "correction store is at capacity, try again later"},
+            status_code=503, headers=CORS_HEADERS,
+        )
 
     print(f"[corrections] new {corr_id} record={record_id!r} field={field!r} ip_hash={_hash_ip(ip)}", flush=True)
     return JSONResponse({"id": corr_id, "status": "received"}, status_code=201, headers=CORS_HEADERS)
@@ -1341,13 +1408,15 @@ async def serve_raw(request: Request):
     """Serve /raw/* with long immutable cache for media files."""
     path_suffix = request.path_params.get("path", "")
     file_path = ROOT / "raw" / path_suffix
-    if not file_path.exists() or not file_path.is_file():
-        return Response("not found", status_code=404)
-    # Prevent directory traversal
+    # Containment check FIRST so the 404/403 split doesn't oracle-leak whether
+    # a path outside raw/ exists. resolve() also collapses symlinks, so a
+    # symlink inside raw/ pointing elsewhere is rejected here too.
     try:
         file_path.resolve().relative_to((ROOT / "raw").resolve())
     except ValueError:
-        return Response("forbidden", status_code=403)
+        return Response("not found", status_code=404)
+    if not file_path.exists() or not file_path.is_file():
+        return Response("not found", status_code=404)
 
     suffix = file_path.suffix.lower()
     if suffix in LONG_CACHE_EXTS:
@@ -1367,12 +1436,13 @@ async def serve_ui(request: Request):
     file_path = ROOT / "ui" / path_suffix
     if file_path.is_dir():
         file_path = file_path / "index.html"
-    if not file_path.exists() or not file_path.is_file():
-        return Response("not found", status_code=404)
+    # Containment check FIRST (matches serve_raw — see notes there).
     try:
         file_path.resolve().relative_to((ROOT / "ui").resolve())
     except ValueError:
-        return Response("forbidden", status_code=403)
+        return Response("not found", status_code=404)
+    if not file_path.exists() or not file_path.is_file():
+        return Response("not found", status_code=404)
 
     return FileResponse(
         file_path,
@@ -1434,6 +1504,10 @@ class CollabHub:
     def __init__(self):
         self._sessions: dict[str, WebSocket] = {}
         self._ip_sessions: dict[str, set] = {}
+        self._session_ip: dict[str, str] = {}
+        # Per-IP message budget — keyed on the WS peer's IP rather than its
+        # session id, so rotating session ids (or reconnecting churn) can't
+        # reset the counter. 30 msgs / 60 s is the published cap.
         self._msg_ts: dict[str, deque] = {}
         self._recent: deque = deque(maxlen=self.HISTORY_LIMIT)
         self._lock = asyncio.Lock()
@@ -1446,7 +1520,8 @@ class CollabHub:
                 return False
             self._sessions[session_id] = ws
             sessions_for_ip.add(session_id)
-            self._msg_ts[session_id] = deque()
+            self._session_ip[session_id] = ip
+            self._msg_ts.setdefault(ip, deque())
             recent_snapshot = list(self._recent)
         await self._broadcast({
             "type": "presence",
@@ -1466,11 +1541,14 @@ class CollabHub:
     async def disconnect(self, session_id: str, ip: str):
         async with self._lock:
             self._sessions.pop(session_id, None)
-            self._msg_ts.pop(session_id, None)
+            self._session_ip.pop(session_id, None)
             sessions_for_ip = self._ip_sessions.get(ip, set())
             sessions_for_ip.discard(session_id)
             if not sessions_for_ip:
                 self._ip_sessions.pop(ip, None)
+                # Only drop the IP-keyed budget once the IP has no more sockets,
+                # so a flood from one IP across multiple sessions still counts.
+                self._msg_ts.pop(ip, None)
         await self._broadcast({
             "type": "presence",
             "online": list(self._sessions.keys()),
@@ -1484,9 +1562,10 @@ class CollabHub:
             return None
         now = time.time()
         cutoff = now - 60
-        q = self._msg_ts.get(session_id)
-        if q is None:
+        ip = self._session_ip.get(session_id)
+        if ip is None:
             return None
+        q = self._msg_ts.setdefault(ip, deque())
         while q and q[0] < cutoff:
             q.popleft()
         if len(q) >= 30:
