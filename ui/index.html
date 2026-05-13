@@ -826,6 +826,22 @@
     color: var(--fg-dim); font-style: italic; padding: 20px 0; text-align: center;
   }
   #lb-meta-body code { font-family: var(--mono); color: #88ccff; }
+  /* Provenance pill — green for bytes that come straight from war.gov,
+     amber for derived (pdfimages-extracted) so visitors can see at a
+     glance whether the EXIF / hashes describe an original. */
+  #lb-meta-body .mp-src {
+    display: inline-flex; align-items: center;
+    padding: 1px 8px; border-radius: 3px; font-size: 10px;
+    border: 1px solid;
+  }
+  #lb-meta-body .mp-src-direct {
+    background: rgba(120, 200, 140, 0.13); color: #aef0c0;
+    border-color: rgba(120, 200, 140, 0.4);
+  }
+  #lb-meta-body .mp-src-derived {
+    background: rgba(255, 180, 0, 0.12); color: #ffcc66;
+    border-color: rgba(255, 180, 0, 0.45);
+  }
   /* CLIP zero-shot synthetic-likelihood bar — colour reflects which side of
      the prompt softmax the image leans toward. Framing emphasised in copy. */
   #lb-meta-body .mp-clip-bar {
@@ -4761,7 +4777,7 @@ async function lbFxLoadIndex() {
   if (lbFx.metaIndexLoading) return lbFx.metaIndexLoading;
   lbFx.metaIndexLoading = (async () => {
     try {
-      const r = await fetch("forensics_index.json", { cache: "force-cache" });
+      const r = await fetch("forensics_index.json");
       if (!r.ok) throw new Error("index " + r.status);
       lbFx.metaIndex = await r.json();
     } catch (e) {
@@ -4781,7 +4797,7 @@ async function lbFxLoadSidecar(filename) {
     return null;
   }
   try {
-    const r = await fetch(`forensics/${encodeURIComponent(filename)}.json`, { cache: "force-cache" });
+    const r = await fetch(`forensics/${encodeURIComponent(filename)}.json`);
     if (!r.ok) throw new Error("sidecar " + r.status);
     const rec = await r.json();
     lbFx.metaCache.set(filename, rec);
@@ -5115,7 +5131,7 @@ async function lbFxLoadClipLabels() {
   if (lbFx.clipLabelsLoading) return lbFx.clipLabelsLoading;
   lbFx.clipLabelsLoading = (async () => {
     try {
-      const r = await fetch("clip_labels.json", { cache: "force-cache" });
+      const r = await fetch("clip_labels.json");
       lbFx.clipLabels = r.ok ? await r.json() : {};
     } catch (e) {
       console.warn("[forensics] clip labels unavailable:", e);
@@ -5131,7 +5147,7 @@ async function lbFxLoadAiDetector() {
   if (lbFx.aiDetectorLoading) return lbFx.aiDetectorLoading;
   lbFx.aiDetectorLoading = (async () => {
     try {
-      const r = await fetch("ai_detector.json", { cache: "force-cache" });
+      const r = await fetch("ai_detector.json");
       lbFx.aiDetector = r.ok ? await r.json() : {};
     } catch (e) {
       console.warn("[forensics] ai detector unavailable:", e);
@@ -5147,7 +5163,7 @@ async function lbFxLoadDetections() {
   if (lbFx.detectionsLoading) return lbFx.detectionsLoading;
   lbFx.detectionsLoading = (async () => {
     try {
-      const r = await fetch("object_detections.json", { cache: "force-cache" });
+      const r = await fetch("object_detections.json");
       lbFx.detections = r.ok ? await r.json() : {};
     } catch (e) {
       console.warn("[forensics] object detections unavailable:", e);
@@ -5210,10 +5226,21 @@ function _formatForensics(rec, fname, clip, dets, ai) {
   const dims = rec.dimensions ? `${rec.dimensions[0]} × ${rec.dimensions[1]}` : null;
   const shortHash = h => h ? `<code>${esc(h.slice(0,12))}…${esc(h.slice(-6))}</code>` : null;
 
+  // Provenance is the most-asked question on a public archive: were these
+  // bytes touched by anyone other than war.gov? Render it as a styled row
+  // so it reads as a status badge (green = direct, amber = pdf-extracted).
+  const src = rec.source || null;
+  let sourceRow = "";
+  if (src) {
+    const cls = src.kind === "direct_download" ? "mp-src-direct" : "mp-src-derived";
+    sourceRow = `<div class="mp-row"><span class="mp-k">source</span><span class="mp-v"><span class="mp-src ${cls}">${esc(src.label || src.kind || "")}</span></span></div>`;
+  }
+
   const fileSection = `
     <div class="mp-section">
       <div class="mp-head">FILE</div>
       ${row("name", fname)}
+      ${sourceRow}
       ${row("size", sizeKb || dims ? `${sizeKb || "?"} · ${dims || "?"}` : null)}
       <div class="mp-row"><span class="mp-k">sha-256</span><span class="mp-v">${shortHash(rec.sha256) || dash}</span></div>
       <div class="mp-row"><span class="mp-k">phash</span><span class="mp-v">${rec.phash ? `<code>${esc(rec.phash)}</code>` : dash}</span></div>

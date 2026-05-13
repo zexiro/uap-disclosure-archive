@@ -321,6 +321,32 @@ def _phase_name(elong_deg: float) -> str:
 
 
 # ── Per-image driver ──────────────────────────────────────────────────
+def _provenance(path: Path) -> dict:
+    """Where did these bytes come from? Determines the FILE/source row.
+
+    - "direct_download": raw/images/* — bytes copied verbatim from war.gov by
+      scripts/download.py. EXIF is whatever they uploaded.
+    - "pdf_embedded": raw/images_extracted/* — pulled out of a parent PDF by
+      pdfimages. EXIF is essentially absent because PDF embedding strips it.
+      The parent PDF stem is encoded in the filename as `<pdf-stem>__pNNN_NNN`."""
+    if "images_extracted" in path.parts:
+        stem = path.stem
+        parent_pdf = stem.rsplit("__p", 1)[0] if "__p" in stem else None
+        return {
+            "kind": "pdf_embedded",
+            "parent_pdf": parent_pdf,
+            "label": (
+                f"extracted from PDF: {parent_pdf}" if parent_pdf
+                else "extracted from PDF"
+            ),
+        }
+    return {
+        "kind": "direct_download",
+        "parent_pdf": None,
+        "label": "direct download (war.gov bytes intact)",
+    }
+
+
 def process_image(path: Path) -> dict | None:
     try:
         size_bytes = path.stat().st_size
@@ -337,9 +363,18 @@ def process_image(path: Path) -> dict | None:
     fingerprint = "+".join(sorted({m.split("(", 1)[1].rstrip(")") for m in markers})) or "raw"
     comment = jpeg_comment(path)
     signatures = detect_edit_signatures(exif, comment)
+    source = _provenance(path)
 
     notes: list[str] = []
-    if exif["tag_count"] == 0:
+    # Provenance shapes the right "no EXIF" copy: PDF-extracted images have
+    # had EXIF dropped by the PDF-embedding step, which is a different story
+    # than "this is a scan that was never given EXIF in the first place".
+    if source["kind"] == "pdf_embedded":
+        notes.append(
+            f"image extracted from PDF{' (' + source['parent_pdf'] + ')' if source['parent_pdf'] else ''} — "
+            "original EXIF, if any, was stripped during PDF embedding"
+        )
+    elif exif["tag_count"] == 0:
         notes.append("no EXIF metadata — possibly stripped or never recorded")
     elif not exif["camera"] and not exif["software"]:
         notes.append("EXIF present but no camera or software field — likely a scan")
@@ -372,6 +407,7 @@ def process_image(path: Path) -> dict | None:
         "dimensions": [w, h],
         "sha256": sha,
         "phash": ph,
+        "source": source,
         "jpeg_markers": markers,
         "marker_fingerprint": fingerprint,
         "jpeg_comment": comment,
