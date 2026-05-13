@@ -10509,19 +10509,29 @@ init();
       // app's own URL→state loader, which is keyed off many listeners.
       // The simplest reliable path is a real navigation; we set a flag
       // so the panel auto-opens after the reload-driven reconnect.
+      //
+      // Sender-side extractShareableUrl already gates the chat send-path
+      // (http(s) or leading-slash, same origin), but the WebSocket is
+      // open to any client — so a malicious peer can hand-craft a
+      // share-link with payload.url = "javascript:alert(1)" or "//evil"
+      // and target everyone watching. Re-validate origin + scheme here.
       sessionStorage.setItem("collab_reopen_panel", "1");
       try {
         const u = new URL(m.payload.url, location.origin);
-        if (u.origin === location.origin && u.pathname === location.pathname) {
+        // Reject non-http(s) schemes (blocks javascript:, data:, file:).
+        if (u.protocol !== "http:" && u.protocol !== "https:") return;
+        // Reject cross-origin (blocks //evil.com and lookalike hostnames).
+        if (u.origin !== location.origin) return;
+        if (u.pathname === location.pathname) {
           // Same path: only the hash differs — set it and reload so
           // loadUrl() runs against the new fragment.
           location.hash = u.hash || "";
           location.reload();
         } else {
-          location.href = u.href;
+          location.assign(u.href);
         }
       } catch (e) {
-        location.href = m.payload.url;
+        // Malformed URL — drop silently rather than navigating to raw input.
       }
       return;
     }

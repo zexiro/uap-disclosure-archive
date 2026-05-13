@@ -1413,6 +1413,18 @@ def redact_pii(text: str) -> str:
     return text
 
 
+# Absolute URLs in a collab "filter-url" share are only allowed if their
+# host is one of these. Anything else (e.g. https://uapdisclosuremirror.com.evil.com)
+# is dropped server-side. Override via env if the production host changes.
+_SHARE_URL_HOSTS = set(
+    h.strip().lower() for h in os.environ.get(
+        "SHARE_URL_HOSTS",
+        "uapdisclosuremirror.com,www.uapdisclosuremirror.com,localhost,127.0.0.1"
+    ).split(",")
+    if h.strip()
+)
+
+
 class CollabHub:
     # Ring buffer of recent chat/share/follow payloads, replayed to each
     # new socket on connect so refreshing the page or joining late doesn't
@@ -1493,8 +1505,32 @@ class CollabHub:
             if share_kind in ("search-query", "ask-query"):
                 print(f"[collab] dropped share kind={share_kind!r} from {session_id}", file=sys.stderr)
                 return None
+            share_payload = msg.get("payload") or {}
+            # Validate URL payloads server-side so a hand-crafted WS client
+            # can't broadcast javascript:/data:/cross-origin links to peers.
+            # The recipient handler also validates, but defense-in-depth
+            # keeps a future client bug from re-exposing this.
+            if share_kind in ("filter-url", "page"):
+                url = share_payload.get("url")
+                if not isinstance(url, str) or len(url) > 2048:
+                    return None
+                if url.startswith("//"):
+                    return None  # protocol-relative — cross-origin
+                if not url.startswith("/") and not url.startswith("http://") and not url.startswith("https://"):
+                    return None  # block javascript:, data:, file:, mailto:, etc.
+                # If absolute URL, require our own origin via the request host header allowlist.
+                # We don't know the live origin here, so do the cheaper check: reject any
+                # absolute URL whose host doesn't equal a fixed allowlist of production hosts.
+                if url.startswith("http://") or url.startswith("https://"):
+                    try:
+                        from urllib.parse import urlparse
+                        host = urlparse(url).hostname or ""
+                    except Exception:
+                        return None
+                    if host not in _SHARE_URL_HOSTS:
+                        return None
             payload = {"type": "share", "from": session_id, "kind": share_kind,
-                       "payload": msg.get("payload") or {}, "ts": ts}
+                       "payload": share_payload, "ts": ts}
         elif kind == "follow":
             payload = {"type": "follow", "follower": session_id, "target": msg.get("target", ""), "ts": ts}
         elif kind == "unfollow":
