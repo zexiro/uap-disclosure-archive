@@ -10,7 +10,7 @@ echo "[refresh] $(date -u +%FT%TZ) starting"
 mkdir -p raw/csv
 prev_hash=$(shasum -a 256 raw/csv/uap-csv.csv 2>/dev/null | awk '{print $1}' || true)
 ./scripts/fetch.sh \
-  "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-csv.csv" \
+  "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-data.csv" \
   raw/csv/uap-csv.csv
 new_hash=$(shasum -a 256 raw/csv/uap-csv.csv | awk '{print $1}')
 

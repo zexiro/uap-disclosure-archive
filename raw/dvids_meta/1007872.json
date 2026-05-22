@@ -1,0 +1,97 @@
+{
+  "results": {
+    "id": "video:1007872",
+    "type": "video",
+    "title": "NASA-UAP-D009, Apollo 17 Audio Excerpt, December 7, 1972",
+    "description": "During the eleventh and final crewed mission in the Apollo program, Apollo 17 Commander Gene Cernan, Lunar Module Pilot Harrison Schmitt, and Command Module Pilot Ronald Evans report seeing small lights outside the Apollo spacecraft during transit to the moon. \r\nThe crew describe bright \u201cparticles\u201d or \u201cfragments\u201d as being \u201cjagged,\u201d \u201cangular,\u201d and drifting near the Apollo spacecraft and the separated Saturn S-IVB stage. The Apollo 17 crew speculate that paint chips or ice chips are likely the source of these lights and note that they \u201ctwinkle\u201d and move away from the Saturn S-IVB stage.",
+    "keywords": "UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:21-04:00",
+    "date": "1972-12-07T00:00:00-05:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T09:17:01-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007872/DOD_111721698.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007872/nasa-uap-d009-apollo-17-audio-excerpt-december-7-1972",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "721207-D-D0360-7123",
+    "duration": 275,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 261032899,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 254877884,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 174849024,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 102004217,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 68851564,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 36421134,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721698/DOD_111721698-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 20423147,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007872.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007872&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007872&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007872/DOD_111721698.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

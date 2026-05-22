@@ -70,11 +70,12 @@ def fetch(url: str, dest: Path, headers=None, timeout=120) -> tuple[str, int]:
         return ("err", 0)
 
 
-def fetch_dvids_meta(video_id: str) -> dict | None:
-    meta_path = META_DIR / f"{video_id}.json"
+def fetch_dvids_meta(video_id: str, kind: str = "video") -> dict | None:
+    suffix = "" if kind == "video" else f"_{kind}"
+    meta_path = META_DIR / f"{video_id}{suffix}.json"
     if meta_path.exists() and meta_path.stat().st_size > 0:
         return json.loads(meta_path.read_text())
-    url = f"https://api.dvidshub.net/asset?api_key={DVIDS_API_KEY}&id=video:{video_id}&thumb_width=720"
+    url = f"https://api.dvidshub.net/asset?api_key={DVIDS_API_KEY}&id={kind}:{video_id}&thumb_width=720"
     headers = {"Origin": "https://www.war.gov", "Referer": "https://www.war.gov/UFO/"}
     req = urllib.request.Request(url, headers={"User-Agent": UA, **headers})
     try:
@@ -104,6 +105,22 @@ def best_video_url(meta: dict) -> tuple[str, str] | None:
     return src, name
 
 
+def best_audio_url(meta: dict) -> tuple[str, str] | None:
+    """Pick the audio file (mp3 preferred) from a DVIDS audio asset."""
+    results = meta.get("results") or meta.get("data") or meta
+    if not results:
+        return None
+    files = results.get("files") or []
+    audios = [f for f in files if (f.get("type") or "").startswith("audio/")]
+    if not audios:
+        return None
+    audios.sort(key=lambda f: (1 if (f.get("type") or "").endswith("mp3") else 0, f.get("size", 0)), reverse=True)
+    chosen = audios[0]
+    src = chosen["src"]
+    name = src.rsplit("/", 1)[-1]
+    return src, name
+
+
 # Build the work list from downloads.tsv (PDFs + images)
 direct_jobs: list[tuple[str, Path]] = []
 seen: set[str] = set()
@@ -116,22 +133,25 @@ for line in (RAW / "downloads.tsv").read_text().splitlines():
     seen.add(url)
     direct_jobs.append((url, ROOT / local))
 
-# Add DVIDS video downloads
-print(f"Resolving DVIDS metadata for {sum(1 for r in RECORDS if r['dvids_video_id'])} videos...")
+# Add DVIDS video / audio downloads
+print(f"Resolving DVIDS metadata for {sum(1 for r in RECORDS if r['dvids_video_id'])} assets...")
 video_jobs: list[tuple[str, Path]] = []
 for r in RECORDS:
     vid = r["dvids_video_id"]
     if not vid:
         continue
-    meta = fetch_dvids_meta(vid)
+    is_aud = r.get("type", "").strip() == "AUD"
+    kind = "audio" if is_aud else "video"
+    meta = fetch_dvids_meta(vid, kind=kind)
     if not meta:
         continue
-    pair = best_video_url(meta)
+    pair = best_audio_url(meta) if is_aud else best_video_url(meta)
     if not pair:
         continue
     src, name = pair
-    dest = RAW / "videos" / f"{vid}_{name}"
-    r["video_local"] = str(dest.relative_to(ROOT))
+    sub = "audio" if is_aud else "videos"
+    dest = RAW / sub / f"{vid}_{name}"
+    r["audio_local" if is_aud else "video_local"] = str(dest.relative_to(ROOT))
     if src not in seen:
         seen.add(src)
         video_jobs.append((src, dest))

@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1007737",
+    "type": "video",
+    "title": "DOW-UAP-PR098, \"UFOs in formation over Persian Gulf?",
+    "description": "\"On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. Many of these materials lack a substantiated chain-of-custody.\r\n\r\nAARO assesses that this video, whose uploader-defined title is, \u201cUFOs in formation over Persian Gulf?\u201d is likely derived from an infrared sensor aboard a U.S. military platform operating within the United States Central Command area of responsibility. A user uploaded this video to a classified network in October 2019.\r\n\r\nVideo Duration: 00:17:36\r\nVideo Description:\r\n00:00-00:02: No Content.\r\n00:02-00:21: An area of contrast becomes visible. The sensor pans to track the area of contrast within the center of the field-of-view.\r\n00:22-01:59: The sensor zooms in on the area of contrast. At a higher level of magnification, the area appears as multiple distinct areas of contrast.\r\n02:00-02:02: The areas of contrast briefly leave the field-of-view.\r\n02:03-04:00: The sensor zooms in and out multiple times to track the area of contrast.\r\n04:01-04:26: The area of contrast becomes less distinguishable against the background. The sensor zooms in further.\r\n04:27-06:29: The sensor progressively zooms in on the area of contrast.\r\n06:30-13:17: The area of contrast is at times indistinguishable from the grain of the video. The sensor makes several contrast adjustments to compensate.\r\n13:18-16:22: The sensor zooms in and out several times.\r\n16:23-17:23: The area of contrast repeatedly exits and enters the frame.\r\n17:24-17:27: The sensor zooms out to track the area of contrast.\r\n17:27-17:36: No content.\r\n\r\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAP, UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:53-04:00",
+    "date": "2019-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T07:35:27-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007737/DOD_111719833.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007737/dow-uap-pr098-ufos-formation-over-persian-gulf",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "191002-D-D0360-8259",
+    "duration": 1056,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 255197962,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 434537200,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 302220777,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 180410665,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 119041323,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 65098526,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719833/DOD_111719833-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 37096982,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007737.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007737/DOD_111719833.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

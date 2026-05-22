@@ -1,0 +1,97 @@
+{
+  "results": {
+    "id": "video:1007741",
+    "type": "video",
+    "title": "DOW-UAP-PR064, \"AFSOC Kabul UAP Jul 2017\"",
+    "description": "On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. Many of these materials lack a substantiated chain-of-custody.\n\nAARO assesses that this video, whose uploader-defined title is, \u201cAFSOC Kabul UAP Jul 2017,\u201d is likely derived from an infrared sensor aboard a U.S. military platform operating within the United States Central Command area of responsibility in 2021. A user uploaded this video to a classified network in June 2024.\n\nVideo Duration: 00:00:17\nVideo Description:\n00:00-00:13: No content.\n00:14-00:15: An area of contrast moves into the sensor field-of-view from the left edge and moves to the right edge out of the field-of-view.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.",
+    "keywords": "UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:55-04:00",
+    "date": "2017-07-01T00:00:00-04:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T07:34:36-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007741/DOD_111719852.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007741/dow-uap-pr064-afsoc-kabul-uap-jul-2017",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Afghanistan",
+      "country_abbreviation": "AF"
+    },
+    "time_start": 0,
+    "virin": "170702-D-D0360-8227",
+    "duration": 17,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852.mp4",
+        "type": "video/mp4",
+        "height": 360,
+        "width": 640,
+        "size": 3228019,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 13357256,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 9376839,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 4702697,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 3448295,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 1662949,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111719852/DOD_111719852-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 743887,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007741.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007741&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007741&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007741/DOD_111719852.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

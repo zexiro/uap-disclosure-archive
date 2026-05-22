@@ -40,6 +40,13 @@
 <!-- h3-js browser build (for hex → GeoJSON polygon conversion) -->
 <script src="https://unpkg.com/h3-js@4.1.0/dist/browser/h3-js.umd.js" defer></script>
 
+<!-- Fonts — Geist (sans, all sizes, body + display) and JetBrains Mono
+     (technical metadata). Replaces the previous system-stack + ui-monospace
+     pairing with intentional, distinct families. -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+
 <!-- PDF.js (loaded for the document viewer) -->
 <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
 <script type="module">
@@ -52,22 +59,83 @@
 </script>
 <style>
   :root {
-    --bg: #0b0e14;
-    --bg2: #11151c;
-    --bg3: #161b24;
-    --fg: #cbd5e1;
-    --fg-dim: #7c8aa1;
-    --accent: #57c7ff;
-    --accent2: #ffd34d;
-    --border: #1f2937;
-    --hl: #ffd34d33;
-    --pdf: #ff6b6b;
-    --vid: #57c7ff;
-    --img: #b07cff;
-    --mono: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    /* ── Console palette ──────────────────────────────────────────────
+       Dark instrument-room base with a hint of teal. Signal-green is the
+       loud-when-it-matters accent; cyan / olive / amber differentiate the
+       three media kinds; alert-red is reserved for redaction. All borders
+       sit a couple of steps brighter than v1 so structural divisions
+       actually read. The legacy token names (--bg, --bg2, --bg3, --fg,
+       --accent, --pdf, --vid, --img, --border, --hl) are remapped so the
+       full file inherits the new look via cascade without touching every
+       component. */
+    --bg:           #0c1014;     /* deepest surface */
+    --bg2:          #11171c;     /* elevated bg */
+    --bg3:          #161e25;     /* panel */
+    --bg-elev:      #11171c;
+    --panel:        #161e25;
+    --panel-hi:     #1f2932;
+    --panel-lit:    #28333e;
+
+    --fg:           #e6eef2;
+    --fg-dim:       #8696a0;
+    --ink:          #e6eef2;
+    --ink-2:        #b6c1c8;
+    --ink-3:        #8696a0;
+    --ink-4:        #5a6770;
+
+    --rule:         #2f3d49;     /* default border / divider — visible */
+    --rule-strong:  #455764;     /* prominent structural divider */
+    --rule-soft:    #1f2832;     /* nested / inside-panel divider */
+    --border:       #2f3d49;     /* legacy alias */
+
+    --signal:       #7fd4b5;     /* phosphor green — active / primary */
+    --signal-deep:  #4f9c7b;
+    --amber:        #e4b463;     /* warning / derivative / VID */
+    --amber-deep:   #a07a36;
+    --alert:        #de6868;     /* REDACTED / edit-signature */
+    --alert-deep:   #93373c;
+    --cyan:         #7bb8d4;     /* info / link / PDF */
+    --cyan-deep:    #427486;
+    --olive:        #b6c265;     /* IMG type accent */
+    --olive-deep:   #6e7836;
+
+    /* Legacy accent + type-color aliases — remap so existing widgets
+       (chips, dossier accents, viewer overlays) recolour automatically. */
+    --accent:       #7fd4b5;
+    --accent2:      #e4b463;
+    --hl:           rgba(127,212,181,0.18);
+    --pdf:          #7bb8d4;
+    --vid:          #e4b463;
+    --img:          #b6c265;
+
+    --mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+
+    --grid:         rgba(140, 165, 180, 0.08);
   }
   * { box-sizing: border-box; }
-  html, body { margin: 0; height: 100%; background: var(--bg); color: var(--fg); font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; }
+  html, body {
+    margin: 0; height: 100%;
+    background:
+      radial-gradient(1400px 800px at 80% -10%, rgba(127,212,181,0.04), transparent 60%),
+      radial-gradient(900px 600px at 20% 110%, rgba(123,184,212,0.03), transparent 70%),
+      var(--bg);
+    background-attachment: fixed;
+    color: var(--fg);
+    font-family: "Geist", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+    letter-spacing: -0.005em;
+  }
+  /* Faint reticle grid underlying everything — 80px squares, very low
+     contrast. Reads as instrument-room atmosphere, not noise. */
+  body::before {
+    content: "";
+    position: fixed; inset: 0; pointer-events: none; z-index: 0;
+    background-image:
+      linear-gradient(var(--grid) 1px, transparent 1px),
+      linear-gradient(90deg, var(--grid) 1px, transparent 1px);
+    background-size: 80px 80px;
+    opacity: 0.7;
+  }
+  body > * { position: relative; z-index: 1; }
   body { display: grid; grid-template-rows: auto 1fr; }
   header {
     padding: 14px 20px; background: linear-gradient(135deg, #0b0e14, #1a1f2e);
@@ -200,6 +268,7 @@
   .badge.pdf { color: var(--pdf); border-color: #4a2222; }
   .badge.vid { color: var(--vid); border-color: #1f4a5c; }
   .badge.img { color: var(--img); border-color: #4a3162; }
+  .badge.aud { color: #ffd56b; border-color: #5a4416; }
   .snippet { font-size: 11.5px; color: var(--fg-dim); margin-top: 6px; max-height: 3em; overflow: hidden; }
   mark { background: var(--hl); color: #fff; padding: 0 1px; border-radius: 2px; }
   /* Dossier hits: pills under each row + jump panel inside the detail view */
@@ -2813,6 +2882,11 @@
           <span class="seg-label">Videos</span>
           <span class="seg-count" id="cn-vid">—</span>
         </button>
+        <button class="type-seg" type="button" data-type="AUD" title="Records whose primary medium is an audio recording (mission tapes, debriefs)">
+          <span class="seg-icon" aria-hidden="true">🔊</span>
+          <span class="seg-label">Audio</span>
+          <span class="seg-count" id="cn-aud">—</span>
+        </button>
       </div>
     </div>
     <button id="more-filters-toggle" type="button" aria-expanded="false" aria-controls="more-filters-body" title="Show / hide facets, dossiers, topics">
@@ -3388,7 +3462,7 @@ function fillFilter(sel, values) {
 }
 
 function badge(t) {
-  const cls = t === "PDF" ? "pdf" : t === "VID" ? "vid" : "img";
+  const cls = t === "PDF" ? "pdf" : t === "VID" ? "vid" : t === "AUD" ? "aud" : "img";
   return `<span class="badge ${cls}">${t || "?"}</span>`;
 }
 
@@ -3455,6 +3529,10 @@ function previewHTML(d) {
   if (d.video_local) {
     parts.push(`<div class="preview"><video controls preload="metadata" src="${ROOT_REL}/${d.video_local}"></video></div>`);
   }
+  // Audio (DVIDS mission tapes etc.)
+  if (d.audio_local) {
+    parts.push(`<div class="preview"><audio controls preload="metadata" style="width:100%" src="${ROOT_REL}/${d.audio_local}"></audio></div>`);
+  }
   // Inline images (small standalone image records)
   for (const lp of d.primary_local) {
     if (/\.(jpg|jpeg|png|gif|webp)$/i.test(lp)) {
@@ -3509,6 +3587,7 @@ function linksHTML(d) {
     a.push(`<a href="${ROOT_REL}/${lp}" target="_blank">📁 ${lp.split("/").pop()}</a>`);
   }
   if (d.video_local) a.push(`<a href="${ROOT_REL}/${d.video_local}" target="_blank">🎞 ${d.video_local.split("/").pop()}</a>`);
+  if (d.audio_local) a.push(`<a href="${ROOT_REL}/${d.audio_local}" target="_blank">🔊 ${d.audio_local.split("/").pop()}</a>`);
   if (d.source_url) a.push(`<a href="${d.source_url}" target="_blank">↗ war.gov source</a>`);
   if (d.dvids_video_id) a.push(`<a href="https://www.dvidshub.net/video/${d.dvids_video_id}" target="_blank">↗ DVIDS</a>`);
   a.push(`<a class="cite-btn" href="#" data-cite-id="${escapeHtml(d.id)}">❝ Cite this</a>`);
@@ -7984,13 +8063,14 @@ async function init() {
   });
 
   // Type-chip counts + proportional segment widths
-  const counts = { "": docs.length, "Case File": 0, PDF: 0, VID: 0, IMG: 0 };
+  const counts = { "": docs.length, "Case File": 0, PDF: 0, VID: 0, IMG: 0, AUD: 0 };
   docs.forEach(d => { const k = (d.type || "").replace(/\s+$/, ""); if (counts[k] != null) counts[k]++; });
   $("#cn-all").textContent = counts[""];
   $("#cn-case").textContent = counts["Case File"];
   $("#cn-pdf").textContent = counts.PDF;
   $("#cn-vid").textContent = counts.VID;
   $("#cn-img").textContent = counts.IMG;
+  $("#cn-aud").textContent = counts.AUD;
   // Drive segment widths from counts so the bar's visual proportions match
   // the data. flex-grow of N gives a slice proportional to N within the
   // remaining space. After layout settles, hide any label that would

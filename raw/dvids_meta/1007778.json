@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1007778",
+    "type": "video",
+    "title": "DOW-UAP-PR066, \"USCG C-144 Tyndall UAP 1 TIC TAC IR hot 24 April 2024\"",
+    "description": "On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. Many of these materials lack a substantiated chain-of-custody.\n\nAARO assesses that this video, whose uploader-defined title is, \u201cUSCG C-144 Tyndall UAP 1 TIC TAC IR hot 24 April 2024,\u201d is likely derived from an infrared sensor aboard a U.S. Coast Guard platform operating in the Southeastern United States in 2024. A user uploaded this video to a classified network in June 2024.\n\nVideo Duration: 00:00:48\nVideo Description:\n00:09-00:15: An area of contrast appears from the upper right side of the screen. The sensor does not pan to track the area of contrast, causing it to leave the field-of-view on the left side of the frame. \n00:33-00:48: An area of contrast enters the field-of-view from the lower right side of the screen and leaves the field-of-view on the lower left side of the screen. The sensor pans to the left, but is unable to track the area of contrast.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.",
+    "keywords": "UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:31:05-04:00",
+    "date": "2024-04-24T00:00:00-04:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T07:34:11-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007778/DOD_111720693.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007778/dow-uap-pr066-uscg-c-144-tyndall-uap-1-tic-tac-ir-hot-24-april-2024",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "240424-D-D0360-6523",
+    "duration": 48,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 35502808,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 34926814,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 23364898,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 12301051,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 8179785,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 4223290,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720693/DOD_111720693-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 1991303,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007778.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007778/DOD_111720693.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

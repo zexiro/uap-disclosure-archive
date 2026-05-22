@@ -1,0 +1,97 @@
+{
+  "results": {
+    "id": "video:1007876",
+    "type": "video",
+    "title": "NASA-UAP-D011, Mercury Atlas 9 Audio Excerpt, May 15, 1963",
+    "description": "During the final and longest flight of Project Mercury, Mercury-Atlas 9 mission (MA-9) Faith 7 Pilot L. Gordon Cooper Jr. describes the brilliant blue of sunrise beneath the haze layer of the Earth\u2019s atmosphere. As he approaches sunrise, he describes small, luminous, brilliant white particles drifting away from the spacecraft. Cooper describes observing \u201cfireflies\u201d after deploying beacons, which are spherical mission-related equipment with xenon strobe lights.",
+    "keywords": "UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:21-04:00",
+    "date": "1963-05-15T00:00:00-04:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T09:29:21-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007876/DOD_111721737.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007876/nasa-uap-d011-mercury-atlas-9-audio-excerpt-may-15-1963",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "630515-D-D0360-9975",
+    "duration": 494,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 416226493,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 394455735,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 295532650,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 167398543,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 114708904,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 60818031,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721737/DOD_111721737-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 32738287,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007876.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007876&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007876&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007876/DOD_111721737.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

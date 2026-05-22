@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1007800",
+    "type": "video",
+    "title": "DOW-UAP-PR088, \"31 AUG [CALLSIGN] [CALLSIGN] Observes UAP",
+    "description": "\"On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. Many of these materials lack a substantiated chain-of-custody.\n\nAARO assesses that this video, whose uploader-defined title is, \u201c31 AUG 2020 [CALLSIGN] [CALLSIGN] Observes UAP,\u201d is likely derived from an infrared sensor aboard a U.S. military platform operating within the United States Central Command area of responsibility in 2020. A user uploaded this video to a classified network in August 2020.\n\nVideo Duration: 00:04:58\nVideo Description:\n00:00-01:21: No content.\n01:22-01:55: An area of contrast enters the field-of-view in the upper left corner of the screen, transits the frame, and exits the bottom of the screen.\n01:56-02:47: The sensor cycles its zoom level several times. An area of contrast becomes visible in the lower half of the screen.\n02:48-03:08: Another area of contrast enters the field-of-view from the left side of the screen.\n03:09-03:29: The sensor pans to track the second area of contrast. The first area of contrast exits the field-of-view at the left edge of the screen.\n03:30-04:58: Several areas of contrast enter and exit the field-of-view. The sensor remains focused on the second-appearing area of contrast.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAP, UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:49-04:00",
+    "date": "2020-08-31T00:00:00-04:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T07:36:36-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007800/DOD_111720843.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007800/dow-uap-pr088-31-aug-callsign-callsign-observes-uap",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "200831-D-D0360-2464",
+    "duration": 298,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 65464922,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 126662021,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 87416199,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 47883700,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 37478284,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 17369039,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111720843/DOD_111720843-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 9824264,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007800.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007800/DOD_111720843.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

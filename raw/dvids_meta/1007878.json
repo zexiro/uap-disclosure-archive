@@ -1,0 +1,97 @@
+{
+  "results": {
+    "id": "video:1007878",
+    "type": "video",
+    "title": "NASA-UAP-D014, Mercury-Redstone 4, July 21, 1961",
+    "description": "During the recovery of the fourth launch and second crewed spaceflight of Project Mercury, Mercury-Redstone 4 (MR-4) Liberty Bell 7, the recovery team discusses a dye pack in the water that did not activate.",
+    "keywords": "UAPVIDEOS, AAR052226",
+    "date_published": "2026-05-22T07:30:21-04:00",
+    "date": "1961-07-21T00:00:00-04:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-05-22T08:53:48-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007878/DOD_111721755.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1007878/nasa-uap-d014-mercury-redstone-4-july-21-1961",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "610721-D-D0360-5572",
+    "duration": 26,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 33839454,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 27178328,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 17534422,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 9272513,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 6344553,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 3416239,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2605/DOD_111721755/DOD_111721755-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 3257836,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1007878.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007878&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1007878&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2605/1007878/DOD_111721755.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

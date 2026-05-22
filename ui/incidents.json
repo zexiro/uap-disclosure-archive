@@ -166,6 +166,34 @@
       "date": "2022-07-15",
       "location": "DoD",
       "summary": "DoD office responsible for UAP investigation since 2022; publisher of historical record reviews."
+    },
+    "tic-tac-2004": {
+      "id": "tic-tac-2004",
+      "name": "Tic Tac (USS Nimitz, 2004)",
+      "date": "2004-11-14",
+      "location": "Off the coast of San Diego, CA",
+      "summary": "Multi-day UAP encounter by the USS Nimitz Carrier Strike Group. Cmdr. David Fravor's F/A-18F engaged a tic-tac-shaped object that displayed extreme acceleration and no visible propulsion."
+    },
+    "kabul-2021": {
+      "id": "kabul-2021",
+      "name": "Kabul UAP (2021)",
+      "date": "2021-08-29",
+      "location": "Kabul, Afghanistan",
+      "summary": "MQ-9 Reaper footage of a small reflective sphere over Kabul during the U.S. evacuation."
+    },
+    "project-blue-book": {
+      "id": "project-blue-book",
+      "name": "Project Blue Book",
+      "date": "1952-03-01",
+      "location": "Wright-Patterson AFB, OH",
+      "summary": "USAF UAP investigation program 1952–1969; ~12,600 reports catalogued."
+    },
+    "project-sign-grudge": {
+      "id": "project-sign-grudge",
+      "name": "Projects Sign / Grudge",
+      "date": "1948-01-22",
+      "location": "Wright-Patterson AFB, OH",
+      "summary": "USAF predecessor programs to Blue Book that handled the earliest UAP investigation files."
     }
   }
 }

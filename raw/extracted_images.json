@@ -3033,6 +3033,33 @@
     "phash": "eeabc5fe91dc72adc5103b52ed056e456a523d44c610c00495bf92fb89ae35ec"
   },
   {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p068_067.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "068",
+    "w": 1574,
+    "h": 1239,
+    "sha256": "720565ea25b0ab920a21f8e27236754477e57fb86e6ae0ad11b74ff5253aa8e2",
+    "phash": "c0453c40157bc28e45fe633411ae861916bb78c53ea3752b3ade65753ae935e6"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p073_072.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "073",
+    "w": 1572,
+    "h": 1248,
+    "sha256": "ad8183d4c5ee80182a9eb61647b175f83ba0167510b182ae11790b42e725983e",
+    "phash": "801483083eba4a4f36bbc60c7aea460e7eabd2096eaed0696ebe6a276fae31f0"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p074_073.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "074",
+    "w": 1568,
+    "h": 1250,
+    "sha256": "c69a7af06ebd71481c05cf9e3e8375c33bcf513d2652999d44f305f5c5397cfb",
+    "phash": "c115d75d7eea930d7ee2830d6eea934c7eba850a6bba84486eaa22146bae2ce2"
+  },
+  {
     "file": "raw/images_extracted/fbi-photo-b1__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b1.pdf",
     "page": "001",
@@ -3105,15 +3132,6 @@
     "phash": "8bea3f2f797e35bf3fa74afa0f8353fab414a45402eb8801ca5ab505f474a040"
   },
   {
-    "file": "raw/images_extracted/dow-uap-pr20__p001_000.png",
-    "src_pdf": "raw/docs/dow-uap-pr20.pdf",
-    "page": "001",
-    "w": 1584,
-    "h": 1224,
-    "sha256": "f9ed39e77010c90d88d7d52283d506f5646c36a883a0ae2dd4a320a0063a553d",
-    "phash": "fefc1669a327732da32d6f2c6f256365698c67b96761632c614921286969690d"
-  },
-  {
     "file": "raw/images_extracted/fbi-photo-b17__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b17.pdf",
     "page": "001",
@@ -3121,6 +3139,15 @@
     "h": 960,
     "sha256": "7fbbb90beeebc90073cdfcccd1d96078ca0ddfc0f138e63d5fa75175c6d8e021",
     "phash": "dbfb7faf68fa77fd3fa74afa3f8f43fab000a00003eb8f03c25ab4058070a800"
+  },
+  {
+    "file": "raw/images_extracted/dow-uap-pr20__p001_000.png",
+    "src_pdf": "raw/docs/dow-uap-pr20.pdf",
+    "page": "001",
+    "w": 1584,
+    "h": 1224,
+    "sha256": "f9ed39e77010c90d88d7d52283d506f5646c36a883a0ae2dd4a320a0063a553d",
+    "phash": "fefc1669a327732da32d6f2c6f256365698c67b96761632c614921286969690d"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b18__p001_000.png",
@@ -3168,15 +3195,6 @@
     "phash": "8bfb7fef797e75f47df74bfa5f8b43fab400a00042ea8f03ca4ab400a074e000"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b22__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b22.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "8a6f49aae88cd12e1ea95cb321c07bb6fbb0146d46181703d74b13d1a1c0b671",
-    "phash": "dbfb7f7f797c75f57fb54bfa7f0743fab400a00042aa8a03ca5ab405a0d0e000"
-  },
-  {
     "file": "raw/images_extracted/fbi-photo-b23__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b23.pdf",
     "page": "001",
@@ -3184,6 +3202,15 @@
     "h": 960,
     "sha256": "c18073a79867670f40802605a8b545f94e850b0f903a4ce34041544d27dc5c91",
     "phash": "8aaa2f03687234a025a04a5e1f8b43fff414f05453ebbf074afeb5a570f8f854"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b22__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b22.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "8a6f49aae88cd12e1ea95cb321c07bb6fbb0146d46181703d74b13d1a1c0b671",
+    "phash": "dbfb7f7f797c75f57fb54bfa7f0743fab400a00042aa8a03ca5ab405a0d0e000"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b3__p001_000.jpg",
@@ -3213,15 +3240,6 @@
     "phash": "c2fa9afaf480bd01ad05a50507ffc2ff0ffea551f0c30ebe52ca5e0af800fc01"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b24__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b24.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "3a91982445a40a3af44d324b2607137d69c3c2973382eb5292dc919aab7028f3",
-    "phash": "dbff3f2f7d5f75f437b74b7b2fab53feb400b01043eaab09ca4ab4008090a000"
-  },
-  {
     "file": "raw/images_extracted/fbi-photo-b4__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b4.pdf",
     "page": "001",
@@ -3229,6 +3247,15 @@
     "h": 960,
     "sha256": "e55785cc0978af1228aeb7c1b70e5350293ef05cd78b7f6f62c62a8de47708e2",
     "phash": "dbfbbfff7d7f35bd7fef4bdf4fcb82baa004a000c2aa8b038052b420b014e000"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b24__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b24.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "3a91982445a40a3af44d324b2607137d69c3c2973382eb5292dc919aab7028f3",
+    "phash": "dbff3f2f7d5f75f437b74b7b2fab53feb400b01043eaab09ca4ab4008090a000"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b5__p001_000.png",
