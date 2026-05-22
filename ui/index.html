@@ -346,6 +346,25 @@
   }
   .links a:hover { border-color: var(--accent); background: var(--bg3); }
   .blurb { line-height: 1.55; margin: 14px 0; }
+  .rel-pill {
+    display: inline-block; padding: 1px 6px; border-radius: 3px;
+    font-family: var(--mono); font-size: 10px; font-weight: 600;
+    letter-spacing: 0.06em; vertical-align: middle;
+    border: 1px solid var(--border); background: var(--bg3); color: var(--fg-dim);
+  }
+  .rel-pill.rel-1 { border-color: rgba(87,199,255,0.4); color: var(--accent); }
+  .rel-pill.rel-2 { border-color: rgba(255,179,77,0.5); color: #ffb34d; }
+  .release-banner {
+    margin: 14px 0; padding: 12px 14px;
+    background: var(--bg2); border: 1px solid var(--border);
+    border-left: 3px solid var(--accent); border-radius: 6px;
+    font-size: 13px; line-height: 1.5; color: var(--fg-dim);
+  }
+  .release-banner .rb-label {
+    display: inline-block; font-family: var(--mono); font-size: 11px;
+    letter-spacing: 0.5px; text-transform: uppercase; color: var(--accent);
+    margin-right: 8px;
+  }
   .text {
     font-family: var(--mono); font-size: 12px; line-height: 1.45;
     background: var(--bg2); border: 1px solid var(--border); border-radius: 6px;
@@ -514,6 +533,12 @@
     background: rgba(10,13,18,0.6); border: 1px solid var(--border);
     font-family: var(--mono); font-size: 12px; letter-spacing: 0.05em;
     color: var(--fg-dim); white-space: nowrap;
+  }
+  /* Below ~1500px the bottom row gets crowded (kbd hints + view switch +
+     counts + BMC + reserved 270px right padding). Drop the counts pill
+     first — the same numbers are visible on the Map view itself. */
+  @media (max-width: 1500px) {
+    .header-counts { display: none; }
   }
   .header-counts strong { font-weight: 600; }
   .header-counts .hc-label {
@@ -2853,7 +2878,7 @@
 </head>
 <body>
 <header>
-  <h1><a class="home" href="/ui/">UFO/UAP Disclosure Archive</a> <small>war.gov · Release 1</small></h1>
+  <h1><a class="home" href="/ui/">UFO/UAP Disclosure Archive</a> <small>war.gov · Releases 1 + 2</small></h1>
   <input id="q" class="header-search-input" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" autofocus />
   <div class="filters header-filters">
     <select id="f-agency"><option value="">All agencies</option></select>
@@ -2910,6 +2935,11 @@
     </select>
     <select class="chip small" id="f-incident" style="appearance:auto;cursor:pointer" title="Filter records linked to a known canonical incident (Roswell, Tic Tac, etc.)">
       <option value="">All incidents</option>
+    </select>
+    <select class="chip small" id="f-release" style="appearance:auto;cursor:pointer" title="Filter records by which war.gov release they were published in">
+      <option value="">All releases</option>
+      <option value="release_1">Release 1 — 8 May 2026</option>
+      <option value="release_2">Release 2 — 22 May 2026</option>
     </select>
   </div>
   <div class="chips facets-row header-chips" id="dossier-chips" hidden>
@@ -3497,7 +3527,7 @@ function render(matches, terms) {
       ${thumb ? `<img class="thumb" src="${ROOT_REL}/${thumb}" loading="lazy" alt=""${onerr}/>` : ""}
       <div class="body">
         <div class="t">${highlight(d.title, terms)}</div>
-        <div class="meta">${badge(d.type)} <span>${escapeHtml(d.agency)}</span> <span>${escapeHtml(d.incident_location || "—")}</span> <span>${escapeHtml(d.incident_date || "")}</span></div>
+        <div class="meta">${badge(d.type)}${d.release === "release_1" ? ` <span class="rel-pill rel-1" title="war.gov Release 1 (8 May 2026)">REL 1</span>` : d.release === "release_2" ? ` <span class="rel-pill rel-2" title="war.gov Release 2 (22 May 2026)">REL 2</span>` : ""} <span>${escapeHtml(d.agency)}</span> <span>${escapeHtml(d.incident_location || "—")}</span> <span>${escapeHtml(d.incident_date || "")}</span></div>
         ${sn ? `<div class="snippet">${highlight(sn, terms)}</div>` : ""}
         ${dossierHitsRowHTML(d)}
         ${hasPdf ? `<button class="row-viewer-btn" data-viewer-id="${escapeHtml(d.id)}" title="Open in viewer (entity sidebar, redactions, annotations)">▤ OPEN IN VIEWER</button>` : ""}
@@ -3596,13 +3626,35 @@ function linksHTML(d) {
   return a.length ? `<div class="links">${a.join("")}</div>` : "";
 }
 
+// Human label for the war.gov release a record belongs to. Empty for
+// records that aren't part of a war.gov release (e.g. NICAP / Project
+// Blue Book — we surface those as civilian elsewhere).
+function releaseLabel(d) {
+  if (d.release === "release_1") return "Release 1 · war.gov · 8 May 2026";
+  if (d.release === "release_2") return "Release 2 · war.gov · 22 May 2026";
+  return "";
+}
+
 function provenanceHTML(d) {
-  const tranche = d.tranche_id || "release-1-2026-05-08";
   const verified = d.last_verified || "";
   const stamp = verified
     ? `<span class="ok">●</span> source link verified ${escapeHtml(verified)}`
     : `<span style="color:#aaa">○</span> source link not yet verified`;
-  return `<div class="verified-stamp">ENTITY · ${escapeHtml(d.type)} · ${escapeHtml(d.id)} · tranche ${escapeHtml(tranche)} · ${stamp}</div>`;
+  const rel = releaseLabel(d);
+  const relBit = rel ? `${escapeHtml(rel)} · ` : "";
+  return `<div class="verified-stamp">ENTITY · ${escapeHtml(d.type)} · ${escapeHtml(d.id)} · ${relBit}${stamp}</div>`;
+}
+
+// One-time provenance banner for records released by war.gov on 2026-03-06.
+// The same caveat used to appear inline at the top of every record's blurb;
+// we surface it once here so the chain-of-custody warning stays visible
+// without repeating four sentences of boilerplate on every page.
+function releaseBatchBannerHTML(d) {
+  if (d.release_batch !== "aaro_house_response_2026_03_06") return "";
+  return `<div class="release-banner">
+    <span class="rb-label">Release provenance</span>
+    Released 22 May 2026 as part of war.gov Release 2. On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. <strong>Many of these materials lack a substantiated chain-of-custody.</strong>
+  </div>`;
 }
 
 function incidentBadgeHTML(d) {
@@ -3812,6 +3864,7 @@ function showDetail(id, terms = []) {
     ${linksHTML(d)}
     ${askWidgetHTML("document", d.id, d.title || d.id)}
     ${enrichWidgetHTML("document", d.id, d.title || d.id)}
+    ${releaseBatchBannerHTML(d)}
     ${d.blurb ? `<div class="blurb">${highlight(d.blurb, terms)}</div>` : ""}
     ${dossierMentionsHTML(d)}
     ${previewHTML(d)}
@@ -3937,6 +3990,7 @@ function applyFilters(matches) {
   const decade = $("#f-decade") ? $("#f-decade").value : "";
   const shape = $("#f-shape") ? $("#f-shape").value : "";
   const incident = $("#f-incident") ? $("#f-incident").value : "";
+  const release = $("#f-release") ? $("#f-release").value : "";
   return matches.filter(m => {
     const d = m.doc || m;
     if (ag && d.agency !== ag) return false;
@@ -3953,6 +4007,7 @@ function applyFilters(matches) {
     }
     if (shape && (d.craft_shape || "") !== shape) return false;
     if (incident && (d.incident_id || "") !== incident) return false;
+    if (release && (d.release || "") !== release) return false;
     if (activeDossiers.size) {
       const tags = d.dossiers || [];
       let hit = false;
@@ -4176,7 +4231,7 @@ function syncUrl() {
   if (activeTypeFilter) p.set("type", activeTypeFilter);
   if (activeId) p.set("doc", activeId);
   if (currentView !== "search") p.set("view", currentView);
-  for (const f of ["decade", "shape", "incident"]) {
+  for (const f of ["decade", "shape", "incident", "release"]) {
     const v = $("#f-" + f) && $("#f-" + f).value;
     if (v) p.set(f, v);
   }
@@ -4228,7 +4283,7 @@ function loadUrl() {
   }
   activeTypeFilter = p.get("type") || "";
   const id = p.get("doc"); if (id) activeId = id;
-  for (const f of ["decade", "shape", "incident"]) {
+  for (const f of ["decade", "shape", "incident", "release"]) {
     const v = p.get(f);
     if (v) { const el = $("#f-" + f); if (el) el.value = v; }
   }
@@ -6310,7 +6365,7 @@ function drawGraph() {
 
 function computeMatchingIds() {
   const q = $("#q").value.trim();
-  if (!q && !$("#f-agency").value && !$("#f-loc").value && !activeTypeFilter && !$("#f-decade").value && !$("#f-shape").value && !$("#f-incident").value && !Object.values(activeFacets).some(Boolean) && !activeDossiers.size) return null;
+  if (!q && !$("#f-agency").value && !$("#f-loc").value && !activeTypeFilter && !$("#f-decade").value && !$("#f-shape").value && !$("#f-incident").value && !$("#f-release").value && !Object.values(activeFacets).some(Boolean) && !activeDossiers.size) return null;
   let results;
   if (q) {
     const ids = new Set(mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: "AND" }).map(r => r.id));
@@ -8172,12 +8227,12 @@ async function init() {
     syncUrl();
   };
   $("#q").addEventListener("input", onChange);
-  ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident"].forEach(s => {
+  ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident", "#f-release"].forEach(s => {
     if ($(s)) $(s).addEventListener("change", onChange);
   });
   $("#f-clear").addEventListener("click", () => {
     $("#q").value = "";
-    ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident"].forEach(s => { if ($(s)) $(s).value = ""; });
+    ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident", "#f-release"].forEach(s => { if ($(s)) $(s).value = ""; });
     setTypeFilter("");
     for (const k of Object.keys(activeFacets)) activeFacets[k] = false;
     document.querySelectorAll("#facet-chips .chip[data-facet]").forEach(c => c.classList.remove("active"));
