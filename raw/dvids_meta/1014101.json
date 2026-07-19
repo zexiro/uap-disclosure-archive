@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014101",
+    "type": "video",
+    "title": "DOW-UAP-PR104, Unresolved UAP Report, Yellow Sea, 2025",
+    "description": "\"The United States Indo-Pacific Command submitted a report of an unidentified anomalous phenomenon to the All-domain Anomaly Resolution Office (AARO) consisting of 18 seconds of video footage from an infrared sensor aboard a U.S. military platform in 2025.\n\nVideo Description: \n00:01-00:15: The sensor pans to track an area of contrast resembling a six-pointed star, keeping it generally centered within the center of the screen.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:18-04:00",
+    "date": "2025-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:20:51-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014101/DOD_111830027.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014101/dow-uap-pr104-unresolved-uap-report-yellow-sea-2025",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Yellow Sea",
+      "country_abbreviation": "Q9"
+    },
+    "time_start": 0,
+    "virin": "250101-D-D0360-5714",
+    "duration": 15,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 7954654,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 7882803,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 5786800,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 3396788,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 2503561,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 1170301,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830027/DOD_111830027-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 672154,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014101.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014101/DOD_111830027.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

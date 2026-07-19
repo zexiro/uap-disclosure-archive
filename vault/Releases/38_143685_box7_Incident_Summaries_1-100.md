@@ -8442,9 +8442,9 @@ Byewitnesses state flames were ejected and grey streeks left in the sky gol
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[38_143685_box_Incident_Summaries_101-172]] — score 0.60 · PDF
-- [[38_143685_box_Incident_Summaries_173-233]] — score 0.34 · PDF
+- [[38_143685_box_Incident_Summaries_101-172]] — score 0.56 · PDF
+- [[38_143685_box_Incident_Summaries_173-233]] — score 0.33 · PDF
 - [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.33 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_3]] — score 0.28 · PDF
-- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.27 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.26 · PDF
+- [[DOW-UAP-D088, U.S. Air Force Analysis of Flying Objects in the United States, 101-172]] — score 0.30 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_003]] — score 0.28 · PDF
+- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.26 · PDF

@@ -120,9 +120,9 @@ This document is a summary of statements by seven US PERSONs employed by the fed
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[USPER Statement about UAP Sighting]] — score 0.20 · PDF
-- [[38_143685_box_Incident_Summaries_173-233]] — score 0.14 · PDF
-- [[38_143685_box_Incident_Summaries_101-172]] — score 0.13 · PDF
-- [[255_413270_UFO's_and_Defense_What_Should_we_Prepare_For]] — score 0.12 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.12 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.12 · PDF
+- [[DOW-UAP-D078, Notional Map- Western United States Event]] — score 0.29 · PDF
+- [[DOW-UAP-D083, Narrative Statement 5, Western United States Event, 2023]] — score 0.28 · PDF
+- [[DOW-UAP-D081, Narrative Statement 3, Western United States Event, 2023]] — score 0.27 · PDF
+- [[DOW-UAP-D079, Narrative Statement 1, Western United States Event, 2023]] — score 0.22 · PDF
+- [[DOW-UAP-D082, Narrative Statement 4, Western United States Event, 2023]] — score 0.22 · PDF
+- [[DOW-UAP-D077, AARO Unresolved Case Analysis Update- Western United States Event]] — score 0.21 · PDF

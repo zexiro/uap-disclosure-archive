@@ -1,0 +1,376 @@
+---
+id: FBI-UAP-D014_Correspondence_Relating_to_UFO_Sightings_1967_1974
+title: "FBI-UAP-D014, Correspondence Relating to UFO Sightings, 1967, 1974"
+agency: FBI
+type: PDF
+release_date: 2026-07-10
+incident_date: 10/10/74
+incident_location: Various
+redaction: 
+tags: [uap, agency/fbi, type/pdf]
+source_urls: ["https://www.war.gov/medialink/ufo/071026/release_04/documents/FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.pdf"]
+---
+
+# FBI-UAP-D014, Correspondence Relating to UFO Sightings, 1967, 1974
+
+## Description
+
+This file contains two pieces of correspondence. The first, dated 9/22/1967, relays a description of an incident provided by an eleven-year-old child in which they heard a “weird” noise and saw a “flash of light.” The second, dated 9/30/1974 and 10/10/1974, is an exchange of letters between the Federal Bureau of Investigation (FBI) and Mr. Larry Bryant regarding an “alleged April 8, 1954 sighting of an occupied unidentified flying object (UFO).” The FBI’s response to Mr. Bryant’s inquiry indicated that it maintained no record of such an event, and that, circa 1974, the Bureau does not collect information regarding UFO sightings.
+
+## Facts
+
+- **Agency:** FBI
+- **Type:** PDF
+- **Released:** 2026-07-10
+- **Incident Date:** 10/10/74
+- **Location:** Various
+
+![[FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.jpg]]
+
+## Files
+
+- [Local: FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.pdf](../../raw/docs/FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.pdf)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/071026/release_04/documents/FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.pdf)
+
+## Extracted Text
+
+```text
+                                                                                             '
+                 {MA'fEIRIIAI!.. MllJ~u NJ(Q)u IS~ IRIEM(3-)V[EID) !FIRl©M ©~ .ADJQ)~ID) 'fO YHIIS FiL!E)
+
+
+
+
+                       IFIEDIERAL IBURIEAU
+                                                                                                                          I
+
+
+
+
+                                IlNVIE§TilGATilON
+                              • 8 ureau File tN umber·
+
+
+
+
+                                                                                                                                               ,· .
+                                                                              eclass ification                                                 i
+                       J .•
+                                                                              uth ority derived
+                                                                             rom FBI Automatic _
+                                                                              eclass ification
+                                                            r
+                                                                              uide, issued                                          <              l•
+                                                                              a 24, 2007                                            0
+                                                                                                                                    c              I
+                                                                                                                                    3
+                                                     j                                                                              Cl)
+                                                                                                                                    z
+                                                                                                                                    C
+                                                                                                                                    3
+                                                                                                                                    cr
+                                                                                                                                    CD
+                                                                                                                                    ""'I
+                                                                                                              .   ---..
+
+
+
+
+:ilso Nos.
+
+                                                                                                 f
+
+
+
+
+                                                                                                     '   •-
+
+
+
+
+                                                                                                                               .J
+
+
+
+
+ NW
+• Docld:M1281ML~~e....::::;!1~~~~:;;:;;::~;::===--~~:-,:---____:__:==:=::===::=::::~:==::~~~::;;;;;;;;~;;;::;:~:;:::=:_--=-:_.::::
+                                                                                                                               .. -.=---=-_:_JJl1
+            OPTIONAL FORM NO, 10                   5010-107-02
+            MAY 1882 EDITION
+            GSA GEN. REG. NO. 27
+
+            UNITED STATES GO ,•.,.,_.~_NMEN;r <·
+                                           -   j       , ._,
+
+
+
+
+            Memorandum
+TO                           ~CHICAGO(~                                          DATE:    9/22/67
+
+
+FROM                               SA Co LEONARD TREVIRANUS
+                                       -
+
+SUBJECT:                           U O-~~G
+                                         ''-..
+                                               - MISCELLANEOUS
+                                                         -
+
+
+                      '!'OM MITCu(LL, 7825 South Colfax, Chicago (375-9258)
+           telephonically ad/i;~d the writer at 9:110 PM on September 16,
+           1_967, as follows:
+
+                      He is eleven years of age. Al approximately 8:30
+           PM he heard a "weird" noise and looked out the window of
+           his resid,ence and saw a "flash of light going north in the
+           skyo" He could furnish no additional information but claimed
+           this to be a UFO.
+
+                     The ab~ve information was furnished to Sergeant
+           EUGENE RIPKA, Army-Air Force 755th Radar Squadron, Arlington,
+           Heights, Illinois, telephone 763-8638.
+
+
+
+       CLT/cah
+       (l)~_
+
+
+
+
+                                   Buy U.S. Savings Bonds Regularly on the Payroll Savings Plan
+                                                                                          ------------
+
+            Page2
+                                                                                                                                                                                                                                                                                                 - -, ,·1
+                                                                                                                                                                                                                                                                                                      ·1 I
+                                                                                                                                                                                                                                                                                                            'I
+
+
+
+
+w                                                                                                                                                                                                                                                                                                           111
+                                                                                                                                                                                                                                                                                                              I
+
+
+
+
+                                                                                                                                                                                                                                                              .?_.,               ----
+                                                                                                                                                                                t...--,            ~ r _ , .....,.,...
+              2904 South 13th Road - Apt 2                                                                                                    lg.,,
+                                                                                                                                                                                , /4<.~G TO !\I,                                  F-~­
+
+         Arlington, Virgin~~ f.?.?04
+                               -
+                                                                                                                                                        ;::p                    I   , '
+                                                                                                                                                                                          ''-
+                                                                                                                                                                                         ,<-                             .0       ~ j(l;,i- -,;_4 v1·i,1 n~P
+                                                                          .. ,·-
+                                                                                                                                                                                    {v) •                 A f\Jl           o      ~   --·-'               "     -1-   .. _ , j
+
+
+                                                                                                                                                                                    i,,.-f'"'
+                                                                                                                                                                                                                                  ~,~l.JLL.u,__       i, ~d 11! n I i:: n
+                                                                                                                                                                                                                                      (' ··11 n c ,hi f-'ll~,,,
+                                                                                                                                                                                    l\ ~~'.:,
+                                                                                                                                                                                        ,~7               , ,- ...,.        1\)
+                                                                                                                                                                                                                           •::,    ,,                1           ·IL,,
+                                                                                                                                                                                        "-             2 (_,"'            c:-,,   ~,-r,::;1-0T c:::r-D\nr., _
+                                                                                                                                                                                          .....   •
+                                                                                                                                                                                                '19 · - I',
+                                                                                                                                                                                                      ,. ...,                     '~ ( u (\ C ,) i                     L'L)lil:HJL
+                                                                                                                                                                                                                                               V [ . i"! ,j I !...1 t ~-
+
+                                                                                                                                                                                ,,r-..:'. :2:,,.    " ' · ~..- ...
+                                                                                                                                                                                                                                  i . .,,.---..,,...___=.,-.._,...,..,~~-....;:.,--~-..-'----.:-.;~---
+
+
+
+
+                                                                                                                                                                                                                                                                                 ~
+                                                                                                                                                                                                                                                                                 r
+                                                                                                                                                                                                                                                                                           '
+                                                                                                                                                                                                                                                                                           1.-
+
+
+
+
+                                                                                                                                ~}
+                                                                                                                       Special Agent in Charge
+                                                                                                                                                                                                                                                                                 I ,.l
+
+
+
+                                                                                                                                                                                                                                                                                   (()
+                                                                                                                                                                                                                                                                                                      l
+                                                                                                                                                                                                                                                                                                      lI
+                                                                                                                        Federal Bureau of Investigation
+                                                                                                                                                                                                                                                                                                      ]
+                                                                                                                        Chicago, Illinois
+
+         FIRST CLASS U.S. MAIL
+    -, _ _ _ _ _ _   .......--------•.v • • • - - - - - - - -
+                                                                - - - - - - - - - - - - ~ - - - - - - ~ - - - - - - - - - ~ - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - - ~ - - ~ ~ -~-~·'
+                                                                                                                                                                                                                                                                                                    '1i1:
+
+                                                                                                                                                                                                                                                                                                    I
+                                                                                                                                                                                                                                                                                                    I"'
+            t.     ~.
+             C~--~~~ •       C
+                                                                                                                 },
+                                                                                                                 I
+                                                                                                                 /
+                                                  2904 South 13th "Road!- Apt 2
+                                                  Arlington,• Virginia/ 22204
+                                                  ~nft:fflr"':,er,s-1o//t(rljM1-fffil"""' ie•D               i
+
+
+
+
+                                                                                                         I
+
+Special Agent in Charge       .
+Federal Bureau of Investigation                                                                  I
+                                                                                                 I
+                                                                                                     I
+                                                                                                     /
+Chicago, Illinois                                                                            I
+                                                                                             I
+
+
+
+                                                                                         !
+                                                                                          I
+                                                                                     i'
+                                                                                     I
+                                                                                 i
+Dear Sir:                                                                       I
+
+                                                                            !'
+                                                                            j
+
+
+     Through inquiry of the Department of the Air Fore~, I 1 ve obta· ed a copy
+                                                     J
+                                                      I
+of a U.S. Army report of an alleged April 8, 1954 sighting of an : cupied Un-
+                                                                        1
+                                                                        I
+identified Flying Object (UFO) which was pursued by W- S. Coast Gu                                                        d personnel,
+    ,- ·::                                          I
+        • '                                         t
+landed briefly on the ground (discharging the occup1nt, who stroll                                                          about and
+
+returned to the object), and which was seen by at /east three civi ian observers
+before it departed.          The report's distribution no/ation cites you                                                office as
+                                                         I
+receiw~ng a copy.                                                  I
+                                                                   I
+     So that I might complete my research into ubis case, will                                                        u please send
+
+mea copy of any documentation of all FBI follr-up actions th
+                                                               I                                                      may have been
+taken on the matter?          Also, does your office possess any other. UFO-sighting case
+                                                           I
+                         .                             -I
+                                                        I
+files covering the period January 1, 1954 through December 3, 1954; and, if so,
+                                                       I       .
+                                                       I
+
+will you please send me a copy of your recor1s of                                                        ally, will you please
+
+tell,me the current mailing address and/or tk:                                                           of the principal
+
+observer, Chicago resident Mrs. Lelah H.                                                     forementioned sighting
+
+of April 8, 1954?
+                                                                                                         ;oo-1/t-JS-Cl I - ;;;)-. •
+                                                   i ours si            erely,
+
+                                                  I{.                  ~v
+                                                  10~ -ry, - _,___, ., o                             u.-~--r         sEARCHEo__~-~JNDEXeo.-R/r,_
+                                                  / Larr W. Bryant                                                   SERIALIZED~FILED---· ---.
+                                                  i•                   -➔r                                                 ocr 101974
+                                                  ~l'11 ~v
+
+  Page4
+                                                                                                        j
+                                                                                             /      \
+
+
+
+                                                                                             ~
+
+
+
+
+                                  219 Soutb Dearborn Street:
+                                  Chicago, Illinois   60604
+                                     ·October 10, 1974
+
+
+
+
+, Mr,. Larry W. Bryant                                                           \..,
+
+    2904 South Thirteenth Road                                          I   .J
+    Apartment 2
+.Ar~ington, Virginia                                   22204
+       i
+
+·nealr Mr. Bryant:
+                                                                                                             i
+                                                                                                             I .
+       ..          I have received your letter dated Septe~ber 30·,.
+    1914, regar.ding UFO .sightings.   I am sorry to advise you                                              I
+                                                                                                             I
+
+    ·\th~t the Federal Bureau. of Investigation (FBI) has ·no                                                I
+                                                                                                             I
+
+                                                                                                             I
+
+    .information regarding the UFO sighting you describe in
+    yo"r letter, and, in fact, the FBI does. not collect informa­
+    t1Qn regarding UFO sightings in general. As you are
+    prdbably aware, the FBI is the investigative arm of the
+    U'ni\:ted States Department of Justice, and is authorized to
+    .ilnvestigate only those matters .specifically delegated to
+    tt.~y Congress.                    UFO sightings are not such matters.
+                   In a.ddition, our files contai.o no information
+ regii.rding the current residence or telepho~e number of
+'Mrs·...Lelah H.. Stoker, mentioned in your letter .
+..
+'                                                                     Very
+
+
+                                                                      RICHA· D G. HELD
+                                                                      Special Agent in Charge
+
+                   ~j,, . ~ . ~   , c ~ .~:::•· ~--~:.,.,'"~   ~ ·•                              N
+                                                                                          ., .'}]
+            Addressee
+            Chicago (100-44501)
+            1 - 100-36363                                                               I 00 -·l/1/SO I_,3
+    !JMF:nss
+    1(3) .
+
+
+
+
+     Page 5
+
+```
+## Related
+
+**By content (TF-IDF cosine):**
+- [[65_HS1-834228961_62-HQ-83894_Section_010]] — score 0.16 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_009]] — score 0.15 · PDF
+- [[FBI-UAP-D012, Newark Field Office, 1952-1967]] — score 0.14 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_008]] — score 0.13 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_005]] — score 0.12 · PDF
+- [[FBI-UAP-D013, Washington State ‘UFO’ Investigation, 1952-1960]] — score 0.12 · PDF

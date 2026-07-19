@@ -193,5 +193,12 @@
     "date": "1948-01-22",
     "location": "Wright-Patterson AFB, OH",
     "summary": "USAF predecessor programs to Blue Book that handled the earliest UAP investigation files."
+  },
+  "uaptf": {
+    "id": "uaptf",
+    "name": "Unidentified Aerial Phenomena Task Force",
+    "date": "2020-08-04",
+    "location": "DoD",
+    "summary": "DoD task force established 2020; folded into AARO in 2022."
   }
 }

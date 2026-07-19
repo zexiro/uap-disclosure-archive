@@ -133,6 +133,17 @@ for line in (RAW / "downloads.tsv").read_text().splitlines():
     seen.add(url)
     direct_jobs.append((url, ROOT / local))
 
+# Releases 3/4 reuse the same basename under .../documents/X.jpg and
+# .../thumbnails/X.jpg — both map to the same local path and race on the
+# shared .part file. Dedup by destination, preferring the full-resolution
+# (non-thumbnail) URL.
+by_dest: dict[Path, str] = {}
+for url, dest in direct_jobs:
+    prev = by_dest.get(dest)
+    if prev is None or ("/thumbnail" in prev and "/thumbnail" not in url):
+        by_dest[dest] = url
+direct_jobs = [(url, dest) for dest, url in by_dest.items()]
+
 # Add DVIDS video / audio downloads
 print(f"Resolving DVIDS metadata for {sum(1 for r in RECORDS if r['dvids_video_id'])} assets...")
 video_jobs: list[tuple[str, Path]] = []

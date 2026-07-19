@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1010272",
+    "type": "video",
+    "title": "FBI-UAP-PR005,\u00a0Digital Recreation,\u00a0Narrative Statement 3-1, Western United States Event, 2023",
+    "description": "This video is an artistic interpretation of a reported incident near a sensitive national security site in the western United States involving unidentified anomalous phenomena (UAP) over a period of two days in 2023. This digital recreation\u00a0is based upon a first-hand description provided by a federal law enforcement special agent. The Federal Bureau of Investigation prepared this digital recreation at the request of the Department of War in 2026.",
+    "keywords": "UAPVIDEOS, AARO061226",
+    "date_published": "2026-06-12T07:00:17-04:00",
+    "date": "2023-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-06-12T07:54:18-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010272/DOD_111764189.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1010272/fbi-uap-pr005-digital-recreation-narrative-statement-3-1-western-united-states-event-2023",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "230101-D-D0360-4485",
+    "duration": 53,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 2780975,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 5668557,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 4126509,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 2432157,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 1827799,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 1482288,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764189/DOD_111764189-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 1085637,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1010272.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010272/DOD_111764189.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

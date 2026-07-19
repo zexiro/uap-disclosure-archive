@@ -1,13 +1,13 @@
 ---
 id: USPER_Statement_about_UAP_Sighting
 title: USPER Statement about UAP Sighting
-agency: Department of State
+agency: FBI
 type: PDF
 release_date: 2026-05-08
 incident_date: Late 2025
 incident_location: United States
 redaction: TRUE
-tags: [uap, agency/department_of_state, type/pdf]
+tags: [uap, agency/fbi, type/pdf]
 source_urls: ["https://www.war.gov/medialink/ufo/release_1/usper-statement-redacted.pdf"]
 ---
 
@@ -15,11 +15,13 @@ source_urls: ["https://www.war.gov/medialink/ufo/release_1/usper-statement-redac
 
 ## Description
 
-This is an FBI 302 interview conducted with a senior US intelligence official regarding his first-hand account of a UAP encounter at a US military facility. USPER relayed to FBI agents that he and other federal and state personnel conducted searches to where orbs had been previously seen.  After searching the area with a helicopter, they found a “super-hot” orb hovering over the ground.  The orb is reported to have travelled for 20 miles at a speed too fast for the helicopter in pursuit.  An additional “swarm” of lights were seen moving in all directions.  A total of four or five additional orbs were seen shortly thereafter for a short time, flaring up and then down.  This pattern of four or five orbs flaring up, then down continued over the next thirty minutes across the area.
+This is an FBI 302 interview conducted with a senior US intelligence official regarding his first-hand account of a UAP encounter at a US military facility. USPER relayed to FBI agents that he and other federal and state personnel conducted searches to where orbs had been previously seen. After searching the area with a helicopter, they found a “super-hot” orb hovering over the ground. The orb is reported to have travelled for 20 miles at a speed too fast for the helicopter in pursuit. An additional “swarm” of lights were seen moving in all directions. A total of four or five additional orbs were seen shortly thereafter for a short time, flaring up and then down. This pattern of four or five orbs flaring up, then down continued over the next thirty minutes across the area.
+
+The photos linked in the "Related Media" section are connected to a set of UAP encounters on a sensitive government testing installation in the Western US in 2025. These orb-like UAP were observed at various ranges by multiple, and in some cases simultaneous, government personnel and sensors. The linked narrative is an FBI-collected account from a senior U.S. intelligence community official who witnessed the UAP with the naked eye, while accompanied by two pilots under NVGs. Other pilots in separate aircraft, and ground-based observers with night vision, also witnessed UAP during the exercise. The photos of UAP underneath the helicopter are from this same set of observations, taken through night vision devices by ground-based personnel.
 
 ## Facts
 
-- **Agency:** Department of State
+- **Agency:** FBI
 - **Type:** PDF
 - **Released:** 2026-05-08
 - **Incident Date:** Late 2025
@@ -188,9 +190,9 @@ AIRCRAFT].
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[Western US Event]] — score 0.20 · PDF
-- [[38_143685_box_Incident_Summaries_173-233]] — score 0.13 · PDF
-- [[255_413270_UFO's_and_Defense_What_Should_we_Prepare_For]] — score 0.12 · PDF
-- [[65_HS1-834228961_62-HQ-83894_SUB_A]] — score 0.12 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.11 · PDF
-- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.11 · PDF
+- [[ODNI-UAP-D001, USPER Narrative, Senior USIC Official]] — score 0.43 · PDF
+- [[DOW-UAP-D083, Narrative Statement 5, Western United States Event, 2023]] — score 0.16 · PDF
+- [[Western US Event]] — score 0.16 · PDF
+- [[DOW-UAP-D080, Narrative Statement 2, Western United States Event, 2023]] — score 0.16 · PDF
+- [[DOW-UAP-D082, Narrative Statement 4, Western United States Event, 2023]] — score 0.13 · PDF
+- [[DOW-UAP-D081, Narrative Statement 3, Western United States Event, 2023]] — score 0.12 · PDF

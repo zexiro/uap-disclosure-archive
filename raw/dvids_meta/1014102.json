@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014102",
+    "type": "video",
+    "title": "DOW-UAP-PR030, Unresolved UAP Report, Middle East, 2023",
+    "description": "The United States Central Command submitted a report of an unidentified anomalous phenomenon to the All-domain Anomaly Resolution Office (AARO) consisting of 10 seconds of video footage from an infrared sensor aboard a U.S. military platform in 2023.\n\nVideo Description: \n00:01-00:05: No content.\n00:06-00:07: Two areas of contrast transit the sensor field-of-view. The first enters the field-of-view from the bottom right and exits from the top edge of the frame. The second, relatively smaller area of contrast enters from the top and exits the bottom of the frame.\n00:08-00:10: No content.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:19-04:00",
+    "date": "2023-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:20:41-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014102/DOD_111830028.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014102/dow-uap-pr030-unresolved-uap-report-middle-east-2023",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Undisclosed Location",
+      "country_abbreviation": "UL"
+    },
+    "time_start": 0,
+    "virin": "230101-D-D0360-2724",
+    "duration": 10,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 12517597,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 10921957,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 7053803,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 3489603,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 2403784,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 924978,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830028/DOD_111830028-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 427856,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014102.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014102/DOD_111830028.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

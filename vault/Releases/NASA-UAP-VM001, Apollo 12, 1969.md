@@ -1,0 +1,46 @@
+---
+id: NASA-UAP-VM001_Apollo_12_1969
+title: "NASA-UAP-VM001, Apollo 12, 1969"
+agency: NASA
+type: IMG
+release_date: 2026-05-08
+incident_date: 1969
+incident_location: Moon
+redaction: 
+tags: [uap, agency/nasa, type/img]
+source_urls: ["https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm1-apollo-12-1969.jpg"]
+---
+
+# NASA-UAP-VM001, Apollo 12, 1969
+
+## Description
+
+This archival photograph depicts the lunar surface as viewed from the landing site of Apollo 12. This image features a highlighted area of interest slightly to the right of the vertical axis of the frame, above the horizon, in which unidentified phenomena are visible. 
+
+This image has been modified from its original state to assist viewers in identifying specific areas of interest. These highlights are provided for contextual purposes only. Such alterations do not constitute an analytical judgment, investigative conclusion, or factual determination regarding the nature or significance of the subject matter.
+
+## Facts
+
+- **Agency:** NASA
+- **Type:** IMG
+- **Released:** 2026-05-08
+- **Incident Date:** 1969
+- **Location:** Moon
+
+![[nasa-uap-vm1-apollo-12-1969.jpg]]
+![[nasa-uap-vm1-apollo-12-1969.jpg]]
+
+## Files
+
+- [Local: nasa-uap-vm1-apollo-12-1969.jpg](../../raw/images/nasa-uap-vm1-apollo-12-1969.jpg)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/release_1/nasa-uap-vm1-apollo-12-1969.jpg)
+
+## Related
+
+**By content (TF-IDF cosine):**
+- [[NASA-UAP-VM002, Apollo 12, 1969]] — score 0.98 · IMG
+- [[NASA-UAP-VM004, Apollo 12, 1969]] — score 0.97 · IMG
+- [[NASA-UAP-VM003, Apollo 12, 1969]] — score 0.91 · IMG
+- [[NASA-UAP-VM005, Apollo 12, 1969]] — score 0.91 · IMG
+- [[NASA-UAP-D008, Apollo 12 Medical Debriefing - Tape 12, 1969]] — score 0.14 · AUD
+- [[NASA-UAP-VM006, Apollo 17, 1972]] — score 0.13 · IMG

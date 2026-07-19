@@ -54,7 +54,7 @@ MANIFEST = RAW / "wargov_manifest.json"
 CHANGE_LOG = RAW / "wargov_changes.log"
 PENDING = RAW / "wargov_changes_pending"
 
-CSV_URL = "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-data.csv"
+CSV_URL = "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-data.csv?release=4"
 
 HTTP_TIMEOUT = 30
 

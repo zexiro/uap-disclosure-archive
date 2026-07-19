@@ -59,7 +59,35 @@ def local_path_for(url: str, kind: str) -> Path:
 def main():
     with CSV_PATH.open(encoding="utf-8-sig", newline="") as f:
         rows = list(csv.reader(f))
-    header = rows[0]
+    header = [h.strip() for h in rows[0]]
+
+    # Column lookup by header name (war.gov added a "Featured" column in
+    # release 4, which shifted every positional index — resolve by name).
+    def col(*names: str) -> int:
+        for n in names:
+            if n in header:
+                return header.index(n)
+        return -1
+
+    C_RED = col("Redaction")
+    C_REL = col("Release Date")
+    C_TITLE = col("Title")
+    C_TYPE = col("Type")
+    C_VPAIR = col("Video Pairing")
+    C_PPAIR = col("PDF Pairing")
+    C_BLURB = col("Description Blurb")
+    C_DVIDS = col("DVIDS Video ID")
+    C_VTITLE = col("Video Title")
+    C_AGENCY = col("Agency")
+    C_IDATE = col("Incident Date")
+    C_ILOC = col("Incident Location")
+    C_LINK = col("PDF | Image Link")
+    C_MODAL = col("Modal Image")
+    C_FEATURED = col("Featured")
+
+    def cell(row, idx):
+        return row[idx].strip() if 0 <= idx < len(row) else ""
+
     records = []
     downloads = []  # list[(url, local_path)]
     seen_urls = set()
@@ -78,24 +106,22 @@ def main():
         # Pad to header width
         row = (raw_row + [""] * len(header))[: len(header)]
         rec = {
-            "release_date": row[1].strip(),
-            "title": row[2].strip().replace("\n", " ").strip(),
-            "type": row[3].strip(),
-            "blurb": row[6].strip(),
-            "dvids_video_id": row[7].strip(),
-            "video_title": row[8].strip(),
-            "agency": row[9].strip(),
-            "incident_date": row[11 - 1].strip() if len(row) > 10 else "",
-            "incident_location": row[11].strip(),
+            "release_date": cell(row, C_REL),
+            "title": cell(row, C_TITLE).replace("\n", " ").strip(),
+            "type": cell(row, C_TYPE),
+            "blurb": cell(row, C_BLURB),
+            "dvids_video_id": cell(row, C_DVIDS),
+            "video_title": cell(row, C_VTITLE),
+            "agency": cell(row, C_AGENCY),
+            "incident_date": cell(row, C_IDATE),
+            "incident_location": cell(row, C_ILOC),
         }
-        # Re-fix: header positions
-        rec["incident_date"] = row[10].strip()
-        rec["incident_location"] = row[11].strip()
-        rec["pdf_image_link"] = row[12].strip()
-        rec["modal_image"] = row[13].strip()
-        rec["redaction"] = row[0].strip()
-        rec["video_pairing"] = row[4].strip()
-        rec["pdf_pairing"] = row[5].strip()
+        rec["pdf_image_link"] = cell(row, C_LINK)
+        rec["modal_image"] = cell(row, C_MODAL)
+        rec["redaction"] = cell(row, C_RED)
+        rec["video_pairing"] = cell(row, C_VPAIR)
+        rec["pdf_pairing"] = cell(row, C_PPAIR)
+        rec["featured"] = cell(row, C_FEATURED)
 
         if not rec["title"]:
             continue

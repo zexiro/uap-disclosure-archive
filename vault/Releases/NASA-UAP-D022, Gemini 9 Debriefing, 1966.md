@@ -1,0 +1,2333 @@
+---
+id: NASA-UAP-D022_Gemini_9_Debriefing_1966
+title: "NASA-UAP-D022, Gemini 9 Debriefing, 1966"
+agency: NASA
+type: PDF
+release_date: 2026-06-12
+incident_date: "June 3-6, 1966"
+incident_location: Low Earth Orbit
+redaction: 
+tags: [uap, agency/nasa, type/pdf]
+source_urls: ["https://www.war.gov/medialink/ufo/061226/release_03/documents/NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf"]
+---
+
+# NASA-UAP-D022, Gemini 9 Debriefing, 1966
+
+## Description
+
+Gemini IX (renamed Gemini IX-A) was the seventh crewed flight of the Gemini series, launched on June 3, 1966. The mission’s primary objectives included a spacewalk and multiple scientific and medical experiments. This document, dated June 16, 1966, is a transcript of a NASA debriefing of astronauts Thomas Stafford and Eugene Cernan. Pages 2-5 of this document contain the astronauts’ accounts of their observations of “flashing lights” and “sparkles” during the mission.
+
+## Facts
+
+- **Agency:** NASA
+- **Type:** PDF
+- **Released:** 2026-06-12
+- **Incident Date:** June 3-6, 1966
+- **Location:** Low Earth Orbit
+
+![[NASA-UAP-D022_Gemini-9-Debriefing_1966.jpg]]
+
+## Files
+
+- [Local: NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf](../../raw/docs/NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/061226/release_03/documents/NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf)
+
+## Extracted Text
+
+```text
+                       NASA ROUT                           SLIP
+                                                               ACTION
+       CODE              NAME (if 11tm1ary)
+                                                               APPROVAL
+                                                                    CURRENCE
+ 1.
+
+                                                               INFORMATION
+ 2.
+                                                               INVESTIGATE AND ADVISE
+                                                               NOTE AND FORWARD
+ 3.
+                                                               NOTE AND RETURN
+                                                               PER REQUEST
+                                                               RECO-ENDATION
+                                                               SEE ME
+ s.                                                            SIGNATURE
+                                                               REPL y FOR SIGNATURE Of:
+ 6.
+
+ 7.
+
+ REMARKS:
+
+
+
+
+ FROM:
+          CODE :       NAME:
+                                                                  DATE: /C,     /   JJ
+NASA Form 26 ( Rev. Jan. 1963)                U. S. GOVERNMENT PR I NTIN G OFF ICE : 1963 OF-671845
+•
+•
+    ;
+
+
+
+
+        to
+
+
+
+
+•
+     .
+,•                                                      .
+          '
+     ,.
+                                                    a
+
+
+
+
+                                            (       )   ..
+                  I   t
+                                                d
+
+
+
+
+                          '
+
+
+              '               .   t
+
+
+
+
+                                      .(t
+.   '   •
+
+
+
+
+            •
+
+                A   t
+
+
+
+
+                        .'
+
+
+
+
+                             )
+      ._                     NASA ROUTI                   G SLIP
+                                                                      ACTION
+           CODE                NAME (if 11,wsar;,)
+                                                                     APPROVAi.
+
+
+
+                         <&e."""' I'\\' , r
+                                                                     C~Rl£NCE
+ 1.
+                                                               L ~LE
+                                                                     INFORMATION
+ 2.                              t7 'O
+                                       _q_                            INVESTIGATE ANO ADVISE
+
+ 3.                           \~                                     NOTE AND fORWARO
+                                                                      NOTE ANO RETURN
+
+ ,.                                                                  PH REQUEST
+                                                                     11£COMMEN0ATION
+                                                                      SEE ME
+ 5.
+                                                                     SIGNATUllE
+                                                                     UPI. Y FOi SIGNATURE Of,
+ 6.
+
+ 7.
+
+ REMARKS:
+
+
+           L /\61?,vpt,                   ~ 9-,. N~                     \or•   ll ~ri~,
+                                                                                                            (
+                                                                                                                ..
+           '2.
+
+
+
+
+  AtOM:      I   CODE,      I NAME,
+                                      ~       p                        IDA:,/ (       i.    I ' '
+NASA Form 26 ( Rev. Jan . 1963)       V      \J      US. GOVE.NJlllt:HT ,11NTING o,r,c,    1913 o,-'71145
+                                                             7 /6/66
+
+Memorandum to the File
+
+
+From: J. R. Gill
+
+Subject : Experiments Debfiefing of Gemini IX held in Bldg . 4, MSC at
+          8:30 A.M. June 16,1966 .
+
+
+
+
+Gemini IX ' s performance on the 0SSA experiments was impressive .      The guiding
+
+performed for S011 and S001 was the best that has yet been done on a manned
+
+spacecraft .    In all 40 usu.able pictures of the airglow were made with the
+
+2- filter (split field) arrangement attached to the wide angle Maurer lens
+
+( NRL' s experiment) .
+
+
+ 8 ee1 : was done inside the capsule since it was not possible to attempt it
+
+ during the EVA .    THey got pictures of the zodiacal light and the Milky Way
+
+ and the guiding was good even for the 30 sec sweeps .     On Tri-X these are the
+
+ best pictures yet of the zodiacal light surpassing the results achieved on
+
+ Gemini V.
+
+ S011; About 40 usable pictures of the airglow were obtained.          THese contain some
+
+ of the same star fields pictured in S00l.     Guiding was very good even though
+
+ Cernan had to do the experiment from a very awkward position .
+
+
+S012 :  Hemenway showed several pictures which were enlargements (up to 35 , 000
+                                    exposed
+times) . Only a small portion aJf the/ surface has been a.na.lyzed, but on this portio
+
+portion 9 impacts are recorded .    Hemenway is investigating possible "contamination
+
+between experiments before sending the individual sections to guest investigators .
+
+On the biological experiments where the results come ou:b faster (a) 3 swabs
+
+ taken inside the s/c     re- flight were dirty ; post-flight these same areas
+
+ were sterile . ( b ) the T-4 bacteriophages and t he penicilliumspeciroens
+                                                                                    2.
+
+
+  survived the spaceflight; two other sp eciment.    The 30-day report on this
+
+  experiment will contain more results, but the full micrometoerite analysis
+
+ will take some time.
+
+
+ S-5 and S-6: These experiments were not officially carried, but nonetheless it
+
+ was done as "operational procedure."    In all some 300 color pictures were taken
+
+ with the Hasselblad and Maurer cameras both of which were carried (for the first
+
+ time.   The Maurer is eventually planned to replace the Hasselblad, but this has
+
+ been slow in evolution.)   A strip was taken over Peru where the weather happened to
+
+ excellent.    Features show up in these pictures which do not appear on any existing
+
+ map; for example, a glacial lake in the Ange~ which do not appear on any existing
+
+maps.    The Peruvian Embassy has been informed of this lake which may portend
+
+an avalanche hazard for villagesilocated below,       The Peruvians have sent a
+
+military p-l,ane into the area to investigate .   THis indicates the possible current
+
+use of such pictorial information .
+
+THe AMU exercise was unsuccessful.    It proved to be too Im.lCh "work" under the
+
+present arrangements.   It takes two hands just to control the body peeitionang .
+
+Hand-held photography during EVA for experiments looks "out of the question"
+
+at pres ent.
+                                                  J oc elyn R. Gill
+                             7/6/66
+  m
+MMmorandum to the File
+
+
+
+
+                         !       . '•
+                                 .I
+_ _ _ _ _ _ _ _" _ _,,                      _ _ _ _ _ _ _ _ __   _
+
+
+
+
+     ~~~ --
+     'D 1 . ,;.. w cJ   w • , 1-pf-a. -   b~......~-~ ~~ . . , r_ _
+_
+                           7 /s ,.o t ~
+    ____.J_,._---'-----l-!:1
+
+                    'Tw-C...-~~~
+
+
+
+
+                                                      .~             ·_ ~'J. ..
+                                                              ....,.6-            e~.-~____, _,.~.- I-_,____
+- - - - -~ '-- ~                                           . H-a.-.
+
+
+
+
+l- - - -~ ~ \ - _ ; , - ~- - ~~                                          -   - - t - - - - 1 ~ ~- - - - - - - ­
+
+                     _     . . - . .- L• -- -~
+                                             ' --   -- 1 " ' r - + - J - - -   ·--<wl--"JIE- ' i - t- - - - - - - - -
+           OPTtONA.L FORM NU. 10                    •
+           MAY INZ. EDIT(ON                         -
+           GSA P'PMR (,t CFR) t01-11 .f.
+
+           UNITED STATES GOVERNMENT
+
+           Memorandum
+TO          SM/ DirectoJ , ~ ~                                                        DATE:   June 21 , 1966
+            Manned Fli k-'t' 1~ periments Office
+FROM        SM/Jocelyn R. Gill
+
+SUBJECT:    Report on Gemini 9
+                                               \)
+            Gemini 9 -                          n~e,ct:xon on our experimen       was impressive .
+                                           a
+            S-1 - Zodi~al Light Experiment (N ) - This was done inside
+            the capsule . Pictures were taken of the zod~cal light and
+            the Milky Way . Guiding was quite good even for the 30 second
+            sweep . Tri - x film was used , and best pictures yet of the
+            zodi~cal light .
+            S-11 - Airglow Horizon Photographic Experiment (Koomf n) -
+            Naval Resear ch Laboratory - About 40 us~ble pictures of
+            the airglow with a split field picture were obtained . Some
+            of the same star field were shown in S-1 . Guiding was very
+            good even though Cernan had to take pictures in a very
+            awkward position .
+            S-12 - Micrometeorite Collection (Hemenway) - Showed several
+            pictures which were greatly magnified - enlargement of the
+            micrometeorite experiment . Only a small portion of the
+            exposed surface has been analyzed . Nevertheless 9 important
+            ones are recorded on these films . Hemenway is investigating
+            possible contamination between experiments before sending
+            individual portions to guest experimenters .
+            Biological Experiments - Results of these come . out faster .
+            Part A: 3 swabs were taken inside of spacecraft .
+            Preflight were dirty .
+            Postflight : Some areas were sterile .
+            Part B: Penicillium and T- 4 bactericidal specimens survived
+            the spaceflight . Two other specimens did not .  30 day report
+            may have more results but micrometeorite experiment will
+            take some time .
+
+
+
+
+                                       Buy U.S. Savings Bonds Regularly on the Payroll Savings Plan
+                                                           2
+
+S- 5 & s - 6 - These were not officially carried , but Stafford
+and Cernan took over 300 colored pictures using the Hasselblad
+and Maur er camera .   A photographic strip was taken over
+Peru where weather was excellent . Some features show up ,
+for example , glacial lake in the Andes which do not show on any
+existing map . Peruvian embassy has been informed of this lake
+which may portend for avalanch hazard to villages located below
+this lake . Military plane was sent into area to investigate .
+
+AMU - This was unsuccessful . Proves to be " too much work"
+under present arrangements during EVA . It takes two hands
+to control the body positioning . Hand held photography during
+EVA for experiment looks out of the question at present time .
+
+
+
+                               Jocelyn R. Gill
+                   U . S . NAVAL RESEARCH L AB O RATORY
+                             WASH INGTON , D. C. 20390
+
+                                                                Code 7020
+                                                                21 June 1966
+
+Dr . Homer E. Newell
+Associate Administrator
+Space Science and Applications
+National Aeronautics and Space Ad.ministration
+Washington, D. c. 20546
+
+Dear Homer :
+
+     Fir st, in behalf of the NRL- GSFC collaborators in Gemini Experiment S- 9,
+I want to express deep gratification at t he strong int erest in and conc ern for
+the success of our experiment shown by you and by Dr . George Mueller . The
+substantial help that both of you and your associates in NASA have given us
+is much appreciated.
+
+      The proposal to include two high- altitude orbits in the flight plan for
+Gemini mission XI has been carefully examined by physicists at MSC Houston,
+as well as by our joint NRL- Goddard group . At a meeting in my office yester­
+day with officials from NASA Headquarters and from MSC , Houston, we agreed
+that the S- 9 experiment would not be hurt if the flight plan included t wo
+elliptic orbits bavine an altitude of 75 0 nautical miles at apogee (approxi ­
+mately over Australia ) during the 26th and 27th orbits . Our emulsion stack
+apparatus would be retrieved from the retroadapter se ction during the first
+EVA , and stored inside the Gemini capsule in a manner suggested by Messrs .
+Joseph Lill and Peter Higgins of MSC, with an orientation that would minimize
+the effect s of background radiation incident on the window face of the package .
+In short, we believe that the proposed high- altitude orbits are compatible
+with the S- 9 experiment .
+
+     May I digress t o say that we in the NRL group are looking forward to
+favorable consideration by the Manned Space Flight Experiments Board of our
+recent Apollo proposals for cosmic- ray studi es outside the magnetosphere , and
+for observations of cosmic y- rays in earth- orbiting Apollo vehicles .
+
+     With warm regards ,
+
+                                     Sincerely,
+
+
+
+                                     J.><urice   1:!
+                                                   3 h ief Scientist
+                                     Laboratory for Cosmic Ray Physics
+                                      Principal Investigator, s- 9)
+
+
+P . S. A list of those attending the meeti ng in my office yesterday is attached.
+In an earlier meeting several weeks ago , we benefited from participation by ✓
+Astronauts Charles Conrad and William Anders .                          )\ ~   I
+                                                                      ~ff'         • ~
+cc : Dr . George Mueller                                                       r<"
+     Mr . Leroy To.y                                                     ~     ,
+      In attendance at meeting in Dr . Shapiro ' s office
+                    U. S . Naval Research Laboratory
+
+
+                ,             20 J une 1966
+
+
+NASA Headquarters, Washington
+
+            Eldon W. Hall
+            Vearl N. Huff
+
+
+MSC , Houston
+
+            Wyendell B. Evans
+            Joseph C. Lill
+            Peter W. Higgins
+
+
+GSFC , Greenbelt
+
+            Carl E. Fichtel
+            Donald V. Reames
+
+
+U. S. NRL
+
+            Maurice M. Shapiro
+            Bertram Stiller
+            Francis W. 0 1 Dell
+            Rein Silberberg
+            Chen- Hsiang Tsao
+                                  LABSTRACTS
+No. 23           U. S. NAVAL RESEARCH LABORATORY, WASHINGTON , D.C.                          June 10, 1966
+
+
+USRL Joins        RL                                     Chair of Cosmic Ray Physics Established
+    Effective July 1 the Navy Underwater Sound Ref­
+erence Laboratory (USRL) in Or land o, Florida,
+will be disestablished and become a di v i s i o n of
+NRL. It will be designated as the Underwater Sound
+Reference Division (USRD) . As a division of NRL,
+USRD, in its program of standards and instrumen­
+tation development for imderwater sound measure­
+ment, will be re-enforced by the spec i a 1i zed
+capabilities of related elements of the NRL research
+staff. The f i n an c i a 1, management, and support
+services requirements will be backed up by the
+service organizations of NRL.
+    The new division will continue under the imme ­
+diate supervision of the Chief Scientist, Mr. O. M.
+Ows ley. Mr. Owsley will report directly to Capt
+T. B. Owen, Director of NRL, for the management
+of the operations and the effective prosecution of          Effective May 11 the Laboratory established a
+the program. He will be guided as appropriate and       Chair of Cosmic Ray Physics for Dr. Maurice M.
+in their resp ective areas, by NRL's Director of        Shapiro, who recently r esigne d from the Superin­
+Research, Director of Support S e r vi c e s, and       tendency of the Nucleonics Division after 12 years
+Comptroller.                                            in the latter position. The post of Chair of Science
+                                 continued - page 2     was c r eat e d by the Laboratory to confer special
+NRL Signs Labor Contract                                recognition on the incumbent as a distinguished
+                                                        scientist of exceptional accomplishment.
+ for Guard Unit                                             The staf.f of the former Cosmic Ray Branch,
+    The U.S. Naval Research Laboratory and Colum­       which Dr. Shapiro organized and led since 1949,
+bia Lodge No. 174 of the International Association      will constitute the L ab oratory for Cosmic Ray
+of Machinists and Aerospace Workers have nego­          Physics , with Dr. Shapiro as Chief Scientist.
+tiated a comprehensive agreement covering all non­          The Laboratory for Cosmic Ray Physics is en­
+supervisory security guards in the Laboratory's         gaged in studies of the primary cosmic radiation­
+Security and Administrative Services Division.          its composition, energy spectra, and other proper­
+    Following a grant of exclusive recognition to the   ties. This group of physicists composing the Lab­
+Union on January 19, 1966, negotiations began on        oratory has become especially well-known for its
+March 31, 1966, and were concluded on May 26.           significant contributions to our knowledge of the
+The Laboratory's negotiating team was beaded by         helium component and the heavier primary nuclei
+Capt J. C. Matheson, Director of Support Services,      of the cosmic radiation, as well as for its earlier
+and inc luded LCdr J . H. DalPian, Se c u r i t y and   work on elementary particles. Dr. Shapiro is also
+Administrative Ser vices Officer, and Mr. T. F.         Principal Investigator for the Gemini Cosmic Ray
+Garnett, Jr., of the Personnel Division . The chief     Experiment S-9, a collaborative enterprise of the
+negotiator for the Union was Mr. R. W. Fauntleroy,      Laboratory and the Goddard Space Flight Center.
+Business R epresentative of Columbia Lodge No .         The emulsion stack designed for this experiment
+174. Mr. Fauntleroy was assisted by Mr. R. E.           was lost on the ill-fated Gemini VIIl but, the ex­
+Bunner and Mr. H. B. Brooks, both members of the        periment is re-scheduled to be flown on Gemini
+Laboratory's guard force.                                Flight XI.
+    The completed agreement was signed at 3:00
+p. m. on Wednesday, June 1, in the Office of the
+                                                        Savings Bond Campaign Extended
+Director of Support Services. The effective date           The Federal Savings Bonds Chairman, Postmas ­
+of the agreement is June 2, 1966. It is anticipated     ter General Lawrence F. O'Brien, has announced
+that the agreement will remain in effect for one        that he is extending the 25th Anniv er sary Savings
+year with the possibility of its subsequent extension   Bonds Campaign for F ederal Employees through
+                                 continued - page 2                                      continued - page 2
+2                                                                                          NRL LABSTRACTS
+
+
+USRL - continued                                                     Elected Fellow of the
+   As a part of NRL, the new division's work will            American Academy of Arts and Sciences
+remain essentially unchanged. Its mission, now
+incorporated into the mission of NRL, is to conduct
+research and development furthering the science of
+underwater sound measurement, to provide to other
+naval activities the resulting scientific knowledge,
+new or improved t e c h n i q u e s , and standardized
+instrumentation, and to provide facilities and ser­
+vices for the accurate calibration of standard in­
+strumentation and the wibiased determination of
+performance characteristics of development, pro­
+totype, or operational underwater sound devices
+used by the Naval Establishment.
+   Several of NRL's key personnel, including Capt
+T. B. Owen, the Director, and Dr. C. E. Cleeton,
+the Associate Director of Research for Electronics,
+have visited tbe facility to arrange for the transition.
+   The 10. 5 acres of LabOratory ground occupied
+by USRD are located alongside Lake Gem Mary,
+one mile south of the city limits of Orlando. It has
+a personnel complement of 98 people: 97 civilian
+and 1 military.
+   The Laboratory extends a hearty "Welcome
+AbOard" to its new staff members and looks forward
+to publication of articles about the new di vision.           Dr. Richard Tousey, Head of the Rocket Spec­
+                                                           troscopy Br an c h, Atmosphere and Astrophysics
+                                                           Division, was elected a Fellow of the American
+CONTRACT SIGNED - continued                                Academy of Arts and Sciences at the Academy's
+for one additional year. Significant provisions con­       186th Annual Meeting held May 11 in Boston, Mass.
+cerning promotion, s c he du ling of annual leave,            The American Academy of Arts and Sciences,
+hours of work, and a grievance procedure with pro­         was founded in Boston in 1780 by John Adams and
+visions for advisory arbitration, are among the            other revolutionary leaders of the Massachusetts
+seventeen articles included in the agreement.              Bay Colony. Among the prominent members of the
+   This is the second agreement covering Labora­           past have been George Washington, Oliver Wendell
+tory employees negotiated within the framework of          Holmes, Horace Mann, Sir Winston Churchill, and
+the F e d e r al Employee-Management Cooperation           John F. Kennedy.
+Program as set forth in Executive Order 10988.                Dr. Tousey, who is a member of over a dozen
+The first agreement, covering all wigraded non­            major scientific and professional societies, is now
+supervisory employees at the Washington complex            a Fellow in four of them. Previously he had been
+of NRL, became effective on December 21, 1964.             elected Fellow by the American Physical Society,
+Re-negotiation of the latter agreement is expected         the Optical Society of America, and the American
+to begin in the early fall of this year.                   Geophysical Union. Moreover, Dr. Tousey's work
+                                                           here has earned him numerous special honors and
+                                                           awards, including the Navy Award for Distinguished
+SAVINGS BOND CAMPAIGN - continued                          Achievement in Science (1963), the Henry Draper
+June. He said that the additional month is needed          Medal of the National Academy of Sciences (1963),
+to assure that every civilian and military employee        and the Frederic Ives Medal of the Optical Society
+of the Federal Government throughout the world is          of America (1960) .
+given an opportunity to sign up for regular pur­
+chases of Savings Bonds through the Payroll Savings        Scrap Material Wasn't Scrapped
+Plan.
+    The Postmaster General expressed confidence               The following items were evidently mistaken for
+that the campaign goal of 75 percent participation         scrap material and were picked up in Building 49.
+by Federal employees will be achieved.                     The equipment should be returned so that formal
+    So far in NRL' s Savi.n gs Bond Campaign 94 people     transfer procedures may be followed.
+have i n c r ea s e d their Bond allotments, and 157
+people have signed up for Bond deductions, making              •Pulse Generator, H.P . Mod. 212A, Ser . 549,
+a total of 1,628 Bond savers. The Laboratory's             P.A. 243091
+percentage of participation is now over 50.                     • Pulse Generator, H.P. Mod. 212A, Ser. 4496,
+   This extra month affords you the ex c e 11 en t         P.A. 248572
+opportunity of signing up for Bonds. Why not jump               • Flow Meter,Burton,Mod. 200, Ser. 200-6069,
+on the "Bond Wagon" today?                                 P .A. 245683
+                     NASA RO
+                                                                    ACTION
+         CODE          NAME ( if ,r1ms4ry)
+                                                                   CONCURRENCE
+1.
+                                                                   INFORMATION
+2.
+                                                                    INVESTIGATE ANO ADVISE
+                                                                   NOTE ANO FORWARD
+3.
+                                                                    NOTE ANO RETURN
+                                                                   l'fR REQUEST
+
+
+                                                                    SEE ME
+                                                                   SIGNATURE
+                                                                   REPlY FOR SIGNATURE OF :
+
+
+
+
+REMARKS:
+
+
+           ~ -A                              P~                         Q-t\..-
+
+
+              • lJs.                                                ~                     ~
+                                                                                     "'
+     ~      /r_o._   (A_                       Jli
+ /VJ~                      <
+                           (
+                                 ( A __J fv- i> ~d-
+ ~ ,,                      "XJ
+                           --      J ~~)                 ,
+                ~ P~ ~           ~       ~                ~ .).J           ~
+
+
+                               ~      ,~                                            J.
+
+
+
+
+                                             U. S   GO V IER Hlllf: .,T l'.INTU,I G 0"1
+                                                   (j) .
+                                       .5 C:
+
+
+
+
+                           ~ tt£_,
+                           I
+
+
+
+                   - -~ ~ =-~c=_ d::
+f -- - - - - ----=='1...-              T-, ~ ~ ~ ~'------
+                        ~                      •
+ .. .
+
+
+
+
+                                                                                        '
+_ _ ___:f-____;__J~ , I L - o   '-".l,. . , _ _ S , , , , _ _ _ _ - F F -   \ v - -""""--'----'--'-'--- r--=---c.-L_V' -"---.,___--=-   - - -
+               3' ~/-2--lU-,S> ~ e:V,   -
+
+                                 ~~-
+==~ +l..A-~~e~~=          ---=
+         ~
+
+
+
+
+-~~~~~~~~~~-
+       ~ CJ--_c;..,_ ~ Jl____ L
+---· ~ ~ L~~      .,,__......,,.__,   ~
+
+
+
+
+               ---,.
+
+
+
+
+        G- - / 0 p:
+A-'r-JJ   ?
+                                                  ,.
+                                       _a.---, ,,__,J,....
+                                                                                     -
+                        '
+               ~ ~ - - .u :=;,p...u~~                  ~~~~ - - - - -
+
+
+
+
+                                                                                 '          '
+                            ,-~~~~~~~~~                                                                I
+
+
+
+             ~~=(~~[½~~~~~                                       = ~ - 1 - ---==:.__-_-=-=--#-1-Q,,. ,J,,
+         -   "-rt.   J.~ -~ •-:, .__                         -            . J ,J.f ? -
+--I__,__ -   ~
+                        NASA ROUTI                                     SLIP
+                                                                           ACTION
+       CODE                NAME (if flKtJSll,Y)
+                                                                           Al'NOVAL
+                                                  \                      •"CONCURltfNCf
+                   ~
+ 1.
+                             Ir~.- -
+                   I ~.,._..~-                        ~
+
+                                                                    ✓      FILE
+
+ 2.                        J'                                              INFOIMATION
+                                                                           IN\IESTIGATE ANO AO\IISE
+                                                                           NOTE ANO fORWAIO
+                                                                           NOTE ANO RETURN
+                                                                           PER REQUEST
+                                                                           ltfCOM.MfNOATION
+                                                                           SEE ME.
+                                                                           SIGNATURE
+                                                                           REPI.Y fOR SIGNATURE Of,
+
+
+
+
+ REMARKS:
+                                                                            ,
+             r                         \...
+
+                                          I.A                      F, /--e_
+                                                                                                ~
+
+
+
+
+ FROM:   ICOOE ,       I
+                       NAME. ,
+                                  M:21)                                      IOATt: ' /     St ·,'
+                                              -
+NASA Form 26 ( Rev. Jan. 1963)    '   Q                   US. G0\IIINWlHT ,.I I NTING 0P'FICI   ttll 0,-11110
+  ~ HQ£729
+PP MS:KSCF
+OE NASAHQ 162
+ZNR UUUUU
+P 072027Z           .
+FM NASA HEADQUARTERS ~ASHDC
+TO KENNEDY SPACE CENTER FLA
+NASA
+BT              .   .                        .
+UNCLAS SM•162. GEtHNI IX ASTROOAUTS LT COLONEL
+- LT C<llfMANDER E:UGENE CERNAN ASTRONAUTS . OFFIC!; .
+TALK ABOOT AN ACE !N THE HOLE••• CONGRATULATIONS TO GEMINI IX ~~
+CARRYING OUT A r~osr DIF£ICU~T AND T~YING MISSICN. YOUR PATIENCt
+AND COURAGE WERE REWARDED. WE ARE PLEASED THAT YOO WERE ABLE TO
+ CA"'tRY our MOST OF.THE EXPERIMENTS AND LOOK FORWARD EAGERLY TO IHE
+·RESULTS. TriANK YOO so· r1ucH F~ YOlJR OUTSTANDING COOPERATION Ai1D •
+ EFFOH iN ·THIS REGARD. A S~tCIAl.. · MESSAG:: TO ·THE PILOT FRQ.'tl
+ DR. JCCEL YN GILL, A FELLOW PR 0V IS OITE WHO PRECED£0 HIM BY A -FEW
+ YEARS, WARM CONGRATULATIONS ON THE LOOG SPACE W-ALX..-.. IT · w.AS
+ EXPECTED OF couqsE THAI PRC1JISO CO{Jti) ACC0.'1:?LISH It.
+ /S/ WILLIS B FOSTER: DIRECT CR. MANNEP' FLIGHT EXPERIMENTS
+ar
+        NAME t>F AGENCY                                                                        PRECEDENCE
+                                                                                   ACTION,                              u
+                                                                                        IORI'l'Y
+                                                                                   INFO.,
+                                                                                   ------ - - - - - - - i r~UNCLASSIFIED
+                                                                                   TYl'E OF MESSAGE                     Y ClASSIFICATION
+                                       _ _ _ _ _ _ _ _ _ _ _ _"7
+       I-AC_C_OU_N_T_ING_QASS_IF_IO._TI_ON
+                          _                                                          [ii SINGLE             □ BOOK       STANDARD FORM IA         REV . MARCH 15, 1957
+
+                                                                                     □ MULTl•AOORESS                     GSA REGULATION 2-IX-203 .0<1
+       1 - - - - - - - - - - - - - - - - - - - - . . . L . - = = - - - - - - - - - - - - t '"-303
+        'IHIS lllOCIC FOR USE OF COMMUNlCATIONS UNIT
+                                                                                                                             TELEGRAPHIC MESSAGE
+                                                                       1.,66 JUN 7          20 27                                      OFFICIAL BUSINESS
+                                                                                                                                       U. S. GOVERNMENT
+
+                                       MESSAGE TO BE TRANSMITTED (UM> double ,.p ocing ond otl capital letters)                               THIS COL. FOR AGENCY USE
+
+         GEMINI IX ASTRONAUI'S
+         Ilr. COLONEL THOMAS STAFFORD
+         ILr. 00.MMANDER            ENE CERN.AN
+         ASTROnn,,,.,_..., OFFICE
+                   SPACE {;""E.N'.""""f""'ER. ,
+                              CENTER, FLORIDA
+
+
+         TALK ABOUI' AN ACE IN THE HOLE!                                        COl~OBS TO GEMINI IX ON
+...
+:li!
+
+; C                          OUT A MOST DUFICUUl' AND TRYING MISSION.                                       YWR P.ATIE?~CE
+"'
+~
+...~
+Cl
+                      ""-U......-"1   WERE REWARDED.                   WE ABE PIEASED THAT YOU WERE ABLE TO
+
+; CARRY OlJI' MOST OF THE EXPEBIMEN'1'S
+<                                                                                    LOOK FORW              EAGERLY TO THE
+S
+t;
+   BESUill'S.                   THANK YOO' SO· MUCH FOR Y                          OUTSTANDING COOPERATIO                     AND
+
+         EWORT IN THIS REGARD.                                A SPECIAL MESSAGE TO THE PILC.r FROM
+
+         DR. JOCELYN GILL, A FELUlW PBOVISOITE WHO PRECEDED HIM                                                         A FEW
+
+         YEABS, WABM CONGRATUIATIOBS ON THE I£>NG SP                                              WAI.K--IT W.AS
+         EXPEm'E]). OF COURSE THAT PROVISO COULD ACCOMPLISH IT.
+
+
+
+
+                                                                           WILLIS B. FOOTER, DIRECTOR
+                                                                           MANNED FLIGHT EXPERIMENTS OFFICE
+
+
+
+
+                                                                                                                                               PAGE NO.
+
+                                                                                                                                                      1        1
+        NAME AND Til\.E Of ORIGINATOR {Type/                                                 ORIGINATOR'S TEL. NO.          DATE A.NO TIME PREPARED
+
+          Dr      Jocelyn R. Gill                                                             x206ll
+         I certi.fr fhal lhh mes10ge is official bu1i11ou, b 1101 penonol, ond is in the interest of lhe Govern mont.
+                                                                                                                              UNCLASSIFIED
+
+            *   u . • . GOYERHMltH.t Pfl:INTING o.-,.,cEl.. &fll..Q,._..7....
+        N.AMEOF AG&K:Y                                                                 PRECEDENCE
+                                                                          ACTION,
+
+                                                                          INFO.,
+                             tl                                           TYPE OF MESSAGE                         CLASSIFICATION
+       t-AC_C_OUN--Tt-lG--a.AS--Slf_lCA_T_ION------------------1            Iii SINGLE               □ IIOOIC   STANDARD FORM U            REV . MARCH   15, 1957
+       _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ __.__□
+                                                        ____         _ _ _ _ _ _ _ _,.14-303
+                                                          MUlTI...-.DORESS             GSA REGULATION 2 -IX-203 ,04
+
+        THIS 81.0CK FOIi USE Of COMMUNICATIONS UNIT
+                                                                                                                 TELEGRAPHIC MESSAGE
+                                                                                                                           OFFICIAL BUSINESS
+                                                                                                                           U. S, GOVERNMENT
+
+                                  MESSAGE TO BE TRANSMlmo (Use double spacing and all copltal letters)                             THIS COL FOR AGENCY USE
+
+
+
+
+..-                                                        .,
+.~,,
+i<
+0
+...                                                                                                                  T
+                                                                                                                                    ~
+~
+II)
+                                                                                                                                   II)
+                                                                                                                                   z....
+~
+Iii:
+~
+                     .                                                                                                             0
+                                                                                                                                   z
+                                                                                                                                   0
+                                                                                                                                   t...
+                                                                                                                                   w
+                                                                                                                                   C>
+                                                                                                                                   <
+                                                                                                                                   II)
+                                                                                                                                   II)
+
+                                                                                                                                   ~
+                                                                                                                                   ....w
+                                                                                                                                   ~
+                 ,                                                                                --l'T                            ....
+                                                                                                                                   0
+                                                                                                                                   z
+                                                                C                                   .                              0
+                                                                                                                                   0
+
+
+
+
+        NAME AND Tlll.£ Of ORIGINATOR (1-J                                          ORJGl!-IATOR'S ru. NO.      OAT£ ANO TIME PREPARED
+
+
+
+
+                                                                    (Signolu,e)
+cc:   Dr. Roacb/ESS/Boulder
+      Mr. Dunkel.man/GSFC
+      Mr . Piland/MSC
+      Mr . Smistad/MSC
+      Mr . Eaton/MSC
+      Mr . Slayton/MSC
+
+
+
+
+                206ll 6/6/66
+                 OPTIONAL fOI.M NO, I 0
+                 M.AY 1'62 fDITIOH
+                 GSA PPMI: U.I Cfl) IOl-11.6
+
+                 U !TED STATES GOVERNMEN
+
+                 Memorandum
+TO                 SM/Director, Manned Flight Experiments Office                         DATE: J une     6, 1966
+
+FROM               SM/Manned Flight Experiments Office
+
+
+SUBJECT:           Sci entific Experiments carried out oh Gemini IX
+                                                                        ~
+                   The Gemini IX mission carried the following OSSA experiments :
+
+                                          S -10 Agena Micrometeorite Collection
+                                          S -11 Airglow Horizon Photography
+                                          S - 12 Gemini Micrometeorite Collection
+
+                   In spi te of a slight flurry last Friday night to t brow in additional
+                   experiments as a possible backup in the event of failure of the .ATDA,
+                   no new experiments were introduced . Thi s was a consequence of the
+                   decis i on to i ntroduce no additional film packs which could have
+                   acconnnodated some moreexperimental activity. (Ref . TWX to Dr .
+                   John Clark re S- 28 support for Gemini IX, 5/27/66 and TWX to 4
+                   experimenters and their directors re S- 5, S - 6, S-28 and S-29, 5/31/66) .
+
+                    Nonetheless , i t is anticipated that some photographs will have been
+                    taken for S-5 and S -6 (Synoptic Photography) on the operational film
+                    carri ed - even though this experiment was not scheduled for Gemini IX .
+
+                   As of Sunday, June 5th at ll : 30 e . d . t . telephone contact with
+                   Norman Foster ' s office indicated the following on experiments .
+                   {Talked with Ed Ze itler, MSC both Saturday and Sunday . He i s the
+                   editor on the experiments status report) .
+
+                    The efforts to di slodge the shroud from the .ATDA, (called by
+                    Tom Stafford as "an angry alligator, ") were in vain so docking with
+                    the ATDA was scrubb ed from the mission . At this point there was
+                    some concern over the fuel supply and a thought that i t might not be
+                    poss ible to carry out all the experiments . The status of sci entific
+                    experimental activity is given below .
+
+                    1.       S-10, Agena Micrometeorite Collecti on, Dr . C. Hemenway, Dudley
+                             Observatory
+
+                         The S- 10 was carried on the .ATDA, but it was impo ss i ble to get
+                    near i t or to retrieve i t . The S- 10 was also ca rri ed on the Agena
+                    and there was no activity with it ei ther . The S -10 i s still on the
+                    .ATDA and conceivably could be retrieved on a later mi ss i on .
+
+
+
+
+     l
+     .$010-101
+                                          Buy U.S. Savings Bonds Regularly on the Payroll Savings Plan
+                                                                        2
+
+2.    S-11, Airglow Horizon Photograpby, M. Koomen, Naval Research
+      Laboratory
+
+     The astronauts made 3 night passes on this experiment and reported
+bno problemshso it is assumed that the experiment went off as planned .
+ They may be able to devote 1 more night pass to it during the mission .
+ They are still planning the 2 - 1/2 hour EVA . At the start of the
+ experiments they had 50 lbs . of fuel left and at the end, so it is
+ reported, they still had 50 lbs ! ! ( GET 27 hrs , 29 hrs , 31 hrs for
+S - ll ).
+
+3. S -12, Gemini Micrometeorite Collection, Dr . C. Hemenway, Dudley
+      Observatory
+
+    The collection box was activated and had five hrs~ exposure before
+closing it so jets could be freely used . The decision was made to
+reactivate it during the astronauts 10 hr . sleep period . It was
+closed again and retrieved by Cernan during his space walk . So S -12
+collection box is being returned in the Gemini IX capsule . (The
+experimenter was asked whether it would be safe to try a second
+exposure and asked whether the astronauts could recall whether the
+closing cycle on the box had taken about 30 secs . They apparently
+could not hear it and so could not make this determination . )
+
+* (GET 12 to 17 hrs . )
+S-5 and S- 6, Synoptic PhotograJ?hl, Dr . Paul Lowman and K. Nagler
+
+    There is no word on how many pictures have been taken . The
+newspapers have made reference to a picture of Baja California, and
+since there was a good deal of operational film aboard, it is expected
+that there may be quite a few . Cernan during EVA was asked whether
+he had the Hasselblad camera outside and the reply was 11 yes , 11 In
+talking with Dr . Lowman I learned that this is probably the wide - angle
+(90 deg . ) Hasselblad and may very well produce some spectacular pictures .
+
+From the standpoint of our experiments this seems to be a good mission.
+We should have results from S -12 and S- ll as well as S - 5 and S - 6 .
+Many more pictures for the successive volumes of the Earth Atlas .
+
+                                    ~a.~     'R. ~
+                                     Jocelyn R. Gill
+                                     Manned Flight Experiments Office
+                                  ..
+                        NASA ROUTING SLIP
+                                                                       ACTION
+      CODE                NAME (if lltWid ,Y)
+                                                                       APPltOVAl.
+                                                                       ~ONCURRENCE
+1.
+                    r+~~JUL                                   L1 FILI:
+
+2.                                     u                               INFORMATION
+                                                                       INVESTI GATE AND ADV ISE
+                                                                       NOTE ANO FORWARD
+3.
+                                                                       NOTE ANO RETURN
+
+,.                                                                     PER REQUEST
+                                                                       RECOMMENDATION
+                                                                       SEE ME
+5.
+                                                                       SIGNATURE
+                                                                       REPLY FOR SIGNATURE Of,
+6.
+
+7.
+
+REMARKS :
+                                                                  ,,
+
+                  ~               G~
+                                                         ~
+                                                                            '
+                                                                                    -----
+                                                                                    _a.
+
+
+
+
+FROM:   ICO0E ,       ' NAME ,
+                                  y_ 0 \'_ : Cf I                        OA3        ; ; - , 1 6'        7
+ASA for m 26 ( Rev. Jan. 1963 )   J         ...__,,, U. S. G.OVEIN'MIE NT fl'.RlltTJNG o.-FICt . 1963 OF-111845
+-
+                                                                      6/6/66
+
+Memo to PolJt
+J'_;romJ   JI   . Gill
+
+Subj ct.         ieo.tifl.o          er1mcit    Carri    out on Gemini lX
+
+                     ee1on carr1          t      following OSSl             ta:
+                 11g•aa   1111.cro    eorite Oollectton
+          u Airglov nzon fhoti>itra:ntIV
+          12 Gemini Miej;Vll•~:iurite COllection
+ln spit ot aalight flurry last h14'V Di           to throw in      t1olial experiments
+u e. po 1ble ~ in th event ot f'ailure o't the A              ~ no new e:x;per:lmmta
+     1ntroctuc-e4, ~ia vaa a con.eequ ce ot th deo1 ■ion to~troduce no
+&dditio     tum...--- vhich coul.d have acco        :t acne mre a:perlm.ental
+actt'rltity. ( flt. 'NX to :Dr,Jobn C1&:l'k re s-28 aupport tor G9min1 ll.~5/'ZT/66
+  d 1WX t:O 4 ~ t e r s and their directors re 8-5 1 8-6,S-28 and S-29,-/.5/'31/66
+   nethelea , it ia anticipated that ao                     tographe vil1 hav     been taken ~r
+S-5 and -6 (Synoptic fhotograpbY) o th operational tum carried•• even
+thougb th1       en,er:1.mtm.t was no         schedul.ed tor Oe:m1n1 IX,
+
+
+Aa ot tNDDAY Juue 5th at lls30       te1~one contact with nl!ID. Poster's
+offl.e 1n41cat     e i'olloving on lll!rl'~U!llll!m::ta.( ed. with Zeitler,MBC
+both Sat/and Sun• Re ia the editor on the ~ t a statue report).
+
+Ettorte to d1tllodge the ebroud                    the ATDA,f~• by Tom st.ttora "en angry
+al11ptor~ wen in vain o ocldng with th AT!». vaa Scrubbed... bom. t          mission.
+At th1AI point there vu aome concern over the f\iel aµppl.y and 'DDCIWD:(1; tbat
+it might not be po aible to carry, CNt all the ~imeilta. 'Iha atatua of
+■cientUic          e.rimental activity 1• given bel.ow.
+1. S - ~ ~ Ml~eortite C llect1on, Dr. C. H                                 , J>u.dl.97 Observatory
+                ib vu carH  on tiil ATJi( 1 fut it vaa µp,aa1ble to   near it
+    or to retrieve it. ('Die S.-1.0    alao cur1.e4 on the Ageoe.   there was no
+    activity with tt either •• lM1---=-----edn11 The S-10 1a still on the
+    ATD&      conceivably coul.d be         eved on later saion.
+           - . . ..   --
+1t so Jet• could be ~ uaed. The '901tion vu 111114• to reactivate it
+during the utroDliuta 10 br. aleep perl.~. It vu cloae4 again and retriffed
+by Ceman during bi• apace~- So 8•12 collection bOK 1■ being fflUl'l1e4
+1n the GBad n1 IX capaw.e. (the ~ e r vu uk                Whether i t wa14 be
+Mfe to tr,r a ■ ecoii4 ax:poauie in4 Uked ¥lwther ~ utlal&Ut• could recall
+whether the closing cycle       the box bad taken about 30 ■ee.. Th~ appenrrtl.1'
+could not hear i t and 80 coul.4      make ~ determination.) The ftrat ~
+               ■tart   at      12         cl.osed. at 17 hra.
+tL,.ancl s.6; ~ i c ~ , D . r.. Paul Lolman Zr. and IC.               er.
+        le DC> r4 on bcnr        iat       ;v        t en.       D9'w4-P9ff Dade rwt,
+to a picture or      a Calitomia, but tnc there vu a good deal ot opcational
+tum a'boia.r4, it 1     e<:tid that tbere      be quite a f•• Ceman during WA vaa
+aillked vhet    h had the Buaelblad c:amera out41de          tbe    ~ vu 'Y•.
+ In aJJdng with J)r. Lc,wman J a&nili4 that th1 1•         'tably the vide-angle(90 deg.
+Hanel                very.   ll produce aoae ~ pictures
+
+Pl'0Jll the ~ t ot      eaq,~• w.a aeema to         a good miaaion. wa ahould
+               S-12 and S-11    Yell U 8•5 and S-6.       Dm'tt pic:turee
+                vol     ot tli Karth ATl.u.
+
+
+                                     Joe~ ft. G ll
+                                          ed nigh! ~ t • Ottiee
+ 1.
+      • NASA HEADQUARTER
+       CODE
+
+                       I~
+                           NAME (if n«tssary)
+
+                             A
+                    / '(-:..Mv..
+                                                             -
+                                                         ROUTING SLIP
+                                                                  ,....ACTION
+                                                                     APPROVAL
+
+                                                                     CONCURRENCE
+                                                                     FILE
+                        -
+ 2.                               J                                  INFORMATION
+                                                                     INVESTIGATE AND AD VISE
+                                                                     NOTE AND FORWARD
+ 3.
+                                                                     N O TE AN D RfTURN
+
+                                                                     PER REQUEST
+
+ "·                                                                  RECOMMENDATION
+                                                                     SEE ME
+ 5.
+                                                                     SIGNATURE
+                                                                     REPLY FOR SIGNATURE OF:
+ 6.
+
+ 7.
+
+
+
+       f~ ~ . 4 ~ "J...
+ REMARKS:
+
+
+
+
+      ~-~ ~ - ~ - t . .
+  ~~~~1¾
+      fr'-~ 1t ~ 1--i                                         f,t'.
+
+                                      oP!
+ ROM: I CODE,           I NAMf:
+                                                                       ' DATE~ /        6/' G
+N ASA form 26 ( Rev. July 19,9)                 u s   GOv t:• N»IN J f'■ 1 NT1NG   olrtccl. '"' 0, - 1 1.iol &
+,.         ....
+
+
+
+
+              H S733
+     PP WO           SA HOUMSC
+                    AH       7722 1512235
+     z        uuuuu
+     P 3t2229Z
+     r            ASA H       ~ASHI GTON DC
+     TO           TECYWU S WEATHER          UREAU S TF.LLITE CE TER SUITLA 1D MD
+     NA SF'C/ GOODARD SP ACE FLI HT CENTER GR E BELT MD
+         ONASA/U S              OLOGICAL SURVEY BRA CH OF' ASTROGEOLOGY FLAGSTAFF ARIZONA
+     HOU SC/MANNED SPACECRAFT CENTER HOUSTON TEX
+       IS
+      BT
+     U~CtA S -7722. ATT        ATELLITE CE TER-DIRECTOR CMA     INFO KENNETH NA LER
+     / S- 6/ ATTN GSFC- DI RECTOR CM A INFO L RRY Dt KELM AN S- 28 AND DR PAUL    '
+      LOW A JR S- 5 ATTN US GEOLOGICAL SURVEY-DIRECTOR CM A INFO ELLIOTT
+        ORRIS S- 29 ATTN MSC-DIR ECTOR.
+      AT 16. :10 EDT CMA FRI AY CMA MAY 29 woRD CAME TH ouaH TO xr
+     MANNED FLIGHT EXPERIME TS OFFICE CM       OSSA TOR ADY
+      EXPERIMEt-TTS S-5 CMA S-6 CMA S-?.8 CMA A 1D S-29 FOR FLIGHT S
+     PA'RTI AL B CKUP OJ THE GEM I NI IX- A MISSION IN THE
+      EVENT OF AN ATDA FAILURE. TH£ EXPERUlENTERS CON-
+     CERNED WERE PR                PTLY INFORMED BY TELEPHONE AND THEY
+
+
+
+     PAGE 2 RUEDHQA7722 UNCLAS
+     PREP~RED TO COMPLY . ITH NY BRI FIN       RE, IREMENTS AT
+     TH  CAPE OR FOR REAL-TI E MISSION PL NI G AT MSC.
+     OVER THE !EEK D THF. Pt~ . TO S THES ADDITIO t
+     EXP RIMENTS AS A PART OF TH     AC UP FOR THE GEMINI IX- A
+     MISSIO   ~AS ALTERE    TH RE IS     JND RLINED CHA NGE TO                               /
+     EE MADE I 1 THE FILM PACKS CA, IE     H... JCE ~a AD ITIONAl
+     PHOTOG PHIC EXP     IMENTS C      ACCO 1PLISHED. IT IS
+     C JCEIV             L     TH T SOME PHOTOS FO     -T A 1D S-6 MAY BE
+     TAKEN O A PP ORTU ITY BASIS     OPERATIO AL FIL
+     CARRI D. THt ~ UEST FOR THE FOU SI    CT EXP RIMENTS
+ FOR GEMINI IX- A IS THEREFOR  OFrICI Alt Y WITHDRA N AT THIS
+ THE. THE FOUR EXP RIM Et TERS A D TH EIR A SOC! ATES      .
+ VIZ. DR LOWM A CM A JR. CM A M NAGLER CMA MR DU KEU~ AN CM A
+     MR MOR~IS CA ARE TH NK D FOR THEIR   LLI G}ESS TO C I PLY
+     VITH THIS su_   RE UEST. IT ts RE~ -T.ED THAT
+     IC      IE C WAS CAUSED E CH OF YOU OV R HIS HOLIDAY
+     WEEK
+     S D HOMER E NEWELU ASSOC! ATE A                    S ACE SCIENCE AND APPLICATIONS/ SI
+     BT
+ NAME Of AGENCY                                                                                   PRECEDENCE
+                                                                                    ACTION,                               s
+                                                                                    INFO.,
+                                                                                              ~ ~ ~ - - - - - ; T~
+                                                                                           PRIORITY
+                                                                                  t - - -- ~~
+1 -_    ............_.__.__...;__..,,..._;s.__   _ _ _ __ _ __ ____, TYPE Of MESSAGE                                      Y   CLASSIFIC ATION
+ ACCOUNTING CLASSIFICATION                                                            □ SINGLE                 □ BOOK     STANDARD FORM 14                REV . MARCH IS , I 957
+         8 61 Q• 211 Q                                                                ~ MULTI-ADDRESS
+t----=-='-=--':a.__-=-=:.:..;,a___ _ _ _ _ _ _ _ _ _ _,1,,,,,.;=-- - - - - - - - - - - 1 1
+                                                                                                                          GSA  REGULATION 2- IX- 30 I .00
+                                                                                                                          14- 304
+ THIS BLOCK FOR USE OF COMMUNICATIONS UNIT
+                                                                                                                              TELEGRAPHIC MESSAGE
+                                                                                                                                        OFF ICIA L BUSINESS
+                                                                                                                                       U. S. GOVERNMENT
+
+                                           MESSAGE TO BE TRANSMITTED (Uie double spocing and all capitol letters)                                TH IS COL. FOR AGENCY USE
+
+         Director, Goddard Space Flight Center
+                   Greenbelt , Maryland
+         Director, u.. . Weather Bureau
+                   Satellite Center
+                   Suitl nd, Maryland
+         Director, U. S . Geological Survey
+                   Branch of Astrogeology
+                   Flagsta~ ,faizona
+         Director,                            anned Spacecraft Center
+                                             Houston, Texas
+                                                                                                                                                w
+                                                                                                                                                z
+         Dr . Paul Lowman, Jr. (S-5)                                                            Mr . Larry Dunkelman                            .,,:::;
+                                                                                                                                                i:
+         Goddard Space Flight Center                                                                 (S-28)                                     ....
+                                                                                                                                                0
+         Greenbelt, Maryland                                                                    Goddard Space Flight                            z
+                                                                                                     Center                                     ~
+                                                                                                                                                w
+         Mr . Kenneth Nagler (S - 6)                                                            Greenbelt, Maryland                             CD
+                                                                                                                                                w
+                                                                                                                                                C)
+         U.S . Weather Bure u                                                                                                                   .,,<
+         Satellite Center                                                                       1r . Elliott Morris   :fl
+         Suitland, Maryland                                                                          (S-29)           ~
+                                                                                                Branch of Astrogeolog ~
+                                                                                                U.S. Geological Surve ~
+                                                                                                Flagstaff, Arizona    o
+                                                                                                                      0
+
+
+
+
+         AT 16:30 EDT, FRIDAY, MAY 29 WORD CAME THROUGH TO THB
+         MANNED FLIGHT EXP RIMBNTS OFFICE, OSSA TO READY
+
+         EXPERIMENTS S-5, S-6, S-28, and S- 29 FOR FLIGHT AS
+         PARTIAL BACK P                                     ON THE GEMINI IX-A MISSION IN THE
+         EVENT OF AN ATDA FAILURE.                                             THE EXPERIMEtTE                          CON-
+         CERNED WERE PROMPTLY INFORMED BY TELEPHO E AND THEY
+                                                                                                                                                PAGE NO.              NO. OF PAGES
+
+                                                                                                                                                          1              2
+ NAME AND nnE Of ORIGINATOR (Type)                                                            ORIGINATOR"S TEl . NO ,     DATE AND TIME PREPARED
+
+   Dr . Jocelyn R. Gill                                                                                                       5/31          4:30 p . m.
+   Manned Fli ht Bx eriments Ofc.                                                                  206ll                  SECURITY CLASSIfICATION
+ I certify thot th is message i• officio! business, is not personal, ond is in the in terest of the Government.
+
+
+                                                                              (Signature}
+       • U $   GOVP;;RNM£NT PRUH t NG on tCl      , 19'4 0-/24 -4.75
+    ..
+ NAME OF AGENCY
+
+                                                                                ACTION ,
+                                                                                                   PRECEDENCE
+                                                                                                                                            C
+                                                                                                                                           u
+                                                                                                                                            R
+                                                                                                                                             I
+                                                                               f-'--.c..c...L.......__.......u........,...........___ _----; T
+         NASA - S M                                                             TYPE OF MESSAGE                                            Y     ClASS1f1CATION
+J-A- , -,o-u-=--:NT:.:..ING=C..:..LA_SS-IFI_CA_TI-ON-- - -- - -- - ----,           □ SINGLE                           □ BOOK                 STANDARD FORM I•              REV . MARCH 15, 1957
+
+1--..:::8~6:..:!l:.::0~--!2~1~1.!!,o_ _ _ _ _ _ _ _ _ ___.__@.,,l=--u-u_,._Aoo_R_Ess
+                                                                                  _ _ _ _ _ _ _ ~;~3~:GUlATION 2- IX- 301 .00
+ THIS BlOCK FOR USE OF COMMUNICATIONS UNIT
+                                                                                                                                                 TELEGRAPHIC MESSAGE
+                                                                                                                                                          OFFICIAL BUSINHS
+                                                                                                                                                          U. S. GOVERNMENT
+                                     MESSAGE TO BE TRANSMITTED (Use double spacing and all capitol letters)                                                        TH IS COL. FOR AGENCY USE
+
+
+
+         PREPARED TO COMPLY WITH ANY                                             RIEFING REQUIRE ffiNTS AT
+         THE CAPE OR FOR REAL - TIME                                       IS ION PLANNING AT MSC .
+         OYER THE WEEKEND THE PLAN TO USE THESE ADDITIONAL
+         EXPERIMENTS AS A PART OF THE BACKUP FOR THE GEMINI IX-A
+         MISSION WAS ALTERED .                                        THERE IS NO UNDERLINED CHANGE TO
+         BE MADE IN THE FILM PACKS CARRIED.                                                            HENCE NO ADDITIONAL
+                                                                                                                                                                  w
+         PHOTOGRAPHIC EXPERIMENTS CAN BE ACCOMPLISHED .                                                                                    IT IS                  .,,5
+         CONCEIVABLE THAT SOME PHOTOS FOR S• S and S-6 MA                                                                                        BE               ...
+                                                                                                                                                                  :i:
+                                                                                                                                                                  C
+                                                                                                                                                                  z
+                                                                                                                                                                  ~
+         TAKEN ON AN OPPORTUNITY BASIS                                                        OPERATIONAL FILM                                                    ...
+                                                                                                                                                                  w
+                                                                                                                                                                  w
+                                                                                                                                                                  C)
+
+         CARRIED .                                                                                                                                                .,,.,,
+                                                                                                                                                                  <(
+                                       THE REQUEST FOR THB FOUR SUBJECT EXPERIMENTS
+                                                                                                                                                                  ~
+         FOR GEMi I IX - A IS THEREFORE OFFICIALLY WITHDRAWN AT THI ...
+         Tif.fE .             THE FOUR EXPERIMENTERS AND THEIR ASSOCIATES                                                                                         0z
+                                                                                                                                                                  0
+                                                                                                                                                                  C
+         VIZ. DR . LOWMAN , JR ., MR . NAGLE~, MR . DUNKELMAN,
+         MR . MORRIS, ARB THANKED FOR THEIR WILLINGNESS TO COMPLY
+         WITH THIS SUDDEN REQUEST.                                        IT IS REGRETTED THAT
+         INCONVENIE CE WAS CAUSED EACH OF YOU OVERT I                                                                                     HOLIDAY
+         WEEKEND .
+
+
+                                                                               (J
+                                                                       HOMER E. NEWELL                                                                            PAGE NO.            NO. OF PAGES
+
+
+ NAME ANO TITlE OF ORIGINATOR (Type)                                                          ORIGINATOR'S TEl. NO .                       DATE ANO TIME PREPARED
+
+
+
+
+                                                                          {Signotu1'1)
+
+     ~   U. S. GOVERHM£N r PRINT I NG O,F l Cl   1961 0 -7 ZC - 47S
+        NASA HEADQUARTERS ROUTING SLIP
+                                                                          ACTION
+      CODE                  NAME (,f n«maf')')
+                                                                          APPROVAL
+                                                                          CONCURRENCE
+1.     SM         Mia .     ¥o s t er./L8,/                               Fll.E
+                                                                          INFORMATION
+2.     s         Dr . Newell                                              INVESTIGATE AND ADVISE
+                                                                          NOTE AND FORWARD
+3.
+                                                                          NOTE AND RETURN
+                                                                          PER REQUEST
+4.     SM         Kathy            (last)                                 ltECOMMENDATION
+                                                                          SEE ME
+s.
+                                                                          SIGNATURE
+                                                                          REPlY FOR SIGNATURE OF,
+6.
+
+7.
+
+REMARKS:
+                                                                                                                          .
+
+ Subject :            Request for attendance of
+                      Mr . L . Dunkelman at Gemini IX
+                      Experime n ts Debriefing , MSC
+
+
+                                                            k! l¼( ?-'-I,, rC(tJ
+      d)i_ kle~le -
+                                                                                                  .
+                     TL                  ~~                     ~rt_/
+                                                                                            --t....
+
+
+                                                         ':Di                ~ a,,.L ~
+            ~              ~(,~          -<..,""{""
+
+
+
+
+            ~·                                        (iJJJ .
+
+ FROM: I CODE,
+              ~1,1        I N ~~
+                                     R    r.i 11
+                                                                             I DATE,~ / 1             ~ Jf..f..
+N ASA form 26 (Rev. July 19~9)                        U S GOVfllt MIIIII I MT ,.tNTI NG. 0,,JCl
+                                                                                                      -t,H o , - 1 uo H
+                                                                              MAY 2 5 1966
+               M-(J
+
+
+
+
+T               !rector.          Odda.rd Sac      li    t C nt r
+F OM            /A    oc      t     dm1n1 trator for
+                 S     ce Science           p l cation
+    U J•CT:     e ue t for             t n ance or ir. Lawreno                 lman
+               at G         ni IX      xp ri   t  D briefing.
+                 nned Sp c craft Center
+
+         ,1ni IX Exp ri           nt                    ill be      ld    t th
+ 1     ed "p o er ft Ce t r             approx1.    1   nine (9) d ya
+followwg recovery. I t    1 te sts of continuit 1 the
+  o-Astronom1cal Ob rv ion Program. Dr . ill      eked
+th t           c Dunk  an be permitted to  rt1c1p
+                      has         n of co      derabl       1st     c    in
+              since th days of the Ad oo Committee an4 h    n
+                     m.ont  b n in tru ntal in formul ting solid
+              n      well a vi ual ta k.
+Yo      coo r tion in arran 1                !'or his p rt1o1pat1on will. be
+     eatl appreo! t  .
+                                             Original Signed by
+                                             Homer E. Newell
+
+                                                    •       :11
+                                                          drn1n1strator for
+                                            Sp c   Scienc    nn     Applic tion
+
+Concurrence:
+                     !tJif/4.~
+cc:    S/Newell
+       Subject File: GT-9 file
+       SM Reading Files
+
+
+SM:JRGill:kby 20611 5/13/66
+rewritten: SM:WBFoster:kby 35886 5/19/66
+       .. NASA HEADQUARTE                           ROU11NG SLIP
+       CODE             NAME (if ntmsary)
+                                                       I/ ACTION
+                                                              APPROVAL
+
+                                                              CONCURRENCE
+ 1.
+                    Ir"~..                                    FILE
+                                                              INFORMATION
+ 2.
+                                                              INVESTIGATE AND ADVISE
+                                                              NOTE AND FORWARD
+ 3.
+                                                              NOTE AND RETURN
+
+                                                              l'fR REQUEST
+ -'·                                                          RECOMMENDATION
+                                                              SEE ME
+ 5.
+                                                              SIGNATURE
+                                                              REPlY FOR SIGNATURE OF,
+ 6.
+
+ 7.
+
+ REMARKS:
+
+                                                 "                                          "
+                    r-~ ~ fr                                         ~
+            ~         ~.
+
+
+
+
+ FROM: )
+           CODE :
+                     I NAM\ A t i   e                           ' DAYE :   J-/ ,-.,.;,6
+N ASA For m 26 {R~v.July 19S9)V     \J      u.s GOVUt NW(HT P' IU til TI NG OPfl C[ : ltSI or- suou
+            .,                                                                           .
+                   .                                      .
+      . #NASA HEADQUARTE                              ROUTING SLIP
+                                                                ACTION
+        CODE               NAME (if ntmsary)                    APPROVAi.
+                                                                CONCURRENCE
+ 1.                    Foster                                   flLE
+                                                         X      )NFORMATION
+ 2.
+                                                         V      INVESTIGATE ANO ADVISE
+                                                                NOTE ANO FORWARD
+ 3.
+                                                                NOTE ANO RETURN
+                                                                PEit REQUEST
+
+ "·                                                             RECOMMENDATION
+                                                                SEE ME
+ 5.
+                                                                SIGNATURE
+                                                                REPLY FOi SIGNATURE Of,
+ 6.
+
+ 7.
+
+ REMARKS:
+
+            Mr . Dunkelma.n suggests that a simple
+      communication on this single item might be helpful
+
+      in taking care of' the "next crisis" on the horizon-
+
+      the Gemini IX Debrei!fing which will come about
+      near the end of Mey'. The 29th,Sunday , is the
+      earliest date.
+
+
+          re Dunkel.man in general : he says that Townsend
+      is ta.king the problem "up the line." I interpret
+                            Townsend
+       this to mean that he/is communicating the content
+
+      of your telephpne call with Townsend to the
+      Direc"t·"'r Perhaps •re 'ill hear further on Monday .
+
+ FROM:
+          CODE ,
+                        ' NAME,   J. R. Gill                     I OATE,5   /13/66
+        '
+NASA form 26 (Rev. Jul)• 1919)                 US GOVUIHlillNT PJIIH"TrKG o,r,c1   I Ht OP'-111011
+                                                                  May 20 , 1966
+
+
+
+re telephone call to Mr . Eaton , MSC
+
+Only scientific experiment affected by scrub is S- 10 ,
+Micrometeorite Collection on the Ageaa . ATDA does not
+have capability to be placed in a parking orbit . Therefore ,
+its life expectancy is quite low compared to Agena orbit .
+Plans to retrieve S- 10 . ot to be activated)r Another problem
+1s stowage within reentry vehicle .
+
+The other scientific experiments remain unaffected . Camera
+equipment           Will be reload prior to launch on 31 May .
+                             -,.                    .....~
+    'Y'"o,-         r        w,l'l1l
+                   CJ
+
+
+Mr . Eaton plans to call you again the first of next week with
+additional information .
+
+
+
+
+                                        M                    r-                         .
+                                                                                      ...)
+                        I•         '•
+              J,                        ~   crJ~·                                            ~
+                                                                    I
+                                            ~                      +u -c          , !{')~
+      -·
+...
+
+
+
+                                                     May 20, 1966
+
+
+           re telephone call to Mr . Eaton , MSC
+
+           Only scientific xper1ment a fected by scrub is s.1O ,
+             crometeor1te Collection on the A aa . ATD does not
+           have capability to be placed in a park1n orbit . Therefore ,
+           its life expectancy 1s uite low compared to A en orbit .
+           Plans to retrieve y-10 . Not to be activated . Another probl m
+           1s stowage within reentry vehicle .
+
+           The other scientific experiments r n in unaffecte·d . Ca r
+           equipment removed .  1111 be reload prior to launch on 31 r ay .
+
+
+           Mr . Eton plans to call you again the first of next week with
+           additional information .
+                                                                                                                                                          GT-§
+
+
+             •BM/Dir- ctor,
+                    Manned J'ligbt Experiments ottice
+
+              BM/Maimed Fllgbt Experlmeuts Office
+
+
+               ttect OD Sci. title Bxperlnlenta OD Gemini IX                                                                           saion. as a reaul.t
+              of' t.allure of ~ IX.
+
+              The tollowing OSSA e:z:perimG'ts are a siped to Gem1n1 ll:                                                                           8-1,      -l.O,
+               -ll, and S-12. :Detail ■ f'ollaw:
+
+              S-11 ZOd1acal. Light PhotoPflq,                                                       . Bey1 uninni.tz of Minn BOta
+               o chaug 1a xp cted 1.n tbis experlllent. Provided that GT-9 la abl.e
+              to    through the planned INA, tbi• experiment ought to be &cCOIIPlia.bed
+              u written 1D t e miss~on plaa.
+              S~l.O,           c~~r1te Collecticm on the Agena, C. Hemenw.z1 DUdlez Observatory
+
+              The collection box attached to the Agena IX i.a lo■t. ~ back-up u'liit 1
+              at the Cape ready to be attached to the ATDA ( target 'fth:lcl.e). The
+              cant:lngency m1tus1on p.J.an written f'or tbe J!l'Ill C&l:l• tor t bos to
+              retr1.eved 1n !!1£P!:ned condition. -Tb1a e,ms tbat collection of' pa.rtiele11
+              would be confined to the outaide portion Vh1ch waa planned for tbe 8-10.
+              (It 1a ■hieldecl on launch). The miasion plan call8 tor retrina-1 of the
+        .     box ud ■toring inside tbe Gali1ni apacecraft before reentry.
+
+              S-111 Airglow RoriEon PbotoE!Jlbl,                                                           . Kocaen1 - aval. Bbe&rcb I.Al,orator,:
+
+              In the tllpt p,l.an for tbe ATDA, :tbere. u the poea1bU1ty of an increase
+              f'rom 3 t~ 4 niCht I'UD.8 for th1• uperiment. So 1t doea not ~ that
+              1 t :wUl. ■l.1ff'er.
+
+                                crometeorlte Coll.ection on the Gem!l:d1 C.. H ~ Dud.lez Obsenatorz
+
+              'rhi_s QperiDlent abould be unaf'f'eete b7 the failvre o~ Age_,tja. 9. It 1a
+              planned to retrieTe the collection box after IISQlDe 8 hour of exposure and
+              to return 1.t 1.ui.de the Gemini. apa.cect'&ft.
+
+               1na1J7, it ie pointed out tl:at t e general ef'tect 1.a to place more concern.
+              on opel"&tional pro"bl.ema, po■ a1.bJ,y ehortening the time an ettort ror
+              exp r1mettt..
+
+
+CONCURRENCES:                                                                                                                                                      O FFICI III. FI i.£ COPY
+
+
+
+
+     SIGNATURE ► ····-········- ---- - - -·-········-····-··-·· --- ·-------·- ·····-·· ···· ·· · ----····--- - --- -· - - - · ---·-· ---- - -- -·· ············· ···
+
+            DATE ► ·········-···-· --···--· - - - --·· · · -· · ·· -··· · ••• ··•- - -- -- -- -- - -· ·-· __ • ··········---·· - - ·- ····-······ ····- -· · - --·-- --· - · ·······-····- ·
+                                                                    U .S. (;0V ll!fl:1'1-'ift 1 "AIIJIII TOI.G OFPICE   J. 6-77210-1
+                  OJlTICNAl F-O &M NO. I 0
+                  MAY 1t,a (DITl°'1            ..._
+                  GSA f-lMl (41 Cf.ll 101 -11..6
+
+                  UNITED STATES GO VE R MENT
+
+                  Memorandum
+TO                MEMORANDUM TO THE FILE                                                     DATE :   May 13 , 1966
+
+FROM              SM/ Manned Flight Experiments Office
+
+SUBJECT :         Bulletin on S- 11 experiment for Gemini IX .
+
+
+                  The extended timer-on the Maurer camera has failed . Will
+                  operate the sequence manually .   The command pilot will mark
+                  off the exposures for the pilot and the experiment will
+                  proceed in this fashion . The principal investigator ,
+                  M. Koomen , NRL , feels that the experiment will come off O. K.
+                  The story is that one of the backup pilots using the flight
+                  model in the simulator and the cable broke . Then Eugene
+                  Ce r nan , the pilot , took the 11 flight backup " c amera and this
+                  broke also . Needless to say this cable in the came ra is a
+                  ve r y weak link ? R. T . Seal and M. J . Koomen were at t he Cape
+                  while this was in progress .
+                  In an effort to alleviate this problem for future Gemini
+                  flight s , MSC is trying to develop a timer for the S- 13
+                  experiment which will include the film advance . They feel
+                  that it is comin g along well and that they will accomplish
+                  this .
+
+
+
+                                                                    Jo c elyn R. Gill
+                                                                    ~anned F li ght Exp eri ments Office
+
+
+
+
+                                             Etty U.S. Savings Bonds Regularly on the Payroll Savings Plan
+     .SOI0- 101
+--
+
+
+
+
+                uta Tho      s St rrord    nd Eu e   Cern
+                IX                                                  lay 12, 1966
+
+       /~       ed   light    xperime ts Office
+
+     A tro om.1.cal Phe o       n    uring the Fli ht or           mn   IX.
+
+
+     Te         t                   ar      clip e                   y
+            o                       pe     clip    of          ceurr
+             4th at               hi 1      type of art1 l lunar
+                1c usu lly gos completely unnoticed       cause it 1
+          ly det ctable.    ut to we k later on        20th when t e
+     moon 1s new, an     nular or rL     cli se oft e un will occur.
+     This       ill e obs r~ d y cie t i t         dot er able to s
+     it.            occa ion t          11 b only p rtiallY cove d
+     byte           o aa to leav     bri t ri         nulus aroWld it.
+          central clip~e pt     oes over orth Af'r-1 tot      sout
+     or Italy into t   t diterr         d ov r sout rn Gree c . It
+     will    din th USSR. Te              ill b se          t
+     over a    c w der ar a of: t   eart than t is                 lt
+     1 ~os 1 le you mi t ee thi aspect. The cir        st        o~
+     thi ecl1 e are as follow·
+                                                            Y.1T
+                                      at
+              cli se    gi.n ."""y2'o                   6:51
+     Ce tr 1  clipee    gins                            7:55
+     C tral clip e egin at local noon                   9 :52
+     Central Ecl.1pse ends                             11:23
+     Ce tra1 cl1pse e dB                               12:27
+     T ere will be sev r 1 e          ditions to observe t
+     event. Ao g thes 1                        tio      h      1.1
+     r1 1n    KC 135 at 4 O                    t r        S      and
+     also    ex d1t1o in                       e          ~ ational
+     Ob     tory or Athen.    ~011             s             1
+            c nferene   t the                                  to
+              olar problems.    he             a ground      die
+            sun during the ecl1 ~     arious radio
+     Jut a ted you to know      y t e   look d dif r
+      ky so wn t dar r in case you     p n   to be fl
+     time nd had occasion to otice it.
+                                                                               2
+
+                                                                          , th
+                                                                          t
+                                                                          0
+                                                                          i
+
+                                                                              t1on
+                                                             t        •
+                                                             r            .        You
+                                                             t            nclo ur
+
+                                                                      g to th
+
+                                                                                         d
+
+
+
+                                                                                   to
+
+
+
+
+                                                                                         t   •
+                                                               I sh
+                                                             o tin
+                                                            ood luc
+                                                  or          at1 n
+                                                   1   u      !
+
+
+                                     Jocelyn Rt   ~
+                                             • Gill
+                                           11 ht       r1     t   0            0
+
+         nt :   4 glo sy    ri t
+cc :   SM/Mr . Foster ../ MSC/Major Lehr ✓    ESSA/Jar . Roach ~ ,-,
+       GSFC/Mr . Dunkelman ✓ MSC/Mr . Slayton ✓ SC/Mr . McKee
+       MSC/Cdr . Carpenter v
+
+sM$loM: kby       20611    5/12/66
+      r
+                            NASA ROUT                           G SLIP
+                                                                              ACTION
+          CODE                NAME ( if 11«,ssary)
+                                                                              MPltOVIJ.
+
+ 1.        SM            M~        Poster•            --                      CONCURRENCE
+                                                                              FILE
+
+ 2.                     r..;., ,~1             I~
+                                                                              INfORMATION
+                                                                              INVESTIGATE AND ADVISE
+                                                                              NOTE AND FORWARD
+ 3.
+           -             /..__-c...,r"-{,t                                    NOTE AND RETURN
+
+                                                                              PU REQUEST
+
+ "·                     ~
+                         "'-j•-    £   ·-
+                                         ' Vr----.x
+                                             I ·-                             ltECOMMENDATION
+
+ 5.                           r-=,      Li;· If»-
+                                                                              SEE~
+                                                                              StGNATUltE
+
+
+ 6.
+                                                      V                       REPLY FOR SIGNATURE Of,
+
+
+
+ 7.
+
+ REMARKS:
+
+
+          Subje ct :          Tentative List of invitees to
+                              attend Gemini IX Debriefi ng
+                              nine (9) days f o ll o wing
+                              r ecovery submitted by SM
+                              at reque s t of John McKee ,
+                              Crew Operations , MSC .
+
+
+
+
+                        {)/ uJ¥-
+
+
+ FROM:     l   CODf ,
+                 SM       I N ~,       J.R -   (1-1   11                        I DATE,     l.J / ?n /h.h.
+
+N ASA Form 26 ( Rev. Jan. 1963)                            u.s.. GOY IUt NM f N T • •1N T IN G o,.,.,c, . ltU or-171845
+            _    ~~~~~ ~~~0~o, 1o
+                 GSA fPMl U.1 CU) 101-11.6
+
+                 U ITED STATES GOVERNMENT
+
+                 Memorandum
+TO               SM/Director ,                                                        DATE:   AP 2 1966
+                   Manned Flight Experiments Office
+FROM             S / Manned Flight Experiments Office
+
+SUBJECT:         Tentative list of invitees to attend Gemini IX Debriefing
+                 nine ( 9) days following recovery submitted by SM at request
+                 of John Mc Kee , Crew Operations , MSC .
+
+                 In a telcon on 4/ 19/66 Mr . John Mc Kee requested a list from
+                 SM of invitees to attend subject debriefing . The next day ,
+                 4/20 / 66 , I submitted the following list by telephone as per
+                 request . The names were : Dr . Franklin Roach,
+                 Mr . L . Dunkelrnan , Mr . M. Dub in , Dr . Henry Smith , and
+                 Dr . Jocelyn Gill .
+                  Before p lacin g these names on the list I informed the
+                  individual or his office of this action and the likely date
+                  when this would happen . There is , of course, nothing binding
+                  about the list and others may be added later .
+                                                                              •
+                                                       ~r?.f---U
+                                                       Jocelyn R. Gill
+                                                       Manned F li gh t xperiments Office
+                                                       Office of Space Science and Applications
+
+
+
+
+     l
+     .so,0-10,
+                                       Buy U.S. Savings Bonds Regularly on the Payroll Savings Plan
+         NASA HEADQUARTER                                         SLIP
+      CODE
+
+
+ 1.
+
+ 2.
+                                                     VESTIGATE AND ADVISE
+
+ 3.
+                                                   NOTE AND RHURN
+
+                                                   PER REQUEST
+
+ "·                                               RECOMMENDATION
+                                                   SEEM£
+ 5.
+                                                   SIGNATURE
+                                                   REPLY fOR SIGNATURE Of,
+ 6.
+
+ 7.
+
+ REMARKS:
+
+
+
+
+                       NAME :                         DATE,
+ FROM:    CODE :
+
+
+NASA Form 26 (Rev. July t9,9)   U 5 GO'tUtNM I NT PIIIMTI NG. 0
+1-f~ fu :      vJ,.
+                      ,.
+                         F ~
+         P"
+ i:::~ '. ~ - ~ -
+
+~'AJ-: ~2&  ~ e;;::J:,,.. fLJ....:;_._;.:::..1- ~
+        ~ 12.a.~ 1- 7 ~
+
+     r-L \v.~, "1s-e-, t:._ ~ ~                        J,i
+
+     ~ ~-tf4 ~ ) 2                   ~        : ~-
+     ~ ~cf ~ ~ ~ ,ft;. ~ ,
+                    ~ ~
+       t~ ~ ~ ' > w - h r - ~
+
+      '4- ~~ ~ }- ~J.a.-~
+     (~),
+
+       ~~
+       ~
+                        u
+              r--+;-.J... ?
+                            ~~           I ~.        Y'h_
+
+                                 ~ '"T""R '1 V-£ I.., .',"
+-   . ;,
+
+
+
+
+                             ctor,                                                      AP 27. 1966
+                             e Fl     t Ex eri           t    Office
+                                                                                   In                 to :
+                  / -ia.nn                  peri   nt... Of f1c                    s
+
+           St tu.s of                 1 I     el     t       1c Ex er      ents
+
+                                       forte                      IX J.11 1 t are :
+                             l , Zodiacal Li     Photogr
+                             11 , Airg     o   o
+                             l      er     o      Colleo                                      n
+                             1      er     or1te Collect
+               ir .  ayn    ton~ port d by t lco                                        ril 21 . 19-66
+           t       t t e co dl.t1 ~ f t   u jct                                         1 s ti factory .
+                  tails follo .
+           S-1 :
+                                                                  out by   • C..
+                                                              re satisf'·                              io
+                                                              units
+                                                              r o t                                    00
+               • ap                                           e                                             f
+           ( !J)                                                                                       io
+           Thi                                                                                          •
+           .1                                                                                                   e
+            nd                              ing or                                                    "')
+           day                            l   t.
+            p                        t    n   rs
+           in                       indfc t   t                                                        pl
+           and                   e bri fin    or                             1      c
+           te                    conversation 11
+
+
+                 r    it     t
+                             r cently                                               traini            (t            8
+                   no enclature}.                                    as      d         th         1n
+           uni   d has seen tne fl                                           1         iff        1n
+           tra   g unit is that it                                   tual filt            1       s
+           1     sh le. butt                                         it                 ot        p
+           i ntical tot       l                                        r                wi        t
+               e           t                                                          1n t            et to
+               d 1       e    t                                      ra                 y
+                 t       tot                                          d               ly a
+.
+
+            1ew b a.c e                                                                             x     rim
+    been oonstru                                                                            atory. Thi n
+       Ok t  a                                                                              , is 1ncor or
+              tra1n1ng                                                                        itn 1t.
+                   s                                  s                            sh       nt on            1ni IX in
+                                                      con                                                      will
+                       p                                                                    nri               od. Th
+        ot what                                       pal                                   e u te              e    ed
+    for four(~)                                       orig a                                ntly, n          1g~t1   l
+    e uip .e t 1                                      rp thi t                                ~-11             c e     d
+    for re 1.1 t                                        d XII.
+    s-10, u-12:
+        o              t                         c eked out     fit-o eo              S/C.
+                       o                        in d t    c     oy an upp     ht-h nd
+                                                ed o r    n    adv rte t      t:1.on.   oth
+                       f                        w1  b     -    ked at the     a.a then
+                              e              rincip    n  t     rat    dl       rvatory or
+                       oad1.ng.              Th r is '1c    room" s ac for Or. He n, y
+    at                 a e lso.
+     n        e             IX th            f-1rs                                                                  -12
+    wh                               from                                                                             111
+                                  .;.,-10                                                                           10 box
+                                            he                                                                      A   a
+                                            ed                                                                      C     to
+                                            in                                                                      d     er
+                                             on                                                                          SEDR
+                                            d fo                                                   om             w 11
+    there.                  at t                                                                   r t            d to
+    Dudl   for lo .............b
+
+        ocordin             to th                                   -12 collection box                             11
+    r       tr1        d      1r t                                            f'or th             fir t      d y of
+        1 eion.
+    In                 ry,                       r         ei   t (8)       our of X                    r1
+    (sci nt flo           1.   t                            0               or th tot                    C
+    BC        duled for Gemini I                       d t                  on    -1/2
+        Vila 1              ror        x erime             cc           0     o.        l    st
+    Office,                ~SC.
+    Th            in l tli ht plan                   oul           ad       on th            18th ad I have
+    req           at d a co •
+
+                                                                   1oc..1yn   n. ill
+        cc:       SM/Foster/Calio                                                       111
+                  SM Subject Files: GT- 9                                               t           ri        t          fie
+                           S-1., S-12., S-11
+                  SM Reading Files
+                                                            j::"r   l-e.-       e
+                                                            ~?
+                                                      (>~,:ti.~~                     (I",-,._   S'- to)
+
+...; ·I ir co ,                                                                     AP   1      71 66
+      . ann r           "1    ,t          1t          io
+                                                                                                          o:
+v /       .an       d    l   (>. t            t       1c
+
+      t         0                    3c   t                r 1e1ts
+
+                                                                t           r
+                                                  0
+                                                  0
+                                                  1                  t 1                 ,        d
+                                                  1
+
+
+
+
+                                                                                                          t
+                                                                                                          i
+
+                                                                                                          l
+                                                                                                          C
+                                                                                                          t
+                                                                                                          t
+  .,
+            ..              NASA ROU                      G SLI P
+                                                                        ACTION
+       CODE                   NAME (if ,11, ma ry)
+                                                                        APPIIOVAL
+                                                                        CONCURRENCE
+ 1.    SM               liiH . :Post.err                                fllf
+
+
+
+                   ~~
+                                                                        INFORMATION
+ 2.
+                                                                        INVESTIGATE AND ADVISE
+
+ 3.                 i/;.(1
+                    I                   -ig,- 7
+                                           £JA
+                                             ...-~
+                                                                        NOTE AND FORWARD
+                                                                        NOTE AND RETURN
+
+
+ "·
+ 5.
+                        r
+                         M                                              PU REQUEST
+                                                                        llfCOMMfNDATION
+                                                                        SEE ME
+                                                                        SIGNATURE
+                                                                        REPLY FOR SIGNATURE Of:
+ 6.
+
+ 7.
+
+ REMARKS:
+
+
+
+
+ AtOM,   I SM
+          CODE,
+                            I J .R. Gi ll : kby
+                            NAME ·
+                                                                          I DAT3/ 7 /66
+N ASA For m 26 (Rev. Jan. 1963)                      U. S. G0\llfOi MI.NT P-ll HTI NG OPF ICI   ltU or-171145
+                OPTION.Al fOI.M. NO. 10
+                MAY lf'2 fDffiOH
+                C SA fPMt (41 Cfl) 101-11.6
+
+                U ITED STATES GO ERNME T
+
+                Memorandum
+TO                SM/Director, Manned Flight Experiment s Office                      DATE: March 7, 1966
+
+
+FROM              SM/Jocelyn R. Gill
+
+
+SUBJECT :         Status of Scientific (OSSA) Experiments on Gemini IX
+
+
+                  The following scientific experiments are scheduled for Gemini IX : S -l ,
+                  Zodiacal Light Photography; S-10, Micrometeorite Collection on Agena;
+                  S -11, Airglow Horizon Pbbtography; S -12, Micrometeorite Collection on
+                  Gemini , related to S- 10; and Dim Light Photography being presented to
+                  SSSC as S- 28 on Friday, March 4, 1966 . (L . Dunkelman, GSFC) .
+
+                  S -l :       Zodiacal Light Photography, E . Ney, Univ . of Minnesota .
+
+                  Astronaut briefing, Ney reports that one briefing has been held in
+                  Houston and another will be scheduled for the Planetarium . Elliott See ,
+                  Charles Bassett and James Lovell were present for the first briefing:
+                  Tom Stafford was not . Under the circumstances , it is likely that the
+                  briefing will have to be repeated ,
+
+                  Equipment, The camera equipment is now at the Cape . Documentation has
+                  presented some problems , mainly the insistence on a new serial number
+                  for the camera since it now has a handle on it . The handle is mounted
+                  with boles on the camera . Tri -X film will be used with and without the
+                  window. With hatch open and using the spacecraft as an occulting disk,
+                  the astronaut will place himself in the shadow of the s/c and see how
+                  far out he can trace the extens ion of the solar corona . He will also
+                  take 4 pictures of the airglow and a picture of the Milky Way .
+
+                  The principal investigator commented that he was very pleas ed with the
+                  enthus iastic reception from See and Bassett for the equipment and
+                  experiment . They have been the most interested in this experiment of all
+                  the astronauts who have been associated with it . Since Tom Stafford bas
+                  been very cooperative in the experimental program, I personally have
+                  confidence that he will pick up where See and Bassett have left off, and
+                  that the experiment can go off as planned .
+
+                  S- 10 :        Micrometeorite Collection on Agena .
+
+                  It employs the same bracket as S - 12 . This modus operandi has cost more
+                  than a new design and has given much trouble . GSI ( government service
+                  inspection ) has been a problem since i t was not written into the contract .
+                  The problem is with the fairing with the handle in the open position .
+                  Lubrication bas also been a problem since the contractor has applied it
+                  in 11 glops 11 instead of following instructions . The experiment is all ready,
+                  so far as equipment is concerned .
+
+
+
+     l
+     so,0-101
+                                        Buy U.S. Savings Bonds Regularly on the Payroll Savings Plan
+.
+
+
+                                                                                2
+
+
+    S -11 :    Airglow Horizon Photography, M. Koomen, NRL .
+
+    No difficulties in the schedule are anticipated. This is the first
+    flight of this experiment and the flight hardware is on schedule .
+    The equipment has passed environmental testing . The experiment is
+    mounted on a movable bracket and is 11 pointed 11 by the astronaut .
+
+    The first briefing of the astronauts (See and Bassett) has been held
+    and another is to be held later in the Morehead Planetarium. The
+    astronauts seemed "reasonably happy" with the experiment according
+    to the principal investigator .
+
+    S- 12 :    Micrometeorite Collection on Gemini S/C :
+
+    On schedule . No problems reported by the principal investigator . This
+    is the first flight of this experiment , having be en canceled out on GT - 6 .
+
+    S - 28 :   Dim Light Pbotograpl¾ L. Dunkelman :
+
+    This experiment was first carried on Gemini VII and VI -A as "operational
+    procedure . " Af'ter processing by SSSC and M3FEB this month, it is hoped
+    that it will assume full experiment status . It uses cameras already
+    assigned to the s/c and sensitive black and white film, already qualified .
+    Some further briefing will be required, probably at the Planetarium and
+    possibly can be accomplished at the same time as S- l ' s Planetarium briefing .
+
+
+
+
+                                                  Jocelyn R. Gill
+BM/Director,. Manned Flight Experiments Of':fice                  March 7, 1966
+
+  /JoceJ.yn B. Gill
+
+
+Status or Scie t11"ie ( OOSA) Experiments on Gem:ini IX
+
+
+The i'ollovi.ng scientii'ic ex:perim.ent are schedule for Gemini IX: S-l,
+Zodiacal Li&}lt Photography; s-10, 1Ucrometeor1.te Collection on Agena;
+S-ll, A1rglow Horizon Photography; S-l2, Mic:rometeorit Col.lect.ion. on
+Gem.1111, rel.ated to S-10; and Dila Ligllt Photography being presented to
+SSSC as S-28 on F 1day, Ma.rcb 4, 1.966. (L. Dunkel.man, GSJ'C).
+
+S-1:   Zodiacal Light Pbotograpey,
+
+  tronaut briefing,.  7 repc,rts th t one briefing be. been held in
+Houston and another will be scbedul.ed for the Pl.alletari\D. Elliot-t See,
+Charles Bassett and J   s Lovell were present for t     first briefing:
+Tom Stafford -wa not. U: er the circumstances, it is likel.T t t the
+brl .t'1ng w:11..l have ta b   r   eated.
+
+E uipaent,- The c      ra e uipaent is now e.t      e Cape. Documen a.Uon has
+                 problems, mai.nq the insi.st nee on a l\eV erial number
+for th c      ra since it now has a handl on it. 'l'be ba.mlle i.s mounted
+with bole on the c        :l 'a. 'rri-X film will. be used with and without the
+Yindo • With batch open nd            1ng the s cecraf't as an oceul.t~ di k,
+the    tronaut vlll place b:1.mself int e shadow o-f the s/c          see how
+:far out bi c    trace the exten ion of the solar corona.. Be will al.so
+take 4 pictur     o:f' th a.irglow and a picture of the J0.1k;r Way.
+
+Th priiicipe.11.ilvestigator commen             that he was very pl ased with th
+entbuai tic reception fr             See end     ssett for the equipmen't end
+• ' r i -... iment. The7 have been tb        t in erested in bis eJI>eriment of      1.
+                                 been   sociated w1 th it. Since T     st-afford bas
+been very cooper               in the experiment 1. pro     , I personal..ly ha
+confi.dence that he vill pi k up Yb re S               d Bassett have l.ef't off, and
+that t          experilllent c   go off e.s pl.anned.
+
+
+
+It employs the same bra.ck.et    S-12. Th    modus o'1randi: has cost more
+tba     nev design and has given much trouble. GSI government service
+inspection) has been     problem since it was not wrl. ten into the contraet.
+The p:robJ.em is with tbe f ring w:1.t the b.endle 1n tbe open pcsit1.on.
+Lubrication bas al.so been a problem since the contractor ha applied it
+1 "g1o " inst ad ot follovi.ng instructions. The experiment is all reaccy-,
+ o far s equi     nt 1 concerned:.
+                                                             •
+s-111       Aiz:glow Bori~on l'hotoF:!JlbYt 14. Koomen, NRL.
+ o ditt1ault                    sc           antic        . 'l'll1s ie the f'int
+flig):lt o t                     t            gbt h       re 1 on schedtil.
+Thee         n                  d enviromnental testing. The experiment 18
+mount                            c.      1.a 11.pointed" by 'the a.st onaut
+
+The ~1.r ~ b:ie~ o th       atronauts (Se and Ba.saett)   s be n bel
+and anoth r i to be held l ter in tn Morehead. Plane'tarium. 'rb
+  tronauts • em d "reasonably happ:,11 nth the x:periment a.cco:rding
+to t    principal inveoti :tor.
+
+8-12:       M1crometeor1t                     ~ 1 sjo:
+
+On       chedul.e.   No probl      re   rted oy the principal. investiga o:r,      Thi
+u the fir t fl~g}:l,t of t is e~riment, l1s,ving been cane led out on GT-6..
+8-28:            Light Photog     plJi L. Dunkel.m&n:
+:Thi.•    r1ment was first o rr1      on Gemi,n1: vn d Vl:-A a "-operational
+procedur . 11 After processing by SC and MSFEB tb1i month, it 1.& ho d:
+ hat 1~ n l l a     e tu.l.l xperiment t t . It ua       cemeras already"
+usigned to the s/c           ensit1ve bl ck and whit 1'1lm. alre dy qua11:f'1ed.
+So   f"urtb r bri f'ing w1ll be re uir d, probably t the Planetari.ura an
+possibl:y can be accompli hed at h            tim a B-1' s Plan tarium bri flng.
+
+
+
+
+                                                    Jocelyn lL Gill
+
+cc :     MGS/Mr . Liccardi
+         MGS/Mr . Frandsen
+         MGS/Mr ~ Hall
+
+SM :JRGill : kby 20593       3/7/66
+Cops . t o A.Liccardi, A Frandsen , Eldon Hall
+  DRAFT - exped~
+ l eady for final
+                             !
+                                                             -3/3'/.66
+
+
+
+ Memo to      ill   oster
+
+ From : J .    . G-ill
+
+ Subject :    Status of tibmti:Kixll    cientif'ic tOSSA)   xperiments on Gemini IX
+
+
+
+ The f ollowing s cientific exper iments are scheduled for 'emini lX : S- 1 ,
+
+ Zodiacal Light Photogrophy; S- 10, icrometeorite Collecti on on gena ;
+             Horizon
+ S- 11, irglo /Photo .raphy ; -12 , · c rometeorite Collection on emini, r elated
+
+  t o S- 10; and Dim Light       hotography being presented to      SSC as S- 28 on
+
+  F'ri day , arch 4 , 1966 . lL. Dunkelman, USFC ).
+
+
+ S- l : Zodiacal Light Phot ography • . Ney . Oniv. of      inn .
+        Astronaut briefin , ey reports that one briefing has been held in
+   ouston and another ill be scheduled for the Planetarium . Elliott See ,
+  Chas . as sett and Jam~s L vell ere present or the f irst briefing : Tom
+   t fford was not . Under he circumstances , it is likely that the briefing
+  will have to be repeated .
+         ·quipment , he camera equipment is now at the Cape . Do cumentat i on has
+  presented some problems , mainly the insistence on a new serial number f or the
+  camera since i t no, has a handle on it . 'l'he handl e is mounted vrith holes on
+  the c mera . l'ri- film will be us ed with and without t he , indov { ~.
+    ith hatch open and us·    the spa cec raft as an occulting disk , the astronaut
+  will pl ace himself in the shadow of the S?C and s ee how f;;r out he can trace
+  the extension of the sol ar coron . He ,. ill also take 4 pictures of the airc:-low
+  and a picture of the Ilky ay .
+          he principal investigator commented that he qas ver pleased with the
+  enthusiastic reception from ee and Ba ss ett for the equipaent and exper:iment .
+  l'hey have been t he most int~ested in this experiment of all the astronauts who
+  have been associated ·ith it . 1:>ince '1'om Stafford has been very cooperative
+  in the experimental pro ram, 1 personally have confidence th · t he will pick up
+  where ·ee and ~a ssett 1ave left off, and that the experiment can go off as planned .
+
+    - 10: Micro eteorite Collection on Agena . lt employs the ~        br acket as S- 12 .
+  This modus opera ndi has cost more than a new design and has given much trou ble .
+  USI (govt serve inspection) has been a problem since it was not v itten into the
+  contract . l'he problem is with thef iring with t he handl e in t he open position.
+  Lubricat ion has also been a problem since the contractor has applied i t in
+  11 lops" instea d of f ollowing instructions . l'he experiment is all ready , so
+  far as equipment is concerned .
+                                                                                      2.
+
+
+         irglow Horizon Photography.     . Koomen,   mt/.   No difficulties in t he
+ schedule are anticipated . L'his is the first fli ht of this experiment and ,he
+ f lia t hard11are is on sche ule . l'he equipment. has passed environmental
+ testing . rhe exper ent is mounted on a movable bracket and is "pointed"
+ by the astronaut .
+  'he first briefing of the astronauts tSEE and ~assett) has been held and
+ another is to be held later in the o:r·ehe., a rlanetarium. he astronauts
+ seemed "reasonably happy" vi.th the experiment accordin~ to the princi al
+ investigator .
+        · crometeorite Collection on    emini nkx:S/C:
+
+ On schedule . No problems reported by the principal investigator .         his is the
+  irst flight of this experiment , having been ~               T-6.
+                                               cancelled out on
+
+ - 28 : Dim Light Photography , L . Dunkel.man/.     his expe1·iment was first c.srried
+on Gemini VII and VI-A as     11 operational procedure . 11 Aft er processiw:1 by SSSC
+and     FEB thi s month , it is hoped that it ~~11 assume .fE.b!:_ experiment status .
+It uses cameras already assifned to the S/C and sensitive bl ck and white film,
+already qualified . Some further briefing will be required , robabl at the
+Planetarium and possibly can be accomplished at the same t:ime as S-1 1 s Planetarium
+brief ·
+
+
+
+                                                   Joc elyn R. Gill
+
+```
+## Related
+
+**By content (TF-IDF cosine):**
+- [[NASA-UAP-D018, Gemini 4 Experiment Debriefing, 1967]] — score 0.35 · PDF
+- [[NASA-UAP-D015, Astronaut Scientific Debriefings, 1962-1963]] — score 0.24 · PDF
+- [[USG-UAP-D001, Congressional, White House, UFO-related Constituent Correspondence, 1998]] — score 0.23 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_010]] — score 0.21 · PDF
+- [[DOW-UAP-D017, UAP Reported at Sandia Base, 1948-1950]] — score 0.21 · PDF
+- [[DOW-UAP-D092, Department of the Air Force Committee to Review Project Bluebook, 1966-1967]] — score 0.20 · PDF

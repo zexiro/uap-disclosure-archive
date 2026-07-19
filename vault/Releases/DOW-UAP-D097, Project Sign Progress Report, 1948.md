@@ -1,0 +1,2735 @@
+---
+id: DOW-UAP-D097_Project_Sign_Progress_Report_1948
+title: "DOW-UAP-D097, Project Sign Progress Report, 1948"
+agency: Department of War
+type: PDF
+release_date: 2026-07-10
+incident_date: 1948
+incident_location: Various
+redaction: 
+tags: [uap, agency/department_of_war, type/pdf]
+source_urls: ["https://www.war.gov/medialink/ufo/071026/release_04/documents/DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf"]
+---
+
+# DOW-UAP-D097, Project Sign Progress Report, 1948
+
+## Description
+
+This file contains an initial report from the Air Materiel Command regarding Project Sign. Project Sign was a 1948-1949 U.S. Air Force program to investigate the nature and origin of unidentified flying objects (UFO). The report details 100 UFO sightings from 1947-1948. The file also contains an article excerpted from “The Aeroplane,” an aviation-focused periodical magazine published between 1911 and 1968, titled “The Biology of the Flying Saucer.”
+
+## Facts
+
+- **Agency:** Department of War
+- **Type:** PDF
+- **Released:** 2026-07-10
+- **Incident Date:** 1948
+- **Location:** Various
+
+![[DOW-UAP-D097_Project-Sign-Progress-Report_1948.jpg]]
+
+## Files
+
+- [Local: DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf](../../raw/docs/DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf)
+- [Source: war.gov](https://www.war.gov/medialink/ufo/071026/release_04/documents/DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf)
+
+## Extracted Text
+
+```text
+    I
+    •
+                                                        •
+                                                                             Authority:
+                                                                            NND927545
+
+
+                                         HEADQUARTERS
+                                    AIR KATERI BL COWAND
+                                                                MClA/JCB/amb
+                                                        Wright-Patterson Air Force Base
+                                                               2DjytAPH 0i948
+        KCIA
+
+
+               SUBJECT,    Projeot "BIOi" •
+
+
+               TOs        Chief of Staft
+                          United Statea ilr Poree
+                          Waahington 26, D. Co
+                          ATTN s Director ot Int-,lligenoe
+
+
+
+                    l. Thie ie an initial report on unidentified flying objecta aa
+               direoted by Rq, USAY letter dated SO Deoember 1947, signed by General
+               L. C. Craigie, subjeot1 •r1~Jng Diaea~. Qtarterly reports will be
+               submitted beginning 1 July 1948.
+
+                    2. Ae a reeult of thia letter, Pro~ot HT-304 was a.otiTated on
+               26 January 1948 and Technical Inatruotion 2185, dated 11 Pebruaiy 1948,
+               wns published. Present ti.lea on Projeot •s10~• represent a oonaolida­
+               tion ot reports received directly by Hq, AMC and thoee forwa.rded by
+               the Direotor ot Intelli gence, USAF.
+
+                    ~. Schedules of activities of lighted night-flying adTertising
+               blimps have been secured a.nd crosa-oheoked at thi.a Headquarters to
+               consider them as a possible souroe ot incident nporta.
+                    4. Inoloaure l represents a tabulation am breakdoWll of all
+               available reports through l February 1948.
+                    5o The following ia a series of interesting observation• that
+               were noted when rev19Wing the many incident 0ase11
+                       a. Rigll rate of olimb, aa well aa the apparent a.bi li ty to
+               remain mot1onleu or hover for a oonBiderable length of tiu o
+                        bo The objeot was described aa being oval, d1ac or 1auoer-        t
+               ehaped ~l times.
+
+                          o. Assooiated sound was preae?It ll tim.H o
+                          d. Reported sizes have varied from that of a 26-oent pitoe
+               to 260 feet in diameter, and from the aise or a puraui t plane to tht
+               ePulk of six B-29 airpl.&nea.
+,
+
+
+
+
+                                       NND 927545
+..
+     AMC
+     Subject,    Project "SIG!i"
+                                                           •             2 3 APir 1948
+                e.   »umber of objects per aighting,
+                     Objects per sighting           l      2-6     6-10      over 10
+                     Number of eightioga           77       21           8        9
+
+                t. Exhaust traile were reported 23 times.
+              g. Speed has been eetime.ted throughout the entire range from
+     very alow or hovering to supersonio.
+          6. Incloaures 2 and 5 are anlargementa of photographt taken of
+     Incident f40o Inoloaure 4 1s an evaluation of inolosure 2 by thie
+     Headquarters. Attention 1s iovi ted to the marked aimilari ty between
+     incloaurea 2 ands. and inoloaure 6. Similarity also exiata between
+     inclosures 2 and 3 and oonfigur&tiona illustre.ted in inolosure 6.
+           7. Representatives from tbie Headquartere visited Dr. Ining
+     Langmuir of the P~sea.rch Laboratories. General Electric Comp&ny.
+     Schenectady, N. Y. to discuss Project "SIGN". It was the opinion of
+     this acienti st that prosent a.vai l!I. ble data does not encompass suffi­
+     ci ent information to enable a positive identific~tion to be ma.deo
+     Dr. :.a.n&muir was relucts.nt to consider the so-called "flying discsM
+     as a reality. However, it io be'lieved at this neadquarters that it
+     is possible to oonstruot a low aspeot ratio airoraft that would d~pli­
+     oate many of the appearance and performance oharaoteriatics of reported
+     "flyint discs~. Experts have agreed that thie would be possible through
+     the intelligent application of boun:lary layer control.
+                FOR THE COMMANDING GENERAL:
+
+
+                                              ~Me~
+     6 Inols
+       l.   Tabulation
+                                                            J
+                                                H. M. ticC~!1.
+                                                Co lone1. US&F
+       2.   Photo                               Chief ot Intelli gence
+       3.   Photo
+       4.   Eval of Incl 2
+       6.   Horten Parabola
+       6.   Biology of I'lying Se.ucor
+
+
+
+
+                                          2
+
+
+                              ~
+
+                                   NND 927545
+    Incident
+      No.           Date
+                              /
+
+
+
+                                  • Hour
+                                            CONFIDENTIAL
+
+                                              Location
+                                                                        -              N<>•
+                                                                                     Sighted
+                                                                                                Obser,ed
+                                                                                                   P'rom
+
+      1         g Jul 47            0930      Muroc ilT Field, M'uroc, Calif.          2        Ground
+
+;     la        g Jnl 47            0930      Muroc,Air Field, Muroc, Cali£.           2        Ground
+      lb        e Jul 47            0930      Muroc Air li'ield, li&uroc, Cali.f.      2        Ground
+      le        g Jul 47            09tl9     Muroc .lir Field, lluroc, Calif.          2       Ground
+      ld        g Jul 47            1000      lmroc Air Field, Muroc, Calif.           3        Ground
+      le        g Jul 47            1000      Uuroc A.Lr Field, itiuroc, Calif.         3       Ground
+       2        g Jnl 47            1200      Muroc Air Field, Mu.roe, Call!.          1        Ground
+      ~         7 Jul 47            1010      Iifuroc Air Field, Vuroc, Calif.         1        Ground
+      4         $    Jul 47         1150      Area 113, Rogers Dry Lake, Muroc         l        Ground
+                                              Air Field, Muroc, Calif.
+      5         4 Jul 47            1305      ~ortland, Oregon                         5        Ground
+      6         4 Jul 47            1305      1llli.lwaukee, Oregon                    3        Grotmd
+      7         4 Jlll .47          1305      Portland, Oregon                         1        Ground
+      ~         4 Jul 47           1305       Portland, Uregon                         3        Ground
+      9         4 Jul 47           1305       Portland, Oregon                      undetermined wt atated
+     10         4 Jul 47            2004      Roi se, Idaho                            5        Air
+
+     ll         4 Jul 47          not stated Seattle, Xashington                       l        r.:.r ound
+
+     12         4 Jul 47            1305      Vancouver, Washington                  20-30      Ground
+     1~         4 Jul 47           1400       Portland, Oregon                         4        Ground
+     14         4 Jul 47           16}0       Portland, Oregon                         1        Ground
+
+     15         4 Jul 47           1700       Portland, Oregon                         3        Ground
+     l.6        4 Jul 47            ll.00     Mount Jefferson near                     4        Ground
+                                              Redmon, Oregon
+     17        2ll. Jun 47         1500       14t. Rainier,    a.shington              9        11r
+     l!S       not stated not stated Toronto, Canada                                   1        Ground
+     19        20 Oot 47           1320       Dayton, Ohio                             2        Ground
+     20        20 Oct 47           1100       Xenia, Onio •                            l        Ground
+
+
+
+                                             CONFIDENTIAL
+                                                 NND 927545
+                                         CO~FIDENTIAL e
+Incident                                                                   No.                        Observed
+ No.         Date           dour        Location                         Sighted                        From
+ 21        29 Jun 47        1645        Des Moines, 1owa                    l~                        not stated
+  22       21 Jwi 47     about noon Spokane, ·1ashingt,on                                             Ground
+  23       30 Jun 47        1745        Boise, Idaho                        1                         Ground
+
+  24       12 J\111 47      1&5         Weiser, Idaho                        2                        Ground
+
+  25        4 Jul 47        2345        Vfest Trenton, t~ . J.               l                        Ground
+  26       10 Jul 47 not stated Harmon Field, Newfoundland                   l                        Ground
+
+  ~        10 Jul 47        ~           Hamon Field, bewfoundland            l                        Ground
+
+  2g       24 Jun 47 not stated Idaho                                        l                        Ground
+
+  29       23 Jun 47 not stated Bakersfield., Calif.                        10                        Ground
+
+  30        7 Jan 4!        l ~ T Lockbourne AB, Co1umbus, Ohio              1
+
+  30a       7 Jan 4g        1925EST Lockbourne,!B, Columbus., Ohio           l                        Oroum
+
+  30b       7 Jan 4a        1915EST Lockbourne AB, Columbus, Ohio            l                        Ground
+
+  30c       7 Jan 4g        1940        Lockbourne il, Columbus, Ohio        1                        Ground
+  31        mid-December early a.m.        Northern Arizona                  l                        Ground
+              1946
+  32
+  32     not stated      after dark Columbus , Ohio                          1                        llr
+
+            7 Jan 41! 133&.l'T,OO"' Oocbnan Field, Ky. (south of)            1                        Ground
+
+            7 Jan~          l4000ST Godman Field, Ky.                        1                        Ground
+
+            7 Jan~          1320CS'J.' · 0odman Field, Ky.                   1
+                                                                                                             .
+  33c       7 Jan 4g        J..420 CST 2100 from Oodman Field, Ky.           1                        Ground
+
+  33d       7 Jan 4a                    Gedman Field, Ky.                    1                        Ground
+
+  33e       7 Jan 4g J..430-1600        Godman Field, Ky.                    1                        Ground
+
+  331'      7 Jan~                      Godman Field., Ky.                   1                        ~
+                                                                             l ,l -
+                                                                                      l       ,
+
+  33g       7 Jan~ 11!54-19()6          lladi.eomi-1.le, Ky.                      ~                   Ground
+                                                                                 I.
+
+
+  34       13 Oct 47        05}0        l4 mi1es north of Dauphin,
+                                        J.lanitoba, Canada                   ~                        Ground
+
+  35       12 Nov 41     GQ'l.Jr a.m.   ticonderoga at sea (40 miles                                  Boat
+                                        south of Cape dlanco, 20 miles
+                                        o£f shore)                                        \
+                                                                                              \   \
+                                                                                                  I
+
+
+
+                                   CONFIDENTIAL
+                                           NND 927545
+.
+    DIOIDD'f
+                ;w.
+                                 -       vu~FIDENTIAL
+                                                                                     lo.           a...nect
+                                                                                                     rra
+     Is,                       12111:.       r,ooat1cm                               SMaatfd
+      ,6       Jot Stated lot Stated !oilt, Idaho                                          1       Ground
+
+      ,1       12 oot 47        1200         Oa•• Creek, Ar1■ ona                          1       Qro\md
+
+      ,s       10 Jun 47     lot Stated !udape1t, Bung&J"1                                 1       Ground
+
+      ,9        9 Jlll 47       2,,0         Onnd Palla, levtoundland                      5       OJ"ound
+
+      40        7 Jul 47        1600         Phoenix, Ar11ona                              1       Oroun<S
+
+                                                                                           1       Qro,md
+      •n       11 JUl 47     lot Stated lltndort J1eld, llatlta
+      42       12 lUl 47        04,0'L       BltndOl't J1eld, Alatll:a                     1       Oroun4
+                                         I
+      43       29 Jun 47        1645         Clll"1on, Ion                             18          Oro\lDd
+
+               28 Jun 47        1~,          Roekt1tld, W1■cou1n                      7-10         Ground
+      "-5      28 .Jun 47 Afternoon n11no11                                           7-10         Ql"0\1DC2
+
+      46       22 Jun 47        11,0         Ortent1eld, 1111,                             1       Ground
+
+      47        6 Jul 47 lot Stated 1a1rt1tld-6uilm Air S.le, 01111.                       1       Oround
+
+      48        7 Jan 48 1920-1955 V1la1Jllton, Ohio                                       1       Ground
+                      .
+      48a       7 Jan ,s        1925         111111.ngton, Ob1o                            1       Ground
+
+                                1910&ST V11111ngton, Ohio                _,,,.,.•          1       Qrowu1
+      481>      7 Jan 48
+      4&        7 Jan~          19,0         Y1la1Dgton, Ob1o                              1       Orcnmd
+
+      -84       7 Jan 48 1920-1950 111.111ngton, Ohio                                      1       ll'ound
+
+                9 Jan 48     2,00-2,15       J>aJffi 11e , ltntllolq                       1       Qroimd
+      ~
+
+      50       10 Jan Ji8       2200         11lcSVood, In Jei-■r,                  One at tb11 Orouad
+                                                                                    date, PNT-
+                                                                                    1wa17 1 ..oh
+                                                                                    27 Deo,, JUI
+                                                                                    all at 2000 o 1oloek.
+
+      51        'Sept lf        1215         on.ao, oneon                             12-15        Ground
+
+               29 Jul 47        1450         1181111 ton 11eld, Cal1torn1a                 2       Oroad
+      52
+      ,,.      29 1111 •n Atter 1200 llllilton Jield, ca11tarn1a                           2       Ground
+
+       53      28 Jan IJ7        1515        Lake Jllead, ore1on                           5~      Air
+
+                                 22:50       Jorth Sea (50 ail•• troa                      1        Air
+       54      16 Jan IJ7
+                                                  tbe Dutch coa,t)
+
+                                             BIJ'llCffl Pield, ltvtoundland                    l    Orolll\d
+       55       2:, Jul 47       o,45Z
+IAo1c1ent
+                              -       -CQ~F~DENTIAL
+                                                                  -         lo.
+                                                                        simaa
+                                                                                      Ob1enec!
+  ?fe,        15a.           us.        Looat1on                                        D:99
+  56         6 Jul 47        2945                                          1-10       Gi-oan4
+
+  57        20 lul 47         0015Z     Abou-c! the BUl'aeo (at sea         1         Boat
+                                        one hr. troa 874ne7, Autft11a)
+
+  58         4 Aug 47        BYeJWII    Bethel, Alaska                      1         Ail"
+
+  59        14 Se»t 47        055ae1T   Reeter Ialand                       1         ill'
+
+  60        10 Jul 47         1000      Oor4707, Canac!a                    1         OPOUDCS
+
+  61         8 Sept 47        22:,0     Salt Lllce Cl tJ, Unb              12         Ground
+
+  62         8 Sept 47 22:S0~:S00       Salt Like Cit7, Utah             5 Sl'0'QP8   Ground
+                                                                         eaoh oan-
+                                                                        ta1D1Dg
+                                                                        :S5~0
+                                                                         01:tJecta.
+
+  6:s       29 JuJ. 47        1205      can,on 1em, llontana                l         Ol'om:ad
+
+  64        19 Aug 47         2130      Tv1n Jalll, Idaho               A.pprox.      Ol'oun4
+                                                                           55.
+  65         2 Jun 47         lot stated Rehoboth Beaoh, Delevan            1         Ground
+
+  66        10 Aug 47         2100      811Yer 8pr1.ngt, Ohio               l         Ol'ound
+
+  67        llJ. Aug 47      1600       Placemlle, lalitornia               1         Ground
+
+  68        24 Jun 47      Hot 1tattd   Cuoa4e lountaiJ:aa,                 6         Ground
+                                        Pwtlan4, 01-egon
+  69         6 Aug 47 22,0-2245         Ph1l.a4elph1a, Pa.                  1         Ol'Ound
+
+  70         6 iug 47         1045      Ph1lt4elph1a, Pa.                   l         Ol'oand
+
+  71         8 Oot 47 lot 1tatecl       Laa Vega■, leYa4a                   1         Ol'Ound
+
+  72        lot atate4 Jot 1tatec1      Port R1obardl0J1, Alllb             1         Ol"oand
+
+  7J         4 Aug 47         1600      Boston (101111e1 n) •••·             2        A1r
+
+  74        24 .JW'l 47 App. 1500       •t. A~IU, ftlh!ngton          lot stated      Ground
+
+  75        1, Aug 47         1300      saote Rl•er aaix,on, Idabo           l        Ground
+
+  76        1:5 Aug 47 Jlornlng         Salaon Du, Ic!aho                    2        Ornnd
+
+  77         :S 11117 47      1s,~      South BrookYille, Dine             10         Gl'O\IDl2
+
+  78        :,o Jun ~7      0910 JIST   Oran4 ClllQ'on, AP1aoaa              2        ill'
+
+  79           Apr 47       1100 ES!    R1oba0nd, V11"g1n.1a          1, other■ on Grcnmd
+                                                                      other ooou1ona
+                                         coNriBcNTIAL
+lno1dent                                                                      Jo.      °'8tl"Ytd
+ 19,            em..                     Looat1op                            SUhtn       rrw
+  80                                                                              1   Ground
+  81        7 Jul 47          0900       Biokaa Jield, lava11                     1
+ 82        171117 47 2030-2100           0klahOllll CitJ, OklahOJII               1   Ground
+ 83         9 hl 47           1217       Bo1 ■t (Between Boise and                1
+                                         hr1d1&n) Idaho
+z, 84       7 Jul 47 l:500•140<Bft Lakeland, Jlorida                           5      Cll'ound
+ 85                           1200       Portland, oregon                     10      Qromd
+ 86         6 lulJ ~7 lot ■tated         Hollywood, Cal1tonia                 l       Qro,md
+
+ 87        lot ,tated •ot 1tated         HabMrbi1hopehiOJ1 {20 mile,           1      Ground
+                                         zx, r tb ) Go rm.any
+
+ 88         S J.ug if     Atternoon      Baokenaaok, a. J.                    l       Ground
+
+ 89         6 Jul 47          lS45       lanaae City (100 miles west),        l       Air
+                                         Ke.neaa
+
+ 90        29 Jun 47      1500-15:SO     Lae Cruoe ■, !low Mexico             l       Groun4
+ 91        28 Jun 41      2120-2146      Maxwell Pield, Alabama               1       Ground
+• 92       lg Jun 47      l2l5-1Sl6      Colorado Springe, Colorado           l       Grcrund
+
+           ll Jan 48      l    1650      Harttord, Coumot1cut                 l       Air
+           !O Deo 47           l926PSf   Between Great l'alle, Montana        l
+                                         and Pairfield, Ca!1tornia
+ 95        SO Dec 47           l926PSf   Rosedale, Oalitornia                 l       A.ir
+           SO Deo 47           1926      Lov•look (30 m1lea weat), leTae1&    l       Ground
+ 97        30 Dec 47           1926PST Between Medtord and •t. Chaata,        l       A1r
+                                       Oregon
+
+ 98        2    l(oT 47        Daybreak Houston, Texas                        l       Ground
+
+            ~   Jan 46         lot stated Vasea, 11nland                      l       Ground
+
+100        5 Jan 46            lot 1tated   Pretaraa&rl, F1nla1'ld            l       Ground
+Incident
+  No .
+           Observer ' s
+           Occupation
+                          •         Jo1aneuvers                               Heatner
+
+  1        1st Lt, UJAF             1lone - horizontal fl1gnt                 IiOt   stated
+  la       :,/::,gt,   0::i,v'      1"ot stated                               .,ot stated
+  lb       Uninown                  t-:et stated                              l1 ot stated
+
+  le       s/sgt, USAF              Not stated                                ~!ot stated
+
+  ld       Pfc, USAF                Flying in tight circle                    !fot stat'3d
+  le       ~fot stated              Horizontal anrl tipht circles             !lot stated
+  2        :Uaj, USAF               Descended from an intennediate            Not stated
+                                    altitude in an oscillating
+                                    fashion almost to the ground,
+                                    then started climbing again to
+                                    a very high altitude and moved
+                                    off slowly in the distance.
+   3       liajor, USAF             Oscillating in a downward twirl-          Not stated
+                                    ing movement
+
+  4        Capt, USAF               Falling at three times the rate           ?!ot stated
+                                    of a parachute
+   5       Patr olman, ?ortland Dippi nP, up and down in oscillat-- Not stated
+           Police Dept.         ing motion
+  6        Sgt, Oregon Police       Following each otner                      Clear with little
+                                                                              or no cloud f orma­
+                                                                              tion
+
+  7        Patr olman, Por tland Not stated                                   Clear with little
+           Police Dept., former                                               or no cloud forma­
+           Air Force pilot                                                    tion
+           Patrolman, Portland Str aight line formation; last                 Clear with little
+           Police Dept. Pri­   disc fluttered very rapidly in                 or no cloud for.na­
+           vate pilot          side-way arc                                   tion
+
+           Patrolman, Portland Strai~ht line fonnation ; last                 Clear with little
+           Police Dept . ?ri­  disc fluttered very rapidly in                 or no cloud forma­
+           vate pilot          side-way- are                                  tion
+
+  9        Capt., Harbot pilot      Discs wo'.lld oscillat e and SOl11131-'   Not stated
+                                    times a full disc would be vis~
+                                    ibl e, then a half-moon shape,
+                                    t hen nothing at all
+
+
+
+
+                                 CUiqfiDE~~TIAL
+                                    NND 927545
+Incident
+ •oo
+           ObaerTer' s
+           Ocoupad.on             Ka.neunra
+                                                         •          Weather
+
+  10       Capt, United Airlines Straight-away horizontal flight    lot stated
+
+  ll       Coast Guard            Horizontal flight                 Kot stated
+
+  12       Deputy Sheriff         Mot stated                        Not stated
+
+  lS       !lot stated            Not stated                        Bot stated
+
+  14       Sot ste.ted            FUppi ng around                   Mot stated
+
+  15       Jot stated             Not stated                        Iot stated
+
+  16       Mot stated             Hot stated                        Mot stated
+
+  17       Private pilot          Straight horizontal flight        Clear as crystal
+
+  18       llot stated            Horizontal fli ght                Clear
+
+  19       Farmer                 Straight course - were flying     Cloudless and
+                                  about a city block apart. one     sunny
+                                  behind the other
+
+  20       lot stated             Straight course                   lot stated
+
+  21       lot stated             Single file                       Rot stated
+
+  22       Wot stated             Flashing                          Bot stated
+
+  23       !lot stated            Horizontal flight                 •ot stated
+
+  24       lot stated             Shooting up and down              Clear
+
+  25       Not stated             Hori&ontal flight                 Bright moonlight
+
+  26       llecba.nic             lot atated                        Not stated
+
+  27       TWA Representative     llot stated                       Clear
+
+  28       Lt Governor            lot stated                        Kot stated
+  29       ffest Coe.st Pi lot.   Bot stated                        lot stated
+           7000 hrs.
+
+  30       Ca.pt. USAF. Asst      Climbing and descending ver-      Solid overcast
+           Operations Officer     tioally
+                                                          0
+  30a      VHF/DJ' Operator       Hovering, made three 360          Overcast. 1000 ft.
+                                  turns around one place. Moved
+                                  to another position and circled
+                                  more. Turns required 30-40 seo.
+                                  Diaaeter estimated at 2 miles.
+                         - cor~FIDENTIAL
+Incident   Observer's
+ loo       Occupation             Maneuvers                         Weather
+ SOb       Traffic Air Controller Bobbing up and down               Overcast
+ 30o       lot a~ated             Climbing and de~oending           High overcast
+           Profe11or and Bead     Mone                              Clear
+           or Aero Kn.gineering
+ 32        Lt, USAP               Bone                              Overcast
+           T/Sgt, USAF            Jone                             High acattered olouds
+                                                                   Visibility unlimited.
+ 33a       1,it.,Lt, USAF         Bone                             High scattered
+           PFC                    lone                             lfot stated
+ 33c       Capt, USA1             Kay have been turning            High overcast
+                                                                   with BIS
+ 33d       Capt, Us.Ar            None                             High ecattered,
+                                                                   vi ei bi li ty unlimited
+           Col, Ky. State Police Kone                              Clear
+ 3:Sf      Capt, USAF (Plight     Not stated                       .Not stated
+           Leader •a 869)
+ :S3g      Unknown                Mot stated                       Not stated
+ 34        Judge                  Bone                             Clear
+ 35        Second Officer.Wavy    Mone                             !lot atated
+ 36        CAA Official           Sot stated                       Rot stated
+ 37        Pilot                  Kone                             Clear ..,-.'!
+ 38        Hungarian Peasants     Not stated                       !lot stated
+ 39        Constable                                               a.tVU.   ~   d
+ 40        Not stated             Spiraled downward f'rom 5, 000   Cumulus clouds
+                                  to 2,000 f't am then went
+                                  upward at a 450 angle
+                               41 (;J~iadJENTIAL                 e
+Ine14ent   Obaenv'•
+ lg,       QoogtS,on                •entuur•
+ 1'1       Colonel. USU           . lot atated
+ 42        . .jor, USU              Jo\ atated
+ 4,        Bua Dl'"1"1"             lone
+ "4        lot 1tated               lone                                 Jot ltated
+ IJ5       lot 1tated               lot 1tated                           Jot atated
+ 46        Wot 1tat.d               lone                                 Cloud Nnb.
+
+ ~7        Captain, usu             lolled frOII 11a. to lid•            Jot ttate4
+ 48        KaJor, USAJ              uoerMlillg 1na deNen41na             lot atawd
+ 48a       !/Bgt                    Up and down and 114• w lid•          Cold and eleu Wi'll
+                                                                         t .. 11attffff 1101141.
+           Cpl.                     .lao•Ddtnc and 4eaoendbll            r.t&bt aoattezaed
+                                                                         oloudl 1'11:la bait
+                                                                         tOIIU'dl S/1.
+                                    leeendina and deaoendiag ••'17       Clear nth onr•
+                                     np'idl7                             eut 1Jl S/1.
+ 48d       lot stated               laoendlng' and deaeendine
+                          ..
+ 49        lot stated               lone                                 lot lbttd
+
+ 50        En.1.ttlng deatan.er     Approaohil!a llhON traa Ooean then   lot stated
+                                     Pile and tall 1lovly.
+ 51        Jot 1tated               lot stated                           lot 1tawd
+ 52        Capt, USU, ASS'!. Bon.aonal lett to ri&ht, ri&ht to           CltlP
+           Opentiona ottieu 1•tt l i b • cuard 1n an a1Pplane
+           ~      inawuotor Pilot fOl'Mtian.
+
+ 52•       lit Lt. 1n Air           SSll1lar to a ti&hter aiNNtta        lot stated
+           Il•••ne• t01:1Mr          aueu.•r• llben u e ~
+           B-29 Pilot                heaT1.eP 1h1p1.
+           lit Lt, UW, Pilot Boruoul ftJl7 elon tCll'Mtim                lot 1tated
+           Moaquito Pilot                                                lot 1tat1d
+           G<JTernaent Bllplo1•• A)rupt 4atl                             Bieh toattered
+                                                                         oond1\1on Tie1\111'7
+                                                                         15 a.ilea.
+                                    'rNTel1ng in a detillt't1t are.      lot 1tated
+
+
+
+                                     CONFIDENTIAL
+                                           NND 927545
+Incident
+ 110.
+           Ol>aeryer's
+           Opomtion
+                            -   IM!¥I8 £1                           Yt•Hitr
+ 57        Bridge Corustruct1on Bot stated                          Clear and dark.
+ 58        Chiet Pilot-         Not atated                          lfot auted
+           Plying 1er-,1oe
+
+ 59        Pilot                Hone                                Rot stated
+  60       Storek:eepel"        lot Stated                          Clear at duak
+
+ 61        Kot stated           lfone                               Wot stated
+  62       lot stated           Not stated                          Cloudy
+ 63        Hot stated           BOYel"ing and fluttering, 1'1S1ng   Scattered aull
+                                and deecendtng.                     olouda,
+
+  64       Executive Direct-    Hor11onal                           OnNalt
+           or ot Housing
+           Authority.
+  65       P1lot                lfot stated                         Not 1tated
+  66       Lt. Col, QSC         Horizonal Pl1.g?\t                  lfot 1tated
+           Sc1ent1t1c
+           Branch Research
+           Group.
+  67       Insurance Adjuster None                                  Clear
+  68       Prospector           Banking                             Cleu
+
+  69       Not stated           Hot stated                          Not 1tated
+ 70        Insurance Agent      Not stated                          Clear
+
+ 71        Capt. AC Reser-,es   Not stated                          Clear
+
+ 72        A1!S1 0tf1ce1'       Not stated                          Cloud to1'118t1on
+                                                                    1oattered abOYe
+                                                                    10000 tt.
+
+ 73        lavigator            Not stated                          5/l.O acattered
+           (Conatellat1on                                           cuaulus vith
+           type ail"cNft)                                           tops at 10000,
+                                                                    Y111b111ty 10
+                                                                    a11H.
+
+ 74        Prospector           Standi.nc on edge and banking       Mot 1tated
+                                1n the clouda.
+
+ 75        Trout Parm Oper.     Rode up and dovn oyer the hills     Mot stated
+                                and hollow ot the canyon tloor.
+  76       County COlllliaaioner Hot stated                         Rot stated
+
+
+                                        It
+                                             NND 927545
+In.ctdent    Ob ■erTer'•
+  Ko,        Qo9upgt109           Manemrp                          J!eather
+  77         Astronomer            Not stated                      lot stated
+  78         Lt, USI (P80 Pilot   lot 1t1ted                       lot ■ tated
+  79         Weather r-,o7tff     Rot 1t1ted                       Clear
+  80         Lt. Col. USAP        Jot ltated                       Scattered clouds
+                                                                   Y111b111t7 10-12 ailea.
+  81        C1T11 Service         A1oendtng slowly
+            bplo,ee
+ 82         P1eld Bngtn,er        Bot stated                       lot stated
+ 83         Pilot                 Slow roll or barrel              S<ae clouds
+ ~          Sign Painter          Cl1Jlb1ng                        Clear ...cattered cloud•
+ 85         Pl'1Tate Pilot        lot stated                       lot stated
+ 86         Hot 1tated            'l'm"ned a corner and seemed     Clear
+                                  to roll.
+ 87         U. S. Army            Descended slowly and then        ~ot stated
+                                  dropped in a spiral motion,
+ 88         Not stated            Not stated                       Not s tated
+ 89         Major, USAF           dot stated
+ 90         Administrative Asst, Not at~ted                        Clear
+            Rocket Sonde Section
+ 91         Captain               Trave ling in zig-zag course     Clear
+ 92         Railroad Employees    Climbing, diving and reversal    Cle ar alld 1unny
+                                  of direction whioh happened
+                                  enry few aeoonds.
+            Capt, USAP            Shooting toward, the eaat at     Not stated
+                                  45° angle
+            L~ Col, Hq, EPlf      Descending vertically - aeaned   •ot 1tated
+                                  to slow down on nearing the
+                                  earth
+ 95         C-47 orew             Not sta.ted                      Not stated
+ 96         Bot stated            Bot stated                       Not stated
+ 97         Airplane crew         Not   stated                     tiot &tnted
+ 98         Immigration Service   Appeared to be spinning in       lot stated
+                                  its descent
+ 99         Not stated            Bot atated                       lot stated
+10 0        lfot stated           ?lot stated                      Not ata.ted
+
+                                                 IL
+                                          NND 927545
+Incident
+  llo.     Color
+                         •        Shape               Size                   Sound
+
+   l       Silnr,-                Not stated          Not    stated          Mot atated
+
+   la
+   lb
+
+   lo      S11Tery                Saucer shaped       lot stated             ■om
+
+
+   ld      Retleoted the •un' •   Diac                llot stated            ltot atated
+           raya
+
+   le      Silvery                Diec                •ot stated             None
+
+   2       Ahai.num colored       Thin metallic ob-        Puraui t eh1p     Mot stated
+           1urface                jeot, unconventi on al
+                                  ah11pe
+
+   s       Ye llowiab-llfhite     Spherical           5 - 10 t't, dtaaeter   lot 1tated
+
+   4       lihi'te aluminum       Dietinct oftl out- 50 tt.
+                                  J.1m; ta> projec-
+                                  tiona on upper sur-
+                                  face which llight
+                                  han been thick
+                                  fine or nob1. Tne,e
+                                  croaaed each other
+                                  at intervals, 1ug­
+                                  ge1ting either ro­
+                                  tation or oaci lla•
+                                  tion ot alow type
+
+   5       lot 1tated             Round                .Not 1tated           .llom
+
+    6      1'h1 ti ah-brown       Diac                 Jllot atated          Jllom
+
+    7      J.lumima               Di1e                 Mot determined        lone
+
+    8      White                  Dile                 Out ol light be­      !tone
+                                                       fore det&iled ob­
+                                                       Hrfttion •d•
+
+    Sa     1'hite                 Diec                 Out of 11 ght be­     Mone
+                                                       ror• detailed ob­
+                                                       aen-at1on made
+
+       9   Like s hiny ohro­      Di,o                 Mot 1tated            !lot stated
+           aium hub cap
+
+   10      .bot 1tated            Thin a.nd a.ooth     Not stated            Jot etated
+                                  on bottoa, rough
+                                  appea.rinc on top
+
+
+
+
+                                     NND 927545
+                                 II~·   ,DENTIAL
+Inoident
+ llo.        Color                  Shape                She                    Sound
+  11        ffbi t e               Saucer                Jlot stated            ~t stated
+  12        mot atated             Like tlock ot         •ot stated             Low hmmdng
+                                   geese                                        aound
+ 13         Resembled •tallic      llot 1tated           lot 1tated             l ot atated
+ lt         Lin a new di••         Like a nn dime        Like .. run, di•      lot etated
+ 15         Sil•er                 lilot atated          lot atated            llot stated
+ 16         Not stated                                   Not   stated          lfot auted
+ 17         ltirror bri t ht       Approximately         Diameter equal to     lot atated
+                                   circular. no tail     di atan ce between
+                                                         outboard enginea
+                                                         of DC 4:
+ 18         Jellow                                       llot s t ated         Not stated
+ 19         Reflected the 1un     Like ci ga.ra -        Jlot atated           Mom
+            brilliantly           11uch longer than
+                                  wide
+ 20         Silnr                 Round                 About 12 inches in     Mone
+                                                        diameter
+ 21         Dirty 1'hite          Betwe.n circle        175-2 50 t't. dia:aeter Like electric
+                                  nnd on.l - in­        12 ft. t hiok           motor or dy­
+                                  ••rt•d aa.uc er                               nmo
+22         Shiny d l nry          Slim body             Quite large
+           Bri ght and sil•ery    Ral t-circle          Not atated             Not stat ed
+24         Gli&tened in av.n      Too far away to       Too far away to       lone
+                                  dotenune ahe.pe       dete nain. ahape
+25
+25         Luminous               Plying saucer -       lot atated            lot atated
+                                  DO    tai l
+26         lot 1tated             lilot etated          Jiot sta'ted          lot atated
+27         Silvery                Citoular in shape      Same apan •• C-54    Wot stated
+                  '               like a wagon whee l    at 10. 000 rt.
+28         Not etated            ·eomet-11ke            Not stated
+29         !lot stated           Almo1t round           lot stated            lot stated
+50         White (.light)        dot stated             lot atated            !lone
+
+
+
+
+                                        NND 927545
+                                    vbV~r IDENTIAL
+
+lnoident
+  No.      Color                     Sha.pc              Size                  Sound
+
+  30&      Amber                     Round or oval       C-47 airplane         Jliono
+
+  !Ob      Bright white to amber Cone-shaped. blunt Rnonnou•
+                                 on top and taper­
+                                     ing orr toward
+                                     bottom          '
+
+  30c      White lligbt)             RoWlld              Comparable 'to run-   Bone
+                                                         way light
+
+  31       White                     Not stated          lot stated            ltone
+
+  52       Amber                     Mot stated          tiot stated           !lone
+
+  33       Sun flashes on metal Roughly circular         At the distance and lone
+           or metallic                                   altitude the object
+                                                         appeared ~o be the
+                                                         size of a11Ter dollar
+
+           ffll.1 te or luminous.    Round teudi og to   Unknown - altitude    Iona
+           ·rurnod to be more        be conical          a.na distance too
+           red aa the aun aet                            great
+
+           ~ot auted                 Cone. topped with Jot stated              lone
+                                     red
+
+  :53e     Si lver with shadow       Raindrop            Unlcnown - believed   lJnJcnoa
+                                                         to be lar~
+
+  53d      1'h1. te                  Round at time• -    Uneert&in because
+                                     cone ~haped         of distance
+
+  53e      lfhi. te                  Round               l/4: she full moon    lone
+
+  33.f     l(atallio                 Bot stated          Tremendous
+
+  SSg      "lfot stated              Cone                100 ft. high.         !lone
+                                                         43 .rt. acrose
+
+           Redish tinge               Round              Large gre.pef'rui t    Ion•
+
+  35       Fire oolor                 Ball               liot stated            llot atatecl
+
+  36       )lot stated                Bot stated         Mot at&.ted            Bot stated
+
+           Reddish with blue     lot stated              S ft. from point of    lone
+           background.. Black                            view
+           with white baokground
+  38       SilTer                Ball                    .Not ate.ted           Mot stated
+
+
+
+
+                                      NND 927545
+                                  GONfHltJ'TiAL
+Incident
+ lo,       001or          Shape                    ~                         Soupd
+ 39        Phosphoru1     Ba-shaped diaoa          lot 1tated                lot atate4
+ ~o        Gray           El11pt1cal                   20-,0 tt.             Ho11e like Jet
+                                                                             airoratt prior
+                                                                             to 1ts appell" -
+                                                                             ~   .. No
+                                                                             audible sound
+                                                                             beai-d 11h11e
+                                                                             object va1 1n
+                                                                             Yiev.
+
+ "1        Aluaim"-       Round                        3 tt. diameter        lot atate4
+ ~2        OH.yilh        Balloon                      10 tt diaeter         lot 1tate4
+ 1'-3      Dirty 1'lite   Between a o1.role IJ1d       12 tt thiolc and      llectJ"ie Jlotor
+                          an oval (ln-.erted           175-250 tt diameter   ordynaao
+                          sa~er)
+
+ 44        lfot atat.d    Jlyina Saueers               Wot 1tated            none
+                          (not actually des-
+                          oribed as being
+                          this shape)
+
+ lJ-5      Hot stated     Rot stated                   Hot stated            Bot stated
+ 46        Silvery vh1te Round                         Small                 lot stated
+
+ 47        No detin1te     Bo detim.te shape           C -51'. airplane      lot deterained
+           oolor top                                                         due to the noise
+           ai(!e l"etleot-                                                   ot airplane.
+           ed 11ght.
+  lf.8     Red            PllUli.ng Red cone           Wot stated            Rot stated
+
+  IJ.8a    Bright light     CirculU'-like a •tU'  Ve17 lai-ge cOlll)U'ed Hone
+           ohangi.ne to     1n tbe ak7 only luga. to an aeroplane 11,;bt.
+           red then to
+           White OI" J"•llow
+
+  48b      Red - ldltn    Cone                         Hot detel'llintd      Jot 1tated
+           descending
+           Red men IIO"fin8 lot atated                 Kot 1tated            lot ■tated
+           then grean and
+           black to red.
+  48d      Yellow or tlame Rot 1tated                  lot stated            lot 1tated
+           colored.
+  49       Not atated     Pencil shaped ob3eot         !lot ■ tated          lot stated
+
+
+
+
+                                                   t
+                                    cot~FIDENTIAL
+Incident
+  10.       color           Shape                     Si•e                  sound
+ 50         Stated aa       Referred to aa aauoer   Kot stated              Jfot atated
+            queer 11.&ht.   but not stated as being
+                            ot thie detinite shape.
+ 51        11lver           Bomd                      Not stated            •ot •tated
+
+ 52        llhite. ah1Dy    Circular like a ball      15-25 tt Diameter     !lot atated
+                            en the bott011 but not
+                            completely round.
+ 521       ■ilk mite        Bot atated                •ot stated            lone
+ 53        Whit.            C1roular                  36 inches diameter    Rot stated
+
+ 54        Rot atated       Not etated                Rot eta,ed            Not stated
+ 55        RecUab           lot stated                Bot atated            None
+
+ 56        Dia glow ot      Round                     2 :tt. d1aaeter       Hone
+           light
+ 57                                                   lfot stated           Kot atated
+
+ 58        Blaok            Saucer (not det1n1tel7    Larger than C~4       Not stated
+                            1tated •• being tbia      airplane
+                            shape)
+ 59        Incandescent     Hot stated                Not atated            Hot stated
+           11Cht without
+           appreciable
+           blue and no
+           redd1eh tinae.
+ 60        Plame oolor      Diec shaped (the 11'ter   Barrel Bead, dinner   Wot stated
+                            glow •de 1t look like     plate am the aise
+                            a oone)                   ot a plane tl71,ng
+                                                      hi&h.
+ 61        White ancS       Bot stated                Sue ot Pigeons        lfot 1tated
+           111Ullinated
+ 62        YelloV1ah        Bot stated                811811                Mot stated
+           vhite
+           Gleuaed and      D1so (not actuall7        , rt. a1aaeter and    lot stated
+           Shialered        stated aa being ot        ot no great th1ok•
+                            this shape)               neaa.
+ 64        Color 111111ar Kot stated                  lot stated            Hot stated
+           to eiectr1c 11.&ht.
+ 65        lot ltated       Bot stated                15 1nohea diaaeter    lot stated
+ 66        Bright onnge     lot stated                lot atated            Hot stated
+ 67        Jllutal col01"   top 1urtaoe al1ghtly      IJ.-6 tt 1n le~h      ll'ot stated
+           h1ghl7 po111h- ournd-larger 1n front                 4
+           ed chi-Ollium. than 1n the rear .
+                                         NND 927545
+                                                      :~e :O-l 1nchea    liOMflDENTIAL
+                                              flDENllAL e
+Incident
+            Col OJ'
+                             •
+                             I
+                                 Shape                        UU.                  sounc1
+ 68        Hot stated            D1eo - appeare~ to have      30 tt d1aaeter       lone
+                                 a tail.
+ 69        White                 lot 1tated                   Not stated           Bussing sound.
+
+ 70        Not stated            Giant til'e cracker          Kot stated           Bu11DI aound
+                                                                                   not aa loud
+                                                                                   aa a rocket
+                                                                                   Ship.
+ 71        Rot 1t1ted            Hot 1t1ted                   lot atated           Not stated
+ 72        Silver                Sphere( nt not like          2·3 tt diameter      Rot 1tated
+                                 1auoer or diac.
+           Deep Gold             1111pt1oal                   15 tt long 2·3 tt    lot atated
+                                                              1n length.
+ 74        Bot stated            Tapered lbarpely to a        ,o tt. diaaettr      Hone
+                                 point in the tront end.
+ 75        Slq blue          Oblong like a broad rill         20 tt. lona am       Kade a
+                             hat with a low crown.            10 t,. thiolr.       av1shiq sound.
+ 76        Not stated            Jot 1tated                   Hot stated           Lite the eoho
+                                                                                   ot • aotor.
+ 77        Light colored         Only oonerete evidence       50•100 tt lfide.     Loud roar
+                                 or tora appeared on the
+                                 lett tangent ot the group.
+ 78        Light gray        e1rou1ar                         8 tt. diueter        Bot ■ tated
+
+ 79        S1lftl'           Bot atated                       Lu•er than a         Not atated
+                                                              Pibal balloon When
+                                                              obaened through a
+                                                              theodolite.
+ 80        Retleoted vh1te       "Blob 11                  SMll ail"plane          Hone
+           light.
+
+ 81        S11Yer            Large Balloon With silver Large                       lot etated
+                             d11c below it, no attaebing
+                        '    cables vere noticed.
+ 82        Proa t7 ltbi te   Round and tlat                Equal to b\11.k ot      A 1l1gbt
+                                                           6 eaob, B-29 air·       mahing.
+                                                           planes td th dia ..
+                                                           •t•r to tluomeas
+                                                           ratio ot 10-1.
+ 83        Black             Round                         'tVtnt,-.f'ive cent     lot atated
+                                                           piece.
+                                             , .DENTIAL e
+Incident
+ 110,      color           Ship,
+ 84        Sb1Jm7          Road                        lot ltated               lore~ le11
+                                                                                SbJ-111.
+
+ 85        Bot 1tated      Reseabled the D5U•l.        Jot 1tated               lot 1tated
+
+ 86        Not 1tated      lot atate(!                 IOt ltated               lot stated
+
+  87       Jot S1t&ted     Bot stated                  lot ata.ted              lot atated
+
+  88       lot stated      1lying di ec (not ao­       )lot 1t1.ted             lot atated
+                           tual ly deaoribed aa
+                           being ot thi• aha.pe)
+
+                           Ro\lDd di,o ahaped object   50-60 rt. diameter       bot at&ted
+
+           Refleote4       Unitonn with no protu­      Hot atatad               Bot 1tt.t1d
+           light           berano•• euoh •• wing•
+                           of an airplane
+
+           Light           lot atated                  Not stated               looe
+
+  92       Silver          lot ,tated                  S-11                     lloli ata.ted
+
+           Bluish center Appeared to be a di10         Reaembled ~ shooting Not etated
+           ·. rl th rod on                             at~r; however. ob-
+           its edgH                                    aervera not oertain
+           !ot atatad      lot 1tated                  Not stated               Not ,tated
+  94
+                            Not stated                 Kot stated               Bot stated
+  95        Not stated
+            Not st:i.ted    Hot etated                 Not stated               Not atated
+  96
+
+   91       Flaah of        Kot atat••                 Hot stated                Hot atated
+            light
+   98       Bright light    Ahaoat round or perhaps     2ti-30 miles diametor    lot etated
+                            oval or aauoer-ahaped
+
+                            Brightly ehining object     lot atated               Bot atated
+   99       Shining
+                            with long td 1
+
+                            Wot ,tated                  lot atated               !lot stated
+  100
+
+
+
+
+                                         NND 927545
+                                    -COt~f\DENTlAL:-
+
+Incident     Exhaust
+                             -                                     e
+                                                                   Speed          lffect on Cloud•
+  No.         Trail          Heading          Altitude Ft.
+
+   l        t:one            320°              1000-sooo rt.       ~00 mph        lot at&ted
+
+   la.
+
+   lb
+
+            Not stated       liorthwest        7500-8000     ft.   ~50-400 mph    Hot stated
+   le
+
+   ld       f.ot stated      northwest         7000-8000 f't.      300-400 mph    tlot atatod
+
+                    stated   tiorthwest        6000 rt.            300-400 mph    ~ot stated
+   le       tlot
+
+                                               From very near      Not ste.tod    llot atated
+   2        tot stated       Not at&ted
+                                               the ground to
+                                               vory high
+
+                             frost to east     10000- 12000 rt.    200- 225 mph   )lo-r; stated
+   3        Not ata.ted
+
+            Not stated       North of due      Under 20000 ft .    Slower than Hot stated
+   4
+                             east                                  lllAXimUDl speed
+                                                                   or P- 80
+
+            Bot stated       Two flying        Bo'\ stated.d       Great speed lot atated
+   5
+                             aoutb - S
+                             flying ea,t
+
+                              llorthweater ly Undetermined         Terrifie        lot stat.d
+       6     Not stated
+                              Southweat         50000 fto          Terrific -      lot stat.cl
+       7     None
+                                                                   faster than
+                                                                   any object
+                                                                   ever seen
+                                                                    by him
+
+                              South             40000 tt .          Terrific       lot atated
+       8     Rone-
+
+             Jlone            South             40000 rt.           ?errifio       Not ,tated
+       8a
+
+                              S01..-th          High over           Terrific       lot stated
+       9     Not atated
+                                                Globe Mille
+
+                              Northwest         llot stated         Cruised for    Not atated
+   10        !Jone
+                                                                    46 min. at
+                                                                    oonventional
+                                                                    airline apeed
+                                                                    (180 mph) then
+                                                                    rapidly dis-
+                                                                    appeared
+
+                                                                    llot stated     .ttoi;   a ta. ted
+       11     Not stated      OTer north end lot stated
+                              ot Lake 1'o.sh-
+                              ington
+
+
+
+                                         CG."f,DENTIAL
+                                            NND 927545
+                                          F1DENTIAl
+Incident
+ Bo.
+            E:xhauat
+             Trail
+                            •
+                            Bee.ding         .lltitude Ft.   Spoed          Effect on Cloud.a
+
+  12       Wot atated       Hot stated       Not atated      lot • ~ d      Hot at&t.<l
+
+           lot atated       3 west to      Did not appear    Tranlini BO      llot ,te.ted
+                            eaat.  l north Tery high         taat they
+                                                             •ere out ot
+                                                             eight in eaat
+                                                             in 2-4 aeoonda
+  14       lot atated       lot atated                       JloT1ng slowly    llot atat.d
+                                                             onr aandy
+                                                             dletr1ct
+
+  15       Iot 1te.ted      l beaded         High            Sot atated     lot atat.d
+                            s outhea1t.
+                            2 headed
+                            north1a1t
+  16       lfot 1tated      .lot atated      lot 1tatad      !tot atate4    llot atated
+
+  17       lot ete.ted      north to IOUth 9500 rt.          Not 1tated     lot 1tated
+                            about 17<i'
+
+ 18        Trail atreaa- aeenronr            Jiot atated     Not stated     Hot stated
+           1ng out be-   weatend
+           him like      of Toronto
+           vapor trail
+           'beh1m air-
+           plane on
+           misty day
+ 19        Lim alight         eat to east One 11.ile high    Very taat      Bot stated
+           trace ot steam.
+            Disappeared
+           1m::nediat•ly.
+ 20        Not atated       Southwest       About 1500 rt.   Faat           llot stated
+ 21        Rot stated       ~.N.W.           1200 ft.        About SOO      lot atated
+                                                             mph
+ 22        Bot stated       S.W. ot S.      7000 tt.         Slower than lot atated
+                                                             two-motored
+                                                             U1lY plane
+ 23        Not stated       !lot stated     5000 tt.         lfot ate.ted   lot stated
+           Cloud-lie        8outheut        Very high        Very tut       Mot atat.d
+           n.por - re-
+           tained shape
+           a.nd persiated
+           tor onr an                                                                \
+           hour
+
+
+
+
+                                          NND 927545
+                                        CONFIDENTIAL e
+      Incident
+       Ho.
+                 B.xhaust
+                  Trail
+                              •
+                              Heading           Altitude Ft.       Speed          Effect on Clouds
+
+       25        Wot stated   Bast              High               Fast           Not stated
+
+       26        Bluish-black Not sta.ted       Bot stated         llot stated    Cut a clear path
+                                                                                  throup cloud•
+
+        27       Bluish-black Not stated        10000 ft.          Fast           Seemed to out
+                 15 mi. long                                                      0loud1 open
+
+        28       Not stated   Not stated        Not stated         Did not        Bot stated
+                                                                   moveo
+                                                                   Seemed to
+                                                                   go below
+                                                                   horizon
+                                                                   with rotation
+                                                                   of earth
+
+        29       Not stated   10 flying      High                   300-400 mph    Bot ate.ted
+                              north; on
+                              reverse course
+                              there were only 7
+
+        30       None (ap-    West               3000               Slow           Bot stated
+                 peared to
+                 ha.ve bluish
+                 streaks out
+                 t'rom aides
+
+                 Five times    1200              Prom .,ery near    500 mph        Jlot stated
+..'              length ot                       g?'Ound to 1000 rt. a,tter 1 t
+                 object                                               atartecl
+                                                                      to le&"ff
+                                                                      n.e1n1ty
+
+        S0b      Small streak 8.8.Wo                                bceeding       Bot ate.ted.
+                 trailing object                                    600 aph
+
+        300      Wot stated    Kot atated        di!teNn.~ al•      Jfotionlesa    lot stated
+                                                 titudea ;
+                                                                                           ~-~------
+        SI       White., heavy West to eut       20000-50000 ft.    600-~00 mph Bot 1ta1;ecl • •
+
+        32       lone          Stationary        3000 tt.           Stat1anary     "lone
+
+        33       lone          lone visible      Unknolm            nom n.aible Ione
+        33a       Jfone        210° from         Extremely high     Stationary     !lone
+                               Godman Field
+
+                  None         Not stated        Not stated         Not stated     Bot sta:t;ed
+
+
+
+
+                                            NND 927545
+..   Ino14ent
+      Jo.
+                Ezhautt
+                 Trf1l         lta4w
+                                         COhFIDENTIAL
+                                                   uutud• rt,
+                                                                     -   Sptfd      lf(n\ op Cln4f
+                )lot • ••n      Apptlll'ed to be Very h11b.              Appeued lont
+      ''°                       ■ tat1onaJ7 .                            to 1M
+                                                                         1tat1ozw-y.
+
+                ?lont           210• t'Poa          Uncei-tain-          Stationary.Could be seen
+       ''d                                                                           throuab oi.ffU
+                                GodMn Jld.          ••PJ higb.
+       ,,.      lone            210• t'Poa
+                                Oodllan Pld .
+                                                    25000 tt.            Stationary.lone
+
+       ,,r      lot atated      Approx. 210•        15000 tt.            500 IIPh   lot atate4
+                                frt• Oodllan Jld.
+
+       ,,s      Not ■tated      Southw■ t           ~ aile•              lOJll)h    lot atated
+
+       ,4       llcmo         , Vest to nat         lot stated           Speed ot a lcmt
+                                                                         aeteor ar
+                                                                         tallinC a tar.
+
+       ,5       81.N• ot        IOJ"tbwaterl7       Rot atated           700-900 IIPh lot atated
+                tire.
+       ,6       lot atated      lortbeaat           Jot atated           lot atated Jot atated
+
+       ,1       lot 1tated      lortheut            aooo-10000 tt.       350111'h   lot ■ tated
+
+       ,e       lot 1tated      lfa,t stated        JIOt stated          lot ■ tated lot 1t1t.d
+
+       39       Ion•            Bait                ,0000 tt.            V0'7 ta1t lot 1tated
+
+       40       Kot 1tated      Appeared troa       5000 tt.             ~0-600 aph lot 1tated
+                                nOJ'tbeaat.
+
+       41       Jot atated      South               lot 1tated           Great      lot 1tated
+
+       42       lot ,tated      Borihweat           1500                 lOOaph      lot 1tated
+
+       4,       lot 1tated      11rat group         1200                 ,oo mph     Jot 1tat14
+                                S S/£, 8HOnd
+                                group 1/V.
+
+       44       lot 1tated      South               lot 1tat1d           hat         lot 1tate4
+
+       45       Jot stated      lot stated          lot stat•d           lot atat•d lot 1tatecS
+
+       46       Jot stated       lortbwta tff1,1    1000                 , ••tel"    lot 1tated
+                                                                         than an air•
+                                                                         plane.
+
+       IJ7       Jot etated     80'1thfllterl7      10000                J'uter 11ml lot 1tate4
+                                                                         •ftT aiNratt
+                                                                         h• ba4 rnr
+                                                                         •••n.
+                 Ga1eous green 5/V llhtn 1t          Mot stated          Gained an~ lot stated
+                 a11t.         lett the                                  101t alt1t•
+                               'f'101D.1 t7 • NND 927545                 udt at a
+                                                                         te1"1"1t1o nte.
+                                          60111 1uENTIAL
+                                          n
+                                          u             NTIAL
+?no1dent    Exhauat
+ 10,         n:,11           leaflN             Att1\Jde Pt.      Spefd       Btteot on ClOlldl
+
+  4aa      ver, tatnt S/1 llhen 1t lett lot 1tate4                Lett         Jfot stated
+           emaut trail the Y1t1n1tJ.                              T10in1t)'
+           llben 1IO'fing.                                        at nr,
+                                                                  h1gb 1peed.
+           Gl'eenlah         S/W ldlen it lttt lot 1tated         lot stated Not stated
+           111st 1hen        the TlO 1n1 ty.
+           deaoending.
+           lot 1tatect       210 degree, lllben 15000-20000       lot stated Hot stated
+                             1 t lett the Tic -
+                             1.nity.
+ ~d        lone              Approxblately      1l'011 4000 to    Slow         Not stated
+                             due nat lalen 1t Ter1 hi&b.
+                             lett the T1o1n1ty.
+ 49        Lon, trail        Vest               Very hi&h        lot atated lot stated
+           ot Doke.
+ 50        Kot stated        Shor•wrd           Rot atated but Slov until Bot stated
+                                                •aid to be     OTer land
+                                                quite close.   then higher
+                                                               speed lfbile
+                                                                 leaving.
+
+ 51        Hot atated        lot 1tated         High             Hot stated l ot stated
+ 52        Bone              Soutbnrd           8000-10000       JCade a P-80 Hot stated
+                                                                 look llke 1t
+                                                                  wu motion-
+                                                                  leH 1n the
+                                                                  air.
+                               ;
+
+ 52&       Wot stated        120•               6000             Approxiaate- Not stated
+                                                                 lT 150 aph.
+
+ 53        Bot stated        120•               6000             285 aph.      Not stated
+ 5~        Bot 1tatecS       Borth Sea to       22000            Equal to      Not stated
+                             lortolk                             or greater
+                                                                 than • Brit-
+                                                                 1ab Mosquito .
+
+ 55        lot 1tated        DE                 10000            Rip yel•      Not ■ tated
+                                                                 oc1t7• 1tated
+                                                                 to be taster
+                                                                 than conyent-
+                                                                 1onal airplane.
+
+ 56        •ot lt&ted        Soutb saat         2000 tt          500-600 mph.Mot atated
+
+
+
+
+                                          CONF1DENTIAL
+                                               NND 927545
+»ioldent Bxbauat
+ lo,      m11
+                               •
+                         lltfflPI
+                                       CO~rlDENTIAL
+                                               il\1'1\4• ,t.                ltt1s\ on 212'94•
+ 57      lo\ 1tated      DZ <,o• I ot          ,o• ott the     Jli,tl .el.. lot 1tated
+                         true IOJ'th on    llor1son at         001t7, 1ta-
+                         bor1.Sonal plane. an ••t1111ted       wd toM
+                                           1,A 1111• rap.      taatu t:bUl
+                                                               • tnoer
+                                                               \,ullet.
+
+         lot 1tattd      1/W                   1000            510 apb.       lot 1tattd
+  58
+         lot attted      ,50- later            9500-10000      1000 lmota     lot atat.4
+  59
+                         ohaJll•d to
+                         1or.
+  60     Liabt tlae JPrca 1/1 bead-            6000
+         oolor.     1DI Eutwrd.
+                                               2000-,000       raster than 1'0t 1tated
+  61     lot 1tated      lorthern                              ,ua,.
+  62     Jot atattd      lot atated            &e-nral         Jl1&b rate     lot 1tated
+                                               thOUlud tt.     of 1peed.
+
+          lot 1tattd     lortheaaterly         3000            TrandOUI       Jot stated
+                                                               Speed.
+
+          Jot 1tated     lortbeaaterly         lot atated      terr1tlo        Jot 1tattc1
+  64
+          lot atattd     Weit to la1t           1000           1000•120011>h lot stated
+  65
+                                                Low            Required ,-4 lot 1tattd
+  66      Lone atl'a - lorth to South
+          tsht '4\itt                                          1econd1 to
+          1treak 11.ll-                                        tnffl 70•
+          ilar to th•                                          an.
+          1treak left
+          by• traoer
+          bullet.
+          White bail lot 1tattd                 500-1000       Tnr1tlo         lot 1tated
+   67
+          of l■Okt.
+
+          Wot 1tated       Southea1terl1        6000            lot 1tated     lot 1tattd
+   68
+          Thin 1treaJc South                    lot 1tateO      Vff"f t11t.    lot stated
+   69
+          of gl"e7ill\
+          color.
+          Bitber 1aokt 1B to SV                 1000-,000       a.oo,oo        1ot 1tated
+   70
+          or conden-
+           eat1on laat-
+           SAI 2 1eoonda.
+                                                                7ooteoo         lot stated
+   71     Jilt)' hav•      Southeaat then        wot atated
+          been IIIOkt      t\ll"Jled and vnt
+           or npor         net.
+           t r • 1nttnae                    NND 927545
+           ■i,eed   WI
+           aiaoet wit•.
+                                          r~eE·~flAl:
+Incident
+ lo.
+           llxhauat
+            ffiil
+                          -
+                         Bgd1ng
+                                   ~hr
+                                   iiUuii i   i
+
+
+                                            41t1t1»4e Pt,
+                                                               •
+                                                              Sp••4           Vtftt op Qlouf•
+ 72        Iona          South             Below 10000         'flteaendou    Jot 1tated
+ 1,        lone          Ba1terl7       7000                   175 IIPh       Rot 1tated
+                         approxillatel1
+                         110• -,netio.
+           lot stated    •ot 1tated        Jlot ■ tated        Oreata
+                                                              thd&ft7•
+                                                              thm, n•r
+                                                              Witneaaed.
+
+ 75        lone          Baat to wet       75                  lot ,tated     loi atated
+
+ 76        lot stated    Bot 1tated        4000-6000           lot atated     Jot stated
+ 77        lot stated    Jfortihwat(Trut) •ot stated           600-1200       lot •ta'-4
+ 78        lot stated    8va1&ht down.     Deorna1Jlg tr•      Inaono~nblt lot stated
+                                           approi111atelJ
+                                           25000.
+
+ 79        Jot atated    Batt to lfe1t     LIii    t.ban 15000 Jot atated     Kot 1tated
+ 80        Jone          southeast         Lesa than 500      CCIIIPUttd at lot atawd
+                                                              ·1:550 IIPh,
+                                                              hOWffJI IP•
+                                                              pelNd to
+                                                              aOTe "1th
+                                                              tbt speed
+                                                              ot • Jet
+                                                              11.Jlcntt.
+ 81        lot stated    • ortlnreat        6000              lot stated      Bot stated
+ 82        lone          ,5t•              10000-18000        Tbree t1M1 lot 1tated
+                                                              that ot a
+                                                               Jet atrontt.
+ 8:5       lot 1tated    lot atated        11000               lot stated     lot atated
+ 84        lot atate4    lortbeaat         7500                lot atahd      lot 1tated
+ 85        Bot atated    Borth             8500                35011Ph        lot atated
+ 86        Jfot etated   IOJ1thard         lot stated          lot 1tated     Rot atated
+ 87        lot stated    Not etated        trom 6000          lot stated     lot atated
+ 88        lot stated    lot 1tated        200 yards          110vhig ra,-   liot stated
+                                                              ?idly
+
+ 89        llot etated   Eaet              11000              210 mph        JIJot stated
+
+
+                                         NND 927545
+
+                                   CONFIDENTIAL
+                                               11JcnTIAl
+Incident   Bxh&uat
+  lo.       Trail            Beading           lltitude Ft.    Speed          Ureot on Cloud•
+  90       One w1tneH        lor'therly         8000-10000     lot atated     lot atated
+           thought be
+           eaw Tapor
+           traile
+
+ 91        lot stated        Diaappear ed       Great height   High rate      lot atated
+                             in the aoutb-                     ot apeed
+                             weat
+           Jlot stated       W.at              Abon 1000       Oreat a pffd   lot • tated
+                             Dropped troa      Iot atated      Ver, high      lot atatecl
+                             sight on north                    Telooity
+                             aide of •t.
+                             Tom near
+                             Holyoke. MaH.
+
+           Green and   Deaoending Ter- Prom lSOOO              'fery high     liot atated
+           blue tleaea tioally                                 rate ot
+                                                               apeed
+ 95        Se..-eral color•     Saatwa.rd                      Very high      Jlot   atated
+           ot r1..... -                                        rate or
+           red and green                                       apeed
+           predomin ating
+
+ 96        lot stated        Bot stated        1200-1500       lot atated     Hot atatecl
+ 97        Wot stated        1'ot atated       Mot stated      !lot etated    Mot atated
+ 98        lot stated        Jlot atated       lot at&ted      lot a tated    lot stated
+
+ 99        Mot atated        lreat to eaat     tilot stated    lot stated     llot atated
+
+100        Grey streaks Borth to aouth         lot atated      .llot stated   lot atated
+           were left in
+           eky
+
+
+
+
+                         .
+
+                                              NND 927545
+lfOtE:   Inc1dent f 18
+         It has now been d•tini t•ly determined that both tho photograph
+         and story were t. hou:, perpetrated tor publioity e.nd aooey.
+
+         Incident #8•
+         The peraon malting t he report on thil 1nc1deat was detsrainod to
+         be &n excitable person, ••r/ talkt.tive, and poaseaaing a.n ex­
+         a ggerated.. iugination and 1nol1ned to iJlpreaa people with his
+         continuous uhatter.
+
+
+
+
+                                  NND 927545
+                                   CONFIDENTIAL
+                               REPORTED DIRECTIOIS OF PLIGHT
+
+
+
+
+                                                                                    D
+
+
+
+
+5                                                                                               I
+
+
+
+
+                                                                               2Z
+
+
+                                              34
+    Circling 16                              s
+    Straight down 5                                  • 1'he re an undetermined number ot ob­
+    Directi on Indefinite 64                           jecta ware reported the minimum number
+    Direction lot Stated 61                            of object& are pl ottedo Same object
+                                                       reported by di !'teren t p,ople only
+                                                      shown oncto
+                                        NND 927545
+
+                                     CONFIDENTIAL
+             ,
+
+
+
+NND 927545
+                      eCONFIDENTIAL
+                                                        •
+            Identit1c&tlon ot Subjeot llatter (a, per ••Pl•)
+     IIOU                       11CIT                     19 Feb 48            l
+
+     l. Reterenoe 1a ade to th• £11&1 tann b7 llr. Rhoad•• (In.oident f,40) which
+••re tonrarded tor exuination. Tb• tollcnriq data ••r• dtri·Hd. froa a atucly ot
+the 1peciaen1
+
+          a. It ia oonoludecl that th• me• ii of tne pbotogn.phio m.ture, and
+1• not due to 1~rteotion1 in th• nul.S.011. or lack o1 deTel opaent in the ■ to­
+tion in quHtion. Th• im.c• •xhibit1 a "tt.11" indicating th• pn,per t)'~ ot
+di1to·rtion due to the tne ot 1hutter u1ed, tht apt.cl of the o'bj•ot and tht
+fixed •peed. of the abutter. Thll trailing ott oontona, to th• g.ntral intor••
+tS.oD gi T~ 1n th• report.
+
+          l>. Th• nport 1tatH th• objeot na      •••n     a.1- approxiat•ly 2000 t••t
+at tho t i • ot expoaure. !he obaerHl" allO report, bein& abl• to Ht oltarl1
+t. oanow of •nolo1v•. !h• Tiaual aoui ty ot an aTerag• perao!lf'woulcl allow tor
+thi• peroeptioa, bu't oH•te:l Illy not auoh t'\ll'ther •• 'the 1ubjeot Md low fl nal
+ooutraat, being cn.y againat a C!'&T •~• It•• ou e1tabl1ah the 41,teoe troe
+o&aora ~o 1ubjeot, •• Will h&Te quntlty ,fl. !he report 1tate1 tha.t a 820 oaatrt.
+n.1 u,.ct, in4ioat1ng Hnn.l po111Mlli1••• ti.not tht 620 ia ooa111cle.tur• for the
+•pe>oli~ a.114 width ot the til.a •• aay h&Ye mptiT•I 2t' X 2t", 2f X ~ a.n4
+2-t x 4f'. The aaapl• aubaitte4 ha.cl been out and it wa1 not po11ible to Ht&blilh
+the 1xaot traat dse. !be 2t x 2f' Iii• waa rul•d out, 1-anrc 2¼ x st" a.nd
+i¼ x ~ . It 1 t ftre th• ro,...r, them. the tooal leqtii ot the 101 would be •••
+an4 uelisg 2000 teet ... the approid.u.te aubj•ot diatanoe and the lagt dH at
+1/M•, .. ban an app,onaat• ••se ot '4 t••• a, the cllagonal of the objeot.
+low 1t wa ohoo ■• the latter n.lue ot a• tor t.,eal length, •• h&Te an approxi•
+•te T&lue ot' &&• tor th• cliagon&l. Poln-t:1 ot meaauNaent are 1ndioated troa .
+x to x on lxhibit ••••
+
+
+
+
+                      CONFIDENTIAL
+                               NND 927545
+               •
+
+
+
+
+" NND 927545
+•
+
+
+
+
+    NND 927545
+                                                                                                                                      THE AEROPLAtlE
+                                                                                                                                                         I
+FEBRUARY 13, 194&                                                     18S
+                                                                #
+
+
+
+
+                The Biolo!                             of the Flying Saf cer- I
+                         The Story of Low Aspect Ratio Aircraft
+                                               By A. R. Weyl, A.F.R.Ae.S.
+
+
+
+
+  EVERAL MONTHS AGO peo ple o n both side.. of                      the     o ther hand. the U.S. Air Force considered the matter seriQU\
+S  Atlantic rushed into print wnh claims of having ob~erved
+queer saucer-shap ed aircraft which new very fast . Some main­
+                                                               enough to warrant inve..tigation s into the incidenis which had
+                                                               been reported.
+                                                                                                                        ceased
+tained, indeed. tha t they had seen ,quadron\ of , uch mysterious              In the meantime. the occurrence of Flying Saucer\ ha..
+ob{"ccts; others described vividly how these celestial saucers v.ere        to be new\. P resuma bly. the~ have all landed. [A new crop
+ab e 10 descend vertically. All agreed on the \aucer-hl.e , hapc.           wa<; reported in Tur AER0PLANF for J anuary 16 la~t under the
+   Sceptics considered that, for non-aerona utical people ltv1ng            heading •• Tuppence Coloured." -Eo.]
+far from the former playaround s o f V . I. V.2, a nd all the rest                        Aerooaudc-al Aotlquities and lniquititt
+of H itler's "civilizator y • practices. flying saucer<; might indeed          As a matter of fact. saucer-\hap ed aeropla ne.. are not quite
+constitute phenomena of threatening aspect, from their experi­
+ence of domestic disagreemen ts. Doctors, however. hastened to              as new as some people have tried to mal.e out. (Fig. I.) Quite
+assure the World that saucer-shap ed or lenticular objects could            a number of a1rernft have been constructed and nown with
+well be nothing more than specks in the lenses of the eyes of the           wi11gs of the ring or disc type which could well have been mis­
+observers- the so-called m11sae 1·0/ames associated with high               ta ken for saucers. hat-brims. ~pades, doughnut~. diamonds.
+blood pressure. Teetotallers blamed the sorry consequence.. o f             Greek letter,. pancal.e\, nat fhh. geometrical symbols. d inner
+imbibing intoxicating liquors for the observation s. On the                 plates, and other entirely non-aeronau tical commoditie s.
+                                                                               Moreover. it is qu ite true. .and not even a minor secret, that,
+                                                                            at present. aeronautica l engineers are paying increased a ttention
+                                                                            to s uch queer wing shapes: disc wings. for instance. permit
+                                                                            ceriain disadvantag es of conventiona l wing\ to be overcome. It
+                                                                            1s even thought that such shares have been neglected too long
+                                                                               1 he blame for rheir neglect can be ascribed to the doctrine
+                                                                            o f the induced drng. When the Lanche..ter-Pranc.ltJ aerofoil
+                                                                            theory became recoi,1nized nearly 30 }ears ago, and \\hen the
+                                                                            !>a1lplane movement proved that slender wings were a necessity
+                                                                            fo r soaring. designe r, began striving a fter .. good .. aspect ratios.
+                                                                            The theory blinded their eye~ agains, the poss1bili11es of other
+                                                                            than convenriona l wings. T hi~. hO\\Cver. was not the fault C"f
+                                                                            the theory.,\\ Prandtl soon sho\\ ed its restrictions.
+                                                                                We have now come 10 reconsider the matter of wing shape
+                                                                            in an objective way. as it is quite possible that aircraft design
+                                                                             is approaching a cul-de-sac ~o long as it retains it~ bias in
+
+                                                                                        - - 6 - - - -~
+
+
+                                                                                                                  ==~
+                                                                                                                           Apttro.l
+                                                                             1
+                                                                             L .I__ _ __ _,_ ' _'°'_°'_1_ _ ____, - r . : - - i , (b
+                                                                             --                                                            I   c 6)
+
+                           OCl5S • stCTIO!'I
+
+
+
+
+                                                                                                                       \    ,pa"
+                                                                                                                       C    chor4
+                                                                                                                       \    )(•-,lod a,u
+
+   Fig. 1.-" Turbine flying machine" (project) of the Munich
+   engineer Gustave Koch, 189311894. Tailless monoplane of
+   low aspect ratio. propelled by a ducted fan. A SO h.p.
+                                                                                    t       SquHC'
+
+                                                                                               ...~   ,
+   steim engine wu deemed sufficient for th is flying motor
+   car. The design of the duct shows intelligent anticipation.
+
+   Fig. 2 (Right).- Definitlon of the aspect ratio of an aerofoil.
+                                                                                    L     ...._______.
+                                                                                          I- b , __j                                AR • 0-1
+                                                                                                                                                      l t t
+   The arrows signify the direction of the air flow against the
+   wing. The terms pteroid (feather-like) and apterold have
+                                                                                            ttt
+               been introduced by F. W . Lanchester.
+                                                               NND 927545
+\   I
+           THE AEROPLANE                                                         186
+                                                                                                                               FEBRUARY 13, 1948
+          C..HlUr of the "well-tried " convention,        .. normal " wings.
+          For the c reasons. a study of. the hi\lory of the u'IC of low
+          asp,.-ct. rat,o) m wing de:.11n will be of interest.
+             Sp1ruually, the fathers of uch acronauucal exhibits were
+          Ens!"hmen. 1 hey were people of good reputation ttnd by
+         no _me.ins suspect o( aerodynamic perversion.
+              F. W. Lanchcstcr was undoubtedlf the first acrodynamici ,t
+         to g,~e thought to aeroplane winis ot circular or squ.irc ,hapc.
+          lo ht) bool.. publl\hcd m 1907, he referred c'<prcssivcly 10 ~uch
+         "aptcrold" wmii hnpc~ {F1a. 2) i,nd advanced the view tha t
+          Nc11.ton's law wa, valid for these. 1he correctncs; of th i~                     Fig. 3.-A simple experiment In annular .ierofolls.
+         vie\\ wa~ c~pcrimentally proved 30 ~cars later.
+             In a prev1ou\ article on " Stalling Characteristic s of Taille-.s
+         Aeropl.rne~ •• ( lttE AFROl'LANI:. for August IS. 1947), tl,e early
+         mtcrc-.t tal..cn by F. <i:iow Sir Frederick) Handley Pa~e m the
+         stalling quahucs of wmgs of low aspect rauo was mentioned.
+         He showed, 10 a pap~r read an April. 1911. that marginal vortices
+         and pressurc-equa lmng flow a round the tips were respon~iblc
+         for the delay of flow separation which h.id been obmved at
+         high incidence).
+             He stated. in this connection:-•· . .. With planes of high
+        aspect ratio _(I.e.. with slender wings of normal span chord
+         rnllo), \here " not the same facility for the " feedmg m " of
+        f_rcsh air at the plane sides (i.e .. nt the wing tips) 10 act as a
+        l~nk between the plane and the live stream. and therefore the
+        live stream leaves the plane's b11ck at .in earlier st11i;e than in
+        the ca,e of the plane of lower aspect ratio. . . ." He then
+        sho11.,ed_ some experimental evidence for the delay of flow
+        separauon with decrease of the aspect ratio and for the greater                 Fig. 4.-Prlnclple or th• Huth annular-biplane system.
+        maximum lift of such wing~.
+           . When Lanches.t cr published his bool.., man was ju~t begin­
+        nma to_spre~d his wmgs. and in order 10 fly with a minimum                   main wing. the tailless aeroplane is created. For all these
+        ellpend1ture m power, wini:s of fair aspect ratio were a neccs­              arrangements. the condition is that, in the case of a wina com­
+        s11y. Neverthele\s, there were a few early aeroplanes. notably               pmed of normal (unstable) aerofoil ~lions. the stabilizin&
+        the little :· Demo1~lle •• monoplane o f Santos Dumont (1909-                aerofoil exens a certain leverage in relation to the centre of
+         19 !0l, which had an aspect ratio of only 2 and proved to be                gravity of the aircraft.
+        qu Ile \Ucces,ful.                                                              Another possibility is to combine two lifting winas so that
+             One o( the earlie~t attempts at a genuine •· apteroid" 11cro­           they will stabilize and balance each other. For this purpose, all
+        plane was an experiment by a German architect, Flick-Remig                   that is required is that the front wing shall possess, at all inci­
+        ( 1910). It had a span of 7 j ft .. and performed in hops only.             dence, of.flight, a greater effective incidence than the rear wiog.
+                                                                                     In other words. the centre of gravity must be nearer to the
+                                Annular Aerodynamks                                  le.iding wing than to the traili9g wing, and the whole arrange­
+                                                                                     ment must be balanced accordmgly. In this way, we arrive at
+            A ,1mple experiment with ~ome paper and a pair of sci,sor;               the conception of a stable tandem aeroplane.
+        shows that the ~inl..ing speed of a circular disc loaded with a                 If we now take such a tandem arrangement and sweep the
+         paper clip is decreased when a hole of suff1e1ent d iameter is cut          leading wing back and the trailing wina correspondingly forward
+        out in the centre (Fig. 3). This justifies the development from             so that the tips of both wings merge into each other, we obtain
+         the circular d1-.c wmt; to the annular aerofoil. The theory of             an annular or ring-shaped wing system. Aerodynamica lly, it is
+        the phenomenon i~ still somewhat obscure.                                   of minor importance if the shape is actually circular or oval,
+            (Having tried thl\ experime01. we can confirm that the char­            or 1f triangular or quadrangular sha pes con,titute the wing. For
+        acteristics of an annular aerofoil are certainly very d ifferent            ,implicity's ..ake, in all such cases considered here, the term
+        from those of the plain d1-.c aerofoil. Our own experiment,                 .. annular" 1, appl ied.
+        11.cre admittedly somewhat lim1ted in scope and we were unable                  As mentioned, the aerodynamics of such shapes cannot yet
+        !O form more than an imprc~10n of the relauve sinking ,peed,:               be considered as fully established. But it i, proved that longi­
+        II did, howev~r. arpcar to be le,~ with the annular aerofoil. Our          tudinally stable wing systems can be obtnined with such shapes.
+        mam conclu\lon, w•!re that cutting a 2.25-in. diameter hole in             Some type~ relying on such wings have shown quite remarkable
+        a .5 37S-in. diameter disc. resulted in a much flatt.e r glide; the         llying qualiue~. It is also pos,ible that, with annular wings. the
+        ,tall 11.,1, not ,o abrupt. and the stability in the glide wa,              induced drai; i, less than with conventional wings of equiva­
+        1mpm,cd. We were so fascinated with the e>tperiment th.it we                lent aspect ratio.
+        hope to repeat u ,U a later date on a more ..c:1entific levcl.- Eo.)            In common with circular wing,. annular wings have the
+            fhe conven11onal aeroplJne " constituted of two ba\ic aero­            remarl..able property that the lift force ,teadily increases with
+        frnh: a "ing (,, h1ch ,uppl1e~ the lift) and ri tail (,, hich balances     incidence up to fairly high values without a stall. For all
+        and ~tabilize~ the wing). We I.now that \Uch a n arrangement               I.no" n arrangements the maximum lift seem, 10 occur at
+        o.f the 111.0 aerofoil compnnenh i, by no mean, the only pos­              incidences exceeding 30 degree,. A, ,uch h igh angle~ of
+        \tblc one. The balancing .ind st11b1lmng aerofoil (tailplane)              incidence are not likely 10 be reached an flight unintentionall y.
+        need not to be aft of the lifting wing a, a tail. It can be                It 1s obv1ou, "hy annular wings have become renowned for
+        arranged anywhere 1n relation to the wing. e.g .. above It, belo11.        their good-natured flying charac1eri,1il:,.
+        it. o r in front of it.                                                        Another property of annular wings (first establi,hed by
+           If the balancing aerofoil i, in front o f the main win~. the aero­      Tilghman Richard,) i, that the centre of pre,sure of ,uch wing
+        plane i~ of the tail-first type. and if it i, attached to the              ,y,tcm, i, nearly stationary in flight , or that a travel o f the
+                                                                                  centre of pre,wre can be obtained which i, po,itively stable
+                                                                                   unul incidences o f the order of 18 degree are reached. In
+                                                                                   fact. no case of longitudmal in,tabihty ha, ever been reponcd
+                                                                                   w11h an annular wing. although the centre of gravity has often
+                                                                                  been located d:ingerou,ly far back.
+                                                                                       The fi~t annular-wing aeroplane dates bacl.. 10 1908. It
+                                                                                  h,1d little succe\\. Two type, 11.ere con~tructed m ,ucces\ion
+                                                                                  tu the de,1gns of a capable German aeronautical engineer, Fritz
+                                                                                   Huth. who "as by profe\\1on a teacher at a technical ,;chool
+                                                                                  ( f-tg,. 4 and 61. The ,econd type. which had a less elaborate
+                                                                                  a1r,crcw drive. flew in May. 1910: it wa,. however. ,o devoid
+                                                                                  of performance. in spite of a SO b.h.p. engine. that it was soon
+                                                                                  ,1f1erv.ards d1..carded as a hopeless proposition.
+                                                                                                Britain'~ Fir..1 Doughnut
+                                                                                The Bri11,h concepuon of the idea has been for more
+                                                                             ,ucccs,ful. A, it i, cun,1i1u1ed, until now. the best tried
+                                                                             reprc,cntativc. it~ hi,1ory may be given somewhat more
+                                                                             c,1cn,1vcly.
+                                                                                Ihe ori~mal idea for an annular-wing aeroplane came from
+                                                                            (,. A K itchen. m about 1910; he con,tructed a b1pl.1ne with
+                       Fig. S. Kitchen's doughnut of 1911 .                 rini:-,haped wmg,, but made no progrcs, "ith it. The stable
+                                                                      NND 927545
+  FEBRUARY 13, 1948
+
+
+                                             -
+flight of K itchen's models. however. convinced Cedric Lee
+that an aeroplane of such de~ign would be a succes,. 11nd late
+in 1910 he acquired the patents. At the same time, G. Tilghman
+Richards, who was a qualifii:d aeron:iutical engineer, became ,
+~uffic1ently interested in the mailer to give up a budding
+engineering bureau in order to join Cedric Lee and 10 devote
+                                                                    187
+
+
+
+
+                                                                                    ·JUI·             tl?,!i m
+                                                                                                                     THE AEROPLANE
+
+
+
+
+hib energy 10 tbe idea of a ·• safety " aeroplane.
+   Tilghman Richards began with systemat ic experiment, on                                                            __.._
+models and on large gJiders. Later, careful wind-tunnel test~                                                          -:'x:
+(including the o bservation of the pressure distribution) were                                                             - -'-
+made by him in a :!-ft. tunnel he had constructed at East London
+College and al~o in tunnels-of tile National Physical Laboratory.
+The preparation of the design was, therefore, uncommonly
+~-ardul for this early period of 1911 - 1914.
+    In o rder to ap(>reciate the intention~ for the development, the
+following quota11on from a paper read by Tilghman Richards
+in about 1912 is illuminating: -
+    ... . . 1 he ve ry fnct of high lift occurring at small angles
+rreans the provision of large area for l•nding speed resulting
+in an inefficient altitude of the plane at high speed: and the
+inherent instability of curved aerofoils means a continual
+dependence on extraneou, controls carried at some distance
+f_rom the wing by heavy and redundant Structure. . . . High
+lift at small angles il> u~eles~. likewise h igh lift/ drag ratio at                   Fig. 6.-Huth annular biplane of 1909.
+,mall an,les, and what is required is the reversal of the normal
+type of hft c urve i:iving little lift •lit small angles with low value and Gordon Bell. Finally it came to i;ricf when flown by
+of the lift/ drag ratio for landini. . . ."
+    Seen from our pre.sent state of knowledge and development, Cedric             Lee himself without previous training. After a good
+                                                                        fliaht he managed to put it into a river.
+a nd facing the burning problems of personal aircraft for the              Another incident happened with a subsequent annular
+ man in the street. it wo uld seem that this opinion is a very
+ i;o~ argument for further experimentation along the lines monoplane: the elevator jammed anct broke in flight. The
+ indicated.                                                             aeroplane merely pancaked to the ground, again preserving
+   _The. experience with _powered aeroplanes was at first beset the health of i~ pilot, E. C. Gordon England.
+ with disappointment~. Famine P_oint, Heysham, was apparently              These types in their final form had lateral control effected
+ no t a spot from which aeronauucal experimenters could derive by differential deflection of the elevators. It was realized that
+ any comfort.                                                            this elevon control was not very effective for lateral manceuvres.
+    The original Kitchen biplane with a 50 b.h.p. rotary engine yet the lateral stability of the wing proved so great that the
+ was wrecked by a gale, during I 9 I I. before flight tests could provision of ailerons seemed superfluo us. The loneitudinal
+ b~ m~de. After recort~truction some flight~ were performed stability was always satisfactory, once the centre of gravity was
+ wtth 11 at Sho!eham <!~ring 1911- 12: yet it never gave any properly located. Because of the great inherent · fore-and-aft
+ pr~~f of superior q~ah11es. The biplane had ailerons o f the stability, a separate elevator was, at o ne time, located on top
+ or1gmal Farman variety between the wings. Very soon the of the vertical fin and permitted the fitting of special ailerons.
+ biplane arrangement w!1s given up in favour of the monoplane. For directional control a vertical rudder was attached to the
+    A subs~quent experimental monoplane was nicknamed the stern of the fuselage at the trailing edge of the wing. A form
+ " Sccret-C1rct1: Plane ". ~r "Doughnut,'' the experiments being of tricycle undercarriage was employed.
+ shrouded agamst pubhclly (much against the interests of the - In respect of perfo rmance, the wind-tunnel tests indicated
+ dev~lopmen!), This annular-wing aeroplane (Fig. 7) was that a better lift/ drag' ratio could be expected than with a
+ equipped with an 80 b.h.p. rotary and test-flown by Gordon comparable conventionaf aeroplane., However, no co nclusive
+ England on November 23, 1912. at Shoreham. The flight evidence for this has, as,yet, been presented.
+was _remarkable and luck>; for the pilot, but. unlucky for the             The third British monoplane of this type also had an 80 b.h.p.
+ precious craft. After havmg flown a large circuit on the first rotary engine. but this time it was located aft and. further, drove
+ attempt. the pilot noticed, when coming in to land that the the airscrew by means of an extension shaft. Unlike its pre­
+ aeroplane was exceedingly tail-heavy and getting out ~f control        d~cssors, ~~ dihedral was provided. and because of this the
+ the elevator. bei!Jg insufficient. At about 150 ft. above th~ flying qualities were found to have been greatly improved.
+ ground the inevttable stall took place: but the pilot managed From early in 1914 until the outbreak of the 1914-18 War
+ ~~mehow to drop his mount upside down on to telegraph this unco nventional aeroplane was frequently flown (mostly
+ wire~ and escaped without personal injury.                             by Gordon Bell): it was demonstrated before Winston
+    Wtth the reconstructed and improved monoplane many Churchill in the hope of securing orders from the Admiralty.
+s\iccessful flights were made by G o rdon England, N. S. Percival          Altogether, 11,000 miles were flown in about 128 hours, a nd
+                                                                        eve~ people not previously trained as pilots were able to
+                                                                        fly 11. In Ma y, 1914. two such aeroplanes were being designed
+                                                                        for parlicipation in the Gordon-Bennett Race of 1915. When
+                                                                        the 1914-19 18 War terminated the work. it had clearly grown
+                                                                        far beyond the stage of an untried project and could have
+                                                                        well been termed a successful experiment with every prospect
+                                                                        of becoming a practical proposition.
+                                                                           In l?l~-10 Tilghman Richards succeeded in persuading the
+                                                                        Air Mm1stry 10 place a n order for a further experiRlental
+                                                                        aeroplane. But a week after communica1ing this decision
+                                                                        Major-General Bagnall-Wild, the promoter of the idea, retired,
+                                                                        and red tape killed an intelligent intention.
+                                                                           It is only fair to record that aeronautical progress has suffered
+                                                                        fr~m the failure to have this develop'ment continued. As
+                                                                        Tilghman Richards stated many years ago:-
+                                                                           .. There i~ no!hing myMerious about th~ annular plane.
+                                                                        It affords high ltft at large angles, ha~ no >urble point and
+                                                                        has ~ good lift/ drag . rati_o for wings with a body. ' The
+                                                                        !Tiachm~ was very fast in p,ght. for its day, and extremely slow
+                                                                        m lan~mg: and there bei!)g three dislinct regions of lift, one
+                                                                        a ptero1d and two pterygo1d on each half-wing. the movement
+                                                                        of the centre of pressure was a resultant of three distinct
+                                                                        regional movements; ,tnd with slight modifications could be
+                                                                        made 10 move in any desired manner witho ut affecting the
+                                                                        general efficiency of 1he plane."
+                                                                           As _mentio ned. th«: c!rcular shape for the wing is not in itself
+                                                                        ~ dec1s1ve cha".\c1enst1c. ?reviously. in 1908, A. H. Edwards
+                                                                        invented the ring-type wing with rhomboidal or triangular
+                                                                        shape_ (Brit. Pat. Spec. No. 4519 of February, 1908).            An
+                                                                        experimental aeroplane of this type, "The Rhomboidal,'' was
+                                                                        constructed and tested at Brooklands. It wa~ not s uccessful.
+  Fig 7.-Cedric Lee Monoplane No. 1 of TIighman Richards, 1912.                                    (To ~ conlit1u~d.)
+                                                                 NND 927545
+     .. ,.
+..
+             MARCH S, 1948
+                                                   -­                         279                          -                 THE AEROPLANE
+
+
+                          The Biology of the Flying Saucer- II
+                                                     By A. R. Weyl, A.F.R.Ae.S.
+                          In this series of articles the history of low-aspect-ratio aircraft is recounted and
+                          technical aspects of their design discussed. leading up to their use for supersonic flight.
+                       (Continued from J>Olt 185, February 13 /rut.)            qualified aeronautical engineer (Fig. 10). The Willoughb}
+             THE SECR ET-CIRCLE "CONSPIRACY;• mentioned pre­
+             viously in connection with circu)ar-aerofoil aeroplanes. did
+          not lack congenially inventive spirits. Early in 1913 an engineer
+                                                                                Delta Co. of London had taken up the development of th,.,
+                                                                                 idea in 1931 and sufficient means were available to make rather
+                                                                                extensive tests.
+          in D ijon. M. Bou rgoin. made experiments with an annular­                The principle is best described as a tandem monoplane with
+         wing aeroplane. The tests were unsatisfactory. One feature             two aerofoil-shaped parts connecting the leading wing with the
+                                                                                trailing wing near the tips. The "side wings" had aerofoil
+         of this design was the provision made for varying the wing             shape not only in their longit ud inal cross-section (i.e., in the
+         incidence in flight.                                                   direction of flight). but also laterally. This was considered a
+            More recently, a similar idea was suggested by N. H. Warren         characteristic feature and subject to patents. It was claimed
+         and Th. R. Young (Fig. 8).          In 1937 they secured a p atent     tha t the vortex distribu1ion induced by such shape gave an
+         ( Brit. Pat. Spec. No. 508,022 of December, 1937) for a non­           unusually h igh aerodynamic efficiency in spite of the small span
+         stallable monoplane of rhomboidal shape (i.e., leading wing            of the aeroplane. In addition. it was pointed out that the
+         swept back and trailing wing swept forwards with the wing lips         maximum lift was shifted to very high incidences. Moreover.
+         merged together). This was provided with a conventional tai l          the "side wings" should reduce the drag of engine nacelle,
+         at 1he stern of a long fuselage and a number o f advantage~            filled underneath them.
+                                                                                   All this was said to be proved by extensive wind-tunnel
+                                                                               experimentation here and abroad. Designs of passenger trans­
+                                                                               po n aircraft reaching weights o f 40,000 lb. were prepared on the
+                                                                               basis of model tests made at the National Physical Laboratory
+                                                                               a nd elsewhere. T he results must have been so encouraging
+                                                                               that a n experimental monoplane with two 125 b.h.p. Menasco
+                                                                               e ngines and weighing 2,540 lb. was constructed late in 1938
+                                                                               (Fig. 11). This aeroplane flew indeed and was even publicl~
+                                                                               demonstraled (including one-engine flight) a1 a Garden Party
+                                                                               in May, 1939. Shortly afterwards the experimenter was killed
+                                                                               in an uneitplained c rash during a flight test.
+                                                                                   From pressure plots over the "side planes" which have been
+                                                                               published, apparently trim changes could be eitpected at various
+                                                                               aocidences. These components were thus capable of producing
+                                                                               long itudinal inslability a nd it is not improbable that this and
+                                                                               poor control efficiency may have contributed to the accident.
+                                                                               There was a lso evidence of a stall at normal incidences.
+                                                                               although of a very mild character and with little apparent
+                                                                               decrease in the lift c~fficient (which. however, would not
+                                                                               exclude the presence of fl uctuating lift forces).
+
+                                                                                                                        11
+
+
+
+
+             Fis. 8.-Project by W arren and Young for a liJht twln­
+             en1lned two-seater of 90 h.p. (1937). The elevator is
+              fitted between fin and fuselage. There Is no tailplane.
+
+        were claimed. lo 1943 a model for a two-seater fighter with
+        tail turret show~ the separate tail omitt~d; special emphasis
+        was laid oo the triangu lar shape o f each wing and the effect of
+        sweep was relied upon. N othing more bas become_ known
+        since however b ut it is worth noting that the proJect had
+        been'based oa ;ound aerodynamic considerations.
+           lo 1933 the annula r wing of the German sculptor Antes
+        created a mild s~nsation bc<:ause ?f the good performance oC
+        models made to th is coocepuon (Fig. 9).
+          Some.what pecul iar was the aerodynamic ~onceP.tion of the
+
+
+
+
+                                           =
+        rhomboidal annular aerop lane of P. Nesbitt W11loughby, a                    Fig. 10.-frinciple or the W illoughby Delta design.
+
+                                                                                 Another suggestion for an annular wing was made by L.
+                                                                               Peel, in 1944.     This. however. was concerned less with the
+                                                                              aerodynamic p roperties of such wing systems than with the
+                                                                              arrangement of two engines facing each other with their air­
+                                                                              screws. in order to overcome the torque reacuon.
+                                                                                 A phenomenon of which aerodynamic experimenters were
+                                                                              alwa)ls well aware. but which aircraft designers failed 10
+                                                                              u1ilizc, was that wind-tunnel tests clearly proved good-natured
+                                                                              stalling p_roperties of wings having very small aspect ratios.
+                                                                              Yet even m the very e_arly days when centres of gravity were far
+                                                                              too far back on the old box-kites, the square shape of tailplanes.
+                                                                              then unaccountably in vogue, ma y have saved the pilot's bacon
+                                                                              more than once by its refusal to stall under eittreme provocation.
+                                                                              Later on science came and proved that a tailplane of "good"
+                                                                              aspect ratio was more eflkient. It was, but it made the stall
+                                                                              worse when the centre of gravity happened to be rather aft.
+                                                                                The interesting thing is that aerofoils of circular or square
+                                                                              shape were tested in the early days at incidences up to 90
+                                                                              degrees, while o n normal aerofoils tests were restricted to rather
+             Fis, 9.--Model of the "annular wing " ~f Ant es. 1933.           small incidences onl y. generally ucluding the range o f stall.
+                                                                  NND 927545
+  THE AEROPLANE                                                      280
+                                                                                                        e                MARCH S, 1948
+
+                                                                           argument against disc wings. The best aerofoil sections in use
+                                                                           prio r 10 about 1925 had a plain camber which implies travel of
+              c                                            >               the centre of pressure when the incidence varies; the length of
+                                                                           such travel is linked up with the wing chord. Hence the change
+                                                                           in trim o r stabiluy is. with such aerofoil sections, greater with
+                                                                           large-chord wings. On this consideration of fore-and-aft
+                                                                           stability and control, designers bad some justification for thcir
+                                                                           decision against experimenting with disc wings.           Yet quite
+                                                                           useful aerofoil secuons had a lready been used in flight which
+                           \         I           \     I                   had practically no travel of the centre of pressure and hence
+                           I I           I   I   I I                       d id not suffer from thi~ disadvantage of the disc wing.
+                               \,'       I   I       \,'                      The whole argument, however, lost its importance imme­
+                                                                           diately M. M. Munk proved that very efficient aerofoil sections
+                                                                           could be designed with a completely (or nearly so) stationary
+                                                                           centre of pressure. It is. therefore, right to say that from that
+                                                                           time all conditions existed for a practical evolution of d isc-wing
+                                                                           aeroplanes.
+                                                                               F. Handley Page converted an aerofoil, leaving an aspect
+                                                                           ratio of 6.25, into six square-aerofoil po rtions by five slots.
+                                                                           each parallel to the chord of the wing. By so doing he hoped
+                                                                           to have the low drag of a oormal wing combined with the high
+                                                                           stalling angle of the d isc-type wmg.            Although a very
+                                                                           slight improvement was claim~d , the principle was that of
+                                                                           eating the cake and having it too: the induced drag is respon­
+                                                                           sible for the stalling properties of the d isc wing and you cannot
+                                                                           have the benefits of the high drag without suffering its disad­
+         Fig. 11.-Willoughby's "Delta 8" experimental                       vantages. Moreover, in o rder to have the effect of the disc
+                        monoplane of 1938.                                  wing, the provision of mere slots is insufficient.        Marginal
+                                                                            vortices need room to deploy.
+                                                                               On the whole, however, the idea proves that at least one
+  Thus, an observant student of laboratory tests could have                 practical aircraft designer had realized that there was some­
+  noticed the extraordinary capacity of circular or square shapes           thing in wings of abnormally small aspect ratio.
+  10 give a very gradual, innocent stall, an~ that at v!!rY high               There were other. although not quue as well thought out,
+  incidences. Yet, a part from a few broad-minded experimenters,            antecedents of the disc-wing aeroplane.        In the tint soaring­
+  no designer drew the conclusion that wmgs of such shapes                  flight competitio n on the Rhocn ( 1920), Friedrich Richter, a
+  promised safety in flight, t~oug_h it w~s known f~om ..~rly               burly naval pilot o f 20 stone or so, performed on a triplane
+  practical experience that fly1Dg 10 the second regime, 1.e.,              glider with wings having an individual aspect ratio of far kss
+  at the stall, was positively dangerous.                                   than three. H. Hayden secured, in 1922, a patent for a rhom­
+     It is true that spinn ing- Pa rker's "Spiral D ive "-was               boidal wing with an aspect ratio of nearly unity, claiming for
+  attributed. in those days, to high i~cideoces, and that most _of          such a shape high lift and good flying qualities.
+  the lightly loaded rectangular wmgs used at that period                      In 192S he constructed a glider with a win, having an aspect
+  rendered the stall relatively. in nocuo us.    Howeve_r, :iccidental      ratio of only 2.25. The wing was nearly tnangular in shape,
+  ~tailing was then, as now. the cause of the maJonty of all                with its apex leading, and a pronounced wash-out towards the
+  crashes. And the nose dive following inadvertent stalls was well          tips (Fig. 12); no lateral controls were fitted. The tailplane
+  known to be o f the most serious consequences.                    .       with the elevator was fitted underneath the trailing edge at the
+     Eiffel, Riabouchinsky, D ines, . Prandtl, etc., began the_1r
+  laboratory experiments on aerofoils of very small aspect rauo
+  and the results were generously published (how closely secret
+  they would be kept to-day!). Eiffe l showed that the ratio of
+  the resultant forces reached maxima for small aspect ratios _an~
+  that slender wings gave the greatest drag at ~ degrees 10c1-
+. <lence, whilst disc wings had then t_he leas) res\stanc_e of _all.
+   Riabouchinsky proved that the maximum 11ft with d15:C Wl1'!8S
+  wa~ reached at incidences of the order of 40 degrees. whilst with
+  normal aspect ratios (exceed ing a value of 4) the maximum lift
+  took place at incidences of 12 to 14 degrees only.           Beyond
+                                                                                                                  c          ==---=--
+  their critical incidence disc wings gave a gradual decrease of
+  the lift force whereas wings o f normal aspect ratio gave a
+   very abrupt ; nd unsteady one. 1 he tests by Dines on flat
+   plates in natural wind confirmed this info_rmauon and that the
+  observation applied 10 cambered aerofoils as well was also
+  proved (by Riabouchiosky). 0. Foeppl s_howed frof!l system­
+  atic wind-tunnel tests that a square aerofoil behaves, ID respect
+  of its lift curve in a remarkably d ifferent manner from one                       Fig. 13.-A French project of G. Abrial, 1929.
+  having an aspec't ratio of 1.5, although wall interference and
+   Reynolds Number may have somewhat affected the results of
+   the tests.                                                .              stern of a f11selage. Flyinf experiments in Styria were said 10
+     Later, Pra ndtl was eager to point o~t that his aer~fo1l theory        have proved satisfactory flying qualities.
+   did not hold for very small aspect ratios, and that, ID fact, the           Some early tailless aero planes, such as certain experimental
+   induced drag of disc wings was less than the theory suggested.           types of Rene Arnoux, had rather stub wings a nd heavily
+   In sP.ite of this, however, nobody seems to have he~ded the              reflexed (i.e., positively stable) aerofoil sections. A 19?9 design
+   possibilities implied and the " ~attle of the Aspect Ratios" was         of G . Ab rial showed an aspect ratio of 2.88, with, however,
+   decided in favour of slende r wings.                           .         substantial tip discs (which have the effect of increasing the
+     To be fair, it must be pointed out that there was one senou~           aerodynamic aspect ratio) a nd wind-tunnel experiments indi­
+                                                                 I
+                                                                            cated a creditable performance (Fig. 13). Russian attempts,
+                                                                            in particular the parabola type of Tscheranowsky, too, were
+                                                                            experiments with aspect ratios of three and even less (Figs. 14
+                                                                            a nd IS). Their resemblance in shape to the latest designs of
+                                                                            super-sonic aeroplanes is remarkable.                   .
+                                                                                                    A Modttn Pioneer
+                                                                               Further intcre~t in the aerodynamics o f disc wings was
+                                                                            displayed by research workers with th.e arrival of Juan de la
+                                                                            Cicrv:i's Autogiro. This was indeed s<>mcthing like a circular
+                                                                            wing, a nd performance estimates were based on the properties
+                                                                            of such wings. Yet the question of stalling stability did not
+                                                                            a rise, bccau~e of the rotor properties.
+                                                                               The real pioneer of the disc wing was a very able American
+                                                                            research engineer of the National Advisory Committee for
+     Fig. 12.-Experimental Hayden glider, 1925. Span, 19.7 rt. :            Aeronautics (N.A.C.A.), who proved capable of following
+     length, 13·85 rt.; wing area, 173 sq. rt. All-up_ weight,              independent lines of development. In about 1930 Charles
+                     310 lb. No lateral control.                            H. Zimmermann subjected the properties of disc wings to
+
+                                                               NND 927545
+   MARCH S, 1948                                                        281
+                                                                                                         e                THE AEROPLANf
+
+                                                                          wing , tructures as well as for the pos\lbility of housing every·
+                                                                          thing w11hm a wing.
+                                                                              Hence 1hc1e a re very real design reasons for the preference
+                                                                          of disc wings, quite a pan from the ea~cd accommoda11on of
+                                                                          short-span aeroplanes.
+                                                                                               Some R ernurkable Results
+                                                                              Zimmermann establ.shed that the optimum a~pcct rauo "'"~
+                                                                          found bet,..een the values o f 0.75 and 1.5. l he,c value,
+                                                                          include both ,quare and ctrcubr wmg ,hapes. For a g1Hn
+                                                                          win g sccu on (Clark Y) the latter gave the h1gh~t hft coefficient.
+                                                                           1.85 at 45 degrees incidence, compared "uh a value of t.:!4
+                                                                          at 14 degree, mc1dencc for an aspect ratio o f six.
+                                                                              Funhcrmore. an important result "'•'\ evidence that at ~,n
+                                                                          a,pect ra110 of unity hquare or elhpllcal .... ,ng,), and :11 an
+                                                                          a,pect rauo of 0.9 (" mg "11h faired ups), no tendcnc)' 111
+
+                                                          ...   - --
+                                                                /         autorotauon could be found. A circular " mg (:1,ix-ct raw,
+                                                                          of 1.27) ind c.llcd the po\\1hili1y of ~1urnrntation (1.e., ,rinningl
+                                                                          at incidence\ below that of maximum lif1. 1 he 1nm1biht)' of
+                                                                          ,pinning before the actual ,tall is reached is. indeed, e,tra·
+                                                                          ordinary. All these rcwh, r.:fer to te,t• "ith the ( lar~ ,
+         Fig. _14.-A Russian • puabola' glider of 1924.                   aerofoil section.
+                                                                              Less establi,hed "as the contenuon th:11 d1..c wing would
+                                                                          11ive improved la11:ral and longuudmal ,1.1h1htv at low incidence,
+extensive wind-tunnel investigation and the publbhed reports              1 hi, ..ecm, ,11II 10 be a moot point of the Flyin!l Saucer.
+\till form the ba,is of prc~ent development. In places.                       In Fig. 16, Fig. 17. and Fig. 18 some charactcri,tic result, ,,f
+ the re,ults confirm, qual1tat1vel)', the experiments made '.!O year~
+before. But, as mentioned earlier, these experiments had been
+praet1C111ly forgotten.
+   Zimmermann' s target has been the development of a really
+ fool-proof aeroplane for amateur pilots. It is no u<,c hiding                                                                         7
+ the fact that in n.:arly all accidents in which blame is attributed
+ to an .. error of /'udgment" on the part of the p1lo1, th.:
+aeroplane is :ietual y at fault. The moq common causes arc
+the consequences of inadvertent ~tailing.             Once this 1~
+completely remedied, the overwhelming majority of accident
+will become mere incidents or just fun, and instead of coroners
+and hospitals. aircr.1ft manufacturer) and repair shop) will                      I!
+have the benefit
+   On such very sound lines (which seem to be generally                                                                        II
+acknowled$ed , but still far too often ignored), Zimrrcrmann                                                                   I I
+directed his main attention to the stall ing problem.                     :;.,
+                                                                  He
+;>roved that small variations in the aspect ratio made profound           't
+                                                                          ...~
+differences and that the shape of the wing tips also had a great                  0-,
+influence.
+   At the same time he confirmed that the induced drag of
+circular or square wings is by no means as proh1b111ve as the
+                                                                          ~.
+simple theory of the " horseshoe " vo rtex line would indicate.
+He also proved that it was simply the induced drag due to the
+predominant influence of the marginal vortices which brou~ht
+about the behaviour at high incidence~: the idea that the
+                                                                                  ••
+provision of oblique slots might help in this connection proved,
+h owever, abortive.
+   An advantaae which Z1mmermann' s research brought to
+liaht was that disc wings gave less profile drag at small
+                                                                                                                           CIA°', IIC,,O,.
+incidences (high-speed flight). because of the reducti on of the                                                               -1....____..._
+relative thickness of the aerofoil sections. 1 h is drag reduction                                                      .,,.     JO'       -:
+has indeed become one of the rr.ain reasons for di.c wings
+being adopted for aeroplanes capable of flying at ~reeds at                      Fl&, 16. -N .A.C.A. tests by C. H. Zimmermann which prove
+which the compressibility of the air needs to be considered .                          the extraordinuy sull1ng qual1t1es of disc wines,
+Fo r supersonic flight disc wings seem, at P.rcscnt, to be a
+necessity. Alternatively, for a given aerofoil thickness ratio,
+!he height avail_able f<?r st,:ucture _and stora1te (J?Ower plant_sl     Zimmem1ann·~ _wind-tunnel experiments of 1932 are given. It
+1s greatest within a disc wmg; this ma.,es for light and sutr            1~ seen from F,,. 18 that the difference between the mc1deoce
+                                                                         of ma,umum hft and the gliding angle at m:i1t1mum hft
+                                                                         ("ma'< •a ma'<) rem:im'I fairly independent o f aspect ratt,,, and
+                                                                         of the o rder of 9 to 13 degree,. 1 h1~ would me:in th.11
+                                                                         the attitude of the . disc-type aeroplane, when flattening out,
+                                                                         would not greatly d iffer from that of convcnuonal aeroplane,
+                                                                         In particular, there "'ould be no need 10 provide h1g_h under·
+                                                                         cama;ies for disc aeroplane, a .. their gliding path 1s steer
+                                                                         Thi, 1s an important difference from "''"IJS w11h lead1ng-cd~~
+                                                                         ,lots.
+                                                                           . In P!'3Ctice, however: the landing of disc-wing aeroplane,
+                                                                         ~•vcs rise to undercarriage problem,. As the induced dra~
+                                                                         mcrcascs rapidly "ith the reduction of !tying ~recd, when the
+                                                                         aeropla ne flattens o ut prior to touchina·do" n, the ihdtnti angle
+                                                                         .iecpens abruptly. This 1s particularly true of ta1llc..s de"gn,.
+                                                                         and the result •~. a strong tendency to pancake 10 the ground
+                                                                         a, so~n as the p1lo_t fl:\ltcn, out. Thu~ to avoid the nccc\,il)
+                                                                         of litt1!)2 _undercamal\cs able to sta nd the strain of abnormally
+                                                                         high sink mg ~pecds, 1t has been found practical to land "Jtll
+                                                                         powe r on.
+                                                                              For a ta11le~s aeroplane " ith an aspect ratio of three,
+                                                                         M. B. Morgan found that. without flaps, the trimmed l\liding
+                                                                         angle at 160 m.p.h . was th ree degree,: it increased to 17 degree,
+                                                                         at 126 m.p.h .. while the \tailing speed was I IS m.p.h. Thi,
+                                                                         pronounced , teepcn ing of the g)idintt anttle makes a mer~er
+                                       ,                                 hct""ce~. the aeroplane and the helicopter an attrac11ve
+                                                                         propos111on .
+    Fie, 15.-A ' puabola ' aircraft by B. I. Tschennowsky.                  . Another occulia_rity o f . !he di~ wing cstahlished b~
+                                                                         Zimmermann wns us scns111v11y to the , hape of the wing•ur,,
+                                                           NND 927545
+'     THE AEROPLANE
+
+    and _pseudo-circular and pseudo-square wings thus exhibit
+    ~ignificam d.fferences... 1 his also applies to the ground eff.:ct,
+    1.e., tbe tand.ng <juahues. 1 he prov1s.on 01 ob11que nozzle­
+    shaped slots at the lips yielded no useful r.:sults. In any case,
+    squo1re-cut tips Vvere found to be a disadvantage, w11h respect
+                                                                                            282
+
+
+
+
+                                                                                                    i
+                                                                                                        c:,_                        •                   MARCH 5, 1948
+
+
+
+
+    to drag, as well as to other qualities.                                                                                                                                10
+         Later N.A.C.A. research by F. E. Weick and Robert Saundefs
+    referred to aspect ratios of the order of 3 1n conncct,on w11h
+    slotted auxiliary Vevions flaps for the trim of tailless aeroplanes.
+    This constituted the first investigation o f what has b.x:ome
+    known to-day as the .. Delta Wing.'' i.e., the combination of
+    sweep-back with low aspect ratio. Such shapes are of special
+    interest for aeroplanes capable of flying through the trans-sonic
+    region.                                                                  •                                                                                                   g
+                                Pancakes Ii la Zimmermann                                                                                                                   10
+                                                                                                                                                                                 :
+                                                                                                   0
+         The results of Zimmermann's research were so ~onvincing                                                                             Cl ARK I AEAO FOtl SECTION        "0"'<
+    that a number of otherwise quite respectable designers were
+    tempted into experimentation with disc-wing aeroplanes. In
+    accordance with Zimmermann's views, all these designs were
+     intended to be of the safety-first type of privately owned
+                                                                                                                                                (i-v-CA ZIMME~MANN,
+                                                                                                                                                      ~l P No ()1)            --..
+                                                                                                                                                                                 :;
+
+
+     aircraft. This distinguishes the early phase from the more
+     recent interest in Flying Saucers.
+         In '1934 Farman was stimulated into experimenting with a
+     wing with an aspect ratio of only 1.9. 1 his was seen in his                                            o ' - - - - ~ - - - L - - - J L _ ._ _..L._ _...L._......:~,
+     F-1020 monoplane which otherwise had a long fuselage with
+     a conventional tail. It was said to have proved very stable
+     in flight. but was noc further heard of.                           An experimental
+                                                                                                                                                         ASPEC T AATIO   .,
+                                                                                                                                                                        .,
+     parasol monoplane with a completely circular win$, a camber                                        18. -Furthcr results from Zimmermann's tesu shown here
+     flap in the trailing edge and severely skewed ailerons Wl?.$
+                                                                                                        also indicate the advantages to be gained from disc wings.
+     tested in the U.S.A. (in 1934), with indifferent results. It was
+    shown in flight in news reels.
+         At about the same time Raoul J. Hoffmann. of St. Peters·                                  seem to. contradict the experience referred to above and it
+     burgh, Florida, an eminent aeronautical engineer of Austrian                                  w~s aunbuted. to. a ground effect arising from the rak~ of the
+     origin (known as the first to prove-in 1913-that the r:itio                                   wing-tips. It 1s indeed rea:.onable to e)(pcct that the presence
+    C '/C 9 governs optimum climb and glide with minimum of t_he ground would affect the formation of the marginal
+        L           D
+     sinking speed, took up development of the disc-wing aeroplane.                                vort1c~s to an ex\ent which may markedly influence the
+         H offmann's Flying Saucer was a tailless aircraft with an                                 beh~v1our of disc wings during take-off and landing. Hoffmann
+     aspect ratio of slightly over 2. The fi rst type was an ultra·                                proJected a ousher and a twin-engined version but these types
+     li$ht single-seater with 36 b.h.p. Later a side-by-side two-seater                            did not materialize.                                         •
+     with an 85 b.h.p. Cirrus engine was constructed and flew well;                                    A further development was the Arup monoplane of
+     the wing tips served as ailerons and the elevators formed part                                R: J. Hoffmann and C._L: Snyder at South Bend, Indiana. The
+     of the trailing edre. The aerofoil sectir,ns employed were                                    w!ng _shape ~as v~ry s1m1lar. I~ resembled a semi-circle flying
+     N.A.C.A. M.6 basically. with N.A.C.A. M.1 at the tips. Both                                   w11h 11s straight side a_s the_leading edge; to this wing, ailerons
+     are sections designed by. M. M. Munk. The former is a reflexed­                               were added as special ups. 1 he aspect ratio practically
+    camber section with a practically stationarY, centre of pressure; corres~onded to. that of the previous Hoffmann types. Again,
+     the latter is symmetrical                                                                     aerofoils wtth little centre-of-pressure travel were used.
+         The central structure of the wing, the fuselage and the fin                                   1 he latest type ~ad it~ _tailplane and elevator separately
+     was of welded-steel tube; the wing had three spars.                                    This   locate~ over the wing tr:11lmg edge (similar to the .. Elytro·
+      little two-seater }"as stated to fly well and to exhibit ve_ry go(!d                         plane o f De Rouge!). It seems that the longitudinal control
+     stability.             It seems, however. that the controllab1hty, m                          at certain incidences was not satisfactory. 1 he ailerons which
+      particular directionally, was not satisf~ctory. 1 he visi(?n fr(?m                           formed part of the wing shape and reduced the aspecl ratio
+      the cockpit must have been very restncted--a moot point wllh • to a value ~f I:15 had a triangular shape and were greatly
+      all these designs. A speed range from 28 m.p.h. to 13S m.p.h.                                s_kewed (taking_ into account the obliqui: flow over the wing
+      was claimed. The empty weight was given as 900 lb •• and the                                 tips). The engine was a 70 b.h.p. Le Blond radial; a tricycle
+      wing loading was 5.5 lb. / sq. ft.                                                           undercarriage was fitted.
+           One remarkable characteristic observed during the flying
+      tests of Hotrmann's aircraft was that, when comin(! in to land.                                   With the oilot alone, a gliding speed of 23.S m.p.h. was
+      the approach was steep: yet prior to the fl lltening out and                                  r~o_rded (lhe wing loading was about 3.3 lb./sq. ft.) and a
+       just before touching down, the glide flattened. 1 his would                                 gliding angle of 21 degrees was mea~ured, with a sinking speed
+                                                                                                   of 12.3 ft. ocr si:cond. wh.ch ~an be accommopated by a sturdy
+                                                                                                   undercarriage witho ut nattening out of the glide. 1 he maxi·
+         C                                                                                          mum speed was 86 m.p.h .. and the take-off was stated to require
+         r
+            l MAJ(
+                   -                   C   jc
+                                         l MA.( 0 MIN                                              S secs. in zero wind.
+              0 MIN                                                                                    Several more Arup types seem to have been constructed
+                      ,001----.U---4---1-- -4-- --4-- - - - + - - -~                               an_d _flown during 1935. 1 h~ flying qualities were pr.iised­
+                                                                                                    ghding angle~ or I : 2.6 bemg quoted- and the published
+                                                                                                    performance figures sounded extremely good. Yet, for reasons
+                                                                                                    never disclosed, the production stage was not reached and the
+                                                     CI..Akl( T AUl,OfOtL SfCTl()N                  development ceased abruplly. It is worth noting that Charles
+                                                             C,.ACA • IP No u,)
+                                                                                                    Zimmermann himself has taken no part in this development,
+                ..,z
+                                                                                 ;•f                b1;11 he was an interested spectator at demonstration flights
+                                                                                      .,,.          wnh an Arup monoplane at Langley Field.
+          ~ ~ 60                                                                        J
+          ::,., l5
+                                                                                    " ..       •
+                                                                                               r"
+                                                                                                                               An Italian "Tortelllno "
+       !i        z
+                      "'                                                              fl"
+                                                                                        J
+                                                                                           "It
+                                                                                           <
+
+                                                                                           ~ •>
+                                                                                                        At the time .of the Arup development (1934). F. Piana
+                                                                                                    Canova. an Italian, began to embark on a development for a
+                                                                                                    tajlless aeroplane with a low aspect ratio. In May, 1935, he
+         "It• 0  It
+                                                                                           ti   ~
+                                                                                      11f 2         secured patents for a rhomboidal wing, one diagonal of which
+                       10
+                                                                                           c!, "z   coincided with the direction of flight. 1 he ailerons were to
+                ~                                                                               6
+                                                                                    t           i;  be located at the lateral apices. elevator and rudder at the
+                                                                                                    rear apex. while the airscrew was in front of the leading apex.
+                                                                                                    Another patent related to bi-convex aerofoils with ducts and
+                         o·                               •                    AA
+                                                                ASP(C f U flO ( •' 1J
+                                                                                                    control valve~ for the pilot, enabling the latter to neutralize
+                                                                                                    the negative oressure on the forward ventral surface when at
+                                                                                                    negative incidences. The latter patent was, apparently, never
+                Fig. 117.-These resulu from Zlmmermann's wind-tunnel                                submitted to flight experiments.
+               tests on disc; wings (1932) clearly show the character!stits
+                                                                                                                                     (To ~ confin~d.)
+                                  of low aspect ratio aerofoils.                       NND 927545
+    MARCH 19, 1948
+                                                         ,                      337                                                                  THE AEROPLANE
+
+
+                 The Biology of the Flying Saucer- III
+                                                   By A. R. Wcyl, A.F.R.Ac.S.
+                   Previous articles In this series appeared In " The Aeroplane" for February 13 and Morch 5
+
+
+WofI of0five-·11h1,UNC:anovo1
+"'!Cnl
+                          l· L I F-••n S w.:rc made in I unn and at Rnme
+                               project\ {de-.cnbcd m the prcvtom tn\1,11-
+                      ar1de). It " in1erc,11ng 10 note that 1he Canov.1
+ d1-.c-wmg lype, d id not mal.e u,e of rellc'<ed~ambcr aerofoil,.
+S1abili1y ,ind mm could . 1hercforc. be -..:cured only by an
+ upward, dcllec1iu11 of enlarged eleva1or,.
+    F.arly in 1935. :in ·open ghdl!r of 1he " Zoegling" t} pc wo1~
+ con,1ructed by a ,~ ilan firm and M. A. Garbell made fairly
+ ~ucce,,ful l11ghh w11h 11. He reported that the longitudinal
+stability (w11h the enlarged eleva1or) wa~ good and 1hat
+ par.i.chute-lil.e landing, could be performed.       rhc lateral
+stability ch.i.racteri\lic. however, proved deficient. ~ince a
+•• Dutch-roll " motion was experienced: turn, were of quc,tion·
+able steadine,,. In this rc,pcct, in~uffidcnt damping 1n foll
+and yaw a_re mentionr.d. Wi1h winch-launching, thi~ glider
+ reached altitude~ of 600 fl.
+    On 1he ba"' of thi, dc,ign, a ligh1 aeroplane wa\ developed
+and the Italian Government financed the conMruction of two
+ l~~gcr e,-perimental aeroplane~. includmg one with 130 b.h.p.
+Gip,y engine. A faial accident de~ribcd as "not necessarily
+ retlccti~f? on 1he 1echnical _merit5 of the design," cau,cd the                          Fig. 19.-An American "Flying Flapjack" w ith two engines.
+authorities to change 1hc1r minds and 10 terminate this
+development.                                                 1                                        It crashed while under test (1938).
+                     A Return to Child ish Things
+    Aeroplane, with a long, deep tail affi'<Cd to a smalhpan                         A third de,ign tin 1938) 1hc "Flcchair" \tngle-,cat fil!hlcr
+ wing form a development of lhe low•tl'pect wing in another                       rroiect. therefore. incorporalcd two co.1xial coun1cr•rot.11mg
+direclion. Although the overall a~pect ratio is low wi1h such                     ~tf'>Crcws driven by two 100 b.h.p. engines mounted in 1andem
+a n arr.rngemcnt. the wing system i, not tha1 of a di-.c. It is                   m the long fuselage. 1 he pilot's cockpit was located at the
+ more akin to primitive kites or. belier, to the paper dart of                    root of lhe fin, and a single·lrack undercarriage w.is adopted.
+ our school day~ which. a, we may be able to remember wi1h                        1 here were. however, far too m.iny untried feature in th"
+some mental effort, exhibited quite remarkable nying quali1ie,                    unusual design 10 make ii a ~rious proposi1ion. Nothing
+and made better use <>four schoolbooh than we ever expt-ctcd.                     more has been heard of Payen's cffoA~.
+    A rcpresent:11ive of 1his aboriginal 1ype is shown in Fig. 19.                   l he ll)Odern ph:ll!e of .1he Flying Saucer aeroplane i,
+It crashed during the first tests (which would not seem very                      charactcn1ed by two d1,ttncl development~.          One is the
+surprising in view of the; arrangement of engine, and air;crew,).                 hclicop1er-aeroplane, 1he other is the tranb•\onic or buper,on1c
+    Ano1her Je,s eccentric arrangement was the French Payen                       aeroplane.      Hoth have bccome:-unforiunately--cs<;entially
+single-seat racer of 1935. This was a daring experimental                         military dcvcl_opment~; the proJ_!re~~ is ~cnce bhroudcd in the
+type with a 400 b.h.p. radia l engine. A n improved type, this                    u~ua I pretcnuou~ \ecrccy Iwhich implies that the potential
+time more reasonable--a 70 b.h.p. light aeroplane- was                            enemy knows everything) v. hile the work is gravely hampered
+constructed in 1936. To a very small. conventionally tapered                      by elabora1c securi1y precautions.
+wing, a large triangu lar tail was fitted: the wing alone had                        The helicopter-aeroplane is not a novel idea. Many }Cars
+d ihed ral. and the overall aspect ra1io was about 1.76. No                       ago, for in,iance, Nicola T e~la (famous for his elccirical
+flights have bc.:n reported of one of these Payen aeroplanes.                     experiment~ wi1h high-frequency phenomena) bccured a pa1en1
+but take-off attempts with the ~econd type seem to have                           for a taille,~ aeroplane equipped with a large lifting air~rcw
+sugges1cd that with 1he small span the 1orque reaction of the                     pcrmi11ing a vertical ascent.
+air,;crcw ca nnot be adequa1ely dealt with.                                          In 192 1 Claud Dornier ~ecured a pa1ent for a eonvcnlmnal
+
+                                                                 1/lO C
+                                                                                                           -          - ·-~
+1110 C
+
+
+f
+         L
+                                                                lL:             .__ ._                                          GI
+                                                                                                                              c• t      •
+                                                                                                                                                     Fig. 20.-Llft and
+                                                                                                                                                     drag of wings of
+                                                                                                                                                     different aspect
+
+                                                                                                                 . :~
+      120
+
+
+                                                                '--- 100
+                                                                         I                                      ,_
+                                                                                                                                            0        ratio. (Left) W ind-
+                                                                                                                                                     tunnel results
+                                                                                                                                                     obtained
+                                                                                                                                                     Goettingen , in
+                                                                                                                                                                      at
+                                                                                                                                                                            \
+
+
+                                                                                                         ~j                                          1920; Goettingen
+                                                                ~~
+                                                                  -        80
+                                                                                          n        ...                                               389 aerofoil with
+                                                                                                                                                     10 per cent. t hick-
+ ~ eo t--t--;illt":!'-~ -+7"lr--+--+..-t---c¥~--+~                                                 19"                   ASPECT RATIO                ness and square
+                                                                                                  0
+                                                                                                  .»
+                                                                  ...                     1                               0     1 SQUARE v, ING      wing tips. (Right)
+                                                                  ~
+
+
+  "                                                                                                                                                  A reduction of the
+                                                                ...a:; ~60                                                +     2
+                                                                                                                                                     r esults to an
+                                                                   ~
+                                                                   ...                ~(                                  A     3
+                                                                                                                                                     aspect ratio of
+                                                                  w
+                                                                  0
+                                                                ._u ,o
+                                                                                      (t
+                                                                                      h                                   • '
+                                                                                                                          0     5
+                                                                                                                                                     f i v e.     by t he
+                                                                                                                                                     Prandtl Aerofoil
+
+                                                                                1·
+                                                                  t                                                                                  Theory of t h e
+                                                                  :::;                                                    4l    6                    Ind uced d ra g ,
+                                                                                                                          ()    7                    s h o w s t hat a
+                                                                ~
+                                                                           w                                                                         s quar e aerofoil
+                                                                                .t                                                                   (aspect ratio of
+
+
+                                                               -
+                                                                                                                                     - i--c          one) does not
+         oQ-"11~t---t--t--:,~o- r-+ ---l- +-~ 20- +--+--I
+                                               I
+                                                                         I- 0    i€
+                                                                                  I
+                                                                                                                    10
+                                                                                                                                                ID   follow the theory.
+                                                                                                                                                     Its induced drag is
+                                  ORAG C0EfFICIENT    100)                                                                                  20       less than pre­
+                                                                                                                     I                          I
+                                                                                      ~       I                     DRAG COEFFICIENT    < 100)       dicted by t he
+                                                                '--        20                                                                        "h orse-s h o e
+                                                                                                         0. :
+                                                                                                                                                     vortex " assump-
+                                                                                                                I                                             t ion.
+
+
+
+
+                                                                          NND 927545
+     THE AEROPLANE                                                                              . 338                                                                                                  MARCH 19, 1948
+
+•               100 C
+
+                 t
+                         L
+                                                 l        ...l'
+                                                                                                          I
+                                                                                                          100 Cl
+
+                                                                                                              t 1,10
+                                                                                                                    I                                                                                   Fig. 21 . - LI ft
+                                                                                                                                                                                                        curves of aerofoils
+
+
+                 ~
+                        1IO
+
+
+
+                                            i\ ~ ~
+                                                     AR 1
+
+
+                                                   --;?  :a-:
+                                                        ,_,... /
+                                                                   ~
+                                                                       LA>-
+
+                                                                   L,CI"
+                                                                                  ~
+                                                                                  L-/
+                                                                                         f
+                                                                                                              -l                                             -
+                                                                                                                                                                        ~· --
+                                                                                                                                                                  . o,."'
+                                                                                                                                                                              O+
+                                                                                                                                                                                     ..
+                                                                                                                                                                                          C
+                                                                                                                                                                                                        of different aspect
+                                                                                                                                                                                                        ratios. (Left)
+                                                                                                                                                                                                        Wind -tunnel
+                                                                                                                                                                                                        results obtained,
+
+                                                   ~Vv
+                        100                                                                                   ~- 100
+                                                                   V                                                                                                                                    in 1920, at Goet•
+                 ...-
+                                             I
+                                                                                                                                                         o"'f3.
+                                                                                                                                                     I                                                  tlngcn, w ith
+
+
+
+
+                              ,v
+                                          AR~
+                 :z                                                                                                                                                                                     Goettlngen 389
+                                                                                                              ~ eo
+                                                                                                                                                  IA .
+
+                 ~
+                        80
+                                                                                                                                                                                                        aero fo i l and
+                                          ~~
+                                                                              V
+                                                                                                                                            t
+                                                                                                                                                                        ASPIC.T RATIO
+
+                 ~                                 ~" Lu                                                       ~                                                        a     1    Aou,hf               square t ips. The
+                 V
+                         00
+                                   ,.I.
+                                                               ,, '                                           0V        00                                              +     ?      WING
+                                                                                                                                                                                     ,__,__             absence of stall at
+                 t:                                            't. .                                                                                                    .0.   J                         normal Incidence
+                 ::;
+                                          v v l,o' /                                                          t:
+                                                                                                              ::;
+                                                                                                                                       I+                               • •                             Is In evidence, for
+
+                        '°
+                              J
+                        ~ -l.,o'
+                                  1,,1" fif (r
+                                                                                                                     ro
+                                                                                                                        t'°I
+                                                                                                                                       b
+                                                                                                                                                                        .. ,· -
+                                                                                                                                                                        .o    I
+                                                                                                                                                                              ~
+                                                                                                                                                                                              ,__
+                                                                                                                                                                                                        aspect ratios up
+                                                                                                                                                                                                        to a value of two.
+                                                                                                                                                                                                        (Right) Reducing
+
+                                                                                                          ,,.                                                           ()                              the values. by the
+
+
+
+
+     ., .
+                                                                                                                                                                                                        Prandtl theory.to
+              .#J ~                                                1 -► (l
+                                                                                        o·
+                                                                                                     cf                                                                       --<
+                                                                                                                                                                                                        an aspect ratio of
+                                                                                                                                                                                                        five, shows t hat
+                                                                                                                                                                                                        wings of very
+                                                      10   °                       10                                                                  10 •                10                           small aspect rat io
+                                                       I                                       0 '                                                      I
+                                           •NGt[   or INCll)[NC( ( O!GRCES i                                                                AN(;l[ Of tNCIO(N(( t OIGRH\ I                              do not follow the
+                         10                                                              ...                             IO                                                                             theory in respect
+                                                                                                                                                                                                        of the induced­
+                                                                                        ~                                                                                                               Incidence correc•
+                                                                                                                                                                                                                tlon.
+
+    aeroplane with take·off as helicopter {Brit. Pat. Spec.                                               control organs directly in the slipstream of tht: paddle-like
+    No.161,948). Earlier still (in 1916), the German, F. Bendemann,                                       airscrew rotor... T he twin rudders, too. are in the slipslfeam.
+    a noted fesearcb worker on a1rscrews, conducted a secret                                              Unlike the V-173 type, the XF-SU· l has an all-moving tail
+    development o f an aeroplane with a large tilting airscrew                                            surface and the undercarriage is retractable.
+    capable of rising and descending as a helicopter.             The                                        This interesting hybrid has a modern metal structure. Two
+    development of this air observation post was later discon•                                            Pratt and Whilney R-2000-2 engines Qf 1,350 b.h.p. each (at
+    tinued in view ot the Austrian helicopter experiments by                                              2,700 r.p.m.) are mounted within the wing, entirely buried and
+    Th. v. Karman and Petroczy.                                                                           cooled by forced draught. Water injection for temporarily
+       From his early experiments with lifting airscrews,                                                 boosting the oower is one of the engine features.
+    F. Bendemann found that hoverihg without forward movement                                                A special oroblem was the design of a transmission ~ear
+    could be achieved- when the power loading of the aircraft was                                         which a llows both rotors to be driven from either of the eogmes
+    less than a bout 9 11,.. / b.b-.p. With fighter aeroplanes, such                                      - this is a necessity in case of an engine failure. The four·
+    low power loadings were already then being approached1 and                                            bladed rotors are contra-rotating so that there is no residual
+    operat ional experience bad indeed shown that certain single·                                         torque and are ,eared down to about one-fifth of the engine
+    sealers could. under favourable conditions, be held in attitudes                                      speed, hence their substanlial diameter. The wing loading is
+    a pproaching that of hov.ering (later the Fokker D.Vll biplane,                                       rather high. reaching the order of 40 lb./sq. ft.
+    with a large airscrew, became renowned for this trick 10 air
+    combat on the Western Front). Attempts to revive the project
+    ~ta la ter date failed. and with the suicide of its promoter (who                                                             The Real Flying Saucer ?
+    had gone into the Civil Service), all interest lo the development                                            Since this experimental t ype was produced, further progress
+    ceased.                             •                                                                     has been made in the development. IL seems that axial-flow
+       Charles W. Zimmermann, mentioned earlier as stimulator of                                              gas turbines have been installed, and it is quite possible that
+    the disc wing, approached the conception of the helicopter                                                a combined oropulsion with thermal jet and airscrew rotor
+    Aeroplane on the basis of his results with low aspect ratio                                               is alt:eadv under test. Wilh this, for slow flight (take-off,
+    wings.     He secured basic patents and constructed during                                                climb and landing) the rotors a re driven by the gas turbines,
+     1934·35, in the cellar of his home, a man-carrying aircraft of                                           while at high speed the rotors are declutched a nd feathered
+    bis design. This had a wing of only 7-ft. span, with two                                                  and pure jet propulsion is used. This would, incidentally,
+    airscrews driven by two 25 b.h.p. engines. Due to persistent
+    engine trouble, no flights were made; the Little aircraft showed,
+    however. all the C$SCOtial features of the present types.
+       In 1937 he granted a licence for his patents to the Chance•                                                                                       (
+    Vo ught Aircraft Division of the Unik:d Aircraft Corporation                                                               ~01! 1---1---1------.1---1----1----1
+    in Strntfort, Connecticut, and /'oined this firm for the further
+    development of his ideas.          t is possible that the public
+    conception of the mysterious "Flying Saucers" has origmated
+    from this develo,,ment.
+
+
+
+                                                                                                                              -
+       Zimmermann's intention may have been the development o f
+    a safety-first aeroplaoe for the private owner. The U.S. Navy,                                                   ;
+    however, took an interest in the possibilities of the helicopter•                                                0
+    aeroplane, and the work done at present is purely for military                                                   ~
+    purposes. In 1942 a low-powered piloted scale model type                                                         ,.
+    V-173 was constructed. This wooden aircraft made many                                                            <
+    flights and proved that the ideas underlying the design were                                                     i
+    practical.                                                                                                       Q
+       The principle is that, at h igh speed and when cruising, the                                                  :::                   ...-                                    NACA 14 SEC11C)N:~
+    aircraft shall fty as an aeroplane, while for slow speed and                                                     iSV
+                                                                                                                     ..,
+    hovering it flies as a helicopter. Hence the airscrews are at                                                              0-00,
+                                                                                                                                                                                          ._N• '1·1 , 10'
+    the same time rotors and must have a rarher large diameter.                                                      ~
+                                                                                                                    0
+    With the V-173 the problem of the prone position for the pilot
+                                                                                                                    i ~
+                                                                                                                                                                                          0.~L T!HI
+    was studied. and there is reason to believe that the latest types
+    have adopted this feature.
+       A further step towards the realization of a naval gun-spotter                                                             ,.                                                           ...
+                                                                                                                                                                                               I
+
+
+
+                                                                                                                                                  -
+    and a fia),ter for use from aircraft carriers bas been the Chance·                                                           ~                                                                                    T{C
+    Vouaht XF5U·l single-seater (1946), for which a speed range
+                                                                                                                                   ~
+    from 40 m.p.h. landing speed to over 425 m.p.h. has been                                                                                                      ~01         0-ll              0-16        ~IO   0 •1'
+    claimed; in general, it follows the V-173 model. (See p. 185,                                                                                                        AU,0r0tL TMICKNESS A.ATIO
+    February 13.)
+       The aspect ratio of the wing is lesa than unity. Strictly                                                    Fie. 22.-lncrease of profile drq with section thickness, at
+    speaking, however, it is not a genuine tailless aeroplane because                                               :zero 11ft. The lfnporunce of the tip shape Is obvious.
+    of the attachment of a trimmmg elevator to both sides ot the                                                    The data refer to an aspect ratio of flve (From D.V.L. wind-
+    wina. The reason for such excrescences is the need to locate                                                                  tunnel tesu at low turbulence).
+
+
+                                                                                             NND 927545
+ 0·3
+       .,   ...
+            ~ ARCH 19, 1948
+
+
+       r - - - - - - - -- - - - - - - - - - - - --i~
+                                                                                          339                                                        THE AEROPLANE
+
+                                                                                                  M. B. Morgan has recently communicated the following
+                                                                                                values for the limit of stability at the stall from this araph:-
+<=o,                                                                                            Upper llmic of th• Ansl• of Swetp,back (r•lerred
+   0
+                                                                                                to th• l chord) beyond which Hll••tall can be         A,poc, Ratio 11.•qulr•d
+                                                                                                                   expected
+
+                                                                                                                    Ocareu
+                                                                                                                       6S                                        1
+                                                                                                                       S4                                        2
+                                                                                                                       46                                        3
+                                                                                                                       38
+                                                                                                                       2S
+                                                                                                                       14                                        '
+                                                                                                                                                                 6
+                                                                                                                                                                 8
+                                                                                                                        s                                       ••
+                                                                                                          It is thus advisable to combine sweep-back with low-aspect
+                                                                                                      ratio w!1en s~fc stallin_g is required.
+                                                                                                        . Consaderataon, of high speed lead to a ,imilar combination.
+                                                                                                      since both feature~ tend to delay the shock stall. We have.
+                                                                         o-a 04 1·0                   as ~ res!lll, the rare ca~ i;,f two quite d ifferent aspects of an
+                                                                                                      enginee~ing_ problem pointing to an identical solution.
+                                                                                                           1 he incv11able result has been the development of arrow­
+             Fig. 23.-lncrease of xero lift profile drag with thickness ratio                         sh<;1ped:. more ?r less triangular, . disc wings, termed " Oelta­
+             of symmetrical aerofoil sectldn. The saving In profile drag Is                           Wangs, _for lhgh~ at sp~eds which are trespassing into the
+             one of the advantages of disc wings because of their thinner                             tr~ns•s?nlC velocity rtg1me. Another advantage of such
+             aero~oll section. (Data from Gerber, Zurich Report No. 6).                               wings as that when the shock stall occurs. the backward shift of
+                                                                                                      !he centre of pressure is less than with normal wings. The
+                                                                                     
+```
+## Related
+
+**By content (TF-IDF cosine):**
+- [[DOW-UAP-D088, U.S. Air Force Analysis of Flying Objects in the United States, 101-172]] — score 0.26 · PDF
+- [[DOW-UAP-D017, UAP Reported at Sandia Base, 1948-1950]] — score 0.26 · PDF
+- [[NASA-UAP-D018, Gemini 4 Experiment Debriefing, 1967]] — score 0.26 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_006]] — score 0.26 · PDF
+- [[65_HS1-834228961_62-HQ-83894_SUB_A]] — score 0.26 · PDF
+- [[CIA-UAP-003, The Central Intelligence Agency and Overhead Reconnaissance; The U-2 and OXCART Programs, 1954-1974]] — score 0.25 · PDF

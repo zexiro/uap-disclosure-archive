@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014108",
+    "type": "video",
+    "title": "DOW-UAP-PR109, Unresolved UAP Report, Eastern United States, 2015",
+    "description": "\"The United States Navy Unidentified Anomalous Phenomena Task Force (UAPTF) transferred this media to the All-domain Anomaly Resolution Office (AARO) in 2022. The video contains 21 seconds of footage likely captured by an infrared sensor aboard a U.S. military platform in 2015.\n\nVideo Description: No formal data handling practices for UAP-related records existed at the time this media was reported to the UAPTF. This media was digitally altered before being reported to the UAPTF, and is presented as it was received by AARO.\n00:01-00:08: No content.\n00:09-00:11: An area of contrast becomes visible near the center of the screen, The area of contrast transits the sensor field-of-view, moving from right to left before exiting from upper left corner of the frame.\n00:12-00:21: The footage repeats at a slower playback speed.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:22-04:00",
+    "date": "2015-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:19:39-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014108/DOD_111830065.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014108/dow-uap-pr109-unresolved-uap-report-eastern-united-states-2015",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "150101-D-D0360-6865",
+    "duration": 21,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 6282717,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 6746580,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 4725255,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 2593389,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 1797999,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 1058498,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830065/DOD_111830065-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 676698,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014108.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014108/DOD_111830065.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

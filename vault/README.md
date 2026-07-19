@@ -2,13 +2,17 @@
 
 Mirror of [war.gov/UFO](https://www.war.gov/UFO/) Release 1, fetched on the day it dropped.
 
-**162 records** across these agencies:
+**334 records** across these agencies:
 
-- Department of War: 82
-- FBI: 56
-- NASA: 12
-- Department of State: 8
-- Unknown: 4
+- Department of War: 171
+- FBI: 87
+- NASA: 40
+- CIA: 21
+- Department of State: 7
+- Department of Energy: 5
+- Intelligence Community Agency: 1
+- Office of the Director of National Intelligence: 1
+- U.S. Government: 1
 
 ## Browse
 

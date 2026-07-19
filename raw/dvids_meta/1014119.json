@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014119",
+    "type": "video",
+    "title": "DOW-UAP-PR113, Unresolved UAP Report, Western United States, 1996",
+    "description": "\"The United States Navy Unidentified Anomalous Phenomena Task Force (UAPTF) transferred this media to the All-domain Anomaly Resolution Office (AARO) in 2022. The video contains 2 minutes and 57 seconds of footage likely captured by an infrared sensor aboard a U.S. military platform in 1996.\n\nVideo Description: No formal data handling practices for UAP-related records existed at the time this media was reported to the UAPTF. This media was digitally altered before being reported to the UAPTF, and is presented as it was received by AARO.\n00:01-00:13: No content.\n00:14-00:17: An area of contrast transits the sensor field-of-view, entering near the upper right corner and exiting near the lower left corner of the frame.\n00:18-01:21: The footage repeats frame-by-frame.\n01:22-02:13: The footage repeats at a slower playback speed.\n02:14-02:56: The footage holds on a frame extracted from the first 17 seconds of the video.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:23-04:00",
+    "date": "1996-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:18:17-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014119/DOD_111830133.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014119/dow-uap-pr113-unresolved-uap-report-western-united-states-1996",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "960101-D-D0360-5416",
+    "duration": 176,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 67174905,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 66526375,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 42408160,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 19365930,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 12462851,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 6621492,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830133/DOD_111830133-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 4312803,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014119.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014119/DOD_111830133.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

@@ -3368,9 +3368,9 @@ aircraft and helicopter pilots. A gradual information campaign could target:
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[65_HS1-834228961_62-HQ-83894_Section_10]] — score 0.41 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.35 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_7]] — score 0.35 · PDF
-- [[65_HS1-834228961_62-HQ-83894_SUB_A]] — score 0.33 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_8]] — score 0.32 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_9]] — score 0.31 · PDF
+- [[CIA-UAP-003, The Central Intelligence Agency and Overhead Reconnaissance; The U-2 and OXCART Programs, 1954-1974]] — score 0.42 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_010]] — score 0.39 · PDF
+- [[USG-UAP-D001, Congressional, White House, UFO-related Constituent Correspondence, 1998]] — score 0.34 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_007]] — score 0.33 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_006]] — score 0.32 · PDF
+- [[DOW-UAP-D092, Department of the Air Force Committee to Review Project Bluebook, 1966-1967]] — score 0.31 · PDF

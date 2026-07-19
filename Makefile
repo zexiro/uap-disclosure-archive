@@ -21,7 +21,7 @@ links:
 	@python3 scripts/build_links.py
 
 refetch-csv:
-	@./scripts/fetch.sh "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-csv.csv" raw/csv/uap-csv.csv
+	@./scripts/fetch.sh "https://www.war.gov/Portals/1/Interactive/2026/UFO/uap-data.csv?release=4" raw/csv/uap-csv.csv
 	@./scripts/fetch.sh "https://www.war.gov/UFO/" raw/ufo-page.html
 
 parse:

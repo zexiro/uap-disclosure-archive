@@ -40,6 +40,6 @@ Actual site photo with FBI Lab rendered graphic overlay depicting corroborating 
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[FBI September 2023 Sighting - Serial 5]] — score 0.22 · PDF
-- [[FBI September 2023 Sighting - Serial 3]] — score 0.19 · PDF
-- [[FBI September 2023 Sighting - Serial 4]] — score 0.16 · PDF
+- [[FBI September 2023 Sighting - Serial 005]] — score 0.24 · PDF
+- [[FBI September 2023 Sighting - Serial 003]] — score 0.21 · PDF
+- [[FBI September 2023 Sighting - Serial 004]] — score 0.17 · PDF

@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1010267",
+    "type": "video",
+    "title": "FBI-UAP-PR003, \u201cOrbs Over\u00a0the Pond,\u201d 2024",
+    "description": "\"In October 2024, at approximately 1851 local time in the northeastern United States, an eyewitness observed a light source below the horizon, hovering above a pond at an estimated distance of 2,700 feet. The luminous object resembled a \u201cplasma-like sphere\u201d intermittently changing shape and luminosity. At times, the primary light source appeared to separate into smaller luminous points. A luminous point below the primary source hovered just above the water and did not appear consistent with a surface reflection. The object remained generally stationary for approximately 45 minutes before disappearing. The eyewitness did not hear any sound from the objects. This video was captured by a private citizen on an iPhone and subsequently analyzed and authenticated by the U.S. Government. To protect the individual\u2019s privacy, the footage has been cropped. Apart from this privacy-protective measure, no edits, enhancements, or alterations have been made to the visual content.  \r\n\r\n The description above is derived from statements provided to the Federal Bureau of Investigation (FBI) by an eyewitness to the event. The FBI assesses the individual who reported this event as highly credible. The subject matter described in files FBI-UAP-D004 through FBI-UAP-D008 and depicted in the video footage FBI-UAP-PR001 through FBI-UAP-PR003 corresponds to reports originating from the same general area in the northeastern United States.   \"",
+    "keywords": "AARO061226",
+    "date_published": "2026-06-12T07:00:15-04:00",
+    "date": "2024-10-01T00:00:00-04:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-06-12T07:54:40-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010267/DOD_111764159.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1010267/fbi-uap-pr003-orbs-over-pond-2024",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "241001-D-D0360-3629",
+    "duration": 265,
+    "aspect_ratio": "4:3",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159.mp4",
+        "type": "video/mp4",
+        "height": 1920,
+        "width": 1080,
+        "size": 296462678,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 123247302,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 95287556,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 41701322,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 32129865,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 16671699,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764159/DOD_111764159-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 6216550,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1010267.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010267/DOD_111764159.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

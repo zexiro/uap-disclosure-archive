@@ -211,9 +211,9 @@ Docld:34714985 Page 7
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[65_HS1-834228961_62-HQ-83894_Section_4]] — score 0.14 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.14 · PDF
+- [[DOW-UAP-D096, Correspondence Relating to Project Blue Book, 1955]] — score 0.15 · PDF
+- [[DOW-UAP-D092, Department of the Air Force Committee to Review Project Bluebook, 1966-1967]] — score 0.15 · PDF
+- [[DOW-UAP-D094, Analysis of Flying Object Incidents in the United States, 1949]] — score 0.14 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_004]] — score 0.14 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_005]] — score 0.14 · PDF
 - [[18_100754_ General 1946-7_Vol_2]] — score 0.14 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_5]] — score 0.14 · PDF
-- [[65_HS1-834228961_62-HQ-83894_SUB_A]] — score 0.13 · PDF
-- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.13 · PDF

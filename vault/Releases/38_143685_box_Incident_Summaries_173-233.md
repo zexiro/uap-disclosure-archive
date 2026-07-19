@@ -3874,9 +3874,9 @@ carth (if this happened)
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[38_143685_box_Incident_Summaries_101-172]] — score 0.38 · PDF
-- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.35 · PDF
-- [[38_143685_box7_Incident_Summaries_1-100]] — score 0.34 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.33 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.30 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_4]] — score 0.28 · PDF
+- [[38_143685_box_Incident_Summaries_101-172]] — score 0.35 · PDF
+- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.34 · PDF
+- [[38_143685_box7_Incident_Summaries_1-100]] — score 0.33 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_006]] — score 0.31 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.31 · PDF
+- [[DOW-UAP-D088, U.S. Air Force Analysis of Flying Objects in the United States, 101-172]] — score 0.30 · PDF

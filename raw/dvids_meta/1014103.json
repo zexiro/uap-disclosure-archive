@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014103",
+    "type": "video",
+    "title": "DOW-UAP-PR105, Unresolved UAP Report, East China Sea, 2025",
+    "description": "\"The United States Indo-Pacific Command submitted a report of an unidentified anomalous phenomenon to the All-domain Anomaly Resolution Office (AARO) consisting of 5 minutes of video footage from an infrared sensor aboard a U.S. military platform in 2025.\n\nVideo Description: \n00:01-00:14: The sensor pans to track an area of contrast, keeping it generally centered within the center of the frame.\n00:15-00:19: The sensor adjusts, and the image is momentarily overlaid with black rectangular areas.\n00:20-1:34: The sensor pans to track an area of contrast, keeping it generally centered within the center of the frame. Portions of the area of contrast intermittently lose distinctiveness against the background throughout this segment.\n01:35-02:05: The sensor zooms in, panning from right to left to track the area of contrast. The area of contrast exits the scene from the right edge of the frame several times. \n02:06-04:59: The sensor zooms out and in several times, and pans the field-of-view against the background. No content.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\"",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:19-04:00",
+    "date": "2025-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:20:29-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014103/DOD_111830030.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014103/dow-uap-pr105-unresolved-uap-report-east-china-sea-2025",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "East China Sea",
+      "country_abbreviation": "E3"
+    },
+    "time_start": 0,
+    "virin": "250101-D-D0360-9236",
+    "duration": 299,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 152672944,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 144982672,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 106241402,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 58925163,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 46179658,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 23803542,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830030/DOD_111830030-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 11089625,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014103.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014103/DOD_111830030.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

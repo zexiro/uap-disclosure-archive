@@ -769,8 +769,8 @@ Squadron.
 
 **By content (TF-IDF cosine):**
 - [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.20 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.19 · PDF
-- [[38_143685_box_Incident_Summaries_173-233]] — score 0.19 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.18 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_5]] — score 0.18 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_4]] — score 0.17 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.19 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_006]] — score 0.19 · PDF
+- [[38_143685_box_Incident_Summaries_173-233]] — score 0.18 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_005]] — score 0.18 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_004]] — score 0.17 · PDF

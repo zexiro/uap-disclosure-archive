@@ -2970,6 +2970,573 @@
     "phash": "954080452aff9fd25ebb9aa83feadab42aebd5506aaa74a86eaa64426aa9646a"
   },
   {
+    "file": "raw/images_extracted/CIA-UAP-016-Sightings_of_Unidentified_Flying_Ojbects_in_Ladakh_Nepal_Sikkim_and_Bhutan__p001_000.jpg",
+    "src_pdf": "raw/docs/CIA-UAP-016-Sightings_of_Unidentified_Flying_Ojbects_in_Ladakh_Nepal_Sikkim_and_Bhutan.pdf",
+    "page": "001",
+    "w": 1222,
+    "h": 1022,
+    "sha256": "e32dddce48e81cf426b20ae3e215c3058df74cfc5de3dbd226ab79f90bfc781c",
+    "phash": "cf18718f31c965969659d669c664926661b69359f133c433c662e666dc6699cc"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D077_Unresolved-Case-Analysis-Update_Western-United-States-Event__p001_000.png",
+    "src_pdf": "raw/docs/DOW-UAP-D077_Unresolved-Case-Analysis-Update_Western-United-States-Event.pdf",
+    "page": "001",
+    "w": 366,
+    "h": 355,
+    "sha256": "abd462d853fbd21d7e96a1aeb51a0cbad2009f224cc807dcb2c4477a07c463fa",
+    "phash": "0000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100__p098_1163.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100.pdf",
+    "page": "098",
+    "w": 1748,
+    "h": 1381,
+    "sha256": "771c95fe54b32a50fe18979613644117fdf258acdd491680a05288c084886be2",
+    "phash": "e544081292b340ad32ae26c96aee7a226fea49b26bba09bf12bff6493eaeb648"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100__p129_1437.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100.pdf",
+    "page": "129",
+    "w": 1717,
+    "h": 1342,
+    "sha256": "8612986ea4d4fa8894f4f59b4babc32eb7921c1bce25cdf30b1924e6d522cfd6",
+    "phash": "d154ca0235add4a52aaf6a4b7aea536a6afa55aa2aafe29537aa552a2aaad428"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100__p163_1746.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100.pdf",
+    "page": "163",
+    "w": 1732,
+    "h": 1353,
+    "sha256": "88f02e3c56e6f67d764303e53bf2f7b1bbda0ec04db1b6f39088f3c37edba522",
+    "phash": "c154a008368b449636ab4b556baa5de46ab6716f6bfe34d936aa55aa3eab4905"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100__p169_1807.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100.pdf",
+    "page": "169",
+    "w": 1705,
+    "h": 1320,
+    "sha256": "8d57464921f2e455a28dc84b7e919a9d280da8889937d2d30f5c0f5ddd689480",
+    "phash": "e1553f5d9cae893314a737dd768a35a9621b045769bd2a5559a61b0a2fae2550"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p068_067.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "068",
+    "w": 1574,
+    "h": 1239,
+    "sha256": "720565ea25b0ab920a21f8e27236754477e57fb86e6ae0ad11b74ff5253aa8e2",
+    "phash": "c0453c40157bc28e45fe633411ae861916bb78c53ea3752b3ade65753ae935e6"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p073_072.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "073",
+    "w": 1572,
+    "h": 1248,
+    "sha256": "ad8183d4c5ee80182a9eb61647b175f83ba0167510b182ae11790b42e725983e",
+    "phash": "801483083eba4a4f36bbc60c7aea460e7eabd2096eaed0696ebe6a276fae31f0"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p074_073.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
+    "page": "074",
+    "w": 1568,
+    "h": 1250,
+    "sha256": "c69a7af06ebd71481c05cf9e3e8375c33bcf513d2652999d44f305f5c5397cfb",
+    "phash": "c115d75d7eea930d7ee2830d6eea934c7eba850a6bba84486eaa22146bae2ce2"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D089_Range-Fouler-Debrief_Eastern-US_2020__p002_014.png",
+    "src_pdf": "raw/docs/DOW-UAP-D089_Range-Fouler-Debrief_Eastern-US_2020.pdf",
+    "page": "002",
+    "w": 2550,
+    "h": 819,
+    "sha256": "cf62625aa39d4488e92462e663750eb4ae2cbecf8eb6419c9d26b4eb9a7537dc",
+    "phash": "8000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D088_US-AirForce_Analysis-of-Flying-Objects-in-the-US_101-172__p151_1035.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D088_US-AirForce_Analysis-of-Flying-Objects-in-the-US_101-172.pdf",
+    "page": "151",
+    "w": 1614,
+    "h": 1252,
+    "sha256": "18b16bf87a45fa2331b73ad0e5a211c275715f2cdf18c5d668f5a625f211a3e3",
+    "phash": "d400975135ea51ae36dd4d163f6a92582da5ca493affc92a3adbaaa42bfa128a"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D088_US-AirForce_Analysis-of-Flying-Objects-in-the-US_101-172__p155_1071.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D088_US-AirForce_Analysis-of-Flying-Objects-in-the-US_101-172.pdf",
+    "page": "155",
+    "w": 1619,
+    "h": 1274,
+    "sha256": "de267ca0a5f7b39e1642bcdc793cdb23bb80430b5d80da9d75c05e875047e9fa",
+    "phash": "d55514506aaaad576aaaad956aaa8c176baab2556eaab3552aaea01d3aaa8f64"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p018_101.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "018",
+    "w": 1835,
+    "h": 1197,
+    "sha256": "e20713dbf769a121390493325723b2241b11495d6d99d20ab48886694719731a",
+    "phash": "d42136f6c97d9252c26896936b639692956f86466fa990b66d7e11cc31bd2ca9"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p026_162.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "026",
+    "w": 1813,
+    "h": 1187,
+    "sha256": "3b37a8db401a426766a9bbc38f4e8320e7fbd81d89765dab8b12ee1d9c3fa358",
+    "phash": "a5153d2ba5aac2d592dad2d8c17acb7dc166c296c0dab4da22c53d093f253d6a"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p033_228.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "033",
+    "w": 1649,
+    "h": 1188,
+    "sha256": "890a14800ff0bf6a80b53e9d1382ae4d164e54a25e6df982f59a6ecb9da96ec8",
+    "phash": "d5fa0bfbf200d29697fc2d52f401f009d4b494b6bca3ed29d569c5299c06bc07"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p036_237.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "036",
+    "w": 1810,
+    "h": 1181,
+    "sha256": "886ff1c0dc3a93d05e7e5df4d4316cf312100383e6cc209e6f7e69ddbccdb323",
+    "phash": "870091e3e0fb9a9d37046a42c0fb6ad9912e0e48d1bb6bf6c4aecc0d90ff3795"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p048_306.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "048",
+    "w": 1857,
+    "h": 1242,
+    "sha256": "a138233b4fd85258775acc9cc8ac3764d6598d25da6f43f7282afa08c2f89077",
+    "phash": "f42a9861c0c7641e9f701bc1bc98c82ee3c366d98f2c6793b9d948cce6769a33"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p054_337.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "054",
+    "w": 1448,
+    "h": 1188,
+    "sha256": "6b461a062cfbfdf2b3f52a92b45bdcc0f22c032688290174b9d4e4239b0db737",
+    "phash": "d77eb9911776ec89467ec911466e66c919323ff02ecd19369811666eb8811376"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p056_347.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "056",
+    "w": 1618,
+    "h": 1186,
+    "sha256": "11932cc530f4c8dfe8bfc0e4566a42a80e623e35ffee89cc5f7be4c6692c875f",
+    "phash": "f5d6952ace481af5d52b6ad597286c64909363e685080ed5d12f63d797926c4d"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p059_354.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "059",
+    "w": 1580,
+    "h": 1185,
+    "sha256": "32d948fb460c9d33289bb9961bb33c7447b9eb5ff41e4205030535d271494d6b",
+    "phash": "fd576be9c40a9e36945264e3e5a0091dd10cf3c4c6422cf6f8e2cba3c72b8e1d"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948__p062_377.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf",
+    "page": "062",
+    "w": 1637,
+    "h": 1190,
+    "sha256": "a06dea9c5b57be7551f449c13dfc67a247822c1ffee8b1d1342a0364353775d1",
+    "phash": "e0abbc75879543bb9428b4c48771638b95c3ce558756e3ac98e74e19833cf1c4"
+  },
+  {
+    "file": "raw/images_extracted/DOW-UAP-D097_Project-Sign-Progress-Report_1948__p035_161.jpg",
+    "src_pdf": "raw/docs/DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf",
+    "page": "035",
+    "w": 1580,
+    "h": 1227,
+    "sha256": "99bf6659c875a5413836abb5300b54cf56fe4c48d8bfc1dc10d333a9b4a1025a",
+    "phash": "ea151ffd956f256f6d02d82872b8859149abc32bc45a8c528f52e650cceb8fca"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p005_002.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "005",
+    "w": 1233,
+    "h": 822,
+    "sha256": "bc9047d83614f4c73a4b48ff62560651302877be132cb094f262de691bf067d0",
+    "phash": "c059f3213ff60ff9c05bf0093e068ff983fb303e7c018fc0f3f9287f080796c0"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p006_003.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "006",
+    "w": 1189,
+    "h": 793,
+    "sha256": "ead7c02e7e1ac32d5c711dcb21f7f4c767e1daf21d2bf496e66da134862aa5a2",
+    "phash": "d9996e6c2ee6066cd1333d993ff1c2ece0233d8c0af8c2a3f01e3f01c3f2c0b9"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p006_004.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "006",
+    "w": 1189,
+    "h": 793,
+    "sha256": "e8c19c7c5ca92de627cfc61209eaa20d4ca85993373dfb21abb3e812cfafaf2f",
+    "phash": "c9997ce62ec6c666d1333d990f73c06ef1063f5182f9c08e3c161fe1c1be640b"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p007_005.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "007",
+    "w": 1212,
+    "h": 807,
+    "sha256": "1b3f537df550474c8e73d6082d12e94b76763958354341b88bcb042fb2d078ae",
+    "phash": "d999398c2666c6ccd333398c0d99c66675263d99c266e0263d992763c2f79d99"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p007_006.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "007",
+    "w": 1211,
+    "h": 807,
+    "sha256": "fc941b4f58445f4ab408abb8b2915f1a415315fdf7c56c9cda23c5d6b85d1c1c",
+    "phash": "a1545aaa1e540dabe25ae5951f6a0e956168f6829eb50f7a61b2f0958f0a1efd"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p008_007.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "008",
+    "w": 1177,
+    "h": 785,
+    "sha256": "ba3876ddd5b4fbdc38592c9a7c93daf8e300a309823f53f47e9f479ba6d6a862",
+    "phash": "cd3332ccc3368cd333cccf3234cccb393ce7d34c8db134cecb2034d7cb883625"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D080_Narrative-2_Western-US-Event__p008_008.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf",
+    "page": "008",
+    "w": 1181,
+    "h": 790,
+    "sha256": "a25e893de75c252fb6acad3fe11ccedf9a37f05d31a68027f36a00de37950e7e",
+    "phash": "925b6da4cd24924b36d2cd24334d96db6da49369924b65b6cd2d32c9ccb279e4"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D082_Narrative-4_Western-US-Event__p003_001.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D082_Narrative-4_Western-US-Event.pdf",
+    "page": "003",
+    "w": 834,
+    "h": 569,
+    "sha256": "024f587cdda9939fb7d1f0771865014655699aa6d75088ab33df857bbb554593",
+    "phash": "be0ee1f01e1f9510e1e01e0ec1f01e1f63f2c6253e3c95c73c58c1ce97c839bd"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D082_Narrative-4_Western-US-Event__p003_002.jp2",
+    "src_pdf": "raw/docs/DoW-UAP-D082_Narrative-4_Western-US-Event.pdf",
+    "page": "003",
+    "w": 834,
+    "h": 569,
+    "sha256": "8865dea8cfa0bea937e0eb65ae313efaff071f65743525d9390e452c3c20c2f8",
+    "phash": "8000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D083_Narrative-5_Western-US-Event__p004_003.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D083_Narrative-5_Western-US-Event.pdf",
+    "page": "004",
+    "w": 471,
+    "h": 470,
+    "sha256": "f11bfd174c715f6e9864237602cf58362d0431d97c374824147ef11b9665eff6",
+    "phash": "b3639899ce6c673b1999b266699966ce9333e39861ce91c3c6e74f11c30c9386"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D083_Narrative-5_Western-US-Event__p004_004.jp2",
+    "src_pdf": "raw/docs/DoW-UAP-D083_Narrative-5_Western-US-Event.pdf",
+    "page": "004",
+    "w": 471,
+    "h": 470,
+    "sha256": "9a135aedfff80009bcbb9656e0a34b1f51f3ba01d70729cd7144c727e17246df",
+    "phash": "8000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D083_Narrative-5_Western-US-Event__p005_005.jpg",
+    "src_pdf": "raw/docs/DoW-UAP-D083_Narrative-5_Western-US-Event.pdf",
+    "page": "005",
+    "w": 418,
+    "h": 645,
+    "sha256": "4385c8e4699f7afe34b30e9dbaa0e6ca2179bdebca76d9824b2ef3386c27347f",
+    "phash": "e308cc6391963634cce679c9ce7399a6962494c9659b69267b2db37b32d62691"
+  },
+  {
+    "file": "raw/images_extracted/DoW-UAP-D083_Narrative-5_Western-US-Event__p005_006.jp2",
+    "src_pdf": "raw/docs/DoW-UAP-D083_Narrative-5_Western-US-Event.pdf",
+    "page": "005",
+    "w": 802,
+    "h": 1238,
+    "sha256": "209e42ec21017c65931af2dc3aa93b60b347cf806e4e54b29f62980dd4ed26ee",
+    "phash": "8000000000000000000000000000000000000000000000000000000000000000"
+  },
+  {
+    "file": "raw/images_extracted/FBI-UAP-D003_Digital-Rendering_Unresolved-UAP-Report_ColoradoSprings_2022__p001_000.png",
+    "src_pdf": "raw/docs/FBI-UAP-D003_Digital-Rendering_Unresolved-UAP-Report_ColoradoSprings_2022.pdf",
+    "page": "001",
+    "w": 2002,
+    "h": 1128,
+    "sha256": "5d49d1fd935c61cbc420461c6b3607209d2305c906004db7ba86af08fba22e15",
+    "phash": "91332b9adccd66c9a66c571d99da4da3ab12313dd6e86ec41449a06ec1b33b53"
+  },
+  {
+    "file": "raw/images_extracted/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026__p001_001.jpg",
+    "src_pdf": "raw/docs/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026.pdf",
+    "page": "001",
+    "w": 240,
+    "h": 256,
+    "sha256": "3d6a993445c3440ea3c360080d3643f9ddeb90709f5fbbe47464c3d76016fb87",
+    "phash": "fe9b667aa94699a5e7be5e599e615986db92616666516149d8269c9888e6a185"
+  },
+  {
+    "file": "raw/images_extracted/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026__p001_002.jpg",
+    "src_pdf": "raw/docs/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026.pdf",
+    "page": "001",
+    "w": 1320,
+    "h": 264,
+    "sha256": "b9e0b4a20ef7b802ca8475554131f848f30850cafdfba51cca8001145d026478",
+    "phash": "afca293eabc2aac6893c57cbd435d4b45b6956c688342bc20d36d6a9d49572ca"
+  },
+  {
+    "file": "raw/images_extracted/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026__p001_003.jpg",
+    "src_pdf": "raw/docs/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026.pdf",
+    "page": "001",
+    "w": 3448,
+    "h": 552,
+    "sha256": "fcea18858a88e729fe6e77d0b431e42c1475ed95e2f7559593c920eb8d778813",
+    "phash": "97bf5007821ae1f025efcce5c8f0ae5a6c0507bebbf36e00de087b803f07911f"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D015_Astronaut-Scientific-Debriefings_1962-1963__p053_219.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D015_Astronaut-Scientific-Debriefings_1962-1963.pdf",
+    "page": "053",
+    "w": 810,
+    "h": 1121,
+    "sha256": "d28c7ce4b735d746583e5a9f39c348d9544cd56c4391f5ed4f566b3d6b26313a",
+    "phash": "8015285f26ea85e14aae3b1d3abf95e007eac7b46bba69103beb34c26eea661c"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p001_000.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "001",
+    "w": 774,
+    "h": 1253,
+    "sha256": "bf5e751c486416649beb7b2029e79891440fa10b5026979232f7057b4a8f77ef",
+    "phash": "c01500002020deaabffe6fff3f7dd254106acd5bda5fd25fca5bd22a0a90d26a"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p001_002.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "001",
+    "w": 3080,
+    "h": 352,
+    "sha256": "ac91d8a3f98f2fcbe5e9fc04d04ee17d23add726f36a572af43d04e1c8467b54",
+    "phash": "b170b1706ebfc40533703beacc0d6cbe7aba87c507cfb050b0744e8ece883be1"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p002_004.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "002",
+    "w": 400,
+    "h": 5264,
+    "sha256": "17ac016dde8e3a782ba8ebbbfeb9eb0ae1cba4422ddbddcf4da75267336bd7ba",
+    "phash": "8f0f783c71e168ba79e1345d70f170f1b45534d178b034d574d568b278b270f4"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p002_005.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "002",
+    "w": 1936,
+    "h": 616,
+    "sha256": "998d30a13750fe7b61e38bc8f9a15960f5df7f10d9af6d5fd1633e4676fd6f75",
+    "phash": "be41ef8781131dfe6ccce259373248a76c8d971ac0e26cc43e1cc2eac5f37911"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p122_564.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "122",
+    "w": 499,
+    "h": 761,
+    "sha256": "5e658fd01357a0a3034394311a9d176226f6087ab1ef6293aa5a78fd091e3da4",
+    "phash": "8015007f2affc7f86bbaf7606eeae6046faad9003aeab0503fba9c066eee6600"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p138_639.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "138",
+    "w": 493,
+    "h": 763,
+    "sha256": "e5a535558c7850d7a274a6d41c35ddd736b0d5de898b503df97c7c674889ae8e",
+    "phash": "855461786aff68166abed01f3eaa68487aafc6017aead7832efadb003bab84a0"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p139_640.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "139",
+    "w": 495,
+    "h": 761,
+    "sha256": "91348e6e43e99df61c487c5a8432022afa816d629b56bd1e25d23b6b4c427f67",
+    "phash": "8544c4686afaca8c2eebf1003bbbc3033eaf6c077abb6b076aaec8106bea1bb4"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p150_695.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "150",
+    "w": 681,
+    "h": 1096,
+    "sha256": "6d6938db5d7919e31d08216b008f4333770af5f501d9433ab5b3dfc4228249c1",
+    "phash": "9540c5183aab0db66aaf82433eba8a786bee39096beb2d862eaa93846fbb9a49"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p186_870.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "186",
+    "w": 705,
+    "h": 1186,
+    "sha256": "777ed8b6f9d95ead1d465d6b3ff1e7bc085dd0407700282bdde4f231a236458c",
+    "phash": "bce2601e3df0611661163df0611e3de0611e3ff168dc680f3ef8704f1ee9d24b"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p187_871.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "187",
+    "w": 706,
+    "h": 1184,
+    "sha256": "3ca5b9f7d2588d1a8550dc46f97f0047a91960effdf27f923d76068e1b813d2d",
+    "phash": "be003e40c0ffc13f3f0894ebc0f37b30926e94d96c911f06972e69916bf1a4ee"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p194_884.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "194",
+    "w": 716,
+    "h": 1196,
+    "sha256": "d502cc6aef982f173caaea01b0d191b5931065a90f3c0af8ce10ab8212dd3eb7",
+    "phash": "9ee3e31e3ec16f14631e3fc1e31e3f8243b839870ff0600f1ee1661c50c7c678"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p196_887.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "196",
+    "w": 718,
+    "h": 1194,
+    "sha256": "d11d049001b679200f9550352da96179debd3f20c9d527119955c40df580b78a",
+    "phash": "bce2601e3ee36017681e3cc3619e3ca3e19e3e7169c56e3c3e61c37c9e61c328"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p202_899.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "202",
+    "w": 709,
+    "h": 1185,
+    "sha256": "96b802c3b617d92bd2dc7990a3901d6066a9dea574d28c7bf7523b3cb1e021be",
+    "phash": "9c62e11e3f613a55631e3e61e01e3fe0702a2b543c71611e3ed1617d3eaf43aa"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p204_902.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "204",
+    "w": 718,
+    "h": 1188,
+    "sha256": "3c43e8b8f380e0ff4d1937d3d28d42e30abd13908174bcd7edcad4f04f52668e",
+    "phash": "d02a72ba6a5462556ad66a556ad472aa72aa6a552bd568566bd469555eaa5caa"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p207_907.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "207",
+    "w": 705,
+    "h": 1191,
+    "sha256": "1ab95bf1a918d3d134c01f24ae9e757f9e6a09c207a422f1d5f0444aadfa54d9",
+    "phash": "fa053e0095fac1fb6a55c1ee90fe3e01952bc17a7a9536b4c36a6bc135a4916a"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p208_908.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "208",
+    "w": 709,
+    "h": 1189,
+    "sha256": "3299c48900673af422347d7262d047c3d8639dff8292ce991ce836df5961b0bb",
+    "phash": "d0aa7aa12ad56ad57a852ad57a857aaa7aaa2a552ad56ac57a852a5557aa54aa"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p213_917.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "213",
+    "w": 708,
+    "h": 1188,
+    "sha256": "8a94adeb69ecb16e7c093cb6021635e58a064bb3b87b702f03c9ff401b03d4a6",
+    "phash": "ea556a5595aa95aab16a94ee95ae6b04c37a856b2c9160d9c36b7a566894e16d"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p215_920.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "215",
+    "w": 709,
+    "h": 1191,
+    "sha256": "07a45145e2d3714a33ac9524fb19ba86cabaa8d472705ce5e65807d7bf37b8cc",
+    "phash": "ea556a5595aa95aad1fa94ba95ab6b019f6a9a5a6ad06587984d3a14a5a4cd69"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p217_925.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "217",
+    "w": 711,
+    "h": 1192,
+    "sha256": "ea6572a97444b4363d4c102b011eb1e0fcb9a98643f4e4d4e7521089ab92308b",
+    "phash": "ea556a5595aa95ea95ba95bac1ac6b419649c4d268901d8a956d6e7590fa613f"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p219_929.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "219",
+    "w": 707,
+    "h": 1184,
+    "sha256": "1af402d13667e1a4612cf97dffebbe82f4fd931193a62a26003afb1cfd4b40d3",
+    "phash": "ea156a1594ea85ee4b94947ac0fe6b8537096e3d6a4525acc5383e5395ea917c"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967__p223_937.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf",
+    "page": "223",
+    "w": 707,
+    "h": 1192,
+    "sha256": "d2c138edcfe61f4e5ebab6c1f6a2044c8e2e2d396363619006261f8ad02249b7",
+    "phash": "ef013f0190fec0fc4ad485ea852a6e05352ba52e7e053e0791fe7ad896f1d2b4"
+  },
+  {
+    "file": "raw/images_extracted/USG-UAP-D001_Congress-WhiteHouse-UFO-Correspondence_1998__p062_237.jpg",
+    "src_pdf": "raw/docs/USG-UAP-D001_Congress-WhiteHouse-UFO-Correspondence_1998.pdf",
+    "page": "062",
+    "w": 1606,
+    "h": 1240,
+    "sha256": "bc5b16ff1f14eb09c8c572ea17fd2625c763684f6478cda48e0d69e5f090a07c",
+    "phash": "bc550ad2c3e1f52df52ac7620a521a560ed5c5a5f1a9f52a6d4a1b5a1ed24cd5"
+  },
+  {
+    "file": "raw/images_extracted/NASA-UAP-D022_Gemini-9-Debriefing_1966__p039_216.jpg",
+    "src_pdf": "raw/docs/NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf",
+    "page": "039",
+    "w": 1310,
+    "h": 1169,
+    "sha256": "306c5d6da8cc7afe3d1b04887ef68ca57c4b04171c5aa107e81839fdfd589488",
+    "phash": "854019a740bf28fe2ffa92d33faa2fc06a3f207c2bae9b4c2fe986094bba3e08"
+  },
+  {
     "file": "raw/images_extracted/dow-uap-d18-mission-report-iraq-december-2022__p002_007.jp2",
     "src_pdf": "raw/docs/dow-uap-d18-mission-report-iraq-december-2022.pdf",
     "page": "002",
@@ -3031,33 +3598,6 @@
     "h": 1224,
     "sha256": "1d8ed534efb8c0ce25ab405b034371464860d932d6705d7686e9d2b9e581614b",
     "phash": "eeabc5fe91dc72adc5103b52ed056e456a523d44c610c00495bf92fb89ae35ec"
-  },
-  {
-    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p068_067.jpg",
-    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
-    "page": "068",
-    "w": 1574,
-    "h": 1239,
-    "sha256": "720565ea25b0ab920a21f8e27236754477e57fb86e6ae0ad11b74ff5253aa8e2",
-    "phash": "c0453c40157bc28e45fe633411ae861916bb78c53ea3752b3ade65753ae935e6"
-  },
-  {
-    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p073_072.jpg",
-    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
-    "page": "073",
-    "w": 1572,
-    "h": 1248,
-    "sha256": "ad8183d4c5ee80182a9eb61647b175f83ba0167510b182ae11790b42e725983e",
-    "phash": "801483083eba4a4f36bbc60c7aea460e7eabd2096eaed0696ebe6a276fae31f0"
-  },
-  {
-    "file": "raw/images_extracted/DOW-UAP-D017_General_Correspondence_Of_Sandia__p074_073.jpg",
-    "src_pdf": "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf",
-    "page": "074",
-    "w": 1568,
-    "h": 1250,
-    "sha256": "c69a7af06ebd71481c05cf9e3e8375c33bcf513d2652999d44f305f5c5397cfb",
-    "phash": "c115d75d7eea930d7ee2830d6eea934c7eba850a6bba84486eaa22146bae2ce2"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b1__p001_000.png",
@@ -3132,15 +3672,6 @@
     "phash": "8bea3f2f797e35bf3fa74afa0f8353fab414a45402eb8801ca5ab505f474a040"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b17__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b17.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "7fbbb90beeebc90073cdfcccd1d96078ca0ddfc0f138e63d5fa75175c6d8e021",
-    "phash": "dbfb7faf68fa77fd3fa74afa3f8f43fab000a00003eb8f03c25ab4058070a800"
-  },
-  {
     "file": "raw/images_extracted/dow-uap-pr20__p001_000.png",
     "src_pdf": "raw/docs/dow-uap-pr20.pdf",
     "page": "001",
@@ -3150,13 +3681,13 @@
     "phash": "fefc1669a327732da32d6f2c6f256365698c67b96761632c614921286969690d"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b18__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b18.pdf",
+    "file": "raw/images_extracted/fbi-photo-b17__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b17.pdf",
     "page": "001",
     "w": 1280,
     "h": 960,
-    "sha256": "99effd2268136eb388c84a8135cacae2029909cb2a5fbfcb4bc10f3285c55964",
-    "phash": "dafa3faf697e35bd7da55bfa1f8742fab404a11042aa9e038b5aa505f030f800"
+    "sha256": "7fbbb90beeebc90073cdfcccd1d96078ca0ddfc0f138e63d5fa75175c6d8e021",
+    "phash": "dbfb7faf68fa77fd3fa74afa3f8f43fab000a00003eb8f03c25ab4058070a800"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b19__p001_000.png",
@@ -3166,6 +3697,15 @@
     "h": 960,
     "sha256": "f74d910e7436eac9978af51f6295bab0ce9dd7b360ce6c839be9c6efaa5746de",
     "phash": "9bfb7fff797e75f57df54bfa5f8353feb400a00442a28a03ca4ab405a034a000"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b18__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b18.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "99effd2268136eb388c84a8135cacae2029909cb2a5fbfcb4bc10f3285c55964",
+    "phash": "dafa3faf697e35bd7da55bfa1f8742fab404a11042aa9e038b5aa505f030f800"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b2__p001_000.png",
@@ -3195,15 +3735,6 @@
     "phash": "8bfb7fef797e75f47df74bfa5f8b43fab400a00042ea8f03ca4ab400a074e000"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b23__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b23.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "c18073a79867670f40802605a8b545f94e850b0f903a4ce34041544d27dc5c91",
-    "phash": "8aaa2f03687234a025a04a5e1f8b43fff414f05453ebbf074afeb5a570f8f854"
-  },
-  {
     "file": "raw/images_extracted/fbi-photo-b22__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b22.pdf",
     "page": "001",
@@ -3211,6 +3742,15 @@
     "h": 960,
     "sha256": "8a6f49aae88cd12e1ea95cb321c07bb6fbb0146d46181703d74b13d1a1c0b671",
     "phash": "dbfb7f7f797c75f57fb54bfa7f0743fab400a00042aa8a03ca5ab405a0d0e000"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b23__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b23.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "c18073a79867670f40802605a8b545f94e850b0f903a4ce34041544d27dc5c91",
+    "phash": "8aaa2f03687234a025a04a5e1f8b43fff414f05453ebbf074afeb5a570f8f854"
   },
   {
     "file": "raw/images_extracted/fbi-photo-b3__p001_000.jpg",
@@ -3240,15 +3780,6 @@
     "phash": "c2fa9afaf480bd01ad05a50507ffc2ff0ffea551f0c30ebe52ca5e0af800fc01"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b4__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b4.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "e55785cc0978af1228aeb7c1b70e5350293ef05cd78b7f6f62c62a8de47708e2",
-    "phash": "dbfbbfff7d7f35bd7fef4bdf4fcb82baa004a000c2aa8b038052b420b014e000"
-  },
-  {
     "file": "raw/images_extracted/fbi-photo-b24__p001_000.png",
     "src_pdf": "raw/docs/fbi-photo-b24.pdf",
     "page": "001",
@@ -3258,49 +3789,13 @@
     "phash": "dbff3f2f7d5f75f437b74b7b2fab53feb400b01043eaab09ca4ab4008090a000"
   },
   {
-    "file": "raw/images_extracted/fbi-photo-b5__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b5.pdf",
+    "file": "raw/images_extracted/fbi-photo-b4__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b4.pdf",
     "page": "001",
     "w": 1280,
     "h": 960,
-    "sha256": "c1c6bd74acfa161af0f17b6a80a8d04cc11be25c17a92ab5ef979fd674d4e085",
-    "phash": "dfffbfff797e75bd7de74bdf0f8352faa000a00002ab8f02ca5aa400f030a810"
-  },
-  {
-    "file": "raw/images_extracted/fbi-photo-b6__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b6.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "e118faca14dc458b32e529e9d784f11c63df8a3633e241afe7ab731ffc370441",
-    "phash": "8bfbbfff787f75fd7ffd4bdf1f8f5afab010b00003ab8f03c21ab000a000a000"
-  },
-  {
-    "file": "raw/images_extracted/fbi-photo-b7__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b7.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "1860229872480629af72b4f98914bde89735d09d59175f606f2aecffed8430d0",
-    "phash": "dbfbbfff797e75fd7fed4bfa1feb52faa004a410c2aa8a03824aa400b004e000"
-  },
-  {
-    "file": "raw/images_extracted/fbi-photo-b8__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b8.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "b020622881362ff5f747933fba552feb5d0ca64b5343df34afd665919c2c7096",
-    "phash": "cbfbbfef7d7e3dfd7faf4afa4f8b02fab404a01002ea8b03c25ab400a034e800"
-  },
-  {
-    "file": "raw/images_extracted/fbi-photo-b9__p001_000.png",
-    "src_pdf": "raw/docs/fbi-photo-b9.pdf",
-    "page": "001",
-    "w": 1280,
-    "h": 960,
-    "sha256": "e1b4985aeefa8a5542814d161a2dd67671d3f6151508c031dd29c1275b123926",
-    "phash": "cbebafaf787e34b475af4afa0fab52fab414b014c3eb8b03ca5ab505f014a000"
+    "sha256": "e55785cc0978af1228aeb7c1b70e5350293ef05cd78b7f6f62c62a8de47708e2",
+    "phash": "dbfbbfff7d7f35bd7fef4bdf4fcb82baa004a000c2aa8b038052b420b014e000"
   },
   {
     "file": "raw/images_extracted/65_hs1-834228961_62-hq-83894_serial_130__p009_008.jpg",
@@ -3355,6 +3850,51 @@
     "h": 1267,
     "sha256": "a87c4d8614ec68fb201b042c0c59299e57663678a09b4806bfd480d65306d368",
     "phash": "bee4b455c54d7be4c000de03c454c08b3ad4b5ac6ba693743ebb8b557aebb414"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b5__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b5.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "c1c6bd74acfa161af0f17b6a80a8d04cc11be25c17a92ab5ef979fd674d4e085",
+    "phash": "dfffbfff797e75bd7de74bdf0f8352faa000a00002ab8f02ca5aa400f030a810"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b6__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b6.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "e118faca14dc458b32e529e9d784f11c63df8a3633e241afe7ab731ffc370441",
+    "phash": "8bfbbfff787f75fd7ffd4bdf1f8f5afab010b00003ab8f03c21ab000a000a000"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b7__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b7.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "1860229872480629af72b4f98914bde89735d09d59175f606f2aecffed8430d0",
+    "phash": "dbfbbfff797e75fd7fed4bfa1feb52faa004a410c2aa8a03824aa400b004e000"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b8__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b8.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "b020622881362ff5f747933fba552feb5d0ca64b5343df34afd665919c2c7096",
+    "phash": "cbfbbfef7d7e3dfd7faf4afa4f8b02fab404a01002ea8b03c25ab400a034e800"
+  },
+  {
+    "file": "raw/images_extracted/fbi-photo-b9__p001_000.png",
+    "src_pdf": "raw/docs/fbi-photo-b9.pdf",
+    "page": "001",
+    "w": 1280,
+    "h": 960,
+    "sha256": "e1b4985aeefa8a5542814d161a2dd67671d3f6151508c031dd29c1275b123926",
+    "phash": "cbebafaf787e34b475af4afa0fab52fab414b014c3eb8b03ca5ab505f014a000"
   },
   {
     "file": "raw/images_extracted/65_hs1-834228961_62-hq-83894_section_6__p032_031.png",

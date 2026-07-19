@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1010269",
+    "type": "video",
+    "title": "FBI-UAP-PR004, \u201cNortheastern Orb Sighting,\u201d 2025",
+    "description": "\"In July 2025, at approximately 2100 local time in the northeastern United States, an eyewitness observed an intense bright light in their backyard as they parked their car upon returning home from work. The light was hovering approximately 25 feet off the ground, below a tree line near the center of their backyard, at an estimated distance of 90 feet. The eyewitness exited their vehicle briefly before retrieving their phone to record the event. The spouse of the eyewitness came outside to assess the situation. The spouse also witnessed the light, describing it as a \u201cbrilliant red sphere\u201d about one meter in diameter. The center of the red sphere appeared to be a white plasma \u201csun\u201d about the size of a basketball. The orb slowly rose and moved to the left, and both eyewitnesses observed a second, identical orb, hovering above the other orb.  \r\n\r\n The eyewitness then began recording the event using an iPhone 14 Pro Max, capturing the footage depicted in this video. As the eyewitness began recording, the orbs moved westward together above a nearby tree line. The witnesses described the orbs\u2019 motion as silent and smooth, and as moving in tandem as though they were flying in formation or tethered together. As the orbs moved out of sight, both eyewitnesses saw them appear to merge. The eyewitnesses estimated that the orbs moved from their initial position before disappearing from view at an estimated distance of 75 yards. This observation occurred within 25 miles of the \u201cTriangle Orbs,\u201d \u201cRed Orb Rotation,\u201d and \u201cOrbs Over the Pond,\u201d sightings at a location well known to them, which is sparsely populated. \r\n\r\n The description above is derived from statements provided to the Federal Bureau of Investigation (FBI) by eyewitnesses to the event. The FBI assesses the individuals who reported this event as credible. The subject matter described in files FBI-UAP-D009 through FBI-UAP-D010 and depicted in the video footage FBI-UAP-PR004 corresponds to reports originating from the same general area in the northeastern United States. \"",
+    "keywords": "UAPVIDEOS, AARO061226",
+    "date_published": "2026-06-12T07:00:16-04:00",
+    "date": "2025-07-01T00:00:00-04:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-06-12T07:54:29-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010269/DOD_111764177.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1010269/fbi-uap-pr004-northeastern-orb-sighting-2025",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "United States",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "250701-D-D0360-3660",
+    "duration": 49,
+    "aspect_ratio": "4:3",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177.mp4",
+        "type": "video/mp4",
+        "height": 1280,
+        "width": 720,
+        "size": 25863205,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 21072448,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 16118698,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 8674942,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 5833086,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 2677364,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2606/DOD_111764177/DOD_111764177-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 1170039,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1010269.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2606/1010269/DOD_111764177.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

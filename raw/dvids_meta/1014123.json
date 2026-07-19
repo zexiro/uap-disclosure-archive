@@ -1,0 +1,93 @@
+{
+  "results": {
+    "id": "video:1014123",
+    "type": "video",
+    "title": "DOW-UAP-PR115, Unresolved UAP Report, Gulf of America, 2019",
+    "description": "\"The United States Air Force submitted a report of an unidentified anomalous phenomenon to the All-domain Anomaly Resolution Office (AARO) consisting of 8 seconds of video footage from an infrared sensor aboard a U.S. military platform in 2019.\n\n00:01-00:02: An area of contrast is visible near the center of the sensor field-of-view, partially obscured by visual elements of the heads-up display.\n00:03-00:06: The sensor zooms and pans to track the area of contrast, which visually flickers in the display.\n00:07-00:08: No content.\n\nThis video description is provided for informational purposes only. Readers should not interpret any part of this description as reflecting an analytical judgment, investigative conclusion, or factual determination regarding the described event\u2019s validity, nature, or significance.\n\nAARO Comment: Infrared sensor systems capture information within a specific range of electromagnetic wavelengths. When a tracked source\u2019s temperature is similar to that of the surrounding environment, it can visually blend into the background or appear to flicker due to dynamic contrast adjustments applied by the system\u2019s auto-gain control filters.\"",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:24-04:00",
+    "date": "2019-01-01T00:00:00-05:00",
+    "category": "B-Roll",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:17:43-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014123/DOD_111830147.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014123/dow-uap-pr115-unresolved-uap-report-gulf-america-2019",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "",
+      "country": "Gulf of America",
+      "country_abbreviation": "G9"
+    },
+    "time_start": 0,
+    "virin": "190101-D-D0360-5367",
+    "duration": 8,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 10879988,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 10361380,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 7152186,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 3697137,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 2479676,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 1244978,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830147/DOD_111830147-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 694513,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014123.m3u8?api_key=key-68bb60d16b35e",
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014123/DOD_111830147.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

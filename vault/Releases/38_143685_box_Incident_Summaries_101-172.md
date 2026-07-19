@@ -7582,9 +7582,9 @@ with storm predictions.
 ## Related
 
 **By content (TF-IDF cosine):**
-- [[38_143685_box7_Incident_Summaries_1-100]] — score 0.60 · PDF
-- [[38_143685_box_Incident_Summaries_173-233]] — score 0.38 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_6]] — score 0.30 · PDF
-- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.30 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.29 · PDF
-- [[65_HS1-834228961_62-HQ-83894_Section_4]] — score 0.28 · PDF
+- [[38_143685_box7_Incident_Summaries_1-100]] — score 0.56 · PDF
+- [[DOW-UAP-D088, U.S. Air Force Analysis of Flying Objects in the United States, 101-172]] — score 0.51 · PDF
+- [[38_143685_box_Incident_Summaries_173-233]] — score 0.35 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Serial_130]] — score 0.28 · PDF
+- [[342_HS1-416511228_319.1 Flying Discs 1949]] — score 0.27 · PDF
+- [[65_HS1-834228961_62-HQ-83894_Section_006]] — score 0.27 · PDF
