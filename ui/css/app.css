@@ -3172,3 +3172,187 @@ body.ask-disabled .ask-page .ask-input-row { display: none; }
   max-height: 120px; overflow-y: auto;
   font-size: 11px; color: var(--fg); margin-top: 4px;
 }
+
+/* ════════════════════════════════════════════════════════════════════
+   RECORD PAGE — video keyframe filmstrip + inline forensics "Analyze"
+   expander (ported from the legacy lightbox). The .afx-body .mp-*
+   rules mirror #lb-meta-body above so the panel renders identically
+   outside the lightbox.
+   ════════════════════════════════════════════════════════════════════ */
+
+/* ── Task A: filmstrip ── */
+.filmstrip { margin-top: 10px; }
+.filmstrip-label {
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--accent); text-transform: uppercase; margin-bottom: 6px;
+}
+.filmstrip-row {
+  display: flex; gap: 6px; overflow-x: auto; padding-bottom: 6px;
+}
+.filmstrip-row a { flex: 0 0 auto; }
+.filmstrip-row img {
+  width: 120px; display: block; border: 1px solid var(--border); border-radius: 3px;
+}
+.filmstrip-row a:hover img { border-color: var(--accent); }
+
+/* ── Task B: ANALYZE buttons ── */
+.analyze-btn {
+  display: inline-block; margin-top: 6px;
+  background: var(--bg3); border: 1px solid var(--border); color: var(--fg-dim);
+  padding: 3px 10px; border-radius: 3px; cursor: pointer;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em;
+}
+.analyze-btn:hover { border-color: var(--accent); color: var(--accent); }
+.analyze-btn.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.extracted-cell { position: relative; }
+.extracted-cell .analyze-btn.overlay {
+  position: absolute; top: 4px; right: 4px; margin-top: 0;
+  background: rgba(8,12,18,0.85); opacity: 0; transition: opacity 0.12s;
+}
+.extracted-cell:hover .analyze-btn.overlay,
+.extracted-cell .analyze-btn.overlay.active { opacity: 1; }
+
+/* ── Task B: forensics panel shell ── */
+.afx-panel {
+  border: 1px solid var(--border); border-radius: 6px;
+  background: var(--bg2); margin: 12px 0; overflow: hidden;
+}
+.afx-panel.in-grid { grid-column: 1 / -1; }
+.afx-stage-outer { text-align: center; background: #0b0e14; padding: 10px; }
+.afx-stage { position: relative; display: inline-block; max-width: 100%; }
+.afx-stage img.afx-img { display: block; max-width: 100%; max-height: 70vh; height: auto; }
+.afx-stage img.afx-img.fx-hidden { opacity: 0; }
+.afx-stage canvas {
+  position: absolute; left: 0; top: 0; width: 100%; height: 100%;
+  pointer-events: none;
+}
+.afx-stage canvas[hidden] { display: none !important; }
+/* Checkerboard under transparent cutout pixels (mirrors .lb-stage.cutout-bg). */
+.afx-stage.cutout-bg {
+  background-image:
+    linear-gradient(45deg, #20242b 25%, transparent 25%),
+    linear-gradient(-45deg, #20242b 25%, transparent 25%),
+    linear-gradient(45deg, transparent 75%, #20242b 75%),
+    linear-gradient(-45deg, transparent 75%, #20242b 75%);
+  background-size: 24px 24px;
+  background-position: 0 0, 0 12px, 12px -12px, -12px 0px;
+  background-color: #13161c;
+}
+.afx-banner {
+  position: absolute; top: 10px; left: 50%; transform: translateX(-50%);
+  padding: 6px 14px; border-radius: 3px;
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.05em;
+  z-index: 4; pointer-events: none; max-width: 90%; text-align: center;
+}
+.afx-banner[hidden] { display: none; }
+.afx-banner strong { color: #fff; }
+.afx-banner-enhanced {
+  background: rgba(255, 180, 0, 0.18); border: 1px solid rgba(255, 180, 0, 0.55);
+  color: #ffcc66;
+}
+.afx-banner-depth {
+  background: rgba(80, 180, 220, 0.18); border: 1px solid rgba(80, 180, 220, 0.55);
+  color: #aee0f5;
+}
+
+/* ── Task B: toolbar (mirrors .lb-fx-bar) ── */
+.afx-bar {
+  display: flex; gap: 6px; align-items: center; flex-wrap: wrap;
+  padding: 8px 12px; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border);
+  background: rgba(0,0,0,0.25);
+  font-family: var(--mono); font-size: 11px; color: var(--fg-dim);
+}
+.afx-bar .afx-label {
+  color: var(--accent); letter-spacing: 0.08em; font-size: 10px;
+  padding-right: 8px; border-right: 1px solid var(--border); margin-right: 4px;
+}
+.afx-bar button {
+  background: var(--bg3); border: 1px solid var(--border); color: var(--fg);
+  padding: 4px 8px; border-radius: 3px; cursor: pointer; font-family: var(--mono); font-size: 11px;
+}
+.afx-bar button:hover { border-color: var(--accent); color: var(--accent); }
+.afx-bar button.active { background: var(--accent); color: var(--bg); border-color: var(--accent); }
+.afx-bar button[hidden] { display: none; }
+.afx-bar .afx-spacer { flex: 1; }
+.afx-bar .afx-sep { width: 1px; height: 18px; background: var(--border); margin: 0 4px; }
+.afx-bar .afx-status {
+  color: var(--fg-dim); font-size: 10px; font-style: italic; min-width: 6ch; text-align: right;
+}
+
+/* ── Task B: metadata body (mirrors #lb-meta-body) ── */
+.afx-body {
+  padding: 12px 14px; line-height: 1.5;
+  font-family: var(--mono); font-size: 11px; color: var(--fg);
+  max-height: 480px; overflow-y: auto;
+}
+.afx-body .mp-section { margin: 0 0 14px 0; }
+.afx-body .mp-section:last-child { margin-bottom: 0; }
+.afx-body .mp-head {
+  color: var(--accent); font-size: 10px; letter-spacing: 0.1em;
+  border-bottom: 1px dashed var(--border); padding-bottom: 3px; margin-bottom: 6px;
+}
+.afx-body .mp-row { display: flex; gap: 8px; font-size: 11px; padding: 2px 0; }
+.afx-body .mp-row .mp-k { color: var(--fg-dim); min-width: 78px; flex: 0 0 auto; }
+.afx-body .mp-row .mp-v { color: var(--fg); word-break: break-all; flex: 1 1 auto; }
+.afx-body .mp-row .mp-v.mp-muted { color: var(--fg-dim); font-style: italic; }
+.afx-body .mp-banner {
+  background: rgba(255, 180, 0, 0.12); border: 1px solid rgba(255, 180, 0, 0.4);
+  color: #ffcc66; padding: 8px 10px; border-radius: 3px; margin-bottom: 12px;
+  font-size: 11px; letter-spacing: 0.04em;
+}
+.afx-body .mp-notes { margin: 0; padding: 0; list-style: none; }
+.afx-body .mp-notes li {
+  color: var(--fg-dim); padding: 4px 0 4px 14px; position: relative;
+  border-bottom: 1px dotted var(--border);
+}
+.afx-body .mp-notes li::before { content: "·"; position: absolute; left: 4px; color: var(--accent); }
+.afx-body .mp-notes li:last-child { border-bottom: none; }
+.afx-body .mp-empty { color: var(--fg-dim); font-style: italic; padding: 20px 0; text-align: center; }
+.afx-body code { font-family: var(--mono); color: #88ccff; }
+.afx-body .mp-src {
+  display: inline-flex; align-items: center;
+  padding: 1px 8px; border-radius: 3px; font-size: 10px; border: 1px solid;
+}
+.afx-body .mp-src-direct {
+  background: rgba(120, 200, 140, 0.13); color: #aef0c0;
+  border-color: rgba(120, 200, 140, 0.4);
+}
+.afx-body .mp-src-derived {
+  background: rgba(255, 180, 0, 0.12); color: #ffcc66;
+  border-color: rgba(255, 180, 0, 0.45);
+}
+.afx-body .mp-clip-bar {
+  position: relative; height: 22px; border: 1px solid var(--border); border-radius: 3px;
+  background: rgba(255,255,255,0.04); overflow: hidden; margin: 4px 0 6px;
+}
+.afx-body .mp-clip-fill {
+  position: absolute; top: 0; bottom: 0; left: 0;
+  background: linear-gradient(90deg, rgba(120,200,140,0.5), rgba(255,180,0,0.6));
+}
+.afx-body .mp-clip-high .mp-clip-fill {
+  background: linear-gradient(90deg, rgba(255,180,0,0.6), rgba(255,90,90,0.7));
+}
+.afx-body .mp-clip-mid  .mp-clip-fill { background: rgba(255,180,0,0.55); }
+.afx-body .mp-clip-low  .mp-clip-fill { background: rgba(120,200,140,0.5); }
+.afx-body .mp-clip-label {
+  position: absolute; inset: 0; display: flex; align-items: center; justify-content: center;
+  font-size: 10px; letter-spacing: 0.04em; color: #fff; text-shadow: 0 1px 1px rgba(0,0,0,0.6);
+}
+.afx-body .mp-clip-hint { color: var(--fg-dim); font-size: 10px; line-height: 1.45; margin-bottom: 8px; }
+.afx-body .mp-clip-hint strong { color: var(--fg); }
+.afx-body .mp-tags { display: flex; flex-wrap: wrap; gap: 4px; margin-top: 4px; }
+.afx-body .mp-tag {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(124,92,224,0.14); color: #cdb6ff;
+  border: 1px solid rgba(124,92,224,0.35);
+  padding: 2px 6px; border-radius: 3px; font-size: 10px;
+}
+.afx-body .mp-tag-score { color: var(--fg-dim); font-size: 9px; }
+.afx-body .mp-detboxes { display: flex; flex-wrap: wrap; gap: 4px; margin: 6px 0 6px; }
+.afx-body .mp-detbox {
+  display: inline-flex; align-items: center; gap: 4px;
+  background: rgba(255, 140, 60, 0.13); color: #ffb380;
+  border: 1px solid rgba(255, 140, 60, 0.35);
+  padding: 2px 6px; border-radius: 3px; font-size: 10px;
+}
+.afx-body .mp-detbox-score { color: var(--fg-dim); font-size: 9px; }

@@ -607,7 +607,7 @@ function applyYearInputs() {
 
 // ── Init ─────────────────────────────────────────────────────────────
 (async function init() {
-  await loadCoreData(["correlations", "incidents"]);
+  await loadCoreData(["correlations", "incidents"], { lite: true });
 
   // Bounds for the year inputs, from the docs' incident years.
   let yLo = null, yHi = null;

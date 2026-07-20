@@ -73,14 +73,14 @@ function linksHTML(d) {
 function mediaHTML(d) {
   const parts = [];
   if (d.video_local) {
-    parts.push(`<div class="preview"><video controls preload="metadata" src="${ROOT_REL}/${d.video_local}"></video></div>`);
+    parts.push(`<div class="preview"><video controls preload="metadata" src="${ROOT_REL}/${d.video_local}"></video></div><div id="filmstrip-mount"></div>`);
   }
   if (d.audio_local) {
     parts.push(`<div class="preview"><audio controls preload="metadata" style="width:100%" src="${ROOT_REL}/${d.audio_local}"></audio></div>`);
   }
   for (const lp of d.primary_local) {
     if (/\.(jpg|jpeg|png|gif|webp)$/i.test(lp)) {
-      parts.push(`<div class="preview"><img src="${ROOT_REL}/${lp}" loading="lazy"/></div>`);
+      parts.push(`<div class="preview"><img src="${ROOT_REL}/${lp}" loading="lazy"/><button class="analyze-btn" type="button" data-img-path="${escapeHtml(lp)}">⬡ ANALYZE</button></div>`);
     }
   }
   const pdf = d.primary_local.find(p => p.toLowerCase().endsWith(".pdf"));
@@ -114,12 +114,784 @@ function mediaHTML(d) {
           const t = thumbForPath(p);
           const small = t ? `${ROOT_REL}/${t}` : `${ROOT_REL}/${p}`;
           const full = `${ROOT_REL}/${p}`;
-          return `<a href="${full}" target="_blank" rel="noopener"><img src="${small}" loading="lazy" alt="" onerror="this.onerror=null;this.src='${full}'"/></a>`;
+          return `<div class="extracted-cell"><a href="${full}" target="_blank" rel="noopener"><img src="${small}" loading="lazy" alt="" onerror="this.onerror=null;this.src='${full}'"/></a><button class="analyze-btn overlay" type="button" data-img-path="${escapeHtml(p)}">⬡ ANALYZE</button></div>`;
         }).join("")}
       </div>
     </div>`);
   }
   return parts.join("");
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Video keyframe filmstrip (Task A)
+// Manifest ui/video_keyframes.json maps record_id → repo-relative
+// keyframe image paths. Generated server-side by
+// scripts/build_video_keyframes.py — fetch fails gracefully when absent.
+// ─────────────────────────────────────────────────────────────────────
+async function renderFilmstrip(d) {
+  const mount = $("#filmstrip-mount");
+  if (!mount || !d.video_local) return;
+  let manifest = null;
+  try {
+    const r = await fetch("video_keyframes.json");
+    if (r.ok) manifest = await r.json();
+  } catch (_) { /* manifest not built yet — no filmstrip */ }
+  const frames = manifest && Array.isArray(manifest[d.id]) ? manifest[d.id] : null;
+  if (!frames || !frames.length) return;
+  mount.innerHTML = `<div class="filmstrip">
+    <div class="filmstrip-label">Scene keyframes (${frames.length}) — click a frame to open full size</div>
+    <div class="filmstrip-row">${frames.map(p =>
+      `<a href="${ROOT_REL}/${p}" target="_blank" rel="noopener"><img src="${ROOT_REL}/${p}" loading="lazy" alt="keyframe"/></a>`
+    ).join("")}</div>
+  </div>`;
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// Inline forensics "Analyze" expander (Task B)
+// Ported from the legacy lightbox (ui/legacy.html ~4377-5526). One panel
+// open at a time (accordion). Data files, keyed by image basename:
+//   forensics_index.json  → which filenames have sidecars
+//   forensics/<name>.json → EXIF / hashes / edit signatures / celestial
+//   clip_labels.json      → CLIP zero-shot labels + synthetic score
+//   ai_detector.json      → trained deepfake classifier score
+//   object_detections.json→ YOLOv8n boxes (score >= 0.35 shown)
+// Derived variants (HEAD-checked): raw/images_depth/<stem>.png,
+// raw/images_cutout/<stem>.png, raw/images_enhanced/<stem>.jpg
+// (not built for PDF-extracted images — same rule as the lightbox).
+// ─────────────────────────────────────────────────────────────────────
+const AFX = {
+  panel: null,        // the open panel element (null = closed)
+  imgPath: null,      // repo-relative path of the open image
+  busy: false,
+  active: null,       // active canvas filter name
+  source: null,       // ImageData captured from the displayed img
+  sourceCanvas: null, // offscreen canvas (ELA re-encode source)
+  sourceSrc: null,    // img.src the capture was taken from (cache key)
+  derived: null,      // null | "depth" | "cutout" | "enhanced"
+  boxesActive: false,
+  metaIndex: null, metaIndexLoading: null, metaCache: new Map(),
+  clipLabels: null, clipLabelsLoading: null,
+  aiDetector: null, aiDetectorLoading: null,
+  detections: null, detectionsLoading: null,
+  headCache: new Map(), // derived URL → bool
+};
+
+function afxFilename() {
+  const tail = (AFX.imgPath || "").split("/").pop() || "";
+  try { return decodeURIComponent(tail); } catch { return tail; }
+}
+
+function afxStatus(s) {
+  const el = AFX.panel && AFX.panel.querySelector(".afx-status");
+  if (el) el.textContent = s;
+}
+
+// Path transforms — mirror the legacy _depthUrlFor/_cutoutUrlFor/_enhancedUrlFor.
+function afxDerivedUrl(kind, path) {
+  if (!path || path.includes("/images_extracted/")) return null; // never built for PDF-extracted
+  const name = path.split("/").pop() || "";
+  const stem = name.replace(/\.(jpg|jpeg|png|webp)$/i, "");
+  if (!stem) return null;
+  if (kind === "depth")    return `${ROOT_REL}/raw/images_depth/${stem}.png`;
+  if (kind === "cutout")   return `${ROOT_REL}/raw/images_cutout/${stem}.png`;
+  if (kind === "enhanced") return `${ROOT_REL}/raw/images_enhanced/${stem}.jpg`;
+  return null;
+}
+
+async function afxHeadOk(url) {
+  if (AFX.headCache.has(url)) return AFX.headCache.get(url);
+  let ok = false;
+  try { const r = await fetch(url, { method: "HEAD" }); ok = r.ok; } catch { ok = false; }
+  AFX.headCache.set(url, ok);
+  return ok;
+}
+
+// ── Data loaders (lazy, cached) ──
+async function afxLoadIndex() {
+  if (AFX.metaIndex) return AFX.metaIndex;
+  if (AFX.metaIndexLoading) return AFX.metaIndexLoading;
+  AFX.metaIndexLoading = (async () => {
+    try {
+      const r = await fetch("forensics_index.json");
+      if (!r.ok) throw new Error("index " + r.status);
+      AFX.metaIndex = await r.json();
+    } catch (e) { AFX.metaIndex = {}; }
+    return AFX.metaIndex;
+  })();
+  return AFX.metaIndexLoading;
+}
+async function afxLoadSidecar(filename) {
+  if (AFX.metaCache.has(filename)) return AFX.metaCache.get(filename);
+  const index = await afxLoadIndex();
+  if (!(filename in index)) { AFX.metaCache.set(filename, null); return null; }
+  try {
+    const r = await fetch(`forensics/${encodeURIComponent(filename)}.json`);
+    if (!r.ok) throw new Error("sidecar " + r.status);
+    const rec = await r.json();
+    AFX.metaCache.set(filename, rec);
+    return rec;
+  } catch (e) { AFX.metaCache.set(filename, null); return null; }
+}
+async function afxLoadClipLabels() {
+  if (AFX.clipLabels) return AFX.clipLabels;
+  if (AFX.clipLabelsLoading) return AFX.clipLabelsLoading;
+  AFX.clipLabelsLoading = (async () => {
+    try { const r = await fetch("clip_labels.json"); AFX.clipLabels = r.ok ? await r.json() : {}; }
+    catch (e) { AFX.clipLabels = {}; }
+    return AFX.clipLabels;
+  })();
+  return AFX.clipLabelsLoading;
+}
+async function afxLoadAiDetector() {
+  if (AFX.aiDetector) return AFX.aiDetector;
+  if (AFX.aiDetectorLoading) return AFX.aiDetectorLoading;
+  AFX.aiDetectorLoading = (async () => {
+    try { const r = await fetch("ai_detector.json"); AFX.aiDetector = r.ok ? await r.json() : {}; }
+    catch (e) { AFX.aiDetector = {}; }
+    return AFX.aiDetector;
+  })();
+  return AFX.aiDetectorLoading;
+}
+async function afxLoadDetections() {
+  if (AFX.detections) return AFX.detections;
+  if (AFX.detectionsLoading) return AFX.detectionsLoading;
+  AFX.detectionsLoading = (async () => {
+    try { const r = await fetch("object_detections.json"); AFX.detections = r.ok ? await r.json() : {}; }
+    catch (e) { AFX.detections = {}; }
+    return AFX.detections;
+  })();
+  return AFX.detectionsLoading;
+}
+
+// ── Canvas filter implementations (verbatim port from legacy lightbox) ──
+function _cloneImageData(src) {
+  return new ImageData(new Uint8ClampedArray(src.data), src.width, src.height);
+}
+function _toLuma(src) {
+  const d = src.data;
+  const y = new Float32Array(src.width * src.height);
+  for (let i = 0, j = 0; i < d.length; i += 4, j++) {
+    y[j] = 0.299 * d[i] + 0.587 * d[i+1] + 0.114 * d[i+2];
+  }
+  return y;
+}
+function _lumaToImageData(y, w, h) {
+  const data = new Uint8ClampedArray(w * h * 4);
+  for (let j = 0, i = 0; j < y.length; j++, i += 4) {
+    const v = y[j];
+    data[i] = v; data[i+1] = v; data[i+2] = v; data[i+3] = 255;
+  }
+  return new ImageData(data, w, h);
+}
+function fxInvert(src) {
+  const out = _cloneImageData(src);
+  const d = out.data;
+  for (let i = 0; i < d.length; i += 4) {
+    d[i]   = 255 - d[i];
+    d[i+1] = 255 - d[i+1];
+    d[i+2] = 255 - d[i+2];
+  }
+  return out;
+}
+function fxChannel(src, ch) {
+  const out = _cloneImageData(src);
+  const d = out.data;
+  for (let i = 0; i < d.length; i += 4) {
+    const v = d[i + ch];
+    d[i] = v; d[i+1] = v; d[i+2] = v;
+  }
+  return out;
+}
+function fxClahe(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  const tilesX = 8, tilesY = 8;
+  const tileW = Math.ceil(w / tilesX);
+  const tileH = Math.ceil(h / tilesY);
+  const clipLimit = 2.0;
+  const luts = new Array(tilesX * tilesY);
+  for (let ty = 0; ty < tilesY; ty++) {
+    for (let tx = 0; tx < tilesX; tx++) {
+      const x0 = tx * tileW, y0 = ty * tileH;
+      const x1 = Math.min(x0 + tileW, w), y1 = Math.min(y0 + tileH, h);
+      const hist = new Uint32Array(256);
+      let count = 0;
+      for (let py = y0; py < y1; py++) {
+        for (let px = x0; px < x1; px++) {
+          const v = Math.max(0, Math.min(255, Math.round(y[py * w + px])));
+          hist[v]++; count++;
+        }
+      }
+      const clip = Math.max(1, Math.floor(count * clipLimit / 256));
+      let excess = 0;
+      for (let i = 0; i < 256; i++) {
+        if (hist[i] > clip) { excess += hist[i] - clip; hist[i] = clip; }
+      }
+      const spread = Math.floor(excess / 256);
+      for (let i = 0; i < 256; i++) hist[i] += spread;
+      const lut = new Uint8Array(256);
+      let cdf = 0;
+      for (let i = 0; i < 256; i++) {
+        cdf += hist[i];
+        lut[i] = Math.round(255 * cdf / Math.max(1, count));
+      }
+      luts[ty * tilesX + tx] = lut;
+    }
+  }
+  const out = new Float32Array(w * h);
+  for (let py = 0; py < h; py++) {
+    const fy = (py + 0.5) / tileH - 0.5;
+    const ty0 = Math.max(0, Math.min(tilesY - 1, Math.floor(fy)));
+    const ty1 = Math.max(0, Math.min(tilesY - 1, ty0 + 1));
+    const wy = Math.max(0, Math.min(1, fy - ty0));
+    for (let px = 0; px < w; px++) {
+      const fx = (px + 0.5) / tileW - 0.5;
+      const tx0 = Math.max(0, Math.min(tilesX - 1, Math.floor(fx)));
+      const tx1 = Math.max(0, Math.min(tilesX - 1, tx0 + 1));
+      const wx = Math.max(0, Math.min(1, fx - tx0));
+      const v = Math.max(0, Math.min(255, Math.round(y[py * w + px])));
+      const a = luts[ty0 * tilesX + tx0][v];
+      const b = luts[ty0 * tilesX + tx1][v];
+      const c = luts[ty1 * tilesX + tx0][v];
+      const e = luts[ty1 * tilesX + tx1][v];
+      out[py * w + px] = (1-wy) * ((1-wx) * a + wx * b) + wy * ((1-wx) * c + wx * e);
+    }
+  }
+  return _lumaToImageData(out, w, h);
+}
+function fxSobel(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  const out = new Uint8ClampedArray(w * h * 4);
+  for (let py = 1; py < h - 1; py++) {
+    for (let px = 1; px < w - 1; px++) {
+      const i = py * w + px;
+      const gx = -y[i-w-1] - 2*y[i-1] - y[i+w-1] + y[i-w+1] + 2*y[i+1] + y[i+w+1];
+      const gy = -y[i-w-1] - 2*y[i-w] - y[i-w+1] + y[i+w-1] + 2*y[i+w] + y[i+w+1];
+      const mag = Math.min(255, Math.sqrt(gx*gx + gy*gy));
+      const luma = y[i] * 0.25;
+      const p = i * 4;
+      out[p]   = Math.min(255, luma + mag * 1.4);
+      out[p+1] = luma;
+      out[p+2] = luma;
+      out[p+3] = 255;
+    }
+  }
+  return new ImageData(out, w, h);
+}
+function fxUnsharp(src) {
+  const w = src.width, h = src.height;
+  const sd = src.data;
+  const blur = new Float32Array(sd.length);
+  for (let py = 0; py < h; py++) {
+    for (let px = 0; px < w; px++) {
+      let r = 0, g = 0, b = 0, n = 0;
+      for (let dy = -1; dy <= 1; dy++) {
+        const qy = py + dy; if (qy < 0 || qy >= h) continue;
+        for (let dx = -1; dx <= 1; dx++) {
+          const qx = px + dx; if (qx < 0 || qx >= w) continue;
+          const q = (qy * w + qx) * 4;
+          r += sd[q]; g += sd[q+1]; b += sd[q+2]; n++;
+        }
+      }
+      const p = (py * w + px) * 4;
+      blur[p] = r / n; blur[p+1] = g / n; blur[p+2] = b / n;
+    }
+  }
+  const strength = 1.4;
+  const out = new Uint8ClampedArray(sd.length);
+  for (let i = 0; i < sd.length; i += 4) {
+    out[i]   = Math.max(0, Math.min(255, sd[i]   + strength * (sd[i]   - blur[i])));
+    out[i+1] = Math.max(0, Math.min(255, sd[i+1] + strength * (sd[i+1] - blur[i+1])));
+    out[i+2] = Math.max(0, Math.min(255, sd[i+2] + strength * (sd[i+2] - blur[i+2])));
+    out[i+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+function fxSigmaAnomaly(src) {
+  const w = src.width, h = src.height;
+  const y = _toLuma(src);
+  let sum = 0, sumSq = 0;
+  for (let i = 0; i < y.length; i++) { sum += y[i]; sumSq += y[i] * y[i]; }
+  const mean = sum / y.length;
+  const variance = Math.max(1, sumSq / y.length - mean * mean);
+  const std = Math.sqrt(variance);
+  const threshold = 3.0;
+  const out = new Uint8ClampedArray(w * h * 4);
+  for (let i = 0; i < y.length; i++) {
+    const z = (y[i] - mean) / std;
+    const p = i * 4;
+    const base = y[i] * 0.22;
+    if (z > threshold) {
+      const heat = Math.min(1, (z - threshold) / 3);
+      out[p]   = 255;
+      out[p+1] = Math.round(255 * heat);
+      out[p+2] = Math.round(200 * Math.max(0, heat - 0.5));
+    } else {
+      out[p] = base; out[p+1] = base; out[p+2] = base;
+    }
+    out[p+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+async function fxEla(src) {
+  const w = src.width, h = src.height;
+  const srcCanvas = AFX.sourceCanvas;
+  if (!srcCanvas) throw new Error("ELA: no source canvas");
+  const blob = await new Promise(resolve => srcCanvas.toBlob(resolve, "image/jpeg", 0.9));
+  if (!blob) throw new Error("ELA: toBlob returned null");
+  const bitmap = await createImageBitmap(blob);
+  const tmp = document.createElement("canvas");
+  tmp.width = w; tmp.height = h;
+  const tctx = tmp.getContext("2d", { willReadFrequently: true });
+  tctx.drawImage(bitmap, 0, 0);
+  const reEncoded = tctx.getImageData(0, 0, w, h).data;
+  const out = new Uint8ClampedArray(src.data.length);
+  const amp = 15;
+  for (let i = 0; i < out.length; i += 4) {
+    out[i]   = Math.min(255, Math.abs(src.data[i]   - reEncoded[i])   * amp);
+    out[i+1] = Math.min(255, Math.abs(src.data[i+1] - reEncoded[i+1]) * amp);
+    out[i+2] = Math.min(255, Math.abs(src.data[i+2] - reEncoded[i+2]) * amp);
+    out[i+3] = 255;
+  }
+  return new ImageData(out, w, h);
+}
+async function afxRunFilter(name, src) {
+  switch (name) {
+    case "invert":    return fxInvert(src);
+    case "channel-r": return fxChannel(src, 0);
+    case "channel-g": return fxChannel(src, 1);
+    case "channel-b": return fxChannel(src, 2);
+    case "clahe":     return fxClahe(src);
+    case "sobel":     return fxSobel(src);
+    case "unsharp":   return fxUnsharp(src);
+    case "sigma":     return fxSigmaAnomaly(src);
+    case "ela":       return await fxEla(src);
+    default: throw new Error("unknown filter: " + name);
+  }
+}
+
+async function afxCaptureSource() {
+  const img = AFX.panel.querySelector(".afx-img");
+  if (AFX.source && AFX.sourceSrc === img.src) return;
+  if (!img.complete || !img.naturalWidth) {
+    await new Promise((resolve, reject) => {
+      img.addEventListener("load",  resolve, { once: true });
+      img.addEventListener("error", reject,  { once: true });
+    });
+  }
+  const w = img.naturalWidth, h = img.naturalHeight;
+  if (!w || !h) throw new Error("image has no natural dimensions");
+  const canvas = document.createElement("canvas");
+  canvas.width = w; canvas.height = h;
+  const ctx = canvas.getContext("2d", { willReadFrequently: true });
+  ctx.drawImage(img, 0, 0);
+  AFX.sourceCanvas = canvas;
+  AFX.source = ctx.getImageData(0, 0, w, h);
+  AFX.sourceSrc = img.src;
+}
+
+function afxInvalidateSource() {
+  AFX.source = null; AFX.sourceCanvas = null; AFX.sourceSrc = null;
+}
+
+function afxClearFx() {
+  AFX.active = null;
+  const canvas = AFX.panel.querySelector(".afx-canvas");
+  if (canvas) canvas.hidden = true;
+  const img = AFX.panel.querySelector(".afx-img");
+  if (img) img.classList.remove("fx-hidden");
+  AFX.panel.querySelectorAll(".afx-bar button[data-fx]").forEach(b => {
+    if (!["boxes", "depth", "cutout", "enhanced", "reset"].includes(b.dataset.fx)) b.classList.remove("active");
+  });
+}
+
+async function afxApplyFilter(name) {
+  if (AFX.busy) return;
+  if (AFX.active === name) { afxClearFx(); afxStatus(""); return; }
+  AFX.busy = true;
+  AFX.active = name;
+  AFX.panel.querySelectorAll(".afx-bar button[data-fx]").forEach(b => {
+    if (!["boxes", "depth", "cutout", "enhanced", "reset"].includes(b.dataset.fx)) {
+      b.classList.toggle("active", b.dataset.fx === name);
+    }
+  });
+  afxStatus("…");
+  const t0 = performance.now();
+  try {
+    await afxCaptureSource();
+    const result = await afxRunFilter(name, AFX.source);
+    const canvas = AFX.panel.querySelector(".afx-canvas");
+    canvas.width = result.width;
+    canvas.height = result.height;
+    canvas.getContext("2d").putImageData(result, 0, 0);
+    canvas.hidden = false;
+    AFX.panel.querySelector(".afx-img").classList.add("fx-hidden");
+    afxStatus(`${(performance.now() - t0).toFixed(0)}ms`);
+  } catch (e) {
+    console.error("[forensics] filter failed:", e);
+    afxStatus("error");
+    AFX.active = null;
+    afxClearFx();
+  } finally {
+    AFX.busy = false;
+  }
+}
+
+// ── Derived-image toggles (depth / cutout / enhanced 4×) ──
+function afxSyncDerivedUI() {
+  const stage = AFX.panel.querySelector(".afx-stage");
+  stage.classList.toggle("cutout-bg", AFX.derived === "cutout");
+  AFX.panel.querySelector(".afx-banner-enhanced").hidden = AFX.derived !== "enhanced";
+  AFX.panel.querySelector(".afx-banner-depth").hidden = AFX.derived !== "depth";
+  for (const k of ["depth", "cutout", "enhanced"]) {
+    AFX.panel.querySelector(`button[data-fx="${k}"]`).classList.toggle("active", AFX.derived === k);
+  }
+  if (AFX.boxesActive) afxRenderBoxes();
+}
+
+async function afxToggleDerived(kind) {
+  if (AFX.busy || !AFX.panel) return;
+  const img = AFX.panel.querySelector(".afx-img");
+  if (AFX.derived === kind) {
+    img.src = `${ROOT_REL}/${AFX.imgPath}`;
+    AFX.derived = null;
+    afxInvalidateSource(); afxClearFx(); afxStatus("");
+    afxSyncDerivedUI();
+    return;
+  }
+  const url = afxDerivedUrl(kind, AFX.imgPath);
+  if (!url) { afxStatus(`${kind} n/a (PDF-extracted)`); return; }
+  if (!(await afxHeadOk(url))) { afxStatus("not built yet"); return; }
+  img.src = url;
+  AFX.derived = kind;
+  afxInvalidateSource(); afxClearFx();
+  afxStatus(kind === "enhanced" ? "4× active" : `${kind} active`);
+  afxSyncDerivedUI();
+}
+
+// ── YOLO boxes — canvas overlay (lightbox used SVG; same geometry) ──
+function afxRenderBoxes() {
+  const canvas = AFX.panel.querySelector(".afx-boxes");
+  const fname = afxFilename();
+  const rec = fname && AFX.detections ? AFX.detections[fname] : null;
+  const visible = (rec && rec.detections || []).filter(d => d.score >= 0.35);
+  // Boxes live in original-pixel space — hide them while a derived variant
+  // is showing (enhanced is 4×; depth/cutout hidden for clarity, as legacy).
+  if (!AFX.boxesActive || AFX.derived || !rec || !visible.length) {
+    canvas.hidden = true;
+    return;
+  }
+  const [iw, ih] = rec.image_size;
+  canvas.width = iw; canvas.height = ih;
+  const ctx = canvas.getContext("2d");
+  ctx.clearRect(0, 0, iw, ih);
+  const fontSize = Math.max(12, Math.round(ih * 0.018));
+  const padX = Math.max(4, fontSize * 0.45);
+  const padY = Math.max(3, fontSize * 0.3);
+  ctx.font = `600 ${fontSize}px "JetBrains Mono", monospace`;
+  ctx.textBaseline = "bottom";
+  for (const d of visible) {
+    const [x1, y1, x2, y2] = d.box;
+    const bw = Math.max(1, x2 - x1);
+    const bh = Math.max(1, y2 - y1);
+    const label = `${d.label} ${Math.round(d.score * 100)}%`;
+    const labelW = ctx.measureText(label).width + padX * 2;
+    const labelH = fontSize + padY * 2;
+    const ly = y1 - labelH > 0 ? y1 - labelH : y1;
+    ctx.strokeStyle = "#ff9c4d";
+    ctx.lineWidth = Math.max(2, Math.round(iw / 400));
+    ctx.strokeRect(x1, y1, bw, bh);
+    ctx.fillStyle = "rgba(255,156,77,0.85)";
+    ctx.fillRect(x1, ly, Math.min(labelW, iw - x1), labelH);
+    ctx.fillStyle = "#1a1408";
+    ctx.fillText(label, x1 + padX, ly + labelH - padY);
+  }
+  canvas.hidden = false;
+}
+
+async function afxToggleBoxes() {
+  const btn = AFX.panel.querySelector("button[data-fx='boxes']");
+  if (AFX.boxesActive) {
+    AFX.boxesActive = false;
+    AFX.panel.querySelector(".afx-boxes").hidden = true;
+    btn.classList.remove("active");
+    afxStatus("");
+    return;
+  }
+  afxStatus("loading…");
+  await afxLoadDetections();
+  if (!AFX.panel) return;
+  AFX.boxesActive = true;
+  btn.classList.add("active");
+  afxRenderBoxes();
+  const visible = (((AFX.detections || {})[afxFilename()] || {}).detections || []).filter(d => d.score >= 0.35);
+  afxStatus(visible.length ? `${visible.length} box${visible.length === 1 ? "" : "es"}` : "no detections");
+}
+
+// ── Metadata body — _formatForensics ported verbatim ──
+function afxFormatForensics(rec, fname, clip, dets, ai) {
+  const esc = escapeHtml;
+  const dash = `<span class="mp-v mp-muted">—</span>`;
+  const val = v => (v == null || v === "" ? dash : `<span class="mp-v">${esc(String(v))}</span>`);
+  const row = (k, v) => `<div class="mp-row"><span class="mp-k">${esc(k)}</span>${val(v)}</div>`;
+  rec = rec || { exif: {}, jpeg_markers: [], notes: [] };
+  const e = rec.exif || {};
+
+  let banner = "";
+  if (rec.edit_signatures && rec.edit_signatures.length) {
+    banner = `<div class="mp-banner">⚠ EDIT SIGNATURE: ${rec.edit_signatures.map(esc).join(", ")}</div>`;
+  }
+
+  const sizeKb = rec.size_bytes ? (rec.size_bytes / 1024).toFixed(1) + " KB" : null;
+  const dims = rec.dimensions ? `${rec.dimensions[0]} × ${rec.dimensions[1]}` : null;
+  const shortHash = h => h ? `<code>${esc(h.slice(0,12))}…${esc(h.slice(-6))}</code>` : null;
+
+  const src = rec.source || null;
+  let sourceRow = "";
+  if (src) {
+    const cls = src.kind === "direct_download" ? "mp-src-direct" : "mp-src-derived";
+    sourceRow = `<div class="mp-row"><span class="mp-k">source</span><span class="mp-v"><span class="mp-src ${cls}">${esc(src.label || src.kind || "")}</span></span></div>`;
+  }
+
+  const fileSection = `
+    <div class="mp-section">
+      <div class="mp-head">FILE</div>
+      ${row("name", fname)}
+      ${sourceRow}
+      ${row("size", sizeKb || dims ? `${sizeKb || "?"} · ${dims || "?"}` : null)}
+      <div class="mp-row"><span class="mp-k">sha-256</span><span class="mp-v">${shortHash(rec.sha256) || dash}</span></div>
+      <div class="mp-row"><span class="mp-k">phash</span><span class="mp-v">${rec.phash ? `<code>${esc(rec.phash)}</code>` : dash}</span></div>
+    </div>`;
+
+  const exifSection = `
+    <div class="mp-section">
+      <div class="mp-head">EXIF (${e.tag_count || 0} tags)</div>
+      ${row("camera", e.camera)}
+      ${row("lens", e.lens)}
+      ${row("software", e.software)}
+      ${row("datetime", e.datetime)}
+      ${row("GPS", e.gps ? `${e.gps[0]}, ${e.gps[1]}` : null)}
+      ${row("orientation", e.orientation)}
+      ${row("DPI", e.resolution_dpi ? e.resolution_dpi.join(" × ") : null)}
+    </div>`;
+
+  const markers = (rec.jpeg_markers || []).map(esc).join(", ") || dash;
+  const markerSection = `
+    <div class="mp-section">
+      <div class="mp-head">JPEG MARKERS</div>
+      <div class="mp-row"><span class="mp-k">segments</span><span class="mp-v">${markers}</span></div>
+      ${row("fingerprint", rec.marker_fingerprint)}
+      ${rec.jpeg_comment ? row("comment", rec.jpeg_comment) : ""}
+    </div>`;
+
+  let celestialSection = "";
+  if (rec.celestial) {
+    const s = rec.celestial.sun, m = rec.celestial.moon;
+    celestialSection = `
+      <div class="mp-section">
+        <div class="mp-head">CELESTIAL (at recorded GPS + time)</div>
+        ${row("☀ sun alt", `${s.altitude_deg}° (${s.above_horizon ? "above horizon" : "below horizon"})`)}
+        ${row("☀ sun az", `${s.azimuth_deg}°`)}
+        ${row("☾ moon alt", `${m.altitude_deg}° (${m.above_horizon ? "above" : "below"})`)}
+        ${row("☾ moon az", `${m.azimuth_deg}°`)}
+        ${row("☾ phase", `${m.phase_name} (${(m.phase * 100).toFixed(0)}% illuminated)`)}
+      </div>`;
+  }
+
+  const notes = (rec.notes || []).map(n => `<li>${esc(n)}</li>`).join("");
+  const notesSection = notes ? `
+    <div class="mp-section">
+      <div class="mp-head">NOTES</div>
+      <ul class="mp-notes">${notes}</ul>
+    </div>` : "";
+
+  let clipSection = "";
+  if (clip) {
+    const syn = clip.synthetic_score;
+    const synPct = (syn * 100).toFixed(0);
+    const tags = (clip.tags || []).map(t =>
+      `<span class="mp-tag">${esc(t.label)}<span class="mp-tag-score">${(t.score*100).toFixed(0)}%</span></span>`
+    ).join("");
+    let level = "low", levelLabel = "more similar to real photographs";
+    if (syn > 0.65)      { level = "high";   levelLabel = "more similar to AI / CGI prompts"; }
+    else if (syn > 0.4)  { level = "mid";    levelLabel = "ambiguous — falls between the two prompt sets"; }
+    clipSection = `
+      <div class="mp-section">
+        <div class="mp-head">CLIP ZERO-SHOT (${esc(clip.model || "CLIP")})</div>
+        <div class="mp-clip-bar mp-clip-${level}">
+          <div class="mp-clip-fill" style="width: ${synPct}%"></div>
+          <div class="mp-clip-label">synthetic similarity: ${synPct}%</div>
+        </div>
+        <div class="mp-clip-hint">${esc(levelLabel)}. <strong>Not a verdict</strong> — this is the softmax probability that the image is closer to AI/CGI prompts than to real-photo prompts under CLIP zero-shot. CLIP confuses grainy or aerial photos for CGI, so use this as a hint, not evidence.</div>
+        ${tags ? `<div class="mp-tags">${tags}</div>` : ""}
+      </div>`;
+  }
+
+  let aiSection = "";
+  if (ai) {
+    const p = ai.deepfake;
+    const pct = (p * 100).toFixed(0);
+    let level = "low", levelLabel = "leans REAL under the trained classifier";
+    if (p > 0.65)      { level = "high";   levelLabel = "leans SYNTHETIC under the trained classifier"; }
+    else if (p > 0.45) { level = "mid";    levelLabel = "borderline — the classifier is uncertain"; }
+    aiSection = `
+      <div class="mp-section">
+        <div class="mp-head">AI-CLASSIFIER (${esc(ai.model || "trained")})</div>
+        <div class="mp-clip-bar mp-clip-${level}">
+          <div class="mp-clip-fill" style="width: ${pct}%"></div>
+          <div class="mp-clip-label">P(synthetic): ${pct}%</div>
+        </div>
+        <div class="mp-clip-hint">${esc(levelLabel)}. <strong>Not infallible</strong> — the model was trained primarily on face-deepfake and modern generative-image data, and it tends to flag stylised sketches, scanned documents, and grainy aerial photos as synthetic even when they're authentic.</div>
+      </div>`;
+  }
+
+  let detSection = "";
+  if (dets) {
+    const visible = (dets.detections || []).filter(d => d.score >= 0.35);
+    if (visible.length) {
+      const byLabel = new Map();
+      for (const d of visible) {
+        const cur = byLabel.get(d.label) || { count: 0, best: 0 };
+        cur.count += 1;
+        cur.best = Math.max(cur.best, d.score);
+        byLabel.set(d.label, cur);
+      }
+      const chips = [...byLabel.entries()]
+        .sort((a, b) => b[1].best - a[1].best)
+        .map(([label, info]) => {
+          const countLabel = info.count > 1 ? ` ×${info.count}` : "";
+          return `<span class="mp-detbox">${esc(label)}${countLabel}<span class="mp-detbox-score">${Math.round(info.best * 100)}%</span></span>`;
+        }).join("");
+      detSection = `
+        <div class="mp-section">
+          <div class="mp-head">DETECTED OBJECTS (${esc(dets.model || "yolo")})</div>
+          <div class="mp-detboxes">${chips}</div>
+          <div class="mp-clip-hint">COCO-80 categories — these models reach for the nearest training label when shown a UAP sketch (a disc becomes a frisbee, an orb becomes a sports ball). Useful for filtering, <strong>not</strong> for identification.</div>
+        </div>`;
+    }
+  }
+
+  return banner + fileSection + exifSection + markerSection + celestialSection + clipSection + aiSection + detSection + notesSection;
+}
+
+async function afxRenderMetadata() {
+  const body = AFX.panel.querySelector(".afx-body");
+  const fname = afxFilename();
+  const imgPath = AFX.imgPath;
+  body.innerHTML = `<div class="mp-empty">loading…</div>`;
+  const [rec, clipLabels, aiDetector, detections] = await Promise.all([
+    afxLoadSidecar(fname),
+    afxLoadClipLabels(),
+    afxLoadAiDetector(),
+    afxLoadDetections(),
+  ]);
+  // Panel may have been closed / switched while awaiting — bail if so.
+  if (!AFX.panel || AFX.imgPath !== imgPath) return;
+  const clip = clipLabels[fname] || null;
+  const ai = aiDetector[fname] || null;
+  const dets = detections[fname] || null;
+  if (!rec && !clip && !ai && !dets) {
+    body.innerHTML = `
+      <div class="mp-empty">
+        No forensic sidecar for <code>${escapeHtml(fname)}</code>.<br>
+        Sidecars are generated at build time by <code>scripts/forensics.py</code>.
+      </div>`;
+    return;
+  }
+  body.innerHTML = afxFormatForensics(rec, fname, clip, dets, ai);
+}
+
+// ── Panel open / close (accordion — one at a time) ──
+function afxClose() {
+  if (AFX.panel) AFX.panel.remove();
+  AFX.panel = null;
+  AFX.imgPath = null;
+  AFX.active = null;
+  AFX.derived = null;
+  AFX.boxesActive = false;
+  afxInvalidateSource();
+  $$(".analyze-btn.active").forEach(b => b.classList.remove("active"));
+}
+
+const AFX_FILTERS = [
+  ["invert",    "invert",    "Invert / negative — reveals detail in deep shadows"],
+  ["channel-r", "R",         "Red channel only"],
+  ["channel-g", "G",         "Green channel only"],
+  ["channel-b", "B",         "Blue channel only"],
+  ["clahe",     "CLAHE",     "CLAHE adaptive contrast stretch — pulls faint detail out of the sky"],
+  ["sobel",     "edges",     "Sobel edge magnitude overlay"],
+  ["unsharp",   "sharpen",   "Unsharp-mask sharpen (no hallucination)"],
+  ["sigma",     "σ-anomaly", "Sigma-clipped anomaly heatmap — flags bright pixels >3σ above local mean"],
+  ["ela",       "ELA",       "Error Level Analysis — re-encodes JPEG @ q=0.9, amplifies the diff, highlights edited regions"],
+];
+
+async function afxOpen(path, btn) {
+  AFX.imgPath = path;
+  btn.classList.add("active");
+  const inGrid = !!btn.closest(".extracted .grid");
+  const panel = document.createElement("div");
+  panel.className = "afx-panel" + (inGrid ? " in-grid" : "");
+  const full = `${ROOT_REL}/${path}`;
+  panel.innerHTML = `
+    <div class="afx-stage-outer">
+      <div class="afx-stage">
+        <img class="afx-img" src="${full}" alt=""/>
+        <canvas class="afx-canvas" hidden></canvas>
+        <canvas class="afx-boxes" hidden></canvas>
+        <div class="afx-banner afx-banner-enhanced" hidden>▲ 4× RECONSTRUCTION · Real-ESRGAN · plausible interpolation, <strong>not new evidence</strong></div>
+        <div class="afx-banner afx-banner-depth" hidden>🌊 MONOCULAR DEPTH · Depth-Anything-v2 · red = near, blue = far. <strong>Estimate, not measurement</strong></div>
+      </div>
+    </div>
+    <div class="afx-bar">
+      <span class="afx-label">FORENSICS</span>
+      ${AFX_FILTERS.map(([fx, label, tip]) => `<button type="button" data-fx="${fx}" title="${tip}">${label}</button>`).join("")}
+      <button type="button" data-fx="reset" title="Clear filter">✕ clear</button>
+      <span class="afx-sep"></span>
+      <button type="button" data-fx="boxes" title="Draw YOLOv8 detection boxes over the image">⛶ boxes</button>
+      <button type="button" data-fx="depth" title="Depth-Anything-v2 monocular depth map — relative depth estimate, not a measurement" hidden>🌊 depth</button>
+      <button type="button" data-fx="cutout" title="BiRefNet foreground cutout — salient object isolated on a transparent background" hidden>✂ cutout</button>
+      <button type="button" data-fx="enhanced" title="Real-ESRGAN 4× upscale — plausible reconstruction, not new evidence" hidden>✨ 4× enhance</button>
+      <span class="afx-spacer"></span>
+      <span class="afx-status"></span>
+      <button type="button" class="afx-close" title="Close forensics panel">✕</button>
+    </div>
+    <div class="afx-body"><div class="mp-empty">loading…</div></div>`;
+  const anchor = btn.closest(".extracted-cell") || btn.closest(".preview") || btn;
+  anchor.insertAdjacentElement("afterend", panel);
+  AFX.panel = panel;
+
+  panel.querySelector(".afx-close").addEventListener("click", afxClose);
+  panel.querySelectorAll(".afx-bar button[data-fx]").forEach(b => {
+    b.addEventListener("click", () => {
+      const name = b.dataset.fx;
+      if (name === "reset") { afxClearFx(); afxStatus(""); }
+      else if (name === "boxes") afxToggleBoxes();
+      else if (["depth", "cutout", "enhanced"].includes(name)) afxToggleDerived(name);
+      else afxApplyFilter(name);
+    });
+  });
+
+  afxRenderMetadata();
+
+  // HEAD-check derived variants in parallel; reveal buttons for the ones
+  // that exist (extracted images never have derived variants).
+  for (const kind of ["depth", "cutout", "enhanced"]) {
+    const url = afxDerivedUrl(kind, path);
+    if (!url) continue;
+    afxHeadOk(url).then(ok => {
+      if (ok && AFX.panel === panel) {
+        panel.querySelector(`button[data-fx="${kind}"]`).hidden = false;
+      }
+    });
+  }
+}
+
+function afxToggle(btn) {
+  const path = btn.dataset.imgPath;
+  if (AFX.panel && AFX.imgPath === path) { afxClose(); return; }
+  afxClose();
+  afxOpen(path, btn);
 }
 
 function dossierMentionsHTML(d) {
@@ -479,6 +1251,18 @@ function openCiteModal() {
   }
 
   renderMiniGraph(d, $("#mini-graph-mount"));
+
+  // Video keyframe filmstrip (graceful no-op when manifest is absent)
+  renderFilmstrip(d);
+
+  // Forensics "Analyze" expanders
+  main.querySelectorAll(".analyze-btn").forEach(btn => {
+    btn.addEventListener("click", (e) => {
+      e.preventDefault();
+      e.stopPropagation();
+      afxToggle(btn);
+    });
+  });
 
   // PDF embed
   const embedBtn = $("#pdf-embed-btn");

@@ -154,10 +154,16 @@ for r in RECORDS:
     is_aud = r.get("type", "").strip() == "AUD"
     kind = "audio" if is_aud else "video"
     meta = fetch_dvids_meta(vid, kind=kind)
-    if not meta:
-        continue
-    pair = best_audio_url(meta) if is_aud else best_video_url(meta)
-    if not pair:
+    pair = best_audio_url(meta) if (is_aud and meta) else (best_video_url(meta) if meta else None)
+    # NASA uploads audio tapes to DVIDS as *video* assets — if the audio
+    # asset is missing or has no audio files, fall back to the video asset.
+    if is_aud and not pair:
+        meta = fetch_dvids_meta(vid, kind="video")
+        if meta:
+            pair = best_video_url(meta)
+            if pair:
+                is_aud = False
+    if not meta or not pair:
         continue
     src, name = pair
     sub = "audio" if is_aud else "videos"

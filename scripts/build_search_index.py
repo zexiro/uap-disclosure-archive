@@ -237,6 +237,12 @@ if BLUE_BOOK_PATH.exists():
 out = ROOT / "ui" / "search-index.json"
 out.parent.mkdir(exist_ok=True)
 out.write_text(json.dumps(docs, ensure_ascii=False))
+
+# Metadata-only variant for pages that don't need full OCR text
+# (Home / Map / Timeline) — ~2.4MB vs ~8MB.
+lite = [{k: v for k, v in d.items() if k != "text"} for d in docs]
+(ROOT / "ui" / "records-lite.json").write_text(json.dumps(lite, ensure_ascii=False))
+
 print(
     f"Wrote {out} — {len(docs)} records "
     f"({extracted_records} synthetic IMG, {blue_book_records} Blue Book), "

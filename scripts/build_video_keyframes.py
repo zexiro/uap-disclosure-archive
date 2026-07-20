@@ -219,14 +219,21 @@ def main() -> None:
     new_ids: list[str] = []
     new_kf_paths: list[Path] = []
 
+    # Manifest for the UI filmstrip: record_id → keyframe paths (repo-relative).
+    manifest: dict[str, list[str]] = {}
     for rid, video_path in processable:
         kf_paths = extract_keyframes(video_path, rid)
+        if kf_paths:
+            manifest[rid] = [str(p.relative_to(ROOT)) for p in kf_paths]
         for scene_idx, kf_path in enumerate(kf_paths):
             embed_id = f"vid:{rid}:scene{scene_idx:03d}"
             if embed_id in existing_set:
                 continue  # already embedded
             new_ids.append(embed_id)
             new_kf_paths.append(kf_path)
+
+    (ROOT / "ui" / "video_keyframes.json").write_text(json.dumps(manifest))
+    print(f"[vid-kf] manifest: {len(manifest)} videos → ui/video_keyframes.json")
 
     print(f"[vid-kf] {len(new_kf_paths)} new keyframes to embed")
 

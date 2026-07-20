@@ -165,7 +165,7 @@ function renderTodayInDisclosure() {
 }
 
 (async function init() {
-  await loadCoreData(["incidents", "today"]);
+  await loadCoreData(["incidents", "today"], { lite: true });
   $("#home-corpus-count").textContent = `${docs.length} records indexed.`;
   const agencies = new Set(docs.map(d => d.agency).filter(Boolean));
   $("#home-stats").textContent =

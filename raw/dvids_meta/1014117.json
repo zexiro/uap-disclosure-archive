@@ -1,0 +1,98 @@
+{
+  "results": {
+    "id": "video:1014117",
+    "type": "video",
+    "title": "NASA-UAP-D029, Apollo 17 Crew Medical Debriefing (Continued), 1972",
+    "description": "This file contains segment 2 of 2 of the Apollo 17 post-mission medical debriefing at the Manned Spacecraft Center (now Johnson Space Center), Houston, Texas. In this continued segment, crew members and debriefers further discuss the \u201clight flash phenomena,\u201d a then novel, now well-documented biological effect where high-energy cosmic rays pass through the eye and strike the retina, causing the perception of light streaks or flashes. Two of the three crew members reported observing these flashes at various points during the mission, including in lunar orbit and while on the lunar surface.",
+    "keywords": "UAPVIDEOS, AARO071026",
+    "date_published": "2026-07-10T07:15:23-04:00",
+    "date": "1972-12-21T00:00:00-05:00",
+    "category": "Briefings",
+    "unit_id": "8597",
+    "unit_name": "All Domain Anomaly Resolution Office",
+    "branch": "Civilian",
+    "timestamp": "2026-07-10T07:18:40-04:00",
+    "image": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014117/DOD_111830092.0000001/2000w_q95.jpg",
+    "url": "https://www.dvidshub.net/video/1014117/nasa-uap-d029-apollo-17-crew-medical-debriefing-continued-1972",
+    "credit": "Courtesy",
+    "location": {
+      "city": "",
+      "state": "Texas",
+      "country": "United States",
+      "state_abbreviation": "TX",
+      "country_abbreviation": "US"
+    },
+    "time_start": 0,
+    "virin": "720101-D-D0360-6901",
+    "duration": 3046,
+    "aspect_ratio": "16:9",
+    "files": [
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092.mp4",
+        "type": "video/mp4",
+        "height": 270,
+        "width": 480,
+        "size": 166178320,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-1920x1080-9000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 599954971,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-1920x1080-6000k.mp4",
+        "type": "video/mp4",
+        "height": 1080,
+        "width": 1920,
+        "size": 453022579,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-1280x720-3000k.mp4",
+        "type": "video/mp4",
+        "height": 720,
+        "width": 1280,
+        "size": 316091381,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-1024x576-2000k.mp4",
+        "type": "video/mp4",
+        "height": 576,
+        "width": 1024,
+        "size": 265517846,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-512x288-1000k.mp4",
+        "type": "video/mp4",
+        "height": 288,
+        "width": 512,
+        "size": 167258072,
+        "bitrate": 0
+      },
+      {
+        "src": "https://d34w7g4gy10iej.cloudfront.net/video/2607/DOD_111830092/DOD_111830092-256x144-1000k.mp4",
+        "type": "video/mp4",
+        "height": 144,
+        "width": 256,
+        "size": 99277409,
+        "bitrate": 0
+      }
+    ],
+    "hls_url": "https://api.dvidshub.net/hls/video/1014117.m3u8?api_key=key-68bb60d16b35e",
+    "closed_caption_urls": {
+      "srt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1014117&format=srt&api_key=key-68bb60d16b35e",
+      "webvtt": "https://api.dvidshub.net/closed-captions/get?asset_id=video:1014117&format=webvtt&api_key=key-68bb60d16b35e"
+    },
+    "thumbnail": {
+      "url": "https://d1ldvf68ux039x.cloudfront.net/thumbs/frames/video/2607/1014117/DOD_111830092.0000001/720w_q95.jpg",
+      "width": 720,
+      "height": 0
+    }
+  }
+}

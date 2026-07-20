@@ -160,8 +160,10 @@ const EXTRA_FILES = {
   today:       ["today_index.json",      j => { window.TODAY_INDEX = j; }],
 };
 
-async function loadCoreData(extras = []) {
-  const res = await fetch("search-index.json");
+// Pages that never render full OCR text (Home / Map / Timeline) can pass
+// { lite: true } to load records-lite.json (~2.4MB vs ~8MB) instead.
+async function loadCoreData(extras = [], opts = {}) {
+  const res = await fetch(opts.lite ? "records-lite.json" : "search-index.json");
   docs = await res.json();
 
   for (const d of docs) {
