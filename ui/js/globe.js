@@ -92,7 +92,7 @@ window.DisclosureGlobe = (function () {
         let lat = g.lat, lng = g.lng;
         if (n > 1) {
           const a = i * 2.399963; // golden angle
-          const r = Math.min(4.5, 0.6 * Math.sqrt(i)); // degrees
+          const r = Math.min(2.2, 0.35 * Math.sqrt(i)); // degrees
           lat += r * Math.sin(a) * 0.6;
           lng += r * Math.cos(a) / Math.max(0.35, Math.cos(g.lat * Math.PI / 180));
         }
@@ -301,27 +301,38 @@ window.DisclosureGlobe = (function () {
     uniform float uScale;
     varying vec3 vColor;
     varying float vBoost;
+    varying float vCrisp;
     void main() {
       vColor = aColor;
       float hover = 1.0 - step(0.5, abs(aIndex - uHover));
       vBoost = hover;
       vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      float tw = 0.88 + 0.12 * sin(uTime * 1.5 + aPhase);
-      float size = aSize * (1.0 + hover * 1.3) * tw;
-      gl_PointSize = size * uPixelRatio * (uScale / -mv.z);
+      float tw = 0.9 + 0.1 * sin(uTime * 1.5 + aPhase);
+      // World-anchored size: markers hold a constant geographic footprint,
+      // so zooming in sharpens them onto their true location instead of
+      // stretching a fixed-size blob over the map. uScale = home distance.
+      float px = aSize * (uScale / -mv.z) * (1.0 + hover * 0.9) * tw;
+      px = clamp(px, 2.0, 34.0);
+      vCrisp = smoothstep(4.0, 14.0, px); // crisper edge as markers enlarge
+      gl_PointSize = px * uPixelRatio;
       gl_Position = projectionMatrix * mv;
     }`;
   const MARKER_FRAG = `
     varying vec3 vColor;
     varying float vBoost;
+    varying float vCrisp;
     void main() {
       vec2 uv = gl_PointCoord - 0.5;
       float d = length(uv);
       if (d > 0.5) discard;
-      float core = smoothstep(0.5, 0.04, d);
-      float hot = smoothstep(0.16, 0.0, d);
-      vec3 col = mix(vColor, vec3(1.0), hot * 0.7 + vBoost * 0.25);
-      float alpha = core * (0.72 + 0.28 * vBoost);
+      // Hard-edged core with a tight halo — clear at close zoom, still
+      // glowy at overview distances.
+      float edge = mix(0.34, 0.26, vCrisp);
+      float core = 1.0 - smoothstep(edge, edge + 0.05, d);
+      float halo = (1.0 - smoothstep(edge, 0.5, d)) * mix(0.55, 0.3, vCrisp);
+      float hot = 1.0 - smoothstep(0.08, 0.14, d);
+      vec3 col = mix(vColor, vec3(1.0), hot * 0.5 + vBoost * 0.3);
+      float alpha = core * 0.95 + halo * (0.6 + 0.3 * vBoost);
       gl_FragColor = vec4(col, alpha);
     }`;
 
@@ -337,7 +348,9 @@ window.DisclosureGlobe = (function () {
       vAlpha = aAlpha;
       vColor = aColor;
       vec4 mv = modelViewMatrix * vec4(position, 1.0);
-      gl_PointSize = aSize * uPixelRatio * (uScale / -mv.z);
+      float px = aSize * (uScale / -mv.z);
+      px = clamp(px, 2.0, 72.0);
+      gl_PointSize = px * uPixelRatio;
       gl_Position = projectionMatrix * mv;
     }`;
   const RING_FRAG = `
@@ -723,8 +736,6 @@ window.DisclosureGlobe = (function () {
       }
 
       markerMat.uniforms.uTime.value = t;
-      markerMat.uniforms.uScale.value = camera.position.z;
-      ringMat.uniforms.uScale.value = camera.position.z;
 
       // Pulse rings
       if (RING_COUNT && markers.length) {
