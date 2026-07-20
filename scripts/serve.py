@@ -645,6 +645,16 @@ async def root_redirect(request: Request):
     return RedirectResponse(url="/ui/", status_code=302)
 
 
+async def serve_sitemap(request: Request):
+    return FileResponse(ROOT / "sitemap.xml", media_type="application/xml",
+                        headers={"Cache-Control": "public, max-age=3600"})
+
+
+async def serve_robots(request: Request):
+    return FileResponse(ROOT / "robots.txt", media_type="text/plain",
+                        headers={"Cache-Control": "public, max-age=3600"})
+
+
 async def ai_status(request: Request):
     s = ai_status_for_request(request)
     return JSONResponse(s, headers={"Cache-Control": "no-store", **CORS_HEADERS})
@@ -1544,6 +1554,8 @@ async def ws_collab(ws: WebSocket):
 # ─── Route table ─────────────────────────────────────────────────────
 routes = [
     Route("/", endpoint=root_redirect, methods=["GET", "HEAD"]),
+    Route("/sitemap.xml", endpoint=serve_sitemap, methods=["GET", "HEAD"]),
+    Route("/robots.txt", endpoint=serve_robots, methods=["GET", "HEAD"]),
     Route("/healthz", endpoint=healthz, methods=["GET", "HEAD"]),
     Route("/healthz/", endpoint=healthz, methods=["GET", "HEAD"]),
     Route("/api/ai/status", endpoint=ai_status, methods=["GET", "OPTIONS"]),
