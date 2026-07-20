@@ -11,16 +11,31 @@
 <link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="css/app.css" />
 </head>
-<body>
+<body class="home-page">
+<section class="hero-globe">
+  <div id="home-globe"></div>
+  <div class="hg-overlay">
+    <div class="hg-kicker">DECLASSIFIED UAP ARCHIVE</div>
+    <h1 class="hg-title">Every sighting.<br />Every file. <em>One globe.</em></h1>
+    <p class="hg-sub">A searchable mirror of <a href="https://www.war.gov/UFO/">war.gov/UFO</a> — every PDF, image, video, and audio record, full-text OCR'd. <span id="home-corpus-count"></span></p>
+    <form class="hg-search" id="home-search-form">
+      <input id="home-q" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" />
+      <button type="submit">SEARCH</button>
+    </form>
+    <div class="hg-meta" id="hg-meta">PLOTTING RECORDS…</div>
+  </div>
+  <div class="hg-legend">
+    <span class="sw pdf">PDF</span>
+    <span class="sw vid">VIDEO</span>
+    <span class="sw aud">AUDIO</span>
+    <span class="sw img">IMAGE</span>
+    <span class="sw case">CASE FILE</span>
+  </div>
+  <div class="hg-corner">DRAG TO ROTATE<br />HOVER A MARKER TO INSPECT</div>
+  <div class="hg-loading" id="hg-loading">INITIALIZING ORBITAL FEED</div>
+</section>
+
 <main class="home-main">
-  <h1 class="home-title">UFO/UAP Disclosure Archive</h1>
-  <p class="home-sub">A searchable mirror of <a href="https://www.war.gov/UFO/" style="color:var(--accent)">war.gov/UFO</a> — every PDF, image, video, and audio record, full-text OCR'd. <span id="home-corpus-count"></span></p>
-
-  <form class="home-search" id="home-search-form">
-    <input id="home-q" placeholder="Search titles, blurbs, and full PDF text… (e.g. Roswell, Oak Ridge, propulsion, infrared)" autofocus />
-    <button type="submit">SEARCH</button>
-  </form>
-
   <div class="home-grid">
     <div class="landing-card" id="today-card" hidden>
       <div class="lc-head" style="display:flex;align-items:center;gap:8px">
@@ -48,6 +63,7 @@
 </main>
 
 <script src="js/shared.js"></script>
+<script src="js/globe.js"></script>
 <script>
 // Legacy-link shim: old shareable URLs carried state in the hash
 // (#view=graph&doc=…&q=…). Redirect them to the matching new page
@@ -164,14 +180,36 @@ function renderTodayInDisclosure() {
   };
 }
 
+async function initGlobeHero() {
+  const loading = $("#hg-loading");
+  try {
+    await DisclosureGlobe.loadLocations();
+    const globe = await DisclosureGlobe.create($("#home-globe"), {
+      offsetX: 0.24,
+      onCount: (n) => {
+        $("#hg-meta").innerHTML =
+          `TRACKING <strong>${n}</strong> GEOTAGGED RECORDS · ${docs.length} TOTAL IN ARCHIVE`;
+      },
+    });
+    globe.setMarkers(DisclosureGlobe.buildMarkers(docs));
+    loading.classList.add("done");
+  } catch (e) {
+    console.warn("[home] globe unavailable:", e);
+    loading.textContent = "GLOBE UNAVAILABLE — ARCHIVE STILL SEARCHABLE BELOW";
+    setTimeout(() => loading.classList.add("done"), 1800);
+    $("#hg-meta").textContent = `${docs.length} RECORDS INDEXED`;
+  }
+}
+
 (async function init() {
-  await loadCoreData(["incidents", "today"], { lite: true });
+  await loadCoreData(["incidents", "today", "correlations"], { lite: true });
   $("#home-corpus-count").textContent = `${docs.length} records indexed.`;
   const agencies = new Set(docs.map(d => d.agency).filter(Boolean));
   $("#home-stats").textContent =
     `${docs.length} records · ${agencies.size} agencies · Releases 1–4 mirrored from war.gov · not affiliated with the U.S. Government`;
   renderRecentlyDeclassified();
   renderTodayInDisclosure();
+  initGlobeHero();
 })();
 
 $("#home-search-form").addEventListener("submit", (e) => {

@@ -119,6 +119,11 @@
     "lat": 30.2711286,
     "lng": -97.7436995
   },
+  "Australia": {
+    "country": "au",
+    "lat": -24.7761086,
+    "lng": 134.755
+  },
   "Azerbaijan": {
     "country": "az",
     "lat": 40.3936294,
@@ -128,6 +133,11 @@
     "country": "pt",
     "lat": 37.8085565,
     "lng": -25.4731374
+  },
+  "Baku, Azerbaijan": {
+    "country": "az",
+    "lat": 40.3755885,
+    "lng": 49.8328009
   },
   "Banning, California": {
     "country": "us",
@@ -211,6 +221,11 @@
     "lng": -79.4144654
   },
   "Boston-Provincetown, Massachusetts": null,
+  "Budapest, Hungary": {
+    "country": "hu",
+    "lat": 47.4978789,
+    "lng": 19.0402383
+  },
   "Bunker Hill AFB , Indiana": null,
   "Burnsville, North Carolina": {
     "country": "us",
@@ -236,6 +251,11 @@
     "country": "us",
     "lat": 41.7987588,
     "lng": -69.9960655
+  },
+  "Cape Kennedy, Florida": {
+    "country": "us",
+    "lat": 28.4513556,
+    "lng": -80.5283059
   },
   "Cape Province, South Africa": {
     "country": "za",
@@ -328,6 +348,11 @@
   },
   "Cold Bay AFS, Alaska": null,
   "Colorado Springs, Colorado": {
+    "country": "us",
+    "lat": 38.8339578,
+    "lng": -104.825348
+  },
+  "Colorado Springs, Colorado, U.S.": {
     "country": "us",
     "lat": 38.8339578,
     "lng": -104.825348
@@ -727,6 +752,11 @@
     "lng": -122.5237046
   },
   "Haneda AFB, Japan": null,
+  "Harare, Zimbabwe": {
+    "country": "zw",
+    "lat": -17.8567035,
+    "lng": 31.0601584
+  },
   "Hartland, Maine": {
     "country": "us",
     "lat": 44.8831798,
@@ -776,6 +806,16 @@
     "country": "us",
     "lat": 29.7589382,
     "lng": -95.3676974
+  },
+  "Hungary": {
+    "country": "hu",
+    "lat": 47.1817585,
+    "lng": 19.5060937
+  },
+  "INDOPACOM": {
+    "country": "us",
+    "lat": 21.360808,
+    "lng": -157.9356587
   },
   "Iceland": {
     "country": "is",
@@ -1305,6 +1345,11 @@
     "country": "in",
     "lat": 28.6138954,
     "lng": 77.2090057
+  },
+  "New Jersey, United States": {
+    "country": "us",
+    "lat": 40.0757384,
+    "lng": -74.4041622
   },
   "New Orleans, Louisiana": {
     "country": "us",
@@ -2070,6 +2115,11 @@
     "country": "us",
     "lat": 41.8179303,
     "lng": -88.174097
+  },
+  "Washington State, United States": {
+    "country": "us",
+    "lat": 47.2868352,
+    "lng": -120.212613
   },
   "Washington, D.C.": {
     "country": "us",
