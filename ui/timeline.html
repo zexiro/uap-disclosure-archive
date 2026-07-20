@@ -1,0 +1,833 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Timeline — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/vis-timeline@7.7.3/styles/vis-timeline-graph2d.min.css" />
+<script src="https://unpkg.com/vis-timeline@7.7.3/standalone/umd/vis-timeline-graph2d.min.js" defer></script>
+<link rel="stylesheet" href="css/app.css" />
+<style>
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; overflow: hidden; }
+  #timeline-view { flex: 1; min-height: 0; display: grid; grid-template-rows: 1fr auto auto; position: relative; }
+  #tl-info {
+    position: absolute; top: 44px; right: 16px; bottom: 44px;
+    width: min(440px, calc(100% - 32px)); z-index: 20; overflow-y: auto;
+    background: rgba(11,14,20,0.97); border: 1px solid var(--border); border-radius: 6px;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.6);
+  }
+  #tl-info .tl-info-close {
+    position: sticky; top: 0; float: right; margin: 8px 8px 0 0;
+    background: none; border: 1px solid var(--border); color: var(--fg-dim);
+    border-radius: 6px; cursor: pointer; padding: 2px 8px; font-family: var(--mono);
+  }
+  #tl-info .tl-info-close:hover { border-color: var(--accent); color: var(--accent); }
+  #tl-info .rel-row {
+    display: block; padding: 6px 8px; border-left: 2px solid var(--border);
+    background: var(--bg); margin-bottom: 3px; cursor: pointer; font-size: 12px;
+    text-decoration: none; color: inherit;
+  }
+  #tl-info .rel-row:hover { border-left-color: var(--accent); background: #1a2030; }
+  #tl-info .rel-date { font-family: var(--mono); color: var(--accent); font-size: 10.5px; }
+  #tl-info .rel-title { color: var(--fg); }
+  #tl-info .rel-meta { color: var(--fg-dim); font-family: var(--mono); font-size: 10.5px; }
+</style>
+</head>
+<body>
+<main id="timeline-view">
+  <div id="timeline-stage">
+    <div id="timeline-canvas"></div>
+    <svg id="timeline-overlay" preserveAspectRatio="none"></svg>
+
+    <div class="tl-hud tl-hud-tl">
+      <span class="pill wm">DISCLOSURE TIMELINE</span>
+      <span class="pill" id="tl-counts">—</span>
+    </div>
+
+    <div class="tl-hud tl-hud-tr">
+      <span class="label">GO TO</span>
+      <input id="tl-jump" placeholder="YYYY · YYYY-MM · ISO" autocomplete="off"/>
+      <button id="tl-density-toggle" type="button" title="Toggle density histogram">DENSITY</button>
+    </div>
+
+    <div class="tl-hud tl-hud-bl">
+      <span class="lane-label">LANES</span>
+      <button data-lane="milestones" class="active" type="button">Milestones</button>
+      <button data-lane="incidents" class="active" type="button">Incidents</button>
+      <button data-lane="documents" class="active" type="button">Official Releases</button>
+      <button data-lane="nuforc" class="active" type="button">⚠ NUFORC</button>
+      <button data-lane="programs" class="active" type="button">Programs</button>
+      <button data-lane="dossiers" type="button">Dossiers</button>
+      <button data-lane="arcs" class="active" type="button">Arcs</button>
+    </div>
+
+    <div id="tl-hover" class="tl-hover" hidden></div>
+    <div id="tl-info" hidden></div>
+  </div>
+  <div class="tl-decade-chips" id="tl-decade-chips">
+    <button data-d="1940">1940s</button>
+    <button data-d="1950">1950s</button>
+    <button data-d="1960">1960s</button>
+    <button data-d="1970">1970s</button>
+    <button data-d="1980">1980s</button>
+    <button data-d="1990">1990s</button>
+    <button data-d="2000">2000s</button>
+    <button data-d="2010">2010s</button>
+    <button data-d="2020">2020s</button>
+  </div>
+  <div id="timeline-results" class="empty"></div>
+</main>
+
+<script src="js/shared.js"></script>
+<script>
+renderNav("timeline");
+
+let tlState = {
+  timeline: null,
+  items: null,
+  groups: null,
+  milestones: [],
+  programs: [],
+  density: false,
+  arcs: true,
+  visibleLanes: new Set(["milestones", "incidents", "documents", "nuforc", "programs"]),
+  brush: null,    // {startX, endX, fromDate, toDate}
+  brushing: false,
+  hoverItem: null,
+  focusId: null,
+  pendingFrom: null, pendingTo: null, pendingFocus: null,
+};
+
+const DEFAULT_LANES = ["milestones", "incidents", "documents", "nuforc", "programs"];
+const LANE_ORDER = ["milestones", "incidents", "documents", "nuforc", "programs", "dossiers"];
+const LANE_TITLES = {
+  milestones: "MILESTONES",
+  incidents:  "INCIDENTS",
+  documents:  "OFFICIAL RELEASES",
+  nuforc:     "NUFORC CIVILIAN",
+  programs:   "PROGRAMS",
+  dossiers:   "DOSSIERS",
+};
+
+function tlAgencyClass(ag) {
+  const a = (ag || "").toLowerCase();
+  if (a.includes("fbi")) return "ag-fbi";
+  if (a.includes("nasa")) return "ag-nasa";
+  if (a.includes("state")) return "ag-state";
+  if (a.includes("aaro") || a.includes("dod")) return "ag-dod";
+  if (a.includes("war")) return "ag-dow";
+  return "";
+}
+
+function agencyColor(ag) {
+  switch (ag) {
+    case "Department of War":   return "#ff6b6b";
+    case "FBI":                 return "#ffd34d";
+    case "NASA":                return "#57c7ff";
+    case "Department of State": return "#b07cff";
+    default:                    return "#7c8aa1";
+  }
+}
+
+function tlParseUSDate(s) {
+  if (!s) return null;
+  s = String(s).split("-")[0].trim();
+  const m = /^(\d{1,2})\/(\d{1,2})\/(\d{2,4})$/.exec(s);
+  if (!m) return null;
+  let y = parseInt(m[3], 10);
+  if (y < 100) y += y < 50 ? 2000 : 1900;
+  return new Date(y, parseInt(m[1], 10) - 1, parseInt(m[2], 10));
+}
+function tlParseDate(s) {
+  if (!s) return null;
+  // Try ISO first
+  const iso = /^(\d{4})(?:-(\d{2})(?:-(\d{2}))?)?/.exec(String(s).trim());
+  if (iso) {
+    const y = parseInt(iso[1], 10);
+    const mo = iso[2] ? parseInt(iso[2], 10) - 1 : 0;
+    const d = iso[3] ? parseInt(iso[3], 10) : 1;
+    return new Date(y, mo, d);
+  }
+  return tlParseUSDate(s);
+}
+
+async function ensureTimelineData() {
+  if (tlState.milestones.length && tlState.programs.length) return;
+  const [mres, pres] = await Promise.all([
+    fetch("milestones.json").then(r => r.ok ? r.json() : null).catch(() => null),
+    fetch("programs.json").then(r => r.ok ? r.json() : null).catch(() => null),
+  ]);
+  tlState.milestones = (mres && (mres.milestones || mres)) || [];
+  tlState.programs   = (pres && (pres.programs   || pres)) || [];
+}
+
+// ── URL state (query params — shareable) ─────────────────────────────
+function syncUrl() {
+  const p = new URLSearchParams();
+  if (tlState.brush && tlState.brush.fromDate) {
+    p.set("from", tlState.brush.fromDate.toISOString().slice(0, 10));
+    p.set("to", tlState.brush.toDate.toISOString().slice(0, 10));
+  } else if (tlState.timeline) {
+    // Persist visible window
+    const w = tlState.timeline.getWindow();
+    // Skip if at default
+    if (w.start.getFullYear() !== 1940 || w.end.getFullYear() !== 2027) {
+      p.set("from", w.start.toISOString().slice(0, 10));
+      p.set("to",   w.end.toISOString().slice(0, 10));
+    }
+  }
+  const lanes = LANE_ORDER.filter(l => tlState.visibleLanes.has(l));
+  if (lanes.length !== DEFAULT_LANES.length || !DEFAULT_LANES.every(l => lanes.includes(l))) {
+    p.set("lanes", lanes.join(","));
+  }
+  if (tlState.focusId) p.set("focus", tlState.focusId);
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+}
+
+function loadUrl() {
+  const p = new URLSearchParams(location.search);
+  const from = p.get("from"), to = p.get("to");
+  if (from) { const d = tlParseDate(from); if (d) tlState.pendingFrom = d; }
+  if (to)   { const d = tlParseDate(to);   if (d) tlState.pendingTo = d; }
+  const lanes = p.get("lanes");
+  if (lanes != null) {
+    tlState.visibleLanes = new Set(lanes.split(",").filter(Boolean));
+  }
+  const focus = p.get("focus");
+  if (focus) tlState.pendingFocus = focus;
+}
+
+function tlBuildItems() {
+  // Single-group vis-timeline: items have a `subgroup` per lane so they stack
+  // within their lane band. Lane separation is drawn by the SVG overlay.
+  const items = [];
+  const inc = (window.INCIDENTS || {});
+
+  // ── Milestones (always visible as a distinct top lane) ────────────────
+  if (tlState.visibleLanes.has("milestones")) {
+    for (const m of tlState.milestones) {
+      const d = tlParseDate(m.date); if (!d) continue;
+      const end = m.end ? tlParseDate(m.end) : new Date(d.getTime() + 90 * 86400000);
+      const kindCls = "tl-milestone ms-kind-" + (m.kind || "event");
+      items.push({
+        id: "ms:" + m.id, group: "main", subgroup: "milestones",
+        start: d, end, type: "range", className: kindCls,
+        content: `<strong>${escapeHtml(m.label)}</strong>`,
+        title: `<strong>${escapeHtml(m.label)}</strong><br>${escapeHtml(m.blurb || "")}`,
+        _kind: "milestone", _id: m.id, _milestone: m,
+      });
+    }
+  }
+
+  // ── NUFORC civilian sightings from correlations.json ─────────────────
+  if (tlState.visibleLanes.has("nuforc")) {
+    const corr = window.CORRELATIONS || {};
+    const seen = new Set();
+    for (const entry of Object.values(corr)) {
+      for (const match of (entry.matches || [])) {
+        if (seen.has(match.id)) continue;
+        seen.add(match.id);
+        const d = tlParseDate(match.occurred_at); if (!d) continue;
+        const end = new Date(d.getTime() + 30 * 86400000);
+        items.push({
+          id: "nuforc:" + match.id, group: "main", subgroup: "nuforc",
+          start: d, end, type: "range",
+          className: "tl-nuforc tl-civilian",
+          content: "",
+          title: `⚠ CIVILIAN · ${escapeHtml(match.title || "NUFORC sighting")}`,
+          _kind: "nuforc", _id: match.id, _match: match,
+        });
+      }
+    }
+  }
+
+  if (tlState.visibleLanes.has("incidents")) {
+    for (const [id, i] of Object.entries(inc)) {
+      const d = tlParseDate(i.date); if (!d) continue;
+      const cls = "tl-incident s-" + (i.status || "unresolved");
+      const end = new Date(d.getTime() + 60 * 86400000);
+      items.push({
+        id: "inc:" + id, group: "main", subgroup: "incidents",
+        start: d, end, type: "range", className: cls,
+        content: escapeHtml(i.name).slice(0, 40),
+        title: `${escapeHtml(i.name)} — ${i.date}${i.status ? " · " + i.status : ""}`,
+        _kind: "incident", _id: id,
+      });
+    }
+  }
+  if (tlState.visibleLanes.has("documents")) {
+    if (tlState.density) {
+      const buckets = {};
+      for (const d of docs) {
+        const dt = tlParseDate(d.incident_date) || tlParseDate(d.release_date);
+        if (!dt) continue;
+        const y = dt.getFullYear();
+        buckets[y] = (buckets[y] || 0) + 1;
+      }
+      const peak = Math.max(1, ...Object.values(buckets));
+      for (const y of Object.keys(buckets)) {
+        const n = buckets[y];
+        items.push({
+          id: "den:" + y, group: "main", subgroup: "documents",
+          start: new Date(parseInt(y), 0, 1), end: new Date(parseInt(y), 11, 31),
+          type: "background",
+          style: `background-color: rgba(87,199,255,${0.15 + 0.6*(n/peak)})`,
+          title: `${y}: ${n} records`, _kind: "density",
+        });
+      }
+    } else {
+      for (const d of docs) {
+        if (d.type === "IMG") continue;
+        const dt = tlParseDate(d.incident_date) || tlParseDate(d.release_date);
+        if (!dt) continue;
+        const cls = "tl-document " + tlAgencyClass(d.agency);
+        const end = new Date(dt.getTime() + 30 * 86400000);
+        items.push({
+          id: "doc:" + d.id, group: "main", subgroup: "documents",
+          start: dt, end, type: "range", className: cls,
+          content: "",
+          title: `${escapeHtml(d.title)} — ${d.agency || ""}`,
+          _kind: "document", _id: d.id,
+        });
+      }
+    }
+  }
+  if (tlState.visibleLanes.has("programs")) {
+    for (const p of tlState.programs) {
+      const s = tlParseDate(p.start); if (!s) continue;
+      const e = p.end ? tlParseDate(p.end) : new Date();
+      items.push({
+        id: "prog:" + p.id, group: "main", subgroup: "programs",
+        start: s, end: e, type: "range", className: "tl-program",
+        content: escapeHtml(p.label),
+        title: `${escapeHtml(p.label)} — ${p.agency || ""}`,
+        _kind: "program", _id: p.id,
+      });
+    }
+  }
+  if (tlState.visibleLanes.has("dossiers")) {
+    for (const d of docs) {
+      const hits = d.dossier_hits || {};
+      const dids = Object.keys(hits);
+      if (!dids.length || !hasRelevantHit(d)) continue;
+      const dt = tlParseDate(d.incident_date) || tlParseDate(d.release_date);
+      if (!dt) continue;
+      const end = new Date(dt.getTime() + 30 * 86400000);
+      for (const did of dids) {
+        items.push({
+          id: "dos:" + d.id + ":" + did, group: "main", subgroup: "dossiers",
+          start: dt, end, type: "range", className: "tl-dossier d-" + did,
+          content: "",
+          title: `${escapeHtml(d.title)} · ${did}`,
+          _kind: "dossier-hit", _id: d.id, _dossier: did,
+        });
+      }
+    }
+  }
+  return items;
+}
+
+function tlBuildGroups() {
+  // Single ungrouped track. Subgroups (defined inline per item) stack the
+  // lanes vertically. Subgroup order controls top-to-bottom placement.
+  const visible = LANE_ORDER.filter(l => tlState.visibleLanes.has(l));
+  const subgroupOrder = {};
+  visible.forEach((lane, i) => { subgroupOrder[lane] = i; });
+  return [{
+    id: "main",
+    content: "",
+    subgroupStack: true,
+    subgroupOrder: (a, b) => (subgroupOrder[a.subgroup] ?? 99) - (subgroupOrder[b.subgroup] ?? 99),
+  }];
+}
+
+async function renderTimeline() {
+  if (!window.vis || !window.vis.Timeline) {
+    // CDN not loaded yet — retry shortly
+    setTimeout(renderTimeline, 200);
+    return;
+  }
+  await ensureTimelineData();
+
+  const container = $("#timeline-canvas");
+  // Fix the container's height so vis-timeline doesn't auto-shrink to its content.
+  const stageH = $("#timeline-stage").getBoundingClientRect().height || 500;
+  container.style.height = stageH + "px";
+  const opts = {
+    stack: true,
+    stackSubgroups: true,
+    showCurrentTime: true,
+    horizontalScroll: true,
+    zoomKey: "",          // wheel zooms without modifier
+    moveable: true,
+    selectable: true,
+    multiselect: false,
+    orientation: { axis: "top" },
+    margin: { item: 2, axis: 6 },
+    height: stageH + "px",
+    zoomMin: 1000 * 60 * 60 * 24,                // 1 day
+    zoomMax: 1000 * 60 * 60 * 24 * 365 * 120,    // ~120 years
+    min: new Date(1900, 0, 1),
+    max: new Date(2030, 0, 1),
+    start: tlState.pendingFrom || new Date(1940, 0, 1),
+    end: tlState.pendingTo || new Date(2027, 0, 1),
+    template: function(item) { return item.content || ""; },
+  };
+
+  const items = new vis.DataSet(tlBuildItems());
+  const groups = new vis.DataSet(tlBuildGroups());
+  if (tlState.timeline) {
+    tlState.timeline.destroy();
+    tlState.timeline = null;
+  }
+  tlState.timeline = new vis.Timeline(container, items, groups, opts);
+  tlState.items = items;
+  tlState.groups = groups;
+
+  tlState.timeline.on("rangechanged", (props) => {
+    tlState.pendingFrom = props.start;
+    tlState.pendingTo = props.end;
+    syncUrl();
+    drawTimelineOverlay();
+    renderTimelineResults();
+  });
+  tlState.timeline.on("select", (e) => {
+    const id = e.items && e.items[0];
+    if (!id) return;
+    const it = items.get(id);
+    if (!it) return;
+    if (it._kind === "document" || it._kind === "dossier-hit") {
+      location.href = recordUrl(it._id);
+    } else if (it._kind === "incident") {
+      const inc = (window.INCIDENTS || {})[it._id];
+      if (inc) showIncidentInfo(inc);
+    } else if (it._kind === "program") {
+      const p = tlState.programs.find(x => x.id === it._id);
+      if (p) showProgramInfo(p);
+    } else if (it._kind === "milestone") {
+      showMilestoneInfo(it._milestone);
+    } else if (it._kind === "nuforc") {
+      showNuforcInfo(it._match);
+    }
+  });
+  tlState.timeline.on("doubleClick", (e) => {
+    if (!e.item) return;
+    const it = items.get(e.item);
+    if (it && (it._kind === "document" || it._kind === "dossier-hit")) {
+      location.href = recordUrl(it._id);
+    }
+  });
+  tlState.timeline.on("itemover", (e) => tlShowHover(e));
+  tlState.timeline.on("itemout", () => tlHideHover());
+
+  drawTimelineOverlay();
+  bindTimelineHud();
+  renderTimelineResults();
+  applyPendingTimelineFocus();
+  tlState.timeline.on("changed", drawTimelineOverlay);
+
+  // Resize observer: keep canvas + vis-timeline filling the stage
+  if (!tlState.resizeObserver) {
+    tlState.resizeObserver = new ResizeObserver(() => {
+      if (!tlState.timeline) return;
+      const h = $("#timeline-stage").getBoundingClientRect().height;
+      if (h <= 0) return;
+      container.style.height = h + "px";
+      tlState.timeline.setOptions({ height: h + "px" });
+      tlState.timeline.redraw();
+      drawTimelineOverlay();
+    });
+    tlState.resizeObserver.observe($("#timeline-stage"));
+  }
+
+  $("#tl-counts").textContent = tlBuildCountsText(items);
+}
+
+function tlBuildCountsText(items) {
+  const counts = {};
+  items.forEach(it => {
+    const lane = it.subgroup || it.group;
+    counts[lane] = (counts[lane] || 0) + 1;
+  });
+  return LANE_ORDER
+    .filter(l => counts[l])
+    .map(l => `${LANE_TITLES[l]}: ${counts[l]}`)
+    .join("  ·  ") || "—";
+}
+
+// ── In-page info popup (incidents, programs, milestones, NUFORC) ─────
+function tlInfoOpen(html) {
+  const panel = $("#tl-info");
+  panel.innerHTML = `<button class="tl-info-close" type="button">✕</button>` + html;
+  panel.hidden = false;
+  panel.querySelector(".tl-info-close").addEventListener("click", () => { panel.hidden = true; });
+}
+
+function showIncidentInfo(inc) {
+  tlState.focusId = inc.id;
+  const related = docs.filter(d => d.incident_id === inc.id);
+  tlInfoOpen(`
+    <div style="padding:24px">
+      <div style="font-family:var(--mono);color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">INCIDENT · ${escapeHtml(inc.date)}${inc.status ? " · " + escapeHtml(inc.status) : ""}</div>
+      <h2 style="margin:0 0 10px;font-size:22px;color:var(--fg)">${escapeHtml(inc.name)}</h2>
+      <div style="color:var(--fg-dim);font-family:var(--mono);font-size:12px;margin-bottom:14px">${escapeHtml(inc.location || "")}</div>
+      <p style="line-height:1.55;color:var(--fg)">${escapeHtml(inc.summary || "")}</p>
+      <div style="margin-top:18px;font-family:var(--mono);color:var(--fg-dim);font-size:11px">Records linked to this incident:</div>
+      <div style="margin-top:8px">
+        ${related.length ? related.slice(0, 50).map(d => `
+          <a class="rel-row" href="${recordUrl(d.id)}" style="border-left-color:${agencyColor(d.agency)}">
+            <div class="rel-date">${escapeHtml(d.incident_date || d.release_date || "")}</div>
+            <div class="rel-title">${escapeHtml(d.title)}</div>
+            <div class="rel-meta">${escapeHtml(d.agency || "")} · ${escapeHtml(d.incident_location || "—")}</div>
+          </a>`).join("")
+        : `<div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px">— no records currently tagged to this incident —</div>`}
+      </div>
+    </div>`);
+  syncUrl();
+}
+
+function showProgramInfo(p) {
+  tlInfoOpen(`
+    <div style="padding:24px">
+      <div style="font-family:var(--mono);color:#ff7eb2;font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">PROGRAM · ${escapeHtml(p.start)}${p.end ? " — " + escapeHtml(p.end) : " — present"}</div>
+      <h2 style="margin:0 0 10px;font-size:22px;color:var(--fg)">${escapeHtml(p.label)}</h2>
+      <div style="color:var(--fg-dim);font-family:var(--mono);font-size:12px;margin-bottom:14px">${escapeHtml(p.agency || "")}</div>
+      <p style="line-height:1.55;color:var(--fg)">${escapeHtml(p.blurb || "")}</p>
+    </div>`);
+}
+
+function showMilestoneInfo(m) {
+  if (!m) return;
+  const kindColor = { policy: "var(--accent2)", event: "var(--accent)", media: "#b07cff", hearing: "#ff7eb2" };
+  const c = kindColor[m.kind] || "var(--accent)";
+  tlInfoOpen(`
+    <div style="padding:24px">
+      <div style="font-family:var(--mono);color:${c};font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">MILESTONE · ${escapeHtml(m.kind || "event")} · ${escapeHtml(m.date)}</div>
+      <h2 style="margin:0 0 10px;font-size:22px;color:var(--fg)">${escapeHtml(m.label)}</h2>
+      <p style="line-height:1.55;color:var(--fg)">${escapeHtml(m.blurb || "")}</p>
+    </div>`);
+}
+
+function showNuforcInfo(match) {
+  if (!match) return;
+  const loc = match.location ? `${escapeHtml(match.location.name || "")}` : "—";
+  tlInfoOpen(`
+    <div style="padding:24px">
+      <span class="prov-pill civilian">⚠ Unverified Civilian Report</span>
+      <h2 style="margin:10px 0 6px;font-size:20px;color:#ffd9a0">${escapeHtml(match.title || "NUFORC Sighting")}</h2>
+      <div style="font-family:var(--mono);color:var(--fg-dim);font-size:11px;margin-bottom:14px">
+        ${escapeHtml(match.occurred_at || "")} · ${loc}${match.shape ? " · shape: " + escapeHtml(match.shape) : ""}
+      </div>
+      <div class="civilian-block" style="padding:16px 18px 18px">
+        <div class="civ-intro">${escapeHtml(match.summary || "No summary available.")}</div>
+        <div class="civ-footer" style="margin-top:12px;font-size:10.5px;color:#c8a872">
+          Source: NUFORC public mirror (planetsig/ufo-reports). Unverified civilian eyewitness report.
+        </div>
+      </div>
+    </div>`);
+}
+
+function applyPendingTimelineFocus() {
+  if (!tlState.pendingFocus) return;
+  const id = tlState.pendingFocus;
+  tlState.pendingFocus = null;
+  // Focus targets an incident id (home.html links timeline.html?focus=<id>)
+  const inc = (window.INCIDENTS || {})[id];
+  if (inc) {
+    const d = tlParseDate(inc.date);
+    if (d) {
+      const half = 400 * 86400000; // ~13 months either side
+      tlState.timeline.setWindow(new Date(d.getTime() - half), new Date(d.getTime() + half), { animation: false });
+    }
+    const itemId = "inc:" + id;
+    if (tlState.items.get(itemId)) tlState.timeline.setSelection([itemId]);
+    showIncidentInfo(inc);
+    return;
+  }
+  // Fall back: select any timeline item whose id matches
+  const it = tlState.items.get(id);
+  if (it) tlState.timeline.setSelection([id], { focus: true, animation: true });
+}
+
+// ─── Overlay (milestones, arcs, brush) ────────────────────────────────
+function drawTimelineOverlay() {
+  const svg = $("#timeline-overlay");
+  if (!svg || !tlState.timeline) return;
+  const dom = tlState.timeline.dom || {};
+  const center = dom.center || dom.centerContainer;
+  if (!center) return;
+  const stage = $("#timeline-stage").getBoundingClientRect();
+  const c = center.getBoundingClientRect();
+  // Position overlay to align with vis center panel
+  svg.setAttribute("viewBox", `0 0 ${stage.width} ${stage.height}`);
+  svg.setAttribute("width", stage.width);
+  svg.setAttribute("height", stage.height);
+  const offsetX = c.left - stage.left;
+  const panelW = c.width;
+  const panelTop = c.top - stage.top;
+  const panelH = c.height;
+
+  let html = "";
+  for (const m of tlState.milestones) {
+    const d = tlParseDate(m.date); if (!d) continue;
+    const x = tlState.timeline._toScreen(d) + offsetX;
+    if (x < offsetX - 50 || x > offsetX + panelW + 50) continue;
+    const cls = (m.kind || "event").toLowerCase();
+    if (m.end) {
+      const d2 = tlParseDate(m.end);
+      const x2 = tlState.timeline._toScreen(d2) + offsetX;
+      html += `<rect class="ms-band ${cls}" x="${Math.min(x,x2)}" y="${panelTop}" width="${Math.abs(x2-x)}" height="${panelH}" />`;
+    }
+    html += `<line class="ms-line ${cls}" x1="${x}" y1="${panelTop}" x2="${x}" y2="${panelTop + panelH}" />`;
+    html += `<text class="ms-label ${cls}" transform="translate(${x+4},${panelTop+10}) rotate(0)" text-anchor="start">${escapeHtml(m.label)}</text>`;
+  }
+  // Connector arcs incident → documents
+  if (tlState.arcs && tlState.visibleLanes.has("incidents") && tlState.visibleLanes.has("documents") && !tlState.density) {
+    const incLaneY = tlGroupCenterY("incidents", panelTop, panelH);
+    const docLaneY = tlGroupCenterY("documents", panelTop, panelH);
+    if (incLaneY != null && docLaneY != null) {
+      const inc = (window.INCIDENTS || {});
+      // Throttle: only draw arcs for visible incidents
+      for (const [iid, i] of Object.entries(inc)) {
+        const id = tlParseDate(i.date); if (!id) continue;
+        const ix = tlState.timeline._toScreen(id) + offsetX;
+        if (ix < offsetX - 100 || ix > offsetX + panelW + 100) continue;
+        const matched = docs.filter(d => d.incident_id === iid);
+        // Cap: draw at most 30 arcs per incident (visual sanity)
+        for (const d of matched.slice(0, 30)) {
+          const dt = tlParseDate(d.incident_date) || tlParseDate(d.release_date);
+          if (!dt) continue;
+          const dx = tlState.timeline._toScreen(dt) + offsetX;
+          if (dx < offsetX - 100 || dx > offsetX + panelW + 100) continue;
+          const midX = (ix + dx) / 2;
+          const peakY = Math.min(incLaneY, docLaneY) - Math.max(20, Math.abs(dx - ix) * 0.05);
+          html += `<path class="arc" d="M ${ix} ${incLaneY} Q ${midX} ${peakY} ${dx} ${docLaneY}"/>`;
+        }
+      }
+    }
+  }
+  // Brush rect
+  if (tlState.brush) {
+    const x1 = Math.min(tlState.brush.startX, tlState.brush.endX);
+    const w = Math.abs(tlState.brush.endX - tlState.brush.startX);
+    html += `<rect class="brush" x="${x1}" y="${panelTop}" width="${w}" height="${panelH}"/>`;
+  }
+  svg.innerHTML = html;
+}
+
+function tlGroupCenterY(groupId, panelTop, panelH) {
+  // Find the average Y of items belonging to this lane (subgroup).
+  const items = document.querySelectorAll(`.vis-item.tl-${groupId === "incidents" ? "incident" : groupId === "documents" ? "document" : groupId === "programs" ? "program" : "dossier"}`);
+  if (!items.length) {
+    // Fallback to visible lane order
+    const visible = LANE_ORDER.filter(l => tlState.visibleLanes.has(l));
+    const idx = visible.indexOf(groupId);
+    if (idx < 0) return null;
+    const laneH = panelH / visible.length;
+    return panelTop + laneH * (idx + 0.5);
+  }
+  let sum = 0, n = 0;
+  items.forEach(el => {
+    const r = el.getBoundingClientRect();
+    if (r.height > 0) { sum += r.top + r.height / 2; n++; }
+  });
+  return n ? (sum / n - panelTop + panelTop) : null;  // already in stage coords
+}
+
+// ─── HUD: jump, density toggle, lane toggles, brush, hover ────────────
+function bindTimelineHud() {
+  // Date jumper
+  const jump = $("#tl-jump");
+  jump.onkeydown = (e) => {
+    if (e.key !== "Enter") return;
+    const v = jump.value.trim();
+    let d = tlParseDate(v);
+    if (!d && /^\d{4}$/.test(v)) d = new Date(parseInt(v), 0, 1);
+    if (!d) return;
+    tlState.timeline.moveTo(d, { animation: { duration: 600, easingFunction: "easeOutCubic" } });
+  };
+  // Density toggle
+  const dt = $("#tl-density-toggle");
+  dt.onclick = () => {
+    tlState.density = !tlState.density;
+    dt.classList.toggle("active", tlState.density);
+    rebuildTimeline();
+  };
+  dt.classList.toggle("active", tlState.density);
+  // Lane toggles
+  document.querySelectorAll(".tl-hud-bl button[data-lane]").forEach(b => {
+    const lane = b.dataset.lane;
+    if (lane === "arcs") {
+      b.classList.toggle("active", tlState.arcs);
+      b.onclick = () => {
+        tlState.arcs = !tlState.arcs;
+        b.classList.toggle("active", tlState.arcs);
+        drawTimelineOverlay();
+      };
+      return;
+    }
+    b.classList.toggle("active", tlState.visibleLanes.has(lane));
+    b.onclick = () => {
+      if (tlState.visibleLanes.has(lane)) tlState.visibleLanes.delete(lane);
+      else tlState.visibleLanes.add(lane);
+      b.classList.toggle("active", tlState.visibleLanes.has(lane));
+      rebuildTimeline();
+      syncUrl();
+    };
+  });
+  // Decade chips
+  document.querySelectorAll("#tl-decade-chips button").forEach(b => {
+    b.onclick = () => {
+      const d = parseInt(b.dataset.d, 10);
+      tlState.timeline.setWindow(new Date(d, 0, 1), new Date(d + 10, 0, 1), { animation: true });
+      document.querySelectorAll("#tl-decade-chips button").forEach(x => x.classList.toggle("active", x === b));
+    };
+  });
+  // Brush — shift+drag on overlay
+  const stage = $("#timeline-stage");
+  stage.onmousedown = (e) => {
+    if (!e.shiftKey) return;
+    e.preventDefault();
+    const rect = stage.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    tlState.brushing = true;
+    tlState.brush = { startX: x, endX: x };
+  };
+  window.addEventListener("mousemove", (e) => {
+    if (!tlState.brushing) return;
+    const rect = stage.getBoundingClientRect();
+    tlState.brush.endX = Math.max(0, Math.min(rect.width, e.clientX - rect.left));
+    drawTimelineOverlay();
+  });
+  window.addEventListener("mouseup", (e) => {
+    if (!tlState.brushing) return;
+    tlState.brushing = false;
+    if (Math.abs(tlState.brush.endX - tlState.brush.startX) < 6) {
+      tlState.brush = null;
+      drawTimelineOverlay();
+      renderTimelineResults();
+      return;
+    }
+    // Convert pixel range to date range
+    const center = (tlState.timeline.dom.center || tlState.timeline.dom.centerContainer);
+    const cRect = center.getBoundingClientRect();
+    const stRect = stage.getBoundingClientRect();
+    const offsetX = cRect.left - stRect.left;
+    const x1 = Math.min(tlState.brush.startX, tlState.brush.endX) - offsetX;
+    const x2 = Math.max(tlState.brush.startX, tlState.brush.endX) - offsetX;
+    const t1 = tlState.timeline._toTime(x1);
+    const t2 = tlState.timeline._toTime(x2);
+    tlState.brush.fromDate = t1;
+    tlState.brush.toDate = t2;
+    drawTimelineOverlay();
+    renderTimelineResults();
+    syncUrl();
+  });
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && tlState.brush) {
+      tlState.brush = null;
+      drawTimelineOverlay();
+      renderTimelineResults();
+    }
+  });
+  window.addEventListener("resize", () => drawTimelineOverlay());
+}
+
+function rebuildTimeline() {
+  if (!tlState.timeline) return;
+  tlState.items.clear();
+  tlState.items.add(tlBuildItems());
+  tlState.groups.clear();
+  tlState.groups.add(tlBuildGroups());
+  drawTimelineOverlay();
+  $("#tl-counts").textContent = tlBuildCountsText(tlState.items);
+}
+
+function tlShowHover(e) {
+  if (!e || !e.item) return;
+  const it = tlState.items.get(e.item);
+  if (!it) return;
+  const hov = $("#tl-hover");
+  let title = "", meta = "", thumb = "";
+  if (it._kind === "document") {
+    const d = docs.find(x => x.id === it._id);
+    if (!d) return;
+    title = d.title;
+    meta = `${d.agency || ""} · ${d.incident_date || d.release_date || ""}`;
+    thumb = d.thumb_small || (Array.isArray(d.thumbnail_local) ? d.thumbnail_local[0] : d.thumbnail_local) || "";
+  } else if (it._kind === "incident") {
+    const inc = (window.INCIDENTS || {})[it._id];
+    title = inc.name; meta = `${inc.date} · ${inc.status || "—"}`;
+  } else if (it._kind === "program") {
+    const p = tlState.programs.find(x => x.id === it._id);
+    title = p.label; meta = `${p.agency || ""} · ${p.start} → ${p.end || "present"}`;
+  } else if (it._kind === "dossier-hit") {
+    const d = docs.find(x => x.id === it._id);
+    title = d ? d.title : it._id; meta = `dossier: ${it._dossier}`;
+  }
+  hov.innerHTML = `
+    ${thumb ? `<img src="${ROOT_REL}/${thumb}" onerror="this.style.display='none'"/>` : ""}
+    <div class="h-title">${escapeHtml(title)}</div>
+    <div class="h-meta">${escapeHtml(meta)}</div>`;
+  hov.hidden = false;
+  // Position near cursor (use last known pageX/Y from event)
+  const ev = e.event || (window.event);
+  if (ev) {
+    const stRect = $("#timeline-stage").getBoundingClientRect();
+    const x = (ev.clientX || ev.pageX || 0) - stRect.left + 14;
+    const y = (ev.clientY || ev.pageY || 0) - stRect.top + 14;
+    hov.style.left = Math.min(stRect.width - 290, x) + "px";
+    hov.style.top  = Math.min(stRect.height - 130, y) + "px";
+  }
+}
+function tlHideHover() { const h = $("#tl-hover"); if (h) h.hidden = true; }
+
+function renderTimelineResults() {
+  const panel = $("#timeline-results");
+  if (!panel) return;
+  if (!tlState.brush || !tlState.brush.fromDate) {
+    panel.classList.add("empty"); panel.innerHTML = "";
+    return;
+  }
+  const from = tlState.brush.fromDate.getTime();
+  const to   = tlState.brush.toDate.getTime();
+  const matches = [];
+  for (const d of docs) {
+    if (d.type === "IMG") continue;
+    const dt = tlParseDate(d.incident_date) || tlParseDate(d.release_date);
+    if (!dt) continue;
+    const t = dt.getTime();
+    if (t >= from && t <= to) matches.push({ d, dt });
+  }
+  matches.sort((a, b) => a.dt - b.dt);
+  panel.classList.toggle("empty", false);
+  const fmt = (d) => d.toISOString().slice(0, 10);
+  let html = `<div class="tr-head">${matches.length} records between ${fmt(tlState.brush.fromDate)} and ${fmt(tlState.brush.toDate)}</div>`;
+  for (const { d, dt } of matches.slice(0, 40)) {
+    html += `
+      <a class="tr-row" href="${recordUrl(d.id)}" style="text-decoration:none;color:inherit">
+        <div class="tr-date">${fmt(dt)}</div>
+        <div class="tr-title">${escapeHtml(d.title)}</div>
+        <div class="tr-meta">${escapeHtml(d.agency || "")}</div>
+      </a>`;
+  }
+  if (matches.length > 40) html += `<div class="tr-head" style="margin-top:8px">… and ${matches.length - 40} more</div>`;
+  panel.innerHTML = html;
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+(async function init() {
+  loadUrl();
+  await loadCoreData(["incidents", "correlations"]);
+  renderTimeline();
+  syncUrl();
+})();
+</script>
+</body>
+</html>

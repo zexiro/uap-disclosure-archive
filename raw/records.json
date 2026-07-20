@@ -15,6 +15,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOE-UAP-D004_Los_Alamos_Conference_on_Aerial_Phenomena_1949",
     "primary_local": [
       "raw/docs/DOE-UAP-D004_Los-Alamos-Conference-on-Aerial-Phenomena_1949.pdf"
@@ -39,6 +40,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-D094_Analysis_of_Flying_Object_Incidents_in_the_United_States_1949",
     "primary_local": [
       "raw/docs/DOW-UAP-D094_Analysis-of-Flying-Object-Incidents-in-the-US_1949.pdf"
@@ -63,6 +65,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-D097_Project_Sign_Progress_Report_1948",
     "primary_local": [
       "raw/docs/DOW-UAP-D097_Project-Sign-Progress-Report_1948.pdf"
@@ -87,10 +90,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-PR104_Unresolved_UAP_Report_Yellow_Sea_2025",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014101_DOD_111830027.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -108,10 +111,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-PR105_Unresolved_UAP_Report_East_China_Sea_2025",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014103_DOD_111830030.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -129,10 +132,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-PR113_Unresolved_UAP_Report_Western_United_States_1996",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014119_DOD_111830133.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -150,10 +153,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "Yes",
+    "release": "release_4",
     "id": "DOW-UAP-PR115_Unresolved_UAP_Report_Gulf_of_America_2019",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014123_DOD_111830147.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -171,6 +174,7 @@
     "video_pairing": "",
     "pdf_pairing": "NASA-UAP-D031 | NASA-UAP-D032",
     "featured": "Yes",
+    "release": "release_4",
     "id": "NASA-UAP-D030_STS-80_Unidentified_Object_Image_1_1996",
     "primary_local": [
       "raw/images/NASA-UAP-D030_STS-80-Unidentified-Object-Image1_1996.jpg"
@@ -195,6 +199,7 @@
     "video_pairing": "",
     "pdf_pairing": "NASA-UAP-D030 | NASA-UAP-D032",
     "featured": "Yes",
+    "release": "release_4",
     "id": "NASA-UAP-D031_STS-80_Unidentified_Object_Image_2_1996",
     "primary_local": [
       "raw/images/NASA-UAP-D031_STS-80-Unidentified-Object-Image2_1996.jpg"
@@ -219,6 +224,7 @@
     "video_pairing": "",
     "pdf_pairing": "NASA-UAP-D029 | NASA-UAP-D031",
     "featured": "Yes",
+    "release": "release_4",
     "id": "NASA-UAP-D032_STS-80_Unidentified_Object_Image_3_1996",
     "primary_local": [
       "raw/images/NASA-UAP-D032_STS-80-Unidentified-Object-Image3_1996.jpg"
@@ -243,6 +249,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "18_100754__General_1946-7_Vol_2",
     "primary_local": [
       "raw/docs/18_100754__general_1946-7_vol_2.pdf"
@@ -267,6 +274,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "18_6369445_General_1948_Vol_1",
     "primary_local": [
       "raw/docs/18_6369445_general_1948_vol_1.pdf"
@@ -291,6 +299,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "255_413270_UFO_s_and_Defense_What_Should_we_Prepare_For",
     "primary_local": [
       "raw/docs/255_413270_ufo_s_and_defense_what_should_we_prepare_for.pdf"
@@ -315,6 +324,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents",
     "primary_local": [
       "raw/docs/331_120752_numeric_files_1944_1945_37153_german_armament_equipment_documents.pdf"
@@ -339,6 +349,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "341_110448_Records_Relating_to_the_Collection_and_Dissemination_of_Intelligence_1948-1955-TS_CONT_No.2_2-5300-2-5399",
     "primary_local": [
       "raw/docs/341_110448_records_relating_to_the_collection_and_dissemination_of_intelligence_1948-1955-ts_cont_no.2_2-5300-2-5399.pdf"
@@ -363,6 +374,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "341_110677_Numerical_File__5-2500",
     "primary_local": [
       "raw/docs/341_110677_numerical_file_5-2500.pdf"
@@ -387,6 +399,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "342_HS1-416511228_319.1_Flying_Discs_1949",
     "primary_local": [
       "raw/docs/342_hs1-416511228_box186_319.1-flying-discs-1949.pdf"
@@ -411,6 +424,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "38_143685_box_Incident_Summaries_101-172",
     "primary_local": [
       "raw/docs/38_143685_box7_incident_summaries_101-172.pdf"
@@ -435,6 +449,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "38_143685_box_Incident_Summaries_173-233",
     "primary_local": [
       "raw/docs/38_143685_box7_incident_summaries_173-233.pdf"
@@ -459,6 +474,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "38_143685_box7_Incident_Summaries_1-100",
     "primary_local": [
       "raw/docs/38_143685_box7_incident_summaries_1-100.pdf"
@@ -483,6 +499,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "59_214434_SP_16_7.18.1963",
     "primary_local": [
       "raw/docs/59_214434_sp_16__7.18.1963.pdf"
@@ -507,6 +524,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "59_64634_711.5612_7-2852",
     "primary_local": [
       "raw/docs/59_64634_711.5612_7-2852.pdf"
@@ -531,6 +549,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-101634279_100-DE-18221_Serial_844",
     "primary_local": [
       "raw/docs/65_hs1-101634279_100-de-18221_serial_844.pdf"
@@ -555,6 +574,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-101634279_100-DE-26505",
     "primary_local": [
       "raw/docs/65_hs1-101634279_100-de-26505.pdf"
@@ -579,6 +599,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_001",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_1.pdf"
@@ -603,6 +624,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_002",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_2.pdf"
@@ -627,6 +649,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_003",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_3.pdf"
@@ -651,6 +674,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_004",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_4.pdf"
@@ -675,6 +699,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_005",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_5.pdf"
@@ -699,6 +724,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_006",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_6.pdf"
@@ -723,6 +749,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_007",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_7.pdf"
@@ -747,6 +774,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_008",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_8.pdf"
@@ -771,6 +799,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_009",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_9.pdf"
@@ -795,6 +824,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Section_010",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_section_10.pdf"
@@ -819,6 +849,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_130",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_130.pdf"
@@ -843,6 +874,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_153",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_153.pdf"
@@ -867,6 +899,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_164",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_164.pdf"
@@ -891,6 +924,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_220",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_220.pdf"
@@ -915,6 +949,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_403",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_403.pdf"
@@ -939,6 +974,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_438",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_438.pdf"
@@ -963,6 +999,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_Serial_449",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_serial_449.pdf"
@@ -987,6 +1024,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "65_HS1-834228961_62-HQ-83894_SUB_A",
     "primary_local": [
       "raw/docs/65_hs1-834228961_62-hq-83894_sub_a.pdf"
@@ -1011,6 +1049,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-002_Scientific_Advisory_Panel_on_Unidentified_Flying_Objects_Report_1952-1953",
     "primary_local": [
       "raw/docs/CIA-UAP-002_Scientific-Advisory-Panel-on-Unidentified-Flying-Objects_Report_1952-1953.pdf"
@@ -1035,6 +1074,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-003_The_Central_Intelligence_Agency_and_Overhead_Reconnaissance_The_U-2_and_OXCART_Programs_1954-1974",
     "primary_local": [
       "raw/docs/CIA-UAP-003-THE_CENTRAL_INTELLIGENCE_AGENCY_AND_OVERHEAD_RECONNAISSANCE-THE_U-2_AND_OXCART_PROGRAMS_1954-1974.pdf"
@@ -1059,6 +1099,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-004_CASE_17708_CLOSED_and_DR._Leon_Davidson",
     "primary_local": [
       "raw/docs/CIA-UAP-004-CASE_17708_CLOSED_AND_DR_LEON_DAVIDSON.pdf"
@@ -1083,6 +1124,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-005_German_Scientist_s_Article_on_Flying_Discs",
     "primary_local": [
       "raw/docs/CIA-UAP-005-GERMAN_SCIENTISTS__ARTICLE_ON_FLYING_DISCS.pdf"
@@ -1107,6 +1149,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-006_Sighting_Of_Unconventional_Aircraft",
     "primary_local": [
       "raw/docs/CIA-UAP-006_Sighting_of_Unconventional_Aircraft.pdf"
@@ -1131,6 +1174,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-007_Current_Status_Of_Unidentified_Flying_Objects_UFO_Project.",
     "primary_local": [
       "raw/docs/CIA-UAP-007_Current_Status_of_Unidentified_Flying_Objects_UFO_Project.pdf"
@@ -1155,6 +1199,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-008_Speculative_Paper_By_N_Kardashev_and_A_Sakharov_on_Charged_Mass_in_Space_at_Conference_on_Origins_Of_Life_Armenia_6-8_September_1971_Low_Scientific_",
     "primary_local": [
       "raw/docs/CIA-UAP-008_SPECULATIVE_PAPER_BY_N_KARDASHEV_AND_A_SAKHAROV.pdf"
@@ -1179,6 +1224,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-009_Unknown_Flying_Objects_Observed_Over_Budapest",
     "primary_local": [
       "raw/docs/CIA-UAP-009-UNKNOWN-FLYING_OBJECTS_OBERVED_OVER_BUDAPEST.pdf"
@@ -1203,6 +1249,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-010_Report_on_Conversations_with_Soviet_Scientists_on_Subject_of_Unidentified_Flying_Objects_in_the_USSR",
     "primary_local": [
       "raw/docs/CIA-UAP-010_REPORT_ON_CONVERSATIONS_WITH_SOVIET_SCIENTISTS_ON_SUBJECT_OF_UNIDENTIFIED_FLYING_OBJECTS_IS_THE_USSR.pdf"
@@ -1227,6 +1274,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-011_The_Sary_Shagan_Weapons_Testing_Range",
     "primary_local": [
       "raw/docs/CIA-UAP-011-The_Sary_Shagan_Weapons_Testing_Range.pdf"
@@ -1251,6 +1299,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-012_Combating_Fatigue_In_Crewmembers",
     "primary_local": [
       "raw/docs/CIA-UAP-012-Combatting_Fatigue_in_Crewmembers.pdf"
@@ -1275,6 +1324,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-013_Report_of_Unusual_Flying_Object_Sightings_and_Attendant_Scientific_Activity",
     "primary_local": [
       "raw/docs/CIA-UAP-013-Report_of_Unusual_Flying_Object_Sightings_and_Attendant_Scientific_Activity.pdf"
@@ -1299,6 +1349,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-014_British_activity_in_the_Field_of_Unidentified_Flying_Objects",
     "primary_local": [
       "raw/docs/CIA-UAP-014_British_Activity_in_the_Field_of_Unidentified_Flying_Objects.pdf"
@@ -1323,6 +1374,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-015_Project_Blue_Book_Special_Report_No._14_Analysis_of_Reports_of_Unidentified_Aerial_Objects",
     "primary_local": [
       "raw/docs/CIA-UAP-015-Project_Blue_Book_Special_Report_No_14.pdf"
@@ -1347,6 +1399,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-016_Sightings_of_Unidentified_Flying_Objects_in_Ladakh_Nepal_Sikkim_and_Bhutan",
     "primary_local": [
       "raw/docs/CIA-UAP-016-Sightings_of_Unidentified_Flying_Ojbects_in_Ladakh_Nepal_Sikkim_and_Bhutan.pdf"
@@ -1371,6 +1424,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-017_Placement_on_High_Alert_Due_to_Perceived_Aggressive_Foreign_Posturing",
     "primary_local": [
       "raw/docs/CIA-UAP-017_Placement_on_High_Alert_Due_to_Perceived_Aggressive_Foreign_Posturing.pdf"
@@ -1395,6 +1449,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-018_Report_of_Unusual_Flying_Object_Sightings_and_Attendant_Scientific_Activity",
     "primary_local": [
       "raw/docs/CIA-UAP-018_Report_of_Unusual_Flying_Object_Sightings_and_Attendant_Scientific_Activity.pdf"
@@ -1419,6 +1474,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "CIA-UAP-019_Australian_Dept_of_Defense_Scientific_and_Intel_Aspects_of_the_UFO_Problem",
     "primary_local": [
       "raw/docs/CIA-UAP-019-Australian_Dept_of_Defense_Scientific_and_Intel_Aspects_of_the_UFO_Problem.pdf"
@@ -1443,6 +1499,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "CIA-UAP-D001_Intelligence_Information_Report_USSR_1973",
     "primary_local": [
       "raw/docs/CIA-UAP-D001_Intelligence_Information_Report_USSR_1973.pdf"
@@ -1467,6 +1524,7 @@
     "video_pairing": "",
     "pdf_pairing": "CIA-UAP-D021",
     "featured": "",
+    "release": "release_4",
     "id": "CIA-UAP-D020_Memorandum_on_Unconventional_Aircraft_Sightings_1955",
     "primary_local": [
       "raw/docs/CIA-UAP-D020_Memorandum-on-Unconventional-Aircraft-Sightings_1955.pdf"
@@ -1491,6 +1549,7 @@
     "video_pairing": "",
     "pdf_pairing": "CIA-UAP-D020",
     "featured": "",
+    "release": "release_4",
     "id": "CIA-UAP-D021_Analysis_of_Unconventional_Aircraft_Sightings_1955",
     "primary_local": [
       "raw/docs/CIA-UAP-D021_Analysis-of-Unconventional-Aircraft-Sightings_1955.pdf"
@@ -1515,6 +1574,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOE-UAP-D005",
     "featured": "",
+    "release": "release_2",
     "id": "DOE-UAP-D001_Enhanced_PANTEX_Imagery",
     "primary_local": [
       "raw/docs/DOE-UAP-D001_PANTEX_Image.pdf"
@@ -1539,6 +1599,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOE-UAP-D002_James_Tuck_Correspondence_1970s",
     "primary_local": [
       "raw/docs/DOE-UAP-D002_JamesTuck_Correspondence.pdf"
@@ -1563,6 +1624,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOE-UAP-D003_Pajarito_Astronomers_Invitation_1986",
     "primary_local": [
       "raw/docs/DOE-UAP-D003_Pajarito_Astronomers.pdf"
@@ -1587,6 +1649,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOE-UAP-D001",
     "featured": "",
+    "release": "release_4",
     "id": "DOE-UAP-D005_Pantex_Unidentified_Object_Incident_Report_2015",
     "primary_local": [
       "raw/docs/DOE-UAP-D005_Pantex-Unidentified-Object-Incident-Report_2015.pdf"
@@ -1611,6 +1674,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D003_Mission_Report_Arabian_Gulf_2020",
     "primary_local": [
       "raw/docs/dow-uap-d3-mission-report-arabian-gulf-2020.pdf"
@@ -1635,6 +1699,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D004_Mission_Report_Arabian_Gulf_2020",
     "primary_local": [
       "raw/docs/dow-uap-d4-mission-report-arabian-gulf-2020.pdf"
@@ -1659,6 +1724,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D005_Mission_Report_Arabian_Gulf_2020",
     "primary_local": [
       "raw/docs/dow-uap-d5-mission-report-arabian-gulf-2020.pdf"
@@ -1683,6 +1749,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D006_Mission_Report_Arabian_Gulf_2020",
     "primary_local": [
       "raw/docs/dow-uap-d6-mission-report-arabian-gulf-2020.pdf"
@@ -1707,6 +1774,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D007_Mission_Report_Arabian_Gulf_2020",
     "primary_local": [
       "raw/docs/dow-uap-d7-mission-report-arabian-gulf-2020.pdf"
@@ -1731,6 +1799,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D008_Mission_Report_Djibouti_2025",
     "primary_local": [
       "raw/docs/dow-uap-d8-mission-report-djibouti-2025.pdf"
@@ -1755,14 +1824,14 @@
     "video_pairing": "PR-019",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D010_Mission_Report_Middle_East_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-d10-mission-report-middle-east-may-2022.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d10-mission-report-middle-east-may-2022.jpg"
-    ],
-    "video_local": "raw/videos/1006056_DOD_111688723.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -1780,6 +1849,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D012_Mission_Report_Iraq_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-d12-mission-report-iraq-may-2022.pdf"
@@ -1804,14 +1874,14 @@
     "video_pairing": "PR-021",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D014_Mission_Report_Iraq_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-d14-mission-report-iraq-may-2022.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d14-mission-report-iraq-may-2022.jpg"
-    ],
-    "video_local": "raw/videos/1006059_DOD_111688762.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -1829,14 +1899,14 @@
     "video_pairing": "PR-022",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D016_Mission_Report_Syria_July_2022",
     "primary_local": [
       "raw/docs/dow-uap-d16-mission-report-syria-july-2022.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d16-mission-report-syria-july-2022.jpg"
-    ],
-    "video_local": "raw/videos/1006060_DOD_111688775-1920x1080-9000k.mp4"
+    ]
   },
   {
     "release_date": "5/22/26",
@@ -1854,6 +1924,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950",
     "primary_local": [
       "raw/docs/DOW-UAP-D017_General_Correspondence_Of_Sandia.pdf"
@@ -1878,14 +1949,14 @@
     "video_pairing": "PR-023",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D018_Mission_Report_Iraq_December_2022",
     "primary_local": [
       "raw/docs/dow-uap-d18-mission-report-iraq-december-2022.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d18-mission-report-iraq-december-2022.jpg"
-    ],
-    "video_local": "raw/videos/1006062_DOD_111688809.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -1903,6 +1974,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D019_Mission_Report_Syria_February_21_2023",
     "primary_local": [
       "raw/docs/dow-uap-d19-mission-report-syria-february-21-2023.pdf"
@@ -1927,6 +1999,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D020_Mission_Report_Iraq_2023",
     "primary_local": [
       "raw/docs/dow-uap-d20-mission-report-iraq-2023.pdf"
@@ -1951,14 +2024,14 @@
     "video_pairing": "PR-026 | PR-027",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D023_Mission_Report_United_Arab_Emirates_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d23-mission-report-united-arab-emirates-october-2023.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d23-mission-report-united-arab-emirates-october-2023.jpg"
-    ],
-    "video_local": "raw/videos/1006063_DOD_111688816-1920x1080-9000k.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -1976,6 +2049,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D025_Mission_Report_Greece_January_2024",
     "primary_local": [
       "raw/docs/dow-uap-d25-mission-report-greece-january-2024.pdf"
@@ -2000,6 +2074,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D027_Mission_Report_United_Arab_Emirates_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d27-mission-report-united-arab-emirates-october-2023.pdf"
@@ -2024,6 +2099,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D028_Mission_Report_Iraq_September_2024",
     "primary_local": [
       "raw/docs/dow-uap-d28-mission-report-east-china-sea-2024.pdf"
@@ -2048,14 +2124,14 @@
     "video_pairing": "PR-031 | PR-032 | PR-033",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D032_Mission_Report_Syria_October_2024",
     "primary_local": [
       "raw/docs/dow-uap-d32-mission-report_-syria-october-2024.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d32-mission-report_-syria-october-2024.jpg"
-    ],
-    "video_local": "raw/videos/1006076_DOD_111688970-1920x1080-9000k.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -2073,14 +2149,14 @@
     "video_pairing": "PR-034",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D033_Mission_Report_Greece_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d33-mission-report-greece-october-2023.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d33-mission-report-greece-october-2023.jpg"
-    ],
-    "video_local": "raw/videos/1006080_DOD_111689011.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -2098,14 +2174,14 @@
     "video_pairing": "PR-035",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D035_Mission_Report_Greece_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d35-mission-report-greece-october-2023.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d35-mission-report-greece-october-2023.jpg"
-    ],
-    "video_local": "raw/videos/1006082_DOD_111689022-1920x1080-9000k.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -2123,14 +2199,14 @@
     "video_pairing": "PR-036",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D038_Range_Fouler_Debrief_Middle_East_May_2020",
     "primary_local": [
       "raw/docs/dow-uap-d38-range-fouler-debrief-middle-east-may-2020.pdf"
     ],
     "thumbnail_local": [
       "raw/images/dow-uap-d38-range-fouler-debrief-middle-east-may-2020.jpg"
-    ],
-    "video_local": "raw/videos/1006083_DOD_111689030.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -2148,6 +2224,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D042_Range_Fouler_Debrief_Japan_2023",
     "primary_local": [
       "raw/docs/dow-uap-d42-range-fouler-debrief-japan-2023.pdf"
@@ -2172,6 +2249,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D044_Range_Fouler_Reporting_Form_Gulf_of_Aden_October_2020",
     "primary_local": [
       "raw/docs/dow-uap-d44-range-fouler-arabian-sea-october-2020.pdf"
@@ -2196,6 +2274,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D048_Department_of_the_Air_Force_Report_1996",
     "primary_local": [
       "raw/docs/dow-uap-d48-report-september-1996.pdf"
@@ -2220,6 +2299,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D049_Launch_Summary_Vandenberg_AFB_2000",
     "primary_local": [
       "raw/docs/dow-uap-d49-launch-summary-february-2000.pdf"
@@ -2244,6 +2324,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D050_Email_Correspondence_INDOPACOM_April_2025",
     "primary_local": [
       "raw/docs/dow-uap-d50-email-correspondence-indopacom-april-2025.pdf"
@@ -2268,6 +2349,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D051_Email_Correspondence_Pacific_Time_Zone_March_2023",
     "primary_local": [
       "raw/docs/dow-uap-d51-email-correspondence-pacific-time-zone-march-2023.pdf"
@@ -2292,6 +2374,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D052_Email_Correspondence_NA_August_2024",
     "primary_local": [
       "raw/docs/dow-uap-d52-email-correspondance-na-august-2024.pdf"
@@ -2316,6 +2399,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D054_Mission_Report_Mediterranean_Sea_NA",
     "primary_local": [
       "raw/docs/dow-uap-d54-mission-report-mediterranean-sea-na.pdf"
@@ -2340,6 +2424,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D055_Mission_Report_Syria_November_2016",
     "primary_local": [
       "raw/docs/dow-uap-d55-mission-report-syria-november-2016.pdf"
@@ -2364,6 +2449,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D056_Range_Fouler_Debrief_Arabian_Sea_August_2020",
     "primary_local": [
       "raw/docs/dow-uap-d56-range-fouler-debrief-arabian-sea-august-2020.pdf"
@@ -2388,6 +2474,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D057_Range_Fouler_Reporting_Form_Gulf_of_Aden_September_2020",
     "primary_local": [
       "raw/docs/dow-uap-d57-mission-report-gulf-of-aden-september-2020.pdf"
@@ -2412,6 +2499,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D058_Range_Fouler_Debrief_NA_October_2020",
     "primary_local": [
       "raw/docs/dow-uap-d58-range-fouler-debrief-na-october-2020.pdf"
@@ -2436,6 +2524,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D060_Mission_Report_Arabian_Gulf_August_2020",
     "primary_local": [
       "raw/docs/dow-uap-d60-mission-report-persian-gulf-august-2020.pdf"
@@ -2460,6 +2549,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D061_Mission_Report_Arabian_Gulf_August_2020",
     "primary_local": [
       "raw/docs/dow-uap-d61-mission-report-persian-gulf-august-2020.pdf"
@@ -2484,6 +2574,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D062_Mission_Report_Strait_of_Hormuz_September_2020",
     "primary_local": [
       "raw/docs/dow-uap-d62-mission-report-strait-of-hormuz-september-2020.pdf"
@@ -2508,6 +2599,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D063_Mission_Report_Strait_of_Hormuz_October_2020",
     "primary_local": [
       "raw/docs/dow-uap-d63-mission-report-strait-of-hormuz-october-2020.pdf"
@@ -2532,6 +2624,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D064_Mission_Report_Iran_November_2020",
     "primary_local": [
       "raw/docs/dow-uap-d64-mission-report-iran-november-2020.pdf"
@@ -2556,6 +2649,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D065_Mission_Report_Arabian_Gulf_July_2020",
     "primary_local": [
       "raw/docs/dow-uap-d65-mission-report-persian-gulf-july-2020.pdf"
@@ -2580,6 +2674,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D074_Mission_Report_Syria_November_2023",
     "primary_local": [
       "raw/docs/dow-uap-d74-mission-report-syria-november-2023.pdf"
@@ -2604,6 +2699,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-D075_Mission_Report_Gulf_of_Aden_July_2024",
     "primary_local": [
       "raw/docs/dow-uap-d75-mission-report-gulf-of-aden-july-2024.pdf"
@@ -2628,6 +2724,7 @@
     "video_pairing": "",
     "pdf_pairing": "Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D077_AARO_Unresolved_Case_Analysis_Update_Western_United_States_Event",
     "primary_local": [
       "raw/docs/DOW-UAP-D077_Unresolved-Case-Analysis-Update_Western-United-States-Event.pdf"
@@ -2652,6 +2749,7 @@
     "video_pairing": "",
     "pdf_pairing": "Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D078_Notional_Map_Western_United_States_Event",
     "primary_local": [
       "raw/docs/DOW-UAP-D078_Notional-Map_Western-United-States-Event.pdf"
@@ -2676,6 +2774,7 @@
     "video_pairing": "",
     "pdf_pairing": "FBI-UAP-D014 | FBI-UAP-D015 | FBI-UAP-D021 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D079_Narrative_Statement_1_Western_United_States_Event_2023",
     "primary_local": [
       "raw/docs/DoW-UAP-D079_Narrative-1_Western-US-Event.pdf"
@@ -2700,6 +2799,7 @@
     "video_pairing": "",
     "pdf_pairing": "FBI-UAP-D016 | FBI-UAP-D017 | FBI-UAP-D018 | FBI-UAP-D019 | FBI-UAP-D020 | FBI-UAP-D022 | FBI-UAP-D023 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D080_Narrative_Statement_2_Western_United_States_Event_2023",
     "primary_local": [
       "raw/docs/DoW-UAP-D080_Narrative-2_Western-US-Event.pdf"
@@ -2724,6 +2824,7 @@
     "video_pairing": "FBI-UAP-PR005 | FBI-UAP-PR006",
     "pdf_pairing": "Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D081_Narrative_Statement_3_Western_United_States_Event_2023",
     "primary_local": [
       "raw/docs/DoW-UAP-D081_Narrative-3_Western-US-Event.pdf"
@@ -2748,6 +2849,7 @@
     "video_pairing": "",
     "pdf_pairing": "Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D082_Narrative_Statement_4_Western_United_States_Event_2023",
     "primary_local": [
       "raw/docs/DoW-UAP-D082_Narrative-4_Western-US-Event.pdf"
@@ -2772,6 +2874,7 @@
     "video_pairing": "",
     "pdf_pairing": "Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D083_Narrative_Statement_5_Western_United_States_Event_2023",
     "primary_local": [
       "raw/docs/DoW-UAP-D083_Narrative-5_Western-US-Event.pdf"
@@ -2796,6 +2899,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D084_US_Army-Flying-Saucer-Study_1949",
     "primary_local": [
       "raw/docs/DOW-UAP-D084_USArmy-Flying-Saucer-Study_1949.pdf"
@@ -2820,6 +2924,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D085_Transmission-of-CIA-Scientific-Advisory-Panel-Rept_1953",
     "primary_local": [
       "raw/docs/DOW-UAP-D085_Transmission-of-CIA-Scientific-Advisory-Panel-Rept_1953.pdf"
@@ -2844,6 +2949,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D086_USNavy-Report-of-Flying-Discs_1948",
     "primary_local": [
       "raw/docs/DOW-UAP-D086_USNavy-Report-of-Flying-Discs_1948.pdf"
@@ -2868,6 +2974,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D087_U.S._Air_Force_Analysis_of_Flying_Objects_in_the_United_States_1-100",
     "primary_local": [
       "raw/docs/DOW-UAP-D087_US-AirForce_Analysis-of-Flying-Objects-in-the-US_1-100.pdf"
@@ -2892,6 +2999,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "DOW-UAP-D088_U.S._Air_Force_Analysis_of_Flying_Objects_in_the_United_States_101-172",
     "primary_local": [
       "raw/docs/DOW-UAP-D088_US-AirForce_Analysis-of-Flying-Objects-in-the-US_101-172.pdf"
@@ -2916,6 +3024,7 @@
     "video_pairing": "DOW-UAP-PR106",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D089_Range_Fouler_Debrief_Eastern_United_States_2020",
     "primary_local": [
       "raw/docs/DOW-UAP-D089_Range-Fouler-Debrief_Eastern-US_2020.pdf"
@@ -2940,6 +3049,7 @@
     "video_pairing": "DOW-UAP-PR112",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D090_Range_Fouler_Debrief_Eastern_United_States_2019",
     "primary_local": [
       "raw/docs/DOW-UAP-D090_Range-Fouler-Debrief_Eastern-US_2019.pdf"
@@ -2964,6 +3074,7 @@
     "video_pairing": "DOW-UAP-PR116",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D091_Range_Fouler_Debrief_Atlantic_Ocean_2020",
     "primary_local": [
       "raw/docs/DOW-UAP-D091_Range-Fouler-Debrief_Atlantic-Ocean_2020.pdf"
@@ -2988,6 +3099,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D092_Department_of_the_Air_Force_Committee_to_Review_Project_Bluebook_1966-1967",
     "primary_local": [
       "raw/docs/DOW-UAP-D092_DAF-Committee-to-Review-Project-Bluebook_1966-1967.pdf"
@@ -3012,6 +3124,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D093_Analysis_of_Flying_Object_Incidents_in_the_United_States_1948",
     "primary_local": [
       "raw/docs/DOW-UAP-D093_Analysis-of-Flying-Object-Incidents-in-the-US_1948.pdf"
@@ -3036,6 +3149,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D095_Joint_U.S.-Canadian_Aviation_Projects_and_UFO_Sighting_Reports_1954-1955",
     "primary_local": [
       "raw/docs/DOW-UAP-D095_Joint-US-Canadian-Aviation-Projects-and-UFO-Sighting-Reports_1954-1955.pdf"
@@ -3060,6 +3174,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-D096_Correspondence_Relating_to_Project_Blue_Book_1955",
     "primary_local": [
       "raw/docs/DOW-UAP-D096_Correspondence-Relating-to-Project-Blue-Book_1955.pdf"
@@ -3084,12 +3199,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D010",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR019_Unresolved_UAP_Report_Middle_East_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-d10-mission-report-middle-east-may-2022.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006056_DOD_111688723.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3107,6 +3222,7 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D012",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR020_Unresolved_UAP_Report_Kuwait_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-pr20.pdf"
@@ -3131,12 +3247,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D014",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR021_Unresolved_UAP_Report_Iraq_May_2022",
     "primary_local": [
       "raw/docs/dow-uap-d14-mission-report-iraq-may-2022.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006059_DOD_111688762.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3154,12 +3270,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D016",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR022_Unresolved_UAP_Report_Syria_July_2022",
     "primary_local": [
       "raw/docs/dow-uap-d16-mission-report-syria-july-2022.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006060_DOD_111688775-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3177,12 +3293,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D018",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR023_Unresolved_UAP_Report_Iraq_December_2022",
     "primary_local": [
       "raw/docs/dow-uap-d18-mission-report-iraq-december-2022.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006062_DOD_111688809.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -3200,10 +3316,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR024_Unresolved_UAP_Report_Middle_East_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014100_DOD_111830020-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3221,12 +3337,12 @@
     "video_pairing": "PR-027",
     "pdf_pairing": "DoW-UAP-D023",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR026_Unresolved_UAP_Report_United_Arab_Emirates_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d23-mission-report-united-arab-emirates-october-2023.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006063_DOD_111688816-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3244,12 +3360,12 @@
     "video_pairing": "PR-026",
     "pdf_pairing": "DoW-UAP-D023",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR027_Unresolved_UAP_Report_United_Arab_Emirates_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d23-mission-report-united-arab-emirates-october-2023.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006067_DOD_111688825.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3267,10 +3383,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR028_Unresolved_UAP_Report_Greece_January_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006073_DOD_111688954.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3288,10 +3404,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR029_Unresolved_UAP_Report_United_Arab_Emirates_June_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006074_DOD_111688964.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -3309,10 +3425,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR030_Unresolved_UAP_Report_Middle_East_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014102_DOD_111830028.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3330,12 +3446,12 @@
     "video_pairing": "PR-032 | PR-033",
     "pdf_pairing": "DoW-UAP-D032",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR031_Unresolved_UAP_Report_Syria_October_2024",
     "primary_local": [
       "raw/docs/dow-uap-d32-mission-report_-syria-october-2024.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006076_DOD_111688970-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3353,12 +3469,12 @@
     "video_pairing": "PR-031 | PR-033",
     "pdf_pairing": "DoW-UAP-D032",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR032_Unresolved_UAP_Report_Syria_October_2024",
     "primary_local": [
       "raw/docs/dow-uap-d32-mission-report_-syria-october-2024.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006078_DOD_111688997-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3376,12 +3492,12 @@
     "video_pairing": "PR-031 | PR-032",
     "pdf_pairing": "DoW-UAP-D032",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR033_Unresolved_UAP_Report_Syria_October_2024",
     "primary_local": [
       "raw/docs/dow-uap-d32-mission-report_-syria-october-2024.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006079_DOD_111689005.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3399,12 +3515,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D033",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR034_Unresolved_UAP_Report_Greece_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d33-mission-report-greece-october-2023.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006080_DOD_111689011.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3422,12 +3538,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D035",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR035_Unresolved_UAP_Report_Greece_October_2023",
     "primary_local": [
       "raw/docs/dow-uap-d35-mission-report-greece-october-2023.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006082_DOD_111689022-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3445,12 +3561,12 @@
     "video_pairing": "",
     "pdf_pairing": "DoW-UAP-D038",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR036_Unresolved_UAP_Report_Middle_East_May_2020",
     "primary_local": [
       "raw/docs/dow-uap-d38-range-fouler-debrief-middle-east-may-2020.pdf"
     ],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006083_DOD_111689030.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3468,10 +3584,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR037_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006087_DOD_111689044.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3489,10 +3605,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR038_Unresolved_UAP_Report_Middle_East_2013",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006088_DOD_111689051.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3510,10 +3626,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR039_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006089_DOD_111689057-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3531,10 +3647,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR040_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006093_DOD_111689082.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3552,10 +3668,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR041_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006094_DOD_111689083.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3573,10 +3689,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR042_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006097_DOD_111689090.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3594,10 +3710,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR043_Unresolved_UAP_Report_Africa_2025",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006159_DOD_111689759.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3615,10 +3731,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR044_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006104_DOD_111689115.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3636,10 +3752,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR045_Unresolved_UAP_Report_Middle_East_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006105_DOD_111689123.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3657,10 +3773,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR046_Unresolved_UAP_Report_INDOPACOM_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006106_DOD_111689133.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3678,10 +3794,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR047_Unresolved_UAP_Report_INDOPACOM_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006107_DOD_111689142-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3699,10 +3815,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR048_Unresolved_UAP_Report_INDOPACOM_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006110_DOD_111689167.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -3720,10 +3836,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "DOW-UAP-PR049_Unresolved_UAP_Report_Department_of_the_Army_2026",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1006111_DOD_111689168-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3741,10 +3857,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR050_4_UAP_Formation_Iran_26_Aug_2022_over_water_CALLSIGN",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007706_DOD_111719709-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3762,10 +3878,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR051_Syrian_UAP_instant_acceleration",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007707_DOD_111719715-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3783,10 +3899,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR052_UAP_USO_Formation_CALLSIGN_Mission",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007708_DOD_111719718.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3804,10 +3920,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR053_Cigar_Shaped_or_Fast_Spherical_UAP_clip_15_OCT_22",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007709_DOD_111719723-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3825,10 +3941,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR054_Spherical_UAP_Erratic_movement_CALLSIGN_Mission_2022",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007711_DOD_111719726-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3846,10 +3962,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR055_Spherical_UAP_over_AFG_in_and_out_of_clouds_23_Nov_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007713_DOD_111719732.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3867,10 +3983,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR056_Spherical_UAP_pulsing_over_water_CALLSIGN",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007718_DOD_111719741-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3888,10 +4004,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR057a_Spherical_UAP_in_clouds",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007720_DOD_111719752.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3909,10 +4025,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR057b_Platform_Observes_UAP_in_East_China_Sea_05_JAN_2023_INDOPACOM",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007720_DOD_111719752.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3930,10 +4046,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR058_CALLSIGN_Mission_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007723_DOD_111719800-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3951,10 +4067,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR059_NAG_UAP_1_Jun_20",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007727_DOD_111719809-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3972,10 +4088,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR060_Spherical_UAP_CALLSIGN_2021_04_12_obj_2",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007734_DOD_111719823-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -3993,10 +4109,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR061_Spherical_UAP_CALLSIGN_2021_04_12_vid_0",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007735_DOD_111719828-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4014,10 +4130,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR062_Spherical_UAP_CALLSIGN_2021_04_12_vid_1",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007739_DOD_111719847-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4035,10 +4151,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR063_Spherical_UAP_CALLSIGN_2021_04_12_vid_2",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007740_DOD_111719850-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4056,10 +4172,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR064_AFSOC_Kabul_UAP_Jul_2017",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007741_DOD_111719852-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4077,10 +4193,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR065_USCG_C-144_Tyndall_UAP_2_TIC_TAC_IR_hot_24_April_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007777_DOD_111720692-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4098,10 +4214,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR066_USCG_C-144_Tyndall_UAP_1_TIC_TAC_IR_hot_24_April_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007778_DOD_111720693.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4119,10 +4235,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR067_Multiple_Spherical_UAP_USO_near_Sub._CALLSIGN_2022_03_25_in_and_out_of_water",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007779_DOD_111720696-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4140,10 +4256,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR068_IIR_1_666_S0151_23_Video_Footage_of_Unidentified_Aerial_Phenomenon_UAP_captured_by_fifth_generation_aircraft_on_20_Jan_23",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007780_DOD_111720698-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4161,10 +4277,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR069_F_A-18_FLIR_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007781_DOD_111720700.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4182,10 +4298,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR070_IIR_1_655_S0301_23_Eglin_AFB_Aircrew_Observed_Unidentified_Aerial_Phenomena_UAP_on_13_Feb_23",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007783_DOD_111720720.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4203,10 +4319,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR071_USAF_ANG_F-16C_callsign_CALLSIGN_Shoots_Down_UAP_over_Lake_Huron_with_Weapon_System_12_Feb_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007784_DOD_111720731.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4224,10 +4340,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR072_ADMINISTRATIVE_REVISION_IIR_1777_J0032_22_Kazakhstan_-_UAP_in_the_vicinity_of_Karaganda_International_Airport",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007788_DOD_111720752-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4245,10 +4361,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR073_IIR_1_655_S0053_23_Several_Unidentified_Aerial_Phenomenon_Encountered_In_The_Vicinity_of_Columbus_OH",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007790_DOD_111720765-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4266,10 +4382,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR074_CALLSIGN_Mission_HD_20220613",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007791_DOD_111720775-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4287,10 +4403,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR075_09JUN2021_Platform_observed_UAP_in_the_ECS",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007795_DOD_111720809.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4308,10 +4424,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR076_03_January_2021_CALLSIGN_Mission_observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007804_DOD_111720857-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4329,10 +4445,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR077_2_November_2020_CALLSIGN_CALLSIGN_Observes_and_tracks_UAP_1_of_2",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007809_DOD_111720884-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4350,10 +4466,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR078_2_November_2020_CALLSIGN_CALLSIGN_Observes_and_tracks_UAP_2_of_2",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007812_DOD_111720890-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4371,10 +4487,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR079_29_October_2020_CALLSIGN_Mission_observes_3_fast_moving_UAP_s",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007816_DOD_111720899-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4392,10 +4508,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR080_20_October_2020_CALLSIGN_CALLSIGN_Observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007803_DOD_111720856-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4413,10 +4529,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR081_18_Oct_2020_CALLSIGN_observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007805_DOD_111720858-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4434,10 +4550,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR082_16_OCT_2020_CALLSIGN_views_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007807_DOD_111720861-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4455,10 +4571,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR083_7_October_2020_CALLSIGN_observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007808_DOD_111720883-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4476,10 +4592,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR084_17_Sept_2020_CALLSIGN_observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007810_DOD_111720886-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4497,10 +4613,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR085_16_Sept_2020_CALLSIGN_CALLSIGN_observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007796_DOD_111720822-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4518,10 +4634,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR086_UAP_from_Dec_2019_East_Coast",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007797_DOD_111720827.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4539,10 +4655,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR087_05_September_2020_CALLSIGN_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007799_DOD_111720830-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4560,10 +4676,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR088_31_AUG_CALLSIGN_CALLSIGN_Observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007800_DOD_111720843-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4581,10 +4697,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR089_31_AUG_CALLSIGN_CALLSIGN_Observes_UAP_part2",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007712_DOD_111719730-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4602,10 +4718,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR090_24_AUG_2020_CALLSIGN_Mission_Observes_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007719_DOD_111719746-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4623,10 +4739,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR091_21_AUG_CALLSIGN_Observes_UAP_in_Persian_Gulf",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007716_DOD_111719739.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4644,10 +4760,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR092_08_AUG_2020_CALLSIGN_CALLSIGN_UAP_observation",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007715_DOD_111719736-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4665,10 +4781,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR093_May_05_2020_Gulf_of_Arabia_CALLSIGN_Platform_Dual_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007721_DOD_111719795-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4686,10 +4802,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR094_CALLSIGN_Mission_-_HD_2020-02-13",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007722_DOD_111719799-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4707,10 +4823,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR095_May_05_2020_Gulf_of_Arabia_CALLSIGN_Platform_Dual_UAP",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007725_DOD_111719804-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4728,10 +4844,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR096_HH11_03_July_2018_UAPs",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007726_DOD_111719807-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4749,10 +4865,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR097_Hi-Res_CALLSIGN_Observes_UAP_on_25SEP19_at_2135Z",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007728_DOD_111719813-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4770,10 +4886,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR098_UFOs_in_formation_over_Persian_Gulf",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007737_DOD_111719833-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/22/26",
@@ -4791,10 +4907,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "DOW-UAP-PR099_Hi-Res_CALLSIGN_Observes_UAP_on_25SEP19_at_1715Z",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1007738_DOD_111719835-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4812,10 +4928,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR100_Unresolved_UAP_Report_Yellow_Sea_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014096_DOD_111830004-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4833,10 +4949,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR101_Unresolved_UAP_Report_South_China_Sea_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014097_DOD_111830007-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4854,10 +4970,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR102_Unresolved_UAP_Report_East_China_Sea_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014098_DOD_111830012-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4875,10 +4991,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR103_Unresolved_UAP_Report_East_China_Sea_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014099_DOD_111830015-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4896,10 +5012,10 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D089",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR106_Unresolved_UAP_Report_Eastern_United_States_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014104_DOD_111830034.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4917,10 +5033,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR107_Unresolved_UAP_Report_Eastern_United_States_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014105_DOD_111830041.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4938,10 +5054,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR108_Unresolved_UAP_Report_Western_United_States_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014106_DOD_111830058-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4959,10 +5075,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR109_Unresolved_UAP_Report_Eastern_United_States_2015",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014108_DOD_111830065-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -4980,10 +5096,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR110_Unresolved_UAP_Report_Eastern_United_States_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014112_DOD_111830075-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -5001,10 +5117,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR111_Unresolved_UAP_Report_Eastern_United_States_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014114_DOD_111830080-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -5022,10 +5138,10 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D090",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR112_Unresolved_UAP_Report_Eastern_United_States_2019",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014128_DOD_111830201.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -5043,10 +5159,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR114_Unresolved_UAP_Report_Atlantic_Ocean_2016",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014121_DOD_111830143-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "7/10/26",
@@ -5064,10 +5180,10 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D091",
     "featured": "",
+    "release": "release_4",
     "id": "DOW-UAP-PR116_Unresolved_UAP_Report_Atlantic_Ocean_2020",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1014124_DOD_111830151-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "5/8/26",
@@ -5085,14 +5201,14 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A001",
     "primary_local": [
       "raw/images/fbi-photo-a1.png"
     ],
     "thumbnail_local": [
       "raw/images/fbi-photo-a1.jpg"
-    ],
-    "video_local": "raw/videos/1006111_DOD_111689168-1920x1080-9000k.mp4"
+    ]
   },
   {
     "release_date": "5/8/26",
@@ -5110,6 +5226,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A002",
     "primary_local": [
       "raw/images/fbi-photo-a2.png"
@@ -5134,6 +5251,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A003",
     "primary_local": [
       "raw/images/fbi-photo-a3.png"
@@ -5158,6 +5276,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A004",
     "primary_local": [
       "raw/images/fbi-photo-a4.png"
@@ -5182,6 +5301,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A005",
     "primary_local": [
       "raw/images/fbi-photo-a5.png"
@@ -5206,6 +5326,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A006",
     "primary_local": [
       "raw/images/fbi-photo-a6.png"
@@ -5230,6 +5351,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A007",
     "primary_local": [
       "raw/images/fbi-photo-a7.png"
@@ -5254,6 +5376,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_A008",
     "primary_local": [
       "raw/images/fbi-photo-a8.png"
@@ -5278,6 +5401,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B001",
     "primary_local": [
       "raw/docs/fbi-photo-b1.pdf"
@@ -5302,6 +5426,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B002",
     "primary_local": [
       "raw/docs/fbi-photo-b2.pdf"
@@ -5326,6 +5451,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B003",
     "primary_local": [
       "raw/docs/fbi-photo-b3.pdf"
@@ -5350,6 +5476,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B004",
     "primary_local": [
       "raw/docs/fbi-photo-b4.pdf"
@@ -5374,6 +5501,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B005",
     "primary_local": [
       "raw/docs/fbi-photo-b5.pdf"
@@ -5398,6 +5526,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B006",
     "primary_local": [
       "raw/docs/fbi-photo-b6.pdf"
@@ -5422,6 +5551,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B007",
     "primary_local": [
       "raw/docs/fbi-photo-b7.pdf"
@@ -5446,6 +5576,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B008",
     "primary_local": [
       "raw/docs/fbi-photo-b8.pdf"
@@ -5470,6 +5601,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B009",
     "primary_local": [
       "raw/docs/fbi-photo-b9.pdf"
@@ -5494,6 +5626,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B010",
     "primary_local": [
       "raw/docs/fbi-photo-b10.pdf"
@@ -5518,6 +5651,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B011",
     "primary_local": [
       "raw/docs/fbi-photo-b11.pdf"
@@ -5542,6 +5676,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B012",
     "primary_local": [
       "raw/docs/fbi-photo-b12.pdf"
@@ -5566,6 +5701,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B013",
     "primary_local": [
       "raw/docs/fbi-photo-b13.pdf"
@@ -5590,6 +5726,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B014",
     "primary_local": [
       "raw/docs/fbi-photo-b14.pdf"
@@ -5614,6 +5751,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B015",
     "primary_local": [
       "raw/docs/fbi-photo-b15.pdf"
@@ -5638,6 +5776,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B016",
     "primary_local": [
       "raw/docs/fbi-photo-b16.pdf"
@@ -5662,6 +5801,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B017",
     "primary_local": [
       "raw/docs/fbi-photo-b17.pdf"
@@ -5686,6 +5826,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B018",
     "primary_local": [
       "raw/docs/fbi-photo-b18.pdf"
@@ -5710,6 +5851,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B019",
     "primary_local": [
       "raw/docs/fbi-photo-b19.pdf"
@@ -5734,6 +5876,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B020",
     "primary_local": [
       "raw/docs/fbi-photo-b20.pdf"
@@ -5758,6 +5901,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B021",
     "primary_local": [
       "raw/docs/fbi-photo-b21.pdf"
@@ -5782,6 +5926,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B022",
     "primary_local": [
       "raw/docs/fbi-photo-b22.pdf"
@@ -5806,6 +5951,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B023",
     "primary_local": [
       "raw/docs/fbi-photo-b23.pdf"
@@ -5830,6 +5976,7 @@
     "video_pairing": "",
     "pdf_pairing": "USPER Statement about UAP Sighting | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_Photo_B024",
     "primary_local": [
       "raw/docs/fbi-photo-b24.pdf"
@@ -5854,6 +6001,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_September_2023_Sighting_-_Composite_Sketch",
     "primary_local": [
       "raw/docs/2024-04-30-composite-sketch.pdf"
@@ -5878,6 +6026,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_September_2023_Sighting_-_Serial_003",
     "primary_local": [
       "raw/docs/serial_5_redacted_redacted.pdf"
@@ -5902,6 +6051,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_September_2023_Sighting_-_Serial_004",
     "primary_local": [
       "raw/docs/serial-3_redacted.pdf"
@@ -5926,6 +6076,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "FBI_September_2023_Sighting_-_Serial_005",
     "primary_local": [
       "raw/docs/serial-4-redacted_redacted.pdf"
@@ -5950,6 +6101,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D001_FD-302_Unresolved_UAP_Report_Colorado_Springs_2022",
     "primary_local": [
       "raw/docs/FBI-UAP-D001_FD-302_Unresolved-UAP-Report_ColoradoSprings_2022.pdf"
@@ -5974,6 +6126,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D002_FD-1057_Unresolved_UAP_Report_Colorado_Springs_2022",
     "primary_local": [
       "raw/docs/FBI-UAP-D002_FD-1057_Unresolved-UAP-Report_ColoradoSprings_2022.pdf"
@@ -5998,6 +6151,7 @@
     "video_pairing": "",
     "pdf_pairing": "FBI-UAP-D002",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D003_Digital_Rendering_Unresolved_UAP_Report_Colorado_Springs_2022",
     "primary_local": [
       "raw/docs/FBI-UAP-D003_Digital-Rendering_Unresolved-UAP-Report_ColoradoSprings_2022.pdf"
@@ -6022,6 +6176,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D004_FD-1057-02_Northeastern_United_States_2024",
     "primary_local": [
       "raw/docs/FBI-UAP-D004_FD-1057-02_Northeastern-US_2024.pdf"
@@ -6046,6 +6201,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D005_FD-1057-04_Northeastern_United_States_2024",
     "primary_local": [
       "raw/docs/FBI-UAP-D005_FD-1057-04_Northeastern-US_2024.pdf"
@@ -6070,6 +6226,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D006_FD-1057-05_Northeastern_United_States_2024",
     "primary_local": [
       "raw/docs/FBI-UAP-D006_FD-1057-05_Northeastern-US_2024.pdf"
@@ -6094,6 +6251,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D007_FD-1057-06_Northeastern_United_States_2024",
     "primary_local": [
       "raw/docs/FBI-UAP-D007_FD-1057-06_Northeastern-US_2024.pdf"
@@ -6118,6 +6276,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D008_FD-1057-07_Northeastern_United_States_2024",
     "primary_local": [
       "raw/docs/FBI-UAP-D008_FD-1057-07_Northeastern-US_2024.pdf"
@@ -6142,6 +6301,7 @@
     "video_pairing": "FBI-UAP-PR004",
     "pdf_pairing": "FBI-UAP-D010",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D009_FD-302-67_Northeastern_Orb_Sighting_2026",
     "primary_local": [
       "raw/docs/FBI-UAP-D009_FD-302-67_Northeastern-Orb-Sighting_2026.pdf"
@@ -6166,6 +6326,7 @@
     "video_pairing": "FBI-UAP-PR004",
     "pdf_pairing": "FBI-UAP-D009",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D010_FD-302-71_Northeastern_Orb_Sighting_2026",
     "primary_local": [
       "raw/docs/FBI-UAP-D010_FD-302-71_Northeastern-Orb-Sighting_2026.pdf"
@@ -6190,6 +6351,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D011_D_FBI_Correspondence_Referral_1949",
     "primary_local": [
       "raw/docs/FBI-UAP-D011_DFBI-Correspondence-Referral_1949.pdf"
@@ -6214,6 +6376,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D012_Newark_Field_Office_1952-1967",
     "primary_local": [
       "raw/docs/FBI-UAP-D012_Newark-Field-Office_1952-1967.pdf"
@@ -6238,6 +6401,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D013_Washington_State_UFO_Investigation_1952-1960",
     "primary_local": [
       "raw/docs/FBI-UAP-D013_WA-UFO-Investigation_1952-1960.pdf"
@@ -6262,6 +6426,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "FBI-UAP-D014_Correspondence_Relating_to_UFO_Sightings_1967_1974",
     "primary_local": [
       "raw/docs/FBI-UAP-D014_Correspondence-Relating-to-UFO-Sightings_1967_1974.pdf"
@@ -6286,6 +6451,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D079 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D014_Digital_Rendering_Narrative_Statement_1-1_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D014_Digital-Rendering_Incident-1-1_Western-US-Event_2023.jpg"
@@ -6310,6 +6476,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D079 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D015_Digital_Rendering_Narrative_Statement_1-2_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D015_Digital-Rendering_Incident-1-2_Western-US-Event_2023.jpg"
@@ -6334,6 +6501,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D016_Digital_Rendering_Narrative_Statement_2-1_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D016_Digital-Rendering_Incident-2-1_Western-US-Event_2023.jpg"
@@ -6358,6 +6526,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D017_Digital_Rendering_Narrative_Statement_2-2_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D017_Digital-Rendering_Incident-2-2_Western-US-Event_2023.jpg"
@@ -6382,6 +6551,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D018_Digital_Rendering_Narrative_Statement_2-3_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D018_Digital-Rendering_Incident-2-3_Western-US-Event_2023.jpg"
@@ -6406,6 +6576,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D019_Digital_Rendering_Narrative_Statement_2-4_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D019_Digital-Rendering_Incident-2-4_Western-US-Event_2023.jpg"
@@ -6430,6 +6601,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D020_Digital_Rendering_Narrative_Statement_2-5_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D020_Digital-Rendering_Incident-2-5_Western-US-Event_2023.jpg"
@@ -6454,6 +6626,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D079 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D021_Digital_Rendering_Narrative_Statement_1-3_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D021_Digital-Rendering_Incident-1-3_Western-US-Event_2023.jpg"
@@ -6478,6 +6651,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D022_Digital_Rendering_Narrative_Statement_2-6_Western_United_States_Event_2026",
     "primary_local": [
       "raw/images/FBI-UAP-D022_Digital-Rendering_Incident-2-6_Western-US-Event_2023.jpg"
@@ -6502,6 +6676,7 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D080 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-D023_Digital_Rendering_Narrative_Statement_2-7_Western_United_States_Event_2023",
     "primary_local": [
       "raw/images/FBI-UAP-D023_Digital-Rendering_Incident-2-7_Western-US-Event_2023.jpg"
@@ -6526,10 +6701,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR001_Triangle_Orbs_Northeastern_United_States_2021",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010263_DOD_111764142-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6547,10 +6722,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR002_Red_Orb_Rotation_Northeastern_United_States_2022",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010264_DOD_111764148-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6568,10 +6743,10 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR003_Orbs_Over_the_Pond_2024",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010267_DOD_111764159.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6589,10 +6764,10 @@
     "video_pairing": "",
     "pdf_pairing": "FBI-UAP-D009 | FBI-UAP-D010",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR004_Northeastern_Orb_Sighting_2025",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010269_DOD_111764177-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6610,10 +6785,10 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D081 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR005_Digital_Recreation_Narrative_Statement_3-1_Western_United_States_Event_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010272_DOD_111764189-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6631,10 +6806,10 @@
     "video_pairing": "",
     "pdf_pairing": "DOW-UAP-D081 | Western US Event",
     "featured": "",
+    "release": "release_3",
     "id": "FBI-UAP-PR006_Digital_Recreation_Narrative_Statement_3-2_Western_United_States_Event_2023",
     "primary_local": [],
-    "thumbnail_local": [],
-    "video_local": "raw/videos/1010276_DOD_111764213-1920x1080-9000k.mp4"
+    "thumbnail_local": []
   },
   {
     "release_date": "6/12/26",
@@ -6652,6 +6827,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "ICA-UAP-D001_Analysis_Colorado_Springs_UAP_Incident_2022",
     "primary_local": [
       "raw/docs/ICA-UAP-D001_Analysis_Colorado-Springs-UAP-Incident.pdf"
@@ -6676,6 +6852,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D001_Apollo_12_Transcript_1969",
     "primary_local": [
       "raw/docs/nasa-uap-d1-apollo-12-transcript-1969.pdf"
@@ -6700,6 +6877,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D002_Apollo_17_Transcript_1972",
     "primary_local": [
       "raw/docs/nasa-uap-d2-apollo-17-transcript-1972.pdf"
@@ -6724,6 +6902,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D003_Gemini_7_Transcript_1965",
     "primary_local": [
       "raw/docs/255_t_763_r1b_transcripts.pdf"
@@ -6748,6 +6927,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D003A_Gemini_7_Audio_Excerpt_1965",
     "primary_local": [],
     "thumbnail_local": []
@@ -6768,6 +6948,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D004_Apollo_11_Technical_Crew_Debriefing_1969",
     "primary_local": [
       "raw/docs/nasa-uap-d4-apollo-11-technical-crew-debriefing-1969.pdf"
@@ -6792,6 +6973,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D005_Apollo_17_Crew_Debriefing_for_Science_1973",
     "primary_local": [
       "raw/docs/nasa-uap-d5-apollo-17-crew-debriefing-for-science-1973.pdf"
@@ -6816,6 +6998,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D006_Apollo_17_Technical_Crew_Debriefing_1973",
     "primary_local": [
       "raw/docs/nasa-uap-d6-apollo-17-technical-crew-debriefing-1973.pdf"
@@ -6840,6 +7023,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-D007_Skylab_Technical_Crew_Debriefing_1973",
     "primary_local": [
       "raw/docs/nasa-uap-d7-skylab-technical-crew-debriefing-1973.pdf"
@@ -6864,6 +7048,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D008_Apollo_12_Medical_Debriefing_-_Tape_12_1969",
     "primary_local": [],
     "thumbnail_local": []
@@ -6884,6 +7069,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D009_Apollo_17_Audio_Excerpt_December_7_1972",
     "primary_local": [],
     "thumbnail_local": []
@@ -6904,6 +7090,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D010_Mercury_Atlas_9_Audio_Excerpt_May_15_1963",
     "primary_local": [],
     "thumbnail_local": []
@@ -6924,6 +7111,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D011_Mercury_Atlas_9_Audio_Excerpt_May_15_1963",
     "primary_local": [],
     "thumbnail_local": []
@@ -6944,6 +7132,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D012_Mercury_Atlas_8_Audio_Excerpt_October_3_1962",
     "primary_local": [],
     "thumbnail_local": []
@@ -6964,6 +7153,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D013_Mercury_Atlas_7_May_24_1962",
     "primary_local": [],
     "thumbnail_local": []
@@ -6984,6 +7174,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_2",
     "id": "NASA-UAP-D014_Mercury-Redstone_4_July_21_1961",
     "primary_local": [],
     "thumbnail_local": []
@@ -7004,6 +7195,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D015_Astronaut_Scientific_Debriefings_1962-1963",
     "primary_local": [
       "raw/docs/NASA-UAP-D015_Astronaut-Scientific-Debriefings_1962-1963.pdf"
@@ -7028,6 +7220,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D016_Preliminary_Gemini_4_Crew_Debriefing_Part_I_1965",
     "primary_local": [
       "raw/docs/NASA-UAP-D016_Preliminary-Gemini-4-Crew-Debriefing_Part1_1965.pdf"
@@ -7052,6 +7245,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D017_Preliminary_Gemini_4_Crew_Debriefing_Part_II_1965",
     "primary_local": [
       "raw/docs/NASA-UAP-D017_Preliminary-Gemini-4-Crew-Debriefing_Part2_1965.pdf"
@@ -7076,6 +7270,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D018_Gemini_4_Experiment_Debriefing_1967",
     "primary_local": [
       "raw/docs/NASA-UAP-D018_Gemini-4_Experiment-Debriefing_1967.pdf"
@@ -7100,6 +7295,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D019_Gemini_5_Technical_Debriefing_Part_I_1965",
     "primary_local": [
       "raw/docs/NASA-UAP-D019_Gemini-5-Technical-Debriefing_Part1_1965.pdf"
@@ -7124,6 +7320,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D020_Gemini_5_Technical_Debriefing_Part_II_1965",
     "primary_local": [
       "raw/docs/NASA-UAP-D020_Gemini-5-Technical-Debriefing_Part2_1965.pdf"
@@ -7148,6 +7345,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D021_Gemini_7_Technical_Debriefing_1965",
     "primary_local": [
       "raw/docs/NASA-UAP-D021_Gemini-7-Technical-Debriefing_1965.pdf"
@@ -7172,6 +7370,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D022_Gemini_9_Debriefing_1966",
     "primary_local": [
       "raw/docs/NASA-UAP-D022_Gemini-9-Debriefing_1966.pdf"
@@ -7196,6 +7395,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D023_Interview_Excerpt_with_Astronaut_Gordon_Cooper_1962",
     "primary_local": [],
     "thumbnail_local": []
@@ -7216,6 +7416,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D024_Apollo_16_Scientific_Debriefing",
     "primary_local": [],
     "thumbnail_local": []
@@ -7236,6 +7437,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "NASA-UAP-D025_Apollo_16_Scientific_Debriefing",
     "primary_local": [],
     "thumbnail_local": []
@@ -7256,6 +7458,7 @@
     "video_pairing": "NASA-UAP-D027",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "NASA-UAP-D026_Apollo_14_Debriefing_1971",
     "primary_local": [],
     "thumbnail_local": []
@@ -7276,6 +7479,7 @@
     "video_pairing": "NASA-UAP-D026",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "NASA-UAP-D027_Apollo_14_Debriefing_Continued_1971",
     "primary_local": [],
     "thumbnail_local": []
@@ -7296,6 +7500,7 @@
     "video_pairing": "NASA-UAP-D029",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "NASA-UAP-D028_Apollo_17_Crew_Medical_Debriefing_1972",
     "primary_local": [],
     "thumbnail_local": []
@@ -7316,6 +7521,7 @@
     "video_pairing": "NASA-UAP-D028",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_4",
     "id": "NASA-UAP-D029_Apollo_17_Crew_Medical_Debriefing_Continued_1972",
     "primary_local": [],
     "thumbnail_local": []
@@ -7336,6 +7542,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM001_Apollo_12_1969",
     "primary_local": [
       "raw/images/nasa-uap-vm1-apollo-12-1969.jpg"
@@ -7360,6 +7567,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM002_Apollo_12_1969",
     "primary_local": [
       "raw/images/nasa-uap-vm2-apollo-12-1969.jpg"
@@ -7384,6 +7592,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM003_Apollo_12_1969",
     "primary_local": [
       "raw/images/nasa-uap-vm3-apollo-12-1969.jpg"
@@ -7408,6 +7617,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM004_Apollo_12_1969",
     "primary_local": [
       "raw/images/nasa-uap-vm4-apollo-12-1969.jpg"
@@ -7432,6 +7642,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM005_Apollo_12_1969",
     "primary_local": [
       "raw/images/nasa-uap-vm5-apollo-12-1969.jpg"
@@ -7456,6 +7667,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "NASA-UAP-VM006_Apollo_17_1972",
     "primary_local": [
       "raw/images/nasa-uap-vm6-apollo-17-1972.jpg"
@@ -7480,6 +7692,7 @@
     "video_pairing": "",
     "pdf_pairing": "FBI Photo A001 | FBI Photo A002 | FBI Photo A003 | FBI Photo A004 | FBI Photo A005 | FBI Photo A006 | FBI Photo A007 | FBI Photo A008 | FBI Photo B001 | FBI Photo B002 | FBI Photo B003 | FBI Photo B004 | FBI Photo B005 | FBI Photo B006 | FBI Photo B007 | FBI Photo B008 | FBI Photo B009 | FBI Photo B010 | FBI Photo B011 | FBI Photo B012 | FBI Photo B013 | FBI Photo B014 | FBI Photo B015 | FBI Photo B016 | FBI Photo B017 | FBI Photo B018 | FBI Photo B019 | FBI Photo B020 | FBI Photo B021 | FBI Photo B022 | FBI Photo B023 | FBI Photo B024 | USPER Statement about UAP Sighting",
     "featured": "",
+    "release": "release_2",
     "id": "ODNI-UAP-D001_USPER_Narrative_Senior_USIC_Official",
     "primary_local": [
       "raw/docs/ODNI-UAP-D001_USPER_Narrative_Senior_USIC.pdf"
@@ -7504,6 +7717,7 @@
     "video_pairing": "",
     "pdf_pairing": "059UAP00009",
     "featured": "",
+    "release": "release_1",
     "id": "State_Department_UAP_Cable_001_Papua_New_Guinea_January_28_1985",
     "primary_local": [
       "raw/docs/dos-uap-d1-cable-1-papua-new-guinea-january-1985.pdf"
@@ -7528,6 +7742,7 @@
     "video_pairing": "",
     "pdf_pairing": "059UAP000010",
     "featured": "",
+    "release": "release_1",
     "id": "State_Department_UAP_Cable_002_Kazakhstan_January_31_1994",
     "primary_local": [
       "raw/docs/dos-uap-d2-cable-2-kazakhstan-january-1994.pdf"
@@ -7552,6 +7767,7 @@
     "video_pairing": "",
     "pdf_pairing": "059UAP00011",
     "featured": "",
+    "release": "release_1",
     "id": "State_Department_UAP_Cable_003_Tbilisi_Georgia_October_30_2001",
     "primary_local": [
       "raw/docs/059uap00011.pdf"
@@ -7576,6 +7792,7 @@
     "video_pairing": "",
     "pdf_pairing": "059UAP00012",
     "featured": "",
+    "release": "release_1",
     "id": "State_Department_UAP_Cable_004_Ashgabat_Turkmenistan_November_5_2004",
     "primary_local": [
       "raw/docs/059uap00012.pdf"
@@ -7600,6 +7817,7 @@
     "video_pairing": "",
     "pdf_pairing": "059UAP00013",
     "featured": "",
+    "release": "release_1",
     "id": "State_Department_UAP_Cable_005_Mexico_September_16_2003",
     "primary_local": [
       "raw/docs/059uap00013.pdf"
@@ -7624,6 +7842,7 @@
     "video_pairing": "",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_3",
     "id": "USG-UAP-D001_Congressional_White_House_UFO-related_Constituent_Correspondence_1998",
     "primary_local": [
       "raw/docs/USG-UAP-D001_Congress-WhiteHouse-UFO-Correspondence_1998.pdf"
@@ -7648,6 +7867,7 @@
     "video_pairing": "",
     "pdf_pairing": "FBI Photo A001 | FBI Photo A002 | FBI Photo A003 | FBI Photo A004 | FBI Photo A005 | FBI Photo A006 | FBI Photo A007 | FBI Photo A008 | FBI Photo B001 | FBI Photo B002 | FBI Photo B003 | FBI Photo B004 | FBI Photo B005 | FBI Photo B006 | FBI Photo B007 | FBI Photo B008 | FBI Photo B009 | FBI Photo B010 | FBI Photo B011 | FBI Photo B012 | FBI Photo B013 | FBI Photo B014 | FBI Photo B015 | FBI Photo B016 | FBI Photo B017 | FBI Photo B018 | FBI Photo B019 | FBI Photo B020 | FBI Photo B021 | FBI Photo B022 | FBI Photo B023 | FBI Photo B024 | ODNI-UAP-D001, USPER Narrative, Senior USIC Official",
     "featured": "",
+    "release": "release_1",
     "id": "USPER_Statement_about_UAP_Sighting",
     "primary_local": [
       "raw/docs/usper-statement-redacted.pdf"
@@ -7672,6 +7892,7 @@
     "video_pairing": "DOW-UAP-D077 | DOW-UAP-D078 | DOW-UAP-D079 | DOW-UAP-D080 | DOW-UAP-D081 | DOW-UAP-D082 | DOW-UAP-D083 | FBI-UAP-D014 | FBI-UAP-D015 | FBI-UAP-D016 | FBI-UAP-D017 | FBI-UAP-D018 | FBI-UAP-D019 | FBI-UAP-D020 | FBI-UAP-D021 | FBI-UAP-D022 | FBI-UAP-D023 | FBI-UAP-PR005 | FBI-UAP-PR006",
     "pdf_pairing": "",
     "featured": "",
+    "release": "release_1",
     "id": "Western_US_Event",
     "primary_local": [
       "raw/docs/western_us_event_slides_5.08.2026.pdf"

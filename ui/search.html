@@ -1,0 +1,449 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Search — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<div class="search-layout">
+  <aside class="facet-rail">
+    <div class="facet-group">
+      <div class="facet-group-label">MEDIA TYPE</div>
+      <div class="chips" id="type-chips">
+        <span class="chip small active" data-type="">All <span class="count" id="cn-all"></span></span>
+        <span class="chip small" data-type="Case File">📋 Case files <span class="count" id="cn-case"></span></span>
+        <span class="chip small" data-type="IMG">🖼 Images <span class="count" id="cn-img"></span></span>
+        <span class="chip small" data-type="PDF">📄 PDFs <span class="count" id="cn-pdf"></span></span>
+        <span class="chip small" data-type="VID">🎞 Videos <span class="count" id="cn-vid"></span></span>
+        <span class="chip small" data-type="AUD">🔊 Audio <span class="count" id="cn-aud"></span></span>
+      </div>
+    </div>
+    <div class="facet-group">
+      <div class="facet-group-label">FILTERS</div>
+      <select id="f-agency"><option value="">All agencies</option></select>
+      <select id="f-loc"><option value="">All locations</option></select>
+      <select id="f-decade"><option value="">All decades</option></select>
+      <select id="f-shape"><option value="">All shapes</option></select>
+      <select id="f-incident"><option value="">All incidents</option></select>
+      <select id="f-release">
+        <option value="">All releases</option>
+        <option value="release_1">Release 1 — 8 May 2026</option>
+        <option value="release_2">Release 2 — 22 May 2026</option>
+        <option value="release_3">Release 3 — 12 Jun 2026</option>
+        <option value="release_4">Release 4 — 10 Jul 2026</option>
+      </select>
+    </div>
+    <div class="facet-group">
+      <div class="facet-group-label">FACETS</div>
+      <div class="chips" id="facet-chips">
+        <span class="chip small" data-facet="redacted" title="Records that contain visible redactions in the source material">⬛ Redacted <span class="count" id="cn-fc-redacted"></span></span>
+        <span class="chip small" data-facet="hasimages" title="Records with embedded images extracted from the source">🖼 Embeds image <span class="count" id="cn-fc-hasimages"></span></span>
+        <span class="chip small" data-facet="hasvideo" title="Records with an attached video file">🎞 Embeds video <span class="count" id="cn-fc-hasvideo"></span></span>
+        <span class="chip small" data-facet="hassource" title="Records that link back to a canonical source URL">↗ Source URL <span class="count" id="cn-fc-hassource"></span></span>
+      </div>
+    </div>
+    <div class="facet-group" id="dossier-group" hidden>
+      <div class="facet-group-label">DOSSIERS</div>
+      <div class="chips" id="dossier-chips"></div>
+    </div>
+    <div class="facet-group" id="topic-group" hidden>
+      <div class="facet-group-label">TOPICS</div>
+      <div class="chips" id="topic-chips"></div>
+    </div>
+    <button id="f-clear" style="width:100%">Clear all filters</button>
+  </aside>
+
+  <main class="search-main">
+    <div class="search-bar">
+      <input id="q" type="text" placeholder="Search titles, blurbs, and full PDF text…  ( / to focus )" autofocus />
+      <span class="stat" id="stat" style="border:0;padding:0">Loading…</span>
+    </div>
+    <div id="active-filters" aria-live="polite" style="padding:0 16px"></div>
+    <div class="search-results" id="rows"></div>
+  </main>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/minisearch@7.1.0/dist/umd/index.min.js"></script>
+<script src="js/shared.js"></script>
+<script>
+renderNav("search");
+
+let mini;
+let activeTypeFilter = "";
+let activeFacets = { redacted: false, hasimages: false, hasvideo: false, hassource: false };
+let activeDossiers = new Set();
+let activeTopics = new Set();
+let TOPIC_BY_RECORD = {};
+
+const rowsEl = $("#rows");
+const stat = $("#stat");
+
+const REL_PILLS = {
+  release_1: ['rel-1', 'REL 1', 'war.gov Release 1 (8 May 2026)'],
+  release_2: ['rel-2', 'REL 2', 'war.gov Release 2 (22 May 2026)'],
+  release_3: ['rel-2', 'REL 3', 'war.gov Release 3 (12 Jun 2026)'],
+  release_4: ['rel-2', 'REL 4', 'war.gov Release 4 (10 Jul 2026)'],
+};
+
+function applyFilters(matches) {
+  const ag = $("#f-agency").value;
+  const lo = $("#f-loc").value;
+  const decade = $("#f-decade").value;
+  const shape = $("#f-shape").value;
+  const incident = $("#f-incident").value;
+  const release = $("#f-release").value;
+  return matches.filter(m => {
+    const d = m.doc || m;
+    if (ag && d.agency !== ag) return false;
+    if (activeTypeFilter && d.type.replace(/\s+$/,'') !== activeTypeFilter) return false;
+    if (lo && (d.incident_location || "").trim() !== lo) return false;
+    if (activeFacets.redacted  && d.redaction !== "TRUE") return false;
+    if (activeFacets.hasimages && !(d.extracted_images && d.extracted_images.length)) return false;
+    if (activeFacets.hasvideo  && !(d.video_local || d.dvids_video_id)) return false;
+    if (activeFacets.hassource && !d.source_url) return false;
+    if (decade) {
+      const y = recordYear(d);
+      const dec = parseInt(decade, 10);
+      if (y === null || y < dec || y >= dec + 10) return false;
+    }
+    if (shape && (d.craft_shape || "") !== shape) return false;
+    if (incident && (d.incident_id || "") !== incident) return false;
+    if (release && (d.release || "") !== release) return false;
+    if (activeDossiers.size) {
+      const tags = d.dossiers || [];
+      let hit = false;
+      for (const t of tags) if (activeDossiers.has(t)) { hit = true; break; }
+      if (!hit) return false;
+    }
+    if (activeTopics.size) {
+      const tid = TOPIC_BY_RECORD[d.id];
+      if (tid !== undefined) { if (!activeTopics.has(tid)) return false; }
+      else if (!activeTopics.has(-1)) return false;
+    }
+    return true;
+  });
+}
+
+function search() {
+  const q = $("#q").value.trim();
+  const terms = q.split(/\s+/).filter(Boolean);
+  let results;
+  if (!q) {
+    results = docs.map(d => ({ doc: d, score: 0 }));
+  } else {
+    results = mini.search(q, { prefix: true, fuzzy: 0.2, combineWith: "AND" })
+      .map(r => ({ doc: docById(r.id), score: r.score }))
+      .filter(r => r.doc);
+  }
+  results = applyFilters(results);
+  render(results, terms);
+}
+
+function render(matches, terms) {
+  rowsEl.innerHTML = "";
+  stat.textContent = `${matches.length} of ${docs.length} records`;
+  if (!matches.length) {
+    rowsEl.innerHTML = `<div class="empty" style="padding:30px">No matches.</div>`;
+    return;
+  }
+  rowsEl.classList.toggle("grid", activeTypeFilter === "IMG");
+  const limit = activeTypeFilter === "IMG" ? 600 : 300;
+  for (const m of matches.slice(0, limit)) {
+    const d = m.doc || m;
+    const row = document.createElement("div");
+    row.className = "row";
+    row.dataset.id = d.id;
+    const sn = snippet(d.text, terms);
+    const thumb = d.thumb_small ||
+                  (d.thumbnail_local && d.thumbnail_local[0]) ||
+                  (d.primary_local && d.primary_local.find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p))) || "";
+    const fallback = (d.thumbnail_local && d.thumbnail_local[0]) ||
+                     (d.primary_local && d.primary_local.find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p))) || "";
+    const onerr = (thumb && fallback && thumb !== fallback)
+      ? ` onerror="this.onerror=null;this.src='${ROOT_REL}/${fallback}'"` : "";
+    const rp = REL_PILLS[d.release];
+    const relPill = rp ? ` <span class="rel-pill ${rp[0]}" title="${rp[2]}">${rp[1]}</span>` : "";
+    row.innerHTML = `
+      ${thumb ? `<img class="thumb" src="${ROOT_REL}/${thumb}" loading="lazy" alt=""${onerr}/>` : ""}
+      <div class="body">
+        <div class="t">${highlight(d.title, terms)}</div>
+        <div class="meta">${badge(d.type)}${relPill} <span>${escapeHtml(d.agency)}</span> <span>${escapeHtml(d.incident_location || "—")}</span> <span>${escapeHtml(d.incident_date || "")}</span></div>
+        ${sn ? `<div class="snippet">${highlight(sn, terms)}</div>` : ""}
+        ${dossierHitsRowHTML(d)}
+      </div>
+      ${activeTypeFilter === "IMG" ? `<div class="grid-cap">${escapeHtml(d.title.slice(0, 60))}</div>` : ""}
+    `;
+    row.addEventListener("click", () => { location.href = recordUrl(d.id); });
+    rowsEl.appendChild(row);
+  }
+  if (matches.length > limit) {
+    const more = document.createElement("div");
+    more.className = "stat";
+    more.textContent = `Showing first ${limit} of ${matches.length}. Refine your search to see the rest.`;
+    rowsEl.appendChild(more);
+  }
+}
+
+// ── URL state (query params — shareable) ─────────────────────────────
+function syncUrl() {
+  const p = new URLSearchParams();
+  const q = $("#q").value.trim(); if (q) p.set("q", q);
+  for (const s of ["agency", "loc", "decade", "shape", "incident", "release"]) {
+    const v = $("#f-" + s).value; if (v) p.set(s, v);
+  }
+  if (activeTypeFilter) p.set("type", activeTypeFilter);
+  for (const k of Object.keys(activeFacets)) if (activeFacets[k]) p.set("fc_" + k, "1");
+  if (activeDossiers.size) p.set("dossier", [...activeDossiers].join(","));
+  if (activeTopics.size) p.set("topic", [...activeTopics].join(","));
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+  renderActiveFilters();
+}
+
+function loadUrl() {
+  const p = new URLSearchParams(location.search);
+  $("#q").value = p.get("q") || "";
+  for (const s of ["agency", "loc", "decade", "shape", "incident", "release"]) {
+    const v = p.get(s);
+    if (v) { const el = $("#f-" + s); if ([...el.options].some(o => o.value === v)) el.value = v; }
+  }
+  activeTypeFilter = p.get("type") || "";
+  for (const k of ["redacted", "hasimages", "hasvideo", "hassource"]) {
+    if (p.get("fc_" + k) === "1") activeFacets[k] = true;
+  }
+  const dp = p.get("dossier");
+  if (dp) for (const id of dp.split(",").filter(Boolean)) activeDossiers.add(id);
+  const tp = p.get("topic");
+  if (tp) for (const t of tp.split(",").filter(Boolean)) activeTopics.add(isNaN(+t) ? t : +t);
+}
+
+function setTypeFilter(t) {
+  activeTypeFilter = t;
+  $$("#type-chips .chip").forEach(c => c.classList.toggle("active", (c.dataset.type || "") === activeTypeFilter));
+  search();
+  syncUrl();
+}
+
+// ── Active-filter chips strip ────────────────────────────────────────
+const AF_KIND_LABELS = {
+  q: "Search", agency: "Agency", loc: "Location", type: "Type",
+  decade: "Decade", shape: "Shape", incident: "Incident", release: "Release",
+  redacted: "Redacted", hasimages: "Embeds image", hasvideo: "Embeds video",
+  hassource: "Source URL", dossier: "Dossier", topic: "Topic",
+};
+
+function collectActiveFilters() {
+  const out = [];
+  const q = $("#q").value.trim();
+  if (q) out.push({ kind: "q", value: q, remove: () => { $("#q").value = ""; onChange(); } });
+  for (const k of ["agency", "loc", "decade", "shape", "incident", "release"]) {
+    const el = $("#f-" + k);
+    if (!el.value) continue;
+    const optText = el.options[el.selectedIndex] ? el.options[el.selectedIndex].text : el.value;
+    out.push({ kind: k, value: optText, remove: () => { el.value = ""; onChange(); } });
+  }
+  if (activeTypeFilter) {
+    const chip = document.querySelector('#type-chips .chip[data-type="' + CSS.escape(activeTypeFilter) + '"]');
+    out.push({ kind: "type", value: chip ? chip.textContent.trim().replace(/\d+$/, "").trim() : activeTypeFilter, remove: () => setTypeFilter("") });
+  }
+  for (const k of Object.keys(activeFacets)) {
+    if (!activeFacets[k]) continue;
+    out.push({ kind: k, value: "yes", remove: () => {
+      const chip = document.querySelector('#facet-chips .chip[data-facet="' + k + '"]');
+      if (chip) chip.click();
+    } });
+  }
+  for (const id of activeDossiers) {
+    const chip = document.querySelector('#dossier-chips .chip[data-dossier="' + CSS.escape(id) + '"]');
+    const lbl = chip ? chip.textContent.trim().replace(/\d+$/, "").trim() : id;
+    out.push({ kind: "dossier", value: lbl, remove: () => { if (chip) chip.click(); } });
+  }
+  document.querySelectorAll('#topic-chips .chip.active').forEach(chip => {
+    const lbl = chip.textContent.trim().replace(/\d+$/, "").trim();
+    out.push({ kind: "topic", value: lbl, remove: () => chip.click() });
+  });
+  return out;
+}
+
+function renderActiveFilters() {
+  const af = $("#active-filters");
+  const filters = collectActiveFilters();
+  af.classList.toggle("has-filters", filters.length > 0);
+  af.innerHTML = "";
+  if (!filters.length) return;
+  const lbl = document.createElement("span");
+  lbl.className = "af-label"; lbl.textContent = "Filtered:";
+  af.appendChild(lbl);
+  for (const f of filters) {
+    const pill = document.createElement("span");
+    pill.className = "af-pill";
+    pill.innerHTML = '<span class="af-key">' + escapeHtml(AF_KIND_LABELS[f.kind] || f.kind) + '</span>' + escapeHtml(f.value);
+    const rm = document.createElement("button");
+    rm.className = "af-remove"; rm.title = "Remove this filter"; rm.textContent = "×";
+    rm.addEventListener("click", () => { try { f.remove(); } catch (e) {} });
+    pill.appendChild(rm);
+    af.appendChild(pill);
+  }
+  const clearAll = document.createElement("button");
+  clearAll.className = "af-clear-all"; clearAll.textContent = "Clear all";
+  clearAll.addEventListener("click", () => $("#f-clear").click());
+  af.appendChild(clearAll);
+}
+
+function onChange() { search(); syncUrl(); }
+
+function navigate(delta) {
+  const rows = $$(".row");
+  if (!rows.length) return;
+  const cur = document.activeElement && document.activeElement.closest
+    ? document.activeElement.closest(".row") : null;
+  const i = rows.indexOf(cur);
+  const next = rows[Math.max(0, Math.min(rows.length - 1, i + delta))];
+  next.focus();
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+(async function init() {
+  await loadCoreData(["incidents", "topics"]);
+
+  mini = new MiniSearch({
+    fields: ["title", "blurb", "text", "agency", "incident_location", "craft_shape"],
+    storeFields: ["id"],
+    searchOptions: { boost: { title: 4, blurb: 2 } },
+  });
+  mini.addAll(docs);
+
+  fillFilter("#f-agency", [...new Set(docs.map(d => d.agency))]);
+  fillFilter("#f-loc", [...new Set(docs.map(d => (d.incident_location || "").trim()))]);
+  const decades = new Set();
+  docs.forEach(d => { const y = recordYear(d); if (y != null) decades.add(Math.floor(y / 10) * 10); });
+  [...decades].sort((a, b) => a - b).forEach(dec => {
+    const o = document.createElement("option"); o.value = String(dec); o.textContent = dec + "s";
+    $("#f-decade").appendChild(o);
+  });
+  const shapes = new Set();
+  docs.forEach(d => { if (d.craft_shape) shapes.add(d.craft_shape); });
+  [...shapes].sort().forEach(s => {
+    const o = document.createElement("option"); o.value = s; o.textContent = s;
+    $("#f-shape").appendChild(o);
+  });
+  const incidentIds = new Set();
+  docs.forEach(d => { if (d.incident_id) incidentIds.add(d.incident_id); });
+  [...incidentIds].sort().forEach(iid => {
+    const inc = (window.INCIDENTS || {})[iid];
+    const o = document.createElement("option"); o.value = iid; o.textContent = inc ? inc.name : iid;
+    $("#f-incident").appendChild(o);
+  });
+
+  const counts = { "": docs.length, "Case File": 0, PDF: 0, VID: 0, IMG: 0, AUD: 0 };
+  docs.forEach(d => { const k = (d.type || "").replace(/\s+$/, ""); if (counts[k] != null) counts[k]++; });
+  $("#cn-all").textContent = counts[""];
+  $("#cn-case").textContent = counts["Case File"];
+  $("#cn-pdf").textContent = counts.PDF;
+  $("#cn-vid").textContent = counts.VID;
+  $("#cn-img").textContent = counts.IMG;
+  $("#cn-aud").textContent = counts.AUD;
+  $$("#type-chips .chip").forEach(c => c.addEventListener("click", () => setTypeFilter(c.dataset.type || "")));
+
+  const fc = {
+    redacted:  docs.filter(d => d.redaction === "TRUE").length,
+    hasimages: docs.filter(d => d.extracted_images && d.extracted_images.length).length,
+    hasvideo:  docs.filter(d => d.video_local || d.dvids_video_id).length,
+    hassource: docs.filter(d => d.source_url).length,
+  };
+  for (const k of Object.keys(fc)) { const el = $("#cn-fc-" + k); if (el) el.textContent = fc[k]; }
+  $$("#facet-chips .chip[data-facet]").forEach(c => {
+    c.addEventListener("click", () => {
+      const f = c.dataset.facet;
+      activeFacets[f] = !activeFacets[f];
+      c.classList.toggle("active", activeFacets[f]);
+      onChange();
+    });
+  });
+
+  // Dossier chips
+  if (DOSSIERS.length) {
+    const dCounts = {};
+    for (const d of docs) for (const id of (d.dossiers || [])) dCounts[id] = (dCounts[id] || 0) + 1;
+    const dossierEl = $("#dossier-chips");
+    for (const dos of DOSSIERS) {
+      if (!dCounts[dos.id]) continue;
+      const chip = document.createElement("span");
+      chip.className = "chip small";
+      chip.dataset.dossier = dos.id;
+      chip.innerHTML = `${dos.emoji || "📁"} <span>${escapeHtml(dos.label)}</span><span class="count">${dCounts[dos.id]}</span>`;
+      if (dos.description) chip.title = dos.description;
+      chip.addEventListener("click", () => {
+        if (activeDossiers.has(dos.id)) activeDossiers.delete(dos.id);
+        else activeDossiers.add(dos.id);
+        chip.classList.toggle("active", activeDossiers.has(dos.id));
+        onChange();
+      });
+      dossierEl.appendChild(chip);
+    }
+    if (dossierEl.querySelector(".chip")) $("#dossier-group").hidden = false;
+  }
+
+  // Topic chips
+  if (window.TOPICS) {
+    TOPIC_BY_RECORD = window.TOPICS.by_record || {};
+    const topics = window.TOPICS.topics || [];
+    const topicEl = $("#topic-chips");
+    for (const topic of topics.filter(t => t.id !== -1)) {
+      const chip = document.createElement("span");
+      chip.className = "chip small";
+      chip.dataset.topic = String(topic.id);
+      chip.title = "Keywords: " + topic.keywords.slice(0, 6).join(", ");
+      chip.innerHTML = `<span>${escapeHtml(topic.label)}</span><span class="count">${topic.size}</span>`;
+      chip.addEventListener("click", () => {
+        if (activeTopics.has(topic.id)) activeTopics.delete(topic.id);
+        else activeTopics.add(topic.id);
+        chip.classList.toggle("active", activeTopics.has(topic.id));
+        onChange();
+      });
+      topicEl.appendChild(chip);
+    }
+    if (topicEl.querySelector(".chip")) $("#topic-group").hidden = false;
+  }
+
+  loadUrl();
+  $$("#type-chips .chip").forEach(c => c.classList.toggle("active", (c.dataset.type || "") === activeTypeFilter));
+  $$("#facet-chips .chip[data-facet]").forEach(c => c.classList.toggle("active", !!activeFacets[c.dataset.facet]));
+  $$("#dossier-chips .chip[data-dossier]").forEach(c => c.classList.toggle("active", activeDossiers.has(c.dataset.dossier)));
+  $$("#topic-chips .chip").forEach(c => c.classList.toggle("active", activeTopics.has(isNaN(+c.dataset.topic) ? c.dataset.topic : +c.dataset.topic)));
+
+  $("#q").addEventListener("input", onChange);
+  ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident", "#f-release"].forEach(s => $(s).addEventListener("change", onChange));
+  $("#f-clear").addEventListener("click", () => {
+    $("#q").value = "";
+    ["#f-agency", "#f-loc", "#f-decade", "#f-shape", "#f-incident", "#f-release"].forEach(s => { $(s).value = ""; });
+    activeTypeFilter = "";
+    for (const k of Object.keys(activeFacets)) activeFacets[k] = false;
+    activeDossiers.clear();
+    activeTopics.clear();
+    $$(".chip.active").forEach(c => c.classList.remove("active"));
+    $$("#type-chips .chip").forEach(c => c.classList.toggle("active", !c.dataset.type));
+    onChange();
+  });
+
+  document.addEventListener("keydown", (e) => {
+    const tag = (e.target.tagName || "").toLowerCase();
+    if (tag === "input" || tag === "select" || tag === "textarea") {
+      if (e.key === "Escape") e.target.blur();
+      return;
+    }
+    if (e.key === "/") { e.preventDefault(); $("#q").focus(); }
+  });
+
+  search();
+  syncUrl();
+})();
+</script>
+</body>
+</html>

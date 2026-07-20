@@ -1,0 +1,646 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Map — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.css" />
+<link rel="stylesheet" href="https://unpkg.com/leaflet.markercluster@1.5.3/dist/MarkerCluster.Default.css" />
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<section id="map-page">
+  <div id="map-2d">
+    <div id="map-leaflet"></div>
+    <div class="map-stat" id="map-stat">
+      PLOTTING <span class="off-count"><strong id="map-official-count">—</strong> OFFICIAL</span> ·
+      <span class="civ-count"><strong id="map-civ-count">—</strong> CIVILIAN</span> ·
+      CLICK TO OPEN RECORD
+    </div>
+    <div id="hex-toggle-bar">
+      <div id="hex-source-row">
+        <button class="hex-layer-toggle" id="hex-btn-off"       type="button">HOTSPOTS OFF</button>
+        <button class="hex-layer-toggle" id="hex-btn-all"       type="button">ALL</button>
+        <button class="hex-layer-toggle" id="hex-btn-official"  type="button">OFFICIAL</button>
+        <button class="hex-layer-toggle" id="hex-btn-civilian"  type="button">CIVILIAN</button>
+      </div>
+      <div id="hex-res-row" style="display:flex;gap:4px;margin-top:2px;">
+        <button class="hex-layer-toggle" id="hex-btn-r4"  type="button">RES 4</button>
+        <button class="hex-layer-toggle active" id="hex-btn-r6"  type="button">RES 6</button>
+      </div>
+      <button class="hex-layer-toggle" id="hex-sig-toggle" type="button">SIG ONLY (p&lt;0.05)</button>
+    </div>
+  </div>
+  <div id="map-3d" hidden>
+    <div id="globe-canvas"></div>
+    <div class="globe-stat">PLOTTING <strong id="globe-count">…</strong> RECORDS · CLICK A MARKER TO OPEN</div>
+  </div>
+  <div class="map-controls">
+    <button class="map-view-btn active" id="view-2d" type="button">🗺 2D Map</button>
+    <button class="map-view-btn" id="view-3d" type="button">🌐 3D Globe</button>
+    <span class="map-controls-sep"></span>
+    <label class="map-year-label" for="year-min">Year</label>
+    <input id="year-min" type="number" placeholder="min" />
+    <span class="map-year-dash">–</span>
+    <input id="year-max" type="number" placeholder="max" />
+  </div>
+</section>
+
+<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+<script src="https://unpkg.com/leaflet.markercluster@1.5.3/dist/leaflet.markercluster.js"></script>
+<script src="https://unpkg.com/h3-js@4.1.0/dist/browser/h3-js.umd.js"></script>
+<script src="js/shared.js"></script>
+<script>
+renderNav("map");
+
+// Hand-curated lookup from the `incident_location` strings present in
+// search-index.json to (lat, lng) — used by the 3D globe (ported from the
+// monolith). Strings absent from this table are not plotted on the globe.
+const LOC_COORDS = {
+  "Aegean Sea": [38.0, 25.0],
+  "Arabian Gulf": [26.5, 51.0],
+  "Arabian Sea": [14.0, 65.0],
+  "Azerbaijan": [40.0, 47.5],
+  "Detroit, MI": [42.33, -83.05],
+  "Djibouti": [11.5, 43.0],
+  "East China Sea": [28.0, 125.0],
+  "Georgia": [42.0, 43.5],
+  "Germany": [51.0, 10.0],
+  "Greece": [39.0, 22.0],
+  "Gulf of Aden": [12.5, 48.0],
+  "Gulf of Oman": [25.0, 58.0],
+  "Iran": [32.0, 53.0],
+  "Iraq": [33.0, 44.0],
+  "Japan": [36.0, 138.0],
+  "Kazakhstan": [48.0, 67.0],
+  "Mediterranean Sea": [35.0, 18.0],
+  "Mexico": [23.0, -102.0],
+  "Middle East": [31.0, 45.0],
+  "Netherlands": [52.0, 5.5],
+  "Pacific Ocean": [0.0, -160.0],
+  "Papua New Guinea": [-6.5, 145.0],
+  "Persian Gulf": [26.5, 51.0],
+  "Southern United States": [32.0, -90.0],
+  "Strait of Hormuz": [26.6, 56.5],
+  "Syria": [35.0, 38.0],
+  "Turkmenistan": [38.5, 58.0],
+  "United Arab Emirates": [24.0, 54.0],
+  "United States": [39.0, -98.0],
+  "Western United States": [40.0, -113.0],
+};
+
+// ── Page state (mirrored to query params) ────────────────────────────
+const state = {
+  view: "2d",        // "2d" | "3d"
+  yearMin: null,
+  yearMax: null,
+};
+
+function syncUrl() {
+  const p = new URLSearchParams();
+  if (state.view !== "2d") p.set("view", state.view);
+  if (state.yearMin != null) p.set("ymin", String(state.yearMin));
+  if (state.yearMax != null) p.set("ymax", String(state.yearMax));
+  if (hexState.activeSource) p.set("hex", hexState.activeSource);
+  if (hexState.activeRes !== "h3_resolution_6") p.set("hexres", "4");
+  if (!hexState.sigOnly) p.set("hexsig", "0");
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+}
+
+function loadUrl() {
+  const p = new URLSearchParams(location.search);
+  if (p.get("view") === "3d") state.view = "3d";
+  const ymin = parseInt(p.get("ymin"), 10);
+  const ymax = parseInt(p.get("ymax"), 10);
+  if (!isNaN(ymin)) state.yearMin = ymin;
+  if (!isNaN(ymax)) state.yearMax = ymax;
+  const hex = p.get("hex");
+  if (["all", "official", "civilian"].includes(hex)) hexState.activeSource = hex;
+  if (p.get("hexres") === "4") hexState.activeRes = "h3_resolution_4";
+  if (p.get("hexsig") === "0") hexState.sigOnly = false;
+}
+
+// ── Year filtering ───────────────────────────────────────────────────
+// correlations.json entries carry ISO `occurred_at`; official records can
+// also resolve to a search-index doc whose incident_date recordYear() parses.
+function entryYear(dateStr) {
+  const m = (dateStr || "").match(/(\d{4})/);
+  return m ? parseInt(m[1], 10) : null;
+}
+function inYearRange(y) {
+  if (y == null) return true;   // undated records stay visible
+  if (state.yearMin != null && y < state.yearMin) return false;
+  if (state.yearMax != null && y > state.yearMax) return false;
+  return true;
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// 2D map — Leaflet + MarkerCluster + correlations.json
+// ─────────────────────────────────────────────────────────────────────
+const mapState = {
+  map: null,
+  clusterGroup: null,
+  geojsonLayer: null,
+  built: false,
+};
+
+function mapMakeIcon(type) {
+  // type: "official" | "civilian"
+  const isOfficial = type === "official";
+  return L.divIcon({
+    className: "",
+    html: `<div class="map-marker-${type}"></div>`,
+    iconSize:   isOfficial ? [18, 18] : [12, 12],
+    iconAnchor: isOfficial ? [9,  9]  : [6,  6],
+    popupAnchor: isOfficial ? [0, -10] : [0, -7],
+  });
+}
+
+function mapOfficialPopupHtml(entry, corrKey, corrKeyToDocId) {
+  const rec = entry.official;
+  const loc = rec.location || {};
+  const occurred = rec.occurred_at ? rec.occurred_at.slice(0, 10) : "—";
+  const docId = (corrKeyToDocId && corrKey && corrKeyToDocId[corrKey]) || null;
+  const btnHtml = docId
+    ? `<button class="map-popup-btn" onclick="mapOpenDetail(${JSON.stringify(docId)})">↗ OPEN RECORD</button>`
+    : "";
+  return `<div class="map-popup-official">
+    <div class="map-popup-prov"><span class="prov-pill official">✓ Official Release</span></div>
+    <div class="map-popup-title">${escapeHtml(rec.title || "Unnamed record")}</div>
+    <div class="map-popup-meta">${occurred} · ${escapeHtml(loc.name || "")}</div>
+    ${entry.match_count ? `<div style="font-size:10.5px;color:#ffb34d;margin-bottom:4px">⚠ ${entry.match_count} civilian sighting${entry.match_count === 1 ? "" : "s"} nearby</div>` : ""}
+    ${btnHtml}
+  </div>`;
+}
+
+function mapCivilianPopupHtml(match) {
+  const loc = match.location || {};
+  const occurred = (match.occurred_at || "").slice(0, 10);
+  return `<div class="map-popup-civilian">
+    <div class="map-popup-prov"><span class="prov-pill civilian">⚠ Unverified</span></div>
+    <div class="map-popup-civilian-wrapper">
+      <div class="map-popup-title" style="color:#ffd9a0">${escapeHtml(match.title || "NUFORC sighting")}</div>
+      <div class="map-popup-meta">${occurred} · ${escapeHtml(loc.name || "")}</div>
+      <div class="map-popup-summary">${escapeHtml(match.summary || "No summary available.")}</div>
+      <div style="font-size:10px;color:#c8a872;margin-top:6px">Source: NUFORC public mirror — unverified civilian report.</div>
+    </div>
+  </div>`;
+}
+
+window.mapOpenDetail = function(docId) {
+  location.href = recordUrl(docId);
+};
+
+async function ensureMap() {
+  const container = $("#map-leaflet");
+  if (!container) return;
+
+  if (mapState.map) {
+    mapState.map.invalidateSize();
+    return;
+  }
+
+  mapState.map = L.map(container, {
+    center: [30, -30],
+    zoom: 2,
+    minZoom: 1,
+    maxZoom: 12,
+    zoomControl: true,
+  });
+
+  // OSM tile layer (styled dark by CSS filter)
+  L.tileLayer("https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png", {
+    attribution: "© <a href='https://www.openstreetmap.org/copyright'>OpenStreetMap</a>",
+    maxZoom: 19,
+  }).addTo(mapState.map);
+
+  // GeoJSON basemap overlay (country outlines)
+  try {
+    const res = await fetch("geo/ne_110m_admin_0_countries.geojson");
+    if (res.ok) {
+      const gj = await res.json();
+      mapState.geojsonLayer = L.geoJSON(gj, {
+        style: {
+          color: "#1f2937",
+          weight: 1,
+          fillColor: "#0b0e14",
+          fillOpacity: 0.0,
+        },
+        interactive: false,
+      }).addTo(mapState.map);
+    }
+  } catch (e) {
+    console.warn("[map] GeoJSON basemap unavailable:", e);
+  }
+
+  if (window.L.MarkerClusterGroup) {
+    mapState.clusterGroup = L.markerClusterGroup({
+      maxClusterRadius: 40,
+      disableClusteringAtZoom: 8,
+      spiderfyOnMaxZoom: true,
+      showCoverageOnHover: false,
+      chunkedLoading: true,
+    });
+  }
+
+  mapBuildMarkers();
+
+  if (mapState.clusterGroup) {
+    mapState.map.addLayer(mapState.clusterGroup);
+  }
+
+  mapState.built = true;
+  requestAnimationFrame(() => mapState.map && mapState.map.invalidateSize());
+}
+
+function mapBuildMarkers() {
+  const corr = window.CORRELATIONS || {};
+  let officialCount = 0;
+  let civCount = 0;
+  const officialIcon  = mapMakeIcon("official");
+  const civilianIcon  = mapMakeIcon("civilian");
+  const addTarget = mapState.clusterGroup || mapState.map;
+  // Source filter from the hex toggle bar: "official" | "civilian" hide the
+  // other kind. "all" / null (HOTSPOTS OFF) show both.
+  const srcFilter = hexState.activeSource;
+  const showOfficial = srcFilter !== "civilian";
+  const showCivilian = srcFilter !== "official";
+  // Pre-build a quick lookup: corrKey → docId
+  const corrKeyToDocId = {};
+  for (const key of Object.keys(corr)) {
+    if (docById(key)) { corrKeyToDocId[key] = key; continue; }
+    const byColon = key.replace(":", "_");
+    if (docById(byColon)) corrKeyToDocId[key] = byColon;
+  }
+
+  // Counts reflect the year filter but NOT the OFFICIAL/CIVILIAN toggle, so
+  // the stat overlay reads as a stable inventory (the hidden side dims).
+  for (const [key, entry] of Object.entries(corr)) {
+    const rec = entry.official;
+    if (!rec) continue;
+    const loc = rec.location || {};
+    if (!loc.lat || !loc.lng) continue;
+    const doc = corrKeyToDocId[key] ? docById(corrKeyToDocId[key]) : null;
+    const y = (doc && recordYear(doc)) || entryYear(rec.occurred_at);
+    if (!inYearRange(y)) continue;
+    officialCount++;
+    if (showOfficial) {
+      const marker = L.marker([loc.lat, loc.lng], { icon: officialIcon });
+      marker.bindPopup(mapOfficialPopupHtml(entry, key, corrKeyToDocId), { maxWidth: 280 });
+      marker._mapKind = "official";
+      addTarget.addLayer(marker);
+    }
+
+    for (const match of (entry.matches || [])) {
+      const ml = match.location || {};
+      if (!ml.lat || !ml.lng) continue;
+      if (!inYearRange(entryYear(match.occurred_at))) continue;
+      civCount++;
+      if (showCivilian) {
+        const cm = L.marker([ml.lat, ml.lng], { icon: civilianIcon });
+        cm.bindPopup(mapCivilianPopupHtml(match), { maxWidth: 280 });
+        cm._mapKind = "civilian";
+        addTarget.addLayer(cm);
+      }
+    }
+  }
+
+  $("#map-official-count").textContent = String(officialCount);
+  $("#map-civ-count").textContent = String(civCount);
+  const ocWrap = document.querySelector("#map-stat .off-count");
+  const ccWrap = document.querySelector("#map-stat .civ-count");
+  if (ocWrap) ocWrap.style.opacity = showOfficial ? "" : "0.35";
+  if (ccWrap) ccWrap.style.opacity = showCivilian ? "" : "0.35";
+}
+
+function mapRefreshFilters() {
+  if (!mapState.map || !mapState.built) return;
+  if (mapState.clusterGroup) {
+    mapState.clusterGroup.clearLayers();
+  } else {
+    mapState.map.eachLayer(l => { if (l._mapKind) mapState.map.removeLayer(l); });
+  }
+  mapBuildMarkers();
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// H3 Gi* hotspot hex layer (2D map only)
+// ─────────────────────────────────────────────────────────────────────
+const hexState = {
+  data: null,          // parsed hotspots.json
+  activeSource: null,  // "all" | "official" | "civilian" | null (off)
+  activeRes: "h3_resolution_6",
+  sigOnly: true,
+  geoLayer: null,
+};
+
+// Colour ramp: z-score → RGBA string (green → yellow → red)
+function zToColour(z) {
+  const t = Math.min(1, Math.max(0, (z - 0) / 4));  // saturate at z≈4
+  let r, g, b;
+  if (t < 0.5) {
+    const s = t * 2;
+    r = Math.round(34  + (234 - 34)  * s);
+    g = Math.round(197 + (179 - 197) * s);
+    b = Math.round(94  + (8   - 94)  * s);
+  } else {
+    const s = (t - 0.5) * 2;
+    r = Math.round(234 + (239 - 234) * s);
+    g = Math.round(179 + (68  - 179) * s);
+    b = Math.round(8   + (68  - 8)   * s);
+  }
+  const opacity = 0.35 + 0.45 * t;
+  return `rgba(${r},${g},${b},${opacity.toFixed(2)})`;
+}
+
+function hexToGeoJSON(hexId) {
+  if (!window.h3) return null;
+  try {
+    const boundary = window.h3.cellToBoundary(hexId);
+    const coords = boundary.map(([lat, lng]) => [lng, lat]);
+    coords.push(coords[0]); // close ring
+    return { type: "Feature", geometry: { type: "Polygon", coordinates: [coords] } };
+  } catch (_) { return null; }
+}
+
+function repaintHex() {
+  if (!mapState.map) return;
+
+  if (hexState.geoLayer) {
+    mapState.map.removeLayer(hexState.geoLayer);
+    hexState.geoLayer = null;
+  }
+
+  if (!window.h3) return;
+  if (!hexState.activeSource || !hexState.data) return;
+
+  const resData = hexState.data[hexState.activeRes];
+  if (!resData) return;
+  const hexes = resData[hexState.activeSource] || [];
+
+  const features = [];
+  for (const entry of hexes) {
+    if (hexState.sigOnly && entry.p >= 0.05) continue;
+    if (entry.count === 0) continue;
+    const feat = hexToGeoJSON(entry.hex);
+    if (!feat) continue;
+    feat.properties = { z: entry.z, p: entry.p, count: entry.count, hex: entry.hex };
+    features.push(feat);
+  }
+
+  if (!features.length) return;
+
+  hexState.geoLayer = L.geoJSON(
+    { type: "FeatureCollection", features },
+    {
+      style: feat => ({
+        color:       zToColour(feat.properties.z),
+        fillColor:   zToColour(feat.properties.z),
+        fillOpacity: 0.55,
+        weight:      1,
+        opacity:     0.8,
+      }),
+      onEachFeature(feat, layer) {
+        const { z, p, count, hex } = feat.properties;
+        layer.bindTooltip(
+          `<span style="font-family:monospace;font-size:11px">` +
+          `z=${z.toFixed(2)} &nbsp;p=${p.toFixed(4)}<br>` +
+          `n=${count} events<br>` +
+          `<span style="color:#8899aa;font-size:9px">${hex}</span></span>`,
+          { sticky: true, opacity: 0.92 }
+        );
+      },
+    }
+  ).addTo(mapState.map);
+}
+
+function syncHexButtons() {
+  const srcBtns = { off: "#hex-btn-off", all: "#hex-btn-all", official: "#hex-btn-official", civilian: "#hex-btn-civilian" };
+  for (const [src, sel] of Object.entries(srcBtns)) {
+    const el = document.querySelector(sel);
+    if (!el) continue;
+    const isActive = src === "off" ? hexState.activeSource === null : hexState.activeSource === src;
+    el.classList.toggle("active", isActive);
+  }
+  $("#hex-btn-r4").classList.toggle("active", hexState.activeRes === "h3_resolution_4");
+  $("#hex-btn-r6").classList.toggle("active", hexState.activeRes === "h3_resolution_6");
+  $("#hex-sig-toggle").classList.toggle("active", hexState.sigOnly);
+}
+
+function wireHexButtons() {
+  // Source buttons also filter markers; resolution/sig-only only touch hexes.
+  const pairs = [
+    ["#hex-btn-off",      () => { hexState.activeSource = null;       }, true],
+    ["#hex-btn-all",      () => { hexState.activeSource = "all";      }, true],
+    ["#hex-btn-official", () => { hexState.activeSource = "official"; }, true],
+    ["#hex-btn-civilian", () => { hexState.activeSource = "civilian"; }, true],
+    ["#hex-btn-r4",       () => { hexState.activeRes = "h3_resolution_4"; }, false],
+    ["#hex-btn-r6",       () => { hexState.activeRes = "h3_resolution_6"; }, false],
+    ["#hex-sig-toggle",   () => { hexState.sigOnly = !hexState.sigOnly;  }, false],
+  ];
+  for (const [sel, fn, refreshMarkers] of pairs) {
+    const el = document.querySelector(sel);
+    if (!el) continue;
+    el.addEventListener("click", () => {
+      fn();
+      syncHexButtons();
+      repaintHex();
+      if (refreshMarkers) mapRefreshFilters();
+      syncUrl();
+    });
+  }
+}
+
+async function loadHotspots() {
+  try {
+    const res = await fetch("hotspots.json");
+    if (!res.ok) { console.warn("[hotspots] hotspots.json not found"); return; }
+    hexState.data = await res.json();
+  } catch (e) {
+    console.warn("[hotspots] failed to load hotspots.json:", e);
+  }
+}
+
+// ─────────────────────────────────────────────────────────────────────
+// 3D globe — globe.gl, lazy-loaded on first toggle (same CDN build the
+// monolith used: creates the globe via the window.Globe script global).
+// ─────────────────────────────────────────────────────────────────────
+let globe = null;
+let globeLoadPromise = null;
+
+function loadGlobeLib() {
+  if (globeLoadPromise) return globeLoadPromise;
+  globeLoadPromise = new Promise((resolve, reject) => {
+    const s = document.createElement("script");
+    s.src = "https://cdn.jsdelivr.net/npm/globe.gl@2/dist/globe.gl.min.js";
+    s.onload = () => resolve(window.Globe);
+    s.onerror = () => { globeLoadPromise = null; reject(new Error("globe.gl failed to load")); };
+    document.head.appendChild(s);
+  });
+  return globeLoadPromise;
+}
+
+function globePoints() {
+  // Group records by location string so each marker scales with count.
+  const groups = {};
+  for (const d of docs) {
+    if (!inYearRange(recordYear(d))) continue;
+    const loc = (d.incident_location || "").trim();
+    const c = LOC_COORDS[loc];
+    if (!c) continue;
+    if (!groups[loc]) groups[loc] = { location: loc, lat: c[0], lng: c[1], docs: [] };
+    groups[loc].docs.push(d);
+  }
+  return Object.values(groups).map(g => ({
+    ...g,
+    alt: 0.012,
+    radius: 0.4 + Math.min(2.6, Math.log2(1 + g.docs.length) * 0.5),
+    color: "#57c7ff",
+  }));
+}
+
+function globeRefresh() {
+  if (!globe) return;
+  const points = globePoints();
+  globe.pointsData(points);
+  $("#globe-count").textContent = points.reduce((s, p) => s + p.docs.length, 0);
+}
+
+async function ensureGlobe() {
+  if (globe) return globe;
+  await loadGlobeLib();
+  const container = $("#globe-canvas");
+  globe = window.Globe()(container)
+    .width(container.clientWidth)
+    .height(container.clientHeight)
+    .backgroundColor("#000")
+    .showAtmosphere(true)
+    .atmosphereColor(getComputedStyle(document.documentElement).getPropertyValue("--accent").trim() || "#57c7ff")
+    .atmosphereAltitude(0.18)
+    .pointAltitude("alt")
+    .pointRadius("radius")
+    .pointColor(p => p.color)
+    .pointLabel(p => `<div style="font-family:ui-monospace,monospace;background:rgba(0,0,0,.85);padding:6px 10px;border:1px solid #57c7ff66;color:#cbd5e1;font-size:11px"><b style="color:#57c7ff">${p.location}</b><br>${p.docs.length} record${p.docs.length>1?"s":""}</div>`)
+    .onPointClick(p => {
+      // Single record at this location → straight to its record page;
+      // otherwise open the search page filtered to this location.
+      if (p.docs.length === 1) location.href = recordUrl(p.docs[0].id);
+      else location.href = `search.html?loc=${encodeURIComponent(p.location)}`;
+    });
+
+  // Country wireframe (cyan outlines, near-zero fill)
+  fetch("geo/ne_110m_admin_0_countries.geojson")
+    .then(r => r.json())
+    .then(geo => {
+      globe
+        .polygonsData(geo.features)
+        .polygonAltitude(0.005)
+        .polygonCapColor(() => "rgba(87,199,255,0.04)")
+        .polygonSideColor(() => "rgba(0,0,0,0)")
+        .polygonStrokeColor(() => "#57c7ff");
+    })
+    .catch(() => { /* non-fatal — markers still render */ });
+
+  globeRefresh();
+
+  // Auto-rotate gently until the user interacts.
+  globe.controls().autoRotate = true;
+  globe.controls().autoRotateSpeed = 0.4;
+  container.addEventListener("pointerdown", () => { if (globe) globe.controls().autoRotate = false; }, { once: true });
+
+  window.addEventListener("resize", () => {
+    if (globe && state.view === "3d") globe.width(container.clientWidth).height(container.clientHeight);
+  });
+
+  return globe;
+}
+
+// ── 2D / 3D view switching ───────────────────────────────────────────
+async function setViewMode(v) {
+  state.view = v === "3d" ? "3d" : "2d";
+  $("#map-2d").toggleAttribute("hidden", state.view !== "2d");
+  $("#map-3d").toggleAttribute("hidden", state.view !== "3d");
+  $("#view-2d").classList.toggle("active", state.view === "2d");
+  $("#view-3d").classList.toggle("active", state.view === "3d");
+  syncUrl();
+
+  if (state.view === "3d") {
+    try {
+      await ensureGlobe();
+      const c = $("#globe-canvas");
+      if (globe) globe.width(c.clientWidth).height(c.clientHeight);
+    } catch (e) {
+      console.error("[globe]", e);
+      state.view = "2d";
+      $("#map-2d").toggleAttribute("hidden", false);
+      $("#map-3d").toggleAttribute("hidden", true);
+      $("#view-2d").classList.add("active");
+      $("#view-3d").classList.remove("active");
+      syncUrl();
+    }
+  } else if (mapState.map) {
+    mapState.map.invalidateSize();
+  }
+}
+
+// ── Year-range filter wiring ─────────────────────────────────────────
+function applyYearInputs() {
+  const lo = parseInt($("#year-min").value, 10);
+  const hi = parseInt($("#year-max").value, 10);
+  state.yearMin = isNaN(lo) ? null : lo;
+  state.yearMax = isNaN(hi) ? null : hi;
+  if (state.yearMin != null && state.yearMax != null && state.yearMin > state.yearMax) {
+    const t = state.yearMin; state.yearMin = state.yearMax; state.yearMax = t;
+    $("#year-min").value = state.yearMin;
+    $("#year-max").value = state.yearMax;
+  }
+  mapRefreshFilters();
+  globeRefresh();
+  syncUrl();
+}
+
+// ── Init ─────────────────────────────────────────────────────────────
+(async function init() {
+  await loadCoreData(["correlations", "incidents"]);
+
+  // Bounds for the year inputs, from the docs' incident years.
+  let yLo = null, yHi = null;
+  for (const d of docs) {
+    const y = recordYear(d);
+    if (y == null) continue;
+    if (yLo == null || y < yLo) yLo = y;
+    if (yHi == null || y > yHi) yHi = y;
+  }
+  if (yLo != null) {
+    for (const el of [$("#year-min"), $("#year-max")]) {
+      el.min = yLo; el.max = yHi;
+    }
+    $("#year-min").placeholder = String(yLo);
+    $("#year-max").placeholder = String(yHi);
+  }
+
+  loadUrl();
+  if (state.yearMin != null) $("#year-min").value = state.yearMin;
+  if (state.yearMax != null) $("#year-max").value = state.yearMax;
+
+  await ensureMap();
+  wireHexButtons();
+  syncHexButtons();
+  loadHotspots().then(() => repaintHex());
+
+  $("#view-2d").addEventListener("click", () => setViewMode("2d"));
+  $("#view-3d").addEventListener("click", () => setViewMode("3d"));
+  $("#year-min").addEventListener("change", applyYearInputs);
+  $("#year-max").addEventListener("change", applyYearInputs);
+
+  if (state.view === "3d") setViewMode("3d");
+})();
+</script>
+</body>
+</html>

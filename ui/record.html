@@ -1,0 +1,629 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Record — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<main class="record-main" id="record-main">
+  <div class="empty" style="padding:40px">Loading…</div>
+</main>
+
+<!-- Citation modal -->
+<div id="cite-modal" hidden>
+  <div class="cite-shell">
+    <button id="cite-close" class="modal-close" style="position:absolute;top:12px;right:14px;background:none;border:1px solid var(--border);color:var(--fg-dim);border-radius:6px;cursor:pointer;padding:2px 8px">✕</button>
+    <h3>❝ Cite this record</h3>
+    <div id="cite-verified" style="font-size:12px;color:var(--fg-dim);margin-bottom:12px"></div>
+    <div id="cite-body"></div>
+  </div>
+</div>
+
+<script src="js/shared.js"></script>
+<script>
+renderNav("record");
+
+const recordId = getParam("id");
+let D = null;
+
+// ── Block renderers ──────────────────────────────────────────────────
+function provenanceHTML(d) {
+  const verified = d.last_verified || "";
+  const stamp = verified
+    ? `<span class="ok">●</span> source link verified ${escapeHtml(verified)}`
+    : `<span style="color:#aaa">○</span> source link not yet verified`;
+  const rel = releaseLabel(d);
+  const relBit = rel ? `${escapeHtml(rel)} · ` : "";
+  return `<div class="verified-stamp">ENTITY · ${escapeHtml(d.type)} · ${escapeHtml(d.id)} · ${relBit}${stamp}</div>`;
+}
+
+function releaseBatchBannerHTML(d) {
+  if (d.release_batch !== "aaro_house_response_2026_03_06") return "";
+  return `<div class="release-banner">
+    <span class="rb-label">Release provenance</span>
+    Released 22 May 2026 as part of war.gov Release 2. On March 6, 2026, eight members of the U.S. House of Representatives requested access to 51 potentially UAP-related records allegedly held by the Department of War and the Intelligence Community. The All-domain Anomaly Resolution Office (AARO) identified a collection of responsive materials held on a classified network. <strong>Many of these materials lack a substantiated chain-of-custody.</strong>
+  </div>`;
+}
+
+function incidentBadgeHTML(d) {
+  if (!d.incident_id) return "";
+  const inc = (window.INCIDENTS || {})[d.incident_id];
+  const name = inc ? inc.name : d.incident_id;
+  return `<a class="incident-badge" href="search.html?incident=${encodeURIComponent(d.incident_id)}"><span class="icon">◉</span> ${escapeHtml(name)}</a>`;
+}
+
+function linksHTML(d) {
+  const a = [];
+  for (const lp of d.primary_local) {
+    a.push(`<a href="${ROOT_REL}/${lp}" target="_blank">📁 ${escapeHtml(lp.split("/").pop())}</a>`);
+  }
+  if (d.video_local) a.push(`<a href="${ROOT_REL}/${d.video_local}" target="_blank">🎞 ${escapeHtml(d.video_local.split("/").pop())}</a>`);
+  if (d.audio_local) a.push(`<a href="${ROOT_REL}/${d.audio_local}" target="_blank">🔊 ${escapeHtml(d.audio_local.split("/").pop())}</a>`);
+  if (d.source_url) a.push(`<a href="${d.source_url}" target="_blank">↗ war.gov source</a>`);
+  if (d.dvids_video_id) a.push(`<a href="https://www.dvidshub.net/video/${d.dvids_video_id}" target="_blank">↗ DVIDS</a>`);
+  return a.length ? `<div class="links">${a.join("")}</div>` : "";
+}
+
+function mediaHTML(d) {
+  const parts = [];
+  if (d.video_local) {
+    parts.push(`<div class="preview"><video controls preload="metadata" src="${ROOT_REL}/${d.video_local}"></video></div>`);
+  }
+  if (d.audio_local) {
+    parts.push(`<div class="preview"><audio controls preload="metadata" style="width:100%" src="${ROOT_REL}/${d.audio_local}"></audio></div>`);
+  }
+  for (const lp of d.primary_local) {
+    if (/\.(jpg|jpeg|png|gif|webp)$/i.test(lp)) {
+      parts.push(`<div class="preview"><img src="${ROOT_REL}/${lp}" loading="lazy"/></div>`);
+    }
+  }
+  const pdf = d.primary_local.find(p => p.toLowerCase().endsWith(".pdf"));
+  if (pdf) {
+    const pdfName = pdf.split("/").pop();
+    parts.push(`
+      <div class="preview pdf-placeholder" id="pdf-placeholder">
+        <div class="pdf-stub">
+          <div class="pdf-stub-title">📄 Original PDF</div>
+          <div class="pdf-stub-meta">${escapeHtml(pdfName)} · scans can be 50–100 MB</div>
+          <div style="display:flex;gap:8px;justify-content:center;flex-wrap:wrap">
+            <a class="pdf-load-btn" href="viewer.html?id=${encodeURIComponent(d.id)}" style="text-decoration:none">▤ Open in viewer →</a>
+            <button class="pdf-load-btn" style="background:var(--bg3);color:var(--fg-dim);border:1px solid var(--border)" id="pdf-embed-btn">Embed PDF below</button>
+          </div>
+          <div class="pdf-stub-hint">Viewer offers entity sidebar, redaction stats, search, annotations.</div>
+        </div>
+      </div>`);
+  }
+  if (!parts.length && d.thumbnail_local.length) {
+    for (const t of d.thumbnail_local) {
+      parts.push(`<div class="preview"><img src="${ROOT_REL}/${t}" loading="lazy"/></div>`);
+    }
+  }
+  const imgs = d.extracted_images || [];
+  if (imgs.length) {
+    parts.push(`<div class="extracted">
+      <h3>Images extracted from this PDF (${imgs.length})</h3>
+      <div class="meta">Embedded photographs, sketches, clippings, and figures pulled from the source PDF (excluding full-page scans).</div>
+      <div class="grid">
+        ${imgs.map(p => {
+          const t = thumbForPath(p);
+          const small = t ? `${ROOT_REL}/${t}` : `${ROOT_REL}/${p}`;
+          const full = `${ROOT_REL}/${p}`;
+          return `<a href="${full}" target="_blank" rel="noopener"><img src="${small}" loading="lazy" alt="" onerror="this.onerror=null;this.src='${full}'"/></a>`;
+        }).join("")}
+      </div>
+    </div>`);
+  }
+  return parts.join("");
+}
+
+function dossierMentionsHTML(d) {
+  const hits = d.dossier_hits || {};
+  const ids = Object.keys(hits);
+  if (!ids.length) return "";
+  const groups = [];
+  let totalRelevant = 0, totalRejected = 0, anyClassified = false;
+  for (const did of ids) {
+    const dos = (DOSSIERS || []).find(x => x.id === did);
+    const emoji = (dos && dos.emoji) || "🏷";
+    const label = escapeHtml(dos ? dos.label : did);
+    const okBtns = [];
+    const rejBtns = [];
+    hits[did].forEach((h, i) => {
+      if ("relevant" in h) anyClassified = true;
+      const target = `dh-${did}-${i}`;
+      const summary = h.summary ? `${h.summary}\n\n` : "";
+      const tip = escapeHtml(`${summary}…${h.ctx}…`);
+      const labelText = h.summary ? `${escapeHtml(h.kw)} — ${escapeHtml(h.summary)}` : escapeHtml(h.kw);
+      const btnHtml = `<button class="dossier-jump" data-target="${target}" title="${tip}">${labelText}</button>`;
+      if (isRelevantHit(h)) { okBtns.push(btnHtml); totalRelevant++; }
+      else { rejBtns.push(`<button class="dossier-jump rejected" data-target="${target}" title="${tip}">${labelText}</button>`); totalRejected++; }
+    });
+    if (okBtns.length || rejBtns.length) {
+      groups.push(`<div class="dossier-mention-group"><span class="dossier-group-label">${emoji} ${label}</span>
+        <div class="dossier-buttons relevant">${okBtns.join("")}</div>
+        ${rejBtns.length ? `<div class="dossier-buttons rejected" hidden>${rejBtns.join("")}</div>` : ""}
+      </div>`);
+    }
+  }
+  if (!groups.length) return "";
+  const auditToggle = totalRejected > 0
+    ? `<button class="dossier-audit-toggle" type="button">Show ${totalRejected} match${totalRejected===1?"":"es"} the AI filtered out</button>`
+    : "";
+  const hint = anyClassified
+    ? `${totalRelevant} relevant match${totalRelevant===1?"":"es"}${totalRejected ? ` (${totalRejected} hidden by AI relevance check)` : ""} — click to jump:`
+    : `Matched in this record — click to jump:`;
+  return `<div class="dossier-mentions">
+    <div class="dossier-mentions-hint">${hint}</div>
+    ${groups.join("")}
+    ${auditToggle}
+  </div>`;
+}
+
+function civilianCorrelationsHTML(d) {
+  const all = window.CORRELATIONS || null;
+  if (!all) return "";
+  const entry = all[d.id];
+  if (!entry || !entry.matches || !entry.matches.length) return "";
+  const total = entry.match_count || entry.matches.length;
+  const shown = entry.matches.length;
+  const moreNote = total > shown ? ` (showing ${shown} of ${total})` : "";
+  const rows = entry.matches.map(m => {
+    const date = (m.occurred_at || "").slice(0, 10);
+    const delta = m.delta_days;
+    const deltaTxt = delta === 0 ? "same day"
+      : delta > 0 ? `${delta} day${delta === 1 ? "" : "s"} after`
+      : `${-delta} day${delta === -1 ? "" : "s"} before`;
+    const where = (m.location && m.location.name) || "";
+    const shapeBit = m.shape ? `<span class="civ-source">${escapeHtml(m.shape)}</span>` : "";
+    const summary = m.summary || m.title || "";
+    return `
+      <div class="civ-row">
+        <div class="civ-title">
+          <span class="prov-pill civilian">Unverified</span>
+          ${shapeBit}
+          <span>${escapeHtml(m.title || "NUFORC sighting")}</span>
+        </div>
+        ${summary ? `<div class="civ-summary">${escapeHtml(summary)}</div>` : ""}
+        <div class="civ-meta">
+          <span><strong>When:</strong> ${escapeHtml(date)} (${escapeHtml(deltaTxt)})</span>
+          <span><strong>Where:</strong> ${escapeHtml(where)}</span>
+          <span><strong>Distance:</strong> ${escapeHtml(String(m.distance_km))} km</span>
+          <span><strong>Source:</strong> ${escapeHtml((m.source || "").toUpperCase())}</span>
+        </div>
+      </div>`;
+  }).join("");
+  return `
+    <div class="civilian-block">
+      <div class="civ-intro">
+        <strong>${total} civilian eyewitness report${total === 1 ? "" : "s"}</strong>
+        from third-party databases (NUFORC) cluster within ~150 km and ±30 days of this
+        incident. These are <strong>NOT verified</strong> by any government source and
+        are shown here for context only — they may correlate, may be unrelated, or may
+        be misidentified mundane phenomena${moreNote}.
+      </div>
+      <div class="civ-list">${rows}</div>
+      <div class="civ-footer">
+        Source: NUFORC public mirror (planetsig/ufo-reports). Coverage 1906–2014.
+        Treat as anecdotal — not corroborating evidence.
+      </div>
+    </div>`;
+}
+
+function dedupLinksHTML(d) {
+  const dd = window.DEDUP_CLUSTERS;
+  if (!dd || !dd.by_record || !dd.clusters) return "";
+  const clusterId = dd.by_record[d.id];
+  if (!clusterId) return "";
+  const cluster = dd.clusters.find(c => c.cluster_id === clusterId);
+  if (!cluster) return "";
+  const others = cluster.members.filter(m => m.record_id !== d.id);
+  if (!others.length) return "";
+  const OFFICIAL_SOURCES = new Set(["wargov", "blue_book", "fbi", "nasa"]);
+  const SOURCE_LABELS = { wargov: "WAR.GOV", blue_book: "BLUE BOOK", fbi: "FBI", nasa: "NASA", nuforc: "NUFORC" };
+  const chips = others.map(m => {
+    const doc = docById(m.record_id);
+    const isOfficial = OFFICIAL_SOURCES.has(m.source);
+    const cls = isOfficial ? "official" : "civilian";
+    const srcLabel = SOURCE_LABELS[m.source] || (m.source || "?").toUpperCase();
+    const title = doc ? doc.title : m.record_id;
+    const scoreStr = m.match_score ? `${Math.round(m.match_score * 100)}%` : "";
+    const clickAttr = doc ? ` data-link-id="${escapeHtml(m.record_id)}"` : "";
+    return `<button class="dedup-chip ${cls}" title="${escapeHtml(title)}"${clickAttr}>` +
+      `<span class="chip-source">${escapeHtml(srcLabel)}</span>` +
+      `<span class="chip-label">${escapeHtml(title.slice(0, 45))}${title.length > 45 ? "…" : ""}</span>` +
+      `<span class="chip-score">${escapeHtml(scoreStr)}</span>` +
+      `</button>`;
+  }).join("");
+  const dateNote = cluster.consensus_date ? ` · consensus date: ${escapeHtml(cluster.consensus_date)}` : "";
+  const locNote = cluster.consensus_location ? ` · ${escapeHtml(cluster.consensus_location)}` : "";
+  return `
+    <div class="dedup-block">
+      <div class="dedup-heading">Same incident as:</div>
+      <div class="dedup-intro">
+        Probabilistic record linkage (Splink) identified ${others.length} other
+        record${others.length === 1 ? "" : "s"} in the archive likely describing
+        the same event${dateNote}${locNote}.
+        <strong>Cyan = official release, amber = civilian report.</strong>
+        Match scores shown; links below 65% are excluded.
+      </div>
+      <div class="dedup-chips">${chips}</div>
+      <div class="dedup-meta">Cluster ${escapeHtml(clusterId)} · ${cluster.members.length} total members</div>
+    </div>`;
+}
+
+function relatedHTML(d) {
+  const t = (d.similar_text  || []).filter(s => docById(s.id));
+  const im = (d.similar_image || []).filter(s => docById(s.id));
+  if (!t.length && !im.length) return "";
+  const parts = ['<div class="related">'];
+  if (t.length) {
+    parts.push('<h3>Related by content</h3>');
+    for (const s of t) {
+      parts.push(
+        `<a class="item" data-link-id="${escapeHtml(s.id)}">` +
+        `<span class="score">${s.score.toFixed(2)} · ${escapeHtml(s.type)}</span>` +
+        escapeHtml(s.title) + `</a>`
+      );
+    }
+  }
+  if (im.length) {
+    parts.push('<h3 style="margin-top:12px">Visually similar (pHash)</h3>');
+    parts.push('<div class="related-grid">');
+    for (const s of im) {
+      const od = docById(s.id);
+      const thumb = (od && od.thumb_small) ||
+                    (od && od.thumbnail_local && od.thumbnail_local[0]) ||
+                    (od && od.primary_local || []).find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p)) || "";
+      const fb = (od && od.thumbnail_local && od.thumbnail_local[0]) ||
+                 (od && od.primary_local || []).find(p => /\.(jpg|jpeg|png|gif|webp)$/i.test(p)) || "";
+      const oe = (thumb && fb && thumb !== fb)
+        ? ` onerror="this.onerror=null;this.src='${ROOT_REL}/${fb}'"` : "";
+      parts.push(
+        `<a class="item image-link" data-link-id="${escapeHtml(s.id)}" title="${escapeHtml(s.title)}">` +
+        (thumb ? `<img src="${ROOT_REL}/${thumb}" loading="lazy"${oe}/>` : "") +
+        `<span style="font-size:11px;max-width:160px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${escapeHtml(s.title)}</span>` +
+        `<span class="score">d=${s.distance}</span>` +
+        `</a>`
+      );
+    }
+    parts.push('</div>');
+  }
+  parts.push('</div>');
+  return parts.join("");
+}
+
+function renderMiniGraph(d, mount) {
+  const text = (d.similar_text  || []).filter(s => docById(s.id));
+  const img  = (d.similar_image || []).filter(s => docById(s.id));
+  if (!text.length && !img.length) { mount.innerHTML = ""; return; }
+  const map = new Map();
+  text.forEach(s => map.set(s.id, { ...s, kind: "text", weight: s.score }));
+  img.forEach(s => {
+    const existing = map.get(s.id);
+    if (existing) existing.kind = "both";
+    else map.set(s.id, { ...s, kind: "image", weight: 1 - (s.distance / 32) });
+  });
+  const neighbors = [...map.values()].sort((a, b) => (b.weight || 0) - (a.weight || 0)).slice(0, 8);
+  const W = 560, H = 320, cx = W / 2, cy = H / 2, R = 110;
+  const svgParts = [];
+  svgParts.push(`<svg viewBox="0 0 ${W} ${H}" preserveAspectRatio="xMidYMid meet">`);
+  neighbors.forEach((n, i) => {
+    const a = (i / neighbors.length) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + R * Math.cos(a);
+    const y = cy + R * Math.sin(a);
+    const isImg  = n.kind === "image";
+    const isBoth = n.kind === "both";
+    const stroke = isImg ? "#b07cff" : "#57c7ff";
+    const dasharray = isImg ? "3,3" : "";
+    const sw = 0.6 + Math.max(0.2, Math.min(2.4, (n.weight || 0.2) * 2));
+    svgParts.push(`<line x1="${cx}" y1="${cy}" x2="${x}" y2="${y}" stroke="${stroke}" stroke-width="${sw}" stroke-dasharray="${dasharray}" opacity="0.7"/>`);
+  });
+  svgParts.push(`<g class="node center" transform="translate(${cx},${cy})"><circle r="11" fill="#ffd34d" stroke="#ffd34d"/><text y="-16" text-anchor="middle">THIS RECORD</text></g>`);
+  neighbors.forEach((n, i) => {
+    const a = (i / neighbors.length) * Math.PI * 2 - Math.PI / 2;
+    const x = cx + R * Math.cos(a);
+    const y = cy + R * Math.sin(a);
+    const od = docById(n.id);
+    const color = od && od.type === "VID" ? "#57c7ff" : od && od.type === "IMG" ? "#b07cff" : "#ff6b6b";
+    const label = od ? (od.title || "").slice(0, 22) : n.id;
+    const label2 = od ? `${od.type || ""} · ${(od.agency || "").slice(0,12)}` : "";
+    svgParts.push(`<g class="node" data-link-id="${escapeHtml(n.id)}" style="cursor:pointer" transform="translate(${x},${y})"><circle r="8" fill="${color}" stroke="${color}" stroke-opacity="0.6"/><text y="22" text-anchor="middle">${escapeHtml(label)}</text><text y="34" text-anchor="middle" fill="#7c8aa1">${escapeHtml(label2)}</text></g>`);
+  });
+  svgParts.push(`</svg>`);
+  mount.innerHTML = `
+    <div class="mini-graph">
+      <h3>Local neighborhood</h3>
+      <div class="legend">
+        <span class="swatch"></span>text similarity
+        <span class="swatch img"></span>visual similarity (pHash)
+      </div>
+      ${svgParts.join("")}
+    </div>`;
+  mount.querySelectorAll("[data-link-id]").forEach(el => {
+    el.addEventListener("click", () => { location.href = recordUrl(el.dataset.linkId); });
+  });
+}
+
+// ── Citations ────────────────────────────────────────────────────────
+function citeKey(d) {
+  const y = recordYear(d) || "nd";
+  const ag = (d.agency || "anon").replace(/[^a-z0-9]/gi, "").toLowerCase();
+  const frag = (d.id || "").split(/[^A-Za-z0-9]/).filter(Boolean).slice(0, 2).join("_").toLowerCase().slice(0, 24);
+  return `disclosure_${ag}_${y}_${frag}`;
+}
+function citeURL(d) {
+  return `${location.origin}${location.pathname}?id=${encodeURIComponent(d.id)}`;
+}
+function bibtex(d) {
+  const k = citeKey(d);
+  const y = recordYear(d) || "n.d.";
+  const title = (d.title || "").replace(/[{}]/g, "");
+  const rel = releaseLabel(d) || d.tranche_id || "";
+  return `@misc{${k},
+  title  = {${title}},
+  author = {{${d.agency || "U.S. Government"}}},
+  year   = {${y}},
+  note   = {Disclosure Archive entity ${d.id}${rel ? "; " + rel : ""}},
+  howpublished = {\\url{${citeURL(d)}}},
+  urldate = {${(d.last_verified || new Date().toISOString().slice(0,10))}}
+}`;
+}
+function apa(d) {
+  const y = recordYear(d) || "n.d.";
+  const retrieved = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  return `${d.agency || "U.S. Government"}. (${y}). ${d.title || "Untitled record"}. UFO/UAP Disclosure Archive. Retrieved ${retrieved}, from ${citeURL(d)}`;
+}
+function chicago(d) {
+  const y = recordYear(d) || "n.d.";
+  const retrieved = new Date().toLocaleDateString("en-US", { year: "numeric", month: "long", day: "numeric" });
+  return `${d.agency || "U.S. Government"}. "${d.title || "Untitled record"}." ${y}. UFO/UAP Disclosure Archive. Accessed ${retrieved}. ${citeURL(d)}.`;
+}
+function openCiteModal() {
+  const d = D;
+  const formats = [["BibTeX", bibtex(d)], ["APA", apa(d)], ["Chicago", chicago(d)]];
+  $("#cite-body").innerHTML = formats.map(([label, body], i) => `
+    <div class="cite-block">
+      <div class="cite-block-head">
+        <span class="label">${label}</span>
+        <button class="copy-btn" data-copy-target="cite-${i}">Copy</button>
+      </div>
+      <pre class="cite" id="cite-${i}">${escapeHtml(body)}</pre>
+    </div>`).join("");
+  $("#cite-verified").innerHTML = `<strong>Release:</strong> ${escapeHtml(releaseLabel(d) || "—")} &nbsp; <strong>Source link verified:</strong> ${escapeHtml(d.last_verified || "not yet verified")}`;
+  $("#cite-modal").hidden = false;
+  $$("#cite-body .copy-btn").forEach(btn => {
+    btn.addEventListener("click", async () => {
+      try {
+        await navigator.clipboard.writeText($("#" + btn.dataset.copyTarget).textContent);
+        const orig = btn.textContent; btn.textContent = "✓ copied";
+        setTimeout(() => { btn.textContent = orig; }, 1800);
+      } catch (e) { btn.textContent = "copy failed"; }
+    });
+  });
+}
+
+// ── Render ───────────────────────────────────────────────────────────
+(async function init() {
+  await loadCoreData(["incidents", "correlations", "dedup"]);
+  const d = docById(recordId);
+  const main = $("#record-main");
+  if (!d) {
+    main.innerHTML = `<div class="empty" style="padding:40px">Record not found: <code>${escapeHtml(recordId)}</code><br><br><a href="search.html" style="color:var(--accent)">← back to search</a></div>`;
+    return;
+  }
+  D = d;
+  document.title = `${d.title} — UFO/UAP Disclosure Archive`;
+
+  const parentLink = d.extracted_from_id ? (() => {
+    const p = docById(d.extracted_from_id);
+    return p ? `<div style="margin-bottom:14px;font-size:13px;color:var(--fg-dim)">From parent record: <a href="${recordUrl(p.id)}" style="color:var(--accent)">${escapeHtml(p.title)}</a></div>` : "";
+  })() : "";
+
+  main.innerHTML = `
+    ${parentLink}
+    <section>
+      ${provenanceHTML(d)}
+      <h2><span class="prov-pill official" title="This record was officially released by the U.S. government">Official Release</span> ${escapeHtml(d.title)}</h2>
+      <div class="dmeta">
+        <span><strong>Agency:</strong> ${escapeHtml(d.agency)}</span>
+        <span><strong>Type:</strong> ${escapeHtml(d.type)}</span>
+        <span><strong>Released:</strong> ${escapeHtml(d.release_date)}</span>
+        <span><strong>Incident:</strong> ${escapeHtml(d.incident_date || "—")}</span>
+        <span><strong>Location:</strong> ${escapeHtml(d.incident_location || "—")}</span>
+        ${d.redaction === "TRUE" ? `<span><strong>Redaction:</strong> redacted</span>` : ""}
+        ${d.craft_shape ? `<span><strong>Shape:</strong> ${escapeHtml(d.craft_shape)}</span>` : ""}
+      </div>
+      ${incidentBadgeHTML(d) ? `<div style="margin:10px 0">${incidentBadgeHTML(d)}</div>` : ""}
+      ${releaseBatchBannerHTML(d)}
+      ${d.blurb ? `<div class="blurb">${escapeHtml(d.blurb)}</div>` : ""}
+      ${linksHTML(d)}
+      <div class="record-actions">
+        <a class="ra-btn primary" href="ask.html?scope=record:${encodeURIComponent(d.id)}">⌘ Ask about this record</a>
+        <button class="ra-btn" id="cite-open">❝ Cite</button>
+        <button class="ra-btn" id="corr-open">✏️ Suggest correction</button>
+        <a class="ra-btn" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener">☕ Tip the archivist</a>
+      </div>
+    </section>
+
+    <section class="record-section" id="rs-media">
+      <div class="rs-head">Media</div>
+      ${mediaHTML(d) || `<div style="color:var(--fg-dim);font-size:13px">No media files for this record (text-only case file).</div>`}
+    </section>
+
+    <section class="record-section" id="rs-connections">
+      <div class="rs-head">Connections</div>
+      ${dossierMentionsHTML(d)}
+      ${dedupLinksHTML(d)}
+      ${civilianCorrelationsHTML(d)}
+      <div id="mini-graph-mount"></div>
+      ${relatedHTML(d)}
+    </section>
+
+    ${d.text ? `
+    <section class="record-section" id="rs-text">
+      <div class="rs-head">Extracted text (${d.text.length.toLocaleString()} chars)</div>
+      <div class="text">${markDossierHits(escapeHtml(d.text), d.dossier_hits)}</div>
+    </section>` : ""}
+  `;
+
+  // Hide Connections header if the section ended up empty
+  const conn = $("#rs-connections");
+  if (!conn.textContent.trim() && !conn.querySelector("svg, button, a")) {
+    conn.style.display = "none";
+  }
+
+  renderMiniGraph(d, $("#mini-graph-mount"));
+
+  // PDF embed
+  const embedBtn = $("#pdf-embed-btn");
+  if (embedBtn) {
+    embedBtn.addEventListener("click", () => {
+      const pdf = d.primary_local.find(p => p.toLowerCase().endsWith(".pdf"));
+      $("#pdf-placeholder").innerHTML = `<iframe src="${ROOT_REL}/${pdf}#view=FitH"></iframe>`;
+    });
+  }
+
+  // Related / dedup navigation
+  main.querySelectorAll("[data-link-id]").forEach(el => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      location.href = recordUrl(el.dataset.linkId);
+    });
+  });
+
+  // Cite
+  $("#cite-open").addEventListener("click", openCiteModal);
+  $("#cite-close").addEventListener("click", () => { $("#cite-modal").hidden = true; });
+  $("#cite-modal").addEventListener("click", (e) => { if (e.target.id === "cite-modal") $("#cite-modal").hidden = true; });
+
+  // Corrections modal
+  $("#corr-open").addEventListener("click", () => openCorrModal(d.id));
+
+  // Dossier audit toggle
+  main.querySelectorAll(".dossier-audit-toggle").forEach(el => {
+    const showLabel = el.textContent;
+    el.addEventListener("click", () => {
+      const panel = el.closest(".dossier-mentions");
+      const groups = panel.querySelectorAll(".dossier-buttons.rejected");
+      const willShow = groups[0] && groups[0].hidden;
+      groups.forEach(g => g.hidden = !willShow);
+      el.textContent = willShow ? "Hide AI-rejected matches" : showLabel;
+    });
+  });
+
+  // Dossier jump → scroll to marked hit in the text section
+  main.querySelectorAll(".dossier-jump").forEach(el => {
+    el.addEventListener("click", (e) => {
+      e.preventDefault();
+      const mark = document.getElementById(el.dataset.target);
+      if (!mark) return;
+      mark.scrollIntoView({ block: "center", behavior: "smooth" });
+      mark.classList.add("flash");
+      setTimeout(() => mark.classList.remove("flash"), 1400);
+    });
+  });
+})();
+
+// ── Corrections modal (injected DOM, shared pattern) ─────────────────
+(function () {
+  const backdrop = document.createElement("div");
+  backdrop.id = "corr-modal-backdrop";
+  backdrop.hidden = true;
+  backdrop.innerHTML = `
+    <div id="corr-modal">
+      <button class="modal-close" id="corr-close">✕</button>
+      <h3>✏️ Suggest a correction</h3>
+      <p style="font-size:12px;color:var(--fg-dim);margin:0 0 4px">
+        Record: <code id="corr-record-id" style="color:var(--accent)"></code>
+      </p>
+      <label for="corr-field">Field</label>
+      <select id="corr-field">
+        <option value="general">General</option>
+        <option value="title">Title</option>
+        <option value="date">Date</option>
+        <option value="location">Location</option>
+        <option value="summary">Summary</option>
+        <option value="transcript">Transcript</option>
+        <option value="tag">Tag</option>
+        <option value="link">Link</option>
+      </select>
+      <label for="corr-current">Current value (what you see — optional)</label>
+      <input id="corr-current" type="text" placeholder="Paste the text as shown…" />
+      <label for="corr-suggested">Suggested value <span style="color:#ff6b6b">*</span></label>
+      <input id="corr-suggested" type="text" placeholder="Your corrected value…" />
+      <label for="corr-rationale">Rationale / source (optional, max 2000 chars)</label>
+      <textarea id="corr-rationale" placeholder="Cite a source or explain why this is incorrect…"></textarea>
+      <label for="corr-handle">Your handle / name (optional, max 64 chars)</label>
+      <input id="corr-handle" type="text" placeholder="anonymous" maxlength="64" />
+      <div class="corr-actions">
+        <button id="corr-cancel">Cancel</button>
+        <button class="primary" id="corr-submit">Submit</button>
+      </div>
+      <div class="corr-msg" id="corr-msg"></div>
+    </div>`;
+  document.body.appendChild(backdrop);
+
+  let _corrRecordId = "";
+  window.openCorrModal = function (recordId) {
+    _corrRecordId = recordId;
+    document.getElementById("corr-record-id").textContent = recordId;
+    document.getElementById("corr-field").value = "general";
+    document.getElementById("corr-current").value = "";
+    document.getElementById("corr-suggested").value = "";
+    document.getElementById("corr-rationale").value = "";
+    document.getElementById("corr-handle").value = "";
+    const msg = document.getElementById("corr-msg");
+    msg.textContent = ""; msg.className = "corr-msg";
+    backdrop.hidden = false;
+  };
+  const close = () => { backdrop.hidden = true; };
+  document.getElementById("corr-close").addEventListener("click", close);
+  document.getElementById("corr-cancel").addEventListener("click", close);
+  backdrop.addEventListener("click", (e) => { if (e.target === backdrop) close(); });
+  document.addEventListener("keydown", (e) => { if (!backdrop.hidden && e.key === "Escape") close(); });
+  document.getElementById("corr-submit").addEventListener("click", async () => {
+    const msg = document.getElementById("corr-msg");
+    const suggested = document.getElementById("corr-suggested").value.trim();
+    if (!suggested) { msg.className = "corr-msg err"; msg.textContent = "Suggested value is required."; return; }
+    const payload = {
+      record_id: _corrRecordId,
+      field: document.getElementById("corr-field").value,
+      current_value: document.getElementById("corr-current").value.trim(),
+      suggested_value: suggested,
+      rationale: document.getElementById("corr-rationale").value.trim(),
+      submitter_handle: document.getElementById("corr-handle").value.trim(),
+    };
+    msg.className = "corr-msg"; msg.textContent = "Submitting…";
+    document.getElementById("corr-submit").disabled = true;
+    try {
+      const resp = await fetch("/api/corrections", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(payload),
+      });
+      const data = await resp.json();
+      if (resp.ok) {
+        msg.className = "corr-msg ok";
+        msg.textContent = `Received (id: ${data.id}). Thank you!`;
+        setTimeout(close, 2400);
+      } else {
+        msg.className = "corr-msg err";
+        msg.textContent = data.error || `Error ${resp.status}`;
+      }
+    } catch (e) {
+      msg.className = "corr-msg err";
+      msg.textContent = `Network error: ${e.message}`;
+    } finally {
+      document.getElementById("corr-submit").disabled = false;
+    }
+  });
+})();
+</script>
+</body>
+</html>

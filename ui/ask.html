@@ -1,0 +1,777 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Ask — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="css/app.css" />
+</head>
+<body>
+<div class="ask-page" id="ask-page">
+  <div class="ask-shell">
+    <div class="ask-history-drawer" id="ask-history-drawer">
+      <h4>HISTORY</h4>
+      <div id="ask-history-list"></div>
+    </div>
+    <div class="ask-head">
+      <button class="ask-h-btn" id="ask-history-toggle" type="button" title="History">⏱ HISTORY</button>
+      <span class="ask-corpus" id="ask-corpus">SCOPE: ALL · 0 RECORDS</span>
+      <span class="owner-badge" title="AI calls are gated to you (owner-mode active).">🔑 OWNER</span>
+      <button class="ask-h-btn" id="ask-share" type="button" title="Copy shareable link">↗ SHARE</button>
+    </div>
+    <div class="ask-modes">
+      <span class="ml-label">LENS</span>
+      <button data-mode="researcher" class="active" type="button">RESEARCHER</button>
+      <button data-mode="skeptic"             type="button">SKEPTIC</button>
+      <button data-mode="believer"            type="button">BELIEVER</button>
+      <span class="ml-hint" id="ask-mode-hint">Neutral · cite-only · no speculation</span>
+    </div>
+    <div class="ask-body" id="ask-body"></div>
+    <div class="ask-input-row">
+      <span class="ask-prompt">›</span>
+      <input id="ask-input" type="text" placeholder="ASK THE ARCHIVE…" autocomplete="off" autofocus/>
+    </div>
+  </div>
+</div>
+<div class="ask-cite-pop" id="ask-cite-pop" style="display:none"></div>
+
+<script src="js/shared.js"></script>
+<script>
+renderNav("ask");
+
+// ── Ask page state (adapted from the ⌘K ask modal in index.html) ──────
+let askState = {
+  mode: "researcher",
+  scope: null,
+  scopeMeta: null,
+  scopeExamples: null,
+  current: null,         // {sources, answerEl, statusEl, followEl}
+  abortCtrl: null,
+  history: [],
+  ownerToken: "",        // set if URL ?owner=… or localStorage has it
+  isOwner: false,
+  askEnabled: true,
+  aiModel: "",
+};
+
+async function detectOwnerMode() {
+  const urlParams = new URLSearchParams(location.search);
+  const fromUrl = urlParams.get("owner");
+  if (fromUrl) {
+    try { localStorage.setItem("ask:owner", fromUrl); } catch {}
+    askState.ownerToken = fromUrl;
+    urlParams.delete("owner");
+    const clean = location.pathname + (urlParams.toString() ? "?" + urlParams.toString() : "") + location.hash;
+    history.replaceState(null, "", clean);
+  } else {
+    try { askState.ownerToken = localStorage.getItem("ask:owner") || ""; } catch {}
+  }
+  let status = { ask_enabled: false, owner: false };
+  try {
+    const r = await fetch("/api/ai/status", { headers: askAuthHeaders() });
+    if (r.ok) status = await r.json();
+  } catch (e) { /* server without the AI endpoints (e.g. static hosting) */ }
+  askState.askEnabled = !!status.ask_enabled;
+  askState.isOwner = !!status.owner;
+  askState.aiModel = status.model || "";
+  document.body.classList.toggle("ask-disabled", !askState.askEnabled);
+  document.body.classList.toggle("owner-mode", askState.isOwner);
+  document.body.classList.toggle("guest-mode", !askState.isOwner);
+}
+
+function askAuthHeaders() {
+  const h = { "Content-Type": "application/json" };
+  if (askState.ownerToken) h["x-ask-token"] = askState.ownerToken;
+  return h;
+}
+
+const ASK_MODE_HINTS = {
+  researcher: "Neutral · cite-only · no speculation",
+  skeptic:    "Prosaic priors · flags balloons/sensors/single-witness",
+  believer:   "Credulous priors · takes testimony at face value",
+};
+const ASK_EXAMPLES = [
+  "Who witnessed the Tic Tac incident?",
+  "What does the FBI 62-HQ-83894 file describe?",
+  "What contradictions exist in the 1952 Washington D.C. flap explanations?",
+];
+
+function loadAskHistory() {
+  try { askState.history = JSON.parse(localStorage.getItem("ask:history") || "[]"); }
+  catch { askState.history = []; }
+}
+function pushAskHistory(q, mode) {
+  askState.history.unshift({ q, mode, ts: Date.now() });
+  askState.history = askState.history.slice(0, 20);
+  try { localStorage.setItem("ask:history", JSON.stringify(askState.history)); } catch {}
+  renderAskHistory();
+}
+function renderAskHistory() {
+  const list = $("#ask-history-list");
+  if (!list) return;
+  if (!askState.history.length) {
+    list.innerHTML = `<div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px">No questions yet.</div>`;
+    return;
+  }
+  list.innerHTML = askState.history.map((h, i) => {
+    const ago = Math.round((Date.now() - h.ts) / 60000);
+    const when = ago < 1 ? "just now" : ago < 60 ? `${ago}m ago` : `${Math.round(ago/60)}h ago`;
+    return `<div class="ask-h-item" data-idx="${i}">
+      <div>${escapeHtml(h.q)}</div>
+      <div class="ask-h-meta">${escapeHtml(h.mode)} · ${when}</div>
+    </div>`;
+  }).join("");
+  list.querySelectorAll(".ask-h-item").forEach(el => {
+    el.addEventListener("click", () => {
+      const h = askState.history[parseInt(el.dataset.idx, 10)];
+      if (!h) return;
+      askSetMode(h.mode);
+      $("#ask-input").value = h.q;
+      askSubmit();
+    });
+  });
+}
+
+function askSetMode(m) {
+  if (!ASK_MODE_HINTS[m]) m = "researcher";
+  askState.mode = m;
+  document.querySelectorAll(".ask-modes button[data-mode]").forEach(b => {
+    b.classList.toggle("active", b.dataset.mode === m);
+  });
+  $("#ask-mode-hint").textContent = ASK_MODE_HINTS[m];
+}
+
+function updateAskCorpusLabel() {
+  const n = (docs || []).length;
+  const lab = $("#ask-corpus");
+  if (askState.scope && askState.scopeMeta) {
+    const m = askState.scopeMeta;
+    lab.innerHTML = `<span class="ask-scope-chip" title="Scoped ask — retrieval is limited to this record and its linked documents">
+      SCOPED TO ${escapeHtml(m.kind.toUpperCase())} · ${escapeHtml(m.name).slice(0, 60)} · ${askState.scope.length} DOCS
+      <button id="ask-clear-scope" type="button" title="Clear scope">✕</button>
+    </span>`;
+    $("#ask-clear-scope").addEventListener("click", clearScope);
+  } else {
+    lab.textContent = `SCOPE: ALL · ${n} RECORDS`;
+  }
+}
+function clearScope() {
+  askState.scope = null; askState.scopeMeta = null; askState.scopeExamples = null;
+  const p = new URLSearchParams(location.search);
+  p.delete("scope");
+  const qs = p.toString();
+  history.replaceState(null, "", qs ? "?" + qs : location.pathname);
+  updateAskCorpusLabel();
+  if (askState.askEnabled) renderAskEmpty();
+}
+
+function renderAskEmpty() {
+  const body = $("#ask-body");
+  const examples = (askState.scopeExamples && askState.scopeExamples.length) ? askState.scopeExamples : ASK_EXAMPLES;
+  const scopeNote = askState.scopeMeta
+    ? `Scoped to ${escapeHtml(askState.scopeMeta.kind)}: <a href="${recordUrl(askState.scopeMeta.id)}" style="color:var(--accent)">${escapeHtml(askState.scopeMeta.name)}</a>. Retrieval limited to ${askState.scope.length} document${askState.scope.length === 1 ? "" : "s"}.`
+    : "Ask any natural-language question. Answers cite primary documents from the corpus.";
+  body.innerHTML = `
+    <div class="ask-empty">
+      <div>${scopeNote}</div>
+      <div class="ask-eg" id="ask-eg-list">
+        ${examples.map(q => `<button data-q="${escapeHtml(q)}">${escapeHtml(q)}</button>`).join("")}
+      </div>
+      <div style="margin-top:14px;font-size:11px;font-family:var(--mono);color:var(--fg-dim)">
+        Enter submits · ↑ recalls last question · ${askState.history.length} prior question${askState.history.length===1?"":"s"}
+      </div>
+    </div>
+  `;
+  body.querySelectorAll("[data-q]").forEach(b => b.addEventListener("click", () => {
+    $("#ask-input").value = b.dataset.q;
+    askSubmit();
+  }));
+}
+
+function renderAskDisabled() {
+  $("#ask-body").innerHTML = `
+    <div class="ask-empty">
+      <div><strong>Ask is not enabled on this server.</strong></div>
+      <div style="margin-top:8px">The archive operator hasn't turned on AI answers here (no model API key configured, or the feature is switched off), so questions can't be answered right now. You can still <a href="search.html" style="color:var(--accent)">search the archive</a> directly.</div>
+    </div>`;
+}
+
+async function askSubmit() {
+  const q = $("#ask-input").value.trim();
+  if (!q) return;
+  pushAskHistory(q, askState.mode);
+  const body = $("#ask-body");
+  body.innerHTML = `
+    <div class="ask-status" id="ask-status"><span class="dot"></span><span id="ask-status-msg">Retrieving sources…</span></div>
+    <div class="ask-section" id="ask-answer-wrap" style="display:none">
+      <div class="ask-answer-card" id="ask-answer-card">
+        <span class="ask-ai-tag"><span class="ai-dot"></span>AI ANSWER · LENS: <span id="ask-answer-mode">${escapeHtml(askState.mode.toUpperCase())}</span></span>
+        <div class="ask-answer" id="ask-answer"></div>
+        <div class="ask-answer-foot" id="ask-answer-foot" style="display:none"></div>
+      </div>
+    </div>
+    <div class="ask-section" id="ask-followups-wrap" style="display:none">
+      <h4>↗ ASK A FOLLOW-UP <span style="color:var(--fg-dim);text-transform:none;letter-spacing:0;font-weight:normal">— click any to run it</span></h4>
+      <div class="ask-followups" id="ask-followups"></div>
+    </div>
+    <div class="ask-section" id="ask-sources-wrap" style="display:none">
+      <h4>RETRIEVED SOURCES <span style="color:var(--fg-dim);text-transform:none;letter-spacing:0">— what the AI was told to ground its answer in</span></h4>
+      <div class="ask-sources" id="ask-sources"></div>
+    </div>
+  `;
+  body.scrollTop = 0;
+  askState.current = {
+    sources: [],
+    answerEl: $("#ask-answer"),
+    statusEl: $("#ask-status"),
+    statusMsg: $("#ask-status-msg"),
+    sourcesEl: $("#ask-sources"),
+    followEl: $("#ask-followups"),
+    answerText: "",
+    evidence: {},
+  };
+  if (askState.abortCtrl) { try { askState.abortCtrl.abort(); } catch {} }
+  askState.abortCtrl = new AbortController();
+  try {
+    const res = await fetch("/api/ask", {
+      method: "POST",
+      headers: askAuthHeaders(),
+      body: JSON.stringify({ question: q, mode: askState.mode, scope: askState.scope }),
+      signal: askState.abortCtrl.signal,
+    });
+    if (!res.ok || !res.body) throw new Error("HTTP " + res.status);
+    await consumeAskSSE(res.body.getReader());
+  } catch (e) {
+    if (askState.current && askState.current.statusEl) {
+      askState.current.statusEl.classList.add("error");
+      askState.current.statusMsg.textContent = "Request failed: " + (e && e.message || String(e));
+    }
+  }
+}
+
+async function consumeAskSSE(reader) {
+  const dec = new TextDecoder();
+  let buf = "";
+  while (true) {
+    const { done, value } = await reader.read();
+    if (done) break;
+    buf += dec.decode(value, { stream: true });
+    let idx;
+    while ((idx = buf.indexOf("\n\n")) >= 0) {
+      const event = buf.slice(0, idx);
+      buf = buf.slice(idx + 2);
+      handleAskEvent(parseSSEFrame(event));
+    }
+  }
+}
+function parseSSEFrame(frame) {
+  let evt = "message", data = "";
+  for (const line of frame.split("\n")) {
+    if (line.startsWith("event:")) evt = line.slice(6).trim();
+    else if (line.startsWith("data:")) data += line.slice(5).trim();
+  }
+  let parsed = null;
+  try { parsed = JSON.parse(data); } catch {}
+  return { event: evt, data: parsed };
+}
+function handleAskEvent(e) {
+  const cur = askState.current;
+  if (!cur) return;
+  if (e.event === "sources") {
+    cur.sources = (e.data && e.data.sources) || [];
+    renderAskSources(cur.sources);
+    cur.statusMsg.textContent = `Streaming AI answer… (${cur.sources.length} sources retrieved · scroll down to see them)`;
+    $("#ask-answer-wrap").style.display = "";
+    const card = $("#ask-answer-card");
+    if (card) card.classList.add("streaming");
+  } else if (e.event === "token") {
+    const text = (e.data && e.data.text) || "";
+    cur.answerText += text;
+    renderAskAnswer(cur.answerText);
+  } else if (e.event === "error") {
+    cur.statusEl.classList.add("error");
+    cur.statusMsg.textContent = "Error: " + ((e.data && e.data.message) || "unknown");
+    const card = $("#ask-answer-card");
+    if (card) card.classList.remove("streaming");
+  } else if (e.event === "done") {
+    const dropped = (e.data && e.data.dropped_citations) || 0;
+    askState.current.evidence = (e.data && e.data.evidence) || {};
+    cur.statusMsg.textContent = `Done — ${cur.sources.length} retrieved sources, ${countCitationsRendered()} citation${countCitationsRendered()===1?"":"s"} in answer${dropped ? ` · ${dropped} unsupported claim${dropped===1?"":"s"} removed by guardrail` : ""}.`;
+    cur.statusEl.querySelector(".dot")?.remove();
+    const card = $("#ask-answer-card");
+    if (card) card.classList.remove("streaming");
+    const foot = $("#ask-answer-foot");
+    if (foot) {
+      foot.style.display = "";
+      const ts = new Date().toLocaleTimeString();
+      foot.innerHTML = `
+        <span title="${escapeHtml(askState.aiModel || "")}">🤖 Generated by ${escapeHtml(prettifyModel(askState.aiModel))}</span>
+        <span style="color:var(--fg-dim)">·</span>
+        <span>${escapeHtml(askState.mode)} lens</span>
+        <span style="color:var(--fg-dim)">·</span>
+        <span>${escapeHtml(ts)}</span>
+        ${dropped ? `<span style="color:var(--fg-dim)">·</span><span class="ask-foot-warn">${dropped} unsupported claim${dropped===1?"":"s"} removed</span>` : ""}
+        <span style="flex:1"></span>
+        <span style="color:var(--fg-dim)">Every claim is grounded in the cited sources below.</span>
+      `;
+    }
+    const fups = (e.data && e.data.follow_ups) || [];
+    if (fups.length) {
+      $("#ask-followups-wrap").style.display = "";
+      cur.followEl.innerHTML = fups.map(q => `<button>${escapeHtml(q)}</button>`).join("");
+      cur.followEl.querySelectorAll("button").forEach((b, i) => {
+        b.onclick = () => { $("#ask-input").value = fups[i]; askSubmit(); };
+      });
+    }
+  }
+}
+function countCitationsRendered() {
+  const ans = $("#ask-answer");
+  return ans ? ans.querySelectorAll(".ask-cite").length : 0;
+}
+function renderAskSources(sources) {
+  const host = $("#ask-sources");
+  if (!host) return;
+  $("#ask-sources-wrap").style.display = sources.length ? "" : "none";
+  host.innerHTML = sources.map(s => {
+    const thumb = s.thumb ? `<img src="${ROOT_REL}/${escapeHtml(s.thumb)}" onerror="this.style.display='none'"/>` : `<div style="width:56px;height:42px;background:var(--bg3)"></div>`;
+    return `<div class="ask-source" data-id="${escapeHtml(s.id)}" data-n="${s.n}">
+      ${thumb}
+      <div>
+        <div class="as-t">${escapeHtml(s.title || s.id)}</div>
+        <div class="as-m">${escapeHtml(s.agency || "")}${s.release_date ? " · REL " + escapeHtml(s.release_date) : ""}</div>
+        <div class="as-snip">${escapeHtml(s.snippet || s.blurb || "")}</div>
+      </div>
+      <div class="as-n">[^${s.n}]</div>
+    </div>`;
+  }).join("");
+  host.querySelectorAll(".ask-source").forEach(el => {
+    el.addEventListener("click", () => { location.href = recordUrl(el.dataset.id); });
+  });
+}
+// Pulse the source card matching this citation number
+function pulseSourceCard(n, on) {
+  const card = document.querySelector(`#ask-sources .ask-source[data-n="${n}"]`);
+  if (!card) return;
+  card.classList.toggle("ask-cite-target", on);
+  if (on) card.scrollIntoView({ block: "nearest", behavior: "smooth" });
+}
+function prettifyModel(id) {
+  if (!id) return "the AI";
+  const map = {
+    "deepseek/deepseek-chat-v3-0324": "DeepSeek V3",
+    "deepseek/deepseek-r1": "DeepSeek R1",
+    "anthropic/claude-haiku-4-5": "Claude Haiku 4.5",
+    "anthropic/claude-sonnet-4-5": "Claude Sonnet 4.5",
+    "anthropic/claude-sonnet-4-6": "Claude Sonnet 4.6",
+    "anthropic/claude-opus-4-1": "Claude Opus 4.1",
+    "google/gemini-2.5-flash": "Gemini 2.5 Flash",
+    "google/gemini-2.0-flash-001": "Gemini 2.0 Flash",
+    "meta-llama/llama-3.3-70b-instruct": "Llama 3.3 70B",
+    "mistralai/mistral-small-latest": "Mistral Small",
+    "openai/gpt-4o-mini": "GPT-4o Mini",
+  };
+  if (map[id]) return map[id];
+  const parts = id.split("/");
+  const name = parts[parts.length - 1] || id;
+  return name.split(/[-_]/).map(s => s.charAt(0).toUpperCase() + s.slice(1)).join(" ");
+}
+function renderAskAnswer(text) {
+  const el = askState.current.answerEl;
+  const html = escapeHtml(text).replace(/\[\^(\d+)\]/g, (_, n) =>
+    `<span class="ask-cite" data-n="${n}">${n}</span>`);
+  el.innerHTML = html;
+  el.querySelectorAll(".ask-cite").forEach(c => {
+    const n = parseInt(c.dataset.n, 10);
+    c.addEventListener("click", (e) => {
+      showCitePop(c, n);
+      e.stopPropagation();
+    });
+    c.addEventListener("mouseenter", () => pulseSourceCard(n, true));
+    c.addEventListener("mouseleave", () => pulseSourceCard(n, false));
+  });
+}
+// Stop-words used to filter low-signal tokens for evidence matching.
+const ASK_STOPWORDS = new Set("a an the of for and or but if to in on at by from with as is are was were be been being this that these those it its they them their he she his her i you we our which who what when where why how does did do not no yes about into through over under above below between among per via has have had can could should would may might will shall must some any all most much many more less other another such only also even just very".split(" "));
+function _askTokenize(s) {
+  return (s || "").toLowerCase().match(/[a-z0-9]{3,}/g)?.filter(t => !ASK_STOPWORDS.has(t)) || [];
+}
+// Walk DOM around the citation chip to recover the sentence it lives in.
+// Adjacent chips (e.g. [^1][^2]) belong to the SAME claim, so we walk through
+// them rather than treating them as a sentence boundary.
+function getClaimAroundChip(chipEl) {
+  const isChip = (n) => n && n.nodeType === Node.ELEMENT_NODE && n.classList && n.classList.contains("ask-cite");
+  let before = "", after = "";
+  let node = chipEl.previousSibling;
+  while (node && before.length < 400) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const t = node.textContent;
+      const idx = Math.max(t.lastIndexOf("."), t.lastIndexOf("!"), t.lastIndexOf("?"));
+      if (idx >= 0 && t.slice(idx + 1).trim() === "" && !before.trim()) {
+        before = t.slice(idx + 1) + before;
+        node = node.previousSibling;
+        continue;
+      }
+      if (idx >= 0) { before = t.slice(idx + 1) + before; break; }
+      before = t + before;
+    } else if (isChip(node)) {
+      // Skip across adjacent citation chips — they belong to the same claim
+    }
+    node = node.previousSibling;
+  }
+  node = chipEl.nextSibling;
+  while (node && after.length < 240) {
+    if (node.nodeType === Node.TEXT_NODE) {
+      const t = node.textContent;
+      const m = t.match(/^[^.!?]*[.!?]/);
+      if (m) { after += m[0]; break; }
+      after += t;
+    } else if (isChip(node)) {
+      // skip
+    }
+    node = node.nextSibling;
+  }
+  return { before: before.trim(), after: after.trim(), full: (before + " " + after).replace(/\s+/g, " ").trim() };
+}
+// Slide a window over source.text/blurb, score by token overlap with the claim.
+// Always returns the best window found (even with weak overlap) so the user
+// can judge for themselves whether the citation holds up.
+function findCiteEvidence(sourceText, blurb, claim) {
+  const tokens = _askTokenize(claim);
+  if (!tokens.length) return null;
+  const tokenSet = new Set(tokens);
+  const search = (text, source) => {
+    if (!text) return null;
+    const cleaned = text.replace(/\s+/g, " ");
+    const lower = cleaned.toLowerCase();
+    const W = 280, STEP = 50;
+    let bestScore = -1, bestStart = 0, bestMatched = [];
+    for (let i = 0; i < Math.max(1, lower.length - 50); i += STEP) {
+      const w = lower.slice(i, i + W);
+      let score = 0; const matched = [];
+      for (const t of tokenSet) if (w.includes(t)) { score++; matched.push(t); }
+      if (score > bestScore) { bestScore = score; bestStart = i; bestMatched = matched; }
+    }
+    return {
+      passage: cleaned.slice(bestStart, bestStart + W).trim(),
+      matched: bestMatched,
+      score: bestScore,
+      source,
+      coverage: Math.round((bestScore / tokens.length) * 100),
+    };
+  };
+  const inText  = search(sourceText, "text");
+  const inBlurb = search(blurb, "blurb");
+  const candidates = [inText, inBlurb].filter(Boolean);
+  if (!candidates.length) return null;
+  candidates.sort((a, b) => b.score - a.score);
+  const best = candidates[0];
+  best.confidence = best.coverage >= 50 ? "strong"
+                  : best.coverage >= 25 ? "moderate"
+                  : best.coverage > 0   ? "weak"
+                                        : "none";
+  return best;
+}
+// Highlight the matched tokens within the passage. If `tokens` looks like a
+// long contiguous quote (one entry > 20 chars), highlight the longest
+// substring overlap rather than per-word; otherwise highlight each token.
+function highlightCiteMatches(passage, tokens) {
+  if (!tokens || !tokens.length) return escapeHtml(passage);
+  const isQuote = tokens.length === 1 && tokens[0] && tokens[0].length > 20;
+  if (isQuote) {
+    const quote = tokens[0];
+    const lcPass = passage.toLowerCase();
+    const lcQ = quote.toLowerCase();
+    let bestStart = -1, bestLen = 0;
+    for (let len = lcQ.length; len >= 12 && bestStart < 0; len -= 4) {
+      for (let s = 0; s + len <= lcQ.length; s += 4) {
+        const sub = lcQ.slice(s, s + len);
+        const at = lcPass.indexOf(sub);
+        if (at >= 0) { bestStart = at; bestLen = len; break; }
+      }
+    }
+    if (bestStart >= 0) {
+      return escapeHtml(passage.slice(0, bestStart))
+        + '<span class="ev-hit">' + escapeHtml(passage.slice(bestStart, bestStart + bestLen)) + '</span>'
+        + escapeHtml(passage.slice(bestStart + bestLen));
+    }
+    return escapeHtml(passage);
+  }
+  const escTokens = tokens.map(t => String(t).replace(/[.*+?^${}()|[\]\\]/g, "\\$&")).filter(Boolean);
+  if (!escTokens.length) return escapeHtml(passage);
+  const re = new RegExp("\\b(" + escTokens.join("|") + ")\\b", "gi");
+  let out = "", last = 0, m;
+  while ((m = re.exec(passage)) !== null) {
+    out += escapeHtml(passage.slice(last, m.index));
+    out += '<span class="ev-hit">' + escapeHtml(m[0]) + '</span>';
+    last = m.index + m[0].length;
+  }
+  out += escapeHtml(passage.slice(last));
+  return out;
+}
+
+function showCitePop(anchor, n) {
+  const cur = askState.current;
+  if (!cur) return;
+  const src = cur.sources.find(s => s.n === n);
+  if (!src) return;
+  const pop = $("#ask-cite-pop");
+
+  // 1. Recover the claim sentence the citation is attached to
+  const claim = getClaimAroundChip(anchor);
+  const claimDisplay = claim.full || (src.snippet || "");
+  const claimHtml = (claim.before || claim.after)
+    ? `${escapeHtml(claim.before)}<em class="cite-here">[^${n}]</em>${escapeHtml(claim.after ? " " + claim.after : "")}`
+    : escapeHtml(claimDisplay);
+
+  // 2. Look up evidence: prefer AI-supplied verbatim quote (server-side),
+  //    fall back to client-side keyword overlap search.
+  const fullDoc = docById(src.id);
+  const fullText = (fullDoc && fullDoc.text) || src.snippet || "";
+  const blurb = (fullDoc && fullDoc.blurb) || src.blurb || "";
+  const aiQuote = (cur.evidence || {})[String(n)] || "";
+  let evidence = null;
+  if (aiQuote && aiQuote.length > 4) {
+    // Try to locate the AI's verbatim quote inside the source text or blurb.
+    // Try a few normalizations because the corpus is OCR'd: whitespace runs,
+    // dropped punctuation, and curly quotes are common.
+    const haystack = (fullText + "\n\n" + blurb);
+    const normalize = (s) => s.toLowerCase().replace(/[\s ]+/g, " ").replace(/[‘’]/g, "'").replace(/[“”]/g, '"');
+    const stripPunct = (s) => normalize(s).replace(/[^a-z0-9 ]+/g, " ").replace(/\s+/g, " ").trim();
+    const tryMatchers = [
+      () => haystack.toLowerCase().indexOf(aiQuote.toLowerCase()),
+      () => normalize(haystack).indexOf(normalize(aiQuote)),
+      () => stripPunct(haystack).indexOf(stripPunct(aiQuote)),
+    ];
+    let idx = -1, matchedVia = null;
+    for (let i = 0; i < tryMatchers.length; i++) {
+      idx = tryMatchers[i]();
+      if (idx >= 0) { matchedVia = ["raw","normalized","punct-stripped"][i]; break; }
+    }
+    if (idx >= 0) {
+      // Found (or close-matched) the AI's quote — show surrounding context.
+      // For matchers 2/3 the offset is in the normalized string, so we re-scan
+      // the original haystack for the AI quote's first significant word to
+      // anchor the surrounding context safely.
+      let start;
+      if (matchedVia === "raw") {
+        start = Math.max(0, idx - 40);
+      } else {
+        const firstWord = (aiQuote.match(/[a-zA-Z]{4,}/) || [""])[0].toLowerCase();
+        const fallbackIdx = firstWord ? haystack.toLowerCase().indexOf(firstWord) : -1;
+        start = fallbackIdx >= 0 ? Math.max(0, fallbackIdx - 40) : 0;
+      }
+      const W = 320;
+      const passage = haystack.slice(start, Math.min(haystack.length, start + W)).replace(/\s+/g, " ").trim();
+      evidence = {
+        passage,
+        matched: [aiQuote],
+        score: 99, coverage: 100,
+        confidence: "ai-verified", source: "ai-quoted",
+        aiQuote,
+        matchedVia,
+      };
+    } else {
+      // The AI gave us a quote that ISN'T verbatim in the source — that's a
+      // hallucinated quote. Surface it explicitly.
+      evidence = {
+        passage: aiQuote, matched: [],
+        score: 0, coverage: 0,
+        confidence: "ai-unverified", source: "ai-quoted",
+        aiQuote,
+      };
+    }
+  }
+  if (!evidence) {
+    evidence = findCiteEvidence(fullText, blurb, claim.full);
+  }
+  const confLabel = evidence
+    ? (evidence.confidence === "ai-verified"   ? `<span style="color:#5ec8a0">✓ AI quote found verbatim in source</span>`
+      : evidence.confidence === "ai-unverified" ? `<span style="color:#ff5a5a">⚠ AI quote NOT found in source</span>`
+      : evidence.confidence === "strong"   ? `<span style="color:#5ec8a0">strong keyword match</span>`
+      : evidence.confidence === "moderate" ? `<span style="color:var(--accent2)">moderate match</span>`
+      : evidence.confidence === "weak"     ? `<span style="color:#ff8866">weak match</span>`
+      :                                       `<span style="color:#ff5a5a">no overlap</span>`)
+    : "";
+  const sourceLabel = evidence
+    ? (evidence.source === "ai-quoted" ? "AI-extracted quote"
+      : evidence.source === "text"     ? "from extracted PDF text"
+      :                                   "from document summary")
+    : "";
+
+  pop.innerHTML = `
+    <div class="acp-h">SOURCE [^${n}] · ${escapeHtml(src.agency || "")}${src.release_date ? " · REL " + escapeHtml(src.release_date) : ""}</div>
+    <div class="acp-t">${escapeHtml(src.title || src.id)}</div>
+    <div class="acp-block acp-claim">
+      <span class="acp-label">AI's claim</span>
+      ${claimHtml}
+    </div>
+    <div class="acp-block acp-evidence ${evidence && evidence.score > 0 ? "" : "no-match"}">
+      <span class="acp-label">Supporting passage ${evidence ? "· " + sourceLabel + " · " + confLabel : ""}</span>
+      ${evidence && evidence.score > 0
+        ? "“" + highlightCiteMatches(evidence.passage, evidence.aiQuote ? [evidence.aiQuote] : evidence.matched) + "”"
+        : evidence && evidence.aiQuote
+          ? "“" + escapeHtml(evidence.aiQuote) + "”<br><br>This quote was produced by the AI but is not present verbatim in the source's extracted text. Treat as a paraphrase — open the source to verify."
+          : "Couldn't find any keyword overlap. The AI may have over-attributed this claim to this source — verify by opening it."}
+    </div>
+    <div class="acp-actions">
+      <button data-act="open">↗ OPEN DOC</button>
+      <button data-act="viewer">▤ VIEWER</button>
+      <button data-act="copy">❝ COPY CITE</button>
+    </div>
+  `;
+  pop.style.display = "block";
+  const r = anchor.getBoundingClientRect();
+  pop.style.left = Math.min(window.innerWidth - 380, r.left) + "px";
+  pop.style.top = (r.bottom + 6) + "px";
+  pop.querySelector('[data-act="open"]').onclick = () => { location.href = recordUrl(src.id); };
+  pop.querySelector('[data-act="viewer"]').onclick = () => { location.href = `viewer.html?id=${encodeURIComponent(src.id)}`; };
+  pop.querySelector('[data-act="copy"]').onclick = () => {
+    const cit = `"${src.snippet || ""}" — ${src.title}, ${src.agency || ""}${src.release_date ? ", " + src.release_date : ""}.`;
+    navigator.clipboard.writeText(cit).catch(() => {});
+    pop.querySelector('[data-act="copy"]').textContent = "✓ COPIED";
+  };
+  setTimeout(() => {
+    document.addEventListener("mousedown", askPopOutsideClose, { once: true });
+  }, 0);
+}
+function askPopOutsideClose(e) {
+  if (!$("#ask-cite-pop").contains(e.target)) hideCitePop();
+}
+function hideCitePop() { $("#ask-cite-pop").style.display = "none"; }
+
+// Build a scope (list of doc IDs) for an entity context — includes the entity
+// itself plus 1-hop neighbors via similar_text edges (doc) or incident_id link
+// (incident). Capped at 24 IDs to keep retrieval focused.
+function askScopeFor(kind, id) {
+  const out = new Set();
+  if (kind === "document") {
+    const d = docs.find(x => x.id === id);
+    if (!d) return null;
+    out.add(d.id);
+    for (const s of (d.similar_text || []).slice(0, 12)) {
+      if (s && s.id) out.add(s.id);
+    }
+    if (d.incident_id) {
+      for (const x of docs) {
+        if (x.incident_id === d.incident_id) out.add(x.id);
+        if (out.size >= 24) break;
+      }
+    }
+    if (d.extracted_from_id) out.add(d.extracted_from_id);
+  } else if (kind === "incident") {
+    for (const x of docs) {
+      if (x.incident_id === id) out.add(x.id);
+      if (out.size >= 24) break;
+    }
+  }
+  return [...out].slice(0, 24);
+}
+
+function askExamplesFor(kind, name) {
+  if (kind === "document") {
+    return [
+      `What does this document claim or describe?`,
+      `Who or what does ${name} reference?`,
+      `What other documents in this archive corroborate or contradict it?`,
+    ];
+  }
+  if (kind === "incident") {
+    return [
+      `Who witnessed the ${name}?`,
+      `What was the official explanation, and has it been disputed?`,
+      `What contradictory accounts of ${name} exist in this archive?`,
+    ];
+  }
+  if (kind === "person") {
+    return [
+      `What did ${name} testify about or claim?`,
+      `What incidents did ${name} witness or investigate?`,
+      `What documents in this archive reference ${name}?`,
+    ];
+  }
+  return [
+    `What does the archive say about ${name}?`,
+    `Who or what is connected to ${name}?`,
+    `What contradictions exist around ${name}?`,
+  ];
+}
+
+// ── Bindings ───────────────────────────────────────────────────────────
+$("#ask-history-toggle").addEventListener("click", () => {
+  $("#ask-page").classList.toggle("history-open");
+});
+$("#ask-share").addEventListener("click", () => {
+  const q = $("#ask-input").value.trim();
+  const p = new URLSearchParams();
+  if (q) p.set("q", q);
+  if (askState.mode !== "researcher") p.set("mode", askState.mode);
+  if (askState.scopeMeta && askState.scopeMeta.kind === "record") p.set("scope", "record:" + askState.scopeMeta.id);
+  const qs = p.toString();
+  const url = location.origin + location.pathname + (qs ? "?" + qs : "");
+  navigator.clipboard.writeText(url).then(() => {
+    $("#ask-share").textContent = "✓ COPIED";
+    setTimeout(() => $("#ask-share").textContent = "↗ SHARE", 1500);
+  }).catch(() => {});
+});
+document.querySelectorAll(".ask-modes button[data-mode]").forEach(b => {
+  b.addEventListener("click", () => askSetMode(b.dataset.mode));
+});
+$("#ask-input").addEventListener("keydown", (e) => {
+  if (e.key === "ArrowUp" && askState.history.length) {
+    e.preventDefault();
+    $("#ask-input").value = askState.history[0].q;
+  } else if (e.key === "Enter") {
+    e.preventDefault();
+    askSubmit();
+  } else if (e.key === "Escape") {
+    e.target.blur();
+    hideCitePop();
+  }
+});
+
+// ── Init ───────────────────────────────────────────────────────────────
+(async function init() {
+  await loadCoreData([]);
+  loadAskHistory();
+  renderAskHistory();
+
+  // URL params: ?q= pre-fill + auto-submit, ?mode=, ?scope=record:<id>
+  const p = new URLSearchParams(location.search);
+  const mode = p.get("mode");
+  if (mode) askSetMode(mode);
+  const scope = p.get("scope") || "";
+  if (scope.startsWith("record:")) {
+    const id = scope.slice("record:".length);
+    const d = docById(id);
+    if (d) {
+      askState.scope = askScopeFor("document", id);
+      askState.scopeMeta = { kind: "record", id, name: d.title };
+      askState.scopeExamples = askExamplesFor("document", d.title);
+      document.title = `Ask about: ${d.title} — UFO/UAP Disclosure Archive`;
+    }
+  }
+
+  await detectOwnerMode();
+  updateAskCorpusLabel();
+
+  if (!askState.askEnabled) {
+    renderAskDisabled();
+    return;
+  }
+  const q = p.get("q");
+  if (q) {
+    $("#ask-input").value = q;
+    askSubmit();
+  } else {
+    renderAskEmpty();
+    setTimeout(() => $("#ask-input").focus(), 50);
+  }
+})();
+</script>
+</body>
+</html>

@@ -17,6 +17,14 @@ CSV_PATH = RAW / "csv" / "uap-csv.csv"
 RECORDS_PATH = RAW / "records.json"
 DOWNLOADS_PATH = RAW / "downloads.tsv"
 
+# war.gov release tranches by their CSV "Release Date" value.
+RELEASE_BY_DATE = {
+    "5/8/26": "release_1",
+    "5/22/26": "release_2",
+    "6/12/26": "release_3",
+    "7/10/26": "release_4",
+}
+
 
 def slugify(s: str) -> str:
     s = (s or "").strip().replace("\n", " ")
@@ -122,6 +130,7 @@ def main():
         rec["video_pairing"] = cell(row, C_VPAIR)
         rec["pdf_pairing"] = cell(row, C_PPAIR)
         rec["featured"] = cell(row, C_FEATURED)
+        rec["release"] = RELEASE_BY_DATE.get(rec["release_date"], "")
 
         if not rec["title"]:
             continue

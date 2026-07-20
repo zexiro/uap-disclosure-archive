@@ -1,0 +1,928 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<title>Viewer — UFO/UAP Disclosure Archive</title>
+<meta name="viewport" content="width=device-width,initial-scale=1" />
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Geist:wght@300;400;450;500;600;700&family=JetBrains+Mono:wght@300;400;500;600&display=swap" rel="stylesheet">
+<!-- PDF.js (same pin as the monolith: 4.0.379, module + pinned worker) -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs" type="module"></script>
+<script type="module">
+  import("https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.min.mjs").then(m => {
+    window.pdfjsLib = m;
+    m.GlobalWorkerOptions.workerSrc = "https://cdnjs.cloudflare.com/ajax/libs/pdf.js/4.0.379/pdf.worker.min.mjs";
+    window.dispatchEvent(new Event("pdfjs-ready"));
+  });
+</script>
+<link rel="stylesheet" href="css/app.css" />
+<style>
+  /* Viewer is a full-viewport app under the shared topnav. */
+  html, body { height: 100%; }
+  body { display: flex; flex-direction: column; height: 100vh; overflow: hidden; }
+  #viewer-view {
+    display: grid; grid-template-rows: auto 1fr;
+    flex: 1 1 auto; min-height: 0; overflow: hidden;
+    position: relative;
+  }
+  #viewer-progress { display: block; top: 0; }
+  .vw-back { text-decoration: none; display: inline-block; }
+  .vw-sb-link {
+    display: block; padding: 7px 9px; background: var(--bg);
+    border: 1px solid var(--border); border-radius: 4px;
+    color: var(--fg); text-decoration: none; font-size: 12px;
+  }
+  .vw-sb-link:hover { border-color: var(--accent); color: var(--accent); }
+  .vw-textpanel mark.vw-anno-overlay.flash { background: var(--accent); color: var(--bg); }
+  .vw-fatal { padding: 40px; color: var(--fg-dim); font-size: 14px; }
+  .vw-fatal a { color: var(--accent); }
+</style>
+</head>
+<body>
+<section id="viewer-view">
+  <div id="viewer-progress"><div class="vp-fill" id="vw-progress-fill"></div></div>
+  <div class="vw-topbar">
+    <a class="vw-back" id="vw-back" href="search.html">← RECORD</a>
+    <div class="vw-title" id="vw-title">—</div>
+    <div class="vw-meta" id="vw-meta"></div>
+    <div class="vw-spacer"></div>
+    <div class="vw-search">
+      <input id="vw-search-input" placeholder="Find in document  (⌘F)" autocomplete="off"/>
+      <span class="vw-s-count" id="vw-search-count">—</span>
+      <button id="vw-search-prev" type="button" title="Previous">↑</button>
+      <button id="vw-search-next" type="button" title="Next">↓</button>
+    </div>
+    <div class="vw-zoom">
+      <button id="vw-zoom-out" type="button">−</button>
+      <span class="vw-z-readout" id="vw-zoom-readout">100%</span>
+      <button id="vw-zoom-in" type="button">+</button>
+      <button id="vw-zoom-fit" type="button" title="Fit width">↔</button>
+    </div>
+    <button class="vw-action" id="vw-anno-toggle" type="button">📌 ANNO</button>
+    <button class="vw-action" id="vw-anno-export" type="button">↓ JSON</button>
+    <a class="vw-action" id="vw-cite" href="#" style="text-decoration:none" title="Citation formats on the record page">CITE</a>
+    <button class="vw-action" id="vw-download" type="button">↗ ORIGINAL</button>
+    <button class="vw-action" id="vw-sidebar-toggle" type="button" title="Toggle sidebar">☰</button>
+  </div>
+  <div class="vw-body" id="vw-body">
+    <aside class="vw-rail" id="vw-rail">
+      <button class="vw-rail-toggle" id="vw-rail-toggle" type="button" title="Expand/collapse">▶</button>
+      <div id="vw-thumbs"></div>
+    </aside>
+    <div class="vw-center" id="vw-center">
+      <div id="vw-pdf-host"></div>
+      <div id="vw-textpanel-host"></div>
+    </div>
+    <aside class="vw-sidebar" id="vw-sidebar">
+      <div class="vw-sb-section" id="vw-sb-links"></div>
+      <div class="vw-sb-section" id="vw-sb-entities"></div>
+      <div class="vw-sb-section" id="vw-sb-redactions"></div>
+      <div class="vw-sb-section" id="vw-sb-annos"></div>
+      <div class="vw-anno-disclaimer">Annotations save to this browser only. Use ↓ JSON to export.</div>
+    </aside>
+  </div>
+</section>
+<!-- Floating UI lives on <body> so absolute coords match viewport rects. -->
+<div class="vw-sel-tb" id="vw-sel-tb">
+  <button id="vw-sel-highlight" type="button">★ Highlight</button>
+  <button id="vw-sel-annotate"  type="button">📌 Annotate</button>
+  <button id="vw-sel-cite"      type="button">❝ Copy as citation</button>
+</div>
+<div class="vw-tooltip" id="vw-tooltip" style="display:none"></div>
+
+<script src="js/shared.js"></script>
+<script>
+renderNav("viewer");
+
+// ── Viewer state (ported from the monolith's vwState) ────────────────
+let vwState = {
+  docId: null,
+  doc: null,
+  pdf: null,
+  page: 1,
+  pendingPage: 1,
+  zoom: "fit-width",
+  search: "",
+  pendingSearch: "",
+  annoOn: true,
+  annotations: [],
+  entities: null,
+  redactions: [],
+  pageCanvases: [],
+  searchHits: [],
+  searchActive: -1,
+};
+let vwGazetteer = null;
+let vwRailExpanded = false;
+let vwSidebarCollapsed = false;
+let vwLastTextRange = null;
+let vwProgressBound = false;
+
+// ── URL state: query params id, page, zoom, vsearch, anno ────────────
+function syncUrl() {
+  const p = new URLSearchParams();
+  if (vwState.docId) p.set("id", vwState.docId);
+  if (vwState.page > 1) p.set("page", String(vwState.page));
+  if (vwState.zoom !== "fit-width") p.set("zoom", String(vwState.zoom));
+  if (vwState.search) p.set("vsearch", vwState.search);
+  if (vwState.annoOn) p.set("anno", "on");
+  history.replaceState(null, "", "?" + p.toString());
+}
+function loadUrl() {
+  vwState.pendingPage = parseInt(getParam("page") || "1", 10) || 1;
+  const z = getParam("zoom");
+  if (z) {
+    const zn = parseFloat(z);
+    vwState.zoom = (z === "fit-width" || z === "fit-page") ? z : (isNaN(zn) ? "fit-width" : zn);
+  }
+  vwState.pendingSearch = getParam("vsearch") || "";
+  if (getParam("anno")) vwState.annoOn = getParam("anno") === "on";
+}
+
+async function ensureGazetteer() {
+  if (vwGazetteer) return vwGazetteer;
+  try {
+    const r = await fetch("entity-gazetteer.json");
+    vwGazetteer = await r.json();
+  } catch (e) {
+    vwGazetteer = { people: [], places: [], craft: [], programs: [] };
+    console.warn("[viewer] gazetteer missing", e);
+  }
+  return vwGazetteer;
+}
+
+async function renderViewer() {
+  const id = vwState.docId;
+  const doc = vwState.doc;
+  vwState.page = vwState.pendingPage || 1;
+  vwState.search = vwState.pendingSearch || "";
+  vwState.pendingSearch = "";
+  vwState.pendingPage = null;
+
+  $("#vw-title").textContent = doc.title || id;
+  document.title = `${doc.title || id} — Viewer — UFO/UAP Disclosure Archive`;
+  const meta = $("#vw-meta");
+  const redactBadge = doc.redaction === "TRUE"
+    ? `<span class="badge redact-partial">REDACTED</span>` : "";
+  meta.innerHTML = `
+    <span class="badge">${escapeHtml(doc.agency || "")}</span>
+    <span class="badge">${escapeHtml(doc.type || "")}</span>
+    ${doc.release_date ? `<span class="badge">REL ${escapeHtml(doc.release_date)}</span>` : ""}
+    ${redactBadge}
+  `;
+
+  await ensureGazetteer();
+  vwState.annotations = loadAnnotations(id);
+  vwState.entities = detectEntities(doc.text || "");
+  vwState.redactions = detectRedactions(doc.text || "");
+
+  renderViewerLinks(doc);
+  renderEntitySidebar();
+  renderRedactionPanel();
+  renderAnnotationsList();
+  renderTextPanel();
+  await renderPdf(doc);
+
+  if (vwState.search) {
+    $("#vw-search-input").value = vwState.search;
+    runDocSearch(vwState.search);
+  }
+  if (vwState.page > 1) jumpToPage(vwState.page);
+  syncUrl();
+}
+
+// ─── PDF rendering ────────────────────────────────────────────────────
+async function ensurePdfJs() {
+  if (window.pdfjsLib) return window.pdfjsLib;
+  return new Promise(res => {
+    const onReady = () => { window.removeEventListener("pdfjs-ready", onReady); res(window.pdfjsLib); };
+    window.addEventListener("pdfjs-ready", onReady);
+  });
+}
+
+function pdfPathFor(doc) {
+  const local = (doc.primary_local || []).find(p => /\.pdf$/i.test(p));
+  if (local) return ROOT_REL + "/" + local;
+  if (doc.source_url && /\.pdf$/i.test(doc.source_url)) return doc.source_url;
+  return null;
+}
+
+async function renderPdf(doc) {
+  const host = $("#vw-pdf-host");
+  host.innerHTML = "";
+  vwState.pageCanvases = [];
+  const path = pdfPathFor(doc);
+  if (!path) {
+    host.innerHTML = `<div class="vw-textpanel"><div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px">No PDF available — extracted text shown below.</div></div>`;
+    return;
+  }
+  let lib;
+  try { lib = await ensurePdfJs(); }
+  catch (e) { console.error("[viewer] pdf.js load failed", e); return; }
+  let pdf;
+  try {
+    pdf = await lib.getDocument({ url: path, withCredentials: false }).promise;
+  } catch (e) {
+    console.warn("[viewer] PDF load failed; falling back to text only:", e);
+    host.innerHTML = `<div class="vw-textpanel"><div style="color:#ff5a5a;font-family:var(--mono);font-size:11px">PDF render failed — showing extracted text only.</div></div>`;
+    return;
+  }
+  vwState.pdf = pdf;
+  const redCount = vwState.redactions.length;
+  if (redCount >= 25) {
+    const banner = document.createElement("div");
+    banner.className = "vw-heavy-banner";
+    banner.textContent = `THIS DOCUMENT IS HEAVILY REDACTED — ${redCount} REDACTIONS DETECTED IN EXTRACTED TEXT`;
+    host.appendChild(banner);
+  }
+
+  const center = $("#vw-center");
+  const widthCss = center.clientWidth - 32;
+  const baseScale = vwState.zoom === "fit-width" ? 1 : (typeof vwState.zoom === "number" ? vwState.zoom : 1);
+
+  for (let p = 1; p <= pdf.numPages; p++) {
+    await renderPdfPage(pdf, p, host, widthCss, baseScale);
+  }
+  buildThumbnails(pdf);
+  setupPageObserver();
+}
+
+async function renderPdfPage(pdf, p, host, widthCss, baseScale) {
+  const page = await pdf.getPage(p);
+  let viewport = page.getViewport({ scale: 1 });
+  let scale = baseScale;
+  if (vwState.zoom === "fit-width") {
+    scale = Math.max(0.4, widthCss / viewport.width);
+  } else if (vwState.zoom === "fit-page") {
+    const center = $("#vw-center");
+    scale = Math.min(widthCss / viewport.width, (center.clientHeight - 32) / viewport.height);
+  }
+  viewport = page.getViewport({ scale });
+
+  const wrap = document.createElement("div");
+  wrap.className = "vw-page-wrap";
+  wrap.style.width = viewport.width + "px";
+  wrap.style.height = viewport.height + "px";
+  wrap.dataset.page = p;
+  const canvas = document.createElement("canvas");
+  canvas.width = viewport.width; canvas.height = viewport.height;
+  wrap.appendChild(canvas);
+  const num = document.createElement("div");
+  num.className = "vw-page-num";
+  num.textContent = `p. ${p}`;
+  wrap.appendChild(num);
+  host.appendChild(wrap);
+  await page.render({ canvasContext: canvas.getContext("2d"), viewport }).promise;
+  const textLayer = document.createElement("div");
+  textLayer.className = "vw-text-layer";
+  wrap.appendChild(textLayer);
+  try {
+    const txt = await page.getTextContent();
+    renderTextLayer(textLayer, txt, viewport);
+  } catch (_) { /* ignore */ }
+  vwState.pageCanvases.push({ wrap, canvas, textLayer, num: p, viewport });
+}
+
+function renderTextLayer(container, textContent, viewport) {
+  for (const item of textContent.items) {
+    const tx = window.pdfjsLib.Util.transform(viewport.transform, item.transform);
+    const span = document.createElement("span");
+    span.textContent = item.str;
+    const fontSize = Math.hypot(tx[2], tx[3]);
+    span.style.left = tx[4] + "px";
+    span.style.top = (tx[5] - fontSize) + "px";
+    span.style.fontSize = fontSize + "px";
+    span.style.fontFamily = item.fontName || "sans-serif";
+    container.appendChild(span);
+  }
+}
+
+function buildThumbnails(pdf) {
+  const host = $("#vw-thumbs");
+  host.innerHTML = "";
+  for (let p = 1; p <= pdf.numPages; p++) {
+    const t = document.createElement("div");
+    t.className = "vw-thumb";
+    if (p === vwState.page) t.classList.add("active");
+    t.dataset.page = p;
+    t.innerHTML = `<canvas></canvas><span class="vw-thumb-n">${p}</span>`;
+    host.appendChild(t);
+    t.addEventListener("click", () => jumpToPage(p));
+    pdf.getPage(p).then(page => {
+      const tw = vwRailExpanded ? 240 : 56;
+      const v = page.getViewport({ scale: 1 });
+      const s = tw / v.width;
+      const vp = page.getViewport({ scale: s });
+      const c = t.querySelector("canvas");
+      c.width = vp.width; c.height = vp.height;
+      page.render({ canvasContext: c.getContext("2d"), viewport: vp });
+    }).catch(() => {});
+  }
+}
+
+function setupPageObserver() {
+  if (vwState.observer) vwState.observer.disconnect();
+  vwState.observer = new IntersectionObserver((entries) => {
+    let topMost = null, topY = Infinity;
+    for (const e of entries) {
+      if (!e.isIntersecting) continue;
+      const r = e.target.getBoundingClientRect();
+      if (r.top < topY) { topY = r.top; topMost = e.target; }
+    }
+    if (topMost) {
+      const p = parseInt(topMost.dataset.page, 10);
+      if (p && p !== vwState.page) {
+        vwState.page = p;
+        document.querySelectorAll(".vw-thumb").forEach(t => {
+          t.classList.toggle("active", parseInt(t.dataset.page, 10) === p);
+        });
+        const activeThumb = document.querySelector(".vw-thumb.active");
+        if (activeThumb) activeThumb.scrollIntoView({ block: "nearest" });
+        syncUrl();
+      }
+    }
+  }, { root: $("#vw-center"), threshold: 0.1 });
+  vwState.pageCanvases.forEach(pc => vwState.observer.observe(pc.wrap));
+  if (!vwProgressBound) {
+    vwProgressBound = true;
+    $("#vw-center").addEventListener("scroll", () => {
+      const c = $("#vw-center");
+      const ratio = c.scrollHeight > c.clientHeight ? c.scrollTop / (c.scrollHeight - c.clientHeight) : 0;
+      $("#vw-progress-fill").style.width = (ratio * 100) + "%";
+    });
+  }
+}
+
+function jumpToPage(p) {
+  vwState.page = p;
+  const pc = vwState.pageCanvases.find(x => x.num === p);
+  if (pc) pc.wrap.scrollIntoView({ behavior: "smooth", block: "start" });
+  syncUrl();
+}
+
+// ─── Zoom ─────────────────────────────────────────────────────────────
+async function setZoom(z) {
+  vwState.zoom = z;
+  $("#vw-zoom-readout").textContent = (z === "fit-width" ? "FIT" : z === "fit-page" ? "FIT P" : Math.round(z * 100) + "%");
+  if (vwState.pdf) await renderPdf(vwState.doc);
+  syncUrl();
+}
+
+// ─── Entity detection ────────────────────────────────────────────────
+function detectEntities(text) {
+  const out = { people: [], places: [], craft: [], programs: [] };
+  if (!text || !vwGazetteer) return out;
+  const find = (type, ent, pattern) => {
+    const offsets = [];
+    const re = new RegExp(pattern, "gi");
+    let m;
+    while ((m = re.exec(text)) !== null) {
+      offsets.push([m.index, m.index + m[0].length]);
+      if (offsets.length > 200) break;
+    }
+    if (offsets.length) out[type].push({ ent, offsets });
+  };
+  for (const ent of (vwGazetteer.people || [])) {
+    const variants = [ent.name, ...(ent.aliases || [])].filter(Boolean).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    find("people", ent, "\\b(" + variants.join("|") + ")\\b");
+  }
+  for (const ent of (vwGazetteer.places || [])) {
+    const variants = [ent.name, ...(ent.aliases || [])].filter(Boolean).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    find("places", ent, "\\b(" + variants.join("|") + ")\\b");
+  }
+  for (const ent of (vwGazetteer.craft || [])) {
+    for (const pat of (ent.patterns || [])) find("craft", ent, pat);
+  }
+  for (const ent of (vwGazetteer.programs || [])) {
+    const variants = [ent.name, ...(ent.aliases || [])].filter(Boolean).map(s => s.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"));
+    find("programs", ent, "\\b(" + variants.join("|") + ")\\b");
+  }
+  for (const k of Object.keys(out)) out[k].sort((a, b) => b.offsets.length - a.offsets.length);
+  return out;
+}
+
+function renderEntitySidebar() {
+  const host = $("#vw-sb-entities");
+  const sections = [
+    ["people",   "PEOPLE",   "👤"],
+    ["places",   "PLACES",   "📍"],
+    ["craft",    "CRAFT",    "◇"],
+    ["programs", "PROGRAMS", "▮"],
+  ];
+  let html = `<div class="vw-sb-head">📋 ENTITIES IN THIS DOCUMENT</div>`;
+  let any = false;
+  for (const [k, label, icon] of sections) {
+    const list = (vwState.entities && vwState.entities[k]) || [];
+    if (!list.length) continue;
+    any = true;
+    html += `<div class="vw-sb-head" style="margin-top:10px">${icon} ${label} <span class="vw-count">${list.length}</span></div>`;
+    html += `<div class="vw-ent-list">`;
+    for (const { ent, offsets } of list.slice(0, 30)) {
+      html += `<div class="vw-ent" data-type="${k}" data-id="${escapeHtml(ent.id)}" title="${escapeHtml(ent.blurb || ent.name)}">
+        <span>${escapeHtml(ent.name)}</span>
+        <span class="vw-ent-n">${offsets.length}</span>
+      </div>`;
+    }
+    html += `</div>`;
+  }
+  if (!any) html += `<div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px;margin-top:8px">— no recognized entities in this document —</div>`;
+  host.innerHTML = html;
+  host.querySelectorAll(".vw-ent").forEach(el => {
+    el.addEventListener("mouseenter", () => highlightEntity(el.dataset.type, el.dataset.id, true));
+    el.addEventListener("mouseleave", () => highlightEntity(el.dataset.type, el.dataset.id, false));
+    el.addEventListener("click", () => cycleEntityOccurrence(el.dataset.type, el.dataset.id));
+  });
+}
+
+function highlightEntity(type, id, on) {
+  const tp = $("#vw-textpanel-host");
+  if (!tp) return;
+  tp.querySelectorAll(`mark.entity[data-type="${type}"][data-id="${id}"]`).forEach(m => {
+    m.classList.toggle("flash", on);
+  });
+}
+
+function cycleEntityOccurrence(type, id) {
+  const tp = $("#vw-textpanel-host");
+  if (!tp) return;
+  const matches = tp.querySelectorAll(`mark.entity[data-type="${type}"][data-id="${id}"]`);
+  if (!matches.length) return;
+  const key = type + ":" + id;
+  vwState._cycleIdx = vwState._cycleIdx || {};
+  let i = (vwState._cycleIdx[key] || 0) % matches.length;
+  matches.forEach((m, idx) => m.classList.toggle("flash", idx === i));
+  matches[i].scrollIntoView({ behavior: "smooth", block: "center" });
+  vwState._cycleIdx[key] = (i + 1) % matches.length;
+}
+
+// ─── Redaction detection ─────────────────────────────────────────────
+function detectRedactions(text) {
+  if (!text) return [];
+  const out = [];
+  const reWhite = /[ \t]{6,}/g;
+  let m;
+  while ((m = reWhite.exec(text)) !== null) {
+    out.push({ start: m.index, end: m.index + m[0].length, words: Math.round(m[0].length / 6), kind: "whitespace" });
+  }
+  const reMark = /\[REDACTED\]|\bREDACTED\b|\bb[136]c?\b\s*\(\d+\)|███+|\bb\(\d+\)\b/g;
+  while ((m = reMark.exec(text)) !== null) {
+    out.push({ start: m.index, end: m.index + m[0].length, words: 1, kind: "mark" });
+  }
+  const reFoia = /\(b\)\s*\(\d+\)/g;
+  while ((m = reFoia.exec(text)) !== null) {
+    out.push({ start: m.index, end: m.index + m[0].length, words: 2, kind: "foia" });
+  }
+  out.sort((a, b) => a.start - b.start);
+  const merged = [];
+  for (const r of out) {
+    const last = merged[merged.length - 1];
+    if (last && r.start <= last.end + 2) {
+      last.end = Math.max(last.end, r.end);
+      last.words += r.words;
+    } else merged.push({ ...r });
+  }
+  for (const r of merged) {
+    const ctxStart = Math.max(0, r.start - 80);
+    const ctxEnd = Math.min(text.length, r.end + 80);
+    r.ctx = text.slice(ctxStart, ctxEnd).replace(/\s+/g, " ").trim();
+  }
+  return merged;
+}
+
+function renderRedactionPanel() {
+  const host = $("#vw-sb-redactions");
+  const reds = vwState.redactions;
+  const text = vwState.doc.text || "";
+  const wordsTotal = text.split(/\s+/).filter(Boolean).length;
+  const wordsRed = reds.reduce((a, r) => a + r.words, 0);
+  const pct = wordsTotal ? Math.round((wordsRed / wordsTotal) * 1000) / 10 : 0;
+
+  const pageSize = 3000;
+  const pages = Math.max(1, Math.ceil(text.length / pageSize));
+  const counts = new Array(pages).fill(0);
+  for (const r of reds) counts[Math.min(pages - 1, Math.floor(r.start / pageSize))]++;
+  const peak = Math.max(1, ...counts);
+  const barW = 100 / pages;
+  const spark = counts.map((c, i) =>
+    `<rect class="bar" x="${(i * barW).toFixed(2)}%" y="${(28 - (c / peak) * 26).toFixed(2)}" width="${(barW * 0.85).toFixed(2)}%" height="${((c / peak) * 26).toFixed(2)}"/>`
+  ).join("");
+
+  if (!reds.length) {
+    host.innerHTML = `<div class="vw-sb-head">⬛ REDACTIONS</div>
+      <div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px">— no redactions detected in extracted text —</div>`;
+    return;
+  }
+  host.innerHTML = `
+    <div class="vw-sb-head">⬛ REDACTIONS <span class="vw-count">${reds.length}</span></div>
+    <div class="vw-redact-stats">
+      <div class="stat"><div class="label">REDACTIONS</div><div class="value">${reds.length}</div></div>
+      <div class="stat"><div class="label">WORDS HIDDEN</div><div class="value">~${wordsRed}</div></div>
+      <div class="stat"><div class="label">% OF DOC</div><div class="value">${pct}%</div></div>
+      <div class="stat"><div class="label">PER-PAGE PEAK</div><div class="value">${peak}</div></div>
+    </div>
+    <svg class="vw-spark" viewBox="0 0 100 28" preserveAspectRatio="none">${spark}</svg>
+  `;
+}
+
+// ─── Sidebar links (replaces the old per-doc Ask widget + mini-graph) ─
+function renderViewerLinks(doc) {
+  const host = $("#vw-sb-links");
+  host.innerHTML = `
+    <div class="vw-sb-head">⚡ ACTIONS</div>
+    <div style="display:flex;flex-direction:column;gap:6px">
+      <a class="vw-sb-link" href="ask.html?scope=record:${encodeURIComponent(doc.id)}">⌘ Ask about this document →</a>
+      <a class="vw-sb-link" href="${recordUrl(doc.id)}">🕸 Record page: related docs &amp; graph →</a>
+    </div>`;
+}
+
+// ─── Extracted-text panel + entity highlights + redaction overlays ───
+function renderTextPanel() {
+  const host = $("#vw-textpanel-host");
+  host.innerHTML = "";
+  const txt = vwState.doc.text || "";
+  if (!txt) return;
+  const panel = document.createElement("div");
+  panel.className = "vw-textpanel";
+  panel.id = "vw-textpanel";
+  const marks = [];
+  const E = vwState.entities;
+  for (const k of ["people", "places", "craft", "programs"]) {
+    for (const { ent, offsets } of (E[k] || [])) {
+      for (const [s, e] of offsets) marks.push({ s, e, kind: "entity", type: k, id: ent.id, ent });
+    }
+  }
+  for (const r of vwState.redactions) marks.push({ s: r.start, e: r.end, kind: "redact", words: r.words, ctx: r.ctx });
+  marks.sort((a, b) => a.s - b.s || b.e - a.e);
+  const filtered = [];
+  let lastEnd = -1;
+  for (const m of marks) {
+    if (m.s < lastEnd) continue;
+    filtered.push(m); lastEnd = m.e;
+  }
+  let cursor = 0;
+  const frag = document.createDocumentFragment();
+  for (const m of filtered) {
+    if (m.s > cursor) frag.appendChild(document.createTextNode(txt.slice(cursor, m.s)));
+    if (m.kind === "entity") {
+      const span = document.createElement("mark");
+      span.className = "entity " + m.type;
+      span.dataset.type = m.type;
+      span.dataset.id = m.id;
+      span.textContent = txt.slice(m.s, m.e);
+      span.title = m.ent.blurb ? `${m.ent.name} — ${m.ent.blurb}` : m.ent.name;
+      span.addEventListener("click", () => navigateEntity(m.type, m.id));
+      frag.appendChild(span);
+    } else {
+      const r = document.createElement("span");
+      r.className = "vw-redaction";
+      r.dataset.words = m.words;
+      r.dataset.ctx = m.ctx;
+      r.style.minWidth = Math.min(180, 8 + m.words * 12) + "px";
+      r.addEventListener("mouseenter", (ev) => showRedactTip(ev, m));
+      r.addEventListener("mousemove", (ev) => positionRedactTip(ev));
+      r.addEventListener("mouseleave", hideRedactTip);
+      frag.appendChild(r);
+    }
+    cursor = m.e;
+  }
+  if (cursor < txt.length) frag.appendChild(document.createTextNode(txt.slice(cursor)));
+  panel.appendChild(frag);
+  host.appendChild(panel);
+  applyAnnotations();
+  panel.addEventListener("mouseup", maybeShowSelToolbar);
+  panel.addEventListener("keyup",   maybeShowSelToolbar);
+}
+
+function navigateEntity(type, id) {
+  const ent = (vwGazetteer[type] || []).find(e => e.id === id);
+  if (!ent) return;
+  location.href = searchUrl(ent.name);
+}
+
+function showRedactTip(ev, m) {
+  const tip = $("#vw-tooltip");
+  tip.innerHTML = `<div class="ttl">REDACTED · ~${m.words} word${m.words === 1 ? "" : "s"}</div><div>${escapeHtml(m.ctx || "")}</div>`;
+  tip.style.display = "block";
+  positionRedactTip(ev);
+}
+function positionRedactTip(ev) {
+  const tip = $("#vw-tooltip");
+  tip.style.left = (ev.pageX + 12) + "px";
+  tip.style.top  = (ev.pageY + 12) + "px";
+}
+function hideRedactTip() {
+  const tip = $("#vw-tooltip"); tip.style.display = "none";
+}
+
+// ─── Search-within-document ─────────────────────────────────────────
+function runDocSearch(q) {
+  vwState.search = q;
+  const panel = $("#vw-textpanel");
+  if (!panel) return;
+  panel.querySelectorAll(".vw-search-mark").forEach(m => {
+    const t = document.createTextNode(m.textContent);
+    m.parentNode.replaceChild(t, m);
+  });
+  panel.normalize();
+  vwState.searchHits = [];
+  vwState.searchActive = -1;
+  if (!q) { $("#vw-search-count").textContent = "—"; return; }
+  const re = new RegExp(q.replace(/[.*+?^${}()|[\]\\]/g, "\\$&"), "gi");
+  const walker = document.createTreeWalker(panel, NodeFilter.SHOW_TEXT, null);
+  const nodes = [];
+  let n; while ((n = walker.nextNode())) nodes.push(n);
+  for (const node of nodes) {
+    const matches = [...node.nodeValue.matchAll(re)];
+    if (!matches.length) continue;
+    const text = node.nodeValue;
+    const frag = document.createDocumentFragment();
+    let cursor = 0;
+    for (const m of matches) {
+      if (m.index > cursor) frag.appendChild(document.createTextNode(text.slice(cursor, m.index)));
+      const mk = document.createElement("mark");
+      mk.className = "vw-search-mark";
+      mk.textContent = m[0];
+      frag.appendChild(mk);
+      vwState.searchHits.push(mk);
+      cursor = m.index + m[0].length;
+    }
+    if (cursor < text.length) frag.appendChild(document.createTextNode(text.slice(cursor)));
+    node.parentNode.replaceChild(frag, node);
+  }
+  $("#vw-search-count").textContent = vwState.searchHits.length ? `1 / ${vwState.searchHits.length}` : "0";
+  if (vwState.searchHits.length) gotoSearchHit(0);
+  syncUrl();
+}
+function gotoSearchHit(i) {
+  if (!vwState.searchHits.length) return;
+  vwState.searchActive = ((i % vwState.searchHits.length) + vwState.searchHits.length) % vwState.searchHits.length;
+  vwState.searchHits.forEach((h, idx) => h.classList.toggle("active", idx === vwState.searchActive));
+  vwState.searchHits[vwState.searchActive].scrollIntoView({ behavior: "smooth", block: "center" });
+  $("#vw-search-count").textContent = `${vwState.searchActive + 1} / ${vwState.searchHits.length}`;
+}
+
+// ─── Annotations (same localStorage keys as the monolith) ────────────
+function annoStorageKey(id) { return "anno:" + id; }
+function loadAnnotations(id) {
+  try { return JSON.parse(localStorage.getItem(annoStorageKey(id)) || "[]"); }
+  catch (_) { return []; }
+}
+function saveAnnotations() {
+  try { localStorage.setItem(annoStorageKey(vwState.docId), JSON.stringify(vwState.annotations)); }
+  catch (_) { /* quota */ }
+}
+function applyAnnotations() {
+  if (!vwState.annoOn) return;
+  const panel = $("#vw-textpanel");
+  if (!panel) return;
+  const txt = vwState.doc.text || "";
+  for (const a of vwState.annotations) {
+    const idx = txt.indexOf(a.snippet);
+    if (idx < 0) continue;
+    const range = textOffsetToRange(panel, idx, idx + a.snippet.length);
+    if (!range) continue;
+    const mark = document.createElement("mark");
+    mark.className = "vw-anno-overlay" + (a.note ? " has-note" : "");
+    mark.dataset.annoId = a.id;
+    mark.title = a.note ? "Click to view note" : "Highlight";
+    try { range.surroundContents(mark); } catch (_) { continue; }
+    if (a.note) mark.addEventListener("click", () => openAnnoPopover(a.id, mark));
+  }
+}
+function textOffsetToRange(root, start, end) {
+  const walker = document.createTreeWalker(root, NodeFilter.SHOW_TEXT, null);
+  let acc = 0, startNode = null, startOff = 0, endNode = null, endOff = 0;
+  let n;
+  while ((n = walker.nextNode())) {
+    const len = n.nodeValue.length;
+    if (!startNode && acc + len > start) { startNode = n; startOff = start - acc; }
+    if (acc + len >= end) { endNode = n; endOff = end - acc; break; }
+    acc += len;
+  }
+  if (!startNode || !endNode) return null;
+  const r = document.createRange();
+  try { r.setStart(startNode, startOff); r.setEnd(endNode, endOff); } catch (_) { return null; }
+  return r;
+}
+
+function maybeShowSelToolbar() {
+  const sel = window.getSelection();
+  const tb = $("#vw-sel-tb");
+  if (!sel || sel.isCollapsed || !sel.toString().trim()) {
+    tb.style.display = "none"; return;
+  }
+  vwLastTextRange = sel.getRangeAt(0).cloneRange();
+  const r = sel.getRangeAt(0).getBoundingClientRect();
+  tb.style.display = "block";
+  tb.style.left = (window.scrollX + r.left + r.width / 2 - 70) + "px";
+  tb.style.top  = (window.scrollY + r.top - 36) + "px";
+}
+
+function getSelectionTextOffset() {
+  if (!vwLastTextRange) return null;
+  const panel = $("#vw-textpanel");
+  if (!panel) return null;
+  const snippet = vwLastTextRange.toString();
+  const idx = (vwState.doc.text || "").indexOf(snippet);
+  if (idx < 0) return null;
+  return { snippet, start: idx, end: idx + snippet.length };
+}
+
+function actionHighlight() {
+  const sel = getSelectionTextOffset(); if (!sel) return;
+  const a = { id: "a" + Date.now(), kind: "highlight", snippet: sel.snippet, start: sel.start, end: sel.end, note: "", ts: Date.now() };
+  vwState.annotations.push(a); saveAnnotations(); rerenderAnnotations();
+  $("#vw-sel-tb").style.display = "none";
+}
+function actionAnnotate() {
+  const sel = getSelectionTextOffset(); if (!sel) return;
+  const a = { id: "a" + Date.now(), kind: "note", snippet: sel.snippet, start: sel.start, end: sel.end, note: "", ts: Date.now() };
+  vwState.annotations.push(a); saveAnnotations(); rerenderAnnotations();
+  $("#vw-sel-tb").style.display = "none";
+  setTimeout(() => {
+    const mark = document.querySelector(`.vw-anno-overlay[data-anno-id="${a.id}"]`);
+    if (mark) openAnnoPopover(a.id, mark);
+  }, 50);
+}
+function actionCopyCitation() {
+  const sel = getSelectionTextOffset(); if (!sel) return;
+  const d = vwState.doc;
+  const url = location.origin + location.pathname + "?id=" + encodeURIComponent(d.id) + "&page=" + vwState.page;
+  const cit = `"${sel.snippet}" — ${d.title}, ${d.agency || ""}${d.release_date ? ", " + d.release_date : ""}. ${url}`;
+  navigator.clipboard.writeText(cit).then(() => flashAction("vw-sel-cite", "✓ COPIED")).catch(() => flashAction("vw-sel-cite", "× FAILED"));
+  $("#vw-sel-tb").style.display = "none";
+}
+function flashAction(id, msg) {
+  const b = document.getElementById(id); if (!b) return;
+  const orig = b.textContent; b.textContent = msg;
+  setTimeout(() => { b.textContent = orig; }, 1500);
+}
+
+function rerenderAnnotations() {
+  renderTextPanel();
+  renderAnnotationsList();
+  if (vwState.search) runDocSearch(vwState.search);
+}
+
+function renderAnnotationsList() {
+  const host = $("#vw-sb-annos");
+  const list = vwState.annotations;
+  let html = `<div class="vw-sb-head">📌 ANNOTATIONS <span class="vw-count">${list.length}</span></div>`;
+  if (!list.length) {
+    html += `<div style="color:var(--fg-dim);font-family:var(--mono);font-size:11px">— select text in the document to highlight or annotate —</div>`;
+  } else {
+    html += `<div class="vw-ent-list">` + list.map(a => `
+      <div class="vw-ent vw-anno-item" data-anno-id="${escapeHtml(a.id)}" title="${escapeHtml(a.note || a.snippet)}">
+        <span>${a.kind === "note" ? "📌" : "★"} ${escapeHtml(a.snippet.slice(0, 60))}${a.snippet.length > 60 ? "…" : ""}</span>
+        <span class="vw-ent-n">${a.note ? "✎" : ""}</span>
+      </div>`).join("") + `</div>`;
+  }
+  host.innerHTML = html;
+  host.querySelectorAll(".vw-anno-item").forEach(el => {
+    el.addEventListener("click", () => {
+      const mark = document.querySelector(`.vw-anno-overlay[data-anno-id="${el.dataset.annoId}"]`);
+      if (!mark) return;
+      mark.scrollIntoView({ behavior: "smooth", block: "center" });
+      mark.classList.add("flash");
+      setTimeout(() => mark.classList.remove("flash"), 1200);
+      const a = vwState.annotations.find(x => x.id === el.dataset.annoId);
+      if (a && a.kind === "note") openAnnoPopover(a.id, mark);
+    });
+  });
+}
+
+function openAnnoPopover(annoId, anchorEl) {
+  closeAnnoPopover();
+  const a = vwState.annotations.find(x => x.id === annoId);
+  if (!a) return;
+  const pop = document.createElement("div");
+  pop.className = "vw-anno-popover";
+  pop.id = "vw-anno-pop";
+  pop.innerHTML = `
+    <textarea placeholder="Add a note…">${escapeHtml(a.note || "")}</textarea>
+    <div class="vw-anno-actions">
+      <button class="danger" data-act="delete">Delete</button>
+      <button data-act="cancel">Cancel</button>
+      <button data-act="save">Save</button>
+    </div>`;
+  document.body.appendChild(pop);
+  const r = anchorEl.getBoundingClientRect();
+  pop.style.left = (window.scrollX + r.left) + "px";
+  pop.style.top  = (window.scrollY + r.bottom + 6) + "px";
+  const ta = pop.querySelector("textarea");
+  ta.focus();
+  pop.querySelector('[data-act="save"]').onclick = () => {
+    a.note = ta.value.trim(); saveAnnotations(); rerenderAnnotations(); closeAnnoPopover();
+  };
+  pop.querySelector('[data-act="delete"]').onclick = () => {
+    vwState.annotations = vwState.annotations.filter(x => x.id !== annoId);
+    saveAnnotations(); rerenderAnnotations(); closeAnnoPopover();
+  };
+  pop.querySelector('[data-act="cancel"]').onclick = closeAnnoPopover;
+}
+function closeAnnoPopover() {
+  const e = document.getElementById("vw-anno-pop"); if (e) e.remove();
+}
+
+function exportAnnotations() {
+  const data = { doc: vwState.docId, title: vwState.doc.title, exported: new Date().toISOString(), annotations: vwState.annotations };
+  const blob = new Blob([JSON.stringify(data, null, 2)], { type: "application/json" });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement("a");
+  a.href = url; a.download = `annotations-${vwState.docId}.json`;
+  document.body.appendChild(a); a.click(); a.remove();
+  setTimeout(() => URL.revokeObjectURL(url), 200);
+}
+
+// ─── HUD wiring ──────────────────────────────────────────────────────
+function bindViewerHud() {
+  $("#vw-rail-toggle").onclick = () => {
+    vwRailExpanded = !vwRailExpanded;
+    $("#vw-body").classList.toggle("rail-expanded", vwRailExpanded);
+    $("#vw-rail").classList.toggle("collapsed", !vwRailExpanded);
+    $("#vw-rail-toggle").textContent = vwRailExpanded ? "◀" : "▶";
+    if (vwState.pdf) buildThumbnails(vwState.pdf);
+  };
+  $("#vw-sidebar-toggle").onclick = () => {
+    vwSidebarCollapsed = !vwSidebarCollapsed;
+    $("#vw-body").classList.toggle("sidebar-collapsed", vwSidebarCollapsed);
+  };
+  $("#vw-zoom-in").onclick = () => {
+    const cur = typeof vwState.zoom === "number" ? vwState.zoom : 1;
+    setZoom(Math.min(2, cur + 0.25));
+  };
+  $("#vw-zoom-out").onclick = () => {
+    const cur = typeof vwState.zoom === "number" ? vwState.zoom : 1;
+    setZoom(Math.max(0.5, cur - 0.25));
+  };
+  $("#vw-zoom-fit").onclick = () => setZoom("fit-width");
+  const sInput = $("#vw-search-input");
+  sInput.oninput = () => runDocSearch(sInput.value);
+  sInput.onkeydown = (e) => {
+    if (e.key === "Enter") {
+      if (e.shiftKey) gotoSearchHit(vwState.searchActive - 1);
+      else gotoSearchHit(vwState.searchActive + 1);
+      e.preventDefault();
+    } else if (e.key === "Escape") {
+      sInput.value = ""; runDocSearch("");
+    }
+  };
+  $("#vw-search-prev").onclick = () => gotoSearchHit(vwState.searchActive - 1);
+  $("#vw-search-next").onclick = () => gotoSearchHit(vwState.searchActive + 1);
+  $("#vw-anno-toggle").onclick = () => {
+    vwState.annoOn = !vwState.annoOn;
+    $("#vw-anno-toggle").classList.toggle("active", vwState.annoOn);
+    rerenderAnnotations();
+    syncUrl();
+  };
+  $("#vw-anno-toggle").classList.toggle("active", vwState.annoOn);
+  $("#vw-anno-export").onclick = exportAnnotations;
+  $("#vw-download").onclick = () => {
+    const u = vwState.doc.source_url || pdfPathFor(vwState.doc);
+    if (u) window.open(u, "_blank", "noopener");
+  };
+  $("#vw-sel-highlight").onclick = actionHighlight;
+  $("#vw-sel-annotate").onclick  = actionAnnotate;
+  $("#vw-sel-cite").onclick      = actionCopyCitation;
+  document.addEventListener("keydown", (e) => {
+    if ((e.metaKey || e.ctrlKey) && e.key === "f") {
+      e.preventDefault(); $("#vw-search-input").focus(); $("#vw-search-input").select();
+    } else if (e.key === "Escape") {
+      closeAnnoPopover(); $("#vw-sel-tb").style.display = "none";
+    }
+  });
+  document.addEventListener("mousedown", (e) => {
+    const tb = $("#vw-sel-tb");
+    if (tb && !tb.contains(e.target)) {
+      setTimeout(() => { if (window.getSelection().isCollapsed) tb.style.display = "none"; }, 100);
+    }
+  });
+}
+
+// ─── Init ────────────────────────────────────────────────────────────
+(async function init() {
+  loadUrl();
+  bindViewerHud();
+  const id = getParam("id");
+  const center = $("#vw-center");
+  if (!id) {
+    center.innerHTML = `<div class="vw-fatal">No document specified. <a href="search.html">← back to search</a></div>`;
+    return;
+  }
+  await loadCoreData([]);
+  const doc = docById(id);
+  if (!doc) {
+    center.innerHTML = `<div class="vw-fatal">Record not found: <code>${escapeHtml(id)}</code><br><br><a href="search.html">← back to search</a></div>`;
+    return;
+  }
+  vwState.docId = id;
+  vwState.doc = doc;
+  $("#vw-back").href = recordUrl(id);
+  $("#vw-cite").href = recordUrl(id);
+  await renderViewer();
+})();
+</script>
+</body>
+</html>

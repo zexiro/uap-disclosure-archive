@@ -1,0 +1,919 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>The Archive — declassified UAP records, Release 1</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <!-- Newsreader: editorial-magazine serif, optical sizes 6–72. JetBrains Mono
+       for technical metadata. Big Shoulders Display for the classification
+       stamps and tactical labels. Three fonts, three jobs, no overlap. -->
+  <link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,200..800;1,6..72,200..800&family=JetBrains+Mono:wght@300;400;500;600&family=Big+Shoulders+Display:wght@500;600;700;900&display=swap" rel="stylesheet">
+<style>
+:root {
+  /* Palette — banker's-lamp light over a green-baize desk. Deep document
+     ink for surfaces, warm cream for "lit" content, stamp red as the
+     loudest accent. */
+  --bg-deep:    #14110c;
+  --bg-mid:     #1c1813;
+  --bg-rule:    #2c261c;
+  --paper:      #ecdfca;
+  --paper-edge: #c8b993;
+  --paper-grain:#d4c8a8;
+  --ink:        #16110a;
+  --ink-soft:   #43392a;
+  --ink-mute:   #6e6452;
+  --cream:      #e9dec3;
+  --cream-mute: #a89e80;
+  --stamp:      #9a2c2c;
+  --stamp-deep: #6e1d1d;
+  --amber:      #c89a3a;
+  --olive:      #6c7438;
+  --cyan:       #4f7886;
+  --redact:     #0e0c08;
+
+  --shadow-card: 0 1px 0 rgba(255,238,200,0.04) inset,
+                 0 0 0 1px rgba(0,0,0,0.4),
+                 0 18px 36px -22px rgba(0,0,0,0.7),
+                 0 6px 16px -10px rgba(0,0,0,0.6);
+
+  --grain: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='220' height='220'><filter id='n'><feTurbulence baseFrequency='0.85' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 0.16  0 0 0 0 0.13  0 0 0 0 0.08  0 0 0 0.65 0'/></filter><rect width='100%25' height='100%25' filter='url(%23n)' opacity='0.4'/></svg>");
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+html { background: var(--bg-deep); }
+body {
+  font-family: "Newsreader", "Iowan Old Style", Georgia, serif;
+  font-optical-sizing: auto;
+  font-weight: 380;
+  color: var(--cream);
+  background:
+    radial-gradient(1200px 700px at 75% -20%, rgba(200,154,58,0.07), transparent 60%),
+    radial-gradient(900px 600px at 15% 110%, rgba(108,116,56,0.06), transparent 70%),
+    var(--bg-deep);
+  background-attachment: fixed;
+  line-height: 1.55;
+  letter-spacing: 0.005em;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+body::before {
+  /* film-grain overlay */
+  content: "";
+  position: fixed; inset: 0;
+  background-image: var(--grain);
+  opacity: 0.45;
+  mix-blend-mode: overlay;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── 1.  CLASSIFICATION BANNERS ─────────────────────────────────────── */
+.classification {
+  position: relative; z-index: 3;
+  background: var(--stamp);
+  color: #fff;
+  font-family: "Big Shoulders Display", "Oswald", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  font-size: 11px;
+  text-align: center;
+  padding: 6px 24px 5px;
+  line-height: 1;
+  user-select: none;
+  display: flex; align-items: center; justify-content: space-between; gap: 24px;
+  box-shadow: 0 1px 0 rgba(255,255,255,0.18) inset, 0 -1px 0 rgba(0,0,0,0.3) inset;
+}
+.classification span { white-space: nowrap; }
+.classification .bullet { opacity: 0.55; padding: 0 4px; }
+.classification.top    { border-bottom: 1px solid rgba(0,0,0,0.5); }
+.classification.bottom { border-top:    1px solid rgba(0,0,0,0.5); margin-top: 80px; }
+
+/* ── 2.  ARCHIVE MASTHEAD ───────────────────────────────────────────── */
+.masthead {
+  position: relative; z-index: 2;
+  padding: 36px 56px 18px;
+  border-bottom: 1px solid var(--bg-rule);
+  background:
+    linear-gradient(180deg, rgba(0,0,0,0.4), transparent 60%),
+    var(--bg-mid);
+  display: grid;
+  grid-template-columns: 1.4fr 1fr;
+  gap: 44px;
+  align-items: end;
+}
+.masthead .wordmark {
+  font-family: "Newsreader", serif;
+  font-weight: 220;
+  font-size: clamp(54px, 7vw, 96px);
+  line-height: 0.86;
+  letter-spacing: -0.02em;
+  color: var(--cream);
+}
+.masthead .wordmark em {
+  font-style: italic;
+  font-weight: 280;
+  color: var(--amber);
+}
+.masthead .wordmark .ampersand {
+  font-style: italic;
+  font-weight: 380;
+  color: var(--stamp);
+}
+.masthead .tagline {
+  margin-top: 14px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  letter-spacing: 0.12em;
+  color: var(--cream-mute);
+  text-transform: uppercase;
+  display: flex; gap: 14px; flex-wrap: wrap;
+}
+.masthead .tagline b {
+  color: var(--cream);
+  font-weight: 500;
+  letter-spacing: 0.18em;
+}
+.masthead .tagline .pip {
+  width: 5px; height: 5px; background: var(--stamp); border-radius: 50%;
+  display: inline-block; margin: 6px 0;
+}
+.masthead .search-wrap {
+  position: relative;
+  display: flex; flex-direction: column; gap: 8px;
+}
+.masthead .search-label {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 600;
+  letter-spacing: 0.28em;
+  font-size: 10px;
+  color: var(--cream-mute);
+  text-transform: uppercase;
+}
+.masthead .search-input {
+  position: relative;
+  background: var(--paper);
+  color: var(--ink);
+  border: 1px solid var(--paper-edge);
+  border-radius: 0;
+  padding: 18px 64px 16px 22px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 16px;
+  letter-spacing: -0.005em;
+  width: 100%;
+  outline: none;
+  box-shadow:
+    0 1px 0 rgba(255,238,200,0.6) inset,
+    0 0 0 0 var(--amber);
+  transition: box-shadow 0.16s ease;
+}
+.masthead .search-input::placeholder { color: var(--ink-mute); font-style: italic; font-family: "Newsreader", serif; }
+.masthead .search-input:focus {
+  box-shadow:
+    0 1px 0 rgba(255,238,200,0.6) inset,
+    0 0 0 2px var(--amber);
+}
+.masthead .search-meta {
+  position: absolute; right: 22px; top: 50%; transform: translateY(-50%);
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  font-size: 11px;
+  letter-spacing: 0.22em;
+  color: var(--stamp);
+}
+
+/* ── 3.  FILTER STAMPS  ─────────────────────────────────────────────── */
+.filterbar {
+  position: relative; z-index: 2;
+  display: flex; flex-wrap: wrap; gap: 10px;
+  padding: 18px 56px;
+  background: var(--bg-deep);
+  border-bottom: 1px solid var(--bg-rule);
+}
+.stamp {
+  position: relative;
+  padding: 8px 14px 7px;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--cream-mute);
+  background: transparent;
+  border: 1px solid var(--bg-rule);
+  cursor: pointer;
+  text-transform: uppercase;
+  transition: all 0.12s ease;
+}
+.stamp::before, .stamp::after {
+  content: ""; position: absolute; width: 7px; height: 7px;
+  border: 1px solid var(--bg-rule);
+}
+.stamp::before { top: -1px; left: -1px; border-right: 0; border-bottom: 0; }
+.stamp::after  { bottom: -1px; right: -1px; border-left: 0; border-top: 0; }
+.stamp:hover { color: var(--cream); border-color: var(--cream-mute); }
+.stamp:hover::before, .stamp:hover::after { border-color: var(--cream-mute); }
+.stamp.active {
+  color: #fff;
+  background: var(--stamp);
+  border-color: var(--stamp-deep);
+}
+.stamp.active::before, .stamp.active::after { border-color: var(--stamp-deep); }
+.stamp .count {
+  display: inline-block; margin-left: 8px;
+  font-family: "JetBrains Mono", monospace;
+  font-weight: 400;
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  color: inherit;
+  opacity: 0.7;
+}
+.filterbar .separator {
+  width: 1px; height: 22px; background: var(--bg-rule); margin: auto 2px;
+}
+.filterbar .stamp.kind-PDF.active { background: var(--cyan); border-color: #2d5764; }
+.filterbar .stamp.kind-PDF.active::before, .filterbar .stamp.kind-PDF.active::after { border-color: #2d5764; }
+.filterbar .stamp.kind-IMG.active { background: var(--olive); border-color: #4a5226; }
+.filterbar .stamp.kind-IMG.active::before, .filterbar .stamp.kind-IMG.active::after { border-color: #4a5226; }
+.filterbar .stamp.kind-VID.active { background: var(--amber); border-color: #8c6e1f; color: #1a1408; }
+.filterbar .stamp.kind-VID.active::before, .filterbar .stamp.kind-VID.active::after { border-color: #8c6e1f; }
+
+/* ── 4.  LAYOUT  ────────────────────────────────────────────────────── */
+.shelf {
+  position: relative; z-index: 2;
+  display: grid;
+  grid-template-columns: minmax(0, 1.05fr) minmax(0, 1fr);
+  gap: 0;
+  align-items: start;
+  min-height: 100vh;
+}
+.shelf .col-results { padding: 32px 56px 80px; border-right: 1px solid var(--bg-rule); }
+.shelf .col-detail  { padding: 32px 56px 80px; background:
+    radial-gradient(1200px 800px at 70% 30%, rgba(236,223,202,0.06), transparent 60%),
+    var(--bg-mid);
+}
+
+.column-header {
+  display: flex; align-items: baseline; justify-content: space-between;
+  margin-bottom: 22px; padding-bottom: 10px;
+  border-bottom: 1px dashed var(--bg-rule);
+}
+.column-header h2 {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.32em;
+  font-size: 11px;
+  color: var(--cream-mute);
+  text-transform: uppercase;
+}
+.column-header .count {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 11px;
+  color: var(--cream-mute);
+  letter-spacing: 0.06em;
+}
+.column-header .count strong { color: var(--cream); font-weight: 600; }
+
+/* ── 5.  RECORD CARD — manila folder tab ────────────────────────────── */
+.record {
+  position: relative;
+  background:
+    linear-gradient(180deg, rgba(255,238,210,0.02), transparent 30%),
+    var(--bg-mid);
+  border: 1px solid var(--bg-rule);
+  border-left: 2px solid var(--bg-rule);
+  padding: 22px 26px 22px 28px;
+  margin-bottom: 16px;
+  cursor: pointer;
+  transition: transform 0.16s ease, border-color 0.16s ease, background 0.16s ease;
+  display: grid;
+  grid-template-columns: 1fr 110px;
+  gap: 22px;
+  align-items: start;
+}
+.record::before {
+  /* page-corner tab indicating type */
+  content: ""; position: absolute; top: -1px; left: -1px;
+  width: 38px; height: 38px;
+  background: linear-gradient(135deg, var(--cream-mute) 0% 50%, transparent 50%);
+  opacity: 0.18;
+  transition: opacity 0.16s ease;
+}
+.record.kind-PDF::before { background: linear-gradient(135deg, var(--cyan) 0% 50%, transparent 50%); }
+.record.kind-IMG::before { background: linear-gradient(135deg, var(--olive) 0% 50%, transparent 50%); }
+.record.kind-VID::before { background: linear-gradient(135deg, var(--amber) 0% 50%, transparent 50%); }
+.record:hover {
+  transform: translateX(3px);
+  border-color: var(--cream-mute);
+  border-left-color: var(--cream);
+  background:
+    linear-gradient(180deg, rgba(255,238,210,0.04), transparent 30%),
+    #211c16;
+}
+.record:hover::before { opacity: 0.55; }
+
+.record.is-active {
+  border-color: var(--amber);
+  border-left: 2px solid var(--amber);
+  background:
+    linear-gradient(180deg, rgba(200,154,58,0.06), transparent 50%),
+    #211c16;
+}
+.record.is-active::before { opacity: 0.7; }
+
+.record .head {
+  display: flex; align-items: baseline; gap: 12px; flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.08em;
+  color: var(--cream-mute);
+  margin-bottom: 10px;
+  text-transform: uppercase;
+}
+.record .head .agency {
+  padding: 2px 8px 1px;
+  background: var(--stamp);
+  color: #fff;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  font-size: 10.5px;
+}
+.record.kind-PDF .head .agency { background: var(--cyan); }
+.record.kind-IMG .head .agency { background: var(--olive); }
+.record.kind-VID .head .agency { background: var(--amber); color: #1a1408; }
+.record .head .kind {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.22em;
+  font-size: 10px;
+  color: var(--cream);
+}
+.record .head .dot { color: var(--ink-mute); opacity: 0.5; }
+.record .head .date { color: var(--cream-mute); }
+.record .head .redacted {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  color: #fff;
+  background: var(--ink);
+  padding: 2px 8px 1px;
+  position: relative;
+  overflow: hidden;
+}
+.record .head .redacted::after {
+  /* subtle scratch over the redaction stamp */
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(transparent 47%, rgba(255,255,255,0.18) 48% 52%, transparent 53%);
+  transform: rotate(-2deg);
+}
+.record h3 {
+  font-family: "Newsreader", serif;
+  font-weight: 350;
+  font-size: 22px;
+  letter-spacing: -0.005em;
+  line-height: 1.18;
+  color: var(--cream);
+  margin-bottom: 10px;
+}
+.record .blurb {
+  font-family: "Newsreader", serif;
+  font-weight: 360;
+  font-size: 14.5px;
+  font-style: italic;
+  line-height: 1.5;
+  color: #c5b89c;
+  margin-bottom: 12px;
+}
+.record .meta-row {
+  display: flex; gap: 18px; flex-wrap: wrap;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.04em;
+  color: var(--cream-mute);
+}
+.record .meta-row .k { color: var(--ink-mute); margin-right: 4px; }
+.record .meta-row .v { color: var(--cream); }
+.record .thumb {
+  position: relative;
+  width: 110px; height: 140px;
+  background: var(--bg-deep);
+  border: 1px solid var(--bg-rule);
+  box-shadow: 2px 2px 0 rgba(0,0,0,0.4);
+  overflow: hidden;
+  filter: sepia(0.18) contrast(1.05) brightness(0.92);
+}
+.record .thumb img { width: 100%; height: 100%; object-fit: cover; display: block; }
+.record .thumb.placeholder {
+  display: flex; align-items: center; justify-content: center;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 11px;
+  color: var(--ink-mute);
+}
+.record .thumb::after {
+  content: ""; position: absolute; inset: 0;
+  background:
+    linear-gradient(180deg, rgba(255,238,200,0.05), transparent 30%),
+    repeating-linear-gradient(0deg, transparent 0 2px, rgba(0,0,0,0.04) 2px 3px);
+  pointer-events: none;
+}
+
+/* ── 6.  DETAIL — the opened folder ─────────────────────────────────── */
+.detail {
+  position: sticky; top: 32px;
+  background: var(--paper);
+  background-image: var(--grain),
+    linear-gradient(180deg, rgba(255,255,255,0.05), transparent 12%),
+    radial-gradient(800px 500px at 80% -10%, rgba(255,255,255,0.12), transparent 60%);
+  color: var(--ink);
+  border: 1px solid var(--paper-edge);
+  box-shadow: var(--shadow-card);
+  padding: 36px 40px 40px;
+  position: relative;
+}
+.detail::before {
+  /* the "torn / dog-eared" corner */
+  content: "";
+  position: absolute; top: 0; right: 0;
+  width: 56px; height: 56px;
+  background:
+    linear-gradient(225deg, var(--bg-deep) 50%, transparent 50%);
+  box-shadow: -1px 1px 0 rgba(0,0,0,0.18);
+}
+.detail::after {
+  /* fold-line shadow under the dog-ear */
+  content: ""; position: absolute; top: 0; right: 0;
+  width: 56px; height: 56px;
+  background:
+    linear-gradient(225deg, transparent 50%, rgba(0,0,0,0.08) 50%, transparent 58%);
+  pointer-events: none;
+}
+.detail .stamp-block {
+  position: absolute; top: 24px; left: 40px;
+  transform: rotate(-5deg);
+  border: 2px solid var(--stamp);
+  color: var(--stamp);
+  padding: 6px 12px 4px;
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.18em;
+  font-size: 12px;
+  opacity: 0.85;
+  background: rgba(154,44,44,0.04);
+  text-transform: uppercase;
+}
+.detail h1 {
+  font-family: "Newsreader", serif;
+  font-weight: 280;
+  font-size: 38px;
+  letter-spacing: -0.01em;
+  line-height: 1.05;
+  color: var(--ink);
+  margin: 70px 0 8px;
+}
+.detail .doc-id {
+  font-family: "JetBrains Mono", monospace;
+  font-size: 10.5px;
+  letter-spacing: 0.16em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  margin-bottom: 28px;
+}
+.detail .form-grid {
+  display: grid;
+  grid-template-columns: 110px 1fr;
+  gap: 10px 18px;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 12px;
+  color: var(--ink);
+  margin: 20px 0 26px;
+  border-top: 1px solid var(--paper-edge);
+  border-bottom: 1px solid var(--paper-edge);
+  padding: 16px 0 18px;
+}
+.detail .form-grid .k {
+  color: var(--ink-mute);
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  font-size: 10px;
+  align-self: center;
+}
+.detail .form-grid .v {
+  color: var(--ink);
+  letter-spacing: 0.02em;
+  font-size: 12px;
+}
+.detail .form-grid .v.dash { color: var(--ink-mute); font-style: italic; }
+.detail .form-grid .v .redact {
+  display: inline-block;
+  background: var(--ink);
+  color: transparent;
+  user-select: none;
+  border-radius: 1px;
+  padding: 0 5px;
+}
+.detail .blurb {
+  font-family: "Newsreader", serif;
+  font-size: 18px;
+  line-height: 1.55;
+  color: var(--ink);
+  font-weight: 380;
+  margin: 20px 0 28px;
+  border-left: 3px solid var(--stamp);
+  padding-left: 18px;
+}
+.detail .blurb::first-line { font-variant: small-caps; letter-spacing: 0.04em; }
+.detail .briefing {
+  font-family: "Big Shoulders Display", sans-serif;
+  letter-spacing: 0.32em;
+  font-weight: 700;
+  font-size: 10px;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+  margin: 22px 0 8px;
+  display: flex; align-items: baseline; gap: 12px;
+}
+.detail .briefing::after {
+  content: ""; flex: 1; height: 1px; background: var(--paper-edge);
+}
+.detail .links { display: flex; gap: 16px; flex-wrap: wrap; margin: 14px 0 4px; }
+.detail .link {
+  font-family: "Big Shoulders Display", sans-serif;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  font-size: 11px;
+  color: var(--stamp);
+  text-decoration: none;
+  border: 1px solid var(--stamp);
+  padding: 9px 14px 8px;
+  text-transform: uppercase;
+  transition: all 0.12s ease;
+  position: relative;
+}
+.detail .link::after {
+  content: " →"; opacity: 0.7; margin-left: 4px;
+}
+.detail .link:hover {
+  background: var(--stamp); color: #fff;
+}
+.detail .link.alt { border-color: var(--ink); color: var(--ink); }
+.detail .link.alt:hover { background: var(--ink); color: var(--paper); }
+.detail .footer-stamp {
+  position: absolute; bottom: 22px; right: 30px;
+  text-align: right;
+  font-family: "JetBrains Mono", monospace;
+  font-size: 9.5px;
+  letter-spacing: 0.18em;
+  color: var(--ink-mute);
+  text-transform: uppercase;
+}
+.detail .footer-stamp b { color: var(--stamp); font-weight: 700; }
+
+/* ── 7.  LOAD STAGGER  ─────────────────────────────────────────────── */
+.record {
+  opacity: 0; transform: translateY(8px);
+  animation: rec-in 0.5s cubic-bezier(.2,.7,.25,1) forwards;
+}
+.record:nth-child(1)  { animation-delay: 0.05s; }
+.record:nth-child(2)  { animation-delay: 0.12s; }
+.record:nth-child(3)  { animation-delay: 0.19s; }
+.record:nth-child(4)  { animation-delay: 0.26s; }
+.record:nth-child(5)  { animation-delay: 0.33s; }
+.record:nth-child(6)  { animation-delay: 0.40s; }
+.record:nth-child(7)  { animation-delay: 0.47s; }
+.record:nth-child(8)  { animation-delay: 0.54s; }
+.record:nth-child(9)  { animation-delay: 0.61s; }
+@keyframes rec-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.detail {
+  opacity: 0; transform: translateY(12px);
+  animation: det-in 0.7s cubic-bezier(.2,.7,.25,1) 0.3s forwards;
+}
+@keyframes det-in {
+  to { opacity: 1; transform: translateY(0); }
+}
+.classification {
+  opacity: 0; animation: cls-in 0.4s ease forwards 0.1s;
+}
+.classification.bottom { animation-delay: 0.6s; }
+@keyframes cls-in { to { opacity: 1; } }
+
+@media (max-width: 960px) {
+  .masthead { grid-template-columns: 1fr; padding: 28px 24px; gap: 22px; }
+  .filterbar { padding: 14px 24px; }
+  .shelf { grid-template-columns: 1fr; }
+  .shelf .col-results { padding: 24px 24px 32px; border-right: 0; border-bottom: 1px solid var(--bg-rule); }
+  .shelf .col-detail { padding: 24px 24px 80px; }
+  .detail { position: static; padding: 28px 24px; }
+  .record { grid-template-columns: 1fr; }
+  .record .thumb { width: 100%; height: 200px; order: -1; }
+}
+</style>
+</head>
+<body>
+
+<div class="classification top">
+  <span>UNCLASSIFIED <span class="bullet">//</span> RELEASE 1 OF N</span>
+  <span>THE ARCHIVE <span class="bullet">·</span> A LOCAL MIRROR OF WAR.GOV/UFO</span>
+  <span>1,150 RECORDS <span class="bullet">·</span> 553 CASE FILES <span class="bullet">·</span> 449 IMAGES <span class="bullet">·</span> 120 DOCUMENTS <span class="bullet">·</span> 28 VIDEOS</span>
+</div>
+
+<header class="masthead">
+  <div>
+    <h1 class="wordmark">The <em>Disclosure</em><br/>Archive<span class="ampersand">.</span></h1>
+    <p class="tagline">
+      <b>RELEASE&nbsp;01</b><span class="pip"></span>
+      <span>2026 · 05 · 07</span><span class="pip"></span>
+      <span>OPEN ACCESS</span><span class="pip"></span>
+      <span>NO PAYWALL</span>
+    </p>
+  </div>
+  <div class="search-wrap">
+    <label class="search-label" for="q">Search the briefing archive</label>
+    <div style="position:relative">
+      <input id="q" class="search-input" type="search"
+             placeholder="Type a name, place, code-name, year…" value="orbs launching orbs" />
+      <span class="search-meta">↩ 4 hits</span>
+    </div>
+  </div>
+</header>
+
+<nav class="filterbar" aria-label="Filters">
+  <button class="stamp active">All <span class="count">1150</span></button>
+  <div class="separator"></div>
+  <button class="stamp kind-PDF active">Case files <span class="count">553</span></button>
+  <button class="stamp kind-IMG active">Images <span class="count">449</span></button>
+  <button class="stamp kind-PDF">Documents <span class="count">120</span></button>
+  <button class="stamp kind-VID active">Videos <span class="count">28</span></button>
+  <div class="separator"></div>
+  <button class="stamp">FBI</button>
+  <button class="stamp">CIA</button>
+  <button class="stamp">NASA</button>
+  <button class="stamp">DoW</button>
+  <button class="stamp">Dept. of State</button>
+  <div class="separator"></div>
+  <button class="stamp">Triangle</button>
+  <button class="stamp">Disc</button>
+  <button class="stamp">Cigar</button>
+  <button class="stamp">Orb</button>
+  <button class="stamp">Light</button>
+</nav>
+
+<section class="shelf">
+  <!-- ────────────  RESULTS COLUMN  ──────────── -->
+  <div class="col-results">
+    <div class="column-header">
+      <h2>Findings · ordered by relevance</h2>
+      <span class="count"><strong>9</strong> of 1,150</span>
+    </div>
+
+    <article class="record is-active kind-IMG">
+      <div>
+        <div class="head">
+          <span class="agency">FBI</span>
+          <span class="kind">Composite Sketch</span>
+          <span class="dot">·</span>
+          <span class="date">released 2024 · 04 · 30</span>
+        </div>
+        <h3>“Orbs Launching Orbs” — Western U.S., dusk, two separate days</h3>
+        <p class="blurb">Three teams of two federal law-enforcement special agents (USPER1 through USPER6) independently describe seeing orange orbs in the sky emit-launch smaller red orbs in groups of two to four. Stated to have occurred at least five times.</p>
+        <div class="meta-row">
+          <span><span class="k">incident</span><span class="v">2023 · 09 · 14</span></span>
+          <span><span class="k">location</span><span class="v">Western U.S.</span></span>
+          <span><span class="k">witnesses</span><span class="v">6 federal agents</span></span>
+          <span><span class="k">shape</span><span class="v">orb</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/2024-04-30-composite-sketch.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='IMG'" />
+      </div>
+    </article>
+
+    <article class="record kind-PDF">
+      <div>
+        <div class="head">
+          <span class="agency">DoW</span>
+          <span class="kind">Range Fouler Debrief</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 07</span>
+          <span class="dot">·</span>
+          <span class="redacted">REDACTED</span>
+        </div>
+        <h3>DOW-UAP-D38 · Range Fouler Debrief, Middle East, May 2020</h3>
+        <p class="blurb">Standardized reporting form the U.S. Navy uses to record the circumstances surrounding an unauthorized intrusion into controlled airspace. Pilot’s account, sensor readings, sortie context. Names and call-signs redacted.</p>
+        <div class="meta-row">
+          <span><span class="k">incident</span><span class="v">2020 · 05 · 14</span></span>
+          <span><span class="k">location</span><span class="v">Middle East</span></span>
+          <span><span class="k">platform</span><span class="v">F/A-18E</span></span>
+        </div>
+      </div>
+      <div class="thumb placeholder">DOC</div>
+    </article>
+
+    <article class="record kind-VID">
+      <div>
+        <div class="head">
+          <span class="agency">NASA</span>
+          <span class="kind">Air-to-Ground Audio</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 08</span>
+        </div>
+        <h3>Gemini VII — Frank Borman reports sighting to Mission Control</h3>
+        <p class="blurb">Air to ground communications and the NASA Public Affairs audio feed recorded during the Gemini VII flight. In this excerpted segment, Astronaut Frank Borman describes an unidentified object to Houston.</p>
+        <div class="meta-row">
+          <span><span class="k">incident</span><span class="v">1965 · 12 · 05</span></span>
+          <span><span class="k">location</span><span class="v">Low Earth Orbit</span></span>
+          <span><span class="k">runtime</span><span class="v">02 : 18</span></span>
+        </div>
+      </div>
+      <div class="thumb placeholder">VID</div>
+    </article>
+
+    <article class="record kind-PDF">
+      <div>
+        <div class="head">
+          <span class="agency">State</span>
+          <span class="kind">Council Memorandum</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 08</span>
+        </div>
+        <h3>59-214434 · S/P 16 — “Thoughts on the space alien race question”</h3>
+        <p class="blurb">Executive Office of the President, National Aeronautics and Space Council. Plans if alien intelligence is discovered, expansion of scientific knowledge, considerations for public communication.</p>
+        <div class="meta-row">
+          <span><span class="k">date</span><span class="v">1963 · 07 · 18</span></span>
+          <span><span class="k">classification</span><span class="v">CONFIDENTIAL → declassified</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/59_214434_sp_16__7.18.1963.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='DOC'" />
+      </div>
+    </article>
+
+    <article class="record kind-PDF">
+      <div>
+        <div class="head">
+          <span class="agency">FBI</span>
+          <span class="kind">62-HQ-83894 Case File</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 08</span>
+        </div>
+        <h3>FBI 62-HQ-83894 — Section 10 of 14, June 1947 – July 1968</h3>
+        <p class="blurb">Investigative records, eyewitness testimonies, public reports concerning Unidentified Flying Objects and flying discs. High-profile incident accounts, photographic evidence, internal correspondence between field offices and HQ.</p>
+        <div class="meta-row">
+          <span><span class="k">span</span><span class="v">1947 – 1968</span></span>
+          <span><span class="k">pages</span><span class="v">1,318</span></span>
+          <span><span class="k">images</span><span class="v">38 extracted</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/65_hs1-834228961_62-hq-83894_section_10.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='DOC'" />
+      </div>
+    </article>
+
+    <article class="record kind-PDF">
+      <div>
+        <div class="head">
+          <span class="agency">NASA</span>
+          <span class="kind">Independent Study</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 08</span>
+          <span class="dot">·</span>
+          <span class="redacted">REDACTED</span>
+        </div>
+        <h3>255-413270 · UFOs and Defense — What Should We Prepare For?</h3>
+        <p class="blurb">Independent report on UFOs written by the French association COMETA (originally published in VDS, 1999). Findings from the Institute of Higher Studies for National Defence on flight characteristics and policy posture.</p>
+        <div class="meta-row">
+          <span><span class="k">origin</span><span class="v">France</span></span>
+          <span><span class="k">date</span><span class="v">1999</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/255_413270_ufo_s_and_defense_what_should_we_prepare_for.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='DOC'" />
+      </div>
+    </article>
+
+    <article class="record kind-PDF">
+      <div>
+        <div class="head">
+          <span class="agency">DoW</span>
+          <span class="kind">General 1946–7, Vol II</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 08</span>
+        </div>
+        <h3>18-100754 — Flying disc memoranda, Air Materiel Command</h3>
+        <p class="blurb">Memorandums and correspondence relating to flying disc / saucer sightings as a matter of concern for the Air Materiel Command. Records continued surveillance protocols and inter-service reporting chains.</p>
+        <div class="meta-row">
+          <span><span class="k">span</span><span class="v">1946 – 1947</span></span>
+          <span><span class="k">command</span><span class="v">AMC, Wright Field</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/18_100754__general_1946-7_vol_2.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='DOC'" />
+      </div>
+    </article>
+
+    <article class="record kind-VID">
+      <div>
+        <div class="head">
+          <span class="agency">DoW</span>
+          <span class="kind">Unresolved UAP Report</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 07</span>
+        </div>
+        <h3>DOW-UAP-PR19 — Unresolved UAP Report, Middle East, May 2022</h3>
+        <p class="blurb">FLIR-tracked object exhibits behaviour that the standard recognition matrix cannot match. Released as part of the Department of War’s “Range Fouler” disclosure series.</p>
+        <div class="meta-row">
+          <span><span class="k">incident</span><span class="v">2022 · 05</span></span>
+          <span><span class="k">location</span><span class="v">Middle East</span></span>
+          <span><span class="k">platform</span><span class="v">F/A-18 ATFLIR</span></span>
+        </div>
+      </div>
+      <div class="thumb placeholder">VID</div>
+    </article>
+
+    <article class="record kind-IMG">
+      <div>
+        <div class="head">
+          <span class="agency">FBI</span>
+          <span class="kind">Aerial Reconnaissance Photo</span>
+          <span class="dot">·</span>
+          <span class="date">released 2026 · 05 · 07</span>
+        </div>
+        <h3>FBI Photo A5 — gun-camera frame with tracking markers</h3>
+        <p class="blurb">High-altitude oblique reconnaissance photograph released as part of the FBI Vault disclosure pull. Crosshair overlay and tracking markers are operational; subject of interest is the bright return in the lower third.</p>
+        <div class="meta-row">
+          <span><span class="k">format</span><span class="v">137 KB · 1,348 × 1,000</span></span>
+          <span><span class="k">artifact</span><span class="v">tracking grid overlay</span></span>
+        </div>
+      </div>
+      <div class="thumb">
+        <img alt="" src="https://uapdisclosuremirror.com/raw/thumbs/images/fbi-photo-a5.jpg"
+             onerror="this.parentElement.classList.add('placeholder');this.style.display='none';this.parentElement.innerHTML='IMG'" />
+      </div>
+    </article>
+  </div>
+
+  <!-- ────────────  DETAIL — the opened folder  ──────────── -->
+  <aside class="col-detail">
+    <div class="column-header">
+      <h2>Open Folder</h2>
+      <span class="count">FBI · COMPOSITE SKETCH · 2024-04-30</span>
+    </div>
+    <div class="detail">
+      <div class="stamp-block">Declassified · USPER witness composite</div>
+      <h1>“Orbs Launching Orbs”</h1>
+      <div class="doc-id">FBI · 2024-04-30-Composite-Sketch · SHA-256 c1510d…28d8ea</div>
+
+      <div class="form-grid">
+        <div class="k">Bureau</div><div class="v">Federal Bureau of Investigation</div>
+        <div class="k">Type</div><div class="v">Composite sketch · witness reconstruction</div>
+        <div class="k">Incident</div><div class="v">2023 · 09 · 14 — dusk, two separate days</div>
+        <div class="k">Location</div><div class="v">Western United States</div>
+        <div class="k">Witnesses</div><div class="v">Six federal agents — <span class="redact">REDACTED</span> through <span class="redact">REDACTED</span></div>
+        <div class="k">Shape</div><div class="v">Orange orb, with red-orb emission</div>
+        <div class="k">Provenance</div><div class="v">Direct download · war.gov bytes intact</div>
+      </div>
+
+      <p class="blurb">Three teams of two federal law-enforcement special agents (USPER1 through USPER6) independently describe seeing orange orbs in the sky emit-launch smaller red orbs in groups of two to four, being the general consensus. This is stated to have occurred at least five times. Each time, a single orange orb would appear, launch red orbs, then disappear. The orange orb was only visible for one or two seconds; the red orbs would generally move away from the orange “mother” orb in a horizontal path. One witness stated the red orbs would “swoop down” after being launched from the larger orange orb.</p>
+
+      <p class="briefing">Briefing artefacts available</p>
+      <div class="links">
+        <a class="link" href="#">Open in viewer</a>
+        <a class="link alt" href="#">Forensics ⓘ</a>
+        <a class="link alt" href="#">Bounding boxes</a>
+        <a class="link alt" href="#">4× enhance</a>
+        <a class="link alt" href="#">Depth map</a>
+      </div>
+
+      <div class="footer-stamp">
+        <div><b>UNCLASSIFIED</b></div>
+        <div>release&nbsp;01 · 2026-04-30</div>
+      </div>
+    </div>
+  </aside>
+</section>
+
+<div class="classification bottom">
+  <span>END OF FILE</span>
+  <span>1,150 RECORDS · 553 CASE FILES · 449 IMAGES · 120 DOCS · 28 VIDEOS</span>
+  <span>UNCLASSIFIED <span class="bullet">//</span> RELEASE 1</span>
+</div>
+
+<script>
+document.querySelectorAll('.record').forEach(el => {
+  el.addEventListener('click', () => {
+    document.querySelectorAll('.record.is-active').forEach(a => a.classList.remove('is-active'));
+    el.classList.add('is-active');
+  });
+});
+</script>
+</body>
+</html>
