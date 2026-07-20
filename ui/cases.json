@@ -1,0 +1,616 @@
+{
+ "foo-fighters-1944": {
+  "id": "foo-fighters-1944",
+  "name": "Foo Fighters (1944)",
+  "date": "1944-12-13",
+  "location": "European & Pacific theatres",
+  "status": "debunked",
+  "summary": "Wartime Allied pilots report glowing balls pacing aircraft; later attributed to ball lightning, St Elmo's fire, and reflections.",
+  "kind": "incident",
+  "records": [
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p002_001",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p003_002",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p004_003",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p005_004",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p006_005",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p007_006",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p008_007",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p010_009",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p011_010",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p012_011",
+   "CIA-UAP-002_Scientific_Advisory_Panel_on_Unidentified_Flying_Objects_Report_1952-1953",
+   "DOW-UAP-D092_Department_of_the_Air_Force_Committee_to_Review_Project_Bluebook_1966-1967"
+  ],
+  "era": [],
+  "count": 13
+ },
+ "arnold-1947": {
+  "id": "arnold-1947",
+  "name": "Kenneth Arnold sighting (1947)",
+  "date": "1947-06-24",
+  "location": "Mt Rainier, WA",
+  "status": "unresolved",
+  "summary": "Civilian pilot reports nine objects flying in formation 'like saucers skipping on water' — origin of 'flying saucer'.",
+  "kind": "incident",
+  "records": [
+   "38_143685_box7_Incident_Summaries_1-100",
+   "65_HS1-834228961_62-HQ-83894_Section_002",
+   "65_HS1-834228961_62-HQ-83894_Section_003",
+   "65_HS1-834228961_62-HQ-83894_Serial_130",
+   "65_HS1-834228961_62-HQ-83894_SUB_A",
+   "CIA-UAP-015_Project_Blue_Book_Special_Report_No._14_Analysis_of_Reports_of_Unidentified_Aerial_Objects"
+  ],
+  "era": [],
+  "count": 6
+ },
+ "roswell-1947": {
+  "id": "roswell-1947",
+  "name": "Roswell Incident (1947)",
+  "date": "1947-07-08",
+  "location": "Roswell, NM",
+  "status": "disputed",
+  "summary": "Recovery of debris near Roswell Army Air Field initially announced as a 'flying disc' before retraction.",
+  "kind": "incident",
+  "records": [
+   "DOE-UAP-D004_Los_Alamos_Conference_on_Aerial_Phenomena_1949",
+   "255_413270_UFO_s_and_Defense_What_Should_we_Prepare_For",
+   "65_HS1-834228961_62-HQ-83894_Section_004",
+   "65_HS1-834228961_62-HQ-83894_Section_006"
+  ],
+  "era": [
+   "18_100754__General_1946-7_Vol_2",
+   "18_6369445_General_1948_Vol_1",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents",
+   "341_110448_Records_Relating_to_the_Collection_and_Dissemination_of_Intelligence_1948-1955-TS_CONT_No.2_2-5300-2-5399",
+   "342_HS1-416511228_319.1_Flying_Discs_1949",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p002_001",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p003_002",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p004_003",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p005_004",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p006_005",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p007_006",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p008_007"
+  ],
+  "count": 4
+ },
+ "mantell-1948": {
+  "id": "mantell-1948",
+  "name": "Mantell incident (1948)",
+  "date": "1948-01-07",
+  "location": "Franklin, KY",
+  "status": "debunked",
+  "summary": "P-51 pilot Thomas Mantell killed pursuing a UAP later identified as a Skyhook balloon.",
+  "kind": "incident",
+  "records": [
+   "38_143685_box7_Incident_Summaries_1-100",
+   "65_HS1-834228961_62-HQ-83894_Section_006",
+   "65_HS1-834228961_62-HQ-83894_Section_008",
+   "DOW-UAP-D088_U.S._Air_Force_Analysis_of_Flying_Objects_in_the_United_States_101-172"
+  ],
+  "era": [
+   "18_100754__General_1946-7_Vol_2",
+   "18_6369445_General_1948_Vol_1",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents",
+   "341_110448_Records_Relating_to_the_Collection_and_Dissemination_of_Intelligence_1948-1955-TS_CONT_No.2_2-5300-2-5399",
+   "342_HS1-416511228_319.1_Flying_Discs_1949",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p002_001",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p003_002",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p004_003",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p005_004",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p006_005",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p007_006",
+   "331_120752_Numeric_Files_1944_1945_37153_German_Armament_Equipment_Documents__img_p008_007"
+  ],
+  "count": 4
+ },
+ "mariana-film-1950": {
+  "id": "mariana-film-1950",
+  "name": "Mariana film (1950)",
+  "date": "1950-08-15",
+  "location": "Great Falls, MT",
+  "status": "unresolved",
+  "summary": "16mm film by Nicholas Mariana of two silvery objects over a baseball stadium; investigated by USAF, never resolved.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "18_100754__General_1946-7_Vol_2",
+   "18_6369445_General_1948_Vol_1",
+   "341_110448_Records_Relating_to_the_Collection_and_Dissemination_of_Intelligence_1948-1955-TS_CONT_No.2_2-5300-2-5399",
+   "342_HS1-416511228_319.1_Flying_Discs_1949",
+   "59_64634_711.5612_7-2852",
+   "18_100754__General_1946-7_Vol_2__img_p002_001",
+   "18_100754__General_1946-7_Vol_2__img_p005_004",
+   "18_100754__General_1946-7_Vol_2__img_p022_021",
+   "DOE-UAP-D004_Los_Alamos_Conference_on_Aerial_Phenomena_1949",
+   "DOW-UAP-D094_Analysis_of_Flying_Object_Incidents_in_the_United_States_1949",
+   "DOW-UAP-D093_Analysis_of_Flying_Object_Incidents_in_the_United_States_1948",
+   "DOW-UAP-D093_Analysis_of_Flying_Object_Incidents_in_the_United_States_1948__img_p018_101"
+  ],
+  "count": 0
+ },
+ "washington-dc-1952": {
+  "id": "washington-dc-1952",
+  "name": "Washington D.C. flap (1952)",
+  "date": "1952-07-19",
+  "location": "Washington, D.C.",
+  "status": "disputed",
+  "summary": "Two consecutive weekends of radar/visual UAP encounters over D.C. that prompted CIA's Robertson Panel.",
+  "kind": "incident",
+  "records": [
+   "65_HS1-834228961_62-HQ-83894_Section_004",
+   "65_HS1-834228961_62-HQ-83894_Section_006",
+   "65_HS1-834228961_62-HQ-83894_Serial_449",
+   "CIA-UAP-017_Placement_on_High_Alert_Due_to_Perceived_Aggressive_Foreign_Posturing",
+   "FBI-UAP-D011_D_FBI_Correspondence_Referral_1949",
+   "State_Department_UAP_Cable_004_Ashgabat_Turkmenistan_November_5_2004",
+   "State_Department_UAP_Cable_005_Mexico_September_16_2003"
+  ],
+  "era": [],
+  "count": 7
+ },
+ "soccoro-1964": {
+  "id": "soccoro-1964",
+  "name": "Lonnie Zamora landing (1964)",
+  "date": "1964-04-24",
+  "location": "Socorro, NM",
+  "status": "unresolved",
+  "summary": "Police officer reports egg-shaped craft with two occupants; physical traces at landing site documented by USAF investigators.",
+  "kind": "incident",
+  "records": [
+   "blue_book_8766",
+   "65_HS1-834228961_62-HQ-83894_Section_010",
+   "65_HS1-834228961_62-HQ-83894_Serial_438",
+   "255_413270_UFO_s_and_Defense_What_Should_we_Prepare_For",
+   "65_HS1-834228961_62-HQ-83894_Section_004",
+   "65_HS1-834228961_62-HQ-83894_Section_006",
+   "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950"
+  ],
+  "era": [],
+  "count": 7
+ },
+ "malmstrom-1967": {
+  "id": "malmstrom-1967",
+  "name": "Malmstrom missile shutdown (1967)",
+  "date": "1967-03-16",
+  "location": "Malmstrom AFB, MT",
+  "status": "unresolved",
+  "summary": "Multiple Minuteman ICBMs go offline coincident with reported UAP overflight; deputy commander Robert Salas testimony.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "NASA-UAP-D003_Gemini_7_Transcript_1965",
+   "NASA-UAP-D016_Preliminary_Gemini_4_Crew_Debriefing_Part_I_1965",
+   "NASA-UAP-D017_Preliminary_Gemini_4_Crew_Debriefing_Part_II_1965",
+   "DOW-UAP-D092_Department_of_the_Air_Force_Committee_to_Review_Project_Bluebook_1966-1967",
+   "NASA-UAP-D003A_Gemini_7_Audio_Excerpt_1965"
+  ],
+  "count": 0
+ },
+ "iran-1976": {
+  "id": "iran-1976",
+  "name": "Imperial Iranian Air Force F-4 chase (1976)",
+  "date": "1976-09-19",
+  "location": "Tehran, Iran",
+  "status": "unresolved",
+  "summary": "Two F-4 Phantoms vector on a brilliant UAP that disabled their weapons and instruments; DIA cable widely cited.",
+  "kind": "incident",
+  "records": [
+   "255_413270_UFO_s_and_Defense_What_Should_we_Prepare_For"
+  ],
+  "era": [
+   "CIA-UAP-D001_Intelligence_Information_Report_USSR_1973",
+   "FBI-UAP-D014_Correspondence_Relating_to_UFO_Sightings_1967_1974"
+  ],
+  "count": 1
+ },
+ "rendlesham-1980": {
+  "id": "rendlesham-1980",
+  "name": "Rendlesham Forest (1980)",
+  "date": "1980-12-26",
+  "location": "Suffolk, UK",
+  "status": "unresolved",
+  "summary": "U.S. Air Force personnel reported lights and an object near RAF Bentwaters/Woodbridge.",
+  "kind": "incident",
+  "records": [
+   "255_413270_UFO_s_and_Defense_What_Should_we_Prepare_For"
+  ],
+  "era": [],
+  "count": 1
+ },
+ "jal-1628-1986": {
+  "id": "jal-1628-1986",
+  "name": "JAL 1628 (1986)",
+  "date": "1986-11-17",
+  "location": "Over Alaska",
+  "status": "unresolved",
+  "summary": "Japan Air Lines 747 cargo flight tracks a giant UAP over Alaska; FAA radar corroboration.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "DOE-UAP-D003_Pajarito_Astronomers_Invitation_1986",
+   "State_Department_UAP_Cable_001_Papua_New_Guinea_January_28_1985"
+  ],
+  "count": 0
+ },
+ "belgian-wave-1989": {
+  "id": "belgian-wave-1989",
+  "name": "Belgian wave (1989-1990)",
+  "date": "1989-11-29",
+  "location": "Belgium",
+  "status": "unresolved",
+  "summary": "Months of triangular UFO sightings over Belgium with corroborating F-16 radar lock and military investigation.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "DOE-UAP-D003_Pajarito_Astronomers_Invitation_1986"
+  ],
+  "count": 0
+ },
+ "phoenix-lights-1997": {
+  "id": "phoenix-lights-1997",
+  "name": "Phoenix Lights (1997)",
+  "date": "1997-03-13",
+  "location": "Phoenix, AZ",
+  "status": "disputed",
+  "summary": "Mass-witness V-formation of lights observed over Arizona; one of the most-reported civilian UAP events.",
+  "kind": "incident",
+  "records": [
+   "DOW-UAP-D080_Narrative_Statement_2_Western_United_States_Event_2023"
+  ],
+  "era": [
+   "DOW-UAP-D048_Department_of_the_Air_Force_Report_1996",
+   "DOW-UAP-D049_Launch_Summary_Vandenberg_AFB_2000",
+   "State_Department_UAP_Cable_002_Kazakhstan_January_31_1994"
+  ],
+  "count": 1
+ },
+ "ohare-2006": {
+  "id": "ohare-2006",
+  "name": "O'Hare disc (2006)",
+  "date": "2006-11-07",
+  "location": "Chicago O'Hare Intl, IL",
+  "status": "unresolved",
+  "summary": "United Airlines ground crew and pilots report a metallic disc hovering over Gate C17, departing through cloud layer leaving a hole.",
+  "kind": "incident",
+  "records": [
+   "blue_book_1364"
+  ],
+  "era": [
+   "State_Department_UAP_Cable_004_Ashgabat_Turkmenistan_November_5_2004",
+   "State_Department_UAP_Cable_005_Mexico_September_16_2003"
+  ],
+  "count": 1
+ },
+ "stephenville-2008": {
+  "id": "stephenville-2008",
+  "name": "Stephenville (2008)",
+  "date": "2008-01-08",
+  "location": "Stephenville, TX",
+  "status": "unresolved",
+  "summary": "Multi-witness UAP sighting in central Texas with corroborating radar tracks reported by MUFON.",
+  "kind": "incident",
+  "records": [
+   "38_143685_box7_Incident_Summaries_1-100",
+   "65_HS1-834228961_62-HQ-83894_Serial_130"
+  ],
+  "era": [],
+  "count": 2
+ },
+ "nimitz-tic-tac-2004": {
+  "id": "nimitz-tic-tac-2004",
+  "name": "Nimitz Tic Tac (2004)",
+  "date": "2004-11-14",
+  "location": "Off Baja California",
+  "status": "unresolved",
+  "summary": "USS Nimitz F/A-18s under Cdr Fravor encounter a Tic-Tac shaped object descending from 80,000 ft; ATFLIR footage later released.",
+  "kind": "incident",
+  "records": [
+   "DOW-UAP-PR065_USCG_C-144_Tyndall_UAP_2_TIC_TAC_IR_hot_24_April_2024",
+   "DOW-UAP-PR066_USCG_C-144_Tyndall_UAP_1_TIC_TAC_IR_hot_24_April_2024"
+  ],
+  "era": [
+   "State_Department_UAP_Cable_003_Tbilisi_Georgia_October_30_2001",
+   "State_Department_UAP_Cable_004_Ashgabat_Turkmenistan_November_5_2004",
+   "State_Department_UAP_Cable_005_Mexico_September_16_2003"
+  ],
+  "count": 2
+ },
+ "aguadilla-2013": {
+  "id": "aguadilla-2013",
+  "name": "Aguadilla (CBP, 2013)",
+  "date": "2013-04-25",
+  "location": "Aguadilla, Puerto Rico",
+  "status": "unresolved",
+  "summary": "Customs and Border Protection thermal video of a low-altitude object that appeared to enter the ocean and split.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016",
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016__img_p001_000",
+   "DOE-UAP-D005_Pantex_Unidentified_Object_Incident_Report_2015"
+  ],
+  "count": 0
+ },
+ "eastern-seaboard-2014-2019": {
+  "id": "eastern-seaboard-2014-2019",
+  "name": "Eastern Seaboard sightings (2014–2019)",
+  "date": "2014-01-01",
+  "location": "U.S. East Coast",
+  "status": "unresolved",
+  "summary": "Sustained observations of UAP by Navy aviators training along the East Coast through the 2010s.",
+  "kind": "incident",
+  "records": [
+   "DOW-UAP-D094_Analysis_of_Flying_Object_Incidents_in_the_United_States_1949",
+   "State_Department_UAP_Cable_005_Mexico_September_16_2003"
+  ],
+  "era": [
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016",
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016__img_p001_000",
+   "DOE-UAP-D005_Pantex_Unidentified_Object_Incident_Report_2015"
+  ],
+  "count": 2
+ },
+ "gimbal-2015": {
+  "id": "gimbal-2015",
+  "name": "Gimbal (USS Theodore Roosevelt, 2015)",
+  "date": "2015-01-21",
+  "location": "Off the coast of Jacksonville, FL",
+  "status": "disputed",
+  "summary": "FLIR ATFLIR pod video from a Super Hornet showing an apparently rotating, hovering object against the wind.",
+  "kind": "incident",
+  "records": [
+   "DOW-UAP-D038_Range_Fouler_Debrief_Middle_East_May_2020",
+   "DOW-UAP-PR036_Unresolved_UAP_Report_Middle_East_May_2020",
+   "NASA-UAP-D002_Apollo_17_Transcript_1972",
+   "NASA-UAP-D016_Preliminary_Gemini_4_Crew_Debriefing_Part_I_1965",
+   "NASA-UAP-D020_Gemini_5_Technical_Debriefing_Part_II_1965"
+  ],
+  "era": [
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016",
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016__img_p001_000",
+   "DOE-UAP-D005_Pantex_Unidentified_Object_Incident_Report_2015"
+  ],
+  "count": 5
+ },
+ "go-fast-2015": {
+  "id": "go-fast-2015",
+  "name": "Go Fast (USS Theodore Roosevelt, 2015)",
+  "date": "2015-01-21",
+  "location": "Off the East Coast of the U.S.",
+  "status": "disputed",
+  "summary": "FLIR video of a small object speeding low over the ocean as tracked by an F/A-18.",
+  "kind": "incident",
+  "records": [],
+  "era": [
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016",
+   "DOW-UAP-D055_Mission_Report_Syria_November_2016__img_p001_000",
+   "DOE-UAP-D005_Pantex_Unidentified_Object_Incident_Report_2015"
+  ],
+  "count": 0
+ },
+ "aaro": {
+  "id": "aaro",
+  "name": "All-domain Anomaly Resolution Office",
+  "date": "2022-07-15",
+  "location": "DoD",
+  "status": "",
+  "summary": "DoD office responsible for UAP investigation since 2022; publisher of historical record reviews.",
+  "kind": "program",
+  "records": [
+   "DOW-UAP-D077_AARO_Unresolved_Case_Analysis_Update_Western_United_States_Event",
+   "DOW-UAP-D077_AARO_Unresolved_Case_Analysis_Update_Western_United_States_Event__img_p001_000",
+   "DOW-UAP-D079_Narrative_Statement_1_Western_United_States_Event_2023",
+   "DOW-UAP-D080_Narrative_Statement_2_Western_United_States_Event_2023",
+   "DOW-UAP-D081_Narrative_Statement_3_Western_United_States_Event_2023",
+   "DOW-UAP-D082_Narrative_Statement_4_Western_United_States_Event_2023",
+   "DOW-UAP-D083_Narrative_Statement_5_Western_United_States_Event_2023",
+   "DOW-UAP-PR019_Unresolved_UAP_Report_Middle_East_May_2022",
+   "DOW-UAP-PR020_Unresolved_UAP_Report_Kuwait_May_2022",
+   "DOW-UAP-PR021_Unresolved_UAP_Report_Iraq_May_2022",
+   "DOW-UAP-PR022_Unresolved_UAP_Report_Syria_July_2022",
+   "DOW-UAP-PR023_Unresolved_UAP_Report_Iraq_December_2022",
+   "DOW-UAP-PR026_Unresolved_UAP_Report_United_Arab_Emirates_October_2023",
+   "DOW-UAP-PR027_Unresolved_UAP_Report_United_Arab_Emirates_October_2023",
+   "DOW-UAP-PR031_Unresolved_UAP_Report_Syria_October_2024",
+   "DOW-UAP-PR032_Unresolved_UAP_Report_Syria_October_2024",
+   "DOW-UAP-PR033_Unresolved_UAP_Report_Syria_October_2024",
+   "DOW-UAP-PR034_Unresolved_UAP_Report_Greece_October_2023",
+   "DOW-UAP-PR035_Unresolved_UAP_Report_Greece_October_2023",
+   "DOW-UAP-PR036_Unresolved_UAP_Report_Middle_East_May_2020",
+   "Western_US_Event",
+   "DOW-UAP-PR104_Unresolved_UAP_Report_Yellow_Sea_2025",
+   "DOW-UAP-PR105_Unresolved_UAP_Report_East_China_Sea_2025",
+   "DOW-UAP-PR113_Unresolved_UAP_Report_Western_United_States_1996",
+   "DOW-UAP-PR115_Unresolved_UAP_Report_Gulf_of_America_2019",
+   "DOW-UAP-PR024_Unresolved_UAP_Report_Middle_East_2023",
+   "DOW-UAP-PR028_Unresolved_UAP_Report_Greece_January_2024",
+   "DOW-UAP-PR029_Unresolved_UAP_Report_United_Arab_Emirates_June_2024",
+   "DOW-UAP-PR030_Unresolved_UAP_Report_Middle_East_2023",
+   "DOW-UAP-PR037_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR038_Unresolved_UAP_Report_Middle_East_2013",
+   "DOW-UAP-PR039_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR040_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR041_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR042_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR043_Unresolved_UAP_Report_Africa_2025",
+   "DOW-UAP-PR044_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR045_Unresolved_UAP_Report_Middle_East_2020",
+   "DOW-UAP-PR046_Unresolved_UAP_Report_INDOPACOM_2024",
+   "DOW-UAP-PR047_Unresolved_UAP_Report_INDOPACOM_2023",
+   "DOW-UAP-PR048_Unresolved_UAP_Report_INDOPACOM_2024",
+   "DOW-UAP-PR049_Unresolved_UAP_Report_Department_of_the_Army_2026",
+   "DOW-UAP-PR050_4_UAP_Formation_Iran_26_Aug_2022_over_water_CALLSIGN",
+   "DOW-UAP-PR051_Syrian_UAP_instant_acceleration",
+   "DOW-UAP-PR052_UAP_USO_Formation_CALLSIGN_Mission",
+   "DOW-UAP-PR053_Cigar_Shaped_or_Fast_Spherical_UAP_clip_15_OCT_22",
+   "DOW-UAP-PR054_Spherical_UAP_Erratic_movement_CALLSIGN_Mission_2022",
+   "DOW-UAP-PR055_Spherical_UAP_over_AFG_in_and_out_of_clouds_23_Nov_2020",
+   "DOW-UAP-PR056_Spherical_UAP_pulsing_over_water_CALLSIGN",
+   "DOW-UAP-PR057a_Spherical_UAP_in_clouds",
+   "DOW-UAP-PR057b_Platform_Observes_UAP_in_East_China_Sea_05_JAN_2023_INDOPACOM",
+   "DOW-UAP-PR058_CALLSIGN_Mission_UAP",
+   "DOW-UAP-PR059_NAG_UAP_1_Jun_20",
+   "DOW-UAP-PR060_Spherical_UAP_CALLSIGN_2021_04_12_obj_2",
+   "DOW-UAP-PR061_Spherical_UAP_CALLSIGN_2021_04_12_vid_0",
+   "DOW-UAP-PR062_Spherical_UAP_CALLSIGN_2021_04_12_vid_1",
+   "DOW-UAP-PR063_Spherical_UAP_CALLSIGN_2021_04_12_vid_2",
+   "DOW-UAP-PR064_AFSOC_Kabul_UAP_Jul_2017",
+   "DOW-UAP-PR065_USCG_C-144_Tyndall_UAP_2_TIC_TAC_IR_hot_24_April_2024",
+   "DOW-UAP-PR066_USCG_C-144_Tyndall_UAP_1_TIC_TAC_IR_hot_24_April_2024"
+  ],
+  "era": [],
+  "count": 230
+ },
+ "kabul-2021": {
+  "id": "kabul-2021",
+  "name": "Kabul UAP (2021)",
+  "date": "2021-08-29",
+  "location": "Kabul, Afghanistan",
+  "status": "",
+  "summary": "MQ-9 Reaper footage of a small reflective sphere over Kabul during the U.S. evacuation.",
+  "kind": "incident",
+  "records": [
+   "DOW-UAP-PR064_AFSOC_Kabul_UAP_Jul_2017"
+  ],
+  "era": [
+   "DOW-UAP-D010_Mission_Report_Middle_East_May_2022",
+   "DOW-UAP-D012_Mission_Report_Iraq_May_2022",
+   "DOW-UAP-D014_Mission_Report_Iraq_May_2022",
+   "DOW-UAP-D016_Mission_Report_Syria_July_2022",
+   "DOW-UAP-D018_Mission_Report_Iraq_December_2022",
+   "DOW-UAP-D019_Mission_Report_Syria_February_21_2023",
+   "DOW-UAP-D020_Mission_Report_Iraq_2023",
+   "DOW-UAP-D023_Mission_Report_United_Arab_Emirates_October_2023",
+   "DOW-UAP-D025_Mission_Report_Greece_January_2024",
+   "DOW-UAP-D027_Mission_Report_United_Arab_Emirates_October_2023",
+   "DOW-UAP-D028_Mission_Report_Iraq_September_2024",
+   "DOW-UAP-D032_Mission_Report_Syria_October_2024"
+  ],
+  "count": 1
+ },
+ "project-blue-book": {
+  "id": "project-blue-book",
+  "name": "Project Blue Book",
+  "date": "1952-03-01",
+  "location": "Wright-Patterson AFB, OH",
+  "status": "",
+  "summary": "USAF UAP investigation program 1952–1969; ~12,600 reports catalogued.",
+  "kind": "program",
+  "records": [
+   "CIA-UAP-015_Project_Blue_Book_Special_Report_No._14_Analysis_of_Reports_of_Unidentified_Aerial_Objects",
+   "DOW-UAP-D092_Department_of_the_Air_Force_Committee_to_Review_Project_Bluebook_1966-1967",
+   "DOW-UAP-D096_Correspondence_Relating_to_Project_Blue_Book_1955",
+   "blue_book_12",
+   "blue_book_27",
+   "blue_book_34",
+   "blue_book_36",
+   "blue_book_50",
+   "blue_book_69",
+   "blue_book_85",
+   "blue_book_91",
+   "blue_book_95",
+   "blue_book_139",
+   "blue_book_185",
+   "blue_book_190",
+   "blue_book_191",
+   "blue_book_208",
+   "blue_book_218",
+   "blue_book_257",
+   "blue_book_275",
+   "blue_book_284",
+   "blue_book_319",
+   "blue_book_358",
+   "blue_book_361",
+   "blue_book_376",
+   "blue_book_379",
+   "blue_book_384",
+   "blue_book_404",
+   "blue_book_483",
+   "blue_book_496",
+   "blue_book_642",
+   "blue_book_645",
+   "blue_book_650",
+   "blue_book_671",
+   "blue_book_678",
+   "blue_book_680",
+   "blue_book_682",
+   "blue_book_706",
+   "blue_book_711",
+   "blue_book_721",
+   "blue_book_738",
+   "blue_book_758",
+   "blue_book_773",
+   "blue_book_793",
+   "blue_book_787",
+   "blue_book_790",
+   "blue_book_797",
+   "blue_book_807",
+   "blue_book_809",
+   "blue_book_819",
+   "blue_book_821",
+   "blue_book_824",
+   "blue_book_829",
+   "blue_book_845",
+   "blue_book_848",
+   "blue_book_849",
+   "blue_book_864",
+   "blue_book_868",
+   "blue_book_886",
+   "blue_book_896"
+  ],
+  "era": [],
+  "count": 566
+ },
+ "project-sign-grudge": {
+  "id": "project-sign-grudge",
+  "name": "Projects Sign / Grudge",
+  "date": "1948-01-22",
+  "location": "Wright-Patterson AFB, OH",
+  "status": "",
+  "summary": "USAF predecessor programs to Blue Book that handled the earliest UAP investigation files.",
+  "kind": "program",
+  "records": [
+   "DOW-UAP-D097_Project_Sign_Progress_Report_1948",
+   "DOW-UAP-D097_Project_Sign_Progress_Report_1948__img_p035_161",
+   "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950",
+   "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950__img_p068_067",
+   "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950__img_p073_072",
+   "DOW-UAP-D017_UAP_Reported_at_Sandia_Base_1948-1950__img_p074_073",
+   "CIA-UAP-019_Australian_Dept_of_Defense_Scientific_and_Intel_Aspects_of_the_UFO_Problem",
+   "DOE-UAP-D004_Los_Alamos_Conference_on_Aerial_Phenomena_1949",
+   "18_6369445_General_1948_Vol_1",
+   "65_HS1-834228961_62-HQ-83894_Section_004"
+  ],
+  "era": [],
+  "count": 10
+ },
+ "uaptf": {
+  "id": "uaptf",
+  "name": "Unidentified Aerial Phenomena Task Force",
+  "date": "2020-08-04",
+  "location": "DoD",
+  "status": "",
+  "summary": "DoD task force established 2020; folded into AARO in 2022.",
+  "kind": "program",
+  "records": [
+   "DOW-UAP-PR113_Unresolved_UAP_Report_Western_United_States_1996",
+   "DOW-UAP-PR109_Unresolved_UAP_Report_Eastern_United_States_2015"
+  ],
+  "era": [
+   "DOW-UAP-D010_Mission_Report_Middle_East_May_2022",
+   "DOW-UAP-D012_Mission_Report_Iraq_May_2022",
+   "DOW-UAP-D014_Mission_Report_Iraq_May_2022",
+   "DOW-UAP-D016_Mission_Report_Syria_July_2022",
+   "DOW-UAP-D018_Mission_Report_Iraq_December_2022",
+   "DOW-UAP-D019_Mission_Report_Syria_February_21_2023",
+   "DOW-UAP-D020_Mission_Report_Iraq_2023",
+   "DOW-UAP-D023_Mission_Report_United_Arab_Emirates_October_2023",
+   "DOW-UAP-D033_Mission_Report_Greece_October_2023",
+   "DOW-UAP-D035_Mission_Report_Greece_October_2023",
+   "DOW-UAP-D038_Range_Fouler_Debrief_Middle_East_May_2020",
+   "DOW-UAP-D042_Range_Fouler_Debrief_Japan_2023"
+  ],
+  "count": 2
+ }
+}

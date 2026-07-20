@@ -3018,6 +3018,104 @@ body.home-page .home-main { display: block; grid-row: auto; }
 #globe-canvas { position: absolute; inset: 0; cursor: grab; }
 #globe-canvas:active { cursor: grabbing; }
 
+/* ── Case dossier pages (static, /ui/case/) ────────────────────────── */
+/* The legacy bare-`main` grid rule must not reshape the case index. */
+main.case-main { display: block; }
+.case-main { max-width: 980px; margin: 0 auto; padding: 36px 20px 80px; }
+.case-crumb {
+  font-family: var(--mono); font-size: 10.5px; letter-spacing: 0.14em;
+  color: var(--fg-dim); margin-bottom: 14px;
+}
+.case-crumb a { color: var(--signal); text-decoration: none; }
+.case-crumb span { color: var(--fg-dim); }
+.case-title { font-size: clamp(26px, 4vw, 40px); margin: 0 0 14px; letter-spacing: 0.01em; }
+.case-chips { display: flex; flex-wrap: wrap; gap: 8px; align-items: center; margin-bottom: 18px; }
+.case-chip {
+  font-family: var(--mono); font-size: 11px; color: var(--fg-dim);
+  border: 1px solid var(--rule); border-radius: 4px; padding: 3px 9px;
+  background: var(--bg3);
+}
+.status-pill {
+  font-family: var(--mono); font-size: 10px; font-weight: 600; letter-spacing: 0.1em;
+  border-radius: 4px; padding: 3px 9px; border: 1px solid;
+}
+.status-pill.unresolved { color: var(--signal); border-color: var(--signal-deep); background: rgba(127,212,181,0.08); }
+.status-pill.disputed { color: var(--amber); border-color: var(--amber-deep); background: rgba(228,180,99,0.08); }
+.status-pill.debunked { color: var(--fg-dim); border-color: var(--rule); background: var(--bg3); }
+.case-summary { font-size: 15px; line-height: 1.65; color: var(--fg); max-width: 72ch; margin: 0 0 22px; }
+.case-stats {
+  display: flex; flex-wrap: wrap; gap: 20px; align-items: center;
+  border: 1px solid var(--rule); border-radius: 8px; background: var(--bg2);
+  padding: 12px 18px; margin-bottom: 34px;
+}
+.case-stats > div { display: flex; align-items: baseline; gap: 7px; }
+.case-stats strong { font-size: 18px; color: var(--signal); font-weight: 600; }
+.case-stats span { font-family: var(--mono); font-size: 10px; letter-spacing: 0.08em; color: var(--fg-dim); }
+.case-h2 {
+  font-family: var(--mono); font-size: 12px; letter-spacing: 0.14em;
+  text-transform: uppercase; color: var(--fg-dim);
+  border-bottom: 1px solid var(--rule); padding-bottom: 8px; margin: 0 0 18px;
+}
+.case-h2-note {
+  font-size: 10px; letter-spacing: 0.06em; color: var(--amber);
+  text-transform: none; margin-left: 8px;
+}
+.case-grid {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+  gap: 12px; margin-bottom: 34px;
+}
+.case-card {
+  display: flex; gap: 12px; align-items: flex-start;
+  background: var(--bg2); border: 1px solid var(--rule); border-radius: 8px;
+  padding: 12px; color: var(--fg); text-decoration: none;
+}
+.case-card:hover { border-color: var(--signal-deep); }
+.cc-thumb img {
+  width: 84px; height: 64px; object-fit: cover; border-radius: 4px;
+  background: var(--bg3); display: block;
+}
+.cc-body { min-width: 0; }
+.cc-top { margin-bottom: 5px; }
+.cc-title { font-size: 13px; font-weight: 600; line-height: 1.35; }
+.cc-meta {
+  font-family: var(--mono); font-size: 10px; color: var(--fg-dim);
+  margin-top: 4px; letter-spacing: 0.03em;
+}
+.cc-blurb { font-size: 11.5px; color: var(--fg-dim); line-height: 1.45; margin-top: 6px; }
+.case-empty { color: var(--fg-dim); font-size: 13px; }
+.case-rel-row {
+  display: flex; gap: 10px; align-items: center; margin: 10px 0 26px;
+}
+.case-rel {
+  font-family: var(--mono); font-size: 11.5px; color: var(--signal);
+  text-decoration: none; border: 1px solid var(--rule); border-radius: 6px;
+  padding: 8px 14px; background: var(--bg2);
+}
+.case-rel:hover { border-color: var(--signal-deep); }
+.case-rel-sep { flex: 0 0 4px; }
+.case-explore { display: flex; flex-wrap: wrap; gap: 14px; }
+.case-explore a {
+  font-family: var(--mono); font-size: 11px; letter-spacing: 0.06em;
+  color: var(--fg-dim); text-decoration: none;
+}
+.case-explore a:hover { color: var(--signal); }
+
+/* Case index */
+.case-tiles {
+  display: grid; grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+  gap: 12px; margin-bottom: 36px;
+}
+.case-tile {
+  display: block; background: var(--bg2); border: 1px solid var(--rule);
+  border-radius: 8px; padding: 14px; color: var(--fg); text-decoration: none;
+}
+.case-tile:hover { border-color: var(--signal-deep); }
+.ct-top { display: flex; justify-content: space-between; align-items: center; margin-bottom: 10px; }
+.ct-date { font-family: var(--mono); font-size: 10.5px; color: var(--fg-dim); }
+.ct-name { font-size: 14px; font-weight: 600; line-height: 1.3; }
+.ct-loc { font-family: var(--mono); font-size: 10px; color: var(--fg-dim); margin-top: 5px; }
+.ct-count { font-family: var(--mono); font-size: 10.5px; color: var(--signal); margin-top: 10px; letter-spacing: 0.06em; }
+
 /* ── Search page layout ────────────────────────────────────────────── */
 .search-layout {
   display: grid; grid-template-columns: 240px 1fr; gap: 0;

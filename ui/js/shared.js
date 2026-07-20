@@ -158,6 +158,7 @@ const EXTRA_FILES = {
   graphLayout: ["graph-layout.json",     j => { window.GRAPH_LAYOUT = j; }],
   topics:      ["topics.json",           j => { window.TOPICS = j; }],
   today:       ["today_index.json",      j => { window.TODAY_INDEX = j; }],
+  recordCases: ["record_cases.json",     j => { window.RECORD_CASES = j; }],
 };
 
 // Pages that never render full OCR text (Home / Map / Timeline) can pass
@@ -199,6 +200,7 @@ const NAV_PAGES = [
   ["map.html",      "map",      "🗺 Map"],
   ["timeline.html", "timeline", "📅 Timeline"],
   ["graph.html",    "graph",    "🕸 Graph"],
+  ["case/",         "cases",    "◉ Cases"],
   ["ask.html",      "ask",      "⌘ Ask"],
 ];
 

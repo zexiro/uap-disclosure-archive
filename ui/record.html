@@ -52,10 +52,15 @@ function releaseBatchBannerHTML(d) {
 }
 
 function incidentBadgeHTML(d) {
-  if (!d.incident_id) return "";
-  const inc = (window.INCIDENTS || {})[d.incident_id];
-  const name = inc ? inc.name : d.incident_id;
-  return `<a class="incident-badge" href="search.html?incident=${encodeURIComponent(d.incident_id)}"><span class="icon">◉</span> ${escapeHtml(name)}</a>`;
+  // Case-dossier membership from record_cases.json (build_case_pages.py).
+  const cid = ((window.RECORD_CASES || {})[d.id] || [])[0] || d.incident_id;
+  if (!cid) return "";
+  const inc = (window.INCIDENTS || {})[cid];
+  const name = inc ? inc.name : cid;
+  const href = (window.RECORD_CASES || {})[d.id]
+    ? `case/${encodeURIComponent(cid)}/`
+    : `search.html?incident=${encodeURIComponent(cid)}`;
+  return `<a class="incident-badge" href="${href}"><span class="icon">◉</span> ${escapeHtml(name)}</a>`;
 }
 
 function linksHTML(d) {
@@ -1182,7 +1187,7 @@ function openCiteModal() {
 
 // ── Render ───────────────────────────────────────────────────────────
 (async function init() {
-  await loadCoreData(["incidents", "correlations", "dedup"]);
+  await loadCoreData(["incidents", "correlations", "dedup", "recordCases"]);
   const d = docById(recordId);
   const main = $("#record-main");
   if (!d) {

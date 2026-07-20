@@ -472,12 +472,14 @@ function tlInfoOpen(html) {
 function showIncidentInfo(inc) {
   tlState.focusId = inc.id;
   const related = docs.filter(d => d.incident_id === inc.id);
+  const caseId = inc.id === "tic-tac-2004" ? "nimitz-tic-tac-2004" : inc.id;
   tlInfoOpen(`
     <div style="padding:24px">
       <div style="font-family:var(--mono);color:var(--accent);font-size:11px;letter-spacing:0.06em;text-transform:uppercase;margin-bottom:6px">INCIDENT · ${escapeHtml(inc.date)}${inc.status ? " · " + escapeHtml(inc.status) : ""}</div>
       <h2 style="margin:0 0 10px;font-size:22px;color:var(--fg)">${escapeHtml(inc.name)}</h2>
       <div style="color:var(--fg-dim);font-family:var(--mono);font-size:12px;margin-bottom:14px">${escapeHtml(inc.location || "")}</div>
       <p style="line-height:1.55;color:var(--fg)">${escapeHtml(inc.summary || "")}</p>
+      <div style="margin:16px 0"><a href="case/${encodeURIComponent(caseId)}/" style="font-family:var(--mono);font-size:11.5px;letter-spacing:0.08em;color:var(--accent);text-decoration:none;border:1px solid var(--border);border-radius:6px;padding:7px 12px">◉ OPEN CASE DOSSIER →</a></div>
       <div style="margin-top:18px;font-family:var(--mono);color:var(--fg-dim);font-size:11px">Records linked to this incident:</div>
       <div style="margin-top:8px">
         ${related.length ? related.slice(0, 50).map(d => `
