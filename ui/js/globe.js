@@ -134,7 +134,6 @@ window.DisclosureGlobe = (function () {
     const py = (lat) => (90 - lat) / 180 * H;
 
     function drawRing(ring) {
-      ctx.beginPath();
       for (let i = 0; i < ring.length; i++) {
         const [lng, lat] = ring[i];
         if (i === 0) ctx.moveTo(px(lng), py(lat));
@@ -153,11 +152,14 @@ window.DisclosureGlobe = (function () {
     }
 
     if (geo && geo.features) {
+      // One path, many subpaths — beginPath per ring would wipe everything
+      // but the last ring before fill().
+      ctx.beginPath();
       for (const f of geo.features) drawFeature(f);
-      ctx.fillStyle = "rgba(127, 212, 181, 0.105)";
+      ctx.fillStyle = "#182b25";
       ctx.fill();
-      ctx.strokeStyle = "rgba(123, 184, 212, 0.45)";
-      ctx.lineWidth = 1.1;
+      ctx.strokeStyle = "rgba(123, 184, 212, 0.55)";
+      ctx.lineWidth = 1.2;
       ctx.stroke();
     }
 
