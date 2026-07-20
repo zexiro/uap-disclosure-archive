@@ -184,7 +184,7 @@ def render_era_section(era_ids: list[str], lite: dict) -> str:
 NAV = """<nav class="topnav"><a class="topnav-brand" href="/ui/index.html">UFO/UAP <span>Disclosure Archive</span></a><div class="topnav-links"><a href="/ui/search.html">🔎 Search</a><a href="/ui/map.html">🗺 Map</a><a href="/ui/timeline.html">📅 Timeline</a><a href="/ui/graph.html">🕸 Graph</a><a href="/ui/ask.html">⌘ Ask</a><a href="/ui/case/" class="active">◉ Cases</a></div><a class="topnav-coffee" href="https://buymeacoffee.com/uapdisclosuremirror" target="_blank" rel="noopener" title="Help keep this archive online">☕</a></nav>"""
 
 
-def head(title: str, description: str, canonical: str, jsonld: dict | None = None) -> str:
+def head(title: str, description: str, canonical: str, jsonld: dict | None = None, image: str = f"{SITE}/ui/og/og.png") -> str:
     ld = f'<script type="application/ld+json">{json.dumps(jsonld, ensure_ascii=False)}</script>' if jsonld else ""
     return f"""<meta charset="utf-8" />
 <title>{esc(title)}</title>
@@ -195,8 +195,9 @@ def head(title: str, description: str, canonical: str, jsonld: dict | None = Non
 <meta property="og:title" content="{esc(title)}" />
 <meta property="og:description" content="{esc(description[:200])}" />
 <meta property="og:url" content="{canonical}" />
-<meta property="og:image" content="{SITE}/ui/og/og.png" />
+<meta property="og:image" content="{image}" />
 <meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:image" content="{image}" />
 <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%230b0e14'/%3E%3Cellipse cx='32' cy='34' rx='22' ry='6' fill='%23ffd34d'/%3E%3Ccircle cx='32' cy='28' r='8' fill='%2357c7ff'/%3E%3C/svg%3E" />
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -313,7 +314,7 @@ def render_case_page(cid: str, inc: dict, rids: list[str], lite: dict, chrono: l
     page = f"""<!doctype html>
 <html lang="en">
 <head>
-{head(f"{name} — declassified files & records", summary or f"Declassified records referencing {name}.", f"{SITE}/ui/case/{cid}/", jsonld)}
+{head(f"{name} — declassified files & records", summary or f"Declassified records referencing {name}.", f"{SITE}/ui/case/{cid}/", jsonld, image=f"{SITE}/ui/og/case/{cid}.png")}
 </head>
 <body class="case-page">
 {NAV}
@@ -352,7 +353,7 @@ def render_index_page(cases: dict, chrono: list[str]) -> None:
     page = f"""<!doctype html>
 <html lang="en">
 <head>
-{head("Case dossiers — famous UAP incidents & programs", "Deep-dive dossiers on the major UAP incidents and government programs, each pulling every declassified record that references it.", f"{SITE}/ui/case/")}
+{head("Case dossiers — famous UAP incidents & programs", "Deep-dive dossiers on the major UAP incidents and government programs, each pulling every declassified record that references it.", f"{SITE}/ui/case/", image=f"{SITE}/ui/og/case/index.png")}
 </head>
 <body class="case-page">
 {NAV}
