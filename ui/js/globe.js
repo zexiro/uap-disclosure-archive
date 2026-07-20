@@ -158,7 +158,7 @@ window.DisclosureGlobe = (function () {
       for (const f of geo.features) drawFeature(f);
       ctx.fillStyle = "#182b25";
       ctx.fill();
-      ctx.strokeStyle = "rgba(123, 184, 212, 0.55)";
+      ctx.strokeStyle = "rgba(123, 184, 212, 0.22)";
       ctx.lineWidth = 2.2;
       ctx.stroke();
     }
@@ -195,6 +195,34 @@ window.DisclosureGlobe = (function () {
       color: 0x7bb8d4, transparent: true, opacity: 0.055, depthWrite: false,
     });
     return new THREE.LineSegments(geo, mat);
+  }
+
+  // Country borders as 3D vector lines — crisp at any zoom level, unlike
+  // the raster texture (which softens when zoomed in close).
+  function buildBorders(geo) {
+    if (!geo || !geo.features) return null;
+    const pts = [];
+    const rr = R * 1.0015;
+    function ring(ring) {
+      for (let i = 0; i < ring.length - 1; i++) {
+        const [lng1, lat1] = ring[i];
+        const [lng2, lat2] = ring[i + 1];
+        if (Math.abs(lng2 - lng1) > 180) continue; // antimeridian jump
+        pts.push(latLngToVec3(lat1, lng1, rr), latLngToVec3(lat2, lng2, rr));
+      }
+    }
+    for (const f of geo.features) {
+      const g = f.geometry;
+      if (!g) continue;
+      const polys = g.type === "Polygon" ? [g.coordinates]
+        : g.type === "MultiPolygon" ? g.coordinates : [];
+      for (const poly of polys) for (const r of poly) ring(r);
+    }
+    const buf = new THREE.BufferGeometry().setFromPoints(pts);
+    const mat = new THREE.LineBasicMaterial({
+      color: 0x7bb8d4, transparent: true, opacity: 0.42, depthWrite: false,
+    });
+    return new THREE.LineSegments(buf, mat);
   }
 
   function buildStars() {
@@ -361,7 +389,7 @@ window.DisclosureGlobe = (function () {
     const cyan = getComputedStyle(document.documentElement).getPropertyValue("--cyan").trim() || "#7bb8d4";
     const reduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
     const interactive = opts.interactive !== false;
-    const offsetXFrac = opts.offsetX || 0;
+    let offsetXFrac = opts.offsetX || 0;
 
     container.classList.add("dglobe");
     container.innerHTML = "";
@@ -402,6 +430,8 @@ window.DisclosureGlobe = (function () {
     );
     spinGroup.add(earth);
     spinGroup.add(buildGraticule());
+    const borders = buildBorders(geo);
+    if (borders) spinGroup.add(borders);
 
     const atmo = new THREE.Mesh(
       new THREE.SphereGeometry(R * 1.24, 64, 48),
@@ -727,6 +757,7 @@ window.DisclosureGlobe = (function () {
     return {
       setMarkers,
       resize,
+      setOffset(f) { offsetXFrac = f || 0; resize(); },
       pause() { running = false; },
       resume() { if (!running) { running = true; clock.getDelta(); } },
       get count() { return markers.length; },

@@ -2931,7 +2931,7 @@ body.home-page .home-main { display: block; grid-row: auto; }
   color: var(--fg-dim); pointer-events: none; text-align: right;
 }
 .hg-fullbtn {
-  position: absolute; z-index: 3; left: 16px; bottom: 12px;
+  position: absolute; z-index: 3; right: 16px; bottom: 46px;
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
   color: var(--fg-dim); background: rgba(12,16,20,0.55);
   border: 1px solid var(--rule); border-radius: 4px;
@@ -2945,6 +2945,11 @@ body.home-page .home-main { display: block; grid-row: auto; }
   position: fixed; inset: 0; z-index: 500;
   height: auto; max-height: none; min-height: 0;
 }
+.hg-overlay { transition: opacity 0.35s ease, transform 0.35s ease; }
+.hero-expanded .hg-overlay {
+  opacity: 0; transform: translateY(-14px); pointer-events: none;
+}
+.hero-expanded .hg-overlay * { pointer-events: none !important; }
 .hg-legend {
   position: absolute; z-index: 2; right: 16px; top: 14px;
   display: flex; gap: 12px; pointer-events: none;

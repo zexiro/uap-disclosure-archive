@@ -479,6 +479,16 @@ async function ensureGraph() {
         y: ln ? ln.y : Math.random() * 1000 - 500,
       };
     });
+    // Spread the precomputed layout out from its centroid — the pipeline's
+    // force layout packs clusters tightly and dots overlap at default zoom.
+    const SPREAD = 1.9;
+    let cx = 0, cy = 0;
+    for (const n of nodes) { cx += n.x; cy += n.y; }
+    cx /= nodes.length; cy /= nodes.length;
+    for (const n of nodes) {
+      n.x = cx + (n.x - cx) * SPREAD;
+      n.y = cy + (n.y - cy) * SPREAD;
+    }
   } else {
     nodes = baseDocs.map((d, i) => ({
       id: d.id, title: d.title, type: d.type, agency: d.agency,
@@ -693,11 +703,12 @@ function recenterGraph() {
   }
   const w = maxX - minX || 1, h = maxY - minY || 1;
   const margin = 60;
+  const top = 60, bottom = 175; // reserve room for the path-finder panel
   const sx = (rect.width  - margin * 2) / w;
-  const sy = (rect.height - margin * 2) / h;
+  const sy = (rect.height - top - bottom) / h;
   graphState.scale = Math.min(sx, sy, 1.2);
   graphState.tx = rect.width  / 2 - ((minX + maxX) / 2) * graphState.scale;
-  graphState.ty = rect.height / 2 - ((minY + maxY) / 2) * graphState.scale;
+  graphState.ty = top + (rect.height - top - bottom) / 2 - ((minY + maxY) / 2) * graphState.scale;
 }
 
 function agencyColor(ag) {

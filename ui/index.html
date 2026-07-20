@@ -194,6 +194,7 @@ async function initGlobeHero() {
           `TRACKING <strong>${n}</strong> GEOTAGGED RECORDS · ${docs.length} TOTAL IN ARCHIVE`;
       },
     });
+    window._homeGlobe = globe;
     globe.setMarkers(DisclosureGlobe.buildMarkers(docs));
     loading.classList.add("done");
   } catch (e) {
@@ -215,34 +216,29 @@ async function initGlobeHero() {
   initGlobeHero();
 })();
 
-// Full-page globe: native Fullscreen API where available, fixed-position
-// fallback (iOS Safari) otherwise.
+// Full-page globe: expand the hero to fill the viewport in-page (NOT
+// browser fullscreen) — globe recenters and the hero copy fades out.
 (function () {
   const hero = $(".hero-globe");
   const btn = $("#hg-fullbtn");
-  const isFull = () => document.fullscreenElement === hero || hero.classList.contains("hero-expanded");
-  const sync = () => { btn.textContent = isFull() ? "✕ EXIT" : "⤢ FULL PAGE"; };
-  async function toggle() {
-    if (document.fullscreenElement) { await document.exitFullscreen(); return; }
-    if (hero.classList.contains("hero-expanded")) {
-      hero.classList.remove("hero-expanded");
-      document.body.style.overflow = "";
-      sync();
-      return;
+  const sync = () => {
+    const on = hero.classList.contains("hero-expanded");
+    btn.textContent = on ? "✕ EXIT" : "⤢ FULL PAGE";
+    document.body.style.overflow = on ? "hidden" : "";
+    if (window._homeGlobe) {
+      window._homeGlobe.setOffset(on ? 0 : 0.24);
+      window._homeGlobe.resize();
     }
-    try {
-      if (!hero.requestFullscreen) throw new Error("unsupported");
-      await hero.requestFullscreen();
-    } catch (_) {
-      hero.classList.add("hero-expanded");
-      document.body.style.overflow = "hidden";
-    }
+  };
+  btn.addEventListener("click", () => {
+    hero.classList.toggle("hero-expanded");
     sync();
-  }
-  btn.addEventListener("click", toggle);
-  document.addEventListener("fullscreenchange", sync);
+  });
   document.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && hero.classList.contains("hero-expanded")) toggle();
+    if (e.key === "Escape" && hero.classList.contains("hero-expanded")) {
+      hero.classList.remove("hero-expanded");
+      sync();
+    }
   });
 })();
 
