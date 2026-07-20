@@ -118,7 +118,7 @@ window.DisclosureGlobe = (function () {
 
   // Rasterize country polygons to an equirectangular canvas texture.
   function paintEarth(geo) {
-    const W = 2048, H = 1024;
+    const W = 4096, H = 2048;
     const cv = document.createElement("canvas");
     cv.width = W; cv.height = H;
     const ctx = cv.getContext("2d");
@@ -159,7 +159,7 @@ window.DisclosureGlobe = (function () {
       ctx.fillStyle = "#182b25";
       ctx.fill();
       ctx.strokeStyle = "rgba(123, 184, 212, 0.55)";
-      ctx.lineWidth = 1.2;
+      ctx.lineWidth = 2.2;
       ctx.stroke();
     }
 
@@ -173,7 +173,6 @@ window.DisclosureGlobe = (function () {
     ctx.fillRect(0, 0, W, H);
 
     const tex = new THREE.CanvasTexture(cv);
-    tex.anisotropy = 4;
     return tex;
   }
 
@@ -374,7 +373,7 @@ window.DisclosureGlobe = (function () {
 
     const scene = new THREE.Scene();
     const camera = new THREE.PerspectiveCamera(38, 1, 0.1, 200);
-    const CAM_HOME = 3.38, CAM_MIN = 1.7, CAM_MAX = 4.6;
+    const CAM_HOME = 3.38, CAM_MIN = 1.45, CAM_MAX = 4.6;
     let camZ = opts.intro === false || reduced ? CAM_HOME : CAM_MAX;
     camera.position.set(0, 0, camZ);
 
@@ -388,11 +387,13 @@ window.DisclosureGlobe = (function () {
     // Earth
     let geo = null;
     try { geo = await (await fetch(GEO_URL)).json(); } catch (_) { /* texture-less fallback */ }
+    const earthTex = paintEarth(geo);
+    earthTex.anisotropy = renderer.capabilities.getMaxAnisotropy();
     const earth = new THREE.Mesh(
       new THREE.SphereGeometry(R, 96, 64),
       new THREE.ShaderMaterial({
         uniforms: {
-          uMap: { value: paintEarth(geo) },
+          uMap: { value: earthTex },
           uRim: { value: new THREE.Color(accent) },
         },
         vertexShader: EARTH_VERT,
@@ -557,6 +558,8 @@ window.DisclosureGlobe = (function () {
 
     function pickMarker() {
       if (!pointer.inside || dragging || cardPinned || !markers.length) return;
+      // Keep hover precision consistent across the zoom range.
+      raycaster.params.Points.threshold = 0.016 * (camera.position.z / CAM_HOME);
       const rect = renderer.domElement.getBoundingClientRect();
       ndc.set(
         (pointer.px / rect.width) * 2 - 1,

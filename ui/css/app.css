@@ -2930,6 +2930,21 @@ body.home-page .home-main { display: block; grid-row: auto; }
   font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
   color: var(--fg-dim); pointer-events: none; text-align: right;
 }
+.hg-fullbtn {
+  position: absolute; z-index: 3; left: 16px; bottom: 12px;
+  font-family: var(--mono); font-size: 10px; letter-spacing: 0.1em;
+  color: var(--fg-dim); background: rgba(12,16,20,0.55);
+  border: 1px solid var(--rule); border-radius: 4px;
+  padding: 5px 10px; cursor: pointer;
+}
+.hg-fullbtn:hover { color: var(--signal); border-color: var(--signal-deep); }
+.hero-globe:fullscreen {
+  height: 100vh; max-height: none; min-height: 0; border-bottom: 0;
+}
+.hero-globe.hero-expanded {
+  position: fixed; inset: 0; z-index: 500;
+  height: auto; max-height: none; min-height: 0;
+}
 .hg-legend {
   position: absolute; z-index: 2; right: 16px; top: 14px;
   display: flex; gap: 12px; pointer-events: none;

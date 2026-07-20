@@ -31,7 +31,8 @@
     <span class="sw img">IMAGE</span>
     <span class="sw case">CASE FILE</span>
   </div>
-  <div class="hg-corner">DRAG TO ROTATE<br />HOVER A MARKER TO INSPECT</div>
+  <div class="hg-corner">DRAG TO ROTATE · SCROLL TO ZOOM<br />HOVER A MARKER TO INSPECT</div>
+  <button id="hg-fullbtn" class="hg-fullbtn" type="button">⤢ FULL PAGE</button>
   <div class="hg-loading" id="hg-loading">INITIALIZING ORBITAL FEED</div>
 </section>
 
@@ -187,6 +188,7 @@ async function initGlobeHero() {
     await DisclosureGlobe.loadLocations();
     const globe = await DisclosureGlobe.create($("#home-globe"), {
       offsetX: 0.24,
+      zoom: true,
       onCount: (n) => {
         $("#hg-meta").innerHTML =
           `TRACKING <strong>${n}</strong> GEOTAGGED RECORDS · ${docs.length} TOTAL IN ARCHIVE`;
@@ -211,6 +213,37 @@ async function initGlobeHero() {
   renderRecentlyDeclassified();
   renderTodayInDisclosure();
   initGlobeHero();
+})();
+
+// Full-page globe: native Fullscreen API where available, fixed-position
+// fallback (iOS Safari) otherwise.
+(function () {
+  const hero = $(".hero-globe");
+  const btn = $("#hg-fullbtn");
+  const isFull = () => document.fullscreenElement === hero || hero.classList.contains("hero-expanded");
+  const sync = () => { btn.textContent = isFull() ? "✕ EXIT" : "⤢ FULL PAGE"; };
+  async function toggle() {
+    if (document.fullscreenElement) { await document.exitFullscreen(); return; }
+    if (hero.classList.contains("hero-expanded")) {
+      hero.classList.remove("hero-expanded");
+      document.body.style.overflow = "";
+      sync();
+      return;
+    }
+    try {
+      if (!hero.requestFullscreen) throw new Error("unsupported");
+      await hero.requestFullscreen();
+    } catch (_) {
+      hero.classList.add("hero-expanded");
+      document.body.style.overflow = "hidden";
+    }
+    sync();
+  }
+  btn.addEventListener("click", toggle);
+  document.addEventListener("fullscreenchange", sync);
+  document.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && hero.classList.contains("hero-expanded")) toggle();
+  });
 })();
 
 $("#home-search-form").addEventListener("submit", (e) => {
